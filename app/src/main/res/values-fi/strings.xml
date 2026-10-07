@@ -1,0 +1,1907 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2017 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_icon_name_classic">Klassinen</string>
+    <string name="app_icon_name_dark">Tumma</string>
+    <string name="app_icon_name_retro">Retro</string>
+    <string name="app_icon_name_weather">Sää</string>
+    <string name="app_icon_name_notes">Muistiinpanot</string>
+    <string name="app_icon_name_calculator">Laskin</string>
+    <string name="login">Kirjaudu sisään</string>
+    <string name="menuActionSignOut">Kirjaudu ulos</string>
+    <string name="connectionAllocationHelpTitle">Kiitos päivityksestä</string>
+    <string name="connectionAllocationHelpDescription1">Aloittaaksesi Proton VPN -matkasi, määritä VPN-yhteydet tilillesi sekä mahdollisille alitileille.</string>
+    <string name="connectionAllocationHelpDescription2">Tämä vaihe kestää vain muutaman minuutin. Sen jälkeen voit kirjautua sisään ja suojata kaikki laitteesi.</string>
+    <string name="connectionAllocationHelpDescription1AskAdmin">Tilille ei ole tällä hetkellä määritetty VPN-yhteyttä. Aloita Proton VPN -matkasi olemalla yhteydessä ylläpitoosi.</string>
+    <string name="connectionAllocationHelpAssignConnectionsButton">Määritä VPN-yhteydet</string>
+    <string name="connectionAllocationHelpLoginAgainButton">Kirjaudu sisään uudelleen</string>
+    <!-- tag(Redesign_2023) "OK" button on dialogs -->
+    <string name="ok">OK</string>
+    <string name="dialogLearnMore">Lue lisää</string>
+    <string name="connected">Yhdistetty</string>
+    <string name="buttonConnect">Yhdistä</string>
+    <string name="loaderConnectingTo">Yhdistetään palvelimeen %1$s</string>
+    <string name="loaderNotConnected">Ei yhdistetty (suojaamaton)</string>
+    <string name="loaderConnectedTo">Yhdistetty sijaintiin %1$s</string>
+    <string name="loaderDisconnecting">Katkaistaan yhteyttä</string>
+    <string name="loaderReconnecting">Yhdistetään uudelleen</string>
+    <string name="loaderReconnectNoNetwork">Odotetaan käyttökelpoista verkkoa</string>
+    <string name="loaderCheckingAvailability">Tarkistetaan palvelinten tavoitettavuutta</string>
+    <string name="quickConnect">Pikayhteys</string>
+    <!-- Displays a percentage value. Please use %% sign for %.
+         Example value: "70%" -->
+    <string name="serverLoad">%1$s %%</string>
+    <string name="cancel">Peruuta</string>
+    <string name="close">Sulje</string>
+    <string name="dialogContinue">Jatka</string>
+    <string name="drawerReportProblem">Ilmoita ongelmasta</string>
+    <string name="action_done">Valmis</string>
+    <string name="action_share">Jaa</string>
+    <string name="accountFree">Proton Free</string>
+    <string name="restrictedMaintenanceTitle">Huollossa</string>
+    <string name="restrictedMaintenanceDescription">Palvelin johon yrität yhdistää on huollossa. Kokeile eri palvelinta.</string>
+    <string name="restricted_location_excluded_dialog_title">Yhteys epäonnistui</string>
+    <string name="restricted_location_excluded_dialog_description">Palvelimia ei ole käytettävissä. Valitse sijainti manuaalisesti tai muokkaa poissuljettuja sijainteja.</string>
+    <string name="errorUserDelinquent"><![CDATA[Tililläsi on erääntynyt lasku. Maksa kaikki maksamattomat laskut osoitteessa&#160;<a href="https://account.protonvpn.com">account.protonvpn.com</a>]]></string>
+    <string name="errorMaxSessions">Olet saavuttanut tilillesi sallittujen samanaikaisten yhteyksien enimmäismäärän. Päivitä Proton VPN -tilauksesi saadaksesi lisää yhteyksiä.</string>
+    <string name="listItemMaintenance">Huollossa</string>
+    <string name="insufficientPermissionsTitle">Käyttäjän toimia vaaditaan</string>
+    <string name="insufficientPermissionsDetails">VPN-yhteyden automaattinen muodostus ei onnistunut. Muodosta yhteys kerran manuaalisesti käyttöoikeuksien myöntämiseksi.</string>
+    <string name="log_title">Loki</string>
+    <string name="disconnect">Katkaise yhteys</string>
+    <string name="state_connecting">Yhdistetään…</string>
+    <string name="state_connected">Yhdistetty</string>
+    <string name="state_disconnecting">Katkaistaan yhteyttä…</string>
+    <string name="state_error">Virhe</string>
+    <string name="error_server_list_load_failed">Tarkista yhteytesi ja yritä uudelleen.</string>
+    <string name="error_server_unreachable">VPN-yhteyden muodostus ei onnistunut. Tarkista Internet-yhteytesi ja yritä uudelleen.</string>
+    <string name="error_auth_failed">Käyttäjän tunnistautuminen epäonnistui.</string>
+    <string name="error_generic">Määrittelemätön virhe yhdistettäessä.</string>
+    <string name="error_generic_with_reason">Proton VPN ei voinut muodostaa VPN-yhteyttä. Yritä hetken kuluttua uudelleen.<br/><br/> Tietoja: %1$s</string>
+    <string name="reconnect">Yhdistä uudelleen</string>
+    <string name="reconnect_now">Yhdistä uudelleen nyt</string>
+    <string name="try_reconnecting">Yritä yhdistää uudelleen</string>
+    <string name="connect">Yhdistä</string>
+    <string name="upgrade">Päivitä</string>
+    <string name="retry">Yritä uudelleen</string>
+    <string name="report_message">Raportin viesti</string>
+    <string name="report_bug_email_label">Sähköpostiosoitteesi</string>
+    <string name="report_bug_email_hint">Syötä sähköpostiosoitteesi</string>
+    <string name="report_bug_message_label">Viesti</string>
+    <string name="report_bug_message_hint">Kuvaile vikaa sekä miten ja missä havaitsit sen</string>
+    <string name="send_report">Lähetä raportti</string>
+    <string name="report_sent">Raportti on lähetetty</string>
+    <string name="discardChanges">Hylätäänkö tallentamattomat muutokset?</string>
+    <string name="discardChangesButtonDiscard">Hylkää muutokset</string>
+    <string name="discardChangesButtonKeepEditing">Jatka muokkausta</string>
+    <string name="done">VALMIS</string>
+    <string name="add">LISÄÄ</string>
+    <string name="copy_to_clipboard">Kopioi</string>
+    <string name="copied_to_clipboard">Kopioitu leikepöydälle</string>
+    <string name="got_it">Selvä</string>
+    <string name="exclude_locations">Poissulje sijainnit</string>
+    <string name="excluded_locations">Poissuljetut sijainnit</string>
+    <string name="cannot_connect">Ei voida yhdistää</string>
+    <string name="skip">Ohita</string>
+    <string name="something_went_wrong">Jotain meni pieleen</string>
+    <string name="try_again">Yritä uudelleen</string>
+    <string name="delete">Poista</string>
+    <string name="menu_option_move_to_top" comment="command used to move an item to the top of the list">Siirrä yläreunaan</string>
+    <string name="menu_option_move_up" comment="command used to move an item one position up in the list">Siirrä ylös</string>
+    <string name="menu_option_move_down" comment="command used to move an item one position down in the list">Siirrä alas</string>
+    <string name="remove">Poista</string>
+    <string name="saveButton">Tallenna</string>
+    <string name="ipWithPlaceholder">IP: %1$s</string>
+    <string name="activityLicensesTitle">Kolmansien osapuolten lisenssit</string>
+    <string name="stateFragmentUnknownIp">Tuntematon</string>
+    <string name="noVpnPermissionMainTitle">VPN-yhteyden muodostus vaatii toimenpiteitä</string>
+    <string name="noVpnPermissionMainMessage">Muodostaaksesi Proton VPN -yhteyden, tee seuraavat:</string>
+    <string name="noVpnPermissionGrantPermissionTitle">Myönnä VPN-käyttöoikeus</string>
+    <string name="noVpnPermissionGrantPemrissionMessage">Proton VPN -yhteyden muodostamiseksi sille on myönnettävä Androidin VPN-käyttöoikeus. Tämä onnistuu napauttamalla avautuvasta Androidin yhteyspyynnöstä \"Salli\".</string>
+    <string name="noVpnPermissionDisableAlwaysOnTitle">Poista \"Aina päällä oleva VPN\" -asetus käytöstä muilta VPN-sovelluksilta</string>
+    <string name="noVpnPermissionDisableAlwaysOnMessage">Android ei tue useiden VPN-sovellusten samanaikaista käyttöä. Poista jatkuvatoiminen VPN käytöstä muilta VPN-sovelluksilta.</string>
+    <string name="noVpnPermissionProtonAppLabel">Proton VPN -sovellus</string>
+    <string name="noVpnPermissionOtherAppLabel">Muut VPN-sovellukset</string>
+    <string name="noVpnPermissionOpenSettings">Avaa Androidin VPN-asetukset</string>
+    <string name="noNotificationPermissionGrantTitle">Älä jää ilman suojausta…</string>
+    <string name="noNotificationPermissionGrantDescription">Ota ilmoitukset käyttöön saadaksesi huomautuksia yhteytesi tilamuutoksista.</string>
+    <string name="noNotificationPermissionGrantNowTitle">Salli ilmoitukset</string>
+    <string name="error_prepare_vpn_description"><![CDATA[Poista jatkuvatoiminen VPN käytöstä muilta VPN-sovelluksilta Andoidin VPN-asetuksista, koska se estää Proton VPN:ää muodostamasta VPN-yhteyttä. Myönnä myös VPN-käyttöoikeus, mikäli sitä pyytävä ilmoitus avautuu. On mahdollista, että jotkin VPN-sovellukset on poistettava kokonaan yhteensopivuusongelmien vuoksi. Kokeile sitten uudelleen. <a href="%1$s">Lue lisää</a>]]></string>
+    <string name="error_prepare_vpn_settings">Avaa Androidin VPN-asetukset</string>
+    <string name="error_prepare_vpn_title">Virhe: VPN-käyttöoikeusongelma</string>
+    <string name="error_server_not_set">Palvelin ei ole enää käytettävissä</string>
+    <string name="bugReportErrorEmptyEmail">Sähköpostiosoite ei voi olla tyhjä</string>
+    <string name="bugReportErrorInvalidEmail">Virheellinen sähköpostiosoite</string>
+    <string name="bugReportLabelVpnLogsTitle">Sisällytä virhelokit</string>
+    <string name="bugReportErrorLabelVpnLogsDescription">Tämä auttaa meitä korjaamaan ongelman jakamalla paikalliset virhelokit (emme kirjaa käyttötietoja)</string>
+    <string name="profileFastest">Nopein</string>
+    <string name="profileRandom">Satunnainen</string>
+    <string name="loaderErrorNoInternet">Ei Internet-yhteyttä</string>
+    <string name="loaderErrorGeneric">Jokin meni pieleen</string>
+    <string name="inputIpAddressLabel">IP-osoite</string>
+    <string name="inputIpAddressHelp">Syötä palvelimen IPv4- tai IPv6-osoite</string>
+    <string name="inputIpAddressErrorInvalid">Virheellinen IP-osoite</string>
+    <!-- Displayed as a badge next to setting item ("Widget [NEW]") -->
+    <string name="settings_new_label_badge">UUTTA</string>
+    <!-- Displayed as a badge next to setting item ("Proton protocols [BETA]") -->
+    <string name="settings_beta_label_badge">BETA</string>
+    <string name="settingsExcludedIPAddressesListHeader">Poissuljetut IP-osoitteet (%1$d)</string>
+    <string name="settingsIncludedIPAddressesListHeader">Sisällytetyt IP-osoitteet (%1$d)</string>
+    <string name="settingsExcludedApps">Poissuljetut sovellukset</string>
+    <string name="settingsExcludedAppsEmpty">Lisää VPN-tietoliikenteen ulkopuolelle rajoitettavia sovelluksia.</string>
+    <string name="settingsIncludedAppsEmpty">Lisää VPN-tietoliikenteeseen sisällytettäviä sovelluksia.</string>
+    <string name="settingsExcludedAppsSelectedHeader">Poissuljetut sovellukset (%1$d)</string>
+    <string name="settingsIncludedAppsSelectedHeader">Sisällytetyt sovellukset (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableRegularHeader">Kaikki muut tavalliset sovellukset (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableSystemHeader">Kaikki muut järjestelmäsovellukset (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableHeader">Kaikki muut sovellukset (%1$d)</string>
+    <string name="settingsExcludedAppsLoadSystemAppsButton">Näytä järjestelmäsovellukset</string>
+    <string name="settingsSplitTunnelAppsShowSystemAppsCheckbox">Näytä järjestelmäsovellukset</string>
+    <string name="settingsSplitTunnelingExcludedAppsList">Nämä sovellukset on suljettu VPN-yhteyden ulkopuolelle.</string>
+    <string name="settingsSplitTunnelingIncludedAppsList">Vain nämä sovellukset muodostavat yhteyden VPN:n kautta.</string>
+    <!-- Description for action to add an application to "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to excluded apps"
+    -->
+    <string name="accessibility_action_add_excluded_app">Lisää poissuljettuihin sovelluksiin</string>
+    <!-- Description for action to remove an application from "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from excluded apps"
+    -->
+    <string name="accessibility_action_remove_excluded_app">Poista poissuljetuista sovelluksista</string>
+    <!-- Description for action to add an application to "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to included apps"
+    -->
+    <string name="accessibility_action_add_included_app">Lisää sisällytettyihin sovelluksiin</string>
+    <!-- Description for action to remove an application from "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from included apps"
+    -->
+    <string name="accessibility_action_remove_included_app">Poista sisällytetyistä sovelluksista</string>
+    <string name="accessibility_action_copy_to_clipboard">Kopioi leikepöydälle</string>
+    <string name="accessibility_action_item_delete">Poista</string>
+    <string name="accessibility_action_item_move_up">Siirrä ylös</string>
+    <string name="accessibility_action_item_move_down">Siirrä alas</string>
+    <string name="tileConnected">Yhdistetty: %1$s</string>
+    <string name="openUrlError">Osoitetta %1$s ei voitu avata, koska laitteella ei havaittu verkkoselainta.</string>
+    <string name="loaderErrorTimeout">Yhteys aikakatkaistiin. Yritä uudelleen.</string>
+    <string name="troubleshootButton">Vianetsintä</string>
+    <string name="activityTroubleshootTitle">Vianetsintä</string>
+    <string name="troubleshootPotentialSolutionsSectionTitle">Mahdollisia ratkaisuja</string>
+    <string name="troubleshootNoInternetDescription">Varmista Internet-yhteytesi toiminta.</string>
+    <string name="troubleshootNoInternetTitle">Ei Internet-yhteyttä</string>
+    <string name="troubleshootIspProblemTitle">Internet-palveluntarjoajan (ISP) ongelma</string>
+    <string name="troubleshootIspProblemDescription"><![CDATA[Yritä tavoittaa Proton eri verkon (tai <a href=\'%1$s\'>Tor-verkon</a>) välityksellä.]]></string>
+    <string name="troubleshootAntivirusProblemTitle">Virustorjunnan aiheuttama häiriö</string>
+    <string name="troubleshootAntivirusProblemDescription">Poista tietoturvasovellus tilapäisesti käytöstä tai poista sen asennus.</string>
+    <string name="troubleshootProxyFirewallProblemTitle">Välityspalvelimen/palomuurin aiheuttama häiriö</string>
+    <string name="troubleshootProxyFirewallProblemDescription">Poista välityspalvelimet ja/tai palomuurit käytöstä, tai ole yhteydessä verkkosi ylläpitoon.</string>
+    <string name="troubleshootProtonDownTitle">Proton ei ole tavoitettavissa</string>
+    <string name="troubleshootProtonDownDescription"><![CDATA[Tarkasta järjestelmämme tila <a href=\"%1$s\">Proton Status</a> -sivustolta.]]></string>
+    <string name="troubleshootContactUsSectionTitle">Tarvitsetko edelleen apua? Ota meihin yhteyttä</string>
+    <string name="troubleshootCustomerSupport">Asiakaspalvelu</string>
+    <string name="settingsAllowAlternativeRoutingTitle">Vaihtoehtoinen reititys</string>
+    <string name="settingsAllowAlternativeRoutingDescription"><![CDATA[Mikäli Protonia ei tavoiteta, salli sovelluksen pyrkiä tavoittamaan Protonin palvelimet vaihtoehtoisten reittien välityksellä. <a href="%1$s">Lue lisää</a>]]></string>
+    <string name="troubleshootGovernmentBlockTitle">Hallinnollinen esto</string>
+    <string name="troubleshootGovernmentBlockDescription"><![CDATA[Maasi hallinto saattaa estää pääsyn Protoniin. Yritä tavoittaa Proton <a href=\'%1$s\'>Tor-verkon</a> välityksellä.]]></string>
+    <string name="settingsKillSwitchEnableTitle">Miten tappokytkin otetaan käyttöön</string>
+    <string name="settingsKillSwitchEnableStep1">1. Avaa laitteesi asetukset</string>
+    <!-- %1$s here will be replaced by "gear" icon -->
+    <string name="settingsKillSwitchEnableStep2">2. Etsi Proton VPN ja napauta %1$s</string>
+    <!-- Content description for the "gear" icon in settingsKillSwitchEnableStep2. Used only by accessibility services. -->
+    <string name="settingsKillSwitchEnableStep2_gearIconContentDescription">asetukset</string>
+    <!-- The phrases "Always-on VPN" and "Block connections without VPN" needs to be translated exactly
+         the same as in Android VPN settings. -->
+    <string name="settingsKillSwitchEnableStep3"><![CDATA[3. Käytä \"<b>jatkuvatoiminen VPN</b>\" ja \"<b>Estä yhteydet ilman VPN:ää</b>\"]]></string>
+    <string name="settingsKillSwitchAndroidSettingsButton">Asetukset</string>
+    <string name="settingsKillSwitchLearnMoreButton">Mikä on tappokytkin?</string>
+    <string name="settingsKillSwitchWarningMain">Kun tappokytkin on käytössä, et voi yhdistää seuraaviin:</string>
+    <string name="settingsKillSwitchWarningPoint1">Verkkosivustot ja sovellukset, jotka on suljettu pois VPN-yhteydestäsi jaetun tunneloinnin kautta</string>
+    <string name="settingsKillSwitchWarningPoint2">Lähiverkkosi (LAN) laitteet</string>
+    <string name="settingsEnableTelemetryTitle">Jaa anonyymejä käyttötilastoja</string>
+    <string name="settingsEnableTelemetryDescription">Käyttötilastot auttavat meitä kiertämään VPN-estoja ja parantamaan sovelluksen suorituskykyä.</string>
+    <string name="settingsSendCrashReportsTitle">Jaa anonyymejä virheraportteja</string>
+    <string name="settingsSendCrashReportsDescription">Virheraportit auttavat meitä korjaaman vikoja, havaitsemaan palomuureja ja kiertämään VPN-estoja.</string>
+    <string name="settingsTelemetryScreenTitle">Käyttötilastot</string>
+    <string name="settingsTelemetryScreenInfo"><![CDATA[Nämä tilastot eivät sisällä IP-osoitettasi, eikä sinua ole mahdollista tunnistaa niiden perusteella. Emme koskaa jaa niitä ulkopuolisille tahoille. <a href="%1$s">Lue lisää</a>]]></string>
+    <string name="netshield_settings_description_not_html">Suojaudu verkkosivustojen ja sovellusten mainoksilta, haittaohjelmilta ja seurannoilta. %1$s</string>
+    <string name="netshield_settings_description_tv">Suojaa sinua kolmansien osapuolien mainoksilta, seurannoilta ja haittaohjelmilta. NetShield ei estä mainoksia, jotka on sisällytetty suoratoistopalveluihin kuten YouTubeen ja Netflixiin.</string>
+    <string name="netshield_settings_more_info_title_tv">Miten NetShield toimii</string>
+    <string-array name="netshield_settings_more_info_paragraphs_tv">
+        <item>NetShield estää DNS-pyynnöt ulkopuolisilta sivustoilta, jotka tunnetaan mainoksista, seurannoista ja haittaohjelmista.</item>
+        <item>Tämä tarkoittaa, ettet näe mainoksia selaimessasi tai sovelluksissasi, jotka käyttävät kolmannen osapuolen mainospalveluita.</item>
+        <item>Se ei kuitenkaan estä mainoksia YouTuben tai Netflixin kaltaisissa suoratoistopalveluissa, koska niiden mainokset ladataan niiden omilta palvelimilta.</item>
+    </string-array>
+    <string name="settings_icon_change_description">Naamioi Proton VPN -sovellus huomaamattomalla kuvakkeella. Ilmoituksissa näkyy edelleen Proton VPN:n alkuperäinen nimi ja kuvake. %1$s</string>
+    <string name="settings_icon_change_learn_more">Lue lisää</string>
+    <string name="learn_more">Lue lisää</string>
+    <string name="netshield_state_on" comment="Describes state, not action">Käytössä</string>
+    <string name="netshield_state_off" comment="Describes state, not action">Ei käytössä</string>
+    <string name="netshield_state_unavailable" comment="Describes state, not action">Ei käytettävissä</string>
+    <string name="split_tunneling_state_on" comment="Describes state, not action">Käytössä</string>
+    <string name="split_tunneling_state_off" comment="Describes state, not action">Ei käytössä</string>
+    <string name="vpn_accelerator_state_on" comment="Describes state, not action">Käytössä</string>
+    <string name="vpn_accelerator_state_off" comment="Describes state, not action">Ei käytössä</string>
+    <string name="lan_state_on" comment="Describes state, not action">Käytössä</string>
+    <string name="lan_state_off" comment="Describes state, not action">Ei käytössä</string>
+    <string name="alt_routing_state_on" comment="Describes state, not action">Käytössä</string>
+    <string name="alt_routing_state_off" comment="Describes state, not action">Ei käytössä</string>
+    <string name="custom_dns_state_on" comment="Describes state, not action">Käytössä</string>
+    <string name="custom_dns_state_off" comment="Describes state, not action">Ei käytössä</string>
+    <string name="custom_dns_state_unavailable" comment="Describes state, not action">Ei käytettävissä</string>
+    <string name="custom_dns_item_removed_snackbar">Kohde poistettiin</string>
+    <string name="netshield_free_description">Estä mainoksia, seurantoja ja haittaohjelmia verkkosivustoilla ja sovelluksissa</string>
+    <string name="netshield_what_data_means">NetShield-tilastojen selitys</string>
+    <string name="netshield_ads_title">Mainokset</string>
+    <string name="netshield_ads_details">Mainokset ja näkymättömät mainosseurannat</string>
+    <string name="netshield_trackers_title">Seurannat</string>
+    <string name="netshield_trackers_details">Evästeet ja muut seurannat, jotka tallentavat ja jakavat tietoja internetin käytöstäsi</string>
+    <string name="netshield_data_title">Tiedonsiirto</string>
+    <string name="netshield_data_details">NetShieldin estämien ei-toivottujen mainosten, seurantojen ja haittaohjelmien tiedonsiirron määrä</string>
+    <plurals name="netshield_ads_blocked" comment="Number of ads blocked by netshield. Number displayed above the text">
+        <item quantity="one">Mainos estetty</item>
+        <item quantity="other">Mainosta estetty</item>
+    </plurals>
+    <plurals name="netshield_trackers_stopped" comment="Number of trackers stopped by netshield. Number displayed above the text">
+        <item quantity="one">Seuranta estetty</item>
+        <item quantity="other">Seurantaa estetty</item>
+    </plurals>
+    <string name="netshield_data_saved" comment="Total data saved by netshield shown in kb/mb">Säästetty</string>
+    <string name="netshield_setting_warning">Jotkin verkkosivustot eivät ehkä lataudu oikein, kun mainokset ja seurannat on estetty.</string>
+    <string name="netshield_setting_block_adult_content">Estä aikuisille tarkoitettu sisältö</string>
+    <string name="dialogDontShowAgain">Älä näytä uudelleen</string>
+    <string name="guestHoleNotificationContent">Verkkoyhteyden ongelmia yritetään kiertää. Tämä auttaa Proton VPN-yhteyden muodostuksessa.</string>
+    <string name="errorTunMultiUserPermission">VPN-yhteyden muodostus ei onnistunut monistetun sovelluksen (esim. Dual Messenger) ja jaetun tunneloinnin ristiriidan vuoksi. Poista jompikumpi käytöstä ja käynnistä laite uudelleen.</string>
+    <string name="errorTorrentNotAllowed">P2P ei ole tällä palvelimella sallittu</string>
+    <string name="error_profile_fallback_unavailable">Yhteys epäonnistui. Valitsemasi profiilin palvelin ei ole käytettävissä.</string>
+    <string name="profileProtocolNotAvailable">Profiilin VPN-protokolla ei ole tällä hetkellä käytettävissä. Kokeile vaihtaa protokollaa yhteyden muodostamiseksi.</string>
+    <string name="stateConnectedTo">Yhdistetty sijaintiin %1$s</string>
+    <string name="stateNotConnected">Et ole yhdistänyt</string>
+    <string name="nameEurope">Eurooppa</string>
+    <string name="nameAmerica">Amerikka</string>
+    <string name="nameAsia">Aasia</string>
+    <string name="nameAfricaAndMiddleEast">Afrikka ja Lähi-Itä</string>
+    <string name="nameOceania">Oseania</string>
+    <string name="tv_row_settings">Asetukset</string>
+    <string name="tv_card_lan_connections_label">LAN</string>
+    <string name="tv_card_split_tunneling_label">Jaettu tunnelointi</string>
+    <string name="tv_card_protocol_label">Protokolla</string>
+    <string name="tv_dialog_delete_server_title">Poistetaanko palvelin %1$s?</string>
+    <string name="tv_detail_default_connection_checkbox_short">Suosikki</string>
+    <string name="tv_detail_connect_streaming">Suoratoista Plus-tilauksella</string>
+    <string name="tv_detail_connect">Yhdistä</string>
+    <string name="tv_detail_description_streaming_country">Suoratoista suosikkisisältöäsi. Proton VPN Plus -tilauksella saat käyttöösi lisää sovelluksia.</string>
+    <string name="tv_detail_description_no_streaming_country">Suoratoista enemmän suosikkisisältöäsi Proton VPN Plus -tilauksella.</string>
+    <string name="tv_detail_description_country_not_available">Tämä maa ei ole käytettävissä. Proton VPN Plus -tilauksella saat käyttöösi lisää suoratoistovaihtoehtoja.</string>
+    <string name="tv_detail_description_plus">Suoratoista sovelluksillasi suosikkivideoitasi, -elokuviasi tai -urheilua.</string>
+    <string name="tv_login_title_welcome">Suoratoista suosikkivideoitasi</string>
+    <string name="tv_login_welcome_description_bottom"><![CDATA[Hanki Proton VPN -tili osoitteesta <b>%1$s</b>]]></string>
+    <string name="back">Takaisin</string>
+    <string name="tv_vpn_error_dialog_title">VPN-yhteys epäonnistui</string>
+    <string name="tv_signout_label">Kirjaudu ulos</string>
+    <string name="tv_signout_dialog_title">Haluatko varmasti kirjautua ulos?</string>
+    <string name="tv_signout_dialog_description_connected">Tämä katkaisee televisiosi yhteyden kaikkiin VPN-palvelimiin.</string>
+    <string name="tv_signout_dialog_ok">Kirjaudu ulos</string>
+    <string name="tv_quick_connect_recommened">Suositus</string>
+    <string name="tv_quick_connect_favourite">Suosikki</string>
+    <string name="tv_country_maintenance_dialog_title">Maa ei ole käytettävissä</string>
+    <string name="tv_country_maintenance_dialog_description">Yritä myöhemmin uudelleen tai valitse toinen maa.</string>
+    <!-- The placeholder is replaced with a 0-100 value indicating the server load in percent.
+         Please note the double % sign after the placeholder. It is displayed as a single % sign in the app.
+
+         Example: 76% server load -->
+    <string name="tv_server_list_load">%1$s%% palvelimen kuormitus</string>
+    <string name="tv_recently_used_servers">Viimeksi käytetyt palvelimet</string>
+    <string name="tv_available_servers">Käytettävissä olevat palvelimet</string>
+    <string name="tv_locked_servers">Lukitut palvelimet</string>
+    <string name="tv_other_servers">Muut palvelimet</string>
+    <string name="tv_server_list">Palvelinluettelo</string>
+    <string name="tv_server_list_action_unavailable">Ei käytettävissä</string>
+    <string name="notification_subscription_expired_title">Proton VPN -tilauksesi on päättynyt</string>
+    <string name="notification_subscription_expired_content">Tilauksesi jouduttiin vaihtamaan alempaan luokkaan, mutta sinut yhdistetään nykyisen tilauksen nopeimpaan palvelimeen.</string>
+    <string name="notification_subscription_expired_no_reconnection_content">Tilauksesi on vaihdettu alempaan luokkaan.</string>
+    <string name="notification_delinquent_title">Proton VPN -tililläsi on avoimia laskuja</string>
+    <string name="notification_delinquent_content">Ota hetki ja päivitä laskutustietosi pitääksesi tilauksesi voimassa.</string>
+    <string name="notification_max_sessions_title">Olet saavuttanut laitteiden enimmäismäärän</string>
+    <!-- The number of devices will always be greater than 1. -->
+    <plurals name="notification_max_sessions_upsell_content">
+        <item quantity="one">Katkaise yhteys joltakin toiselta laitteeltasi yhdistääksesi tämän laitteen tai päivitä Plus-tilaukseen yhdistääksesi samanaikaisesti %1$d laitteen.</item>
+        <item quantity="other">Katkaise yhteys joltakin toiselta laitteeltasi yhdistääksesi tämän laitteen tai päivitä Plus-tilaukseen yhdistääksesi samanaikaisesti jopa %1$d laitetta.</item>
+    </plurals>
+    <string name="notification_max_sessions_content">Katkaise yhteys joltakin toiselta laitteeltasi yhdistääksesi tämän laitteen.</string>
+    <string name="notification_cancel_to_free">Sinulla on ilmainen Free-tilaus. Ilmaispalvelimet ja -ominaisuudet ovat käytettävissä.</string>
+    <string name="notification_cancel_to_basic">Sinulla on Basic-tilaus. Basic- ja ilmaispalvelimet sekä -ominaisuudet ovat käytettävissä.</string>
+    <string name="notification_cancel_to_delinquent">Voit jälleen käyttää premium-ominaisuuksia, kun avoimet laskut on maksettu.</string>
+    <string name="reconnect_from_server">Palvelimelta: </string>
+    <string name="reconnect_to_server">Palvelimelle: </string>
+    <string name="no_thanks">Ei kiitos</string>
+    <string name="enable">Ota käyttöön</string>
+    <string name="notification_smart_protocol_disabled_title">Smart Protocol ei ole tällä hetkellä käytössä</string>
+    <string name="notification_smart_protocol_disabled_content">Proton VPN havaitsi nykyisen verkkosi estävän VPN-yhteyden. Smart Protocol -toiminto saattaa ohittaa rajoitukset.</string>
+    <string name="notification_streaming_blocked_title">Suoratoisto ei toimi?</string>
+    <string name="notification_streaming_blocked_text">Monet suoratoistopalvelut tunnistavat ja estävät yhteydet ilmaisilta VPN-palvelimilta. Päivitä Proton VPN Plus -tilaukseen ohittaaksesi nämä estot</string>
+    <string name="upsell_advanced_features">Lisäominaisuudet: NetShield, Secure Core, Tor, P2P</string>
+    <string name="upsell_streaming_services">Käytä suoratoistopalveluita (Netflix, Disney+, yms.) kaikkialla maailmassa</string>
+    <!-- Number of servers available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_servers">
+        <item quantity="one">%1$d palvelinta</item>
+        <item quantity="other">%1$d pavelinta</item>
+    </plurals>
+    <!-- Number of countries available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_countries">
+        <item quantity="one">%1$d maasta</item>
+        <item quantity="other">%1$d maasta</item>
+    </plurals>
+    <string name="upsell_upgrade_again">Tilaa uudelleen nauttiaksesi kaikista ominaisuuksista:</string>
+    <plurals name="upgrade_devices_title">
+        <item quantity="one">Suojaa samanaikaisesti %1$d laite</item>
+        <item quantity="other">Suojaa samanaikaisesti %1$d laitetta</item>
+    </plurals>
+    <string name="upgrade_devices_text">Proton VPN on saatavilla kahdeksalla eri alustalla</string>
+    <string name="upgrade_plus_title">Paranna yksityisyyttäsi</string>
+    <string name="upgrade_plus_message">Hanki edistyneitä yksityisyytäsi tehostavia ominaisuuksia ja korkeampi nopeus VPN Plus -tilauksella.</string>
+    <string name="upgrade_netshield_title">Nauti mainosvapaasta selaamisesta</string>
+    <string name="upgrade_netshield_message"><![CDATA[Estä mainoksia, seurantoja ja haittaohjelmia <b>NetShieldin</b> avulla.]]></string>
+    <string name="upgrade_secure_core_title">Tuplaa salaus</string>
+    <string name="upgrade_secure_core_message"><![CDATA[Lisää VPN-yhteyteesi toinen salaustaso <b>Secure Corella</b>.]]></string>
+    <string name="upgrade_p2p_title">Avaa peer-to-peer (P2P) lataukset ja tiedostojaot </string>
+    <string name="upgrade_p2p_text">Paranna lähetys- ja latausnopeuksiasi samalla kun piilotat IP-osoitteesi.</string>
+    <string name="upgrade_profiles_title">Löydä yleisimmät yhteytesi nopeasti</string>
+    <string name="upgrade_profiles_text">Avaa profiilit VPN Plussalla</string>
+    <string name="upgrade_streaming_title">Suoratoista 4K-tarkkuudella</string>
+    <string name="upgrade_streaming_text">Nauti suosikkielokuvistasi ja -sarjoistasi kaikkialta maailmasta.</string>
+    <string name="upgrade_streaming_block_title">Päivitä ohittaaksesi VPN-estot</string>
+    <string name="upgrade_streaming_block_text">VPN Plus -palvelimien avulla voit nauttia suosikkielokuvista ja TV-ohjelmista eri puolilta maailmaa.</string>
+    <string name="upgrade_tor_title">Käytä Tor-verkkoa yhdellä napautuksella</string>
+    <string name="upgrade_tor_text">Yhdistä piilotettuihin palveluihin ja avaa Onion-sivustot tavallisella selaimellasi.</string>
+    <string name="upgrade_vpn_accelerator_title">Selaa vielä korkeammilla nopeuksilla</string>
+    <!--
+        %1$s - speed in Gbps
+        Example:
+        Unlock faster, less crowded servers with speeds of up to 10 Gbps.
+    -->
+    <string name="upgrade_vpn_accelerator_message">Avaa nopeampia ja ruuhkattomampia palvelimia, joiden nopeudet ovat jopa %1$d Gbps.</string>
+    <string name="upgrade_split_tunneling_title">Hanki molempien parhaat puolet</string>
+    <string name="upgrade_split_tunneling_message"><![CDATA[Jaa tietoliikenteesi VPN-tunneliin ja sen ulkopuolelle <b>jaetun tunneloinnin</b> avulla.]]></string>
+    <string name="upgrade_customization_title">Avaa edistyneet VPN-mukautukset</string>
+    <string name="upgrade_customization_message"><![CDATA[Avaa <b>LAN-yhteydet</b>, <b>mukautettu DNS</b> ja <b>NAT-tyyppi 2</b> VPN Plus -palvelulla.]]></string>
+    <string name="upgrade_all_countries_title">Käytä kaikkia maita</string>
+    <!-- Number of servers inserted as %1$s in the "upgrade_plus_countries_title_new".
+         The number is rounded to the hundreds, e.g. for a value of 1234 the number used in this text is 1200.
+
+         Example:
+         1200 secure servers
+         -->
+    <plurals name="upgrade_plus_servers_new">
+        <item quantity="one">%d turvallisen palvelimen</item>
+        <item quantity="other">%d turvallista palvelinta</item>
+    </plurals>
+    <!-- Number of countries inserted as %2$s in "upgrade_plus_countries_title_new".
+
+         Example:
+         55 countries
+         -->
+    <plurals name="upgrade_plus_countries">
+        <item quantity="one">%d maasta</item>
+        <item quantity="other">%d maasta</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with "upgrade_plus_servers_new"
+     %2$s - replaced with "upgrade_plus_countries"
+
+     Example:
+     Unlock 1300+ secure servers in 61 countries with VPN Plus.
+     -->
+    <string name="upgrade_plus_countries_title_new"><![CDATA[Avaa %1$s %2$s <b>VPN Plus</b> -tilauksella.]]></string>
+    <string name="mail_app_name" translateable="false">Proton Mail</string>
+    <string name="upgrade_unlimited_all_apps_title">Hanki täyden kattavuuden yksityisyyttä Proton Unlimitedilla</string>
+    <string name="upgrade_unlimited_all_apps_description">Avaa kaikki Proton VPN:n, Mailin, Calenderin, Driven ja Passin premium-ominaisuudet.</string>
+    <string name="upgrade_unlimited_more">Ja muuta</string>
+    <string name="upgrade_unlimited_vpn_unlimited_countries">Avaa kaikki maat</string>
+    <string name="upgrade_unlimited_vpn_all_features">Kaikki muut VPN Plus -ominaisuudet</string>
+    <string name="upgrade_unlimited_vpn_any_location">Valitse mikä tahansa sijainti</string>
+    <string name="upgrade_unlimited_vpn_higher_speeds">Vielä korkeammat VPN-nopeudet</string>
+    <plurals name="upgrade_unlimited_vpn_many_devices">
+        <item quantity="one">Suojaa samanaikaisesti %1$d laite</item>
+        <item quantity="other">Suojaa samanaikaisesti %1$d laitetta</item>
+    </plurals>
+    <string name="upgrade_unlimited_vpn_streaming">Turvallinen suoratoisto</string>
+    <string name="upgrade_unlimited_vpn_adblocker">Mainos- ja haittaohjelmaesto</string>
+    <string name="upgrade_unlimited_vpn_double_vpn">Tuplattu-VPN</string>
+    <string name="upgrade_unlimited_vpn_p2p">P2P-tuki</string>
+    <plurals name="upgrade_unlimited_mail_custom_domains">
+        <item quantity="one">%1$d oma sähköpostiverkkotunnus</item>
+        <item quantity="other">%1$d omaa sähköpostiverkkotunnusta</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_attachments">
+        <item quantity="one">%1$d Mt liite</item>
+        <item quantity="other">%1$d Mt liitteet</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_many_addresses">
+        <item quantity="one">%1$d sähköpostiosoite</item>
+        <item quantity="other">%1$d sähköpostiosoitetta</item>
+    </plurals>
+    <string name="upgrade_unlimited_mail_unlimited_folders">Rajattomasti kansioita ja suodattimia</string>
+    <string name="upgrade_unlimited_mail_dark_web">Pimeän verkon valvonta</string>
+    <string name="upgrade_unlimited_mail_aliases">Rajattomasti Hide-my-email-aliaksia</string>
+    <string name="upgrade_unlimited_mail_autoreply">Automaattivastaus</string>
+    <string name="upgrade_unlimited_mail_scheduled_send">Ajoitettu lähetys</string>
+    <plurals name="upgrade_unlimited_calendar_calendars">
+        <item quantity="one">%1$d henkilökohtainen kalenteri</item>
+        <item quantity="other">%1$d henkilökohtaista kalenteria</item>
+    </plurals>
+    <string name="upgrade_unlimited_calendar_sharing">Kalenterin jakaminen</string>
+    <string name="upgrade_unlimited_calendar_invites">Kutsujen lähetys ja vastaanotto</string>
+    <string name="upgrade_unlimited_drive_encryption">Salattu tiedostojen tallennustila</string>
+    <string name="upgrade_unlimited_drive_storage_size">%1$d Gt tallennustilaa kuville, tiedostoille ja sähköposteille</string>
+    <string name="upgrade_unlimited_drive_link_share">Jaa kuvia ja tiedostoja linkin välityksellä</string>
+    <string name="upgrade_unlimited_drive_sharing_security">Edistynyt jakosuojaus</string>
+    <string name="upgrade_unlimited_drive_version_history">Versiohistoria</string>
+    <string name="upgrade_unlimited_pass_manager">Salattu salasanahallinta</string>
+    <string name="upgrade_unlimited_pass_logins_aliases">Rajattomasti kirjautumistietoja ja Hide-my-email-aliaksia</string>
+    <plurals name="upgrade_unlimited_pass_vaults">
+        <item quantity="one">%1$d holvi</item>
+        <item quantity="other">%1$d holvia</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_logins">Rajattomasti kirjautumistietoja</string>
+    <string name="upgrade_unlimited_pass_aliases">Rajattomasti Hide-my-email-aliaksia</string>
+    <string name="upgrade_unlimited_pass_credit_cards">Rajattomasti maksukortteja</string>
+    <string name="upgrade_unlimited_pass_devices">Rajattomasti laitteita</string>
+    <plurals name="upgrade_unlimited_pass_users">
+        <item quantity="one">Jaa enimmillään %1$d muun kanssa</item>
+        <item quantity="other">Jaa enimmillään %1$d muun kanssa</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_2fa_auth">Sisäänrakennettu kaksivaiheinen todentaja</string>
+    <string name="upgrade_not_now_button">Ei nyt</string>
+    <!-- Content description for plan selection list.
+         Only used by accessibility services.
+
+         Example:
+         When the plan selection control is focused, and the first plan name is "VPN Plus"
+         TalkBack will read:
+         "VPN Plus, 1 of 2, in list Upgrade options" -->
+    <string name="upgrade_plan_selection_content_description">Päivitysvaihtoehdot</string>
+    <!-- Text in a "badge" element that has a rounded border and represents the Plus VPN plan.
+         May be used as a table header or like an icon. -->
+    <string name="badge_plan_plus">Plus</string>
+    <!-- Content description prefix for value in the benefits table row for the free plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_plus">Plus-tilaus:</string>
+    <!-- Content description prefix for value in the benefits table row for the plus plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_free">Ilmainen tilaus:</string>
+    <string name="upsell_panel_content_description_yes">Kyllä</string>
+    <string name="upsell_panel_content_description_no">Ei</string>
+    <string name="upsell_panel_table_header_plan_free">Free</string>
+    <string name="upsell_panel_general_benefit_block_ads">Block ads and trackers</string>
+    <string name="upsell_panel_general_benefit_countries">Available countries</string>
+    <!-- %1$s - number of countries rounded to full tens. Example: 120+, 130+, 140+ -->
+    <string name="upsell_panel_general_benefit_countries_rounded">%1$d+</string>
+    <string name="upsell_panel_general_benefit_devices">Protected devices</string>
+    <string name="upsell_panel_general_benefit_location">Choose your location</string>
+    <string name="upsell_panel_general_benefit_server">Choose your server</string>
+    <string name="upsell_panel_general_benefit_shows">Watch your shows from any country</string>
+    <string name="upsell_panel_general_benefit_speed">Server speed</string>
+    <string name="upsell_panel_general_benefit_speed_standard">Standard</string>
+    <string name="upsell_panel_general_benefit_speed_highest">Highest</string>
+    <string name="upsell_panel_adv_customization_title">Fine-tune your connection</string>
+    <string name="upsell_panel_adv_customization_description">Allow LAN connections, set a custom DNS, and choose your NAT type. The advanced controls, all on Plus.</string>
+    <string name="upsell_panel_adv_customization_benefit_lan">Reach your printer and home devices</string>
+    <string name="upsell_panel_adv_customization_benefit_dns">Use your own DNS service</string>
+    <string name="upsell_panel_adv_customization_benefit_gaming">Better connections for gaming</string>
+    <!--
+        %1$s - country name in nominative
+
+        Warning country names are inserted in the nominative case.
+        For inflicted languages translate the following phrase instead:
+        Get VPN Plus to access: %1$s
+        -->
+    <string name="upsell_panel_country_title">Avaa %1$s VPN Plus -tilauksella</string>
+    <string name="upsell_panel_countries_title">Pääsy kaikkiin maihin VPN Plussalla</string>
+    <string name="upsell_panel_country_benefit_speed">Nopeat palvelimet</string>
+    <string name="upsell_panel_country_benefit_shows">Katso vain ulkomailla saatavilla olevia ohjelmia</string>
+    <string name="upsell_panel_devices_title">Protect every device you own</string>
+    <string name="upsell_panel_devices_description">Your phone, laptop, TV, and everything in between.</string>
+    <string name="upsell_panel_netshield_title">Selaa ilman keskeytyksiä</string>
+    <string name="upsell_panel_netshield_benefit_ads">Mainokset estetään selaamisen aikana</string>
+    <string name="upsell_panel_netshield_benefit_trackers">Stop trackers from following you</string>
+    <string name="upsell_panel_netshield_benefit_malware">Haittaohjelmien ja tietojenkalastelun torjunta</string>
+    <string name="upsell_panel_netshield_benefit_load_speed">Sivut latautuvat nopeammin </string>
+    <string name="upsell_panel_onboarding_title">Get more with VPN Plus</string>
+    <string name="upsell_panel_p2p_title">Downloads at full speed</string>
+    <string name="upsell_panel_p2p_description">Servers built for file sharing, with your usual torrent client.</string>
+    <string name="upsell_panel_p2p_benefit_p2p">P2P file sharing</string>
+    <string name="upsell_panel_profiles_title">Streaming, gaming, work: a profile for each</string>
+    <string name="upsell_panel_profiles_description">Set up your connections your way, then reconnect to any of them in one tap.</string>
+    <string name="upsell_panel_profiles_benefit_profiles">Saved profiles</string>
+    <string name="upsell_panel_profiles_benefit_profiles_unlimited">Unlimited</string>
+    <string name="upsell_panel_secure_core_title">Two layers of encryption between you and the web</string>
+    <string name="upsell_panel_secure_core_description">Routed through a Proton server in Switzerland, Iceland, or Sweden before your chosen country.</string>
+    <string name="upsell_panel_secure_core_benefit_secure_core">Secure Core</string>
+    <string name="upsell_panel_speed_title">Suoratoista, pelaa ja lataa nopeammin</string>
+    <string name="upsell_panel_speed_benefit_servers">Nopeat palvelimet</string>
+    <string name="upsell_panel_speed_benefit_gaming">Response time while gaming</string>
+    <string name="upsell_panel_speed_benefit_gaming_slow">Hidas</string>
+    <string name="upsell_panel_speed_benefit_gaming_fast">Nopea</string>
+    <string name="upsell_panel_speed_benefit_video">Video streams without buffering</string>
+    <string name="upsell_panel_speed_benefit_p2p">P2P downloads supported</string>
+    <string name="upsell_panel_split_tunneling_title">Choose which apps use the VPN</string>
+    <string name="upsell_panel_split_tunneling_description">Your browser through the VPN, your banking app around it. You choose, app by app.</string>
+    <string name="upsell_panel_split_tunneling_benefit_split">Split tunneling</string>
+    <string name="upsell_panel_streaming_title">Katso suosikkisuoratoistopalvelujasi</string>
+    <string name="upsell_panel_streaming_benefit_shows">Watch shows from any country</string>
+    <!-- The asterisk points to upsell_panel_streaming_footer -->
+    <string name="upsell_panel_streaming_benefit_platforms">Tukee kaikkia suosituimpia suoratoistopalveluita *</string>
+    <string name="upsell_panel_streaming_benefit_hd">Stream in HD without buffering</string>
+    <string name="upsell_panel_streaming_benefit_devices">Devices connected at once</string>
+    <string name="upsell_panel_streaming_footer">* Vaatii suoratoistopalvelun tilauksen.</string>
+    <string name="upsell_panel_streaming_block_title">Upgrade to bypass VPN blocks</string>
+    <string name="upsell_panel_streaming_block_description">VPN Plus servers let you enjoy your favorite movies and TV shows from around the world.</string>
+    <string name="upsell_panel_tor_title">Onion sites, no Tor Browser needed</string>
+    <string name="upsell_panel_tor_description">Reach .onion sites in the browser you already use.</string>
+    <string name="upsell_panel_tor_benefit_tor">Tor over VPN</string>
+    <string name="upsell_card_countries_title">Maailmalaajuinen kattavuus</string>
+    <!-- Parameters:
+        %1$d - number of servers rounded up to 100s (e.g. 600, 1200)
+        %2$s - replaced with "upgrade_plus_countries"
+
+        Example:
+        1700+ server locations in 63 countries -->
+    <string name="upsell_card_countries_description">%1$d+ palvelinsijaintia %2$s.</string>
+    <string name="upsell_card_customization_title">Ja paljon muuta…</string>
+    <string name="upsell_card_customization_description">Avaa vielä enemmän suorituskyky- ja yksityisyysominaisuuksia.</string>
+    <plurals name="upsell_card_devices_title">
+        <item quantity="one">Suojaa %1$d laite</item>
+        <item quantity="other">Suojaa %1$d laitetta</item>
+    </plurals>
+    <string name="upsell_card_devices_description">Tietoturvaa ja yksityisyyttä kaikilla laitteillasi.</string>
+    <string name="upsell_card_netshield_title">NetShield</string>
+    <string name="upsell_card_netshield_description">Estä mainoksia, haittaohjelmia ja seurantoja.</string>
+    <string name="upsell_card_secure_core_title">Secure Core</string>
+    <string name="upsell_card_secure_core_description">Lisää VPN-yhteyteesi toinen salauskerros</string>
+    <string name="upsell_card_p2p_title">P2P-tuki</string>
+    <string name="upsell_card_p2p_description">Lataa tiedostoja mm. BitTorrentin kaltaisilla tiedonsiirtoprotokollilla.</string>
+    <string name="upsell_card_profiles_title">Profiilit</string>
+    <string name="upsell_card_profiles_description">Luo mukautettuja VPN-yhteyksiä</string>
+    <string name="upsell_card_speed_title">Selaa nopeammin</string>
+    <!-- Parameters:
+        %1$d - max server speed in Gbps (preserve the non-breaking space between the number and Gbps).
+        Example:
+        Browse at even higher speeds (up to 10&160;Gbps) -->
+    <string name="upsell_card_speed_description">Selaa entistä korkeammilla nopeuksilla (jopa %1$d Gbit/s)</string>
+    <string name="upsell_card_split_tunneling_title">Jaettu tunnelointi</string>
+    <string name="upsell_card_split_tunneling_description">Selaa kahdesta sijainnista yhtä aikaa.</string>
+    <string name="upsell_card_streaming_title">Suoratoisto</string>
+    <string name="upsell_card_streaming_description">Katsele suosikkielokuviasi ja -sarjojasi.</string>
+    <string name="upsell_card_tor_title">Tor + VPN</string>
+    <string name="upsell_card_tor_description">Käytä Tor-verkkoa VPN-yhteytesi välityksellä ja tehosta tietosuojaasi</string>
+    <string name="upsell_tv_all_countries_title">Pääsy kaikkiin maihin Plussalla</string>
+    <!-- Format for upselling countries on TV".
+        %1$s - replaced with upgrade_plus_servers_new plurals key (e.g. 1 secure server or 10 secure servers)
+        %2$s - replaced with upgrade_plus_countries plurals key (e.g. 1 country or 10 countries)
+
+        Example: Unlock 16821 secure servers in 127 countries. Go to the Proton VPN website to upgrade your plan.
+    -->
+    <string name="upsell_tv_all_countries_description">Unlock %1$s in %2$s.</string>
+    <string name="upsell_tv_netshield_title">Nauti mainosvapaasta selauksesta Plussalla</string>
+    <string name="upsell_tv_netshield_description"><![CDATA[Estä mainokset, seurannat ja haittaohjelmat <b>NetShieldillä</b>.]]></string>
+    <string name="upsell_tv_split_tunneling_title">Hanki molempien parhaat puolet Plussalla</string>
+    <string name="upsell_tv_split_tunneling_description"><![CDATA[Divide your traffic into VPN and non-VPN tunnels with <b>split tunneling</b>.]]></string>
+    <string name="upsell_tv_subscription_expired_title">Tilaus on päättynyt</string>
+    <string name="upsell_tv_subscription_expired_description">Päivitä tilauksesi palauttaaksesi Plus-palvelimet ja -ominaisuudet käyttöösi.</string>
+    <string name="upsell_tv_customization_title">Saat edistyneet VPN-mukautukset Plus-versiolla.</string>
+    <string name="upsell_tv_customization_description"><![CDATA[Unlock <b>LAN connections</b>, <b>Custom DNS</b>, and more advanced VPN features.]]></string>
+    <string name="upsell_tv_fallback_description">Siirry Proton VPN:n sivustolle päivittääksesi tilauksesi.</string>
+    <!-- Format for price per period of time.
+        %1$s - replaced with price and currency (e.g. "$100")
+        %2$s - replaced with time period, one of payment_price_per_ (e.g. "month", "week")
+
+        Examples:
+        50 PLN /month
+        $100 /year
+    -->
+    <string name="payment_price_with_period">%1$s /%2$s</string>
+    <string name="payment_price_per_day">day</string>
+    <string name="payment_price_per_week">week</string>
+    <string name="payment_price_per_month">kuukausi</string>
+    <string name="payment_price_per_year">vuosi</string>
+    <plurals name="payment_price_cycle_label_day">
+        <item quantity="one">%1$d day</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_week">
+        <item quantity="one">%1$d week</item>
+        <item quantity="other">%1$d weeks</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_month">
+        <item quantity="one">%1$d month</item>
+        <item quantity="other">%1$d months</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_year">
+        <item quantity="one">%1$d year</item>
+        <item quantity="other">%1$d years</item>
+    </plurals>
+    <string name="payment_select_your_plan">Valitse tilauksesi</string>
+    <!-- Label on a button for purchasing a subscription.
+         Parameter: %1$s - plan name
+         Plan names are not translated.
+
+         Example: "Get VPN Plus", "Get Proton Unlimited". -->
+    <string name="payment_button_get_plan">Hanki %1$s</string>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_discount_renewal_price_message_daily">
+        <item quantity="one">Special offer. Auto renews at %1$s/day</item>
+        <item quantity="other">Special offer. Auto renews at %1$s every %2$d days</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_discount_renewal_price_message_weekly">
+        <item quantity="one">Special offer. Auto renews at %1$s/week</item>
+        <item quantity="other">Special offer. Auto renews at %1$s every %2$d weeks</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_discount_renewal_price_message_monthly">
+        <item quantity="one">Special offer. Auto renews at %1$s/month</item>
+        <item quantity="other">Special offer. Auto renews at %1$s every %2$d months</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_discount_renewal_price_message_yearly">
+        <item quantity="one">Special offer. Auto renews at %1$s/year</item>
+        <item quantity="other">Special offer. Auto renews at %1$s every %2$d years</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_renewal_price_message_daily">
+        <item quantity="one">Subscription auto renews at %1$s/day</item>
+        <item quantity="other">Subscription auto renews at %1$s every %2$d days</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_renewal_price_message_weekly">
+        <item quantity="one">Subscription auto renews at %1$s/week</item>
+        <item quantity="other">Subscription auto renews at %1$s every %2$d weeks</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_renewal_price_message_monthly">
+        <item quantity="one">Subscription auto renews at %1$s/month</item>
+        <item quantity="other">Subscription auto renews at %1$s every %2$d months</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_renewal_price_message_yearly">
+        <item quantity="one">Subscription auto renews at %1$s/year</item>
+        <item quantity="other">Subscription auto renews at %1$s every %2$d years</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_daily">
+        <item quantity="one">%1$s/day</item>
+        <item quantity="other">%1$s every %2$d days</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_weekly">
+        <item quantity="one">%1$s/week</item>
+        <item quantity="other">%1$s every %2$d weeks</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_monthly">
+        <item quantity="one">%1$s/month</item>
+        <item quantity="other">%1$s every %2$d months</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_yearly">
+        <item quantity="one">%1$s/year</item>
+        <item quantity="other">%1$s every %2$d years</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_for_days">
+        <item quantity="one">for the first day</item>
+        <item quantity="other">for the first %1$d days</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_for_weeks">
+        <item quantity="one">for the first week</item>
+        <item quantity="other">for the first %1$d weeks</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_for_months">
+        <item quantity="one">for the first month</item>
+        <item quantity="other">for the first %1$d months</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_discount_for_years">
+        <item quantity="one">for the first year</item>
+        <item quantity="other">for the first %1$d years</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_rest_daily">
+        <item quantity="one">then auto renews at %1$s/day</item>
+        <item quantity="other">then auto renews at %1$s every %2$d days</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_rest_weekly">
+        <item quantity="one">then auto renews at %1$s/week</item>
+        <item quantity="other">then auto renews at %1$s every %2$d weeks</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_rest_monthly">
+        <item quantity="one">then auto renews at %1$s/month</item>
+        <item quantity="other">then auto renews at %1$s every %2$d months</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_rest_yearly">
+        <item quantity="one">then auto renews at %1$s/year</item>
+        <item quantity="other">then auto renews at %1$s every %2$d years</item>
+    </plurals>
+    <!-- Explains renewal cycle when first there's a discount price for several periods
+     (e.g. 2 months) and then the subscription renews at full price.
+     Periods (days, months etc) are never mixed between the messages, the whole message uses one
+     unit.
+
+     Parameters:
+      %1$s - one of payment_multi_renewal_discount_*
+      %2$s - one of payment_multi_renewal_discount_for_*
+      %3$s - one of payment_multi_renewal_rest_*
+
+     Examples:
+      "$2.99/month for the first 2 months, then auto renews at $3.99/month"
+      "$19.99/year for the first 3 years, then auto renews at $24.99/year"
+      "$3.99 every 2 months for the first 4 months, then auto renews at 5.99 every 2 months"
+    -->
+    <string name="payment_multi_renewal_template">%1$s %2$s, %3$s</string>
+    <string name="smart_routing_title">Smart Routing</string>
+    <string name="smart_routing_description">Tämän tekniikan ansiosta Proton VPN voi tarjota paremman nopeuden ja suojauksen vaikeasti palveltavissa maissa.</string>
+    <string name="tor_title">Tor</string>
+    <string name="server_load_title">Palvelimen kuormitus</string>
+    <string name="activity_information_learn_more">Lue lisää</string>
+    <string name="server_load_low">Matala</string>
+    <string name="server_load_medium">Keskitasoinen</string>
+    <string name="server_load_high">Korkea</string>
+    <!-- Override Human verification links from core -->
+    <string name="onboarding_welcome_title">Tervetuloa Proton VPN:ään</string>
+    <string name="onboarding_welcome_description">Selaa yksityisesti, pääse estettyyn sisältöön ja nauti digitaalisesta vapaudesta.</string>
+    <string name="onboarding_welcome_action">Aloita</string>
+    <string name="upgrade_success_get_started_button">Aloita</string>
+    <string name="dynamic_report_suggestion_didnt_work">Eikö ratkaisu toiminut?</string>
+    <string name="dynamic_report_contact_us">Ota yhteyttä</string>
+    <string name="dynamic_report_tips_description">Nämä vinkit voivat auttaa ratkaisemaan ongelman nopeammin.</string>
+    <string name="dynamic_report_tips_title">Pikaratkaisut</string>
+    <string name="dynamic_report_logs_title">Lähetä virhelokit</string>
+    <string name="dynamic_report_logs_tooltip">Virhelokit kertovat meille mikä meni pieleen ja mitkä tapahtumat johtivat ongelmaan. Käytämme niitä vain auttaaksemme teknikoitamme korjaamaan ongelmia.</string>
+    <string name="dynamic_report_error_title">Raportin lähettäminen epäonnistui.</string>
+    <string name="dynamic_report_completion_error_description_generic">Raportin lähettäminen epäonnistui. Yritä uudestaan.</string>
+    <string name="dynamic_report_completion_error_description_no_internet">Raportin lähettäminen epäonnistui. tarkista verkkoyhteytesi ja yritä uudestaan.</string>
+    <string name="dynamic_report_completion_error_description_timeout">Raportin lähettäminen epäonnistui. Yhteys aikakatkaistiin, yritä uudestaan.</string>
+    <string name="dynamic_report_completion_success_title">Kiitos palautteestasi. Palaamme asiaan mahdollisimman pian.</string>
+    <string name="dynamic_report_success_title">Kiitos palautteestasi</string>
+    <string name="dynamic_report_success_description">Palaamme asiaan mahdollisimman pian.</string>
+    <string name="dynamic_report_field_mandatory">Kenttä on pakollinen</string>
+    <string name="dynamic_report_logs_description">Loki on tiedosto, josta näemme virheeseen johtaneet toimenpiteet. Käytämme näitä tietoja ainoastaan ongelmien korjaukseen.</string>
+    <string name="dynamic_report_logs_missing">Virhelokit auttavat meitä selvittämään ongelmasi perusteellisesti. Jos et halua sisällyttää niitä, emme välttämättä pysty tutkimaan ongelmaa täysin.</string>
+    <string name="dynamic_report_step1">Vaihe 1/3</string>
+    <string name="dynamic_report_step2">Vaihe 2/3</string>
+    <string name="dynamic_report_step3">Vaihe 3/3</string>
+    <string name="dynamic_report_your_issue_headline">Mikä on ongelmana?</string>
+    <string name="update_screen_title">Päivitä Proton VPN</string>
+    <string name="update_screen_description">Ongelmia esiintyy todennäköisesti useammin vanhemmissa Proton VPN -versioissa.</string>
+    <string name="update_banner_description_settings">Sovelluksesta on saatavilla uusi versio</string>
+    <string name="update_banner_warning_vpn_connected_title">VPN-yhteys katkeaa pian.</string>
+    <string name="update_banner_warning_vpn_connected_message">Päivityksen viimeistelemiseksi sovellus täytyy käynnistää uudelleen. Päivityksen jälkeen sinut yhdistetään automaattisesti uudelleen.</string>
+    <string name="dialog_create_account_title">Jatka luomalla tili</string>
+    <string name="dialog_create_account_action_create">Luo tili</string>
+    <string name="dialog_create_account_action_signin">Kirjaudu sisään</string>
+    <string name="server_search_menu_title">Haku</string>
+    <string name="search_empty_result_subtitle">Kokeile eri hakusanaa</string>
+    <string name="search_empty_result_title">Tuloksia ei löytynyt</string>
+    <!-- Content description for an icon button that clears search query in the input field. -->
+    <string name="search_clear_query_content_description">Tyhjennä</string>
+    <!-- Content description for an icon button that clears text in an input field. -->
+    <string name="clear_text_field_content_description">Tyhjennä</string>
+    <!-- Example: Want to connect to Italy? -->
+    <string name="upgrade_country_title">Haluatko yhdistää tiettyyn maahan?</string>
+    <string name="upgrade_country_message"><![CDATA[Avaa <b>maavalinta</b> VPN Plus -tilauksella.]]></string>
+    <string name="free_connections_info_message">Proton Free yhdistää automaattisesti nopeimpaan käytettävissä olevaan palvelimeen. Yleensä tämä on lähinnä sijaintiasi oleva palvelin.</string>
+    <string name="free_connections_info_server_locations">Ilmaiset palvelinsijainnnit (%1$d)</string>
+    <string name="free_connections_info_banner_text">Pääsy kaikkiin maihin VPN Plussalla</string>
+    <string name="free_connection_info_title">Ilmaisyhteydet</string>
+    <string name="search_upsell_banner_title">Suoratoista mistä tahansa</string>
+    <!-- Example: Unlock geoblocked content from 10 countries with VPN Plus. -->
+    <plurals name="search_upsell_banner_message">
+        <item quantity="one">Vapauta %1$d maahan sijainnin perusteella rajoitettu sisältö VPN Plus -tilauksella</item>
+        <item quantity="other">Vapauta %1$d maahan sijainnin perusteella rajoitettu sisältö VPN Plus -tilauksella</item>
+    </plurals>
+    <string name="select_default_connection">Valitse oletusyhteytesi</string>
+    <string name="settings_default_connection_title">Oletusyhteys</string>
+    <string name="fastest_country_description">Sijaintisi perusteella paras palvelin</string>
+    <string name="settings_connection_preferences_title">Yhteysasetukset</string>
+    <string name="settings_connection_preferences_snackbar_message_excluded_location_removed">Kohde poistettiin</string>
+    <string name="settings_excluded_locations_title">Poissuljetut sijainnit</string>
+    <string name="settings_excluded_locations_description">Valittuja sijainteja ei koskaan käytetä, kun yhdistät nopeimpaan sijaintiin.</string>
+    <string name="settings_excluded_locations_unavailable">Sijainteja ei ole saatavilla</string>
+    <string name="settings_excluded_locations_selection_hint">Valitse…</string>
+    <string name="settings_excluded_locations_accessibility_label_deletion">Poista poissuljetuista sijainneista</string>
+    <string name="settings_excluded_locations_accessibility_label_city">Kaupunki</string>
+    <string name="settings_excluded_locations_accessibility_label_country">Maa</string>
+    <string name="settings_excluded_locations_accessibility_label_state">Osavaltio</string>
+    <string name="settings_last_connection_title">Edellinen yhteys</string>
+    <string name="settings_last_connection_description">Viimeksi käyttämäsi yhteys</string>
+    <string name="settings_change_icon_title">Sovelluksen kuvake</string>
+    <string name="settings_change_icon_details">Valitse miten Proton VPN -sovellus näkyy laitteessasi. Miksi?</string>
+    <string name="settings_change_icon_confirmation_title">Vaihdetaanko sovelluksen kuvake?</string>
+    <string name="settings_change_icon_confirmation_details">Tämän seurauksena Proton VPN suljetaan. Avaa se napauttamalla uutta sovelluskuvaketta.</string>
+    <string name="settings_change_icon_header_protonvpn">Proton VPN</string>
+    <string name="settings_change_icon_header_discreet">Huomaamaton sovelluskuvake</string>
+    <string name="settings_widget_title">Widgetti</string>
+    <string name="settings_widget_selection_title">Kokeile Proton VPN -widgettiä</string>
+    <string name="settings_widget_selection_description">Näe yhteystilasi ja käytä suosikki-VPN-yhteyksiäsi aloitusnäytöltä.</string>
+    <!-- Placeholder is for non-translatable app_name-->
+    <string name="setting_widget_selection_additional_description">Lisää widgetti painamalla pitkään mitä tahansa tyhjää kohtaa aloitusnäytölläsi ja etsi sitten widgettivalikosta %1$s.</string>
+    <string name="settings_widget_selection_button_title">Lisää widgetti</string>
+    <string name="setting_widget_try_title">Kokeile Proton VPN -widgettiä</string>
+    <!-- Content description used by accessibility services for a button for dismissing (hiding)
+         a notification banner (usually used for special offers). -->
+    <string name="notification_banner_dismiss_accessibility_label">Piilota banneri</string>
+    <!-- Time left in a countdown, it shows two units of time, e.g. days and hours, hours and minutes.
+         %1$s - larger unit of time, one of: time_left_days, time_left_hours, time_left_minutes
+         %2$s - smaller unit of time, one of: time_left_hours, time_left_minutes, time_left_seconds
+
+         Examples:
+         3 days 11 hours left
+         1 hour 32 minutes left
+         0 minutes 50 seconds left
+     -->
+    <string name="offer_time_left">%1$s %2$s jäljellä</string>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_seconds">
+        <item quantity="one">%1$d sekunti</item>
+        <item quantity="other">%1$d sekuntia</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_minutes">
+        <item quantity="one">%1$d minuutti</item>
+        <item quantity="other">%1$d minuuttia</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 hours 5 minutes left -->
+    <plurals name="time_left_hours">
+        <item quantity="one">%1$d tunti</item>
+        <item quantity="other">%1$d tuntia</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 days 5 hours left -->
+    <plurals name="time_left_days">
+        <item quantity="one">%1$d vuorokausi</item>
+        <item quantity="other">%1$d vuorokautta</item>
+    </plurals>
+    <string name="server_change_max_reached">Olet saavuttanut tällä erää käytettävissä olevien Free-palvelinvaihtojen enimmäismäärän.</string>
+    <string name="server_change_upsell">Hanki rajattomasti vaihtoja VPN Plussalla</string>
+    <string name="server_change_button_title">Vaihda palvelinta</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services.
+
+        %1$s - replaced with "time_left_minutes"
+        %2$s - replaced with "time_left_seconds"
+        Example:
+        Available in 1 minute 23 seconds.
+      -->
+    <string name="server_change_button_time_left_content_description">Saatavilla %1$s %2$s</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services and only if time left is less than 1 minute.
+
+        %1$s - replaced with "time_left_seconds"
+        Example:
+        Available in 23 seconds.
+      -->
+    <string name="server_change_button_time_left_seconds_content_description">Saatavilla %1$s</string>
+    <string name="server_change_progress_finished_contend_description">Saatavilla nyt</string>
+    <string name="not_wanted_country_title">Eikö tämä ole haluamasi maa?</string>
+    <string name="not_wanted_country_description">Päivitä tilauksesi ja valitse mikä tahansa palvelin</string>
+    <string name="whats_new_title">Mitä uutta</string>
+    <string name="whats_new_profiles_title">Profiilit ovat palanneet</string>
+    <string name="whats_new_profiles_description">Luo ja tallenna mukautettuja yhteyksiä, jotka sisältävät valitsemasi sijainnin, palvelimen ja protokollan.</string>
+    <string name="whats_new_widget_title">Esittelyssä widgetit</string>
+    <string name="whats_new_widget_description">Voit nyt tarkastella ja hallita VPN:ääsi poistumatta aloitusnäytöltä.</string>
+    <string name="whats_new_add_widget_button">Lisää widgetti</string>
+    <string name="welcome_plus_title">Tervetuloa VPN Plussaan</string>
+    <string name="welcome_plus_description">Nauti laajemmista yksityisyysominaisuuksista, turboahdetusta suorituskyvystä ja uuden tason VPN-mukautuksesta.</string>
+    <string name="welcome_unlimited_title">Tervetuloa Proton Unlimitediin</string>
+    <string name="welcome_unlimited_description">Olet avannut kaikki Proton VPN:n, Mailin, Calendarin, Driven, Passin ja Walletin premium-ominaisuudet.</string>
+    <string name="welcome_generic_title">Onnittelut</string>
+    <string name="welcome_generic_description">Olet päivittänyt tilauksesi. Nauti edistyneistä yksityisyyttäsi tehostavista ominaisuuksista ja huipputason suorituskyvystä.</string>
+    <!-- Text added to button labels that open links in a browser (as opposed to performing actions
+         within the app). Only used by accessibility services like screen readers.
+         Example:
+         a button with "Learn more" label and this suffix will be read by a screen reader as:
+         "Learn more, external link button"
+     -->
+    <string name="accessibility_external_link_suffix">ulkoinen linkki</string>
+    <string name="no_logs_banner_title">Todistetusti lokivapaa VPN</string>
+    <string name="no_logs_banner_description">VPN-toimintasi on suojattu Sveitsin tietosuojalaeilla. Emme koskaan seuraa sinua verkossa tai jaa tietojasi kolmansille osapuolille.</string>
+    <!-- tag(Redesign_2023) Bottom bar label for home screen -->
+    <string name="bottom_nav_home">Aloitus</string>
+    <string name="bottom_nav_gateways">Yhdyskäytävät</string>
+    <string name="bottom_nav_profiles">Profiilit</string>
+    <!-- tag(Redesign_2023) Bottom bar label for country list screen -->
+    <string name="bottom_nav_countries">Maat</string>
+    <!-- tag(Redesign_2023) Bottom bar label for settings screen -->
+    <string name="botton_nav_settings">Asetukset</string>
+    <!-- tag(Redesign_2023)
+         Text added to button labels that open a UI element (e.g. a panel).
+         Only used by accessibility services.
+         Example:
+         a button with label "connection details" and this action label will be read by a screen
+         reader as:
+         "Connection details, button. Double tap to open"
+    -->
+    <string name="accessibility_action_open">avaa</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that initiate a VPN connection.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland will be read by a screen reader as:
+         "Switzerland. Double tap to connect"
+        -->
+    <string name="accessibility_action_connect">yhdistä</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that redirect the user to upgrade their subscription plan.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland that requires upgrading subscription to become
+         available will be read by a screen reader as:
+         "Unavailable, Switzerland. Double tap to upgrade"
+        -->
+    <string name="accessibility_action_upgrade">päivitä</string>
+    <!-- tag(Redesign_2023)
+     Text added to clickable elements that initiate a search.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_search">haku</string>
+    <!--
+     Text added to clickable elements that provide negative feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_negative">ei hyvä</string>
+    <!--
+     Text added to clickable elements that provide positive feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_positive">hyvä</string>
+    <!--
+     Text added to clickable elements that allows to submit either positive or negative feedback.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_submit_feedback">lähetä</string>
+    <!-- Name of action for opening a screen/panel for an item.
+         The action is listed in a menu of additional actions available to accessibility services.
+
+         Example:
+         - item in a list of countries has a custom action to open list of cities in the country
+         - item in a list of cities has a custom action to open list of servers in the city
+         -->
+    <string name="accessibility_menu_action_open">Avaa</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable because servers
+         are in maintenance.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are in maintenance will be read by a
+         screen reader as:
+         "in maintenance, Switzerland"
+     -->
+    <string name="accessibility_item_in_maintenance">huollossa</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are unavailable will be read by a screen
+         reader as:
+         "unavailable, Switzerland"
+     -->
+    <string name="accessibility_item_unavailable">ei käytettävissä</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when there is active connection to it.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland when there is a VPN connection to a server in this country
+         will be read by a screen reader as:
+         "Switzerland, connected"
+     -->
+    <string name="accessibility_item_connected">yhdistetty</string>
+    <!-- tag(Redesign_2023): label indicating that a server supports peer-to-peer. -->
+    <string name="server_feature_label_p2p">P2P</string>
+    <!-- tag(Redesign_2023): label indicating that a server routes connection through the Tor network. -->
+    <string name="server_feature_label_tor">Tor</string>
+    <string name="server_feature_content_description_p2p">vertaisverkko</string>
+    <string name="server_feature_content_description_tor">tor</string>
+    <string name="server_feature_content_description_smart_routing">Smart Routing</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest country is connected to. -->
+    <string name="fastest_country">Nopein maa</string>
+    <string name="fastest_country_excluding_my_country">Nopein maa (oma maa pois lukien)</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest free server is connected to. -->
+    <string name="fastest_free_server">Nopein ilmainen palvelin</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Iceland
+     -->
+    <string name="connection_info_secure_core_full_iceland">%1$s Islannin kautta</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Sweden
+     -->
+    <string name="connection_info_secure_core_full_sweden">%1$s Ruotsin kautta</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_switzerland">%1$s Sveitsin kautta</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - exit country name in nominative case
+         %2$s - entry country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_other">%1$s maan %2$s kautta</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_iceland">Islannin kautta</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_sweden">Ruotsin kautta</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_switzerland">Sveitsin kautta</string>
+    <!--
+         Label describing a Secure Core connection via the fastest Secure Core country.
+         It is displayed below country name, for example:
+         Italy
+         via Secure Core
+    -->
+    <string name="connection_info_secure_core_entry_fastest">Secure Coren kautta</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - entry country name in nominative case
+         Example: via Switzerland
+    -->
+    <string name="connection_info_secure_core_entry_other">maan %1$s kautta</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         three countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+
+     -->
+    <string name="connection_info_auto_selected_free_countries">Valittu automaattisesti [flags]</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         several countries. Used instead of connection_info_auto_selected_free_countries when there
+         are more than 3 countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+         $1%d - replaced with number of additional countries (beyond the 3 flags).
+
+         Example, if there are 5 countries to select from the text will be:
+         Auto selected from [flags]+2
+         -->
+    <string name="connection_info_auto_selected_free_countries_more">Valittu automaattisesti [flags]+%1$d</string>
+    <!-- tag(Redesign_2023)
+         Accessibility label describing a connection to a free server that is automatically selected
+         from one in several countries. Placed directly below fastest_free_server.
+         This text replaces connection_info_auto_selected_free_servers for screen readers.
+         $1%d - replaced with number of countries.
+         -->
+    <plurals name="connection_info_accessibility_auto_selected_free_countries">
+        <item quantity="one">Valittu automaattisesti %1$d maasta</item>
+        <item quantity="other">Valittu automaattisesti %1$d maasta</item>
+    </plurals>
+    <string name="connection_info_auto_selected_free_countries_plain">Valittu automaattisesti ilmaisista maista.</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that the connection details in the card are
+         are that of the previous connection.
+
+         Example:
+         Last connected to
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         -->
+    <string name="connection_card_label_last_connected">Edellinen yhteys</string>
+    <!--
+        Label above the connection card indicating text which acts as a button and leads to
+        customization bottom sheet of default connection
+     -->
+    <string name="connection_card_label_default_connection">Oletusyhteys</string>
+    <!-- Label above the connection card when not connected and the user is on the free plan.
+         The connection card always shows "Fastest free server" (fastest_free_server) for free
+         users. -->
+    <string name="connection_card_label_free_connection">Ilmaisyhteys</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is being established.
+     -->
+    <string name="connection_card_label_connecting">Yhdistetään palvelimeen…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection to a different server is
+         being established. It\'s shown only in response to user clicking the "Change server" button.
+     -->
+    <string name="connection_card_label_changing_server">Palvelinta vaihdetaan…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is established and the user
+         is safely browsing as if they were in the location indicated in the connection card.
+
+         Example:
+         Browsing safely from
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         Germany
+     -->
+    <string name="connection_card_label_connected">Selataan turvallisesti sijainnista</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with details of the current VPN connection.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "connection details, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_connection_details">yhteyden tiedot</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with information about connections in free plan.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "more information about free connections, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_free_connections">lisätietoja ilmaisista yhteyksistä</string>
+    <string name="connection_card_label_connection_feedback">Miten yhteytesi toimii?</string>
+    <!-- tag(Redesign_2023)
+         Displayed above the list of recently made connections.
+     -->
+    <string name="recents_headline">Viimeisimmät</string>
+    <!-- Displayed above the list of VPN Plus features in the home screen -->
+    <string name="home_upsell_carousel_headline">Tutustu VPN Plussaan</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_pin">Kiinnitä</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_unpin">Irrota</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_remove">Poista</string>
+    <!-- tag(Redesign_2023)
+         State description of a pinned recent item.
+         Only used by accessibility service.
+    -->
+    <string name="recent_action_accessibility_state_pinned">Kiinnitetty</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_country_servers_in_maintenance">Kaikki tämän maan palvelimet ovat huollossa</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_city_servers_in_maintenance">Kaikki tämän kaupungin palvelimet ovat huollossa</string>
+    <!-- State means here US state, like California -->
+    <string name="message_state_servers_in_maintenance">Kaikki tämän osavaltion palvelimet ovat huollossa</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_in_maintenance">Palvelin on huollossa</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_not_available">Palvelin ei ole käytettävissä</string>
+    <string name="message_server_location_excluded">Palvelimen sijainti poissuljettu</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog when all servers of a gateway are in maintenance -->
+    <string name="message_gateway_in_maintenance">Yhdyskäytävä on huollossa</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_sign_out">Kirjaudu ulos</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_title">Asetukset</string>
+    <string name="gateways_title">Yhdyskäytävät</string>
+    <string name="countries_title">Maat</string>
+    <string name="profiles_title">Profiilit</string>
+    <string name="settings_autoconnect_title">Automaattinen yhdistäminen</string>
+    <string name="settings_autoconnect_boot_description">Yhdistää sinut automaattisesti VPN-verkkoon pikayhteydellä heti laitteen käynnistyttyä.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_features">Ominaisuudet</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_netshield_title">NetShield</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_split_tunneling_title">Jaettu tunnelointi</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_kill_switch_title">Tappokytkin</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_connection_category">Yhteys</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_protocol_title">Protokolla</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_vpn_accelerator_title">VPN Accelerator</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_advanced_settings_title">Lisäasetukset</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_general">Yleiset</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_account">Tili</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_notifications_title">Ilmoitukset</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_support">Tuki</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_help_center_title">Tukikeskus</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_report_issue_title">Ilmoita ongelmasta</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_debug_logs_title">Vianselvityslokit</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_improve_proton">Paranna Protonia</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_fight_censorship_title">Auta meitä taistelemaan sensuuria vastaan</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_rate_us_title">Arvostele Proton VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_app_version">Sovelluksen versio: %1$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_third_party_licenses">Kolmansien osapuolten lisenssit</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_title">Kirjaudu ulos?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_message">VPN-yhteytesi katkaistaan.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_dont_ask_again">Älä kysy uudelleen</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_action">Kirjaudu ulos</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_action_cancel">Peru</string>
+    <string name="dialog_action_change_icon">Vaihda kuvake</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_all">Kaikki</string>
+    <string name="country_filter_cities">Kaupungit</string>
+    <string name="country_filter_states">Osavaltiot</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_secure_core">Secure Core</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_p2p">P2P</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_tor">Tor</string>
+    <string name="country_filter_all_list_header">Kaikki maat (%1$d)</string>
+    <string name="country_filter_all_list_header_free">Plus-maat (%1$d)</string>
+    <string name="country_filter_countries_list_header">Maat (%1$d)</string>
+    <string name="country_filter_cities_list_header">Kaupungit (%1$d)</string>
+    <string name="country_filter_states_list_header">Osavaltiot (%1$d)</string>
+    <string name="country_filter_servers_list_header">Palvelimet</string>
+    <string name="country_filter_secure_core_list_header">Secure Core -maat (%1$d)</string>
+    <string name="country_filter_p2p_list_header">P2P-maat (%1$d)</string>
+    <string name="country_filter_p2p_list_header_cities">P2P-kaupungit (%1$d)</string>
+    <string name="country_filter_p2p_list_header_states">P2P-osavaltiot (%1$d)</string>
+    <string name="counrty_filter_p2p_servers_list_header">P2P-palvelimet</string>
+    <string name="country_filter_tor_list_header">Tor-maat (%1$d)</string>
+    <string name="country_filter_tor_servers_list_header">Tor-palvelimet</string>
+    <string name="country_filter_info_label">Tiedot</string>
+    <!-- Content description for server load indicator. Used by accessibility services only.
+         Note: the trailing \'%\' sign needs to be doubled
+         (this doesn\'t apply to other percent sign characters, e.g. ٪). -->
+    <string name="country_filter_server_load_content_description">Kuormitus: %1$s%%</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is connected and network is protected
+    -->
+    <string name="vpn_status_connected">Suojattu</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is not connected and network is not protected
+    -->
+    <string name="vpn_status_disabled">Sinua ei ole suojattu</string>
+    <!-- tag(Redesign_2023)
+         Text is shown while connection is being established
+    -->
+    <string name="vpn_status_connecting">Digitaalista identiteettiäsi suojataan</string>
+    <!-- tag(Redesign_2023)
+         Displays Country name and IP of user if he is not connected.
+         First parameter is country, second is IP.
+         Ex: Poland · 192.1.1.1.1
+    -->
+    <string name="vpn_status_disabled_location">%1$s · %2$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_subtitle">Yhteyden tiedot</string>
+    <string name="connection_details_features_title">Ominaisuudet</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_show_ip">Näytä IP</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_back">Takaisin</string>
+    <string name="accessibility_close">Sulje</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_my_ip">Oma IP-osoite</string>
+    <string name="connection_details_my_ipv4">Oma IPv4</string>
+    <string name="connection_details_my_ipv6">Oma IPv6</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_ip">VPN:n IP</string>
+    <string name="connection_details_vpn_ip4_6">VPN:n IPv4/IPv6</string>
+    <string name="connection_details_vpn_ipv4">VPN:n IPv4</string>
+    <string name="connection_details_vpn_ipv6">VPN:n IPv6</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates for how long user has been connected. Like \'Connected for 2hours\'
+    -->
+    <string name="connection_details_connected_for">Yhdistettynä</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server">Palvelin</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_gateway">Yhdyskäytävä</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_country">Maa</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_city">Kaupunki</string>
+    <!-- Label for server location "state", as a state of the USA. -->
+    <string name="connection_details_state">Osavaltio</string>
+    <!-- Label for server smart routing, a country which is routed through. -->
+    <string name="connection_details_smart_routing">Reititetty läpi</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates Server load, on the left side will be Server load, and on the right actual load values.
+    -->
+    <string name="connection_details_server_load">Palvelimen kuormitus</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_question">Mitä palvelimen kuormitus tarkoittaa?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_description">Palvelimen kuormitus kertoo, miten lähellä enimmäiskapasiteettiaan palvelin on. \n\nKorkea kuormitus voi hidastaa yhteyttäsi.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_title">Matala (1-75 %)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_description">Salamannopea</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_title">Keskitasoinen (76-90 %)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_description">Tuskin vaikuttaa VPN:n nopeuteen</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_title">Korkea (91-100 %)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_description">VPN voi olla tavallista hitaampi </string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol">Protokolla</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol_description">Protokolla on joukko ohjeita, joita laitteesi noudattaa yhdistäessään palvelimeen ja viestiessään sen kanssa.</string>
+    <!-- tag(Redesign_2023)
+         Label in front of upload speed in connection details. It is followed by upload speed number and unit.
+    -->
+    <string name="connection_details_upload">Lähetys</string>
+    <!-- tag(Redesign_2023)
+         Label in front of download speed in connection details. It is followed by download speed number and unit.
+    -->
+    <string name="connection_details_download">Lataa</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_section_vpn_speed">VPN:n nopeus</string>
+    <string name="connection_details_section_ip">IP-osoite</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_question">Mitä VPN:n nopeus tarkoittaa?</string>
+    <string name="info_dialog_secure_core_title">Secure Core</string>
+    <string name="info_dialog_p2p_title">P2P</string>
+    <string name="info_dialog_secure_core_description">Secure Core yhdistää sinut kohdepalvelimeesi toisen, huipputurvallisen VPN-palvelimen välityksellä.\n\nTämä korkeampi suojaustaso voi kasvattaa viiveitä ja hidastaa nopeuksia.</string>
+    <string name="info_secure_core_standard_header">Tavallinen VPN-yhteys</string>
+    <string name="info_secure_core_secure_header">Secure Core -VPN-yhteys</string>
+    <string name="info_dialog_tor_description">Yhdistä Tor-palvelimeen ja käytä piilotettuja palveluita ja onion-sivustoja millä tahansa selaimella.</string>
+    <string name="info_dialog_button_learn_more_tor">Miten Tor-verkkoa käytetään</string>
+    <string name="info_dialog_button_learn_more_p2p">Miten torrentoit P2P:llä</string>
+    <string name="info_dialog_button_learn_more_ipaddress">Mikä on IP-osoite?</string>
+    <string name="info_dialog_button_learn_more_streaming">Tarvitseko apua suoratoistossa?</string>
+    <string name="info_dialog_streaming_title">Suoratoisto</string>
+    <string name="info_dialog_streaming_description">Suoratoistopalvelimet on suunniteltu nopeaan ja turvalliseen sarjojen ja elokuvien toistoon.</string>
+    <string name="info_dialog_how_to_stream">Suoratoisto-opas:</string>
+    <!-- item 1 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_1">Avaa puhelimesi asetukset ja poista sijaintipalvelut käytöstä</string>
+    <!-- item 2 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_2">Käynnistä suoratoistopalvelusi uudelleen</string>
+    <!-- item 3 in the numbered list (last item) -->
+    <string name="info_dialog_how_to_stream_step_3">Yhdistä mihin tahansa Plus-palvelimeen ja aloita suoratoisto</string>
+    <string name="info_dialog_profiles_title">Profiilit</string>
+    <string name="info_dialog_ipaddress_title">IP-osoite</string>
+    <string name="info_dialog_ipv6_traffic_title">IPv6-tietoliikenne</string>
+    <string name="info_dialog_profiles_description">Profiilit ovat mukautettuja VPN-yhteyksiä, jotka voit räätälöidä tarpeidesi mukaan ja tallentaa nopeaa käyttöä varten.\n\nAseta haluamasi sijainti ja optimoi asetuksesi turvallisuutta, suorituskykyä, pelaamista tai mitä tahansa muuta tarkoitusta varten.</string>
+    <string name="info_dialog_ipaddress_description">VPN:n IP-osoite naamioi todellisen IP-IP-osoitteesi. Tämä saa sen näyttämään siltä, että selaat VPN-sijainnistasi, joten verkkotoimintaasi ei voida yhdistää laitteeseesi.</string>
+    <string name="info_dialog_ipv6_traffic_description">Internet-protokolla (IP) määrittää osoitteita laitteille ja reitittää internetin tietoliikennettä. IPv6 on uusin versio, tarjoten enemmän osoitteita ja paremman yhteyden, mutta sitä ei ole vielä yleisesti otettu käyttöön.</string>
+    <string name="connection_feature_p2p_title">P2P</string>
+    <string name="connection_feature_p2p_description">Tiedostojen jako vertaisverkon kautta on käytössä tällä palvelimella.</string>
+    <string name="connection_feature_tor_title">Tor</string>
+    <string name="connection_feature_tor_description">Voit muodostaa yhteyden .onion-sivustoihin tavallisella selaimellasi.</string>
+    <string name="connection_feature_secure_core_title">Secure Core</string>
+    <string name="connection_feature_secure_core_description">Toimintasi on salattu kahdella huipputurvallisella VPN-palvelimella.</string>
+    <string name="connection_feature_streaming_title">Suoratoisto</string>
+    <string name="connection_feature_streaming_description">Tämä palvelin on optimoitu TV-ohjelmien ja elokuvien toistoon.</string>
+    <string name="connection_feature_smart_routing_title">Smart Routing</string>
+    <string name="connection_feature_smart_routing_description">Yhdistää sinut kohdemaahan, fyysisesti muualla sijaitsevien palvelimien välityksellä.</string>
+    <!-- Placeholder will be replaced by a list of country names separated by commas, e.g, Connects you to your destination country through servers physically located elsewhere: Canada, Mexico, United States.  -->
+    <string name="connection_feature_smart_routing_description_with_countries">Yhdistää sinut kohdemaahasi palvelimien kautta, jotka sijaitsevat fyysisesti muualla: %1$s.</string>
+    <!--
+        %1$s - physical server location country
+        %2$s - destination country
+        Warning: country names are inserted in the nominative case.
+        For INFLECTED languages, translate the following phrase instead:
+        "Your physical server location: %1$s.\nYour browsing country: %2$s"
+    -->
+    <string name="country_smart_routing_info">Palvelimien fyysinen sijainti on %1$s, mutta näytät selaavan sijainnista %2$s.</string>
+    <!--
+        Displayed next to an icon which provides more information if clicked
+    -->
+    <string name="connection_details_info_label">Tiedot</string>
+    <!-- tag(Redesign_2023)
+         Used for button title to learn more about different contexts
+    -->
+    <string name="connection_details_learn_more">Lue lisää</string>
+    <!-- tag(Redesign_2023)
+        Used to describe IP which is not known
+    -->
+    <string name="connection_details_unknown_ip">Tuntematon</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_description">Tämä kaavio näyttää nykyisen lähetys- ja lataustoimintasi nopeuden. VPN-yhteytesi ei todennäköisesti hidasta normaalia verkkotoimintaa.</string>
+    <string name="speed_bytes_per_second">%1$s t/s</string>
+    <string name="speed_kilobytes_per_second">%1$s kt/s</string>
+    <string name="speed_megabytes_per_second">%1$s Mt/s</string>
+    <string name="speed_gigabytes_per_second">%1$s Gt/s</string>
+    <string name="speed_terabytes_per_second">%1$s Tt/s</string>
+    <!-- Used as graph label to indicate speed measurement. Example: Speed KB/s or Speed MB/s-->
+    <string name="speed_graph_title">Nopeus %1$s</string>
+    <string name="bytes_per_second">t/s</string>
+    <string name="kilobytes_per_second">kt/s</string>
+    <string name="megabytes_per_second">Mt/s</string>
+    <string name="gigabytes_per_second">Gt/s</string>
+    <string name="terabytes_per_second">Tt/s</string>
+    <plurals name="full_name_speed_bytes_per_second">
+        <item quantity="one">%1$s tavu sekunnissa</item>
+        <item quantity="other">%1$s tavua sekunnissa</item>
+    </plurals>
+    <plurals name="full_name_speed_kilobytes_per_second">
+        <item quantity="one">%1$s kilotavu sekunnissa</item>
+        <item quantity="other">%1$s kilotavua sekunnissa</item>
+    </plurals>
+    <plurals name="full_name_speed_megabytes_per_second">
+        <item quantity="one">%1$s megatavu sekunnissa</item>
+        <item quantity="other">%1$s megatavua sekunnissa</item>
+    </plurals>
+    <plurals name="full_name_speed_gigabytes_per_second">
+        <item quantity="one">%1$s gigatavu sekunnissa</item>
+        <item quantity="other">%1$s gigatavua sekunnissa</item>
+    </plurals>
+    <plurals name="full_name_speed_terabytes_per_second">
+        <item quantity="one">%1$s teratavu sekunnissa</item>
+        <item quantity="other">%1$s teratavua sekunnissa</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_bytes">
+        <item quantity="one">%1$s tavu</item>
+        <item quantity="other">%1$s tavua</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_kilobytes">
+        <item quantity="one">%1$s kilotavu</item>
+        <item quantity="other">%1$s kilotavua</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_megabytes">
+        <item quantity="one">%1$s megatavu</item>
+        <item quantity="other">%1$s megatavua</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_gigabytes">
+        <item quantity="one">%1$s gigatavu</item>
+        <item quantity="other">%1$s gigatavua</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_terabytes">
+        <item quantity="one">%1$s teratavu</item>
+        <item quantity="other">%1$s teratavua</item>
+    </plurals>
+    <string name="traffic_volume_bytes">%1$s t</string>
+    <string name="traffic_volume_kilobytes">%1$s kt</string>
+    <string name="traffic_volume_megabytes">%1$s Mt</string>
+    <string name="traffic_volume_gigabytes">%1$s Gt</string>
+    <string name="traffic_volume_terabytes">%1$s Tt</string>
+    <!-- tag(Redesign_2023)
+         Shown at the top status view if app detects that there is no usable network to connect to VPN
+    -->
+    <string name="error_vpn_waiting_for_network">Odotetaan verkkoa</string>
+    <!-- tag(Redesign_2023) -->
+    <plurals name="connection_details_days">
+        <item quantity="one">%1$d vuorokausi</item>
+        <item quantity="other">%1$d vuorokautta</item>
+    </plurals>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_hours_shortened">%1$d t</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_minutes_shortened">%1$d min</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_seconds_shortened">%1$d s</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceTitle">Yhteys epäonnistui</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceDescription">Tämä laite ei salli VPN-yhteyksiä.</string>
+    <string name="create_profile_title">Luo profiili</string>
+    <!-- Title for the screen where user can edit a profile.
+         %1$s - name of the profile being edited. -->
+    <string name="edit_profile_title">Muokkaa profiilia %1$s</string>
+    <string name="edit_profile_dialog_action">Muokkaa profiilia</string>
+    <string name="create_profile_name_hint">Profiilin nimi</string>
+    <string name="create_profile_name_error_empty">Syötä profiilin nimi</string>
+    <string name="create_profile_name_error_too_long">Profiilin nimen on oltava alle 30 merkkiä</string>
+    <string name="create_profile_type_and_location_title">Valitse yhteystyyppi ja -sijainti</string>
+    <string name="create_profile_features_and_settings_title">Ominaisuudet ja asetukset</string>
+    <string name="configure_profile_features_and_settings_title">Määritä profiiliasetukset</string>
+    <string name="configure_profile_features_and_settings_description">Profiilin asetukset ohittavat VPN-asetuksesi yhdistettynä.</string>
+    <!--
+        First input will be for current step, second one will be for total number of steps
+        Example: Step 3 of 7
+     -->
+    <string name="create_profile_steps">Vaihe %1$d / %2$d</string>
+    <string name="create_profile_button_next">Seuraava</string>
+    <!-- Important: please note the double % sign after 400. It is displayed as a single % in the app.
+         (this doesn\'t apply to other percent sign characters, e.g. ٪)
+         %1$s - will have translated learn_more value -->
+    <string name="settings_vpn_accelerator_description">Nopeuta yhteyttäsi jopa 400%% suorituskykyä parantavien tekniikoiden avulla. %1$s</string>
+    <string name="settings_account_settings_title">Tilin asetukset</string>
+    <string name="settings_account_change_password">Vaihda salasana</string>
+    <string name="settings_account_recovery_email">Palautusosoite</string>
+    <string name="settings_account_recovery_email_not_set">Ei asetettu</string>
+    <string name="settings_account_security_keys">Suojausavaimet</string>
+    <!-- Label of a button that opens user\'s account page -->
+    <string name="settings_account_button_my_account">Oma tili</string>
+    <string name="settings_account_button_delete_account">Poista tili</string>
+    <string name="settings_custom_dns_title">Vaihtoehtoinen DNS</string>
+    <string name="settings_custom_dns_description_tv">Yhdistä VPN:ään itse isännöidyllä tai kolmannen osapuolen nimipalvelujärjestelmällä (DNS).</string>
+    <string name="settings_add_dns_placeholder">192.0.2.0</string>
+    <string name="settings_add_dns_title">Lisää uusi DNS-palvelin</string>
+    <string name="settings_add_dns_new_entry_button">Lisää</string>
+    <string name="settings_add_dns_description">Syötä palvelimen IPv4- tai IPv6-osoite</string>
+    <string name="settings_add_dns_invalid_input">Syötä kelvollinen IPv4- tai IPv6-osoite</string>
+    <string name="settings_add_dns_empty_input">Syötä IPv4- tai IPv6-osoite</string>
+    <string name="settings_add_dns_duplicate_input">Palvelin on jo lisätty</string>
+    <string name="settings_advanced_dns_description">Yhdistä VPN:ään itse isännöidyllä tai ulkopuolisella verkkotunnusjärjestelmällä (DNS). Lue lisää</string>
+    <!-- %1$d - Corresponds to number of servers added -->
+    <string name="settings_dns_list_title">Palvelimet (%1$d)</string>
+    <string name="settings_dns_list_description">Jos mukautettu DNS-palvelimesi ei toimi, käytetään tavallista VPN-DNS:ää.</string>
+    <string name="settings_dns_list_description_multiple">Yritämme yhdistää näihin palvelimiin järjestyksessä. Jos mikään niistä ei toimi, käytetään VPN-DNS:ää.</string>
+    <string name="settings_changes_apply_on_reconnect_toast">Muutokset tulevat voimaan, kun yhdistät uudelleen</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_title">NetShield ei ole käytettävissä</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message">NetShield ei voi suodattaa mainoksia, seurantaa ja haittaohjelmia, kun käytössä on mukautettu DNS. Lue lisää</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message_tv">NetShield ei kykene suodattamaan mainoksia, seuraimia tai haittaohjelmia kun käytetään mukautettua DNS:ää.</string>
+    <string name="settings_advanced_alternative_routing_title">Vaihtoehtoinen reititys</string>
+    <string name="settings_advanced_alternative_routing_description">Jos Proton-palvelut on estetty verkkorajoitusten takia, yritämme käyttää vaihtoehtoista verkkoreititystä, jotta voit silti muodostaa yhteyden sivustoihimme.</string>
+    <string name="settings_advanced_allow_lan_title">LAN-yhteydet</string>
+    <string name="settings_advanced_allow_lan_description">Sallii yhteyden muodostamisen tulostimiin, kaiuttimiin ja muihin lähiverkossasi oleviin laitteisiin.</string>
+    <string name="settings_advanced_allow_lan_description_tv">Yhdistä kaiuttimiin, tietokoneisiin ja muihin laitteisiin paikallisessa verkossasi.</string>
+    <string name="settings_advanced_allow_lan_title_tv">Salli LAN-yhteydet</string>
+    <string name="settings_advanced_nat_type_title">NAT-tyyppi</string>
+    <!-- %1$s - will have translated learn_more value -->
+    <string name="settings_advanced_nat_type_description">Valitse yhteydellesi osoitteenmuunnostyyppi. %1$s</string>
+    <string name="settings_advanced_nat_type_description_no_learn">Valitse yhteytesi osoitteenmuunnoksen (NAT) tyyppi.</string>
+    <string name="settings_advanced_nat_type_strict">Tiukka (tyyppi 3)</string>
+    <string name="settings_advanced_nat_type_strict_short">Tyyppi 3</string>
+    <string name="settings_advanced_nat_type_moderate">Keskitasoinen (tyyppi 2)</string>
+    <string name="settings_advanced_nat_type_moderate_short">Tyyppi 2</string>
+    <string name="settings_advanced_nat_type_strict_description">Rajoittaa verkkoosi saapuvaa tiedonsiirtoa. Tämä vaihtoehto on turvallisempi, mutta saattaa hankaloittaa laitteiden välisiä peliyhteyksiä.</string>
+    <string name="settings_advanced_nat_type_moderate_description">Rajoittaa verkkoosi saapuvaa tiedonsiirtoa jonkin verran. Tämä vaihtoehto sopii verkkopelaamiseen parhaiten.</string>
+    <string name="settings_split_tunneling_description">Mukauta yhteyttäsi päättämällä, mitkä sovellukset ja IP-osoitteet suojataan VPN:llä. %1$s</string>
+    <string name="settings_protocol_description">VPN-protokolla määrittää, miten tiedonsiirto VPN-palvelimen ja laitteesi välillä tapahtuu. %1$s</string>
+    <string name="settings_protocol_description_no_link">VPN-protokolla määrittää, miten tiedonsiirto VPN-palvelimen ja laitteesi välillä tapahtuu.</string>
+    <string name="settings_protocol_section_speed">Nopea (UDP)</string>
+    <string name="settings_protocol_section_reliability">Luotettava (TCP)</string>
+    <string name="settings_protocol_smart_title">Smart</string>
+    <string name="settings_protocol_smart_description">Valitsee automaattisesti yhteydellesi sopivimman protokollan.</string>
+    <string name="settings_protocol_wireguard_title">WireGuard</string>
+    <string name="settings_protocol_smart_protun_description">Valitsee automaattisesti parhaan protokollan yhteydellesi [kokeellinen].</string>
+    <string name="settings_protocol_wireguard_udp_description">Huippumoderni suojaus- ja suorituskykyprotokolla.</string>
+    <string name="settings_protocol_wireguard_tcp_description">Huippumoderni suojaus- ja suorituskykyprotokolla.</string>
+    <string name="settings_protocol_stealth_title">Stealth</string>
+    <string name="settings_protocol_stealth_description">Kiertää VPN-estot piilottamalla VPN-yhteytesi sensuureilta. Tämä protokolla on DPI-vastustuskykyinen (syvä pakettitarkastus), muttei välttämättä yhtä nopea kuin muut protokollat. Stealth on Proton VPN:n oma protokolla.</string>
+    <!-- Text on a badge displayed next to the "smart" protocol name in settings -->
+    <string name="settings_protocol_badge_recommended">Suositus</string>
+    <string name="settings_protocol_badge_experimental">Kokeellinen</string>
+    <string name="settings_split_tunneling_mode_title">Tila</string>
+    <string name="settings_split_tunneling_mode_standard">Poissulje</string>
+    <string name="settings_split_tunneling_mode_inverse">Sisällytä</string>
+    <string name="settings_split_tunneling_mode_description_standard">Valitut sovellukset ja IP-osoitteet suljetaan VPN-yhteyden ulkopuolelle.</string>
+    <string name="settings_split_tunneling_mode_description_inverse">Vain valitut sovellukset ja IP-osoitteet muodostavat yhteyden VPN:n kautta, kaikki muu tietoliikenne on suojaamatonta.</string>
+    <string name="settings_split_tunneling_excluded_apps">Poissuljetut sovellukset</string>
+    <string name="settings_split_tunneling_excluded_ips">Poissuljetut IP-osoitteet</string>
+    <string name="settings_split_tunneling_included_apps">Sisällytetyt sovellukset</string>
+    <string name="settings_split_tunneling_included_ips">Sisällytetyt IP-osoitteet</string>
+    <string name="settings_split_tunneling_empty" comment="Used to indicate that no IP or Apps are included in split tunneling">Ei mitään</string>
+    <string name="settings_split_tunneling_excluded_format" comment="Used for describing excluded items. Example: Chrome, Facebook and 2 more. The same logic used for IP addresses too.">%1$s, %2$s ja %3$d muuta</string>
+    <string name="settings_split_tunneling_already_excluded">On jo rajoitettu</string>
+    <string name="settings_split_tunneling_already_included">On jo sisällytetty</string>
+    <string name="settings_split_tunneling_remove_ip_dialog_message">Poistetaanko IP-osoite listalta?</string>
+    <string name="settings_split_tunneling_ip_removed_message">IP-osoite poistettu</string>
+    <string name="settings_theme_title">Teema</string>
+    <string name="settings_theme_value_auto">Laitteen teema</string>
+    <string name="settings_theme_value_light">Vaalea</string>
+    <string name="settings_theme_value_dark">Tumma</string>
+    <string name="settings_dialog_reconnect">Uudet asetukset tulevat voimaan seuraavan yhteydenmuodostuksen yhteydessä.</string>
+    <string name="settings_needs_reconnect_banner">Uudet asetukset tulevat voimaan seuraavan yhteydenmuodostuksen yhteydessä.</string>
+    <string name="private_dns_conflict_banner_custom_dns_title">Vaihtoehtoinen DNS ei ole käytettävissä</string>
+    <string name="private_dns_conflict_banner_custom_dns_description">Laitteesi käyttää ulkopuolista DNS:ää, joka estää Proton VPN:n vaihtoehtoisen DNS:än toiminnan. Lue lisää</string>
+    <string name="private_dns_conflict_banner_custom_dns_description_tv">Laitteesi käyttää ulkopuolista DNS:ää, joka estää Proton VPN:n vaihtoehtoisen DNS:än toiminnan.</string>
+    <string name="private_dns_conflict_banner_netshield_title">NetShield ei ole käytettävissä</string>
+    <string name="private_dns_conflict_banner_netshield_description">Laitteesi käyttää kolmannen osapuolen DNS:ää, joka estää NetShieldin toiminnan. Lue lisää</string>
+    <string name="private_dns_conflict_banner_network_settings_button">Verkkoasetukset</string>
+    <string name="custom_dns_conflict_banner_netshield_title">NetShield ei ole käytettävissä</string>
+    <string name="custom_dns_conflict_banner_netshield_description">Vaihtoehtoinen DNS on käytössä ja estää NetShieldin toiminnan. Lue lisää</string>
+    <string name="custom_dns_conflict_banner_netshield_title_tv">Poista mukautettu DNS käytöstä käyttääksesi NetShieldiä</string>
+    <string name="custom_dns_conflict_banner_netshield_description_tv">Vaihtoehtoinen DNS on käytössä ja estää NetShieldin toiminnan.</string>
+    <string name="custom_dns_conflict_banner_disable_custom_dns_button">Poista vaihtoehtoinen DNS käytöstä</string>
+    <string name="info_secure_core_standard_high_privacy">Korkeampi yksityisyys</string>
+    <string name="info_secure_core_standard_lower_latency">Matalammat viiveet</string>
+    <string name="info_secure_core_advanced_privacy">Edistynyt yksityisyys</string>
+    <string name="info_secure_core_higher_latency">Korkeammat viiveet</string>
+    <string name="info_p2p_what_title">Mitä P2P tarkoittaa?</string>
+    <string name="info_p2p_what_description">Peer-to-peer (P2P) -tekniikan avulla voit muodostaa yhteyden ja jakaa tiedostoja suoraan muiden laitteiden kanssa.\n\nP2P-palvelimemme on suunniteltu erityisesti tällaista tiedostojen jakamista varten.</string>
+    <string name="info_p2p_torrenting_title">Mitä on torrentointi?</string>
+    <string name="info_p2p_torrenting_description">Suurten tiedostojen nopea jakaminen ja lataaminen P2P-verkon välityksellä.</string>
+    <string name="info_p2p_why_title">Miksi käyttää P2P-palvelinta torrentointiin?</string>
+    <string name="info_p2p_why_description_speed">Korkeammat lähetys- ja latausnopeudet</string>
+    <string name="info_p2p_why_description_logs">Ei toimintalokeja</string>
+    <string name="info_p2p_why_description_hide">Piilota IP-osoitteesi palveluntarjoajaltasi ja vertaisilta</string>
+    <string name="info_dialog_smart_routing_description">Smart Routing mahdollistaa meidän tarjota VPN-verkon kattavuuden vaikeasti saavutettavissa maissa.\n\nKun muodostat yhteyden Smart Routing -palvelimeen, näytät selaavasi kohdemaastasi, vaikka fyysinen palvelin sijaitsee muualla.  \n\nSmart Routingia käytetään yleensä yksityisyydensuojan vastaisten lakien ja muunlaisen sensuurin kiertämiseen</string>
+    <string name="notifications_channel_connection_status_name">Yhteyden tila</string>
+    <string name="notifications_channel_connection_status_description">Näyttää käytössä olevan palvelimen ja VPN-yhteyden nopeuden.</string>
+    <string name="notifications_channel_connection_errors_name">Yhteysvirheet</string>
+    <string name="notifications_channel_connection_errors_description">Ilmoittaa ongelmista, jotka keskeyttävät tai pysäyttävät VPN-yhteyden.</string>
+    <string name="notifications_channel_connection_tips_name">Yhteysneuvot</string>
+    <string name="notifications_channel_connection_tips_description">Kontekstuaalisia vinkkejä, joiden avulla saat enemmän irti Proton VPN:stä.</string>
+    <string name="countries_upsell_banner_description">Pääsy kaikkiin maihin VPN Plussalla</string>
+    <string name="secure_core_upsell_banner_description">Lisää VPN-yhteyteesi toinen salauskerros</string>
+    <string name="p2p_upsell_banner_description">Lataa tiedostoja mm. BitTorrentin kaltaisilla tiedonsiirtoprotokollilla</string>
+    <string name="tor_upsell_banner_description">Käytä Tor-verkkoa VPN-yhteytesi välityksellä ja tehosta tietosuojaasi</string>
+    <string name="vpnplus_upsell_banner_description">Päivitä VPN Plussaan</string>
+    <string name="search_zero_screen_title">Yritä etsiä sanoilla…</string>
+    <string name="search_zero_screen_info_countries_title">Maat</string>
+    <string name="search_zero_screen_info_cities_title">Kaupungit</string>
+    <string name="search_zero_screen_info_servers_title">Palvelimet</string>
+    <string name="search_zero_screen_info_countries_examples">Sveitsi, Yhdysvallat, Italia, Kanada…</string>
+    <string name="search_zero_screen_info_cities_examples">New York, Lontoo, Tokio, Sydney…</string>
+    <string name="search_zero_screen_info_servers_examples">JP#50, CA#3, IT#14…</string>
+    <string name="error_fetching_prices">Virhe noudettaessa hintoja.</string>
+    <string name="tv_settings_split_tunneling_description">Mukauta yhteyttäsi määrittämällä, mitkä sovellukset suojataan VPN:llä.</string>
+    <string name="tv_settings_split_tunneling_mode_description_standard">Valitut sovellukset suljetaan VPN-yhteyden ulkopuolelle.</string>
+    <string name="tv_settings_split_tunneling_mode_description_inverse">Vain valitut sovellukset muodostavat yhteyden VPN:n kautta, kaikki muu tietoliikenne on suojaamatonta.</string>
+    <string name="profile_action_edit">Muokkaa</string>
+    <string name="profile_action_duplicate">Luo kopio</string>
+    <string name="profile_action_delete">Poista</string>
+    <!-- Label when showing profile\'s NAT (Network Address Translation) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_nat_title">NAT</string>
+    <!-- Label when showing profile\'s LAN (Local Area Network) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_lan_title">LAN</string>
+    <string name="profile_needs_reconnect">Tämä muodostaa yhteytesi uudelleen.</string>
+    <string name="profile_overrides_setting">Nämä asetukset liittyvät profiiliin <b>%1$s</b>, ja niitä voi hallita vain profiileissa.</string>
+    <string name="initial_profile_name_streaming_us">Suoratoisto</string>
+    <string name="initial_profile_name_work_school">Työ/Koulu</string>
+    <string name="initial_profile_name_anti_censorship">Sensuurin vastainen</string>
+    <string name="initial_profile_name_gaming">Pelaaminen</string>
+    <string name="initial_profile_name_max_security">Maksimiturva</string>
+    <string name="create_profile_pick_country_title">Maa</string>
+    <string name="create_profile_pick_type_title">Tyyppi</string>
+    <string name="create_profile_type_standard">Vakio</string>
+    <string name="create_profile_type_secure_core">Secure Core</string>
+    <string name="create_profile_type_p2p">P2P</string>
+    <string name="create_profile_gateway">Yhdyskäytävä</string>
+    <string name="create_profile_pick_state_title">Osavaltio</string>
+    <string name="create_profile_pick_city_title">Kaupunki</string>
+    <string name="create_profile_pick_server_title">Palvelin</string>
+    <string name="create_profile_pick_gateway_title">Yhdyskäytävä</string>
+    <string name="create_profile_pick_netshield_title">NetShield</string>
+    <string name="create_profile_pick_netshield_description">Estä mainoksia, seurantoja ja haittaohjelmia verkkosivustoilla ja sovelluksissa</string>
+    <string name="create_profile_pick_protocol_title">Protokolla</string>
+    <string name="create_profile_pick_nat_title">NAT-tyyppi</string>
+    <!--
+         Example:
+         if a profile named "My Profile" is duplicated, the new suggested name is "My Profile (copy)"
+     -->
+    <string name="create_profile_copy_name">%1$s (kopio)</string>
+    <string name="create_profile_fastest_city">Nopein</string>
+    <string name="create_profile_fastest_state">Nopein</string>
+    <string name="create_profile_fastest_server">Nopein</string>
+    <string name="create_profile_pick_middle_country_title">Välitysmaa</string>
+    <string name="profiles_zero_state_title">Luo ensimmäinen profiilisi</string>
+    <string name="profiles_zero_state_description">Profiilit ovat tallennettuja yhteyksiä, jotka sisältävät valitsemasi sijainnin, palvelimen ja protokollan.</string>
+    <string name="profiles_button_create_profile">Luo profiili</string>
+    <string name="profile_deleted_snackbar_message">Profiili poistettiin</string>
+    <string name="profile_connected_edit_setting">Tämä asetus liittyy aktiiviseen profiiliisi. \n\nMuokkaa profiiliasi tehdäksesi muutoksia, tai katkaise yhteys muokataksesi yleisiä VPN-asetuksiasi.</string>
+    <string name="profile_connected_dialog_title">Hallitse %1$s profiileissa</string>
+    <string name="undo">Kumoa</string>
+    <string name="profile_unavailable_dialog_title">Profiili ei ole käytettävissä</string>
+    <!-- %1$s - profile name
+         Example: Your server selection for MyProfile is unavailable. Select a different server or try again later -->
+    <string name="profile_unavailable_dialog_message">Valitsemasi palvelin %1$s ei ole käytettävissä. Valitse toinen palvelin tai kokeile myöhemmin uudelleen.</string>
+    <string name="profile_location_excluded_dialog_message"><![CDATA[Valitsemasi palvelin <b>%1$s</b> ei ole käytettävissä. Valitse toinen palvelin, tarkista poissuljetut sijainnit tai yritä myöhemmin uudelleen.]]></string>
+    <!-- %1$d - profile icon number
+         Example: Icon 1, Icon 2, ... -->
+    <string name="profile_icon_accessibility">Kuvake %1$d</string>
+    <!-- %1$d - profile icon number
+         Example: Color 1, Color 2, ... -->
+    <string name="profile_color_accessibility">Väri %1$d</string>
+    <string name="generic_info_label">Tiedot</string>
+    <!-- Branded name for a feature that opens url after VPN connection to given profile is established.
+         Please don't use & in translation and capitalize key words. -->
+    <string name="create_profile_connect_and_go_label">Yhdistä ja Siirry</string>
+    <!-- Displayed as a badge next to create_profile_auto_open_label ("Auto-launch website [NEW]") -->
+    <string name="create_profile_auto_open_label_badge">Uusi</string>
+    <string name="create_profile_auto_open_url_input_label">Verkkosivuston URL-osoite</string>
+    <string name="create_profile_auto_open_url_private_mode_label">Käytä yksityistä selaustilaa</string>
+    <!-- Label for disabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_off">Pois</string>
+    <string name="profile_auto_open_app_failed_to_launch">Yhdistä ja Avaa: sovellusta ei löydy</string>
+    <!-- Label for enabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_website">Avaa verkkosivusto</string>
+    <string name="profile_auto_open_app">Avaa sovellus</string>
+    <string name="create_profile_auto_open_description">Haluamasi verkkosivusto avataan automaattisesti, kun muodostat yhteyden tähän profiiliin.</string>
+    <string name="create_profile_auto_open_app_input_hint">Valitse sovellus</string>
+    <string name="create_profile_auto_open_app_input_label">Sovellus</string>
+    <string name="create_profile_auto_open_app_no_apps">Sovelluksia ei löytynyt.</string>
+    <string name="profile_auto_open_error_invalid_url">Syötä kelvollinen URL-osoite</string>
+    <string name="nps_how_likely_question">Kuinka todennäköisesti suosittelisit Proton VPN:ää ystävällesi tai kollegallesi?</string>
+    <string name="nps_additional_comment_title">Kerro meille, miksi annoit kyseisen arvion</string>
+    <string name="nps_additional_comment_optional">Valinnainen</string>
+    <string name="nps_rating_low_values_explain">0 on hyvin epätodennäköistä</string>
+    <string name="nps_rating_high_values_explain">10 on hyvin todennäköistä</string>
+    <string name="nps_toast_submit_message">Kiitos jakamisesta! Palautteesi auttaa meitä Proton VPN:n kehityksessä.</string>
+    <string name="nps_submit_error_char_limit">Vastauksesi tulisi olla enintään 250 merkkiä</string>
+    <string name="nps_button_submit_title">Jaa anonyymisti</string>
+    <string name="widget_preview_switzerland">Sveitsi</string>
+    <string name="widget_preview_spain">Espanja</string>
+    <string name="widget_preview_germany">Saksa</string>
+    <string name="widget_preview_france">Ranska</string>
+    <string name="widget_status_unprotected">Suojaamaton</string>
+    <string name="widget_status_error">Virhe</string>
+    <string name="widget_status_connecting">Yhdistetään</string>
+    <string name="widget_sign_in">Kirjaudu sisään</string>
+    <string name="widget_toast_added_message">Widgetti lisättiin aloitusnäytölle</string>
+    <string name="settings_advanced_ipv6_title">IPv6-tuki</string>
+    <string name="settings_advanced_ipv6_description">Tunneloi IPv6-tietoliikenteen VPN:n kautta. Voi parantaa yhteensopivuutta IPv6-verkkojen kanssa.</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_message">Tämän osoitteen käyttämiseksi sinun tulee sallia IPv6-yhteydet VPN-tunnelin kautta.</string>
+    <string name="setting_ipv6_disabled_dialog_action_enable">Ota IPv6 käyttöön</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_title">IPv6 on poistettu käytöstä</string>
+    <string name="settings_ipv6_enabled_toast">IPv6 käytössä</string>
+    <string name="info_dialog_ipv6_traffic_benefits1">Varmistaa pääsyn IPv6:ta vaativille verkkosivustoille ja palveluille</string>
+    <string name="info_dialog_ipv6_traffic_benefits2">Ehkäisee ongelmia IPv6:een tukeutuvissa verkoissa</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks1">Ei välttämättä toimi hyvin vanhempien verkkojen tai sovellusten kanssa</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks2">Jotkin verkot käsittelevät IPv6-tietoliikennettä arvaamattomasti.</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks_title">Haitat</string>
+    <string name="info_dialog_ipv6_traffic_benefits_title">Edut</string>
+    <string name="settings_lan_allow_direct_connection_title">Salli suorat laiteyhteydet</string>
+    <string name="settings_lan_allow_direct_connection_description">Yhdistä älytelevisioihin, Android Autoon ja muihin oman verkkonsa luoviin laitteisiin. Parhaan turvallisuuden takaamiseksi ota tämä toiminto käyttöön vain silloin, kun yhdistät näihin laitteisiin.</string>
+    <string name="no_connections_title">VPN-yhteyksiä ei ole käytettävissä</string>
+    <string name="no_connections_description_loading_error">Palvelinlistaa ei voitu ladata.</string>
+    <string name="no_connections_description_no_servers">Pyydä ylläpitäjääsi antamaan tilillesi VPN-käyttöoikeus.</string>
+    <string name="no_connections_action_refresh">Päivitä</string>
+    <string name="no_connections_action_sign_out">Kirjaudu ulos</string>
+    <string name="no_connections_help_contact_us"><![CDATA[Tarvitsetko apua? <a href="">Ota meihin yhteyttä</a>]]></string>
+    <string name="no_connections_help_follow_instructions"><![CDATA[Jos ylläpitäjäsi tarvitsee apua VPN-yhteyden käyttöönottossa, lähetä heille <a href="">nämä ohjeet</a>.]]></string>
+    <string name="settings_protocol_proton_protocols">Proton-protokollat</string>
+    <string name="settings_protocol_proton_protocols_description">Käytä Proton VPN:n omaa WireGuard-toteutusta. Tämä on kokeellinen ominaisuus, joten saatat kokea jonkin verran epävakautta.</string>
+    <string name="connection_preferences_smart_discovery_dialog_title">Eikö tämä ole haluamasi maa?</string>
+    <string name="connection_preferences_smart_discovery_dialog_message">Jos on sijainteja, joihin et halua muodostaa automaattista yhteyttä, voit poistaa ne nopeimman maan valinnasta.</string>
+    <string name="excluded_locations_adoption_title">Vältä ei-toivottuja sijainteja</string>
+    <string name="excluded_locations_adoption_description"><![CDATA[Voit nyt poissulkea maita ja kaupunkeja pois <b>Nopeimmat</b> yhteyksistä.]]></string>
+    <string name="session_fork_no_account_title">Kirjaudu Android TV:ssä</string>
+    <string name="session_fork_no_account_message">Suorita kirjautuminen loppuun tällä laitteella, jotta voit aloittaa Proton VPN:n käytön TV:lläsi</string>
+    <string name="session_fork_no_account_footnote"><![CDATA[Käyttämällä tätä sovellusta hyväksyt <a href="">käyttöehtomme</a>.]]></string>
+    <string name="session_fork_no_account_signup_button">Luo tili</string>
+    <string name="session_fork_no_account_signin_button">Kirjaudu</string>
+    <string name="session_fork_confirmation_title">Kirjaudu Android TV:llä?</string>
+    <string name="session_fork_confirmation_message">Tämän avulla televisio voi käyttää Proton-tiliäsi.</string>
+    <string name="session_fork_confirmation_bottom_note">Kirjaudu vain laitteilla, joihin luotat</string>
+    <string name="session_fork_confirmation_too_soon_toast">Tarkista tämä ennen kuin jatkat</string>
+    <string name="session_fork_success_title">Kirjautuminen onnistui</string>
+    <string name="session_fork_success_message">Olet nyt kirjautunut televisioosi.</string>
+    <string name="session_fork_error_expired_title">Koodi on vanhentunut</string>
+    <string name="session_fork_error_expired_message">Luo uusi koodi TV:lläsi ja yritä uudelleen.</string>
+    <string name="session_fork_error_generic_title">Kirjautuminen epäonnistui</string>
+    <string name="session_fork_error_fatal_message">Check your network and try again. If the problem persists, get in touch with our customer support team. </string>
+    <string name="session_fork_error_network_message">Tarkista verkkoyhteytesi ja yritä uudelleen.</string>
+    <string name="session_fork_error_try_fallback_message">Click \‘Trouble signing in?\’ on your TV to follow the alternative steps.</string>
+    <string name="session_fork_error_report_button">Ilmoita ongelmasta</string>
+    <string name="session_fork_qr_code_content_description">QR-koodi</string>
+    <string name="session_fork_qr_code_message">Skannaa QR-koodi kirjautuaksesi tai luodaksesi tilin.</string>
+    <string name="session_fork_qr_code_trouble_button">Ongelmia kirjautumisessa?</string>
+    <string name="session_fork_qr_code_error_expired">Turvallisuussyistä vahvistuskoodi on vanhentunut</string>
+    <string name="session_fork_qr_code_error_network">Tarkista verkkoyhteytesi ja yritä uudelleen</string>
+    <string name="session_fork_qr_code_error_create_new_button">Luo uusi koodi</string>
+    <string name="session_fork_user_code_title">Etkö voi skannata koodia? Kirjaudu sisään manuaalisesti</string>
+    <string name="session_fork_user_code_step1"><![CDATA[Mene: <b>%1$s</b>]]></string>
+    <string name="session_fork_user_code_step2">Kirjaudu tai luo tili</string>
+    <!-- Parameter: 8 character alphanumeric code, e.g. "AB12 CD34" -->
+    <string name="session_fork_user_code_step3"><![CDATA[Syötä koodi: <b>%1$s</b>]]></string>
+    <!-- Parameter: web address for the support website, e.g. "protonvpn.com/support" -->
+    <string name="session_fork_user_code_support"><![CDATA[Tarvitsetko vielä apua? Käy osoitteessa <b>%1$s</b>]]></string>
+</resources>

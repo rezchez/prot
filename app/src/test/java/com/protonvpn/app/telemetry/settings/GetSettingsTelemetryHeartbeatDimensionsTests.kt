@@ -1,0 +1,737 @@
+/*
+ * Copyright (c) 2026 Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.app.telemetry.settings
+
+import com.protonvpn.android.auth.usecase.CurrentUser
+import com.protonvpn.android.excludedlocations.data.ExcludedLocationEntity
+import com.protonvpn.android.excludedlocations.data.ExcludedLocationType
+import com.protonvpn.android.excludedlocations.data.ExcludedLocationsDao
+import com.protonvpn.android.excludedlocations.usecases.ObserveExcludedLocations
+import com.protonvpn.android.netshield.NetShieldProtocol
+import com.protonvpn.android.redesign.recents.data.DefaultConnection
+import com.protonvpn.android.redesign.recents.usecases.ObserveDefaultConnection
+import com.protonvpn.android.redesign.settings.ui.NatType
+import com.protonvpn.android.settings.data.CustomDnsSettings
+import com.protonvpn.android.settings.data.EffectiveCurrentUserSettings
+import com.protonvpn.android.settings.data.LocalUserSettings
+import com.protonvpn.android.settings.data.SplitTunnelingMode
+import com.protonvpn.android.settings.data.SplitTunnelingSettings
+import com.protonvpn.android.telemetry.CommonDimensions
+import com.protonvpn.android.telemetry.settings.GetSettingsTelemetryHeartbeatDimensions
+import com.protonvpn.android.theme.ThemeType
+import com.protonvpn.android.tv.settings.FakeIsTvAutoConnectFeatureFlagEnabled
+import com.protonvpn.android.ui.onboarding.ReviewTracker
+import com.protonvpn.android.ui.settings.AppIconManager
+import com.protonvpn.android.ui.settings.CustomAppIconData
+import com.protonvpn.android.vpn.ConnectivityMonitor
+import com.protonvpn.android.vpn.alwayson.VpnAlwaysOn
+import com.protonvpn.android.vpn.alwayson.VpnAlwaysOnStorage
+import com.protonvpn.android.vpn.usecases.FakeIsProTunV1FeatureFlagEnabled
+import com.protonvpn.android.widget.WidgetType
+import com.protonvpn.android.widget.data.WidgetTracker
+import com.protonvpn.app.excludedlocations.TestExcludedLocationEntity
+import com.protonvpn.mocks.FakeCommonDimensions
+import com.protonvpn.mocks.FakeGetTruncationMustHaveIDs
+import com.protonvpn.test.shared.InMemoryDataStoreFactory
+import com.protonvpn.test.shared.TestCurrentUserProvider
+import com.protonvpn.test.shared.TestUser
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.impl.annotations.RelaxedMockK
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
+import org.junit.Before
+import org.junit.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+
+@OptIn(ExperimentalCoroutinesApi::class)
+class GetSettingsTelemetryHeartbeatDimensionsTests {
+
+    @MockK
+    private lateinit var mockAppIconManager: AppIconManager
+
+    @MockK
+    private lateinit var mockConnectivityMonitor: ConnectivityMonitor
+
+    @MockK
+    private lateinit var mockObserveDefaultConnection: ObserveDefaultConnection
+
+    @MockK
+    private lateinit var mockReviewTracker: ReviewTracker
+
+    @RelaxedMockK
+    private lateinit var mockExcludedLocationsDao: ExcludedLocationsDao
+
+    @MockK
+    private lateinit var mockWidgetTracker: WidgetTracker
+
+    private lateinit var getSettingsTelemetryHeartbeatDimensions: GetSettingsTelemetryHeartbeatDimensions
+
+    private lateinit var getTruncationMustHaveIDs: FakeGetTruncationMustHaveIDs
+
+    private lateinit var localUserSettingsFlow: MutableStateFlow<LocalUserSettings>
+
+    private lateinit var testScope: TestScope
+
+    private lateinit var testDispatcher: CoroutineDispatcher
+
+    private lateinit var observeExcludedLocations: ObserveExcludedLocations
+
+    private lateinit var testUserProvider: TestCurrentUserProvider
+
+    private lateinit var vpnAlwaysOnStorage: VpnAlwaysOnStorage
+
+    private val excludeLocationEntitiesFlow = MutableStateFlow(value = emptyList<ExcludedLocationEntity>())
+
+    private val freeVpnUser = TestUser.freeUser.vpnUser
+
+    private val plusVpnUser = TestUser.plusUser.vpnUser
+
+    private val userTier = "paid"
+
+    private val vpnUsers = listOf(freeVpnUser, plusVpnUser)
+
+    private val excludedLocationsBuckets = listOf(
+        0 to "0",
+        1 to "1",
+        2 to "2-5",
+        5 to "2-5",
+        6 to "6-10",
+        10 to "6-10",
+        11 to "11-20",
+        20 to "11-20",
+        21 to ">=21",
+    )
+
+    @Before
+    fun setup() {
+        MockKAnnotations.init(this)
+
+        testDispatcher = UnconfinedTestDispatcher()
+
+        // Required setting main dispatcher due to usage of: EffectiveCurrentUserSettings
+        Dispatchers.setMain(testDispatcher)
+
+        testScope = TestScope(testDispatcher)
+
+        getTruncationMustHaveIDs = FakeGetTruncationMustHaveIDs()
+
+        localUserSettingsFlow = MutableStateFlow(value = LocalUserSettings())
+
+        testUserProvider = TestCurrentUserProvider(vpnUser = plusVpnUser)
+
+        every { mockExcludedLocationsDao.observeAll(userId = any()) } returns excludeLocationEntitiesFlow
+
+        observeExcludedLocations = ObserveExcludedLocations(
+            mainScope = testScope.backgroundScope,
+            currentUser = CurrentUser(provider = testUserProvider),
+            excludedLocationsDao = mockExcludedLocationsDao,
+        )
+
+        vpnAlwaysOnStorage = VpnAlwaysOnStorage(
+            mainScope = testScope.backgroundScope,
+            localDataStoreFactory = InMemoryDataStoreFactory(),
+        )
+
+        val currentUser = CurrentUser(TestCurrentUserProvider(TestUser.plusUser.vpnUser))
+        getSettingsTelemetryHeartbeatDimensions = GetSettingsTelemetryHeartbeatDimensions(
+            currentUser = currentUser,
+            appIconManager = mockAppIconManager,
+            connectivityMonitor = mockConnectivityMonitor,
+            commonDimensions = FakeCommonDimensions(dimensions = mapOf("user_tier" to userTier)),
+            effectiveCurrentUserSettings = EffectiveCurrentUserSettings(testScope.backgroundScope, localUserSettingsFlow),
+            getTruncationMustHaveIDs = getTruncationMustHaveIDs,
+            observeDefaultConnection = mockObserveDefaultConnection,
+            widgetTracker = mockWidgetTracker,
+            isTvAutoConnectFeatureFlagEnabled = FakeIsTvAutoConnectFeatureFlagEnabled(true),
+            reviewTracker = mockReviewTracker,
+            observerExcludedLocations = observeExcludedLocations,
+            isProTunV1FeatureFlagEnabled = FakeIsProTunV1FeatureFlagEnabled(true),
+            vpnAlwaysOnStorage = vpnAlwaysOnStorage,
+        )
+
+        every { mockAppIconManager.getCurrentIconData() } returns CustomAppIconData.DEFAULT
+        every { mockConnectivityMonitor.isPrivateDnsActive } returns MutableStateFlow(null)
+        every { mockObserveDefaultConnection(any()) } returns MutableStateFlow(DefaultConnection.FastestConnection)
+        coEvery { mockReviewTracker.isOrWasEligibleToday() } returns false
+        every { mockWidgetTracker.widgetCount } returns MutableStateFlow(0)
+        coEvery { mockWidgetTracker.firstWidgetType() } returns null
+    }
+
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
+    }
+
+    @Test
+    fun `GIVEN appIcon options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "app_icon"
+
+        listOf(
+            CustomAppIconData.DEFAULT to "default",
+            CustomAppIconData.DARK to "dark",
+            CustomAppIconData.RETRO to "retro",
+            CustomAppIconData.WEATHER to "weather",
+            CustomAppIconData.NOTES to "notes",
+            CustomAppIconData.CALCULATOR to "calculator",
+        ).forEach { (appIcon, expectedDimensionValue) ->
+            every { mockAppIconManager.getCurrentIconData() } returns appIcon
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN defaultConnection options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "default_connection_type"
+
+        listOf(
+            DefaultConnection.FastestConnection to "fastest",
+            DefaultConnection.LastConnection to "last_connection",
+            DefaultConnection.Recent(recentId = 1L) to "recent",
+        ).forEach { (defaultConnection, expectedDimensionValue) ->
+            every { mockObserveDefaultConnection(any()) } returns MutableStateFlow(value = defaultConnection)
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN isPrivateDnsActive options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "is_system_custom_dns_enabled"
+
+        listOf(
+            null to "n/a",
+            true to "true",
+            false to "false",
+        ).forEach { (isPrivateDnsActive, expectedDimensionValue) ->
+            every { mockConnectivityMonitor.isPrivateDnsActive } returns MutableStateFlow(isPrivateDnsActive)
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN widgetCount options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "widget_count"
+
+        listOf(
+            0 to "0",
+            1 to "1",
+            2 to "2-4",
+            3 to "2-4",
+            4 to "2-4",
+            5 to ">=5",
+            6 to ">=5",
+        ).forEach { (widgetCount, expectedDimensionValue) ->
+            every { mockWidgetTracker.widgetCount } returns MutableStateFlow(value = widgetCount)
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN firstWidgetSize options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "first_widget_size"
+
+        listOf(
+            null to null,
+            WidgetType.SMALL to "small",
+            WidgetType.SMALL_MATERIAL to "small",
+            WidgetType.BIG to "large",
+            WidgetType.BIG_MATERIAL to "large",
+        ).forEach { (widgetType, expectedDimensionValue) ->
+            coEvery { mockWidgetTracker.firstWidgetType() } returns widgetType
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN firstWidgetTheme options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "first_widget_theme"
+
+        listOf(
+            null to null,
+            WidgetType.SMALL to "proton",
+            WidgetType.BIG to "proton",
+            WidgetType.SMALL_MATERIAL to "material",
+            WidgetType.BIG_MATERIAL to "material",
+        ).forEach { (widgetType, expectedDimensionValue) ->
+            coEvery { mockWidgetTracker.firstWidgetType() } returns widgetType
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN truncated IDs WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "server_list_truncation_protected_ids_count"
+
+        listOf(
+            emptySet<String>() to "0",
+            (1..1).map(Int::toString).toSet() to "1",
+            (1..2).map(Int::toString).toSet() to "2-10",
+            (1..10).map(Int::toString).toSet() to "2-10",
+            (1..11).map(Int::toString).toSet() to "11-50",
+            (1..50).map(Int::toString).toSet() to "11-50",
+            (1..51).map(Int::toString).toSet() to ">=51",
+        ).forEach { (truncatedIds, expectedDimensionValue) ->
+            getTruncationMustHaveIDs.set(newTruncationIds = truncatedIds)
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN ThemeType options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "ui_theme"
+
+        listOf(
+            ThemeType.Dark to "dark",
+            ThemeType.Light to "light",
+            ThemeType.System to "system",
+        ).forEach { (themeType, expectedDimensionValue) ->
+            localUserSettingsFlow.value = LocalUserSettings(theme = themeType)
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN LAN mode options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "lan_mode"
+
+        listOf(
+            Pair(false, false) to "off",
+            Pair(false, true) to "off",
+            Pair(true, false) to "standard",
+            Pair(true, true) to "direct",
+        ).forEach { (lanMode, expectedDimensionValue) ->
+            localUserSettingsFlow.value = LocalUserSettings(
+                lanConnections = lanMode.first,
+                lanConnectionsAllowDirect = lanMode.second,
+            )
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN is IPV6 enabled options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "is_ipv6_enabled"
+
+        listOf(
+            true to "true",
+            false to "false",
+        ).forEach { (isIPV6Enabled, expectedDimensionValue) ->
+            localUserSettingsFlow.value = LocalUserSettings(ipV6Enabled = isIPV6Enabled)
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN isCustomDnsEnabled options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "is_custom_dns_enabled"
+        val rawDnsList = listOf("dns.vpn.test")
+
+        listOf(
+            Pair(true, emptyList<String>()) to "false",
+            Pair(true, rawDnsList) to "true",
+            Pair(false, emptyList<String>()) to "false",
+            Pair(false, rawDnsList) to "false",
+        ).forEach { (customDns, expectedDimensionValue) ->
+            localUserSettingsFlow.value = LocalUserSettings(
+                customDns = CustomDnsSettings(
+                    toggleEnabled = customDns.first,
+                    rawDnsList = customDns.second,
+                )
+            )
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN rawDnsList length options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "custom_dns_count"
+
+        listOf(
+            emptyList<String>() to "0",
+            (1..1).map(Int::toString).toList() to "1",
+            (1..2).map(Int::toString).toList() to "2-4",
+            (1..4).map(Int::toString).toList() to "2-4",
+            (1..5).map(Int::toString).toList() to ">=5",
+        ).forEach { (rawDnsList, expectedDimensionValue) ->
+            localUserSettingsFlow.value = LocalUserSettings(
+                customDns = CustomDnsSettings(rawDnsList = rawDnsList)
+            )
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN rawDnsList address family options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "first_custom_dns_address_family"
+
+        listOf(
+            emptyList<String>() to "n/a",
+            listOf("2001:db8:85a3::8a2e:370:7334") to "ipv6",
+            listOf("192.0.2.1") to "ipv4",
+        ).forEach { (rawDnsList, expectedDimensionValue) ->
+            localUserSettingsFlow.value = LocalUserSettings(
+                customDns = CustomDnsSettings(rawDnsList = rawDnsList)
+            )
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `WHEN providing dimensions THEN common dimensions are added`() = testScope.runTest {
+        val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+        assertEquals(userTier, dimensions[CommonDimensions.Key.USER_TIER_LEGACY.reportedName])
+    }
+
+    @Test
+    fun `WHEN TV auto connect FF is enabled THEN auto_connect dimension is added`() = testScope.runTest {
+        listOf(
+            true to "true",
+            false to "false"
+        ).forEach { (isEnabled, expectedValue) ->
+            localUserSettingsFlow.value = LocalUserSettings(tvAutoConnectOnBoot = isEnabled)
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+            assertEquals(expectedValue, dimensions["is_auto_connect_enabled"])
+        }
+    }
+
+    @Test
+    fun `GIVEN split tunneling enabled options WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "is_split_tunneling_enabled"
+
+        listOf(
+            true to "true",
+            false to "false",
+        ).forEach { (isSplitTunnelingEnabled, expectedDimensionValue) ->
+            localUserSettingsFlow.value = LocalUserSettings(
+                splitTunneling = SplitTunnelingSettings(isEnabled = isSplitTunnelingEnabled),
+            )
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expectedDimensionValue, dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN split tunneling mode WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "split_tunneling_mode"
+
+        listOf(true, false).forEach { isSplitTunnelingEnabled ->
+            listOf(
+                SplitTunnelingMode.EXCLUDE_ONLY to "exclude",
+                SplitTunnelingMode.INCLUDE_ONLY to "include",
+            ).forEach { (splitTunnelingMode, expectedDimensionValue) ->
+                localUserSettingsFlow.value = LocalUserSettings(
+                    splitTunneling = SplitTunnelingSettings(
+                        isEnabled = isSplitTunnelingEnabled,
+                        mode = splitTunnelingMode
+                    ),
+                )
+
+                val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+                assertEquals(expectedDimensionValue, dimensions[dimension])
+            }
+        }
+    }
+
+    @Test
+    fun `GIVEN split tunneling mode AND apps list WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "split_tunneling_apps_count"
+
+        listOf(true, false).forEach { isSplitTunnelingEnabled ->
+            SplitTunnelingMode.entries.forEach { splitTunnelingMode ->
+                listOf(
+                    emptyList<String>() to "0",
+                    (1..1).map(Int::toString).toList() to "1",
+                    (1..2).map(Int::toString).toList() to "2-4",
+                    (1..4).map(Int::toString).toList() to "2-4",
+                    (1..5).map(Int::toString).toList() to "5-9",
+                    (1..9).map(Int::toString).toList() to "5-9",
+                    (1..10).map(Int::toString).toList() to "10-19",
+                    (1..19).map(Int::toString).toList() to "10-19",
+                    (1..20).map(Int::toString).toList() to ">=20",
+                ).forEach { (splitTunnelingApps, expectedDimensionValue) ->
+                    localUserSettingsFlow.value = LocalUserSettings(
+                        splitTunneling = SplitTunnelingSettings(
+                            isEnabled = isSplitTunnelingEnabled,
+                            mode = splitTunnelingMode,
+                            excludedApps = splitTunnelingApps,
+                            includedApps = splitTunnelingApps,
+                        ),
+                    )
+
+                    val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+                    assertEquals(expectedDimensionValue, dimensions[dimension])
+                }
+            }
+        }
+    }
+
+    @Test
+    fun `GIVEN split tunneling mode AND IPs list WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "split_tunneling_ips_count"
+
+        listOf(true, false).forEach { isSplitTunnelingEnabled ->
+            SplitTunnelingMode.entries.forEach { splitTunnelingMode ->
+                listOf(
+                    emptyList<String>() to "0",
+                    (1..1).map(Int::toString).toList() to "1",
+                    (1..2).map(Int::toString).toList() to "2-4",
+                    (1..4).map(Int::toString).toList() to "2-4",
+                    (1..5).map(Int::toString).toList() to "5-9",
+                    (1..9).map(Int::toString).toList() to "5-9",
+                    (1..10).map(Int::toString).toList() to "10-19",
+                    (1..19).map(Int::toString).toList() to "10-19",
+                    (1..20).map(Int::toString).toList() to ">=20",
+                ).forEach { (splitTunnelingIps, expectedDimensionValue) ->
+                    localUserSettingsFlow.value = LocalUserSettings(
+                        splitTunneling = SplitTunnelingSettings(
+                            isEnabled = isSplitTunnelingEnabled,
+                            mode = splitTunnelingMode,
+                            excludedIps = splitTunnelingIps,
+                            includedIps = splitTunnelingIps,
+                        ),
+                    )
+
+                    val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+                    assertEquals(expectedDimensionValue, dimensions[dimension])
+                }
+            }
+        }
+    }
+
+    @Test
+    fun `GIVEN no country in excluded locations WHEN providing dimensions THEN excluded countries dimension is set`() = testScope.runTest {
+        val dimension = "excluded_countries_count"
+        val excludedLocationEntities = listOf(TestExcludedLocationEntity.create(type = ExcludedLocationType.City))
+        val expectedDimensionValue = "0"
+        vpnUsers.forEach { vpnUser ->
+            testUserProvider.vpnUser = vpnUser
+            excludeLocationEntitiesFlow.value = excludedLocationEntities
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(
+                expected = expectedDimensionValue,
+                actual = dimensions[dimension],
+                message = "Failed for vpn user: $vpnUser",
+            )
+        }
+    }
+
+    @Test
+    fun `GIVEN country excluded locations WHEN providing dimensions THEN excluded countries dimension is set`() = testScope.runTest {
+        val dimension = "excluded_countries_count"
+        val bucketTopLimit = 21
+        val excludedLocationEntities = buildList {
+            repeat(times = bucketTopLimit) { id ->
+                add(TestExcludedLocationEntity.create(id = id.toLong(), type = ExcludedLocationType.Country))
+            }
+        }
+        vpnUsers.forEach { vpnUser ->
+            testUserProvider.vpnUser = vpnUser
+
+            excludedLocationsBuckets.forEach { (locationsAmount, expectedDimensionValue) ->
+                excludeLocationEntitiesFlow.value = excludedLocationEntities.take(locationsAmount)
+
+                val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+                assertEquals(
+                    expected = expectedDimensionValue,
+                    actual = dimensions[dimension],
+                    message = "Failed for vpn user $vpnUser and locations amount $locationsAmount",
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `GIVEN no city nor state in excluded locations WHEN providing dimensions THEN excluded countries dimension is set`() = testScope.runTest {
+        val dimension = "excluded_cities_count"
+        val excludedLocationEntities = listOf(TestExcludedLocationEntity.create(type = ExcludedLocationType.Country))
+        val expectedDimensionValue = "0"
+        vpnUsers.forEach { vpnUser ->
+            testUserProvider.vpnUser = vpnUser
+            excludeLocationEntitiesFlow.value = excludedLocationEntities
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(
+                expected = expectedDimensionValue,
+                actual = dimensions[dimension],
+                message = "Failed for vpn user: $vpnUser",
+            )
+        }
+    }
+
+    @Test
+    fun `GIVEN city and state excluded locations WHEN providing dimensions THEN excluded cities dimension is set`() = testScope.runTest {
+        val dimension = "excluded_cities_count"
+        val bucketTopLimit = 21
+        val excludedLocationEntities = buildList {
+            repeat(times = bucketTopLimit) { id ->
+                val excludedLocationType = if (id % 2 == 0) {
+                    ExcludedLocationType.City
+                } else {
+                    ExcludedLocationType.State
+                }
+
+                add(TestExcludedLocationEntity.create(id = id.toLong(), type = excludedLocationType))
+            }
+        }
+
+        vpnUsers.forEach { vpnUser ->
+            testUserProvider.vpnUser = vpnUser
+
+            excludedLocationsBuckets.forEach { (locationsAmount, expectedDimensionValue) ->
+                excludeLocationEntitiesFlow.value = excludedLocationEntities.take(locationsAmount)
+
+                val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+                assertEquals(
+                    expected = expectedDimensionValue,
+                    actual = dimensions[dimension],
+                    message = "Failed for vpn user $vpnUser and locations amount $locationsAmount",
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `GIVEN NAT type WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "nat_type"
+
+        listOf(
+            NatType.Moderate to "moderate",
+            NatType.Strict to "strict",
+        ).forEach { (natType, expectedDimensionValue) ->
+            localUserSettingsFlow.value = LocalUserSettings(randomizedNat = natType.toRandomizedNat())
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expected = expectedDimensionValue, actual = dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN netshield protocol WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "netshield_level"
+
+        listOf(
+            NetShieldProtocol.DISABLED to "off",
+            NetShieldProtocol.ENABLED to "malware",
+            NetShieldProtocol.ENABLED_EXTENDED to "ads_trackers_and_malware",
+            NetShieldProtocol.ENABLED_EXTENDED_ADULT_CONTENT to "ads_trackers_malware_and_adult_content",
+        ).forEach { (netShieldProtocol, expectedDimensionValue) ->
+            localUserSettingsFlow.value = LocalUserSettings(netShield = netShieldProtocol)
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expected = expectedDimensionValue, actual = dimensions[dimension])
+        }
+    }
+
+    @Test
+    fun `GIVEN there is no known always-on WHEN providing dimensions THEN dimension is not set`() = testScope.runTest {
+        val dimension = "kill_switch_level"
+
+        val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+        assertNull(actual = dimensions[dimension])
+    }
+
+    @Test
+    fun `GIVEN known always-on WHEN providing dimensions THEN dimension is set`() = testScope.runTest {
+        val dimension = "kill_switch_level"
+
+        listOf(
+            VpnAlwaysOn(
+                isEnabled = true,
+                isLockdownEnabled = false,
+            ) to "off",
+            VpnAlwaysOn(
+                isEnabled = true,
+                isLockdownEnabled = true,
+            ) to "advanced",
+        ).forEach { (vpnAlwaysOn, expectedDimensionValue) ->
+            vpnAlwaysOnStorage.setVpnAlwaysOn(vpnAlwaysOn = vpnAlwaysOn)
+
+            val dimensions = getSettingsTelemetryHeartbeatDimensions()
+
+            assertEquals(expected = expectedDimensionValue, actual = dimensions[dimension])
+        }
+    }
+
+}

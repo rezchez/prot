@@ -1,0 +1,79 @@
+<!--
+  Copyright (c) 2022. Proton AG
+
+  This file is part of ProtonVPN.
+
+  ProtonVPN is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  ProtonVPN is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="33dp"
+    android:height="32dp"
+    android:viewportWidth="33"
+    android:viewportHeight="32">
+  <group>
+    <clip-path
+        android:pathData="M0.5,0h32v32h-32z"/>
+    <path
+        android:pathData="M16.5,16m-16,0a16,16 0,1 1,32 0a16,16 0,1 1,-32 0"
+        android:fillColor="#ffffff"/>
+    <path
+        android:pathData="M14.7822,25.1033C15.4949,26.3945 17.325,26.4644 18.1341,25.2314L25.6786,13.734C26.4787,12.5148 25.7132,10.8801 24.2644,10.7139L9.4354,9.0135C7.8545,8.8322 6.7288,10.5123 7.4978,11.9055L14.7822,25.1033Z"
+        android:fillType="evenOdd">
+      <aapt:attr name="android:fillColor">
+        <gradient 
+            android:startY="-1.37326"
+            android:startX="17.553"
+            android:endY="20.3196"
+            android:endX="18.1911"
+            android:type="linear">
+          <item android:offset="0.988738" android:color="#FF6D4AFF"/>
+          <item android:offset="1" android:color="#FF6D4AFF"/>
+        </gradient>
+      </aapt:attr>
+    </path>
+    <path
+        android:pathData="M14.7822,25.1033C15.4949,26.3945 17.325,26.4644 18.1341,25.2314L25.6786,13.734C26.4787,12.5148 25.7132,10.8801 24.2644,10.7139L9.4354,9.0135C7.8545,8.8322 6.7288,10.5123 7.4978,11.9055L14.7822,25.1033Z"
+        android:fillType="evenOdd">
+      <aapt:attr name="android:fillColor">
+        <gradient 
+            android:startY="1.62981"
+            android:startX="17.6777"
+            android:endY="24.4581"
+            android:endX="12.3756"
+            android:type="linear">
+          <item android:offset="0.47989" android:color="#0024ECC6"/>
+          <item android:offset="0.994421" android:color="#FF24ECC6"/>
+        </gradient>
+      </aapt:attr>
+    </path>
+    <path
+        android:pathData="M15.8766,22.8927L15.2071,23.8991C14.9358,24.3069 14.3287,24.2818 14.092,23.853L14.7822,25.1034C14.9053,25.3264 15.0616,25.5129 15.2403,25.6626L15.2404,25.6625C16.0965,26.3797 17.4647,26.2514 18.1341,25.2313L25.6786,13.734C26.4787,12.5148 25.7132,10.8801 24.2644,10.714L9.4354,9.0135C7.8545,8.8322 6.7288,10.5123 7.4978,11.9055L7.5563,12.0116L20.1783,13.472C20.9828,13.5651 21.4072,14.4732 20.9626,15.1501L15.8766,22.8927Z"
+        android:fillType="evenOdd">
+      <aapt:attr name="android:fillColor">
+        <gradient 
+            android:startY="26.9593"
+            android:startX="19.4315"
+            android:endY="6.85556"
+            android:endX="7.67558"
+            android:type="linear">
+          <item android:offset="0.0660125" android:color="#FFABFFEF"/>
+          <item android:offset="0.44988" android:color="#FFCAC9FF"/>
+          <item android:offset="1" android:color="#FF6D4AFF"/>
+        </gradient>
+      </aapt:attr>
+    </path>
+  </group>
+</vector>

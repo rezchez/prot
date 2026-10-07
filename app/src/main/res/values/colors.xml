@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2021 Proton AG
+ 
+ This file is part of ProtonVPN.
+ 
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ 
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+    <color name="notificationDetailsStroke">#EAECF1</color>
+    <color name="black">#000000</color>
+
+    <color name="protonVpnGreen">#1C9C7C</color>
+
+    <color name="protonWidgetConnectedGradientStart">#3D1C9C7C</color>
+    <color name="protonWidgetConnectedGradientEnd">#001C9C7C</color>
+    <color name="protonWidgetConnectingGradientStart">#1F0C0C14</color>
+    <color name="protonWidgetConnectingGradientEnd">#000C0C14</color>
+    <color name="protonWidgetDisconnectedGradientStart">#33F08FA4</color>
+    <color name="protonWidgetDisconnectedGradientEnd">#00F08FA4</color>
+    <color name="protonWidgetNeedsLoginGradientStart">#37A7AE</color>
+    <color name="protonWidgetNeedsLoginGradientMiddle">#A6D4D7</color>
+    <color name="protonWidgetNeedsLoginGradientEnd">#FFFFFF</color>
+    <color name="protonWidgetBackgroundSecondary">#14000000</color>
+    <color name="protonWidgetInteractionNorm">@color/cornflower_blue</color>
+    <color name="protonWidgetInteractionSecondary">@color/interaction_weak</color>
+
+    <!-- TV -->
+    <color name="tvAccent">#6D4AFF</color>
+    <color name="tvAccentLighten">#8A6EFF</color>
+    <color name="tvAlert">#DC3251</color>
+    <color name="tvBackground">#1C1B24</color>
+    <color name="tvButtonBg">#6D697D</color>
+    <color name="tvCardBackground">#292733</color>
+    <color name="tvCardRowIconColor">#5D616B</color>
+    <color name="tvDisconnect">@color/tvAlert</color>
+    <color name="tvHeaderLabelBackground">#4dFFFFFF</color>
+    <color name="tvMapSelected">#6D697D</color>
+    <color name="tvMapCountry">#3F3B4C</color>
+    <color name="tvMapConnected">@color/tvAccent</color>
+    <color name="tvMapBorder">@color/tvBackground</color>
+    <color name="tvInMaintenance">#A7A4B5</color>
+    <color name="tvServerLoadLow">#1EA885</color>
+    <color name="tvServerLoadMedium">#FF9900</color>
+    <color name="tvServerLoadHigh">@color/tvAlert</color>
+    <color name="tvGuidedActionsBackground">#E01623</color>
+    <color name="tvGuidedActionsBackgroundDark">#BD6566</color>
+    <color name="tvDisconnectButtonTint">#AA2e2e34</color>
+    <color name="tvGridItemOverlay">#774b4b56</color>
+    <color name="tvGridItemOverlayFastest">#801A1D23</color>
+    <color name="tvDialogBackground">#292733</color>
+
+    <fraction name="upsellDialogGradientAlphaFraction">50%</fraction>
+</resources>

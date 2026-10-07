@@ -1,0 +1,329 @@
+[versions]
+agp-version = "8.9.1" # Remove pluginManagement R8 override from settings.gradle.kts when updating to 8.13.2 or newer.
+airbnb-lottie-version = "6.6.7"
+android-compose-screenshot-version = "0.0.1-alpha14"
+android-flexbox-version = "3.0.0"
+android-installreferrer-version = "2.2"
+android-material-version = "1.12.0"
+android-tools-version = "2.1.5"
+androidx-activity-version = "1.12.4"
+androidx-arch-core-version = "2.2.0"
+androidx-benchmark-version = "1.4.1"
+androidx-browser-version = "1.9.0"
+androidx-constraintlayout-compose-version = "1.1.1"
+androidx-constraintlayout-version = "2.2.1"
+androidx-core-splashscreen-version = "1.2.0"
+androidx-core-version = "1.17.0"
+androidx-datastore-version = "1.2.1"
+androidx-espresso-version = "3.7.0"
+androidx-fragment-version = "1.8.9"
+androidx-glance-version = "1.1.1"
+androidx-hilt-version = "1.2.0"
+androidx-leanback-version = "1.2.0"
+androidx-legacy-version = "1.0.0"
+androidx-lifecycle-version = "2.10.0"
+androidx-navigation-version = "2.9.7"
+androidx-preference-version = "1.2.1"
+androidx-profileinstaller-version = "1.4.1"
+androidx-recyclerview-version = "1.3.2"
+androidx-room-version = "2.7.2"
+androidx-test-core-version = "1.7.0"
+androidx-test-junit-version = "1.3.0"
+androidx-test-orchestrator-version = "1.6.1"
+androidx-test-rules-version = "1.7.0"
+androidx-test-runner-version = "1.7.0"
+androidx-test-services-version = "1.6.0"
+androidx-test-truth-version = "1.7.0"
+androidx-tv-foundation-version = "1.0.0-beta01"
+androidx-tv-material-version = "1.1.0-beta01"
+androidx-uiautomator-version = "2.3.0"
+androidx-vectordrawable-version = "1.2.0"
+androidx-viewpager2-version = "1.1.0"
+androidx-window-version = "1.5.1"
+androidx-work-version = "2.9.1"
+calvin-reorderable-version = "2.4.3"
+caverock-androidsvg-version = "1.4"
+commons-codec-version = "1.15"
+compose-bom-version = "2026.02.00"
+dagger-hilt-version = "2.58"
+detekt-version = "1.23.8"
+dnsjava-version = "3.6.2"
+glide-compose-version = "1.0.0-beta08"
+glide-version = "5.0.5"
+google-guava-version = "33.2.1-android"
+google-play-app-update-version = "2.1.0"
+google-play-review-version = "2.0.2"
+google-truth-version = "1.4.4"
+jacoco-tools-version = "0.8.14"
+jaredsburrows-gradle-license-version = "0.8.91"
+java-jna-version = "5.18.1"
+junit-version = "4.13.2"
+kotlin-version = "2.2.21"
+kotlinx-coroutines-version = "1.10.2"
+kotlinx-serialization-version = "1.11.0"
+ksp-version = "2.2.21-2.0.5"
+mockk-version = "1.14.11"
+okhttp3-version = "4.12.0"
+owasp-dependencycheck-version = "10.0.4"
+proton-core-env-config-version = "1.3.1"
+proton-core-version = "36.8.0"
+proton-payment-version = "1.4.0"
+proton-test-fusion-version = "0.9.97"
+proton-vpn-govpnlib-version = "0.1.87"
+proton-vpn-core-internal-version = "2.4.2-1.0.45"
+proton-vpn-wireguard-version = "1.0.20230512.29"
+relex-circleindicator-version = "2.1.6"
+retrofit-version = "2.12.0"
+robolectric-version = "4.16.1"
+scottyab-aes-crypto-version = "0.0.5"
+seancfoley-ipaddress-version = "5.5.1"
+sentry-plugin-version = "5.12.2"
+sentry-version = "7.22.5"
+slf4j-version = "1.7.36"
+squareup-leakcanary-version = "2.14"
+tony19-logback-version = "2.0.0"
+triplet-play-version = "3.10.1"
+turbine-version = "1.2.1"
+vico-version = "2.0.0-alpha.14"
+
+[libraries]
+airbnb-lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "airbnb-lottie-version" }
+airbnb-lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "airbnb-lottie-version" }
+android-flexbox = { group = "com.google.android.flexbox", name = "flexbox", version.ref = "android-flexbox-version" }
+android-installreferrer = { group = "com.android.installreferrer", name = "installreferrer", version.ref = "android-installreferrer-version" }
+android-material = { group = "com.google.android.material", name = "material", version.ref = "android-material-version" }
+android-tools-build-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "agp-version" }
+android-tools-desugar-jdk-libs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "android-tools-version" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidx-activity-version" }
+androidx-arch-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "androidx-arch-core-version" }
+androidx-benchmark-macro-junit = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "androidx-benchmark-version" }
+androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "androidx-browser-version" }
+androidx-compose-animation-android = { group = "androidx.compose.animation", name = "animation-android" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom-version" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-material3-windowsizeclass = { group = "androidx.compose.material3", name = "material3-window-size-class" }
+androidx-compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
+androidx-compose-screenshot-validation-junit-engine = { group = "com.android.tools.screenshot", name = "screenshot-validation-junit-engine", version.ref = "android-compose-screenshot-version" }
+androidx-compose-screenshot-validation-api = { group = "com.android.tools.screenshot", name = "screenshot-validation-api", version.ref = "android-compose-screenshot-version" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui-viewbinding = { group = "androidx.compose.ui", name = "ui-viewbinding" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout-version" }
+androidx-constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose-android", version.ref = "androidx-constraintlayout-compose-version" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-version" }
+androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidx-core-splashscreen-version" }
+androidx-datastore = { group = "androidx.datastore", name = "datastore", version.ref = "androidx-datastore-version" }
+androidx-datastore-core = { group = "androidx.datastore", name = "datastore-core", version.ref = "androidx-datastore-version" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidx-fragment-version" }
+androidx-fragment-compose = { group = "androidx.fragment", name = "fragment-compose", version.ref = "androidx-fragment-version" }
+androidx-glance-appwidget = { group = "androidx.glance", name = "glance-appwidget", version.ref = "androidx-glance-version" }
+androidx-glance-appwidget-preview = { group = "androidx.glance", name = "glance-appwidget-preview", version.ref = "androidx-glance-version" }
+androidx-glance-appwidget-testing = { group = "androidx.glance", name = "glance-appwidget-testing", version.ref = "androidx-glance-version" }
+androidx-glance-material3 = { group = "androidx.glance", name = "glance-material3", version.ref = "androidx-glance-version" }
+androidx-glance-preview = { group = "androidx.glance", name = "glance-preview", version.ref = "androidx-glance-version" }
+androidx-glance-testing = { group = "androidx.glance", name = "glance-testing", version.ref = "androidx-glance-version" }
+androidx-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "androidx-hilt-version" }
+androidx-hilt-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "androidx-hilt-version" }
+androidx-leanback = { group = "androidx.leanback", name = "leanback", version.ref = "androidx-leanback-version" }
+androidx-leanback-preference = { group = "androidx.leanback", name = "leanback-preference", version.ref = "androidx-leanback-version" }
+androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "androidx-legacy-version" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "androidx-lifecycle-version" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle-version" }
+androidx-lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "androidx-lifecycle-version" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle-version" }
+androidx-lifecycle-runtime-testing = { group = "androidx.lifecycle", name = "lifecycle-runtime-testing", version.ref = "androidx-lifecycle-version" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle-version" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidx-navigation-version" }
+androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "androidx-navigation-version" }
+androidx-preference-ktx = { group = "androidx.preference", name = "preference-ktx", version.ref = "androidx-preference-version" }
+androidx-profileinstaller = { group = "androidx.profileinstaller", name = "profileinstaller", version.ref = "androidx-profileinstaller-version" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidx-recyclerview-version" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room-version" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidx-room-version" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidx-room-version" }
+androidx-room-testing = { group = "androidx.room", name = "room-testing", version.ref = "androidx-room-version" }
+androidx-test-core = { group = "androidx.test", name = "core", version.ref = "androidx-test-core-version" }
+androidx-test-espresso-accessibility = { group = "androidx.test.espresso", name = "espresso-accessibility", version.ref = "androidx-espresso-version" }
+androidx-test-espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "androidx-espresso-version" }
+androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso-version" }
+androidx-test-espresso-idling-resource = { group = "androidx.test.espresso", name = "espresso-idling-resource", version.ref = "androidx-espresso-version" }
+androidx-test-espresso-intents = { group = "androidx.test.espresso", name = "espresso-intents", version.ref = "androidx-espresso-version" }
+androidx-test-espresso-web = { group = "androidx.test.espresso", name = "espresso-web", version.ref = "androidx-espresso-version" }
+androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-junit-version" }
+androidx-test-orchestrator = { group = "androidx.test", name = "orchestrator", version.ref = "androidx-test-orchestrator-version" }
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidx-test-rules-version" }
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidx-test-runner-version" }
+androidx-test-services = { group = "androidx.test.services", name = "test-services", version.ref = "androidx-test-services-version" }
+androidx-test-truth = { group = "androidx.test.ext", name = "truth", version.ref = "androidx-test-truth-version" }
+androidx-test-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidx-uiautomator-version" }
+androidx-tv-foundation = { group = "androidx.tv", name = "tv-foundation", version.ref = "androidx-tv-foundation-version" }
+androidx-tv-material = { group = "androidx.tv", name = "tv-material", version.ref = "androidx-tv-material-version" }
+androidx-vectordrawable = { group = "androidx.vectordrawable", name = "vectordrawable", version.ref = "androidx-vectordrawable-version" }
+androidx-viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "androidx-viewpager2-version" }
+androidx-window = { group = "androidx.window", name = "window", version.ref = "androidx-window-version" }
+androidx-work-runtime = { group = "androidx.work", name = "work-runtime", version.ref = "androidx-work-version" }
+androidx-work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "androidx-work-version" }
+calvin-reorderable = { group = "sh.calvin.reorderable", name = "reorderable", version.ref = "calvin-reorderable-version" }
+caverock-androidsvg = { group = "com.caverock", name = "androidsvg-aar", version.ref = "caverock-androidsvg-version" }
+commons-codec = { group = "commons-codec", name = "commons-codec", version.ref = "commons-codec-version" }
+dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "dagger-hilt-version" }
+dagger-hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "dagger-hilt-version" }
+dagger-hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "dagger-hilt-version" }
+dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "dagger-hilt-version" }
+detekt-api = { group = "io.gitlab.arturbosch.detekt", name = "detekt-api", version.ref = "detekt-version" }
+detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt-version" }
+detekt-test = { group = "io.gitlab.arturbosch.detekt", name = "detekt-test", version.ref = "detekt-version" }
+dnsjava-dnsjava = { group = "dnsjava", name = "dnsjava", version.ref = "dnsjava-version" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide-version" }
+glide-compose = { group = "com.github.bumptech.glide", name = "compose", version.ref = "glide-compose-version" }
+glide-ksp = { group = "com.github.bumptech.glide", name = "ksp", version.ref = "glide-version" }
+google-guava = { group = "com.google.guava", name = "guava", version.ref = "google-guava-version" }
+google-play-app-update = { group = "com.google.android.play", name = "app-update", version.ref = "google-play-app-update-version" }
+google-play-app-update-ktx = { group = "com.google.android.play", name = "app-update-ktx", version.ref = "google-play-app-update-version" }
+google-play-review = { group = "com.google.android.play", name = "review", version.ref = "google-play-review-version" }
+google-play-review-ktx = { group = "com.google.android.play", name = "review-ktx", version.ref = "google-play-review-version" }
+google-truth = { group = "com.google.truth", name = "truth", version.ref = "google-truth-version" }
+java-jna = { group = "net.java.dev.jna", name = "jna", version.ref = "java-jna-version" }
+junit = { group = "junit", name = "junit", version.ref = "junit-version" }
+kotlin-bom = { group = "org.jetbrains.kotlin", name = "kotlin-bom", version.ref = "kotlin-version" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test" }
+kotlin-test-junit = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines-version" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-version" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-version" }
+kotlinx-serialization-cbor = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-cbor", version.ref = "kotlinx-serialization-version" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-version" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk-version" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk-version" }
+okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp3-version" }
+okhttp3-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp3-version" }
+okhttp3-tls = { group = "com.squareup.okhttp3", name = "okhttp-tls", version.ref = "okhttp3-version" }
+proton-core-account = { group = "me.proton.core", name = "account", version.ref = "proton-core-version" }
+proton-core-account-data = { group = "me.proton.core", name = "account-data", version.ref = "proton-core-version" }
+proton-core-account-manager-data = { group = "me.proton.core", name = "account-manager-data", version.ref = "proton-core-version" }
+proton-core-account-manager-domain = { group = "me.proton.core", name = "account-manager-domain", version.ref = "proton-core-version" }
+proton-core-account-manager-presentation = { group = "me.proton.core", name = "account-manager-presentation", version.ref = "proton-core-version" }
+proton-core-account-manager-presentation-compose = { group = "me.proton.core", name = "account-manager-presentation-compose", version.ref = "proton-core-version" }
+proton-core-account-recovery = { group = "me.proton.core", name = "account-recovery", version.ref = "proton-core-version" }
+proton-core-account-recovery-dagger = { group = "me.proton.core", name = "account-recovery-dagger", version.ref = "proton-core-version" }
+proton-core-account-recovery-test = { group = "me.proton.core", name = "account-recovery-test", version.ref = "proton-core-version" }
+proton-core-auth = { group = "me.proton.core", name = "auth", version.ref = "proton-core-version" }
+proton-core-auth-dagger = { group = "me.proton.core", name = "auth-dagger", version.ref = "proton-core-version" }
+proton-core-auth-fido-dagger = { group = "me.proton.core", name = "auth-fido-dagger", version.ref = "proton-core-version" }
+proton-core-auth-fido-domain = { group = "me.proton.core", name = "auth-fido-domain", version.ref = "proton-core-version" }
+proton-core-auth-fido-play = { group = "me.proton.core", name = "auth-fido-play", version.ref = "proton-core-version" }
+proton-core-auth-test = { group = "me.proton.core", name = "auth-test", version.ref = "proton-core-version" }
+proton-core-biometric = { group = "me.proton.core", name = "biometric", version.ref = "proton-core-version" }
+proton-core-challenge = { group = "me.proton.core", name = "challenge", version.ref = "proton-core-version" }
+proton-core-configuration-dagger-content-resolver = { group = "me.proton.core", name = "configuration-dagger-content-resolver", version.ref = "proton-core-version" }
+proton-core-configuration-dagger-staticdefaults = { group = "me.proton.core", name = "configuration-dagger-staticdefaults", version.ref = "proton-core-version" }
+proton-core-configuration-data = { group = "me.proton.core", name = "configuration-data", version.ref = "proton-core-version" }
+proton-core-country = { group = "me.proton.core", name = "country", version.ref = "proton-core-version" }
+proton-core-crypto = { group = "me.proton.core", name = "crypto", version.ref = "proton-core-version" }
+proton-core-crypto-android = { group = "me.proton.core", name = "crypto-android", version.ref = "proton-core-version" }
+proton-core-crypto-validator = { group = "me.proton.core", name = "crypto-validator", version.ref = "proton-core-version" }
+proton-core-data = { group = "me.proton.core", name = "data", version.ref = "proton-core-version" }
+proton-core-data-room = { group = "me.proton.core", name = "data-room", version.ref = "proton-core-version" }
+proton-core-device-migration = { group = "me.proton.core", name = "device-migration", version.ref = "proton-core-version" }
+proton-core-domain = { group = "me.proton.core", name = "domain", version.ref = "proton-core-version" }
+proton-core-event-manager = { group = "me.proton.core", name = "event-manager", version.ref = "proton-core-version" }
+proton-core-event-manager-data = { group = "me.proton.core", name = "event-manager-data", version.ref = "proton-core-version" }
+proton-core-feature-flag = { group = "me.proton.core", name = "feature-flag", version.ref = "proton-core-version" }
+proton-core-feature-flag-data = { group = "me.proton.core", name = "feature-flag-data", version.ref = "proton-core-version" }
+proton-core-human-verification-data = { group = "me.proton.core", name = "human-verification-data", version.ref = "proton-core-version" }
+proton-core-human-verification-domain = { group = "me.proton.core", name = "human-verification-domain", version.ref = "proton-core-version" }
+proton-core-human-verification-presentation = { group = "me.proton.core", name = "human-verification-presentation", version.ref = "proton-core-version" }
+proton-core-human-verification-test = { group = "me.proton.core", name = "human-verification-test", version.ref = "proton-core-version" }
+proton-core-key = { group = "me.proton.core", name = "key", version.ref = "proton-core-version" }
+proton-core-network-data = { group = "me.proton.core", name = "network-data", version.ref = "proton-core-version" }
+proton-core-network-domain = { group = "me.proton.core", name = "network-domain", version.ref = "proton-core-version" }
+proton-core-network-presentation = { group = "me.proton.core", name = "network-presentation", version.ref = "proton-core-version" }
+proton-core-notification-data = { group = "me.proton.core", name = "notification-data", version.ref = "proton-core-version" }
+proton-core-notification-domain = { group = "me.proton.core", name = "notification-domain", version.ref = "proton-core-version" }
+proton-core-notification-presentation = { group = "me.proton.core", name = "notification-presentation", version.ref = "proton-core-version" }
+proton-core-notification-test = { group = "me.proton.core", name = "notification-test", version.ref = "proton-core-version" }
+proton-core-observability = { group = "me.proton.core", name = "observability", version.ref = "proton-core-version" }
+proton-core-observability-data = { group = "me.proton.core", name = "observability-data", version.ref = "proton-core-version" }
+proton-core-observability-domain = { group = "me.proton.core", name = "observability-domain", version.ref = "proton-core-version" }
+proton-core-observability-tools = { group = "me.proton.core", name = "observability-tools", version.ref = "proton-core-version" }
+proton-core-pass-validator = { group = "me.proton.core", name = "pass-validator", version.ref = "proton-core-version" }
+proton-core-payment = { group = "me.proton.core", name = "payment", version.ref = "proton-core-version" }
+proton-core-payment-data = { group = "me.proton.core", name = "payment-data", version.ref = "proton-core-version" }
+proton-core-payment-iap = { group = "me.proton.core", name = "payment-iap", version.ref = "proton-core-version" }
+proton-core-plan = { group = "me.proton.core", name = "plan", version.ref = "proton-core-version" }
+proton-core-plan-domain = { group = "me.proton.core", name = "plan-domain", version.ref = "proton-core-version" }
+proton-core-plan-presentation = { group = "me.proton.core", name = "plan-presentation", version.ref = "proton-core-version" }
+proton-core-plan-test = { group = "me.proton.core", name = "plan-test", version.ref = "proton-core-version" }
+proton-core-presentation = { group = "me.proton.core", name = "presentation", version.ref = "proton-core-version" }
+proton-core-presentation-compose = { group = "me.proton.core", name = "presentation-compose", version.ref = "proton-core-version" }
+proton-core-presentation-compose-tv = { group = "me.proton.core", name = "presentation-compose-tv", version.ref = "proton-core-version" }
+proton-core-push = { group = "me.proton.core", name = "push", version.ref = "proton-core-version" }
+proton-core-push-data = { group = "me.proton.core", name = "push-data", version.ref = "proton-core-version" }
+proton-core-telemetry-data = { group = "me.proton.core", name = "telemetry-data", version.ref = "proton-core-version" }
+proton-core-telemetry-domain = { group = "me.proton.core", name = "telemetry-domain", version.ref = "proton-core-version" }
+proton-core-test-android-instrumented = { group = "me.proton.core", name = "test-android-instrumented", version.ref = "proton-core-version" }
+proton-core-test-kotlin = { group = "me.proton.core", name = "test-kotlin", version.ref = "proton-core-version" }
+proton-core-test-performance = { group = "me.proton.core", name = "test-performance", version.ref = "proton-core-version" }
+proton-core-test-quark = { group = "me.proton.core", name = "test-quark", version.ref = "proton-core-version" }
+proton-core-user = { group = "me.proton.core", name = "user", version.ref = "proton-core-version" }
+proton-core-user-data = { group = "me.proton.core", name = "user-data", version.ref = "proton-core-version" }
+proton-core-user-domain = { group = "me.proton.core", name = "user-domain", version.ref = "proton-core-version" }
+proton-core-user-recovery = { group = "me.proton.core", name = "user-recovery", version.ref = "proton-core-version" }
+proton-core-user-recovery-data = { group = "me.proton.core", name = "user-recovery-data", version.ref = "proton-core-version" }
+proton-core-user-recovery-test = { group = "me.proton.core", name = "user-recovery-test", version.ref = "proton-core-version" }
+proton-core-user-settings = { group = "me.proton.core", name = "user-settings", version.ref = "proton-core-version" }
+proton-core-user-settings-data = { group = "me.proton.core", name = "user-settings-data", version.ref = "proton-core-version" }
+proton-core-util-android-dagger = { group = "me.proton.core", name = "util-android-dagger", version.ref = "proton-core-version" }
+proton-core-util-android-datetime = { group = "me.proton.core", name = "util-android-datetime", version.ref = "proton-core-version" }
+proton-core-util-android-sentry = { group = "me.proton.core", name = "util-android-sentry", version.ref = "proton-core-version" }
+proton-core-util-android-shared-preferences = { group = "me.proton.core", name = "util-android-shared-preferences", version.ref = "proton-core-version" }
+proton-core-util-kotlin = { group = "me.proton.core", name = "util-kotlin", version.ref = "proton-core-version" }
+proton-payment = { group = "me.proton.android.payment", name = "payment", version.ref = "proton-payment-version" }
+proton-payment-billing-google = { group = "me.proton.android.payment", name = "payment-billing-google", version.ref = "proton-payment-version" }
+proton-test-fusion = { group = "me.proton.test", name = "fusion", version.ref = "proton-test-fusion-version" }
+proton-vpn-govpnlib = { group = "me.proton.vpn", name = "go-vpn-lib", version.ref = "proton-vpn-govpnlib-version" }
+proton-vpn-core-internal = { group = "me.proton.vpn", name = "vpn-core-internal", version.ref = "proton-vpn-core-internal-version" }
+proton-vpn-wireguard = { group = "me.proton.vpn", name = "wireguard-android", version.ref = "proton-vpn-wireguard-version" }
+relex-circleindicator = { group = "me.relex", name = "circleindicator", version.ref = "relex-circleindicator-version" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit-version" }
+robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric-version" }
+scottyab-aes-crypto = { group = "com.scottyab", name = "aes-crypto", version.ref = "scottyab-aes-crypto-version" }
+seancfoley-ipaddress = { group = "com.github.seancfoley", name = "ipaddress", version.ref = "seancfoley-ipaddress-version" }
+sentry-android = { group = "io.sentry", name = "sentry-android", version.ref = "sentry-version" }
+slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-version" }
+squareup-leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "squareup-leakcanary-version" }
+squareup-leakcanary-object-watcher = { group = "com.squareup.leakcanary", name = "leakcanary-object-watcher-android", version.ref = "squareup-leakcanary-version" }
+tony19-logback = { group = "com.github.tony19", name = "logback-android", version.ref = "tony19-logback-version" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine-version" }
+vico-compose = { group = "com.patrykandpatrick.vico", name = "compose", version.ref = "vico-version" }
+vico-core = { group = "com.patrykandpatrick.vico", name = "core", version.ref = "vico-version" }
+
+[plugins]
+android-application = { id = "com.android.application" , version.ref = "agp-version" }
+android-compose-screenshot = { id = "com.android.compose.screenshot", version.ref = "android-compose-screenshot-version" }
+android-library = { id = "com.android.library" , version.ref = "agp-version" }
+android-test = { id = "com.android.test" , version.ref = "agp-version" }
+androidx-baselineprofile = { id = "androidx.baselineprofile", version.ref = "androidx-profileinstaller-version" }
+androidx-room = { id = "androidx.room", version.ref = "androidx-room-version" }
+application = { id = "application" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger-hilt-version" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt-version" }
+jacoco = { id = "jacoco" }
+jaredsburrows-gradle-license = { id = "com.jaredsburrows.license", version.ref = "jaredsburrows-gradle-license-version" }
+java = { id = "java" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-version" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin-version" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-version" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin-version" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-version" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
+owasp-dependencycheck = { id = "org.owasp.dependencycheck", version.ref = "owasp-dependencycheck-version" }
+proton-core-env-config = { id = "me.proton.core.gradle-plugins.environment-config", version.ref = "proton-core-env-config-version" }
+proton-vpn-android-application = { id = "me.proton.vpn.android.application" }
+proton-vpn-android-library = { id = "me.proton.vpn.android.library" }
+sentry = { id = "io.sentry.android.gradle", version.ref = "sentry-plugin-version" }
+triplet-play = { id = "com.github.triplet.play", version.ref = "triplet-play-version" }

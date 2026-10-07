@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ Copyright (c) 2017 Proton AG
+ 
+ This file is part of ProtonVPN.
+ 
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ 
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ 
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+
+    <attr name="protonVpnPowerButtonStyle" format="reference" />
+    <attr name="title" format="string" />
+    <attr name="serverInMaintenance" format="color"/>
+    <attr name="serverLoadLow" format="color"/>
+    <attr name="serverLoadMedium" format="color"/>
+    <attr name="serverLoadHigh" format="color"/>
+    <attr name="strong_red_color" format="color" />
+
+    <declare-styleable name="CountryWithFlagsView">
+        <attr name="android:textAppearance" />
+        <attr name="flagWidth" format="dimension" />
+        <attr name="flagMarginEnd" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="ItemServerSwitch">
+        <attr name="serverSwitchArrowDrawable" format="reference" />
+        <attr name="serverSwitchLabelTextStyle" format="reference" />
+        <attr name="serverSwitchServerTextStyle" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="ProtonCompatTextView">
+        <attr name="drawableStart" format="reference" />
+        <attr name="drawableTop" format="reference" />
+        <attr name="drawableEnd" format="reference" />
+        <attr name="drawableBottom" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="NetShieldSwitch">
+        <attr name="descriptionText" format="string" />
+        <attr name="isInConnectedScreen" format="boolean" />
+        <attr name="withReconnectConfirmation" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="NetworkFrameLayout">
+        <attr name="textLoading" format="string" />
+    </declare-styleable>
+    <declare-styleable name="SettingsItemBase">
+        <attr name="title" />
+        <attr name="infoText" format="string" />
+        <attr name="android:enabled" />
+        <attr name="dividerBelow" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="SettingsSwitch">
+        <attr name="android:checked" />
+    </declare-styleable>
+    <declare-styleable name="TroubleshootingInfoView">
+        <attr name="title" />
+        <attr name="infoText" />
+    </declare-styleable>
+</resources>

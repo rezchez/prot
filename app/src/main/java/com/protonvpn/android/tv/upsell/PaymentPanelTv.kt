@@ -1,0 +1,345 @@
+/*
+ * Copyright (c) 2026. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.android.tv.upsell
+
+import androidx.activity.compose.LocalActivity
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.updateTransition
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.tv.material3.Text
+import com.protonvpn.android.R
+import com.protonvpn.android.base.ui.PlaceholderRect
+import com.protonvpn.android.base.ui.optional
+import com.protonvpn.android.base.ui.vpnGreen
+import com.protonvpn.android.tv.buttons.TvTextButton
+import com.protonvpn.android.tv.settings.ProtonTvFocusableSurface
+import com.protonvpn.android.tv.ui.TvSpinner
+import com.protonvpn.android.ui.planupgrade.PaymentPanelState
+import com.protonvpn.android.ui.planupgrade.PricingCycleInfo
+import com.protonvpn.android.ui.planupgrade.UpgradeDialogViewModel
+import com.protonvpn.android.ui.planupgrade.WithMinHeightOf
+import com.protonvpn.android.ui.planupgrade.cycleLabelStringResource
+import com.protonvpn.android.ui.planupgrade.renewInfoText
+import me.proton.core.compose.component.VerticalSpacer
+import me.proton.core.compose.theme.ProtonDimens
+import me.proton.core.compose.theme.ProtonTheme
+import me.proton.core.compose.theme.captionStrongUnspecified
+import me.proton.core.compose.theme.captionWeak
+import me.proton.core.compose.theme.defaultSmallWeak
+
+@Composable
+fun PaymentPanelTv(
+    viewState: PaymentPanelState,
+    onClose: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val upgradeState = viewState.upgradeState
+    if (upgradeState == UpgradeDialogViewModel.State.Initializing)
+        return
+
+    val focusRequester = remember { FocusRequester() }
+
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        when (upgradeState) {
+            UpgradeDialogViewModel.State.Initializing -> Unit
+            is UpgradeDialogViewModel.State.LoadingPlans -> {
+                PlanSelectionColumn(
+                    renewInfoText = null,
+                    showSelectPlans = upgradeState.expectedCycleCount > 1
+                ) {
+                    repeat(upgradeState.expectedCycleCount) {
+                        PlanCycleInfoSelectorPlaceholder()
+                    }
+                }
+            }
+            is UpgradeDialogViewModel.State.PurchaseReady -> {
+                Box(
+                    modifier = Modifier.height(IntrinsicSize.Max)
+                ) {
+                    LaunchedEffect(key1 = upgradeState::class) {
+                        focusRequester.requestFocus()
+                    }
+                    val transition = updateTransition(upgradeState.inProgress)
+                    val planSelectionAlpha by transition.animateFloat { isInProgress ->
+                        if (isInProgress) 0f else 1f
+                    }
+                    PlanSelection(
+                        viewState = viewState,
+                        upgradeState = upgradeState,
+                        focusRequester,
+                        modifier = Modifier.graphicsLayer{ alpha = planSelectionAlpha }
+                    )
+
+                    androidx.compose.animation.AnimatedVisibility(
+                        visible = upgradeState.inProgress,
+                        enter = fadeIn(),
+                        exit = fadeOut(),
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        Box {
+                            TvSpinner(modifier = Modifier.align(Alignment.Center))
+                        }
+                    }
+                }
+            }
+
+            is UpgradeDialogViewModel.State.LoadError -> {
+                LaunchedEffect(key1 = upgradeState::class) {
+                    focusRequester.requestFocus()
+                }
+
+                TvTextButton(
+                    modifier = Modifier
+                        .padding(top = 8.dp)
+                        .focusRequester(focusRequester),
+                    text = stringResource(id = R.string.try_again),
+                    onClick = viewState.onErrorButtonClicked,
+                )
+            }
+
+            is UpgradeDialogViewModel.State.UpgradeDisabled -> {
+                LaunchedEffect(key1 = upgradeState::class) {
+                    focusRequester.requestFocus()
+                }
+
+                Text(
+                    stringResource(R.string.upsell_tv_fallback_description),
+                    color = ProtonTheme.colors.textWeak,
+                    style = ProtonTheme.typography.body1Regular,
+                )
+                VerticalSpacer(height = 16.dp)
+                TvTextButton(
+                    modifier = Modifier
+                        .padding(top = 8.dp)
+                        .focusRequester(focusRequester),
+                    text = stringResource(id = R.string.back),
+                    onClick = onClose
+                )
+            }
+
+            is UpgradeDialogViewModel.State.PurchaseSuccess -> Unit
+        }
+    }
+}
+
+@Composable
+private fun PlanSelection(
+    viewState: PaymentPanelState,
+    upgradeState: UpgradeDialogViewModel.State.PurchaseReady,
+    focusRequester: FocusRequester,
+    modifier: Modifier = Modifier,
+) {
+    val cycles = upgradeState.selectedPlan.cycles
+    val activity = LocalActivity.current
+    val selectedCycleInfo = remember(cycles, viewState.selectedCycle) {
+        cycles.firstOrNull { it.cycle == viewState.selectedCycle }
+    }
+
+    PlanSelectionColumn(
+        renewInfoText = selectedCycleInfo?.let { renewInfoText(selectedCycleInfo) },
+        showSelectPlans = cycles.size > 1,
+        modifier = modifier,
+    ) {
+        // Ideally I would disable the clickable Surface when in progress but there's no style for
+        // disabled AND focused in Material TV. Therefore just block the click to avoid triggering
+        // the payment twice which would show an error snack.
+        val enabled = !upgradeState.inProgress
+        cycles.forEachIndexed { index, cycle ->
+            PlanCycleInfoSelector(
+                onClick = { if (enabled && activity != null) { viewState.onPayClicked(activity) } },
+                onFocused = { viewState.onCycleSelected(cycle.cycle.paymentCycle) },
+                cycle = cycle,
+                modifier = Modifier
+                    .optional({ index == 0 }, Modifier.focusRequester(focusRequester))
+            )
+        }
+    }
+}
+
+@Composable
+private fun PlanSelectionColumn(
+    showSelectPlans: Boolean,
+    renewInfoText: String?,
+    modifier: Modifier = Modifier,
+    content: @Composable ColumnScope.() -> Unit
+) {
+    Column(
+        modifier = modifier.width(500.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        if (showSelectPlans) {
+            Text(
+                modifier = Modifier.padding(bottom = 4.dp),
+                text = stringResource(R.string.payment_select_your_plan),
+                style = ProtonTheme.typography.defaultSmallWeak
+            )
+        }
+
+        content()
+
+        RenewInfoText(
+            renewInfoText ?: "", // Empty string to consume space.
+            Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(vertical = 4.dp)
+        )
+    }
+}
+
+@Composable
+private fun PlanCycleInfoSelector(
+    onClick: () -> Unit,
+    onFocused: () -> Unit,
+    cycle: UpgradeDialogViewModel.CycleViewInfo,
+    modifier: Modifier = Modifier,
+) {
+    ProtonTvFocusableSurface(
+        onClick = onClick,
+        onFocused = onFocused,
+        shape = ProtonTheme.shapes.large,
+        focusedColor = { ProtonTheme.colors.backgroundNorm },
+        unfocusedBorder = true,
+        modifier = modifier,
+    ) {
+        WithMinHeightOf(
+            minHeightContent = {
+                PricingCycleInfo("123", "123") { text, style ->
+                    Text(text, style = style)
+                }
+            },
+            modifier = Modifier.height(IntrinsicSize.Max)
+                .padding(horizontal = 12.dp, vertical = 8.dp),
+        ) {
+            PlanCycleInfo(cycle, Modifier.fillMaxHeight())
+        }
+    }
+}
+
+@Composable
+private fun PlanCycleInfo(
+    cycleInfo: UpgradeDialogViewModel.CycleViewInfo,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = modifier.fillMaxWidth()
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                cycleLabelStringResource(cycleInfo.cycle.paymentCycle),
+                style = ProtonTheme.typography.body1Regular,
+            )
+            cycleInfo.priceInfo.savePercent?.let {
+                Text(
+                    modifier = Modifier
+                        .padding(horizontal = 8.dp)
+                        .background(
+                            ProtonTheme.colors.vpnGreen,
+                            RoundedCornerShape(size = ProtonDimens.DefaultCornerRadius)
+                        )
+                        .padding(horizontal = 4.dp, vertical = 2.dp),
+                    text = "$it%",
+                    style = ProtonTheme.typography.captionStrongUnspecified,
+                    color = ProtonTheme.colors.textInverted,
+                )
+            }
+        }
+        with(cycleInfo) {
+            PricingCycleInfo(
+                priceInfo.formattedPrice,
+                priceInfo.formattedPerMonthPrice,
+            ) { text, style -> Text(text, style = style) }
+        }
+    }
+}
+
+@Composable
+private fun PlanCycleInfoSelectorPlaceholder(
+    modifier: Modifier = Modifier,
+) {
+    WithMinHeightOf(
+        minHeightContent = {
+            PricingCycleInfo("123", "123") { text, style ->
+                Text(text, style = style)
+            }
+        },
+        modifier = modifier.height(IntrinsicSize.Max)
+            .border(2.dp, ProtonTheme.colors.separatorNorm, ProtonTheme.shapes.large)
+            .padding(horizontal = 12.dp, vertical = 8.dp),
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            PlaceholderRect(width = 120.dp)
+            Spacer(modifier = Modifier.weight(1f))
+            PlaceholderRect()
+        }
+    }
+}
+
+@Composable
+private fun RenewInfoText(
+    renewInfoText: String,
+    modifier: Modifier = Modifier
+) {
+    Text(
+        text = renewInfoText,
+        style = ProtonTheme.typography.captionWeak,
+        textAlign = TextAlign.Center,
+        modifier = modifier
+    )
+}

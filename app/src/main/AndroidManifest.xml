@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2017 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" tools:ignore="QueryAllPackagesPermission" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED" />
+
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.screen.portrait"
+        android:required="false" />
+
+    <application
+        android:name=".ProtonApplicationHilt"
+        android:allowBackup="false"
+        android:banner="@drawable/tv_banner"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/ProtonTheme.Vpn.Mobile"
+        android:requestLegacyExternalStorage="true"
+        android:gwpAsanMode="${gwpAsanMode}"
+        android:taskAffinity=""
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:replace="android:theme">
+
+        <activity
+            android:name=".redesign.app.ui.MainActivity"
+            android:theme="@style/ProtonTheme.Splash.Vpn.DarkPreferred"
+            android:exported="false"
+            android:enabled="false"
+            android:launchMode="singleTask"
+            android:configChanges="uiMode"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="AppLinkUrlError">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="protonvpn" />
+                <!-- See DeepLinkHandler -->
+                <data android:host="refresh-account"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Non-exported alias of MainActivity dedicated for intents that can -->
+        <!-- only be started by our own app (e.g. the widget's connect PendingIntent) -->
+        <activity-alias
+            android:name="ch.protonvpn.android.InternalMainActivity"
+            android:targetActivity=".redesign.app.ui.MainActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="android.content.APP_RESTRICTIONS"
+            android:resource="@xml/app_restrictions" />
+
+        <activity android:name=".ui.home.vpn.SwitchDialogActivity" />
+        <!-- nosemgrep: java.android.security.exported_activity.exported_activity -->
+        <activity
+            android:name=".tv.main.TvMainActivity"
+            android:launchMode="singleTop"
+            android:exported="true"
+            android:theme="@style/AppTheme.TV.Browse">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- adjustResize seems to behave different for different TV versions.-->
+        <!--    - Sometimes it's just ignored, so the keyboard overlaps the TextField and user cannot see what the input is-->
+        <!--    - Sometimes applies the resize but breaks the scroll behavior, so again the user cannot see what the input is-->
+        <!-- By applying adjustPan, even if it's not so beautiful the black pan at the bottom, we ensured that correctly -->
+        <!-- behaves on all TV versions that we tried.-->
+        <activity
+            android:name=".tv.reports.TvBugReportActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".tv.settings.autoconnect.TvSettingsAutoConnectActivity" />
+        <activity
+            android:name=".tv.settings.customdns.TvSettingsCustomDnsActivity" />
+        <activity
+            android:name=".tv.settings.customdns.add.TvSettingsAddCustomDnsActivity" />
+        <activity
+            android:name=".tv.settings.ipv6.TvSettingsIPv6Activity" />
+        <activity
+            android:name=".tv.settings.lanconnections.TvSettingsLanConnectionsActivity" />
+        <activity
+            android:name=".tv.settings.netshield.TvSettingsNetShieldActivity" />
+        <activity
+            android:name=".tv.settings.protocol.TvSettingsProtocolActivity" />
+        <activity
+            android:name=".tv.settings.splittunneling.TvSettingsSplitTunnelingActivity" />
+        <activity
+            android:name=".tv.upsell.TvUpsellActivity" />
+
+        <activity
+            android:name="me.proton.core.auth.presentation.ui.AddAccountActivity"
+            android:theme="@style/ProtonTheme.Vpn.AddAccount"
+            tools:replace="theme" />
+        <activity
+            android:name="me.proton.core.auth.presentation.ui.signup.SignupActivity"
+            android:hardwareAccelerated="@bool/enable_hardware_acceleration_for_signup" />
+        <activity
+            android:name="me.proton.core.presentation.ui.alert.ForceUpdateActivity"
+            android:theme="@style/ProtonTheme.Transparent"
+            tools:replace="android:theme" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name=".ui.drawer.LogActivity"
+            android:label="@string/log_title" />
+        <activity
+            android:name=".promooffers.ui.PromoOfferActivity" />
+        <activity
+            android:name=".promooffers.ui.NpsActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.planupgrade.CongratsPlanActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.vpn.NoVpnPermissionActivity" />
+        <!-- nosemgrep: java.android.security.exported_activity.exported_activity -->
+        <activity
+            android:name=".auth.ui.sessionfork.SessionForkConfirmationActivity"
+            android:theme="@style/ProtonTheme.Splash.Vpn.DarkPreferred"
+            android:screenOrientation="portrait"
+            android:exported="true">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="https" />
+                <data android:host="account.proton.me" />
+                <data android:pathPrefix="/vpn/tv/code/" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="protonvpn" />
+                <data android:host="session-fork" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".auth.ui.TermsAndConditionsActivity" />
+
+        <!-- nosemgrep: java.android.security.exported_activity.exported_activity -->
+        <activity-alias android:name="ch.protonvpn.android.RoutingActivity"
+            android:targetActivity=".redesign.app.ui.MainActivity"
+            android:label="@string/app_name"
+            android:icon="@mipmap/ic_launcher"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="protonvpn" />
+                <!-- See DeepLinkHandler -->
+                <data android:host="refresh-account"/>
+            </intent-filter>
+
+        </activity-alias>
+        <!-- nosemgrep: java.android.security.exported_activity.exported_activity -->
+        <activity-alias android:name="ch.protonvpn.android.RoutingDark"
+            android:targetActivity=".redesign.app.ui.MainActivity"
+            android:label="@string/app_name"
+            android:enabled="false"
+            android:icon="@mipmap/ic_launcher_dark"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="protonvpn" />
+                <!-- See DeepLinkHandler -->
+                <data android:host="refresh-account"/>
+            </intent-filter>
+
+        </activity-alias>
+        <!-- nosemgrep: java.android.security.exported_activity.exported_activity -->
+        <activity-alias android:name="ch.protonvpn.android.RoutingRetro"
+            android:targetActivity=".redesign.app.ui.MainActivity"
+            android:label="@string/app_name"
+            android:enabled="false"
+            android:icon="@mipmap/ic_launcher_retro"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="protonvpn" />
+                <!-- See DeepLinkHandler -->
+                <data android:host="refresh-account"/>
+            </intent-filter>
+
+        </activity-alias>
+        <!-- nosemgrep: java.android.security.exported_activity.exported_activity -->
+        <activity-alias
+            android:name="ch.protonvpn.android.RoutingWeather"
+            android:enabled="false"
+            android:exported="true"
+            android:label="@string/app_icon_name_weather"
+            android:icon="@mipmap/ic_launcher_weather"
+            android:targetActivity=".redesign.app.ui.MainActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="protonvpn" />
+                <!-- See DeepLinkHandler -->
+                <data android:host="refresh-account"/>
+            </intent-filter>
+        </activity-alias>
+
+        <!-- nosemgrep: java.android.security.exported_activity.exported_activity -->
+        <activity-alias
+            android:name="ch.protonvpn.android.RoutingNotes"
+            android:enabled="false"
+            android:exported="true"
+            android:label="@string/app_icon_name_notes"
+            android:icon="@mipmap/ic_launcher_notes"
+            android:targetActivity=".redesign.app.ui.MainActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="protonvpn" />
+                <!-- See DeepLinkHandler -->
+                <data android:host="refresh-account"/>
+            </intent-filter>
+        </activity-alias>
+
+        <!-- nosemgrep: java.android.security.exported_activity.exported_activity -->
+        <activity-alias
+            android:name="ch.protonvpn.android.RoutingCalculator"
+            android:enabled="false"
+            android:exported="true"
+            android:label="@string/app_icon_name_calculator"
+            android:icon="@mipmap/ic_launcher_calculator"
+            android:targetActivity=".redesign.app.ui.MainActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="protonvpn" />
+                <!-- See DeepLinkHandler -->
+                <data android:host="refresh-account"/>
+            </intent-filter>
+
+        </activity-alias>
+
+        <service
+            android:name=".vpn.wireguard.WireguardWrapperService"
+            android:exported="false"
+            android:foregroundServiceType="systemExempted"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            tools:ignore="ForegroundServicePermission">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.wireguard.android.backend.GoBackend$VpnService"
+            android:exported="false"
+            android:foregroundServiceType="systemExempted"
+            tools:ignore="ForegroundServicePermission"
+            tools:node="merge" />
+        <!-- nosemgrep: java.android.security.exported_activity -->
+        <service
+            android:name=".components.QuickTileService"
+            android:icon="@drawable/quick_tile"
+            android:label="@string/quickConnect"
+            android:process=":quick_tile_service"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".ui.settings.AppInfoService"
+            android:exported="false"
+            android:process=":app_info_service" />
+        <service
+            android:name="androidx.work.impl.foreground.SystemForegroundService"
+            android:foregroundServiceType="systemExempted"
+            tools:ignore="ForegroundServicePermission"
+            tools:node="merge" />
+
+        <receiver
+            android:name=".OnUpdateReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".vpn.autoconnect.AutoConnectBootReceiver"
+            android:process=":auto_connect_boot_receiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".l10n.LocaleChangedBroadcastReceiver"
+            android:process=":lightweight_receiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".notifications.NotificationActionReceiver"
+            android:enabled="true"
+            android:exported="false"/>
+
+        <receiver
+            android:name=".quicktile.QuickTileActionReceiver"
+            android:enabled="true"
+            android:exported="false"/>
+
+        <receiver
+            android:name=".widget.ProtonVpnWidgetReceiver"
+            android:exported="true"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".widget.ProtonVpnWidgetBigReceiver"
+            android:exported="true"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_big" />
+        </receiver>
+
+        <receiver android:name=".widget.ProtonVpnWidgetMaterialReceiver"
+            android:enabled="@bool/enable_material_widget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_material" />
+        </receiver>
+
+        <receiver android:name=".widget.ProtonVpnWidgetMaterialBigReceiver"
+            android:enabled="@bool/enable_material_widget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_material_big" />
+        </receiver>
+
+        <receiver
+            android:name=".widget.WidgetActionBroadcastReceiver"
+            android:enabled="true" />
+
+        <activity
+            android:name=".ui.settings.OssLicensesActivity"
+            android:label="@string/activityLicensesTitle" />
+        <activity
+            android:name=".ui.login.TroubleshootActivity"
+            android:label="@string/activityTroubleshootTitle" />
+        <activity
+            android:name=".ui.settings.SettingsSplitTunnelAppsActivity" />
+        <activity
+            android:name=".ui.settings.SettingsSplitTunnelIpsActivity" />
+        <activity
+            android:name=".ui.settings.SettingsTelemetryActivity"
+            android:label="@string/settingsTelemetryScreenTitle"/>
+        <activity
+            android:name=".bugreport.ui.BugReportActivity"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".ui.onboarding.WhatsNewActivity" />
+        <activity android:name=".ui.planupgrade.comparison_table.UpgradeDialogActivityV2" />
+        <activity android:name=".ui.planupgrade.PlusOnlyUpgradeDialogActivity" />
+        <activity android:name=".ui.planupgrade.CarouselUpgradeDialogActivity" />
+        <activity android:name=".ui.planupgrade.UpgradeOnboardingDialogActivity" />
+        <activity
+            android:name=".tv.login.TvQrLoginActivity" />
+
+        <activity
+            android:name="me.proton.core.crypto.validator.presentation.ui.CryptoValidatorErrorDialogActivity"
+            android:theme="@style/ProtonTheme.Transparent" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <meta-data
+            android:name="asset_statements"
+            android:resource="@string/asset_statements" />
+
+        <meta-data android:name="android.webkit.WebView.MetricsOptOut" android:value="true" />
+
+        <!-- Disable Sentry initialization. -->
+        <meta-data android:name="io.sentry.auto-init" android:value="false" />
+        <provider
+            android:name="io.sentry.android.core.SentryInitProvider"
+            android:authorities="${applicationId}.SentryInitProvider"
+            tools:node="remove" />
+
+        <!-- Override initializers started by androidx.startup. -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <!-- Disable WorkManager initialization -->
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+
+            <meta-data
+                android:name="me.proton.core.crypto.validator.presentation.init.CryptoValidatorInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+
+           <meta-data
+                android:name="me.proton.core.humanverification.presentation.HumanVerificationInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+
+           <meta-data
+                android:name="me.proton.core.auth.presentation.MissingScopeInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+
+           <meta-data
+                android:name="me.proton.core.plan.presentation.UnredeemedPurchaseInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+
+            <meta-data
+                android:name="me.proton.core.network.presentation.init.UnAuthSessionFetcherInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+
+            <meta-data
+                android:name="me.proton.core.paymentiap.presentation.GooglePurchaseHandlerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+
+            <meta-data
+                android:name="me.proton.core.plan.presentation.PurchaseHandlerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+
+            <meta-data
+                android:name="me.proton.core.userrecovery.presentation.compose.DeviceRecoveryInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+
+        </provider>
+    </application>
+
+</manifest>

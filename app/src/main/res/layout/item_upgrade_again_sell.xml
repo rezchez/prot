@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ Copyright (c) 2021 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textUpgradeFeaturesHedline"
+        style="@style/Proton.Text.DefaultSmall.Weak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:text="@string/upsell_upgrade_again" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="top"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:paddingTop="2dp"
+            app:srcCompat="@drawable/ic_proton_check_circle_full"
+            app:tint="?attr/proton_icon_accent" />
+
+        <TextView
+            android:id="@+id/textManyCountries"
+            style="@style/Proton.Text.DefaultSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1234 servers, 50 countries" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="top"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:paddingTop="2dp"
+            app:srcCompat="@drawable/ic_proton_check_circle_full"
+            app:tint="?attr/proton_icon_accent" />
+
+        <TextView
+            style="@style/Proton.Text.DefaultSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upsell_streaming_services" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="top"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:paddingTop="2dp"
+            app:srcCompat="@drawable/ic_proton_check_circle_full"
+            app:tint="?attr/proton_icon_accent" />
+
+        <TextView
+            style="@style/Proton.Text.DefaultSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upsell_advanced_features" />
+    </LinearLayout>
+
+</LinearLayout>

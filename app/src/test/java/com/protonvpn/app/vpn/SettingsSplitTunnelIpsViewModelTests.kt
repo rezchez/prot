@@ -1,0 +1,157 @@
+/*
+ * Copyright (c) 2025. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.app.vpn
+
+import androidx.lifecycle.SavedStateHandle
+import app.cash.turbine.test
+import com.protonvpn.android.R
+import com.protonvpn.android.settings.data.CurrentUserLocalSettingsManager
+import com.protonvpn.android.settings.data.LocalUserSettingsStoreProvider
+import com.protonvpn.android.settings.data.SplitTunnelingMode
+import com.protonvpn.android.ui.settings.LabeledItem
+import com.protonvpn.android.ui.settings.SettingsSplitTunnelIpsActivity
+import com.protonvpn.android.ui.settings.SettingsSplitTunnelIpsViewModel
+import com.protonvpn.test.shared.InMemoryDataStoreFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Test
+import kotlin.test.assertNull
+
+@OptIn(ExperimentalCoroutinesApi::class)
+class SettingsSplitTunnelIpsViewModelTests {
+
+    private lateinit var testScope: TestScope
+
+    @Before
+    fun setup() {
+        val dispatcher = StandardTestDispatcher()
+        testScope = TestScope(dispatcher)
+        Dispatchers.setMain(dispatcher)
+    }
+
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
+    }
+
+    @Test
+    fun testValidIPs() = testScope.runTest {
+        val viewModel = createViewModel()
+        assertTrue(viewModel.isValidIpRange("1.1.1.1"))
+        assertTrue(viewModel.isValidIpRange("2000::"))
+        assertFalse(viewModel.isValidIpRange("::1"))
+        assertFalse(viewModel.isValidIpRange("127.0.0.1"))
+        assertFalse(viewModel.isValidIpRange("0.0.0.0"))
+        assertFalse(viewModel.isValidIpRange("1.1"))
+        assertTrue(viewModel.isValidIpRange("1.1.1.1/24"))
+        assertTrue(viewModel.isValidIpRange("2000::/8"))
+        assertFalse(viewModel.isValidIpRange("2000::/129"))
+        assertFalse(viewModel.isValidIpRange("1.1.1.1/40"))
+        assertFalse(viewModel.isValidIpRange(""))
+    }
+
+    @Test
+    fun testAddAddress() = testScope.runTest {
+        val viewModel = createViewModel()
+        viewModel.addAddressIfValid("1.1.1.1")
+        viewModel.addAddressIfValid("2000::")
+        assertEquals(
+            listOf("1.1.1.1", "2000::").toIPViewModelState(),
+            viewModel.state.first()
+        )
+    }
+
+    @Test
+    fun `should display IPv6 dialog`() = testScope.runTest {
+        val viewModel = createViewModel(v6SettingEnabled = false, mode = SplitTunnelingMode.INCLUDE_ONLY)
+        viewModel.events.test {
+            viewModel.addAddressIfValid("2000::")
+            assertEquals(SettingsSplitTunnelIpsViewModel.Event.ShowIPv6EnableSettingDialog, awaitItem())
+            viewModel.onEnableIPv6()
+            assertEquals(SettingsSplitTunnelIpsViewModel.Event.ShowIPv6EnabledToast, awaitItem())
+        }
+    }
+
+    @Test
+    fun `don't display IPv6 dialog on exclude mode`() = testScope.runTest {
+        val viewModel = createViewModel(v6SettingEnabled = false, mode = SplitTunnelingMode.EXCLUDE_ONLY)
+        viewModel.events.test {
+            viewModel.addAddressIfValid("2000::")
+            expectNoEvents()
+        }
+    }
+
+    @Test
+    fun `return error when trying to add an invalid address`() = testScope.runTest {
+        val viewModel = createViewModel()
+        val validResult = viewModel.addAddressIfValid("1.1.1.1")
+        assertNull(validResult)
+        val duplicateResult = viewModel.addAddressIfValid("1.1.1.1")
+        assertEquals(R.string.settings_split_tunneling_already_excluded, duplicateResult)
+
+        val validResult6 = viewModel.addAddressIfValid("2000::")
+        assertNull(validResult6)
+        // Equivalent v6 address already added
+        val duplicateResult6 = viewModel.addAddressIfValid("2000:0::/128")
+        assertEquals(R.string.settings_split_tunneling_already_excluded, duplicateResult6)
+
+        val invalidResult = viewModel.addAddressIfValid("1.2.")
+        assertEquals(R.string.inputIpAddressErrorInvalid, invalidResult)
+    }
+
+    @Test
+    fun `remove prefix on on single address`() = testScope.runTest {
+        val viewModel = createViewModel()
+        viewModel.addAddressIfValid("1.1.1.1/32")
+        viewModel.addAddressIfValid("2000::/128")
+        viewModel.addAddressIfValid("3000::/32")
+        assertEquals(
+            listOf("1.1.1.1", "2000::", "3000::/32").toIPViewModelState(),
+            viewModel.state.first()
+        )
+    }
+
+    private suspend fun createViewModel(
+        v6SettingEnabled: Boolean = true,
+        mode: SplitTunnelingMode = SplitTunnelingMode.EXCLUDE_ONLY
+    ) = SettingsSplitTunnelIpsViewModel(
+        mainScope = testScope.backgroundScope,
+        userSettingsManager =
+            CurrentUserLocalSettingsManager(LocalUserSettingsStoreProvider(InMemoryDataStoreFactory())).apply {
+                update { it.copy(ipV6Enabled = v6SettingEnabled) }
+            },
+        SavedStateHandle(
+            mapOf(SettingsSplitTunnelIpsActivity.SPLIT_TUNNELING_MODE_KEY to mode))
+    )
+}
+
+fun List<String>.toIPViewModelState() =
+    SettingsSplitTunnelIpsViewModel.State(map { LabeledItem(it, it) })

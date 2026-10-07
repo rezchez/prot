@@ -1,0 +1,424 @@
+/*
+ * Copyright (c) 2024. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.android.redesign.app.ui
+
+import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
+import android.os.Bundle
+import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.compose.rememberNavController
+import com.protonvpn.android.BuildConfig
+import com.protonvpn.android.R
+import com.protonvpn.android.auth.ui.AccountViewModel
+import com.protonvpn.android.auth.usecase.OnboardingEvent
+import com.protonvpn.android.base.ui.ProtonVpnPreview
+import com.protonvpn.android.base.ui.theme.VpnTheme
+import com.protonvpn.android.bugreport.ui.BugReportActivity
+import com.protonvpn.android.components.VpnUiDelegateProvider
+import com.protonvpn.android.logging.ProtonLogger
+import com.protonvpn.android.logging.UiConnect
+import com.protonvpn.android.managed.ui.AutoLoginErrorView
+import com.protonvpn.android.managed.ui.AutoLoginView
+import com.protonvpn.android.redesign.app.ui.MainActivityViewModel.Companion.AppUpdateCheckDelay
+import com.protonvpn.android.redesign.app.ui.nav.MainNavEvent
+import com.protonvpn.android.redesign.app.ui.nav.RootNav
+import com.protonvpn.android.redesign.base.ui.ProtonAlert
+import com.protonvpn.android.redesign.vpn.AnyConnectIntent
+import com.protonvpn.android.restrictonsupsell.StreamingUpsellRestrictionsDialogTrigger
+import com.protonvpn.android.tv.IsTvCheck
+import com.protonvpn.android.tv.main.TvMainActivity
+import com.protonvpn.android.ui.deeplinks.DeepLinkHandler
+import com.protonvpn.android.ui.drawer.LogActivity
+import com.protonvpn.android.ui.main.MainActivityHelper
+import com.protonvpn.android.ui.main.MobileMainAccountViewModel
+import com.protonvpn.android.ui.onboarding.OnboardingActivity
+import com.protonvpn.android.ui.onboarding.WhatsNewActivity
+import com.protonvpn.android.ui.onboarding.WhatsNewDialogController
+import com.protonvpn.android.ui.planupgrade.ShowUpgradeSuccess
+import com.protonvpn.android.ui.planupgrade.UpgradeDialogLauncherVM
+import com.protonvpn.android.ui.vpn.VpnUiActivityDelegate
+import com.protonvpn.android.ui.vpn.VpnUiActivityDelegateMobile
+import com.protonvpn.android.update.UpdatePromptForStaleVersion
+import com.protonvpn.android.vpn.ConnectTrigger
+import com.protonvpn.android.vpn.ui.LocalVpnUiDelegate
+import com.protonvpn.android.widget.WidgetActionHandler
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import me.proton.core.compose.component.ProtonCenteredProgress
+import me.proton.core.notification.presentation.deeplink.HandleDeeplinkIntent
+import javax.inject.Inject
+
+private const val GLANCE_ACTION_SCHEME = "glance-action"
+
+@AndroidEntryPoint
+class MainActivity : VpnUiDelegateProvider, AppCompatActivity() {
+
+    private val accountViewModel: MobileMainAccountViewModel by viewModels()
+    private val activityViewModel: MainActivityViewModel by viewModels()
+    private val settingsChangeViewModel: SettingsChangeViewModel by viewModels()
+    private val upgradeDialogLauncher: UpgradeDialogLauncherVM by viewModels()
+    private lateinit var currentConfiguration: Configuration
+
+    @Inject
+    lateinit var showUpgradeSuccess: ShowUpgradeSuccess
+
+    @Inject
+    lateinit var promptUpdate: UpdatePromptForStaleVersion
+
+    @Inject
+    lateinit var whatsNewDialogController: WhatsNewDialogController
+    @Inject
+    lateinit var isTv: IsTvCheck
+    @Inject
+    lateinit var deepLinkHandler: DeepLinkHandler
+    @Inject
+    lateinit var handleCoreDeepLink: HandleDeeplinkIntent
+    @Inject
+    lateinit var widgetActionHandler: WidgetActionHandler
+    @Inject
+    lateinit var streamingUpsellRestrictionsDialogTrigger: StreamingUpsellRestrictionsDialogTrigger
+
+    // public for now until there is need to bridge old code, as LocalVpnUiDelegate is not available in non-compose
+    lateinit var vpnActivityDelegate: VpnUiActivityDelegate
+
+    private val helper = object : MainActivityHelper(this) {
+
+        override suspend fun onLoginNeeded() {
+            accountViewModel.addAccount()
+        }
+
+        override suspend fun onReady() {
+            // Handled in onCreate()
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val isBaselineProfileRun = BuildConfig.BUILD_TYPE == "nonMinifiedRelease"
+        if (!isBaselineProfileRun && isTv()) {
+            startActivity(Intent(this, TvMainActivity::class.java))
+            finish()
+            return
+        }
+
+        currentConfiguration = resources.configuration
+        val splashScreen = installSplashScreen()
+        helper.onCreate(accountViewModel)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        requestedOrientation = if (resources.getBoolean(R.bool.isTablet) || isTv())
+            ActivityInfo.SCREEN_ORIENTATION_FULL_USER else ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        vpnActivityDelegate = VpnUiActivityDelegateMobile(
+            activity = this,
+            upgradeDialogLauncher = upgradeDialogLauncher,
+            retryConnection = ::retryConnectionAfterPermissions,
+            onNavigate = ::onNavigate,
+        )
+
+        activityViewModel.eventShowOnboarding
+            .flowWithLifecycle(lifecycle)
+            .onEach {
+                activityViewModel.onOnboardingShown()
+                when (it) {
+                    is OnboardingEvent.None -> Unit
+                    is OnboardingEvent.ShowOnboarding ->
+                        startActivity(Intent(this, OnboardingActivity::class.java))
+
+                    is OnboardingEvent.ShowUpgradeOnboarding ->
+                        upgradeDialogLauncher.launchOnboarding(this)
+
+                    is OnboardingEvent.ShowUpgradeSuccess ->
+                        showUpgradeSuccess.showPlanUpgradeSuccess(
+                            this,
+                            it.planName,
+                            refreshVpnInfo = false
+                        )
+                }
+            }
+            .launchIn(lifecycleScope)
+
+        // Keep this state outside the composable to use it in splashScreen.setKeepOnScreenCondition
+        var accountState by mutableStateOf<AccountViewModel.State>(AccountViewModel.State.Processing)
+        accountViewModel.state
+            .flowWithLifecycle(lifecycle)
+            .onEach { accountState = it }
+            .launchIn(lifecycleScope)
+
+        splashScreen.setKeepOnScreenCondition {
+            accountState == AccountViewModel.State.Processing ||
+                accountState == AccountViewModel.State.StepNeeded ||
+                accountState == AccountViewModel.State.Ready && !activityViewModel.isMinimalStateReady
+        }
+        setContent {
+            val coroutineScope = rememberCoroutineScope()
+            VpnTheme {
+                val isMinimalStateReady by activityViewModel.isMinimalStateReadyFlow.collectAsStateWithLifecycle()
+                when (val state = accountState) {
+                    AccountViewModel.State.Initial,
+                    AccountViewModel.State.LoginNeeded -> {}
+                    AccountViewModel.State.Processing,
+                    AccountViewModel.State.StepNeeded ->
+                        ProtonCenteredProgress(Modifier.fillMaxSize())
+
+                    AccountViewModel.State.AutoLoginInProgress ->
+                        AutoLoginView()
+                    is AccountViewModel.State.AutoLoginError -> {
+                        val context = LocalContext.current
+                        AutoLoginErrorView(
+                            state.e.message ?: stringResource(R.string.something_went_wrong),
+                            onRetry = activityViewModel::retryAutoLogin,
+                            onReportIssue = {
+                                context.startActivity(Intent(context, BugReportActivity::class.java))
+                            },
+                            onShowLog = {
+                                context.startActivity(Intent(context, LogActivity::class.java))
+                            }
+                        )
+                    }
+
+                    AccountViewModel.State.Ready -> {
+                        val showSignOutDialog = rememberSaveable { mutableStateOf(false) }
+                        val coreNavigation = CoreNavigation(
+                            onSignUp = { accountViewModel.signUp() },
+                            onSignIn = { accountViewModel.signIn() },
+                            onSignOut = {
+                                coroutineScope.launch {
+                                    if (activityViewModel.showDialogOnSignOut()) {
+                                        showSignOutDialog.value = true
+                                    } else {
+                                        activityViewModel.signOut()
+                                    }
+                                }
+                            }
+                        )
+                        if (isMinimalStateReady) {
+                            // Show the app UI only when it's ready, otherwise accessibility services will focus
+                            // incorrectly on partially set up UI (even when the splash screen is covering it).
+                            CompositionLocalProvider(
+                                LocalVpnUiDelegate provides this@MainActivity.vpnActivityDelegate
+                            ) {
+                                val rootController = rememberNavController()
+                                VpnApp(
+                                    onSignOut = { coreNavigation.onSignOut() },
+                                    modifier =  Modifier.semantics { testTagsAsResourceId = true }
+                                ) { modifier ->
+                                    RootNav(rootController).NavHost(
+                                        modifier = modifier,
+                                        coreNavigation = coreNavigation,
+                                        settingsChangeViewModel = settingsChangeViewModel,
+                                    )
+                                }
+                            }
+                        }
+
+                        if (showSignOutDialog.value) {
+                            SignOutDialog(
+                                hide = { showSignOutDialog.value = false },
+                                signOut = activityViewModel::signOut
+                            )
+                        }
+                        val showReconnectDialogType =
+                            settingsChangeViewModel.showReconnectDialogFlow.collectAsStateWithLifecycle().value
+                        if (showReconnectDialogType != null) {
+                            ReconnectDialog(
+                                onOk = { dontShowAgain ->
+                                    settingsChangeViewModel.dismissReconnectDialog(dontShowAgain, showReconnectDialogType)
+                                },
+                                onReconnect = { dontShowAgain ->
+                                    settingsChangeViewModel.onReconnectClicked(
+                                        this@MainActivity.vpnActivityDelegate,
+                                        dontShowAgain,
+                                        showReconnectDialogType
+                                    )
+                                })
+                        }
+                    }
+                }
+            }
+        }
+        whatsNewDialogController.shouldShowDialog()
+            .flowWithLifecycle(lifecycle)
+            .onEach { show ->
+                if (show) {
+                    WhatsNewActivity.launch(this)
+                    whatsNewDialogController.onDialogShown()
+                }
+            }
+            .launchIn(lifecycleScope)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                // Checking for updates adds IPC and thus is expensive on start.
+                // Delay it a little bit.
+                delay(AppUpdateCheckDelay)
+                val appUpdate = promptUpdate.getUpdatePrompt()
+                if (appUpdate != null) {
+                    promptUpdate.launchUpdateFlow(this@MainActivity)
+                }
+            }
+        }
+        processIntent(intent)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        helper.onNewIntent(accountViewModel)
+        processIntent(intent)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        val diff = newConfig.diff(currentConfiguration)
+        if (diff and Configuration.UI_MODE_NIGHT_MASK.inv() == 0) {
+            // Night mode handled by Compose UI.
+            currentConfiguration = newConfig
+        } else {
+            recreate()
+        }
+    }
+
+    fun processIntent(intent: Intent) {
+        processDeepLink(intent)
+        handleCoreDeepLink(intent)
+        processInternalIntent(intent)
+        if (intent.action == Intent.ACTION_MAIN &&
+            intent.getBooleanExtra(EXTRA_SHOW_STREAMING_RESTRICTION_UPSELL, false)
+        ) {
+            lifecycleScope.launch {
+                streamingUpsellRestrictionsDialogTrigger.showNow(this@MainActivity)
+            }
+        }
+    }
+
+    // Only honor intents for the non-exported InternalMainActivity (coming only from our app)
+    fun processInternalIntent(intent: Intent) {
+        val internalComponent = intent.component?.className == INTERNAL_MAIN_ACTIVITY
+        if (internalComponent) {
+            if (intent.data?.scheme == GLANCE_ACTION_SCHEME) {
+                lifecycleScope.launch {
+                    widgetActionHandler.onIntent(vpnActivityDelegate, intent)
+                }
+            }
+        }
+    }
+
+    private fun retryConnectionAfterPermissions(connectIntent: AnyConnectIntent) {
+        ProtonLogger.log(UiConnect, "VPN permission retry")
+        // ConnectionCard is the most likely trigger, although not always correct.
+        activityViewModel.connect(vpnActivityDelegate, connectIntent, ConnectTrigger.ConnectionCard)
+    }
+
+    override fun getVpnUiDelegate(): VpnUiActivityDelegate = vpnActivityDelegate
+
+    private fun processDeepLink(intent: Intent) {
+        val intentUri = intent.data
+        if (intent.action == Intent.ACTION_VIEW && intentUri != null) {
+            deepLinkHandler.processDeepLink(intentUri)
+        }
+    }
+
+    private fun onNavigate(navEvent: MainNavEvent) {
+        activityViewModel.onNavigate(navEvent)
+    }
+
+    companion object {
+        const val EXTRA_SHOW_STREAMING_RESTRICTION_UPSELL = "ShowStreamingRestrictionUpsell"
+        const val INTERNAL_MAIN_ACTIVITY = "ch.protonvpn.android.InternalMainActivity"
+    }
+}
+
+class CoreNavigation(
+    val onSignUp: () -> Unit,
+    val onSignIn: () -> Unit,
+    val onSignOut: () -> Unit
+)
+
+@Composable
+private fun SignOutDialog(hide: () -> Unit, signOut: (notShowAgain: Boolean) -> Unit) {
+    ProtonAlert(
+        title = stringResource(id = R.string.dialog_sign_out_title),
+        text = stringResource(id = R.string.dialog_sign_out_message),
+        checkBox = stringResource(id = R.string.dialog_dont_ask_again),
+        confirmLabel = stringResource(id = R.string.dialog_sign_out_action),
+        onConfirm = { notShowAgain ->
+            hide()
+            signOut(notShowAgain)
+        },
+        dismissLabel = stringResource(id = R.string.dialog_action_cancel),
+        onDismissButton = { hide() },
+        checkBoxInitialValue = false,
+        onDismissRequest = hide
+    )
+}
+
+@Composable
+private fun ReconnectDialog(
+    onOk: (notShowAgain: Boolean) -> Unit,
+    onReconnect: (notShowAgain: Boolean) -> Unit
+) {
+    ProtonAlert(
+        title = null,
+        text = stringResource(id = R.string.settings_dialog_reconnect),
+        checkBox = stringResource(id = R.string.dialogDontShowAgain),
+        confirmLabel = stringResource(id = R.string.reconnect_now),
+        onConfirm = { notShowAgain ->
+            onReconnect(notShowAgain)
+        },
+        dismissLabel = stringResource(id = R.string.ok),
+        onDismissButton = { notShowAgain ->
+            onOk(notShowAgain)
+        },
+        checkBoxInitialValue = false,
+        onDismissRequest = { onOk(false) }
+    )
+}
+
+@ProtonVpnPreview
+@Composable
+fun PreviewSignOutDialog() {
+    ProtonVpnPreview {
+        SignOutDialog({}, {})
+    }
+}

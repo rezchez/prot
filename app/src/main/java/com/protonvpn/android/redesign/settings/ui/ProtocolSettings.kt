@@ -1,0 +1,225 @@
+/*
+ * Copyright (c) 2024. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.android.redesign.settings.ui
+
+import androidx.activity.compose.BackHandler
+import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import com.protonvpn.android.R
+import com.protonvpn.android.base.ui.AnnotatedClickableText
+import com.protonvpn.android.base.ui.LabelBadge
+import com.protonvpn.android.models.config.TransmissionProtocol
+import com.protonvpn.android.models.config.VpnProtocol
+import com.protonvpn.android.redesign.base.ui.SettingsRadioItemSmall
+import com.protonvpn.android.redesign.base.ui.SettingsToggleItem
+import com.protonvpn.android.base.ui.VpnDivider
+import com.protonvpn.android.vpn.ProtocolSelection
+import com.protonvpn.android.vpn.mapFromProtun
+import com.protonvpn.android.vpn.mapToProtun
+import me.proton.core.compose.theme.ProtonTheme
+
+@Composable
+fun ProtocolSettings(
+    onClose: () -> Unit,
+    protocolViewState: SettingsViewModel.SettingViewState.Protocol,
+    onLearnMore: () -> Unit,
+    onProtocolSelected: (ProtocolSelection) -> Unit,
+) {
+    var locallySelectedProtocol by rememberSaveable {
+        mutableStateOf(protocolViewState.value)
+    }
+    val saveAndClose = {
+        onProtocolSelected(locallySelectedProtocol)
+        onClose()
+    }
+    BackHandler { saveAndClose() }
+    SubSetting(
+        title = stringResource(protocolViewState.titleRes),
+        onClose = saveAndClose
+    ) {
+        ProtocolSettingsList(
+            currentProtocol = locallySelectedProtocol,
+            onProtocolSelected = { locallySelectedProtocol = it },
+            showProTun = protocolViewState.showProTun,
+        )
+
+        val footerPadding = Modifier.padding(top = 12.dp, bottom = 24.dp, start = 16.dp, end = 16.dp)
+        protocolViewState.descriptionText()?.let { descriptionText ->
+            if (protocolViewState.annotationRes != null) {
+                AnnotatedClickableText(
+                    fullText = descriptionText,
+                    annotatedPart = stringResource(protocolViewState.annotationRes),
+                    onAnnotatedClick = onLearnMore,
+                    style = ProtonTheme.typography.body2Regular,
+                    annotatedStyle = ProtonTheme.typography.body2Medium,
+                    color = ProtonTheme.colors.textWeak,
+                    modifier = footerPadding,
+                )
+            } else {
+                Text(
+                    text = descriptionText,
+                    style = ProtonTheme.typography.body2Regular,
+                    color = ProtonTheme.colors.textWeak,
+                    modifier = footerPadding,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun ProtocolSettingsList(
+    currentProtocol: ProtocolSelection,
+    onProtocolSelected: (ProtocolSelection) -> Unit,
+    showProTun: Boolean,
+    modifier: Modifier = Modifier,
+    horizontalContentPadding: Dp = 16.dp,
+) {
+    val protonProtocolsEnabled by rememberSaveable(currentProtocol) {
+        mutableStateOf(currentProtocol.vpn == VpnProtocol.ProTun)
+    }
+    fun wireguardProtocol(transmissionProtocol: TransmissionProtocol) = ProtocolSelection(
+        if (protonProtocolsEnabled) VpnProtocol.ProTun else VpnProtocol.WireGuard,
+        transmissionProtocol
+    )
+
+    Column(modifier = modifier) {
+        if (showProTun) {
+            SettingsToggleItem(
+                name = stringResource(id = R.string.settings_protocol_proton_protocols),
+                description = stringResource(id = R.string.settings_protocol_proton_protocols_description),
+                value = protonProtocolsEnabled,
+                onToggle = {
+                    val protocol = if (protonProtocolsEnabled) {
+                        currentProtocol.mapFromProtun()
+                    } else {
+                        currentProtocol.mapToProtun()
+                    }
+                    onProtocolSelected(protocol)
+                },
+                trailingTitleContent = {
+                    LabelBadge(
+                        text = stringResource(R.string.settings_beta_label_badge),
+                        textColor = ProtonTheme.colors.brandLighten40,
+                        borderColor = ProtonTheme.colors.brandLighten40,
+                    )
+                },
+                horizontalContentPadding = horizontalContentPadding
+            )
+
+            VpnDivider(Modifier.padding(horizontal = horizontalContentPadding, vertical = 8.dp))
+        }
+
+        ProtocolItem(
+            itemProtocol = if (protonProtocolsEnabled) ProtocolSelection.SMART_PROTUN else ProtocolSelection.SMART,
+            title = R.string.settings_protocol_smart_title,
+            description = R.string.settings_protocol_smart_description,
+            onProtocolSelected = onProtocolSelected,
+            selectedProtocol = currentProtocol,
+            horizontalContentPadding = horizontalContentPadding,
+            trailingTitleContent = {
+                LabelBadge(stringResource(R.string.settings_protocol_badge_recommended))
+            }
+        )
+
+        SettingsSectionHeading(
+            text = stringResource(R.string.settings_protocol_section_speed),
+            modifier = Modifier.padding(horizontal = horizontalContentPadding)
+        )
+        ProtocolItem(
+            itemProtocol = wireguardProtocol(TransmissionProtocol.UDP),
+            title = R.string.settings_protocol_wireguard_title,
+            description = R.string.settings_protocol_wireguard_udp_description,
+            onProtocolSelected = onProtocolSelected,
+            selectedProtocol = currentProtocol,
+            horizontalContentPadding = horizontalContentPadding,
+        )
+
+        SettingsSectionHeading(
+            text = stringResource(R.string.settings_protocol_section_reliability),
+            modifier = Modifier.padding(horizontal = horizontalContentPadding)
+        )
+        ProtocolItem(
+            itemProtocol = wireguardProtocol(TransmissionProtocol.TCP),
+            title = R.string.settings_protocol_wireguard_title,
+            description = R.string.settings_protocol_wireguard_tcp_description,
+            onProtocolSelected = onProtocolSelected,
+            selectedProtocol = currentProtocol,
+            horizontalContentPadding = horizontalContentPadding,
+        )
+        ProtocolItem(
+            itemProtocol =  wireguardProtocol(TransmissionProtocol.TLS),
+            title = R.string.settings_protocol_stealth_title,
+            description = R.string.settings_protocol_stealth_description,
+            onProtocolSelected = onProtocolSelected,
+            selectedProtocol = currentProtocol,
+            horizontalContentPadding = horizontalContentPadding,
+        )
+    }
+}
+
+@Composable
+fun ProtocolItem(
+    itemProtocol: ProtocolSelection,
+    @StringRes title: Int,
+    @StringRes description: Int,
+    onProtocolSelected: (ProtocolSelection) -> Unit,
+    selectedProtocol: ProtocolSelection,
+    modifier: Modifier = Modifier,
+    horizontalContentPadding: Dp = 16.dp,
+    trailingTitleContent: (@Composable () -> Unit)? = null,
+) {
+    SettingsRadioItemSmall(
+        title = stringResource(id = title),
+        description = stringResource(id = description),
+        selected = itemProtocol == selectedProtocol,
+        onSelected = { onProtocolSelected(itemProtocol) },
+        horizontalContentPadding = horizontalContentPadding,
+        modifier = modifier,
+        trailingTitleContent = trailingTitleContent,
+    )
+}
+
+@Preview
+@Composable
+fun ProtocolSettingsPreview() {
+    ProtocolSettings(
+        onClose = {},
+        protocolViewState = SettingsViewModel.SettingViewState.Protocol(
+            protocol = ProtocolSelection.SMART,
+            overrideProfilePrimaryLabel = null,
+            showProTun = true,
+        ),
+        onLearnMore = {},
+        onProtocolSelected = {}
+    )
+}

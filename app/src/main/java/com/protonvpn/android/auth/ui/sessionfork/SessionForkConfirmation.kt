@@ -1,0 +1,340 @@
+/*
+ * Copyright (c) 2026. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.android.auth.ui.sessionfork
+
+import android.content.Intent
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import androidx.compose.ui.unit.dp
+import com.protonvpn.android.R
+import com.protonvpn.android.auth.ui.sessionfork.SessionForkConfirmationViewModel.ViewState
+import com.protonvpn.android.base.ui.BottomButtonsColumn
+import com.protonvpn.android.base.ui.ProtonVpnPreview
+import com.protonvpn.android.base.ui.SimpleTopAppBar
+import com.protonvpn.android.base.ui.TopAppBarCloseIcon
+import com.protonvpn.android.base.ui.VpnSolidButton
+import com.protonvpn.android.base.ui.VpnTextButton
+import com.protonvpn.android.base.ui.VpnWeakSolidButton
+import com.protonvpn.android.base.ui.largeScreenContentPadding
+import com.protonvpn.android.redesign.base.ui.ProtonSnackbar
+import me.proton.core.compose.component.VerticalSpacer
+import me.proton.core.compose.theme.ProtonTheme
+import me.proton.core.presentation.R as CoreR
+
+@Composable
+fun SessionForkConfirmation(
+    viewState: ViewState,
+    snackbarHostState: SnackbarHostState,
+    onConfirm: () -> Unit,
+    onClose: () -> Unit,
+    onStartActivity: (Intent) -> Unit,
+    onReportBug: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    when (viewState) {
+        is ViewState.AskForkConfirmation -> {
+            SignIn(
+                isLoading = viewState.isLoading,
+                snackbarHostState = snackbarHostState,
+                onConfirm = onConfirm,
+                onClose = onClose,
+                modifier = modifier,
+            )
+        }
+
+        ViewState.ErrorBusinessUser,
+        ViewState.ErrorUserCodeInvalid -> {
+            FinishPage(
+                imageRes = R.drawable.session_fork_error,
+                titleRes = R.string.session_fork_error_generic_title,
+                messageRes = R.string.session_fork_error_try_fallback_message,
+                modifier = modifier,
+            ) {
+                VpnSolidButton(
+                    stringResource(R.string.close),
+                    onClick = onClose,
+                )
+            }
+        }
+
+        is ViewState.Fork.Error -> {
+            when (viewState) {
+                ViewState.Fork.Error.Expired -> {
+                    FinishPage(
+                        imageRes = R.drawable.session_fork_error,
+                        titleRes = R.string.session_fork_error_expired_title,
+                        messageRes = R.string.session_fork_error_expired_message,
+                        modifier = modifier,
+                    ) {
+                        VpnSolidButton(
+                            stringResource(R.string.close),
+                            onClick = onClose,
+                        )
+                    }
+                }
+
+                ViewState.Fork.Error.Fatal -> {
+                    FinishPage(
+                        imageRes = R.drawable.session_fork_error,
+                        titleRes = R.string.session_fork_error_generic_title,
+                        messageRes = R.string.session_fork_error_fatal_message,
+                        modifier = modifier
+                    ) {
+                        VpnTextButton(
+                            stringResource(R.string.session_fork_error_report_button),
+                            onClick = onReportBug,
+                        )
+                        VpnSolidButton(
+                            stringResource(R.string.close),
+                            onClick = onClose,
+                        )
+                    }
+                }
+
+                ViewState.Fork.Error.Network -> {
+                    FinishPage(
+                        imageRes = R.drawable.session_fork_error,
+                        titleRes = R.string.session_fork_error_generic_title,
+                        messageRes = R.string.session_fork_error_network_message,
+                        modifier = modifier
+                    ) {
+                        VpnSolidButton(
+                            stringResource(R.string.try_again),
+                            onClick = onConfirm,
+                        )
+                        VpnTextButton(
+                            stringResource(R.string.close),
+                            onClick = onClose,
+                        )
+                    }
+                }
+            }
+        }
+
+        is ViewState.Fork.Success -> {
+            FinishPage(
+                imageRes = R.drawable.session_fork_success,
+                titleRes = R.string.session_fork_success_title,
+                messageRes = R.string.session_fork_success_message,
+                modifier = modifier
+            ) {
+                VpnSolidButton(
+                    stringResource(R.string.action_done),
+                    onClick = {
+                        if (viewState.startActivityOnDone != null) {
+                            onStartActivity(viewState.startActivityOnDone)
+                        }
+                        onClose()
+                    }
+                )
+            }
+        }
+
+        ViewState.Initial -> Unit
+    }
+}
+
+@Composable
+private fun SignIn(
+    isLoading: Boolean,
+    snackbarHostState: SnackbarHostState,
+    onConfirm: () -> Unit,
+    onClose: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Scaffold(
+        topBar = {
+            SimpleTopAppBar(
+                title = {},
+                navigationIcon = { TopAppBarCloseIcon(onClose) }
+            )
+        },
+        snackbarHost = {
+            SnackbarHost(snackbarHostState) { ProtonSnackbar(it) }
+        },
+        bottomBar = {
+            BottomButtonsColumn {
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        painterResource(CoreR.drawable.ic_proton_info_circle_filled),
+                        modifier = Modifier.size(14.dp),
+                        contentDescription = null,
+                        tint = ProtonTheme.colors.iconWeak,
+                    )
+                    Spacer(Modifier.width(11.dp))
+                    Text(
+                        stringResource(R.string.session_fork_confirmation_bottom_note),
+                        style = ProtonTheme.typography.body2Regular,
+                        color = ProtonTheme.colors.textWeak,
+                        textAlign = TextAlign.Center,
+                    )
+                }
+                VpnSolidButton(
+                    stringResource(R.string.login),
+                    onClick = onConfirm,
+                    isLoading = isLoading,
+                )
+                VpnWeakSolidButton(
+                    stringResource(R.string.cancel),
+                    onClick = onClose,
+                )
+            }
+        },
+        modifier = modifier,
+    ) { paddingValues ->
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .verticalScroll(rememberScrollState())
+                .largeScreenContentPadding()
+                .padding(16.dp)
+        ) {
+            Image(
+                painterResource(CoreR.drawable.logo_vpn_with_text),
+                contentDescription = stringResource(R.string.app_name),
+                modifier = Modifier.width(138.dp),
+            )
+            VerticalSpacer(height = 32.dp)
+            Text(
+                stringResource(R.string.session_fork_confirmation_title),
+                style = ProtonTheme.typography.headline,
+                textAlign = TextAlign.Center,
+            )
+            VerticalSpacer(height = 8.dp)
+            Text(
+                stringResource(R.string.session_fork_confirmation_message),
+                style = ProtonTheme.typography.body1Regular,
+                textAlign = TextAlign.Center,
+            )
+        }
+    }
+}
+
+@Composable
+private fun FinishPage(
+    @DrawableRes imageRes: Int,
+    @StringRes titleRes: Int,
+    @StringRes messageRes: Int,
+    modifier: Modifier = Modifier,
+    buttonContent: @Composable ColumnScope.() -> Unit,
+) {
+    Scaffold(
+        bottomBar = {
+            BottomButtonsColumn(
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                content = buttonContent
+            )
+        },
+        modifier = modifier,
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+                .padding(paddingValues)
+                .verticalScroll(rememberScrollState())
+                .largeScreenContentPadding(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Image(
+                painterResource(imageRes),
+                contentDescription = null,
+            )
+            Text(
+                stringResource(titleRes),
+                style = ProtonTheme.typography.headline,
+                textAlign = TextAlign.Center,
+            )
+            VerticalSpacer(height = 8.dp)
+            Text(
+                stringResource(messageRes),
+                style = ProtonTheme.typography.body1Regular,
+                color = ProtonTheme.colors.textWeak,
+                textAlign = TextAlign.Center,
+            )
+        }
+    }
+}
+
+@ProtonVpnPreview
+@Composable
+private fun PreviewSessionForkConfirmation(
+    @PreviewParameter(SessionForkViewStateParameterProvider::class) viewState: ViewState
+) {
+    ProtonVpnPreview {
+        SessionForkConfirmation(
+            viewState = viewState,
+            onConfirm = {},
+            onClose = {},
+            onStartActivity = {},
+            onReportBug = {},
+            snackbarHostState = SnackbarHostState(),
+            modifier = Modifier.fillMaxSize()
+        )
+    }
+}
+
+class SessionForkViewStateParameterProvider : PreviewParameterProvider<ViewState> {
+    val valuesList = listOf(
+        ViewState.AskForkConfirmation(false),
+        ViewState.AskForkConfirmation(true),
+        ViewState.Fork.Success(null),
+        ViewState.Fork.Error.Network,
+        ViewState.Fork.Error.Expired,
+        ViewState.Fork.Error.Fatal,
+    )
+
+    override val values: Sequence<ViewState> = valuesList.asSequence()
+
+    override fun getDisplayName(index: Int): String? {
+        return valuesList[index].toString()
+    }
+}

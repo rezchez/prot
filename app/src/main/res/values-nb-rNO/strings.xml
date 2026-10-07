@@ -1,0 +1,1907 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2017 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_icon_name_classic">Klassisk</string>
+    <string name="app_icon_name_dark">Mørk</string>
+    <string name="app_icon_name_retro">Retro</string>
+    <string name="app_icon_name_weather">Vær</string>
+    <string name="app_icon_name_notes">Notater</string>
+    <string name="app_icon_name_calculator">Kalkulator</string>
+    <string name="login">Logg på</string>
+    <string name="menuActionSignOut">Logg av</string>
+    <string name="connectionAllocationHelpTitle">Takk for at du oppgraderte</string>
+    <string name="connectionAllocationHelpDescription1">For å starte reisen din i Proton VPN, tildel VPN-tilkoblinger til kontoen din eller en hvilken som helst annen underkonto.</string>
+    <string name="connectionAllocationHelpDescription2">Dette trinnet tar bare noen få minutter. Etter det vil du kunne logge på og beskytte alle enhetene dine.</string>
+    <string name="connectionAllocationHelpDescription1AskAdmin">Det er for øyeblikket ingen VPN-tilkobling aktivert for denne kontoen. For å starte reisen din med Proton VPN, kontakt administratoren din. </string>
+    <string name="connectionAllocationHelpAssignConnectionsButton">Aktiver VPN-forbindelser</string>
+    <string name="connectionAllocationHelpLoginAgainButton">Logg på igjen</string>
+    <!-- tag(Redesign_2023) "OK" button on dialogs -->
+    <string name="ok">OK</string>
+    <string name="dialogLearnMore">Lær mer</string>
+    <string name="connected">Tilkoblet</string>
+    <string name="buttonConnect">Koble til</string>
+    <string name="loaderConnectingTo">Kobler til %1$s</string>
+    <string name="loaderNotConnected">Ikke tilkoblet (ubeskyttet)</string>
+    <string name="loaderConnectedTo">Koblet til %1$s</string>
+    <string name="loaderDisconnecting">Kobler fra</string>
+    <string name="loaderReconnecting">Kobler til på nytt</string>
+    <string name="loaderReconnectNoNetwork">Venter på brukbart nettverk</string>
+    <string name="loaderCheckingAvailability">Sjekker servertilgjengelighet</string>
+    <string name="quickConnect">Hurtigtilkobling</string>
+    <!-- Displays a percentage value. Please use %% sign for %.
+         Example value: "70%" -->
+    <string name="serverLoad">%1$s%%</string>
+    <string name="cancel">Avbryt</string>
+    <string name="close">Lukk</string>
+    <string name="dialogContinue">Fortsett</string>
+    <string name="drawerReportProblem">Rapporter en feil</string>
+    <string name="action_done">Fullført</string>
+    <string name="action_share">Del</string>
+    <string name="accountFree">Proton Free</string>
+    <string name="restrictedMaintenanceTitle">Under vedlikehold</string>
+    <string name="restrictedMaintenanceDescription">Serveren du prøver å koble til er under vedlikehold. Prøv en annen server.</string>
+    <string name="restricted_location_excluded_dialog_title">Tilkobling mislyktes</string>
+    <string name="restricted_location_excluded_dialog_description">Ingen servere tilgjengelig. Velg et sted manuelt eller rediger dine ekskluderte plasseringer.</string>
+    <string name="errorUserDelinquent"><![CDATA[Kontoen din har for øyeblikket en forfalt faktura. Betal alle ubetalte fakturaer på &#160;<a href="https://account.protonvpn.com">account.protonvpn.com</a>]]></string>
+    <string name="errorMaxSessions">Du har truffet maksimalt antall samtidige tilkoblinger som er tillatt for kontoen din. Oppgrader Proton VPN-planen din for å få flere tilkoblinger.</string>
+    <string name="listItemMaintenance">Under vedlikehold</string>
+    <string name="insufficientPermissionsTitle">Brukerhandling kreves</string>
+    <string name="insufficientPermissionsDetails">Kunne ikke opprette VPN-tilkobling automatisk. Koble til manuelt én gang for å gi tillatelser.</string>
+    <string name="log_title">Logg</string>
+    <string name="disconnect">Koble fra</string>
+    <string name="state_connecting">Kobler til...</string>
+    <string name="state_connected">Tilkoblet</string>
+    <string name="state_disconnecting">Kobler fra…</string>
+    <string name="state_error">Feil</string>
+    <string name="error_server_list_load_failed">Kontroller tilkoblingen og prøv igjen.</string>
+    <string name="error_server_unreachable">Kunne ikke koble til VPN-et. Kontroller tilkoblingen, og prøv på nytt.</string>
+    <string name="error_auth_failed">Brukergodkjenning mislyktes.</string>
+    <string name="error_generic">Uspesifisert feil under tilkobling.</string>
+    <string name="error_generic_with_reason">Proton VPN kunne ikke opprette en VPN-tilkobling. Prøv igjen om noen sekunder.<br/><br/>Detaljer: %1$s</string>
+    <string name="reconnect">Koble til på nytt</string>
+    <string name="reconnect_now">Koble til på nytt nå</string>
+    <string name="try_reconnecting">Prøv å koble til på nytt</string>
+    <string name="connect">Koble til</string>
+    <string name="upgrade">Oppgrader</string>
+    <string name="retry">Prøv på nytt</string>
+    <string name="report_message">Rapporter melding</string>
+    <string name="report_bug_email_label">Din e-post</string>
+    <string name="report_bug_email_hint">Skriv inn din e-postadresse</string>
+    <string name="report_bug_message_label">Melding</string>
+    <string name="report_bug_message_hint">Beskriv feilen og hvordan og hvor du fant den</string>
+    <string name="send_report">Send rapport</string>
+    <string name="report_sent">Rapporten er sendt</string>
+    <string name="discardChanges">Vil du forkaste endringer som ikke er lagret?</string>
+    <string name="discardChangesButtonDiscard">Forkast endringer</string>
+    <string name="discardChangesButtonKeepEditing">Fortsett å redigere</string>
+    <string name="done">UTFØRT</string>
+    <string name="add">LEGG TIL</string>
+    <string name="copy_to_clipboard">Kopier</string>
+    <string name="copied_to_clipboard">Kopiert til utklippstavlen</string>
+    <string name="got_it">Skjønner</string>
+    <string name="exclude_locations">Ekskluder plasseringer</string>
+    <string name="excluded_locations">Ekskluderte plasseringer</string>
+    <string name="cannot_connect">Kan ikke koble til</string>
+    <string name="skip">Hopp over</string>
+    <string name="something_went_wrong">Noe gikk galt</string>
+    <string name="try_again">Prøv igjen</string>
+    <string name="delete">Slett</string>
+    <string name="menu_option_move_to_top" comment="command used to move an item to the top of the list">Flytt til toppen</string>
+    <string name="menu_option_move_up" comment="command used to move an item one position up in the list">Flytt opp</string>
+    <string name="menu_option_move_down" comment="command used to move an item one position down in the list">Flytt ned</string>
+    <string name="remove">Fjern</string>
+    <string name="saveButton">Lagre</string>
+    <string name="ipWithPlaceholder">IP: %1$s</string>
+    <string name="activityLicensesTitle">Tredjepartslisenser</string>
+    <string name="stateFragmentUnknownIp">Ukjent</string>
+    <string name="noVpnPermissionMainTitle">Handling trengs for å koble til VPN</string>
+    <string name="noVpnPermissionMainMessage">For å koble til Proton VPN, gjør følgende:</string>
+    <string name="noVpnPermissionGrantPermissionTitle">Gi VPN-tillatelse</string>
+    <string name="noVpnPermissionGrantPemrissionMessage">Android trenger din tillatelse for å koble til Proton VPN. Gi det ved å trykke \"OK\" når du får vinduet \"Tilkoblingsforespørsel\" fra Android.</string>
+    <string name="noVpnPermissionDisableAlwaysOnTitle">Deaktiver alltid på- for andre VPN-apper</string>
+    <string name="noVpnPermissionDisableAlwaysOnMessage">Android støtter ikke flere VPN-apper. Deaktiver alltid på- for alle andre VPN-apper enn Proton VPN.</string>
+    <string name="noVpnPermissionProtonAppLabel">Proton VPN-app</string>
+    <string name="noVpnPermissionOtherAppLabel">Andre VPN-apper</string>
+    <string name="noVpnPermissionOpenSettings">Åpne Android VPN-innstillinger</string>
+    <string name="noNotificationPermissionGrantTitle">Ikke bli overrumplet...</string>
+    <string name="noNotificationPermissionGrantDescription">Aktiver varslinger for å bli varslet om endringer tilknyttet statusen på forbindelsen din.</string>
+    <string name="noNotificationPermissionGrantNowTitle">Aktiver varslinger</string>
+    <string name="error_prepare_vpn_description"><![CDATA[Deaktiver alltid på-VPN for alle andre VPN-apper i Android VPN-systeminnstillinger, da det forhindrer Proton VPN i å opprette en VPN-tilkobling. Gi også VPN-tillatelser hvis en dialogboks som ber om VPN-tillatelser vises. Andre VPN-apper må kanskje også avinstalleres for å forhindre konflikter. Forsøk igjen etterpå. <a href="%1$s">Lær mer</a>]]></string>
+    <string name="error_prepare_vpn_settings">Gå til Android VPN-innstillinger</string>
+    <string name="error_prepare_vpn_title">Feil: VPN-tillatelsesproblem</string>
+    <string name="error_server_not_set">Serveren er ikke lenger tilgjengelig</string>
+    <string name="bugReportErrorEmptyEmail">E-post kan ikke være tom</string>
+    <string name="bugReportErrorInvalidEmail">Ugyldig e-postadresse</string>
+    <string name="bugReportLabelVpnLogsTitle">Inkluder feillogger</string>
+    <string name="bugReportErrorLabelVpnLogsDescription">Dette sender lokale feillogger (vi logger ikke aktivitet) for å hjelpe oss med å løse problemet ditt</string>
+    <string name="profileFastest">Raskeste</string>
+    <string name="profileRandom">Tilfeldig</string>
+    <string name="loaderErrorNoInternet">Ingen internettforbindelse</string>
+    <string name="loaderErrorGeneric">Noe gikk galt</string>
+    <string name="inputIpAddressLabel">IP-adresse</string>
+    <string name="inputIpAddressHelp">Oppgi serverens IPv4- eller IPv6-adresse</string>
+    <string name="inputIpAddressErrorInvalid">Ugyldig IP-adresse</string>
+    <!-- Displayed as a badge next to setting item ("Widget [NEW]") -->
+    <string name="settings_new_label_badge">NY</string>
+    <!-- Displayed as a badge next to setting item ("Proton protocols [BETA]") -->
+    <string name="settings_beta_label_badge">BETA</string>
+    <string name="settingsExcludedIPAddressesListHeader">Ekskluderte IP-adresser (%1$d)</string>
+    <string name="settingsIncludedIPAddressesListHeader">Inkluderte IP-adresser (%1$d)</string>
+    <string name="settingsExcludedApps">Ekskluderte apper</string>
+    <string name="settingsExcludedAppsEmpty">Legg til apper som skal ekskluderes fra VPN-trafikken.</string>
+    <string name="settingsIncludedAppsEmpty">Legg til apper som skal inkluderes i VPN-trafikken.</string>
+    <string name="settingsExcludedAppsSelectedHeader">Ekskluderte apper (%1$d)</string>
+    <string name="settingsIncludedAppsSelectedHeader">Inkluderte apper (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableRegularHeader">Alle andre vanlige apper (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableSystemHeader">Alle andre systemapper (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableHeader">Alle andre apper (%1$d)</string>
+    <string name="settingsExcludedAppsLoadSystemAppsButton">Vis systemapper</string>
+    <string name="settingsSplitTunnelAppsShowSystemAppsCheckbox">Vis systemapper</string>
+    <string name="settingsSplitTunnelingExcludedAppsList">Disse appene er ekskludert fra VPN-tilkoblingen din.</string>
+    <string name="settingsSplitTunnelingIncludedAppsList">Bare disse appene kobles til gjennom VPN.</string>
+    <!-- Description for action to add an application to "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to excluded apps"
+    -->
+    <string name="accessibility_action_add_excluded_app">Legg til ekskluderte apper</string>
+    <!-- Description for action to remove an application from "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from excluded apps"
+    -->
+    <string name="accessibility_action_remove_excluded_app">Fjern fra ekskluderte apper</string>
+    <!-- Description for action to add an application to "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to included apps"
+    -->
+    <string name="accessibility_action_add_included_app">Legg til i inkluderte apper</string>
+    <!-- Description for action to remove an application from "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from included apps"
+    -->
+    <string name="accessibility_action_remove_included_app">Fjern fra inkluderte apper</string>
+    <string name="accessibility_action_copy_to_clipboard">Kopier til utklippstavlen</string>
+    <string name="accessibility_action_item_delete">Slett</string>
+    <string name="accessibility_action_item_move_up">Flytt opp</string>
+    <string name="accessibility_action_item_move_down">Flytt ned</string>
+    <string name="tileConnected">Tilkoblet: %1$s</string>
+    <string name="openUrlError">%1$s kunne ikke åpnes. Nettleser ble ikke oppdaget på enheten din.</string>
+    <string name="loaderErrorTimeout">Tilkoblingen ble tidsavbrutt. Prøv på nytt.</string>
+    <string name="troubleshootButton">Feilsøk</string>
+    <string name="activityTroubleshootTitle">Feilsøking</string>
+    <string name="troubleshootPotentialSolutionsSectionTitle">Potensielle løsninger</string>
+    <string name="troubleshootNoInternetDescription">Forsikre deg om at internett-forbindelsen din fungerer.</string>
+    <string name="troubleshootNoInternetTitle">Ingen internettforbindelse</string>
+    <string name="troubleshootIspProblemTitle">Internett-leverandør (ISP) problem</string>
+    <string name="troubleshootIspProblemDescription"><![CDATA[Prøv å koble til Proton fra et annet nettverk (eller bruk <a href=\'%1$s\'>Tor</a>)]]></string>
+    <string name="troubleshootAntivirusProblemTitle">Antivirus-forstyrrelser</string>
+    <string name="troubleshootAntivirusProblemDescription">Deaktiver eller fjern antivirusprogramvaren midlertidig.</string>
+    <string name="troubleshootProxyFirewallProblemTitle">Proxy-/brannmurforstyrrelser</string>
+    <string name="troubleshootProxyFirewallProblemDescription">Deaktiver alle proxyer eller brannmurer, eller kontakt din nettverksadministrator.</string>
+    <string name="troubleshootProtonDownTitle">Proton er nede</string>
+    <string name="troubleshootProtonDownDescription"><![CDATA[Undersøk <a href=\"%1$s\">Proton Status</a> for vår systemstatus.]]></string>
+    <string name="troubleshootContactUsSectionTitle">Trenger du fortsatt hjelp? Kontakt oss direkte</string>
+    <string name="troubleshootCustomerSupport">Kundestøtte</string>
+    <string name="settingsAllowAlternativeRoutingTitle">Alternativ ruting</string>
+    <string name="settingsAllowAlternativeRoutingDescription"><![CDATA[Hvis Proton er blokkert, tillat appen å prøve alternative stier for å nå Proton-serverne. <a href="%1$s">Lær mer</a>.]]></string>
+    <string name="troubleshootGovernmentBlockTitle">Regjeringsblokkering</string>
+    <string name="troubleshootGovernmentBlockDescription"><![CDATA[Kan hende landet ditt blokkerer tilgang til Proton. Prøv å bruke <a href=\'%1$s\'>Tor</a> for å få tilgang til Proton.]]></string>
+    <string name="settingsKillSwitchEnableTitle">Hvordan aktivere nødstopp</string>
+    <string name="settingsKillSwitchEnableStep1">1. Åpne enhetsinnstillingene</string>
+    <!-- %1$s here will be replaced by "gear" icon -->
+    <string name="settingsKillSwitchEnableStep2">2. Finn Proton VPN og klikk %1$s</string>
+    <!-- Content description for the "gear" icon in settingsKillSwitchEnableStep2. Used only by accessibility services. -->
+    <string name="settingsKillSwitchEnableStep2_gearIconContentDescription">innstillinger</string>
+    <!-- The phrases "Always-on VPN" and "Block connections without VPN" needs to be translated exactly
+         the same as in Android VPN settings. -->
+    <string name="settingsKillSwitchEnableStep3"><![CDATA[3. Aktiver \"<b>Alltid på-VPN</b>\" og \"<b>blokker tilkoblinger uten VPN</b>\"]]></string>
+    <string name="settingsKillSwitchAndroidSettingsButton">Innstillinger</string>
+    <string name="settingsKillSwitchLearnMoreButton">Hva er nødstopp?</string>
+    <string name="settingsKillSwitchWarningMain">Når nødstopp er på, vil du ikke kunne koble til:</string>
+    <string name="settingsKillSwitchWarningPoint1">Nettsteder og apper ekskludert fra VPN-tilkoblingen din gjennom delt tunnelering</string>
+    <string name="settingsKillSwitchWarningPoint2">Enheter på ditt lokale nettverk (LAN)</string>
+    <string name="settingsEnableTelemetryTitle">Del anonym bruksstatistikk</string>
+    <string name="settingsEnableTelemetryDescription">Bruksdata hjelper oss med å overvinne VPN-blokkeringer og forbedre appytelsen.</string>
+    <string name="settingsSendCrashReportsTitle">Del anonyme programkrasjrapporter</string>
+    <string name="settingsSendCrashReportsDescription">Programkrasjrapporter hjelper oss med å rette feil, oppdage brannmurer og unngå VPN-blokkeringer.</string>
+    <string name="settingsTelemetryScreenTitle">Bruksstatistikk</string>
+    <string name="settingsTelemetryScreenInfo"><![CDATA[Disse statistikkene inneholder ikke IP-adressen din, og de kan ikke brukes til å identifisere deg. Vi deler dem aldri med tredjeparter. <a href="%1$s">Lær mer</a>]]></string>
+    <string name="netshield_settings_description_not_html">Beskytt deg mot annonser, skadelig programvare og sporere på nettsteder og apper. %1$s</string>
+    <string name="netshield_settings_description_tv">Beskytter deg mot tredjepartsannonser, sporere og skadelig programvare. NetShield blokkerer ikke annonser som er innebygd i strømmetjenester som YouTube og Netflix.</string>
+    <string name="netshield_settings_more_info_title_tv">Slik fungerer NetShield</string>
+    <string-array name="netshield_settings_more_info_paragraphs_tv">
+        <item>NetShield blokkerer DNS-forespørsler til tredjepartsdomener kjent for annonser, sporere og skadelig programvare.</item>
+        <item>Dette betyr at du ikke vil motta annonser fra nettleseren din eller gratis apper som bruker tredjeparts annonsetjenester.</item>
+        <item>Den kan imidlertid ikke blokkere annonser fra strømmingsplattformer som YouTube og Netflix, fordi annonsene kommer fra deres egne servere.</item>
+    </string-array>
+    <string name="settings_icon_change_description">Skjul Proton VPN-appen med et diskret ikon. Varsler vil fortsatt vise standard Proton VPN-navn og ikon. %1$s.</string>
+    <string name="settings_icon_change_learn_more">Lær mer</string>
+    <string name="learn_more">Lær mer</string>
+    <string name="netshield_state_on" comment="Describes state, not action">På</string>
+    <string name="netshield_state_off" comment="Describes state, not action">Av</string>
+    <string name="netshield_state_unavailable" comment="Describes state, not action">Utilgjengelig</string>
+    <string name="split_tunneling_state_on" comment="Describes state, not action">På</string>
+    <string name="split_tunneling_state_off" comment="Describes state, not action">Av</string>
+    <string name="vpn_accelerator_state_on" comment="Describes state, not action">På</string>
+    <string name="vpn_accelerator_state_off" comment="Describes state, not action">Av</string>
+    <string name="lan_state_on" comment="Describes state, not action">På</string>
+    <string name="lan_state_off" comment="Describes state, not action">Av</string>
+    <string name="alt_routing_state_on" comment="Describes state, not action">På</string>
+    <string name="alt_routing_state_off" comment="Describes state, not action">Av</string>
+    <string name="custom_dns_state_on" comment="Describes state, not action">På</string>
+    <string name="custom_dns_state_off" comment="Describes state, not action">Av</string>
+    <string name="custom_dns_state_unavailable" comment="Describes state, not action">Utilgjengelig</string>
+    <string name="custom_dns_item_removed_snackbar">Elementet er fjernet</string>
+    <string name="netshield_free_description">Blokkér annonser, sporere og skadelig programvare på nettsteder og apper</string>
+    <string name="netshield_what_data_means">Forklaring av NetShield-statistikk</string>
+    <string name="netshield_ads_title">Annonser</string>
+    <string name="netshield_ads_details">Annonser og usynlige annonsesporere</string>
+    <string name="netshield_trackers_title">Sporere</string>
+    <string name="netshield_trackers_details">Informasjonskapsler og andre sporere som lagrer og deler informasjon om internettaktiviteten din.</string>
+    <string name="netshield_data_title">Data</string>
+    <string name="netshield_data_details">Mengden uønsket data fra annonser, sporere og skadelig programvare som er blokkert av NetShield.</string>
+    <plurals name="netshield_ads_blocked" comment="Number of ads blocked by netshield. Number displayed above the text">
+        <item quantity="one">Annonse blokkert</item>
+        <item quantity="other">Annonser blokkert</item>
+    </plurals>
+    <plurals name="netshield_trackers_stopped" comment="Number of trackers stopped by netshield. Number displayed above the text">
+        <item quantity="one">Sporer stoppet</item>
+        <item quantity="other">Sporere stoppet</item>
+    </plurals>
+    <string name="netshield_data_saved" comment="Total data saved by netshield shown in kb/mb">Data spart</string>
+    <string name="netshield_setting_warning">Noen nettsteder lastes kanskje ikke inn riktig når annonser og sporere er blokkert.</string>
+    <string name="netshield_setting_block_adult_content">Blokker innhold for voksne</string>
+    <string name="dialogDontShowAgain">Ikke vis igjen</string>
+    <string name="guestHoleNotificationContent">Prøver å omgå nettverksproblemer. Dette vil hjelpe deg med å få tilgang til Proton VPN.</string>
+    <string name="errorTunMultiUserPermission">Kunne ikke initialisere VPN-tilkobling på grunn av en konflikt mellom dual-app (for eksempel Dual Messenger) og delt tunnelering. Deaktiver en av disse og start enheten på nytt.</string>
+    <string name="errorTorrentNotAllowed">P2P er ikke tillatt på denne serveren</string>
+    <string name="error_profile_fallback_unavailable">Tilkoblingen mislyktes. Servervalget for profilen er ikke tilgjengelig.</string>
+    <string name="profileProtocolNotAvailable">Denne profilens VPN-protokoll er for øyeblikket ikke tilgjengelig. Prøv å endre protokollen for å koble til.</string>
+    <string name="stateConnectedTo">Koblet til %1$s</string>
+    <string name="stateNotConnected">Du er ikke tilkoblet</string>
+    <string name="nameEurope">Europa</string>
+    <string name="nameAmerica">Amerika</string>
+    <string name="nameAsia">Asia</string>
+    <string name="nameAfricaAndMiddleEast">Afrika &amp; Midtøsten</string>
+    <string name="nameOceania">Oseania</string>
+    <string name="tv_row_settings">Innstillinger</string>
+    <string name="tv_card_lan_connections_label">LAN</string>
+    <string name="tv_card_split_tunneling_label">Delt tunnelering</string>
+    <string name="tv_card_protocol_label">Protokoll</string>
+    <string name="tv_dialog_delete_server_title">Slette server %1$s?</string>
+    <string name="tv_detail_default_connection_checkbox_short">Favoritt</string>
+    <string name="tv_detail_connect_streaming">Strøm med Plus</string>
+    <string name="tv_detail_connect">Koble til</string>
+    <string name="tv_detail_description_streaming_country">Strøm favorittinnholdet ditt. Få tilgang til flere apper med en Proton VPN Plus-plan.</string>
+    <string name="tv_detail_description_no_streaming_country">Strøm mer av favorittinnholdet ditt med en Proton VPN Plus-plan.</string>
+    <string name="tv_detail_description_country_not_available">Dette landet er ikke tilgjengelig. Få flere strømmealternativer med en Proton VPN Plus-plan.</string>
+    <string name="tv_detail_description_plus">Strøm favorittvideoene, -filmene eller -sportene dine med appene dine.</string>
+    <string name="tv_login_title_welcome">Strøm favorittvideoinnholdet ditt</string>
+    <string name="tv_login_welcome_description_bottom"><![CDATA[Skaff deg din Proton VPN-konto på <b>%1$s</b>]]></string>
+    <string name="back">Tilbake</string>
+    <string name="tv_vpn_error_dialog_title">VPN-forbindelse mislyktes</string>
+    <string name="tv_signout_label">Logg av</string>
+    <string name="tv_signout_dialog_title">Er du sikker på at du vil logge av?</string>
+    <string name="tv_signout_dialog_description_connected">Dette vil koble TV-en fra en hvilken som helst VPN-server.</string>
+    <string name="tv_signout_dialog_ok">Logg av</string>
+    <string name="tv_quick_connect_recommened">Anbefalt</string>
+    <string name="tv_quick_connect_favourite">Favoritt</string>
+    <string name="tv_country_maintenance_dialog_title">Land er utilgjengelig</string>
+    <string name="tv_country_maintenance_dialog_description">Forsøk igjen eller velg et annet land.</string>
+    <!-- The placeholder is replaced with a 0-100 value indicating the server load in percent.
+         Please note the double % sign after the placeholder. It is displayed as a single % sign in the app.
+
+         Example: 76% server load -->
+    <string name="tv_server_list_load">%1$s%% serverbelastning</string>
+    <string name="tv_recently_used_servers">Nylig brukte servere</string>
+    <string name="tv_available_servers">Tilgjengelige servere</string>
+    <string name="tv_locked_servers">Låste servere</string>
+    <string name="tv_other_servers">Andre servere</string>
+    <string name="tv_server_list">Serverliste</string>
+    <string name="tv_server_list_action_unavailable">Utilgjengelig</string>
+    <string name="notification_subscription_expired_title">Proton VPN-abonnementsplanen din er utløpt</string>
+    <string name="notification_subscription_expired_content">Vi måtte nedgradere planen din, men vi kobler deg til den raskeste serveren som er tilgjengelig på den planen.</string>
+    <string name="notification_subscription_expired_no_reconnection_content">Abonnementet ditt er nedgradert.</string>
+    <string name="notification_delinquent_title">Proton VPN-kontoen din har ventende fakturaer</string>
+    <string name="notification_delinquent_content">Bruk litt tid på å oppdatere faktureringsinformasjonen for å holde abonnementet ditt aktivt.</string>
+    <string name="notification_max_sessions_title">Du har nådd den maksimale grensen for enheter</string>
+    <!-- The number of devices will always be greater than 1. -->
+    <plurals name="notification_max_sessions_upsell_content">
+        <item quantity="one">Koble fra en annen enhet for å koble til denne, eller oppgrader til Plus for å få opptil %1$d-enhet tilkoblet samtidig.</item>
+        <item quantity="other">Koble fra en annen enhet for å koble til denne, eller oppgrader til Plus for å få opptil %1$d-enheter tilkoblet samtidig.</item>
+    </plurals>
+    <string name="notification_max_sessions_content">Koble fra en annen enhet for å koble til denne.</string>
+    <string name="notification_cancel_to_free">Du er på Free-planen. Gratis servere og funksjoner er tilgjengelige.</string>
+    <string name="notification_cancel_to_basic">Du er på Basic-planen. Grunnleggende &amp; gratis servere og funksjoner er tilgjengelige.</string>
+    <string name="notification_cancel_to_delinquent">Du vil kunne få tilgang til premiumfunksjoner igjen etter at ventende fakturaer er betalt.</string>
+    <string name="reconnect_from_server">Fra server: </string>
+    <string name="reconnect_to_server">Til server: </string>
+    <string name="no_thanks">Nei, takk</string>
+    <string name="enable">Aktiver</string>
+    <string name="notification_smart_protocol_disabled_title">Smart Protocol er for øyeblikket deaktivert</string>
+    <string name="notification_smart_protocol_disabled_content">Proton VPN oppdaget at ditt nåværende nettverk hindrer en tilkobling til VPN-et. Aktivering av Smart Protocol kan omgå disse begrensningene.</string>
+    <string name="notification_streaming_blocked_title">Fungerer ikke strømmingen?</string>
+    <string name="notification_streaming_blocked_text">Mange strømmetjenester oppdager og blokkerer tilkoblinger fra gratis VPN-servere. Oppgrader til Proton VPN Plus for å omgå disse blokkeringene.</string>
+    <string name="upsell_advanced_features">Avanserte funksjoner: NetShield, Secure Core, Tor, P2P</string>
+    <string name="upsell_streaming_services">Få tilgang til strømmetjenester (Netflix, Disney+, osv) hvor som helst i verden</string>
+    <!-- Number of servers available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_servers">
+        <item quantity="one">%1$d server</item>
+        <item quantity="other">%1$d servere</item>
+    </plurals>
+    <!-- Number of countries available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_countries">
+        <item quantity="one">%1$d land</item>
+        <item quantity="other">%1$d land</item>
+    </plurals>
+    <string name="upsell_upgrade_again">Oppgrader igjen for å nyte alle funksjonene:</string>
+    <plurals name="upgrade_devices_title">
+        <item quantity="one">Beskytt %1$d enhet om gangen</item>
+        <item quantity="other">Beskytt %1$d enheter om gangen</item>
+    </plurals>
+    <string name="upgrade_devices_text">Proton VPN er tilgjengelig på 8 forskjellige plattformer.</string>
+    <string name="upgrade_plus_title">Oppgrader personvernet</string>
+    <string name="upgrade_plus_message">Skaff deg avanserte personvernfunksjoner og høyere hastighet med VPN Plus.</string>
+    <string name="upgrade_netshield_title">Kos deg med reklamefri surfing</string>
+    <string name="upgrade_netshield_message"><![CDATA[Blokkér annonser, sporere og skadelig programvare med <b>NetShield</b>.]]></string>
+    <string name="upgrade_secure_core_title">Doble krypteringen</string>
+    <string name="upgrade_secure_core_message"><![CDATA[Legg til et ekstra krypteringslag til VPN-tilkoblingen din med <b>Secure Core</b>.]]></string>
+    <string name="upgrade_p2p_title">Lås opp node-til-node-nedlastinger (P2P) og fildeling </string>
+    <string name="upgrade_p2p_text">Forbedre opplastings- og nedlastingshastighetene mens du skjuler IP-adressen din.</string>
+    <string name="upgrade_profiles_title">Få rask tilgang til dine hyppige tilkoblinger</string>
+    <string name="upgrade_profiles_text">Lås opp profiler med VPN Plus</string>
+    <string name="upgrade_streaming_title">Strøm i 4K</string>
+    <string name="upgrade_streaming_text">Nyt favorittfilmene og TV-programmene dine fra hvor som helst i verden.</string>
+    <string name="upgrade_streaming_block_title">Oppgrader for å omgå VPN-blokkeringer</string>
+    <string name="upgrade_streaming_block_text">VPN Plus-servere lar deg se favorittfilmene og TV-programmene fra hele verden.</string>
+    <string name="upgrade_tor_title">Få tilgang til Tor-nettverket med ett trykk</string>
+    <string name="upgrade_tor_text">Koble til skjulte tjenester og onion-sider med din vanlige nettleser.</string>
+    <string name="upgrade_vpn_accelerator_title">Surf med enda høyere hastigheter</string>
+    <!--
+        %1$s - speed in Gbps
+        Example:
+        Unlock faster, less crowded servers with speeds of up to 10 Gbps.
+    -->
+    <string name="upgrade_vpn_accelerator_message">Lås opp raskere, mindre overfylte servere med hastigheter på opptil %1$d Gbps.</string>
+    <string name="upgrade_split_tunneling_title">Få det beste fra to verdener</string>
+    <string name="upgrade_split_tunneling_message"><![CDATA[Del trafikken din inn i VPN- og ikke-VPN-tunneler med <b>delt tunnelering</b>.]]></string>
+    <string name="upgrade_customization_title">Lås opp avansert VPN-tilpasning</string>
+    <string name="upgrade_customization_message"><![CDATA[Lås opp <b>LAN-forbindelser</b>, <b>Egendefinert DNS</b> og <b>NAT-type 2</b> med VPN Plus.]]></string>
+    <string name="upgrade_all_countries_title">Tilgang til alle land</string>
+    <!-- Number of servers inserted as %1$s in the "upgrade_plus_countries_title_new".
+         The number is rounded to the hundreds, e.g. for a value of 1234 the number used in this text is 1200.
+
+         Example:
+         1200 secure servers
+         -->
+    <plurals name="upgrade_plus_servers_new">
+        <item quantity="one">%d sikker server</item>
+        <item quantity="other">%d sikre servere</item>
+    </plurals>
+    <!-- Number of countries inserted as %2$s in "upgrade_plus_countries_title_new".
+
+         Example:
+         55 countries
+         -->
+    <plurals name="upgrade_plus_countries">
+        <item quantity="one">%d land</item>
+        <item quantity="other">%d land</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with "upgrade_plus_servers_new"
+     %2$s - replaced with "upgrade_plus_countries"
+
+     Example:
+     Unlock 1300+ secure servers in 61 countries with VPN Plus.
+     -->
+    <string name="upgrade_plus_countries_title_new"><![CDATA[Lås opp %1$s i %2$s med <b>VPN Plus</b>]]></string>
+    <string name="mail_app_name" translateable="false">Proton Mail</string>
+    <string name="upgrade_unlimited_all_apps_title">Skaff deg fullstendig personverndekning med Proton Unlimited</string>
+    <string name="upgrade_unlimited_all_apps_description">Lås opp alle premiumfunksjoner fra Proton VPN, E-post, Kalender, Drive og Pass.</string>
+    <string name="upgrade_unlimited_more">Og mer</string>
+    <string name="upgrade_unlimited_vpn_unlimited_countries">Lås opp alle land</string>
+    <string name="upgrade_unlimited_vpn_all_features">Alle andre VPN Plus-funksjoner</string>
+    <string name="upgrade_unlimited_vpn_any_location">Velg en hvilket som helst plassering</string>
+    <string name="upgrade_unlimited_vpn_higher_speeds">Enda høyere VPN-hastigheter</string>
+    <plurals name="upgrade_unlimited_vpn_many_devices">
+        <item quantity="one">Beskytt %1$d enhet om gangen</item>
+        <item quantity="other">Beskytt %1$d enheter om gangen</item>
+    </plurals>
+    <string name="upgrade_unlimited_vpn_streaming">Sikker strømming</string>
+    <string name="upgrade_unlimited_vpn_adblocker">Annonseblokkering og skadevarebeskyttelse</string>
+    <string name="upgrade_unlimited_vpn_double_vpn">Dobbel VPN</string>
+    <string name="upgrade_unlimited_vpn_p2p">P2P-støtte</string>
+    <plurals name="upgrade_unlimited_mail_custom_domains">
+        <item quantity="one">%1$d egendefinert e-postdomene</item>
+        <item quantity="other">%1$d egendefinerte e-postdomener</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_attachments">
+        <item quantity="one">%1$d MB vedlegg</item>
+        <item quantity="other">%1$d MB vedlegg</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_many_addresses">
+        <item quantity="one">%1$d e-postadresse</item>
+        <item quantity="other">%1$d e-postadresser</item>
+    </plurals>
+    <string name="upgrade_unlimited_mail_unlimited_folders">Ubegrenset antall mapper og etiketter</string>
+    <string name="upgrade_unlimited_mail_dark_web">Overvåking av det mørke nettet</string>
+    <string name="upgrade_unlimited_mail_aliases">Ubegrenset antall hide-my-email-aliaser</string>
+    <string name="upgrade_unlimited_mail_autoreply">Autosvar</string>
+    <string name="upgrade_unlimited_mail_scheduled_send">Planlagt sending</string>
+    <plurals name="upgrade_unlimited_calendar_calendars">
+        <item quantity="one">%1$d personlig kalender</item>
+        <item quantity="other">%1$d personlige kalendere</item>
+    </plurals>
+    <string name="upgrade_unlimited_calendar_sharing">Kalenderdeling</string>
+    <string name="upgrade_unlimited_calendar_invites">Send og motta invitasjoner</string>
+    <string name="upgrade_unlimited_drive_encryption">Kryptert fillagring</string>
+    <string name="upgrade_unlimited_drive_storage_size">%1$d GB total lagringsplass for bilder, filer og e-post</string>
+    <string name="upgrade_unlimited_drive_link_share">Del bilder og filer via kobling</string>
+    <string name="upgrade_unlimited_drive_sharing_security">Avansert delingssikkerhet</string>
+    <string name="upgrade_unlimited_drive_version_history">Versjonshistorikk</string>
+    <string name="upgrade_unlimited_pass_manager">Kryptert passordbehandler</string>
+    <string name="upgrade_unlimited_pass_logins_aliases">Ubegrenset antall pålogginger og hide-my-email-aliaser</string>
+    <plurals name="upgrade_unlimited_pass_vaults">
+        <item quantity="one">%1$d hvelv</item>
+        <item quantity="other">%1$d hvelv</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_logins">Ubegrenset antall pålogginger</string>
+    <string name="upgrade_unlimited_pass_aliases">Ubegrenset antall hide-my-email-aliaser</string>
+    <string name="upgrade_unlimited_pass_credit_cards">Ubegrenset antall kredittkort</string>
+    <string name="upgrade_unlimited_pass_devices">Ubegrenset antall enheter</string>
+    <plurals name="upgrade_unlimited_pass_users">
+        <item quantity="one">Del med opptil %1$d annen</item>
+        <item quantity="other">Del med opptil %1$d andre</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_2fa_auth">Integrert 2FA-autentisering</string>
+    <string name="upgrade_not_now_button">Ikke nå</string>
+    <!-- Content description for plan selection list.
+         Only used by accessibility services.
+
+         Example:
+         When the plan selection control is focused, and the first plan name is "VPN Plus"
+         TalkBack will read:
+         "VPN Plus, 1 of 2, in list Upgrade options" -->
+    <string name="upgrade_plan_selection_content_description">Oppgraderingsalternativer</string>
+    <!-- Text in a "badge" element that has a rounded border and represents the Plus VPN plan.
+         May be used as a table header or like an icon. -->
+    <string name="badge_plan_plus">Plus</string>
+    <!-- Content description prefix for value in the benefits table row for the free plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_plus">Plus-plan:</string>
+    <!-- Content description prefix for value in the benefits table row for the plus plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_free">Free-plan:</string>
+    <string name="upsell_panel_content_description_yes">Ja</string>
+    <string name="upsell_panel_content_description_no">Nei</string>
+    <string name="upsell_panel_table_header_plan_free">Free</string>
+    <string name="upsell_panel_general_benefit_block_ads">Blokkér annonser og sporere</string>
+    <string name="upsell_panel_general_benefit_countries">Tilgjengelige land</string>
+    <!-- %1$s - number of countries rounded to full tens. Example: 120+, 130+, 140+ -->
+    <string name="upsell_panel_general_benefit_countries_rounded">%1$d+</string>
+    <string name="upsell_panel_general_benefit_devices">Beskyttede enheter</string>
+    <string name="upsell_panel_general_benefit_location">Velg sted</string>
+    <string name="upsell_panel_general_benefit_server">Velg server</string>
+    <string name="upsell_panel_general_benefit_shows">Se programmene dine fra alle land</string>
+    <string name="upsell_panel_general_benefit_speed">Serverhastighet</string>
+    <string name="upsell_panel_general_benefit_speed_standard">Standard</string>
+    <string name="upsell_panel_general_benefit_speed_highest">Høyeste</string>
+    <string name="upsell_panel_adv_customization_title">Finjuster forbindelsen</string>
+    <string name="upsell_panel_adv_customization_description">Tillat LAN-tilkoblinger, angi en egendefinert DNS og velg NAT-type. De avanserte kontrollene, alt med Plus.</string>
+    <string name="upsell_panel_adv_customization_benefit_lan">Oppnå kontakt med skriver og hjemmeenheter</string>
+    <string name="upsell_panel_adv_customization_benefit_dns">Bruk egen DNS-tjeneste</string>
+    <string name="upsell_panel_adv_customization_benefit_gaming">Bedre tilkoblinger for spilling</string>
+    <!--
+        %1$s - country name in nominative
+
+        Warning country names are inserted in the nominative case.
+        For inflicted languages translate the following phrase instead:
+        Get VPN Plus to access: %1$s
+        -->
+    <string name="upsell_panel_country_title">Lås opp %1$s med VPN Plus</string>
+    <string name="upsell_panel_countries_title">Lås opp alle land med VPN Plus</string>
+    <string name="upsell_panel_country_benefit_speed">Høyhastighetsservere</string>
+    <string name="upsell_panel_country_benefit_shows">Se programmer som bare er tilgjengelige i utlandet</string>
+    <string name="upsell_panel_devices_title">Beskytt alle enhetene du eier</string>
+    <string name="upsell_panel_devices_description">Telefonen, den bærbare datamaskinen, TV-en og alt i mellom.</string>
+    <string name="upsell_panel_netshield_title">Surf uten avbrudd</string>
+    <string name="upsell_panel_netshield_benefit_ads">Annonser blokkert mens du surfer</string>
+    <string name="upsell_panel_netshield_benefit_trackers">Stopp sporere fra å følge deg</string>
+    <string name="upsell_panel_netshield_benefit_malware">Beskyttelse mot skadelig programvare og nettfisking</string>
+    <string name="upsell_panel_netshield_benefit_load_speed">Sider lastes inn raskere </string>
+    <string name="upsell_panel_onboarding_title">Få mer med VPN Plus</string>
+    <string name="upsell_panel_p2p_title">Nedlastinger i full hastighet</string>
+    <string name="upsell_panel_p2p_description">Servere bygget for fildeling, med din vanlige torrentklient.</string>
+    <string name="upsell_panel_p2p_benefit_p2p">P2P-fildeling</string>
+    <string name="upsell_panel_profiles_title">Strømming, spilling, jobb: en profil for hver</string>
+    <string name="upsell_panel_profiles_description">Konfigurer forbindelsene på din måte, og koble deg deretter til hvilken som helst av dem på nytt med ett trykk.</string>
+    <string name="upsell_panel_profiles_benefit_profiles">Lagrede profiler</string>
+    <string name="upsell_panel_profiles_benefit_profiles_unlimited">Ubegrenset</string>
+    <string name="upsell_panel_secure_core_title">To lag med kryptering mellom deg og nettet</string>
+    <string name="upsell_panel_secure_core_description">Rutes gjennom en Proton-server i Sveits, Island eller Sverige før ditt valgte land.</string>
+    <string name="upsell_panel_secure_core_benefit_secure_core">Secure Core</string>
+    <string name="upsell_panel_speed_title">Strøm, spill og last ned raskere</string>
+    <string name="upsell_panel_speed_benefit_servers">Høyhastighetsservere</string>
+    <string name="upsell_panel_speed_benefit_gaming">Responstid under spilling</string>
+    <string name="upsell_panel_speed_benefit_gaming_slow">Treg</string>
+    <string name="upsell_panel_speed_benefit_gaming_fast">Rask</string>
+    <string name="upsell_panel_speed_benefit_video">Videostrømmer uten bufring</string>
+    <string name="upsell_panel_speed_benefit_p2p">Støtte for P2P-nedlastinger</string>
+    <string name="upsell_panel_split_tunneling_title">Velg hvilke apper som bruker VPN-et</string>
+    <string name="upsell_panel_split_tunneling_description">Nettleseren via VPN-et, bankappen rundt det. Du velger, app for app.</string>
+    <string name="upsell_panel_split_tunneling_benefit_split">Delt tunnelering</string>
+    <string name="upsell_panel_streaming_title">Se på dine favorittstrømmetjenester</string>
+    <string name="upsell_panel_streaming_benefit_shows">Watch shows from any country</string>
+    <!-- The asterisk points to upsell_panel_streaming_footer -->
+    <string name="upsell_panel_streaming_benefit_platforms">Alle større strømmeplattformer støttes *</string>
+    <string name="upsell_panel_streaming_benefit_hd">Strøm i HD uten bufring</string>
+    <string name="upsell_panel_streaming_benefit_devices">Enheter koblet til samtidig</string>
+    <string name="upsell_panel_streaming_footer">* Abonnement på strømmeplattform kreves.</string>
+    <string name="upsell_panel_streaming_block_title">Oppgrader for å omgå VPN-blokkeringer</string>
+    <string name="upsell_panel_streaming_block_description">VPN Plus-servere lar deg se favorittfilmene og TV-programmene fra hele verden.</string>
+    <string name="upsell_panel_tor_title">Onion-nettsteder, ingen Tor-nettleser nødvendig</string>
+    <string name="upsell_panel_tor_description">Gå til .onion-nettsteder i nettleseren du allerede bruker.</string>
+    <string name="upsell_panel_tor_benefit_tor">Tor over VPN</string>
+    <string name="upsell_card_countries_title">Verdensomspennende dekning</string>
+    <!-- Parameters:
+        %1$d - number of servers rounded up to 100s (e.g. 600, 1200)
+        %2$s - replaced with "upgrade_plus_countries"
+
+        Example:
+        1700+ server locations in 63 countries -->
+    <string name="upsell_card_countries_description">%1$d+ tjenerplasseringer i %2$s</string>
+    <string name="upsell_card_customization_title">Og mye mer…</string>
+    <string name="upsell_card_customization_description">Få tilgang til enda flere ytelses- og personvernfunksjoner</string>
+    <plurals name="upsell_card_devices_title">
+        <item quantity="one">Beskytt %1$d enhet</item>
+        <item quantity="other">Beskytt %1$d enheter</item>
+    </plurals>
+    <string name="upsell_card_devices_description">Sikkerhet og personvern på alle enhetene dine</string>
+    <string name="upsell_card_netshield_title">NetShield</string>
+    <string name="upsell_card_netshield_description">Blokkér reklamer, skadevare og sporere</string>
+    <string name="upsell_card_secure_core_title">Secure Core</string>
+    <string name="upsell_card_secure_core_description">Legg til et ekstra krypteringslag til VPN-tilkoblingen din.</string>
+    <string name="upsell_card_p2p_title">P2P-støtte</string>
+    <string name="upsell_card_p2p_description">Last ned filer gjennom BitTorrent og andre fildelingsprotokoller</string>
+    <string name="upsell_card_profiles_title">Profiler</string>
+    <string name="upsell_card_profiles_description">Opprett egendefinerte VPN-tilkoblinger</string>
+    <string name="upsell_card_speed_title">Raskere surfing</string>
+    <!-- Parameters:
+        %1$d - max server speed in Gbps (preserve the non-breaking space between the number and Gbps).
+        Example:
+        Browse at even higher speeds (up to 10&160;Gbps) -->
+    <string name="upsell_card_speed_description">Surf med enda høyere hastigheter (opptil %1$d Gbps)</string>
+    <string name="upsell_card_split_tunneling_title">Delt tunnelering</string>
+    <string name="upsell_card_split_tunneling_description">Surf samtidig fra to plasseringer</string>
+    <string name="upsell_card_streaming_title">Strømming</string>
+    <string name="upsell_card_streaming_description">Se favorittfilmene og TV-programmene dine</string>
+    <string name="upsell_card_tor_title">TOR over VPN</string>
+    <string name="upsell_card_tor_description">Bruk Tor-nettverket over VPN-tilkoblingen for ekstra personvern</string>
+    <string name="upsell_tv_all_countries_title">Få tilgang til alle land med Plus</string>
+    <!-- Format for upselling countries on TV".
+        %1$s - replaced with upgrade_plus_servers_new plurals key (e.g. 1 secure server or 10 secure servers)
+        %2$s - replaced with upgrade_plus_countries plurals key (e.g. 1 country or 10 countries)
+
+        Example: Unlock 16821 secure servers in 127 countries. Go to the Proton VPN website to upgrade your plan.
+    -->
+    <string name="upsell_tv_all_countries_description">Lås opp %1$s i %2$s.</string>
+    <string name="upsell_tv_netshield_title">Kos deg med reklamefri surfing med Plus</string>
+    <string name="upsell_tv_netshield_description"><![CDATA[Blokkér annonser, sporere og skadelig programvare med <b>NetShield</b>.]]></string>
+    <string name="upsell_tv_split_tunneling_title">Få det beste fra begge verdener med Plus</string>
+    <string name="upsell_tv_split_tunneling_description"><![CDATA[Del trafikken din inn i VPN- og ikke-VPN-tunneler med <b>delt tunnelering</b>.]]></string>
+    <string name="upsell_tv_subscription_expired_title">Abonnement utløpt</string>
+    <string name="upsell_tv_subscription_expired_description">Oppgrader for å få tilbake tilgang til Plus-servere og funksjoner.</string>
+    <string name="upsell_tv_customization_title">Få avanserte VPN-tilpasninger med Plus</string>
+    <string name="upsell_tv_customization_description"><![CDATA[Lås opp <b>LAN-forbindelser</b>, <b>Egendefinert DNS</b> og mer avanserte VPN-funksjoner.]]></string>
+    <string name="upsell_tv_fallback_description">Gå til Proton VPN-nettstedet for å oppgradere planen din.</string>
+    <!-- Format for price per period of time.
+        %1$s - replaced with price and currency (e.g. "$100")
+        %2$s - replaced with time period, one of payment_price_per_ (e.g. "month", "week")
+
+        Examples:
+        50 PLN /month
+        $100 /year
+    -->
+    <string name="payment_price_with_period">%1$s /%2$s</string>
+    <string name="payment_price_per_day">dag</string>
+    <string name="payment_price_per_week">uke</string>
+    <string name="payment_price_per_month">måned</string>
+    <string name="payment_price_per_year">år</string>
+    <plurals name="payment_price_cycle_label_day">
+        <item quantity="one">%1$d dag</item>
+        <item quantity="other">%1$d dager</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_week">
+        <item quantity="one">%1$d uke</item>
+        <item quantity="other">%1$d uker</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_month">
+        <item quantity="one">%1$d måned</item>
+        <item quantity="other">%1$d måneder</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_year">
+        <item quantity="one">%1$d år</item>
+        <item quantity="other">%1$d år</item>
+    </plurals>
+    <string name="payment_select_your_plan">Velg din plan</string>
+    <!-- Label on a button for purchasing a subscription.
+         Parameter: %1$s - plan name
+         Plan names are not translated.
+
+         Example: "Get VPN Plus", "Get Proton Unlimited". -->
+    <string name="payment_button_get_plan">Skaff deg %1$s</string>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_discount_renewal_price_message_daily">
+        <item quantity="one">Spesialtilbud. Fornyes automatisk til %1$s/dag</item>
+        <item quantity="other">Spesialtilbud. Fornyes automatisk til %1$s hver %2$d. dag</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_discount_renewal_price_message_weekly">
+        <item quantity="one">Spesialtilbud. Fornyes automatisk til %1$s/uke</item>
+        <item quantity="other">Spesialtilbud. Fornyes automatisk til %1$s hver %2$d. uke</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_discount_renewal_price_message_monthly">
+        <item quantity="one">Spesialtilbud. Fornyes automatisk til %1$s/måned</item>
+        <item quantity="other">Spesialtilbud. Fornyes automatisk til %1$s hver %2$d. måned</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_discount_renewal_price_message_yearly">
+        <item quantity="one">Spesialtilbud. Fornyes automatisk til %1$s/år</item>
+        <item quantity="other">Spesialtilbud. Fornyes automatisk til %1$s hvert %2$d. år</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_renewal_price_message_daily">
+        <item quantity="one">Abonnementet fornyes automatisk til %1$s/dag</item>
+        <item quantity="other">Abonnementet fornyes automatisk til %1$s hver %2$d. dag</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_renewal_price_message_weekly">
+        <item quantity="one">Abonnementet fornyes automatisk til %1$s/uke</item>
+        <item quantity="other">Abonnementet fornyes automatisk til %1$s hver %2$d. uke</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_renewal_price_message_monthly">
+        <item quantity="one">Abonnementet fornyes automatisk til %1$s/måned</item>
+        <item quantity="other">Abonnementet fornyes automatisk til %1$s hver %2$d. måned</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_renewal_price_message_yearly">
+        <item quantity="one">Abonnementet fornyes automatisk til %1$s/år</item>
+        <item quantity="other">Abonnementet fornyes automatisk til %1$s hvert %2$d. år</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_daily">
+        <item quantity="one">%1$s/dag</item>
+        <item quantity="other">%1$s hver %2$d. dag</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_weekly">
+        <item quantity="one">%1$s/uke</item>
+        <item quantity="other">%1$s hver %2$d. uke</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_monthly">
+        <item quantity="one">%1$s/måned</item>
+        <item quantity="other">%1$s hver %2$d. måned</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_yearly">
+        <item quantity="one">%1$s/år</item>
+        <item quantity="other">%1$s hver %2$d. år</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_for_days">
+        <item quantity="one">den første dagen</item>
+        <item quantity="other">for de første %1$d dagene</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_for_weeks">
+        <item quantity="one">den første uken</item>
+        <item quantity="other">for de første %1$d ukene</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_for_months">
+        <item quantity="one">den første måneden</item>
+        <item quantity="other">for de første %1$d månedene</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_discount_for_years">
+        <item quantity="one">det første året</item>
+        <item quantity="other">for de første %1$d årene</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_rest_daily">
+        <item quantity="one">fornyes deretter til %1$s/dag</item>
+        <item quantity="other">fornyes deretter til %1$s hver %2$d. dag</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_rest_weekly">
+        <item quantity="one">fornyes deretter til %1$s/uke</item>
+        <item quantity="other">fornyes deretter til %1$s hver %2$d. uke</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_rest_monthly">
+        <item quantity="one">fornyes deretter til %1$s/måned</item>
+        <item quantity="other">fornyes deretter til %1$s hver %2$d. måned</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_rest_yearly">
+        <item quantity="one">fornyes deretter til %1$s/år</item>
+        <item quantity="other">fornyes deretter til %1$s hvert %2$d. år</item>
+    </plurals>
+    <!-- Explains renewal cycle when first there's a discount price for several periods
+     (e.g. 2 months) and then the subscription renews at full price.
+     Periods (days, months etc) are never mixed between the messages, the whole message uses one
+     unit.
+
+     Parameters:
+      %1$s - one of payment_multi_renewal_discount_*
+      %2$s - one of payment_multi_renewal_discount_for_*
+      %3$s - one of payment_multi_renewal_rest_*
+
+     Examples:
+      "$2.99/month for the first 2 months, then auto renews at $3.99/month"
+      "$19.99/year for the first 3 years, then auto renews at $24.99/year"
+      "$3.99 every 2 months for the first 4 months, then auto renews at 5.99 every 2 months"
+    -->
+    <string name="payment_multi_renewal_template">%1$s %2$s, %3$s</string>
+    <string name="smart_routing_title">Smart Routing</string>
+    <string name="smart_routing_description">Denne teknologien lar Proton VPN gi høyere hastighet og sikkerhet i vanskelige-å betjene-land.</string>
+    <string name="tor_title">Tor</string>
+    <string name="server_load_title">Tjenerbelastning</string>
+    <string name="activity_information_learn_more">Lær mer</string>
+    <string name="server_load_low">Lav</string>
+    <string name="server_load_medium">Middels</string>
+    <string name="server_load_high">Høy</string>
+    <!-- Override Human verification links from core -->
+    <string name="onboarding_welcome_title">Velkommen til Proton VPN</string>
+    <string name="onboarding_welcome_description">Surf privat, få tilgang til blokkert innhold og nyt digital frihet.</string>
+    <string name="onboarding_welcome_action">Kom i gang</string>
+    <string name="upgrade_success_get_started_button">Kom i gang</string>
+    <string name="dynamic_report_suggestion_didnt_work">Fungerte det ikke?</string>
+    <string name="dynamic_report_contact_us">Kontakt oss</string>
+    <string name="dynamic_report_tips_description">Disse tipsene kan bidra til å løse problemet raskere.</string>
+    <string name="dynamic_report_tips_title">Hurtigløsninger</string>
+    <string name="dynamic_report_logs_title">Send feillogger</string>
+    <string name="dynamic_report_logs_tooltip">Feillogger viser oss hva som gikk galt, og hvilke handlinger som førte til problemet. Vi bruker dem bare til å hjelpe teknikerne våre med å løse problemer.</string>
+    <string name="dynamic_report_error_title">Vi kunne ikke sende rapporten din.</string>
+    <string name="dynamic_report_completion_error_description_generic">Vi kunne ikke sende rapporten din. Prøv igjen.</string>
+    <string name="dynamic_report_completion_error_description_no_internet">Vi kunne ikke sende rapporten. Kontroller tilkoblingen og prøv på nytt.</string>
+    <string name="dynamic_report_completion_error_description_timeout">Vi kunne ikke sende rapporten. Tilkoblingen fikk tidsavbrudd, prøv på nytt.</string>
+    <string name="dynamic_report_completion_success_title">Takk for tilbakemeldingen din. Vi tar kontakt med deg så snart vi kan.</string>
+    <string name="dynamic_report_success_title">Takk for tilbakemeldingen din</string>
+    <string name="dynamic_report_success_description">Vi kommer tilbake til deg så snart vi kan.</string>
+    <string name="dynamic_report_field_mandatory">Dette feltet er obligatorisk</string>
+    <string name="dynamic_report_logs_description">En logg er en type fil som viser oss handlingene du utførte som førte til en feil. Vi vil bare bruke dem til å hjelpe ingeniørene våre med å fikse feil.</string>
+    <string name="dynamic_report_logs_missing">Feillogger hjelper oss med å komme til bunns i problemet ditt. Hvis du ikke inkluderer dem, kan det hende at vi ikke kan undersøke dem fullt ut.</string>
+    <string name="dynamic_report_step1">Trinn 1 av 3</string>
+    <string name="dynamic_report_step2">Trinn 2 av 3</string>
+    <string name="dynamic_report_step3">Trinn 3 av 3</string>
+    <string name="dynamic_report_your_issue_headline">Hva er problemet?</string>
+    <string name="update_screen_title">Oppdater Proton VPN</string>
+    <string name="update_screen_description">Det er mer sannsynlig at du har problemer med eldre versjoner av Proton VPN.</string>
+    <string name="update_banner_description_settings">En ny versjon av appen er tilgjengelig</string>
+    <string name="update_banner_warning_vpn_connected_title">VPN-et vil kortvarig kobles fra</string>
+    <string name="update_banner_warning_vpn_connected_message">Appen må starte på nytt for å fullføre oppdateringen. Du blir automatisk koblet til igjen etterpå.</string>
+    <string name="dialog_create_account_title">Opprett en konto for å fortsette</string>
+    <string name="dialog_create_account_action_create">Opprett konto</string>
+    <string name="dialog_create_account_action_signin">Logg på</string>
+    <string name="server_search_menu_title">Søk</string>
+    <string name="search_empty_result_subtitle">Forsøk et annet nøkkelord</string>
+    <string name="search_empty_result_title">Ingen resultater funnet</string>
+    <!-- Content description for an icon button that clears search query in the input field. -->
+    <string name="search_clear_query_content_description">Tøm</string>
+    <!-- Content description for an icon button that clears text in an input field. -->
+    <string name="clear_text_field_content_description">Tøm</string>
+    <!-- Example: Want to connect to Italy? -->
+    <string name="upgrade_country_title">Vil du koble til et bestemt land?</string>
+    <string name="upgrade_country_message"><![CDATA[Lås opp <b>valg av land</b> med VPN Plus.]]></string>
+    <string name="free_connections_info_message">Proton Free kobler deg automatisk til den raskeste tilgjengelige tjeneren. Dette vil normalt være den nærmeste tjeneren til din plassering.</string>
+    <string name="free_connections_info_server_locations">Gratis tjenerplasseringer (%1$d)</string>
+    <string name="free_connections_info_banner_text">Få tilgang til alle land med VPN Plus</string>
+    <string name="free_connection_info_title">Gratis forbindelser</string>
+    <string name="search_upsell_banner_title">Strøm fra hvor som helst</string>
+    <!-- Example: Unlock geoblocked content from 10 countries with VPN Plus. -->
+    <plurals name="search_upsell_banner_message">
+        <item quantity="one">Lås opp geoblokkert innhold fra %1$d land med VPN Plus</item>
+        <item quantity="other">Lås opp geoblokkert innhold fra %1$d land med VPN Plus</item>
+    </plurals>
+    <string name="select_default_connection">Velg standardtilkobling</string>
+    <string name="settings_default_connection_title">Standard forbindelse</string>
+    <string name="fastest_country_description">Den beste tjeneren basert på plasseringen din</string>
+    <string name="settings_connection_preferences_title">Tilkoblingspreferanser</string>
+    <string name="settings_connection_preferences_snackbar_message_excluded_location_removed">Element fjernet</string>
+    <string name="settings_excluded_locations_title">Ekskluderte plasseringer</string>
+    <string name="settings_excluded_locations_description">De valgte stedene vil aldri bli valgt når du kobler til den raskeste tjeneren.</string>
+    <string name="settings_excluded_locations_unavailable">Ingen steder tilgjengelig</string>
+    <string name="settings_excluded_locations_selection_hint">Velg…</string>
+    <string name="settings_excluded_locations_accessibility_label_deletion">Fjern fra ekskluderte plasseringer</string>
+    <string name="settings_excluded_locations_accessibility_label_city">By</string>
+    <string name="settings_excluded_locations_accessibility_label_country">Land</string>
+    <string name="settings_excluded_locations_accessibility_label_state">Stat</string>
+    <string name="settings_last_connection_title">Siste forbindelse</string>
+    <string name="settings_last_connection_description">Den sist brukte tilkoblingen</string>
+    <string name="settings_change_icon_title">App-ikon</string>
+    <string name="settings_change_icon_details">Tilpass hvordan Proton VPN-appen vises på enheten din. Hvorfor?</string>
+    <string name="settings_change_icon_confirmation_title">Endre app-ikon?</string>
+    <string name="settings_change_icon_confirmation_details">Dette vil føre til at Proton VPN-appen lukkes. For å starte Proton VPN på nytt, trykk bare på det nye appikonet.</string>
+    <string name="settings_change_icon_header_protonvpn">Proton VPN</string>
+    <string name="settings_change_icon_header_discreet">Diskret app-ikon</string>
+    <string name="settings_widget_title">Widget</string>
+    <string name="settings_widget_selection_title">Prøv Proton VPN-widgeten</string>
+    <string name="settings_widget_selection_description">Se tilkoblingsstatusen din og få tilgang til favoritt-VPN-tilkoblingene dine fra startskjermen.</string>
+    <!-- Placeholder is for non-translatable app_name-->
+    <string name="setting_widget_selection_additional_description">For å legge til widgeten, trykk og hold hvor som helst på startskjermen, og velg deretter %1$s fra widgetmenyen.</string>
+    <string name="settings_widget_selection_button_title">Legg til widget</string>
+    <string name="setting_widget_try_title">Prøv Proton VPN-widgeten</string>
+    <!-- Content description used by accessibility services for a button for dismissing (hiding)
+         a notification banner (usually used for special offers). -->
+    <string name="notification_banner_dismiss_accessibility_label">Avvis banner</string>
+    <!-- Time left in a countdown, it shows two units of time, e.g. days and hours, hours and minutes.
+         %1$s - larger unit of time, one of: time_left_days, time_left_hours, time_left_minutes
+         %2$s - smaller unit of time, one of: time_left_hours, time_left_minutes, time_left_seconds
+
+         Examples:
+         3 days 11 hours left
+         1 hour 32 minutes left
+         0 minutes 50 seconds left
+     -->
+    <string name="offer_time_left">%1$s %2$s gjenstår</string>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_seconds">
+        <item quantity="one">%1$d sekund</item>
+        <item quantity="other">%1$d sekunder</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_minutes">
+        <item quantity="one">%1$d minutt</item>
+        <item quantity="other">%1$d minutter</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 hours 5 minutes left -->
+    <plurals name="time_left_hours">
+        <item quantity="one">%1$d time</item>
+        <item quantity="other">%1$d timer</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 days 5 hours left -->
+    <plurals name="time_left_days">
+        <item quantity="one">%1$d dag</item>
+        <item quantity="other">%1$d dager</item>
+    </plurals>
+    <string name="server_change_max_reached">Du har nådd maksimalt antall gratis tjenerbytter for nå.</string>
+    <string name="server_change_upsell">Skaff deg ubegrenset antall bytter med VPN Plus.</string>
+    <string name="server_change_button_title">Endre tjener</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services.
+
+        %1$s - replaced with "time_left_minutes"
+        %2$s - replaced with "time_left_seconds"
+        Example:
+        Available in 1 minute 23 seconds.
+      -->
+    <string name="server_change_button_time_left_content_description">Tilgjengelig om %1$s %2$s</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services and only if time left is less than 1 minute.
+
+        %1$s - replaced with "time_left_seconds"
+        Example:
+        Available in 23 seconds.
+      -->
+    <string name="server_change_button_time_left_seconds_content_description">Tilgjengelig om %1$s</string>
+    <string name="server_change_progress_finished_contend_description">Tilgjengelig nå</string>
+    <string name="not_wanted_country_title">Ikke det landet du ønsket?</string>
+    <string name="not_wanted_country_description">Oppgrader for å velge hvilken som helst tjener</string>
+    <string name="whats_new_title">Hva er nytt</string>
+    <string name="whats_new_profiles_title">Profiler er tilbake</string>
+    <string name="whats_new_profiles_description">Opprett og lagre tilpassede tilkoblinger med ditt valg av plassering, tjener og protokoll.</string>
+    <string name="whats_new_widget_title">Vi introduserer widgets</string>
+    <string name="whats_new_widget_description">Du kan nå se og administrere VPN-en din uten å forlate startskjermen.</string>
+    <string name="whats_new_add_widget_button">Legg til widget</string>
+    <string name="welcome_plus_title">Velkommen til VPN Plus</string>
+    <string name="welcome_plus_description">Nyt ekstra personvernfunksjoner, forbedret ytelse og VPN-tilpasning på neste nivå.</string>
+    <string name="welcome_unlimited_title">Velkommen til Proton Unlimited</string>
+    <string name="welcome_unlimited_description">Du har låst opp alle premiumfunksjonene i Proton VPN, Mail, Calendar, Drive, Pass og Wallet.</string>
+    <string name="welcome_generic_title">Gratulerer</string>
+    <string name="welcome_generic_description">Du har oppgradert abonnementet ditt. Gled deg over avanserte personvernfunksjoner og neste-nivå ytelse.</string>
+    <!-- Text added to button labels that open links in a browser (as opposed to performing actions
+         within the app). Only used by accessibility services like screen readers.
+         Example:
+         a button with "Learn more" label and this suffix will be read by a screen reader as:
+         "Learn more, external link button"
+     -->
+    <string name="accessibility_external_link_suffix">ekstern kobling</string>
+    <string name="no_logs_banner_title">Sertifisert VPN uten loggføring</string>
+    <string name="no_logs_banner_description">VPN-aktiviteten din er beskyttet av sveitsiske personvernlover. Vi vil aldri spore deg på nettet eller dele informasjonen din med tredjeparter.</string>
+    <!-- tag(Redesign_2023) Bottom bar label for home screen -->
+    <string name="bottom_nav_home">Hjem</string>
+    <string name="bottom_nav_gateways">Gateway-tjenere</string>
+    <string name="bottom_nav_profiles">Profiler</string>
+    <!-- tag(Redesign_2023) Bottom bar label for country list screen -->
+    <string name="bottom_nav_countries">Land</string>
+    <!-- tag(Redesign_2023) Bottom bar label for settings screen -->
+    <string name="botton_nav_settings">Innstillinger</string>
+    <!-- tag(Redesign_2023)
+         Text added to button labels that open a UI element (e.g. a panel).
+         Only used by accessibility services.
+         Example:
+         a button with label "connection details" and this action label will be read by a screen
+         reader as:
+         "Connection details, button. Double tap to open"
+    -->
+    <string name="accessibility_action_open">åpne</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that initiate a VPN connection.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland will be read by a screen reader as:
+         "Switzerland. Double tap to connect"
+        -->
+    <string name="accessibility_action_connect">koble til</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that redirect the user to upgrade their subscription plan.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland that requires upgrading subscription to become
+         available will be read by a screen reader as:
+         "Unavailable, Switzerland. Double tap to upgrade"
+        -->
+    <string name="accessibility_action_upgrade">oppgrader</string>
+    <!-- tag(Redesign_2023)
+     Text added to clickable elements that initiate a search.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_search">søk</string>
+    <!--
+     Text added to clickable elements that provide negative feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_negative">ikke bra</string>
+    <!--
+     Text added to clickable elements that provide positive feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_positive">bra</string>
+    <!--
+     Text added to clickable elements that allows to submit either positive or negative feedback.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_submit_feedback">send inn</string>
+    <!-- Name of action for opening a screen/panel for an item.
+         The action is listed in a menu of additional actions available to accessibility services.
+
+         Example:
+         - item in a list of countries has a custom action to open list of cities in the country
+         - item in a list of cities has a custom action to open list of servers in the city
+         -->
+    <string name="accessibility_menu_action_open">Åpne</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable because servers
+         are in maintenance.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are in maintenance will be read by a
+         screen reader as:
+         "in maintenance, Switzerland"
+     -->
+    <string name="accessibility_item_in_maintenance">under vedlikehold</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are unavailable will be read by a screen
+         reader as:
+         "unavailable, Switzerland"
+     -->
+    <string name="accessibility_item_unavailable">utilgjengelig</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when there is active connection to it.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland when there is a VPN connection to a server in this country
+         will be read by a screen reader as:
+         "Switzerland, connected"
+     -->
+    <string name="accessibility_item_connected">tilkoblet</string>
+    <!-- tag(Redesign_2023): label indicating that a server supports peer-to-peer. -->
+    <string name="server_feature_label_p2p">P2P</string>
+    <!-- tag(Redesign_2023): label indicating that a server routes connection through the Tor network. -->
+    <string name="server_feature_label_tor">Tor</string>
+    <string name="server_feature_content_description_p2p">node-til-node</string>
+    <string name="server_feature_content_description_tor">Tor</string>
+    <string name="server_feature_content_description_smart_routing">Smart Routing</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest country is connected to. -->
+    <string name="fastest_country">Raskeste land</string>
+    <string name="fastest_country_excluding_my_country">Raskeste land (unntatt landet mitt)</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest free server is connected to. -->
+    <string name="fastest_free_server">Raskeste gratis tjener</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Iceland
+     -->
+    <string name="connection_info_secure_core_full_iceland">%1$s via Island</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Sweden
+     -->
+    <string name="connection_info_secure_core_full_sweden">%1$s via Sverige</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_switzerland">%1$s via Sveits</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - exit country name in nominative case
+         %2$s - entry country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_other">%1$s via %2$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_iceland">via Island</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_sweden">via Sverige</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_switzerland">via Sveits</string>
+    <!--
+         Label describing a Secure Core connection via the fastest Secure Core country.
+         It is displayed below country name, for example:
+         Italy
+         via Secure Core
+    -->
+    <string name="connection_info_secure_core_entry_fastest">via Secure Core</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - entry country name in nominative case
+         Example: via Switzerland
+    -->
+    <string name="connection_info_secure_core_entry_other">via %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         three countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+
+     -->
+    <string name="connection_info_auto_selected_free_countries">Auto-valgt fra [flags]</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         several countries. Used instead of connection_info_auto_selected_free_countries when there
+         are more than 3 countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+         $1%d - replaced with number of additional countries (beyond the 3 flags).
+
+         Example, if there are 5 countries to select from the text will be:
+         Auto selected from [flags]+2
+         -->
+    <string name="connection_info_auto_selected_free_countries_more">Automatisk valgt fra [flags]+%1$d</string>
+    <!-- tag(Redesign_2023)
+         Accessibility label describing a connection to a free server that is automatically selected
+         from one in several countries. Placed directly below fastest_free_server.
+         This text replaces connection_info_auto_selected_free_servers for screen readers.
+         $1%d - replaced with number of countries.
+         -->
+    <plurals name="connection_info_accessibility_auto_selected_free_countries">
+        <item quantity="one">Automatisk valgt fra %1$d land</item>
+        <item quantity="other">Automatisk valgt fra %1$d land</item>
+    </plurals>
+    <string name="connection_info_auto_selected_free_countries_plain">Auto-valgt fra gratis land.</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that the connection details in the card are
+         are that of the previous connection.
+
+         Example:
+         Last connected to
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         -->
+    <string name="connection_card_label_last_connected">Sist koblet til</string>
+    <!--
+        Label above the connection card indicating text which acts as a button and leads to
+        customization bottom sheet of default connection
+     -->
+    <string name="connection_card_label_default_connection">Standard forbindelse</string>
+    <!-- Label above the connection card when not connected and the user is on the free plan.
+         The connection card always shows "Fastest free server" (fastest_free_server) for free
+         users. -->
+    <string name="connection_card_label_free_connection">Gratis forbindelse</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is being established.
+     -->
+    <string name="connection_card_label_connecting">Kobler til …</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection to a different server is
+         being established. It\'s shown only in response to user clicking the "Change server" button.
+     -->
+    <string name="connection_card_label_changing_server">Endrer tjener...</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is established and the user
+         is safely browsing as if they were in the location indicated in the connection card.
+
+         Example:
+         Browsing safely from
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         Germany
+     -->
+    <string name="connection_card_label_connected">Surfer trygt fra</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with details of the current VPN connection.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "connection details, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_connection_details">forbindelsesdetaljer</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with information about connections in free plan.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "more information about free connections, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_free_connections">mer informasjon om gratis forbindelser</string>
+    <string name="connection_card_label_connection_feedback">Hvordan er forbindelsen din?</string>
+    <!-- tag(Redesign_2023)
+         Displayed above the list of recently made connections.
+     -->
+    <string name="recents_headline">Nylige</string>
+    <!-- Displayed above the list of VPN Plus features in the home screen -->
+    <string name="home_upsell_carousel_headline">Oppdag VPN Plus</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_pin">Fest</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_unpin">Løsne</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_remove">Fjern</string>
+    <!-- tag(Redesign_2023)
+         State description of a pinned recent item.
+         Only used by accessibility service.
+    -->
+    <string name="recent_action_accessibility_state_pinned">Festet</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_country_servers_in_maintenance">Alle tjenere i dette landet er under vedlikehold</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_city_servers_in_maintenance">Alle tjenere i denne byen er under vedlikehold</string>
+    <!-- State means here US state, like California -->
+    <string name="message_state_servers_in_maintenance">All tjenere i denne staten er under vedlikehold</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_in_maintenance">Tjeneren blir vedlikeholdt</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_not_available">Tjener ikke tilgjengelig</string>
+    <string name="message_server_location_excluded">Tjenerplassering ekskludert</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog when all servers of a gateway are in maintenance -->
+    <string name="message_gateway_in_maintenance">Gateway blir vedlikeholdt</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_sign_out">Logg av</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_title">Innstillinger</string>
+    <string name="gateways_title">Gateway-tjenere</string>
+    <string name="countries_title">Land</string>
+    <string name="profiles_title">Profiler</string>
+    <string name="settings_autoconnect_title">Koble til automatisk</string>
+    <string name="settings_autoconnect_boot_description">Kobler deg automatisk til VPN med hurtigkobling når enheten din har startet.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_features">Funksjoner</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_netshield_title">NetShield</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_split_tunneling_title">Delt tunnelering</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_kill_switch_title">Nødstopp</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_connection_category">Tilkobling</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_protocol_title">Protokoll</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_vpn_accelerator_title">VPN Accelerator</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_advanced_settings_title">Avanserte innstillinger</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_general">Generelt</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_account">Konto</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_notifications_title">Varsler</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_support">Brukerstøtte</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_help_center_title">Hjelpesenter</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_report_issue_title">Rapporter et problem</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_debug_logs_title">Feilsøkslogger</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_improve_proton">Forbedre Proton</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_fight_censorship_title">Hjelp oss å bekjempe sensur</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_rate_us_title">Vurder Proton VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_app_version">App-versjon: %1$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_third_party_licenses">Tredjepartslisenser</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_title">Logge av?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_message">Du blir koblet fra VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_dont_ask_again">Ikke spør igjen</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_action">Logg av</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_action_cancel">Avbryt</string>
+    <string name="dialog_action_change_icon">Endre ikon</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_all">Alle</string>
+    <string name="country_filter_cities">Byer</string>
+    <string name="country_filter_states">Stater</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_secure_core">Secure Core</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_p2p">P2P</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_tor">Tor</string>
+    <string name="country_filter_all_list_header">Alle land (%1$d)</string>
+    <string name="country_filter_all_list_header_free">Plus-land (%1$d)</string>
+    <string name="country_filter_countries_list_header">Land (%1$d)</string>
+    <string name="country_filter_cities_list_header">Byer (%1$d)</string>
+    <string name="country_filter_states_list_header">Stater (%1$d)</string>
+    <string name="country_filter_servers_list_header">Tjenere</string>
+    <string name="country_filter_secure_core_list_header">Secure Core-land (%1$d)</string>
+    <string name="country_filter_p2p_list_header">P2P-land (%1$d)</string>
+    <string name="country_filter_p2p_list_header_cities">P2P-land (%1$d)</string>
+    <string name="country_filter_p2p_list_header_states">P2P-stater (%1$d)</string>
+    <string name="counrty_filter_p2p_servers_list_header">P2P-tjenere</string>
+    <string name="country_filter_tor_list_header">Tor-land (%1$d)</string>
+    <string name="country_filter_tor_servers_list_header">Tor-tjenere</string>
+    <string name="country_filter_info_label">Info</string>
+    <!-- Content description for server load indicator. Used by accessibility services only.
+         Note: the trailing \'%\' sign needs to be doubled
+         (this doesn\'t apply to other percent sign characters, e.g. ٪). -->
+    <string name="country_filter_server_load_content_description">Belastning: %1$s %%</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is connected and network is protected
+    -->
+    <string name="vpn_status_connected">Beskyttet</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is not connected and network is not protected
+    -->
+    <string name="vpn_status_disabled">Du er ikke beskyttet</string>
+    <!-- tag(Redesign_2023)
+         Text is shown while connection is being established
+    -->
+    <string name="vpn_status_connecting">Beskytter den digitale identiteten din</string>
+    <!-- tag(Redesign_2023)
+         Displays Country name and IP of user if he is not connected.
+         First parameter is country, second is IP.
+         Ex: Poland · 192.1.1.1.1
+    -->
+    <string name="vpn_status_disabled_location">%1$s · %2$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_subtitle">Forbindelsesdetaljer</string>
+    <string name="connection_details_features_title">Funksjoner</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_show_ip">Vis IP</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_back">Tilbake</string>
+    <string name="accessibility_close">Lukk</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_my_ip">Min IP</string>
+    <string name="connection_details_my_ipv4">Min IPv4</string>
+    <string name="connection_details_my_ipv6">Min IPv6</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_ip">VPN-IP</string>
+    <string name="connection_details_vpn_ip4_6">VPN IPv4/IPv6</string>
+    <string name="connection_details_vpn_ipv4">VPN IPv4</string>
+    <string name="connection_details_vpn_ipv6">VPN IPv6</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates for how long user has been connected. Like \'Connected for 2hours\'
+    -->
+    <string name="connection_details_connected_for">Tilkoblet for</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server">Tjener</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_gateway">Gateway</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_country">Land</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_city">By</string>
+    <!-- Label for server location "state", as a state of the USA. -->
+    <string name="connection_details_state">Stat</string>
+    <!-- Label for server smart routing, a country which is routed through. -->
+    <string name="connection_details_smart_routing">Rutet gjennom</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates Server load, on the left side will be Server load, and on the right actual load values.
+    -->
+    <string name="connection_details_server_load">Tjenerbelastning</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_question">Hva er tjenerbelastning?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_description">Tjenerbelastning viser hvor nær en server er maksimal kapasitet. \n\nEn høy tjenerbelastning kan redusere tilkoblingen.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_title">Lav (1–75%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_description">Lynraske hastigheter</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_title">Middels (76–90%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_description">Vil neppe påvirke VPN-hastigheten</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_title">Høy (91–100%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_description">VPN kan kjøre tregere enn normalt</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol">Protokoll</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol_description">En protokoll er et sett med instruksjoner enheten følger for å koble til og kommunisere med en tjener.</string>
+    <!-- tag(Redesign_2023)
+         Label in front of upload speed in connection details. It is followed by upload speed number and unit.
+    -->
+    <string name="connection_details_upload">Opplasting</string>
+    <!-- tag(Redesign_2023)
+         Label in front of download speed in connection details. It is followed by download speed number and unit.
+    -->
+    <string name="connection_details_download">Nedlasting</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_section_vpn_speed">VPN-hastighet</string>
+    <string name="connection_details_section_ip">IP-adresse</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_question">Hva er VPN-hastighet?</string>
+    <string name="info_dialog_secure_core_title">Secure Core</string>
+    <string name="info_dialog_p2p_title">P2P</string>
+    <string name="info_dialog_secure_core_description">Secure Core kobler deg til destinasjonstjeneren din via en andre, VPN-tjener med maksimal sikkerhet.\n\nDette høyere beskyttelsesnivået kan føre til høyere latens og lavere hastigheter.</string>
+    <string name="info_secure_core_standard_header">Standard VPN- forbindelse</string>
+    <string name="info_secure_core_secure_header">Secure Core VPN- forbindelse</string>
+    <string name="info_dialog_tor_description">Koble til en Tor-tjener for å få tilgang til skjulte tjenester og onion-sider ved hjelp av hvilken som helst nettleser.</string>
+    <string name="info_dialog_button_learn_more_tor">Hvordan få tilgang til Tor-nettverket</string>
+    <string name="info_dialog_button_learn_more_p2p">Hvordan laste ned/opp torrent med P2P</string>
+    <string name="info_dialog_button_learn_more_ipaddress">Hva er en IP-adresse?</string>
+    <string name="info_dialog_button_learn_more_streaming">Trenger du hjelp med strømming?</string>
+    <string name="info_dialog_streaming_title">Strømming</string>
+    <string name="info_dialog_streaming_description">Strømmetjenere er designet for rask og sikker TV- og filmavspilling.</string>
+    <string name="info_dialog_how_to_stream">Hvordan strømme:</string>
+    <!-- item 1 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_1">Gå til telefoninnstillingene og slå av posisjonstjenester</string>
+    <!-- item 2 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_2">Start strømmetjenesten på nytt</string>
+    <!-- item 3 in the numbered list (last item) -->
+    <string name="info_dialog_how_to_stream_step_3">Koble til hvilken som helst Plus-tjener og start å strømme</string>
+    <string name="info_dialog_profiles_title">Profiler</string>
+    <string name="info_dialog_ipaddress_title">IP-adresse</string>
+    <string name="info_dialog_ipv6_traffic_title">IPv6-trafikk</string>
+    <string name="info_dialog_profiles_description">Profiler er tilpassede VPN-tilkoblinger som du kan skreddersy til dine behov og lagre for rask tilgang.\n\nAngi din foretrukne plassering og optimaliser innstillingene dine for sikkerhet, ytelse, spill eller andre scenarier.</string>
+    <string name="info_dialog_ipaddress_description">VPN IP-en din maskerer din virkelige IP-adresse. Dette får det til å se ut som om du surfer fra VPN-posisjonen din, slik at nettaktiviteten din ikke kan kobles til enheten din.</string>
+    <string name="info_dialog_ipv6_traffic_description">Internet Protocol (IP) tildeler adresser til enheter og ruter internett-trafikk. IPv6 er den nyeste versjonen, og tilbyr flere adresser og bedre tilkobling, men den er ennå ikke universelt tatt i bruk.</string>
+    <string name="connection_feature_p2p_title">P2P</string>
+    <string name="connection_feature_p2p_description">Node-til-node-fildeling er aktivert på denne tjeneren.</string>
+    <string name="connection_feature_tor_title">Tor</string>
+    <string name="connection_feature_tor_description">Du kan koble til .onion-nettsteder med den vanlige nettleseren din.</string>
+    <string name="connection_feature_secure_core_title">Secure Core</string>
+    <string name="connection_feature_secure_core_description">Aktiviteten din er kryptert bak 2 VPN-tjenere med høy sikkerhet.</string>
+    <string name="connection_feature_streaming_title">Strømming</string>
+    <string name="connection_feature_streaming_description">Denne tjeneren er optimalisert for TV- og filmavspilling.</string>
+    <string name="connection_feature_smart_routing_title">Smart Routing</string>
+    <string name="connection_feature_smart_routing_description">Kobler deg til destinasjonslandet ditt gjennom tjenere som fysisk befinner seg et annet sted.</string>
+    <!-- Placeholder will be replaced by a list of country names separated by commas, e.g, Connects you to your destination country through servers physically located elsewhere: Canada, Mexico, United States.  -->
+    <string name="connection_feature_smart_routing_description_with_countries">Kobler deg til destinasjonslandet ditt gjennom servere som fysisk befinner seg et annet sted: %1$s.</string>
+    <!--
+        %1$s - physical server location country
+        %2$s - destination country
+        Warning: country names are inserted in the nominative case.
+        For INFLECTED languages, translate the following phrase instead:
+        "Your physical server location: %1$s.\nYour browsing country: %2$s"
+    -->
+    <string name="country_smart_routing_info">Tjenere er fysisk plassert i %1$s, men det ser ut til at du surfer fra %2$s.</string>
+    <!--
+        Displayed next to an icon which provides more information if clicked
+    -->
+    <string name="connection_details_info_label">Info</string>
+    <!-- tag(Redesign_2023)
+         Used for button title to learn more about different contexts
+    -->
+    <string name="connection_details_learn_more">Lær mer</string>
+    <!-- tag(Redesign_2023)
+        Used to describe IP which is not known
+    -->
+    <string name="connection_details_unknown_ip">Ukjent</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_description">Denne grafen viser hastigheten på gjeldende opplastings- og nedlastingsaktivitet. VPN-tilkoblingen din vil sannsynligvis ikke bremse normal nettaktivitet.</string>
+    <string name="speed_bytes_per_second">%1$s B/s</string>
+    <string name="speed_kilobytes_per_second">%1$s KB/s</string>
+    <string name="speed_megabytes_per_second">%1$s MB/s</string>
+    <string name="speed_gigabytes_per_second">%1$s GB/s</string>
+    <string name="speed_terabytes_per_second">%1$s TB/s</string>
+    <!-- Used as graph label to indicate speed measurement. Example: Speed KB/s or Speed MB/s-->
+    <string name="speed_graph_title">Hastighet %1$s</string>
+    <string name="bytes_per_second">B/s</string>
+    <string name="kilobytes_per_second">KB/s</string>
+    <string name="megabytes_per_second">MB/s</string>
+    <string name="gigabytes_per_second">GB/s</string>
+    <string name="terabytes_per_second">TB/s</string>
+    <plurals name="full_name_speed_bytes_per_second">
+        <item quantity="one">%1$s byte per sekund</item>
+        <item quantity="other">%1$s byte per sekund</item>
+    </plurals>
+    <plurals name="full_name_speed_kilobytes_per_second">
+        <item quantity="one">%1$s kilobyte per sekund</item>
+        <item quantity="other">%1$s kilobyte per sekund</item>
+    </plurals>
+    <plurals name="full_name_speed_megabytes_per_second">
+        <item quantity="one">%1$s megabyte per sekund</item>
+        <item quantity="other">%1$s megabyte per sekund</item>
+    </plurals>
+    <plurals name="full_name_speed_gigabytes_per_second">
+        <item quantity="one">%1$s gigabyte per sekund</item>
+        <item quantity="other">%1$s gigabyte per sekund</item>
+    </plurals>
+    <plurals name="full_name_speed_terabytes_per_second">
+        <item quantity="one">%1$s terabyte per sekund</item>
+        <item quantity="other">%1$s terabyte per sekund</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_bytes">
+        <item quantity="one">%1$s byte</item>
+        <item quantity="other">%1$s byte</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_kilobytes">
+        <item quantity="one">%1$s kilobyte</item>
+        <item quantity="other">%1$s kilobyte</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_megabytes">
+        <item quantity="one">%1$s megabyte</item>
+        <item quantity="other">%1$s megabytes</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_gigabytes">
+        <item quantity="one">%1$s gigabyte</item>
+        <item quantity="other">%1$s gigabyte</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_terabytes">
+        <item quantity="one">%1$s terabyte</item>
+        <item quantity="other">%1$s terabyte</item>
+    </plurals>
+    <string name="traffic_volume_bytes">%1$s B</string>
+    <string name="traffic_volume_kilobytes">%1$s KB</string>
+    <string name="traffic_volume_megabytes">%1$s MB</string>
+    <string name="traffic_volume_gigabytes">%1$s GB</string>
+    <string name="traffic_volume_terabytes">%1$s TB</string>
+    <!-- tag(Redesign_2023)
+         Shown at the top status view if app detects that there is no usable network to connect to VPN
+    -->
+    <string name="error_vpn_waiting_for_network">Venter på nettverk</string>
+    <!-- tag(Redesign_2023) -->
+    <plurals name="connection_details_days">
+        <item quantity="one">%1$d dag</item>
+        <item quantity="other">%1$d dager</item>
+    </plurals>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_hours_shortened">%1$d time</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_minutes_shortened">%1$d min</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_seconds_shortened">%1$d sek</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceTitle">Tilkobling mislyktes</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceDescription">Denne enheten tillater ikke VPN-tilkoblinger.</string>
+    <string name="create_profile_title">Opprett profil</string>
+    <!-- Title for the screen where user can edit a profile.
+         %1$s - name of the profile being edited. -->
+    <string name="edit_profile_title">Rediger %1$s</string>
+    <string name="edit_profile_dialog_action">Rediger profil</string>
+    <string name="create_profile_name_hint">Profilnavn</string>
+    <string name="create_profile_name_error_empty">Skriv inn et profilnavn</string>
+    <string name="create_profile_name_error_too_long">Profilnavnet må bestå av 30 tegn eller mindre</string>
+    <string name="create_profile_type_and_location_title">Velg forbindelsestype og plassering</string>
+    <string name="create_profile_features_and_settings_title">Funksjoner og innstillinger</string>
+    <string name="configure_profile_features_and_settings_title">Konfigurer profilinnstillinger</string>
+    <string name="configure_profile_features_and_settings_description">Profilinnstillinger vil overstyre VPN-innstillingene dine når du er tilkoblet.</string>
+    <!--
+        First input will be for current step, second one will be for total number of steps
+        Example: Step 3 of 7
+     -->
+    <string name="create_profile_steps">Trinn %1$d av %2$d</string>
+    <string name="create_profile_button_next">Neste</string>
+    <!-- Important: please note the double % sign after 400. It is displayed as a single % in the app.
+         (this doesn\'t apply to other percent sign characters, e.g. ٪)
+         %1$s - will have translated learn_more value -->
+    <string name="settings_vpn_accelerator_description">Øk tilkoblingshastigheten din med opptil 400%% med ytelsesforbedrende teknologier. %1$s</string>
+    <string name="settings_account_settings_title">Kontoinnstillinger</string>
+    <string name="settings_account_change_password">Endre passord</string>
+    <string name="settings_account_recovery_email">E-post for gjenoppretting</string>
+    <string name="settings_account_recovery_email_not_set">Ikke angitt</string>
+    <string name="settings_account_security_keys">Sikkerhetsnøkler</string>
+    <!-- Label of a button that opens user\'s account page -->
+    <string name="settings_account_button_my_account">Min konto</string>
+    <string name="settings_account_button_delete_account">Slett konto</string>
+    <string name="settings_custom_dns_title">Egendefinert DNS</string>
+    <string name="settings_custom_dns_description_tv">Koble til VPN med et selvdrevet eller tredjeparts domenenavnsystem (DNS).</string>
+    <string name="settings_add_dns_placeholder">192.0.2.0</string>
+    <string name="settings_add_dns_title">Legg til ny DNS-tjener</string>
+    <string name="settings_add_dns_new_entry_button">Legg til</string>
+    <string name="settings_add_dns_description">Skriv inn tjenerens IPv4 - eller IPv6-adresse</string>
+    <string name="settings_add_dns_invalid_input">Skriv inn en gyldig IPv4 - eller IPv6-adresse</string>
+    <string name="settings_add_dns_empty_input">Skriv inn en IPv4 - eller IPv6-adresse</string>
+    <string name="settings_add_dns_duplicate_input">Tjener allerede lagt til</string>
+    <string name="settings_advanced_dns_description">Koble til VPN med et selvdrevet eller tredjeparts domenenavnsystem (DNS). Lær mer</string>
+    <!-- %1$d - Corresponds to number of servers added -->
+    <string name="settings_dns_list_title">Tjenere (%1$d)</string>
+    <string name="settings_dns_list_description">Hvis din tilpassede DNS-tjener ikke fungerer, vil standard VPN DNS bli brukt.</string>
+    <string name="settings_dns_list_description_multiple">Vi vil prøve å koble til disse tjenerne i rekkefølge. Hvis ingen av dem fungerer, vil VPN DNS brukes.</string>
+    <string name="settings_changes_apply_on_reconnect_toast">Endringer trer i kraft når du kobler til på nytt</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_title">NetShield vil være utilgjengelig</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message">NetShield kan ikke filtrere ut annonser, sporere og skadelig programvare når egendefinert DNS brukes. Lær mer</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message_tv">NetShield kan ikke filtrere ut annonser, sporere og skadelig programvare når egendefinert DNS brukes.</string>
+    <string name="settings_advanced_alternative_routing_title">Alternativ ruting</string>
+    <string name="settings_advanced_alternative_routing_description">Hvis Proton-tjenester er blokkert på grunn av nettverksbegrensninger, prøver vi å bruke alternativ nettverksruting for å koble deg til nettstedene våre.</string>
+    <string name="settings_advanced_allow_lan_title">LAN-forbindelser</string>
+    <string name="settings_advanced_allow_lan_description">Lar deg koble til skrivere, høyttalere og andre enheter i enhetens lokale nettverk.</string>
+    <string name="settings_advanced_allow_lan_description_tv">Koble til høyttalere, datamaskiner og andre enheter på ditt lokale nettverk</string>
+    <string name="settings_advanced_allow_lan_title_tv">Tillat LAN-forbindelser</string>
+    <string name="settings_advanced_nat_type_title">NAT-type</string>
+    <!-- %1$s - will have translated learn_more value -->
+    <string name="settings_advanced_nat_type_description">Velg en nettverksadresseoversettelsestype for tilkoblingen. %1$s.</string>
+    <string name="settings_advanced_nat_type_description_no_learn">Velg en nettverksadresseoversettelsestype for tilkoblingen.</string>
+    <string name="settings_advanced_nat_type_strict">Streng (type 3)</string>
+    <string name="settings_advanced_nat_type_strict_short">Type 3</string>
+    <string name="settings_advanced_nat_type_moderate">Moderat (type 2)</string>
+    <string name="settings_advanced_nat_type_moderate_short">Type 2</string>
+    <string name="settings_advanced_nat_type_strict_description">Begrenser dataene som kommer inn i nettverket. Dette alternativet er sikrere, men kan gjøre node-til-node-spilltilkoblinger vanskeligere.</string>
+    <string name="settings_advanced_nat_type_moderate_description">Noen begrensninger på data som kommer inn i nettverket ditt. Dette alternativet er best for nettvideospill.</string>
+    <string name="settings_split_tunneling_description">Tilpass tilkoblingen din ved å bestemme hvilke apper og IP-adresser som er beskyttet av VPN. %1$s.</string>
+    <string name="settings_protocol_description">En VPN-protokoll bestemmer hvordan data beveger seg mellom en VPN-tjener og enheten din. %1$s.</string>
+    <string name="settings_protocol_description_no_link">En VPN-protokoll bestemmer hvordan data beveger seg mellom en VPN-tjener og enheten din.</string>
+    <string name="settings_protocol_section_speed">Hastighet (UDP)</string>
+    <string name="settings_protocol_section_reliability">Pålitelighet (TCP)</string>
+    <string name="settings_protocol_smart_title">Smart</string>
+    <string name="settings_protocol_smart_description">Velger automatisk den beste protokollen for tilkoblingen din.</string>
+    <string name="settings_protocol_wireguard_title">WireGuard</string>
+    <string name="settings_protocol_smart_protun_description">Velger automatisk den beste protokollen for tilkoblingen din [eksperimentell].</string>
+    <string name="settings_protocol_wireguard_udp_description">Toppmoderne protokoll for sikkerhet og ytelse.</string>
+    <string name="settings_protocol_wireguard_tcp_description">Toppmoderne protokoll for sikkerhet og ytelse.</string>
+    <string name="settings_protocol_stealth_title">Stealth</string>
+    <string name="settings_protocol_stealth_description">Overvinner VPN-blokkeringer ved å skjule VPN-tilkoblingen din fra sensorer. Denne protokollen er DPI (dyp pakkeinspeksjon) motstandsdyktig, men er kanskje ikke så rask som andre protokoller. Stealth er eksklusivt for Proton VPN.</string>
+    <!-- Text on a badge displayed next to the "smart" protocol name in settings -->
+    <string name="settings_protocol_badge_recommended">Anbefalt</string>
+    <string name="settings_protocol_badge_experimental">Eksperimentell</string>
+    <string name="settings_split_tunneling_mode_title">Modus</string>
+    <string name="settings_split_tunneling_mode_standard">Ekskluder</string>
+    <string name="settings_split_tunneling_mode_inverse">Inkluder</string>
+    <string name="settings_split_tunneling_mode_description_standard">Valgte apper og IP-adresser er ekskludert fra VPN-tilkoblingen.</string>
+    <string name="settings_split_tunneling_mode_description_inverse">Bare valgte apper og IP-adresser kobles til gjennom VPN, all annen trafikk er ubeskyttet.</string>
+    <string name="settings_split_tunneling_excluded_apps">Ekskluderte apper</string>
+    <string name="settings_split_tunneling_excluded_ips">Ekskluderte IP-adresser</string>
+    <string name="settings_split_tunneling_included_apps">Inkluderte apper</string>
+    <string name="settings_split_tunneling_included_ips">Inkluderte IP-adresser</string>
+    <string name="settings_split_tunneling_empty" comment="Used to indicate that no IP or Apps are included in split tunneling">Ingen</string>
+    <string name="settings_split_tunneling_excluded_format" comment="Used for describing excluded items. Example: Chrome, Facebook and 2 more. The same logic used for IP addresses too.">%1$s, %2$s og %3$d til</string>
+    <string name="settings_split_tunneling_already_excluded">Allerede ekskludert</string>
+    <string name="settings_split_tunneling_already_included">Allerede inkludert</string>
+    <string name="settings_split_tunneling_remove_ip_dialog_message">Fjerne IP-adressen fra listen?</string>
+    <string name="settings_split_tunneling_ip_removed_message">IP-adresse fjernet</string>
+    <string name="settings_theme_title">Tema</string>
+    <string name="settings_theme_value_auto">Enhetstema</string>
+    <string name="settings_theme_value_light">Lys</string>
+    <string name="settings_theme_value_dark">Mørk</string>
+    <string name="settings_dialog_reconnect">Nye innstillinger vil gjelde neste gang du kobler til.</string>
+    <string name="settings_needs_reconnect_banner">Nye innstillinger vil gjelde neste gang du kobler til.</string>
+    <string name="private_dns_conflict_banner_custom_dns_title">Egendefinert DNS er utilgjengelig</string>
+    <string name="private_dns_conflict_banner_custom_dns_description">Enheten din bruker en tredjeparts DNS som hindrer Proton VPNs tilpassede DNS i å fungere. Lær mer</string>
+    <string name="private_dns_conflict_banner_custom_dns_description_tv">Enheten din bruker en tredjeparts DNS som hindrer Proton VPNs egendefinerte DNS i å fungere.</string>
+    <string name="private_dns_conflict_banner_netshield_title">NetShield er utilgjengelig</string>
+    <string name="private_dns_conflict_banner_netshield_description">Enheten din bruker en tredjeparts DNS som hindrer NetShield i å fungere. Lær mer</string>
+    <string name="private_dns_conflict_banner_network_settings_button">Nettverksinnstillinger</string>
+    <string name="custom_dns_conflict_banner_netshield_title">NetShield er utilgjengelig</string>
+    <string name="custom_dns_conflict_banner_netshield_description">Egendefinert DNS er aktivert, noe som hindrer NetShield i å fungere. Lær mer</string>
+    <string name="custom_dns_conflict_banner_netshield_title_tv">Slå av egendefinert DNS for å bruke NetShield</string>
+    <string name="custom_dns_conflict_banner_netshield_description_tv">Egendefinert DNS er aktivert, noe som hindrer NetShield i å fungere.</string>
+    <string name="custom_dns_conflict_banner_disable_custom_dns_button">Slå av egendefinert DNS</string>
+    <string name="info_secure_core_standard_high_privacy">Høy personvern</string>
+    <string name="info_secure_core_standard_lower_latency">Lavere latens</string>
+    <string name="info_secure_core_advanced_privacy">Avansert personvern</string>
+    <string name="info_secure_core_higher_latency">Høyere latens</string>
+    <string name="info_p2p_what_title">Hva er P2P?</string>
+    <string name="info_p2p_what_description">Node-til-node (P2P)-teknologi lar deg koble til og dele filer direkte med andre enheter.\n\nVåre P2P-tjenere er spesialdesignet for å støtte denne typen fildeling.</string>
+    <string name="info_p2p_torrenting_title">Hva er torrenting?</string>
+    <string name="info_p2p_torrenting_description">Rask deling og nedlasting av store filer over et P2P-nettverk.</string>
+    <string name="info_p2p_why_title">Hvorfor bruke en P2P-tjener når du driver med torrenter?</string>
+    <string name="info_p2p_why_description_speed">Økte opplastings- og nedlastingshastigheter</string>
+    <string name="info_p2p_why_description_logs">Ingen aktivitetslogger</string>
+    <string name="info_p2p_why_description_hide">Skjul IP-adressen din for tjenesteleverandøren og noder</string>
+    <string name="info_dialog_smart_routing_description">Smart Routing bruker virtuelle tjenere for å gi VPN-dekning i vanskelig tilgjengelige land.\n\nNår du kobler til en Smart Routing-tjener, ser det ut til at du surfer i destinasjonslandet ditt, selv om den fysiske tjeneren befinner seg et annet sted.  \n\nSmart Routing brukes vanligvis til å omgå personvernlover og andre former for sensur.</string>
+    <string name="notifications_channel_connection_status_name">Tilkoblingsstatus</string>
+    <string name="notifications_channel_connection_status_description">Viser hvilken tjener du er koblet til og VPN-hastigheten.</string>
+    <string name="notifications_channel_connection_errors_name">Tilkoblingsfeil</string>
+    <string name="notifications_channel_connection_errors_description">Varsler deg om problemer som pauser eller stopper VPN-tilkoblingen din.</string>
+    <string name="notifications_channel_connection_tips_name">Tilkoblingstips</string>
+    <string name="notifications_channel_connection_tips_description">Kontekstuelle tips som hjelper deg med å få mer ut av Proton VPN.</string>
+    <string name="countries_upsell_banner_description">Få tilgang til alle land med VPN Plus</string>
+    <string name="secure_core_upsell_banner_description">Legg til et ekstra krypteringslag til VPN-tilkoblingen din.</string>
+    <string name="p2p_upsell_banner_description">Last ned filer gjennom BitTorrent og andre fildelingsprotokoller</string>
+    <string name="tor_upsell_banner_description">Bruk Tor-nettverket over VPN-tilkoblingen for ekstra personvern</string>
+    <string name="vpnplus_upsell_banner_description">Oppgrader til VPN Plus</string>
+    <string name="search_zero_screen_title">Prøv å søke etter…</string>
+    <string name="search_zero_screen_info_countries_title">Land</string>
+    <string name="search_zero_screen_info_cities_title">Byer</string>
+    <string name="search_zero_screen_info_servers_title">Tjenere</string>
+    <string name="search_zero_screen_info_countries_examples">Sveits, USA, Italia, Canada...</string>
+    <string name="search_zero_screen_info_cities_examples">New York, London, Tokyo, Sydney…</string>
+    <string name="search_zero_screen_info_servers_examples">JP#50, CA#3, IT#14…</string>
+    <string name="error_fetching_prices">Feil ved henting av priser.</string>
+    <string name="tv_settings_split_tunneling_description">Tilpass tilkoblingen din ved å bestemme hvilke apper som er beskyttet av VPN.</string>
+    <string name="tv_settings_split_tunneling_mode_description_standard">Valgte apper er ekskludert fra VPN-tilkobling.</string>
+    <string name="tv_settings_split_tunneling_mode_description_inverse">Bare valgte apper kobles til gjennom VPN, all annen trafikk er ubeskyttet.</string>
+    <string name="profile_action_edit">Rediger</string>
+    <string name="profile_action_duplicate">Dupliser</string>
+    <string name="profile_action_delete">Slett</string>
+    <!-- Label when showing profile\'s NAT (Network Address Translation) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_nat_title">NAT</string>
+    <!-- Label when showing profile\'s LAN (Local Area Network) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_lan_title">LAN</string>
+    <string name="profile_needs_reconnect">Dette vil starte tilkoblingen på nytt.</string>
+    <string name="profile_overrides_setting">Disse innstillingene er koblet til <b>%1$s</b> og kan bare administreres i Profiler.</string>
+    <string name="initial_profile_name_streaming_us">Strømming US</string>
+    <string name="initial_profile_name_work_school">Arbeid/Skole</string>
+    <string name="initial_profile_name_anti_censorship">Antisensur</string>
+    <string name="initial_profile_name_gaming">Spilling</string>
+    <string name="initial_profile_name_max_security">Maks. sikkerhet</string>
+    <string name="create_profile_pick_country_title">Land</string>
+    <string name="create_profile_pick_type_title">Type</string>
+    <string name="create_profile_type_standard">Standard</string>
+    <string name="create_profile_type_secure_core">Secure Core</string>
+    <string name="create_profile_type_p2p">P2P</string>
+    <string name="create_profile_gateway">Gateway</string>
+    <string name="create_profile_pick_state_title">Stat</string>
+    <string name="create_profile_pick_city_title">By</string>
+    <string name="create_profile_pick_server_title">Tjener</string>
+    <string name="create_profile_pick_gateway_title">Gateway</string>
+    <string name="create_profile_pick_netshield_title">NetShield</string>
+    <string name="create_profile_pick_netshield_description">Blokkér annonser, sporere og skadelig programvare på nettsteder og apper</string>
+    <string name="create_profile_pick_protocol_title">Protokoll</string>
+    <string name="create_profile_pick_nat_title">NAT-type</string>
+    <!--
+         Example:
+         if a profile named "My Profile" is duplicated, the new suggested name is "My Profile (copy)"
+     -->
+    <string name="create_profile_copy_name">%1$s (kopi)</string>
+    <string name="create_profile_fastest_city">Raskeste</string>
+    <string name="create_profile_fastest_state">Raskeste</string>
+    <string name="create_profile_fastest_server">Raskeste</string>
+    <string name="create_profile_pick_middle_country_title">Mellomland</string>
+    <string name="profiles_zero_state_title">Opprett din første profil</string>
+    <string name="profiles_zero_state_description">Profiler er lagrede tilkoblinger med ditt valg av plassering, tjener og protokoll.</string>
+    <string name="profiles_button_create_profile">Opprett profil</string>
+    <string name="profile_deleted_snackbar_message">Profil slettet</string>
+    <string name="profile_connected_edit_setting">Denne innstillingen er koblet til den aktive profilen din. \n\nRediger profilen din for å gjøre endringer, eller koble fra for å redigere de generelle VPN-innstillingene dine.</string>
+    <string name="profile_connected_dialog_title">Administrer %1$s i profiler</string>
+    <string name="undo">Angre</string>
+    <string name="profile_unavailable_dialog_title">Profilen er utilgjengelig</string>
+    <!-- %1$s - profile name
+         Example: Your server selection for MyProfile is unavailable. Select a different server or try again later -->
+    <string name="profile_unavailable_dialog_message">Tjenervalget ditt for %1$s er ikke tilgjengelig. Velg en annen tjener eller prøv igjen senere.</string>
+    <string name="profile_location_excluded_dialog_message"><![CDATA[Valget ditt av tjener for <b>%1$s</b> er utilgjengelig. Velg en annen tjener, sjekk dine ekskluderte plasseringer eller prøv igjen senere.]]></string>
+    <!-- %1$d - profile icon number
+         Example: Icon 1, Icon 2, ... -->
+    <string name="profile_icon_accessibility">Ikon %1$d</string>
+    <!-- %1$d - profile icon number
+         Example: Color 1, Color 2, ... -->
+    <string name="profile_color_accessibility">Farge %1$d</string>
+    <string name="generic_info_label">Info</string>
+    <!-- Branded name for a feature that opens url after VPN connection to given profile is established.
+         Please don't use & in translation and capitalize key words. -->
+    <string name="create_profile_connect_and_go_label">Koble til og åpne</string>
+    <!-- Displayed as a badge next to create_profile_auto_open_label ("Auto-launch website [NEW]") -->
+    <string name="create_profile_auto_open_label_badge">Ny</string>
+    <string name="create_profile_auto_open_url_input_label">Nettsideadresse</string>
+    <string name="create_profile_auto_open_url_private_mode_label">Bruk privat nettlesingsmodus</string>
+    <!-- Label for disabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_off">Av</string>
+    <string name="profile_auto_open_app_failed_to_launch">Koble til og start: ingen apper funnet</string>
+    <!-- Label for enabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_website">Åpne et nettsted</string>
+    <string name="profile_auto_open_app">Åpne en app</string>
+    <string name="create_profile_auto_open_description">Åpne automatisk et nettsted du ønsker når du kobler til denne profilen.</string>
+    <string name="create_profile_auto_open_app_input_hint">Velg en app</string>
+    <string name="create_profile_auto_open_app_input_label">App</string>
+    <string name="create_profile_auto_open_app_no_apps">Ingen apper funnet.</string>
+    <string name="profile_auto_open_error_invalid_url">Skriv inn en gyldig nettadresse</string>
+    <string name="nps_how_likely_question">Hvor sannsynlig er det at du vil anbefale Proton VPN til en venn eller kollega?</string>
+    <string name="nps_additional_comment_title">Fortell oss hvorfor du ga den vurderingen</string>
+    <string name="nps_additional_comment_optional">Valgfritt</string>
+    <string name="nps_rating_low_values_explain">0 er svært usannsynlig</string>
+    <string name="nps_rating_high_values_explain">10 er svært sannsynlig</string>
+    <string name="nps_toast_submit_message">Takk for at du deler. Tilbakemeldingen din hjelper oss med å forbedre Proton VPN.</string>
+    <string name="nps_submit_error_char_limit">Svaret ditt må være på 250 tegn eller kortere</string>
+    <string name="nps_button_submit_title">Del anonymt</string>
+    <string name="widget_preview_switzerland">Sveits</string>
+    <string name="widget_preview_spain">Spania</string>
+    <string name="widget_preview_germany">Tyskland</string>
+    <string name="widget_preview_france">Frankrike</string>
+    <string name="widget_status_unprotected">Ubeskyttet</string>
+    <string name="widget_status_error">Feil</string>
+    <string name="widget_status_connecting">Kobler til</string>
+    <string name="widget_sign_in">Logg på</string>
+    <string name="widget_toast_added_message">Widget lagt til på startskjermen</string>
+    <string name="settings_advanced_ipv6_title">IPv6-støtte</string>
+    <string name="settings_advanced_ipv6_description">Tunnelerer IPv6-trafikk via VPN-en. Kan forbedre kompatibiliteten med IPv6-nettverk.</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_message">For å bruke denne adressen må du tillate IPv6-tilkoblinger gjennom VPN-tunnelen.</string>
+    <string name="setting_ipv6_disabled_dialog_action_enable">Aktiver IPv6</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_title">IPv6 er deaktivert</string>
+    <string name="settings_ipv6_enabled_toast">IPv6 aktivert</string>
+    <string name="info_dialog_ipv6_traffic_benefits1">Sikrer tilgang til IPv6-bare nettsteder og tjenester</string>
+    <string name="info_dialog_ipv6_traffic_benefits2">Forhindrer problem på nettverk som er avhengige av IPv6</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks1">Fungerer kanskje ikke bra med eldre nettverk eller apper</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks2">Noen nettverk håndterer IPv6-trafikk uforutsigbart</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks_title">Ulemper</string>
+    <string name="info_dialog_ipv6_traffic_benefits_title">Fordeler</string>
+    <string name="settings_lan_allow_direct_connection_title">Tillat direkte enhetstilkoblinger</string>
+    <string name="settings_lan_allow_direct_connection_description">Koble til smart-TV-er, Android Auto og andre enheter som oppretter sitt eget nettverk. For maksimal sikkerhet, bare aktiver når du kobler til disse enhetene.</string>
+    <string name="no_connections_title">Ingen VPN-tilkoblinger tilgjengelig</string>
+    <string name="no_connections_description_loading_error">Vi kunne ikke laste inn tjenerlisten.</string>
+    <string name="no_connections_description_no_servers">Be administratoren din om å aktivere VPN-tilgang for kontoen din.</string>
+    <string name="no_connections_action_refresh">Oppdater</string>
+    <string name="no_connections_action_sign_out">Logg av</string>
+    <string name="no_connections_help_contact_us"><![CDATA[Trenger du hjelp? <a href="">Kontakt oss</a>]]></string>
+    <string name="no_connections_help_follow_instructions"><![CDATA[Hvis administratoren din trenger hjelp med å aktivere VPN-tilgang, sende dem <a href="">disse instruksjonene</a>.]]></string>
+    <string name="settings_protocol_proton_protocols">Proton-protokoller</string>
+    <string name="settings_protocol_proton_protocols_description">Bruk Protons egen implementering av WireGuard. Dette er en eksperimentell funksjon, så du kan oppleve en viss ustabilitet.</string>
+    <string name="connection_preferences_smart_discovery_dialog_title">Ikke landet du ønsket?</string>
+    <string name="connection_preferences_smart_discovery_dialog_message">Hvis det er steder du ikke vil bli automatisk koblet til, kan du ekskludere dem fra raskeste land.</string>
+    <string name="excluded_locations_adoption_title">Unngå uønskede steder</string>
+    <string name="excluded_locations_adoption_description"><![CDATA[Du kan nå ekskludere land og byer fra <b>raskeste</b> tilkoblinger.]]></string>
+    <string name="session_fork_no_account_title">Logg inn på Android TV</string>
+    <string name="session_fork_no_account_message">Fullfør påloggingen på denne enheten for å begynne å bruke Proton VPN på TV-en.</string>
+    <string name="session_fork_no_account_footnote"><![CDATA[Ved å bruke denne appen godtar du våre <a href="">vilkår og betingelser</a>.]]></string>
+    <string name="session_fork_no_account_signup_button">Opprett en konto</string>
+    <string name="session_fork_no_account_signin_button">Logg på</string>
+    <string name="session_fork_confirmation_title">Logge inn på Android TV?</string>
+    <string name="session_fork_confirmation_message">Dette vil gi TV-en tilgang til Proton-kontoen din.</string>
+    <string name="session_fork_confirmation_bottom_note">Logg bare på enheter du stoler på</string>
+    <string name="session_fork_confirmation_too_soon_toast">Gjennomgå før du fortsetter</string>
+    <string name="session_fork_success_title">Pålogging fullført</string>
+    <string name="session_fork_success_message">Du er nå logget på TV-en din.</string>
+    <string name="session_fork_error_expired_title">Koden er utløpt</string>
+    <string name="session_fork_error_expired_message">Opprett en ny kode på TV-en og prøv på nytt.</string>
+    <string name="session_fork_error_generic_title">Kunne ikke logge deg på</string>
+    <string name="session_fork_error_fatal_message">Sjekk nettverket ditt og prøv på nytt. Hvis problemet vedvarer, ta kontakt med kundestøtteteamet vårt. </string>
+    <string name="session_fork_error_network_message">Sjekk nettverket ditt og prøv på nytt.</string>
+    <string name="session_fork_error_try_fallback_message">Klikk på \'Problemer med pålogging?\' på TV-en for å følge de alternative trinnene.</string>
+    <string name="session_fork_error_report_button">Rapporter problemet</string>
+    <string name="session_fork_qr_code_content_description">QR-kode</string>
+    <string name="session_fork_qr_code_message">Skann QR-koden for å logge på eller opprette en konto.</string>
+    <string name="session_fork_qr_code_trouble_button">Problemer med å logge på?</string>
+    <string name="session_fork_qr_code_error_expired">Av sikkerhetshensyn er valideringskoden utløpt</string>
+    <string name="session_fork_qr_code_error_network">Sjekk nettverket ditt og prøv på nytt</string>
+    <string name="session_fork_qr_code_error_create_new_button">Opprett en ny kode</string>
+    <string name="session_fork_user_code_title">Får du ikke skannet koden? Logg på manuelt</string>
+    <string name="session_fork_user_code_step1"><![CDATA[Gå til: <b>%1$s</b>]]></string>
+    <string name="session_fork_user_code_step2">Logg på eller opprett en konto</string>
+    <!-- Parameter: 8 character alphanumeric code, e.g. "AB12 CD34" -->
+    <string name="session_fork_user_code_step3"><![CDATA[Skriv inn koden: <b>%1$s</b>]]></string>
+    <!-- Parameter: web address for the support website, e.g. "protonvpn.com/support" -->
+    <string name="session_fork_user_code_support"><![CDATA[Trenger du fortsatt hjelp? Besøk <b>%1$s</b>.]]></string>
+</resources>

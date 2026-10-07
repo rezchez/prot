@@ -1,0 +1,13 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/config/detekt/config.yml
+/config/detekt/reports
+/observability/domain/build
+/captures
+.externalNativeBuild
+pmcrypto/build/
+app/src/androidTest/assets/sensitive/

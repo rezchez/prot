@@ -1,0 +1,177 @@
+/*
+ * Copyright (c) 2023. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.android
+
+import android.content.Context
+import com.protonvpn.android.appconfig.AppFeaturesPrefs
+import com.protonvpn.android.logging.AppUpdateUpdated
+import com.protonvpn.android.logging.ProtonLogger
+import com.protonvpn.android.mmp.events.MmpEventType
+import com.protonvpn.android.mmp.events.usecases.SaveMmpEvent
+import com.protonvpn.android.notifications.NotificationChannels
+import com.protonvpn.android.promooffers.data.ApiNotificationManager
+import com.protonvpn.android.servers.StreamingServicesUpdater
+import com.protonvpn.android.settings.usecases.EnableTvLanSettingOnMigration
+import com.protonvpn.android.ui.storage.UiStateStorage
+import com.protonvpn.android.utils.Storage
+import com.protonvpn.android.vpn.usecases.UpdateCertForCurrentUser
+import dagger.Reusable
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+@Reusable
+class UpdateMigration @Inject constructor(
+    @param:ApplicationContext private val appContext: Context,
+    private val mainScope: CoroutineScope,
+    private val appPrefs: dagger.Lazy<AppFeaturesPrefs>,
+    private val uiStateStorage: dagger.Lazy<UiStateStorage>,
+    private val updateCertForCurrentUser: dagger.Lazy<UpdateCertForCurrentUser>,
+    private val enableTvLanSettingOnMigration: dagger.Lazy<EnableTvLanSettingOnMigration>,
+    private val streamingServicesUpdater: dagger.Lazy<StreamingServicesUpdater>,
+    private val apiNotificationManager: dagger.Lazy<ApiNotificationManager>,
+    private val notificationChannels: dagger.Lazy<NotificationChannels>,
+    private val saveMmpEvent: dagger.Lazy<SaveMmpEvent>,
+) {
+    private val oldVersionCode = Storage.getInt(KEY_VERSION_CODE)
+    private val newVersionCode = BuildConfig.VERSION_CODE
+    private val isNewInstall = oldVersionCode == 0
+
+    val isUpdatedVersion get() = !isNewInstall && oldVersionCode != newVersionCode
+
+    fun handleUpdate() {
+        if (isUpdatedVersion) {
+            ProtonLogger.log(AppUpdateUpdated, "new version: $newVersionCode")
+            val strippedOldVersionCode = stripArchitecture(oldVersionCode)
+            clearCertificateData(strippedOldVersionCode)
+            promoteProfiles(strippedOldVersionCode)
+            whatsNewWidget(strippedOldVersionCode)
+            remove_cert_storage_v1(strippedOldVersionCode)
+            migrateTvLanSetting(strippedOldVersionCode)
+            adoptExcludedLocations(strippedOldVersionCode)
+            updateStreamingServices(strippedOldVersionCode)
+            removeLegacyStorage(strippedOldVersionCode)
+            updateNotificationChannels(strippedOldVersionCode)
+        }
+        if (isNewInstall || isUpdatedVersion) {
+            Storage.saveInt("VERSION_CODE", newVersionCode)
+        }
+
+        if (isNewInstall) {
+            mainScope.launch {
+                saveMmpEvent.get().invoke(eventType = MmpEventType.Install)
+            }
+        }
+    }
+
+    @SuppressWarnings("MagicNumber")
+    private fun clearCertificateData(oldVersionCode: Int) {
+        if (oldVersionCode <= 5_03_50_00) {
+            Storage.delete("com.protonvpn.android.models.vpn.CertificateData")
+        }
+    }
+
+    @SuppressWarnings("MagicNumber")
+    private fun promoteProfiles(oldVersionCode: Int) {
+        if (oldVersionCode <= 5_07_80_00) {
+            mainScope.launch {
+                uiStateStorage.get().update { it.copy(shouldPromoteProfiles = true) }
+            }
+        }
+        if (oldVersionCode in 5_07_93_00.. 5_08_00_00) {
+            // These users have already seen the info dialog as part of shouldPromoteProfiles.
+            mainScope.launch {
+                uiStateStorage.get().update { it.copy(hasShownProfilesInfo = true) }
+            }
+        }
+    }
+
+    @SuppressWarnings("MagicNumber")
+    private fun whatsNewWidget(oldVersionCode: Int) {
+        if (oldVersionCode <= 5_08_85_00) {
+            appPrefs.get().showWhatsNew = true
+        }
+    }
+
+    @SuppressWarnings("MagicNumber")
+    private fun remove_cert_storage_v1(oldVersionCode: Int) {
+        if (oldVersionCode <= 5_13_18_00) {
+            appContext.deleteSharedPreferences("cert_data")
+            appContext.deleteSharedPreferences("cert_data_fallback")
+            updateCertForCurrentUser.get()()
+        }
+    }
+
+    @SuppressWarnings("MagicNumber")
+    private fun migrateTvLanSetting(oldVersionCode: Int) {
+        if (oldVersionCode <= 5_13_15_00) {
+            mainScope.launch {
+                enableTvLanSettingOnMigration.get().invoke()
+            }
+        }
+    }
+
+    @SuppressWarnings("MagicNumber")
+    private fun adoptExcludedLocations(oldVersionCode: Int) {
+        if (oldVersionCode <= 5_15_51_00) {
+            mainScope.launch {
+                uiStateStorage.get().update { it.copy(shouldShowExcludedLocationsAdoption = true) }
+            }
+        }
+    }
+
+    @SuppressWarnings("MagicNumber")
+    private fun updateStreamingServices(oldVersionCode: Int) {
+        if (oldVersionCode <= 5_15_70_00) {
+            mainScope.launch {
+                delay(10_000)
+                streamingServicesUpdater.get().forceUpdate()
+            }
+        }
+    }
+
+    @SuppressWarnings("MagicNumber")
+    private fun removeLegacyStorage(oldVersionCode: Int) {
+        if (oldVersionCode <= 5_15_70_00) {
+            mainScope.launch {
+                delay(5_000)
+                Storage.delete("com.protonvpn.android.models.config.bugreport.DynamicReportModel")
+                Storage.delete("com.protonvpn.android.promooffers.data.ApiNotificationsResponse")
+                apiNotificationManager.get().forceUpdate()
+            }
+        }
+    }
+
+    @SuppressWarnings("MagicNumber")
+    private fun updateNotificationChannels(oldVersionCode: Int) {
+        if (oldVersionCode <= 5_17_03_00) {
+            notificationChannels.get().updateChannels(appContext)
+        }
+    }
+
+    @SuppressWarnings("MagicNumber")
+    private fun stripArchitecture(versionCode: Int) = versionCode % 100_000_000
+
+    private companion object {
+        private const val KEY_VERSION_CODE = "VERSION_CODE"
+    }
+}

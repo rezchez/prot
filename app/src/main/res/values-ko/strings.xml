@@ -1,0 +1,1852 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2017 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_icon_name_classic">클래식</string>
+    <string name="app_icon_name_dark">다크</string>
+    <string name="app_icon_name_retro">레트로</string>
+    <string name="app_icon_name_weather">날씨</string>
+    <string name="app_icon_name_notes">메모</string>
+    <string name="app_icon_name_calculator">계산기</string>
+    <string name="login">로그인</string>
+    <string name="menuActionSignOut">로그아웃</string>
+    <string name="connectionAllocationHelpTitle">업그레이드 해주셔서 감사합니다</string>
+    <string name="connectionAllocationHelpDescription1">Proton VPN에서의 여정을 시작하려면 계정이나 다른 하위 계정에 VPN 연결을 할당하십시오.</string>
+    <string name="connectionAllocationHelpDescription2">이 작업은 몇 분 정도 소요됩니다. 이후 로그인하여 모든 장치들을 보호할 수 있습니다.</string>
+    <string name="connectionAllocationHelpDescription1AskAdmin">현재 이 계정에 대해서 활성화된 VPN 연결이 없습니다. Proton VPN와 함께 여정을 시작하려면 관리자에게 문의해주세요. </string>
+    <string name="connectionAllocationHelpAssignConnectionsButton">VPN 연결 활성화</string>
+    <string name="connectionAllocationHelpLoginAgainButton">다시 로그인</string>
+    <!-- tag(Redesign_2023) "OK" button on dialogs -->
+    <string name="ok">확인</string>
+    <string name="dialogLearnMore">더 알아보기</string>
+    <string name="connected">연결됨</string>
+    <string name="buttonConnect">연결</string>
+    <string name="loaderConnectingTo">%1$s에 연결 중</string>
+    <string name="loaderNotConnected">연결되지 않음 (보호되지 않음)</string>
+    <string name="loaderConnectedTo">%1$s에 연결됨</string>
+    <string name="loaderDisconnecting">연결을 끊는 중</string>
+    <string name="loaderReconnecting">다시 연결 중</string>
+    <string name="loaderReconnectNoNetwork">사용 가능한 네트워크 대기 중</string>
+    <string name="loaderCheckingAvailability">서버 가용성을 확인하는 중</string>
+    <string name="quickConnect">빠른 연결</string>
+    <!-- Displays a percentage value. Please use %% sign for %.
+         Example value: "70%" -->
+    <string name="serverLoad">%1$s%%</string>
+    <string name="cancel">취소</string>
+    <string name="close">닫기</string>
+    <string name="dialogContinue">계속</string>
+    <string name="drawerReportProblem">문제 제보하기</string>
+    <string name="action_done">완료</string>
+    <string name="action_share">공유</string>
+    <string name="accountFree">Proton Free</string>
+    <string name="restrictedMaintenanceTitle">점검 중</string>
+    <string name="restrictedMaintenanceDescription">현재 연결하려는 서버가 점검 중입니다. 다른 서버를 시도하십시오.</string>
+    <string name="restricted_location_excluded_dialog_title">연결 실패</string>
+    <string name="restricted_location_excluded_dialog_description">사용 가능한 서버가 없습니다. 위치(국가)를 수동으로 선택하거나 제외 국가 목록을 편집하세요.</string>
+    <string name="errorUserDelinquent"><![CDATA[계정에 현재 연체된 금액이 있습니다. &#160;<a href="https://account.protonvpn.com">account.protonvpn.com</a>에서 연체된 금액을 지불해주세요.]]></string>
+    <string name="errorMaxSessions">계정에 허용된 최대 동시 연결 수에 도달했습니다. 더 많은 연결을 얻으려면 Proton VPN 요금제를 업그레이드하세요.</string>
+    <string name="listItemMaintenance">점검 중</string>
+    <string name="insufficientPermissionsTitle">사용자 조치 필요</string>
+    <string name="insufficientPermissionsDetails">자동으로 VPN 연결을 구성할 수 없습니다. 권한을 부여하기 위해 수동으로 한 번 연결해주세요.</string>
+    <string name="log_title">로그</string>
+    <string name="disconnect">연결 해제</string>
+    <string name="state_connecting">연결 중…</string>
+    <string name="state_connected">연결됨</string>
+    <string name="state_disconnecting">연결을 끊는 중…</string>
+    <string name="state_error">오류</string>
+    <string name="error_server_list_load_failed">인터넷 연결을 확인한 후 다시 시도하세요.</string>
+    <string name="error_server_unreachable">VPN에 연결할 수 없습니다. 연결 상태를 확인하신 후, 다시 시도해주세요.</string>
+    <string name="error_auth_failed">인증에 실패하였습니다.</string>
+    <string name="error_generic">연결 도중에 알 수 없는 실패가 발생했습니다.</string>
+    <string name="error_generic_with_reason">Proton VPN이 VPN 연결을 구성할 수 없습니다. 몇 초 후에 다시 시도해 주세요.<br/><br/> 세부사항: %1$s</string>
+    <string name="reconnect">다시 연결</string>
+    <string name="reconnect_now">지금 다시 연결</string>
+    <string name="try_reconnecting">다시 연결 시도</string>
+    <string name="connect">연결</string>
+    <string name="upgrade">업그레이드</string>
+    <string name="retry">재시도</string>
+    <string name="report_message">메시지 신고</string>
+    <string name="report_bug_email_label">나의 이메일</string>
+    <string name="report_bug_email_hint">이메일 주소를 입력해주세요</string>
+    <string name="report_bug_message_label">메시지</string>
+    <string name="report_bug_message_hint">어떤 버그인지, 어디서 발생했는지 알려주세요</string>
+    <string name="send_report">전송하기</string>
+    <string name="report_sent">보고서 전송 완료</string>
+    <string name="discardChanges">저장하지 않은 변경 사항을 취소할까요?</string>
+    <string name="discardChangesButtonDiscard">변경사항 취소</string>
+    <string name="discardChangesButtonKeepEditing">계속 편집하기</string>
+    <string name="done">완료</string>
+    <string name="add">추가</string>
+    <string name="copy_to_clipboard">복사</string>
+    <string name="copied_to_clipboard">클립보드에 복사됨</string>
+    <string name="got_it">알겠습니다</string>
+    <string name="exclude_locations">위치 제외</string>
+    <string name="excluded_locations">제외된 위치</string>
+    <string name="cannot_connect">연결할 수 없음</string>
+    <string name="skip">건너뛰기</string>
+    <string name="something_went_wrong">문제가 발생했습니다</string>
+    <string name="try_again">다시 시도</string>
+    <string name="delete">삭제</string>
+    <string name="menu_option_move_to_top" comment="command used to move an item to the top of the list">맨 위로</string>
+    <string name="menu_option_move_up" comment="command used to move an item one position up in the list">위로</string>
+    <string name="menu_option_move_down" comment="command used to move an item one position down in the list">아래로</string>
+    <string name="remove">제거</string>
+    <string name="saveButton">저장</string>
+    <string name="ipWithPlaceholder">아이피: %1$s</string>
+    <string name="activityLicensesTitle">제3자 라이선스</string>
+    <string name="stateFragmentUnknownIp">알 수 없음</string>
+    <string name="noVpnPermissionMainTitle">VPN에 연결하기 위해 조치가 필요합니다</string>
+    <string name="noVpnPermissionMainMessage">Proton VPN에 연결하려면, 아래 항목대로 수행해 주세요:</string>
+    <string name="noVpnPermissionGrantPermissionTitle">VPN 권한을 부여하세요</string>
+    <string name="noVpnPermissionGrantPemrissionMessage">Android에서 Proton VPN에 연결하려면 권한이 필요합니다. Android에서 \"연결 요청\" 창이 나타나면 \"확인\"을 탭하여 권한을 부여하세요.</string>
+    <string name="noVpnPermissionDisableAlwaysOnTitle">다른 VPN 앱의 VPN 항상 켜기를 비활성화하세요</string>
+    <string name="noVpnPermissionDisableAlwaysOnMessage">Android는 여러 개의 VPN 앱을 지원하지 않습니다. Proton VPN을 제외한 다른 VPN 앱에서 항상 켜기를 비활성화해 주세요.</string>
+    <string name="noVpnPermissionProtonAppLabel">Proton VPN 애플리케이션</string>
+    <string name="noVpnPermissionOtherAppLabel">다른 VPN 앱</string>
+    <string name="noVpnPermissionOpenSettings">Android VPN 설정 열기</string>
+    <string name="noNotificationPermissionGrantTitle">들키지 마세요…</string>
+    <string name="noNotificationPermissionGrantDescription">알림을 활성화하면 연결 상태의 변화에 대한 경고를 받아볼 수 있습니다.</string>
+    <string name="noNotificationPermissionGrantNowTitle">알림 사용</string>
+    <string name="error_prepare_vpn_description"><![CDATA[Android VPN 설정에서 다른 VPN 앱의 연결 유지 VPN을 비활성화하셔야 Proton VPN이 연결할 수 있습니다. 또한 VPN 권한을 요청하는 대화 창이 나타나면 권한을 허용해주셔야 합니다. 충돌 방지를 위해 다른 VPN 앱을 삭제해야 할 수도 있습니다. 이후에 다시 시도해주세요. <a href="%1$s">더 알아보기</a>]]></string>
+    <string name="error_prepare_vpn_settings">Android VPN 설정으로 이동</string>
+    <string name="error_prepare_vpn_title">오류: VPN 권한 문제</string>
+    <string name="error_server_not_set">더 이상 이용 가능한 서버가 아닙니다</string>
+    <string name="bugReportErrorEmptyEmail">이메일은 비워둘 수 없습니다</string>
+    <string name="bugReportErrorInvalidEmail">유효하지 않은 이메일 주소</string>
+    <string name="bugReportLabelVpnLogsTitle">오류 로그 포함</string>
+    <string name="bugReportErrorLabelVpnLogsDescription">발생한 문제를 해결하기 위해 (활동 기록을 제외한) 에러 로그를 전송합니다.</string>
+    <string name="profileFastest">가장 빠르게</string>
+    <string name="profileRandom">무작위</string>
+    <string name="loaderErrorNoInternet">인터넷에 연결되지 않음</string>
+    <string name="loaderErrorGeneric">문제가 발생했습니다</string>
+    <string name="inputIpAddressLabel">IP 주소</string>
+    <string name="inputIpAddressHelp">서버의 IPv4 또는 IPv6 주소를 입력하세요</string>
+    <string name="inputIpAddressErrorInvalid">유효하지 않은 IP 주소</string>
+    <!-- Displayed as a badge next to setting item ("Widget [NEW]") -->
+    <string name="settings_new_label_badge">신규</string>
+    <!-- Displayed as a badge next to setting item ("Proton protocols [BETA]") -->
+    <string name="settings_beta_label_badge">베타</string>
+    <string name="settingsExcludedIPAddressesListHeader">제외된 IP 주소 (%1$d)</string>
+    <string name="settingsIncludedIPAddressesListHeader">포함된 IP 주소 (%1$d)</string>
+    <string name="settingsExcludedApps">제외된 앱</string>
+    <string name="settingsExcludedAppsEmpty">VPN 트래픽에서 제외하고 싶은 앱을 추가하세요.</string>
+    <string name="settingsIncludedAppsEmpty">VPN 트래픽에 포함시킬 앱을 추가해 주세요.</string>
+    <string name="settingsExcludedAppsSelectedHeader">제외된 앱 (%1$d)</string>
+    <string name="settingsIncludedAppsSelectedHeader">포함된 앱 (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableRegularHeader">전체 기타 일반 앱 (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableSystemHeader">전체 기타 시스템 앱 (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableHeader">전체 기타 앱 (%1$d)</string>
+    <string name="settingsExcludedAppsLoadSystemAppsButton">시스템 앱 표시</string>
+    <string name="settingsSplitTunnelAppsShowSystemAppsCheckbox">시스템 앱 표시</string>
+    <string name="settingsSplitTunnelingExcludedAppsList">해당 앱들은 VPN 연결에서 제외됩니다.</string>
+    <string name="settingsSplitTunnelingIncludedAppsList">이 앱들만 VPN을 통해 연결됩니다.</string>
+    <!-- Description for action to add an application to "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to excluded apps"
+    -->
+    <string name="accessibility_action_add_excluded_app">제외된 앱에 추가</string>
+    <!-- Description for action to remove an application from "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from excluded apps"
+    -->
+    <string name="accessibility_action_remove_excluded_app">제외된 앱에서 삭제</string>
+    <!-- Description for action to add an application to "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to included apps"
+    -->
+    <string name="accessibility_action_add_included_app">포함된 앱에 추가</string>
+    <!-- Description for action to remove an application from "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from included apps"
+    -->
+    <string name="accessibility_action_remove_included_app">포함된 앱에서 삭제</string>
+    <string name="accessibility_action_copy_to_clipboard">클립보드로 복사</string>
+    <string name="accessibility_action_item_delete">삭제</string>
+    <string name="accessibility_action_item_move_up">위로 이동</string>
+    <string name="accessibility_action_item_move_down">아래로 이동</string>
+    <string name="tileConnected">연결됨: %1$s</string>
+    <string name="openUrlError">%1$s 를 열 수 없습니다. 기기에서 웹 브라우저가 탐지되지 않았습니다.</string>
+    <string name="loaderErrorTimeout">연결 시간 초과. 다시 시도하십시오.</string>
+    <string name="troubleshootButton">문제 해결</string>
+    <string name="activityTroubleshootTitle">문제 해결</string>
+    <string name="troubleshootPotentialSolutionsSectionTitle">잠재적 솔루션</string>
+    <string name="troubleshootNoInternetDescription">인터넷 연결이 작동하는지 확인하세요.</string>
+    <string name="troubleshootNoInternetTitle">인터넷에 연결되지 않음</string>
+    <string name="troubleshootIspProblemTitle">인터넷 서비스 제공사업자 (ISP) 문제</string>
+    <string name="troubleshootIspProblemDescription"><![CDATA[다른 네트워크에서 Proton에 연결해 보세요 (혹은 <a href=\'%1$s\'>Tor</a> 사용)]]></string>
+    <string name="troubleshootAntivirusProblemTitle">안티바이러스의 방해</string>
+    <string name="troubleshootAntivirusProblemDescription">일시적으로 안티바이러스 소프트웨어를 비활성화하거나 제거하세요</string>
+    <string name="troubleshootProxyFirewallProblemTitle">프록시/방화벽의 방해</string>
+    <string name="troubleshootProxyFirewallProblemDescription">프록시와 방화벽을 비활성화하거나, 네트워크 관리자에게 문의해주세요.</string>
+    <string name="troubleshootProtonDownTitle">Proton에 접속할 수 없음</string>
+    <string name="troubleshootProtonDownDescription"><![CDATA[<a href=\"%1$s\">Proton Status</a>에서 시스템 상태를 확인하세요.]]></string>
+    <string name="troubleshootContactUsSectionTitle">여전히 도움이 필요한가요? 저희에게 바로 연락주세요</string>
+    <string name="troubleshootCustomerSupport">고객 지원</string>
+    <string name="settingsAllowAlternativeRoutingTitle">대체 라우팅</string>
+    <string name="settingsAllowAlternativeRoutingDescription"><![CDATA[Proton이 차단된 경우 앱이 Proton 서버에 연결하기 위해 대체 경로를 사용하도록 허용하세요. <a href="%1$s">도 알아보기</a>]]></string>
+    <string name="troubleshootGovernmentBlockTitle">정부 차단</string>
+    <string name="troubleshootGovernmentBlockDescription"><![CDATA[사용자의 국가에서 Proton 서비스를 사용하는 것을 차단하고 있을 수 있습니다. Proton 서비스를 사용하기 위하여 <a href=\'%1$s\'>Tor</a>를 사용해보세요.]]></string>
+    <string name="settingsKillSwitchEnableTitle">킬 스위치 활성화 방법</string>
+    <string name="settingsKillSwitchEnableStep1">1. 기기 설정을 엽니다</string>
+    <!-- %1$s here will be replaced by "gear" icon -->
+    <string name="settingsKillSwitchEnableStep2">2. Proton VPN을 찾아 %1$s 버튼을 누릅니다</string>
+    <!-- Content description for the "gear" icon in settingsKillSwitchEnableStep2. Used only by accessibility services. -->
+    <string name="settingsKillSwitchEnableStep2_gearIconContentDescription">설정</string>
+    <!-- The phrases "Always-on VPN" and "Block connections without VPN" needs to be translated exactly
+         the same as in Android VPN settings. -->
+    <string name="settingsKillSwitchEnableStep3"><![CDATA[3. \"\'<b>VPN 항상 켜짐</b>\"과\"\'<b>VPN을 제외한 연결 차단</b>\"을 활성화합니다]]></string>
+    <string name="settingsKillSwitchAndroidSettingsButton">설정</string>
+    <string name="settingsKillSwitchLearnMoreButton">킬 스위치란?</string>
+    <string name="settingsKillSwitchWarningMain">킬 스위치가 활성화된 상태라면, 다음으로 연결할 수 없게 됩니다:</string>
+    <string name="settingsKillSwitchWarningPoint1">분할 터널링을 통한 VPN 연결에서 제외된 웹사이트와 앱</string>
+    <string name="settingsKillSwitchWarningPoint2">사용자의 LAN 상의 기기</string>
+    <string name="settingsEnableTelemetryTitle">익명 사용 통계 공유</string>
+    <string name="settingsEnableTelemetryDescription">사용 데이터는 VPN 차단을 무력화하고 앱 성능을 개선하는 데 도움이 됩니다.</string>
+    <string name="settingsSendCrashReportsTitle">익명 충돌 보고서 공유</string>
+    <string name="settingsSendCrashReportsDescription">충돌 보고서는 버그를 수정하고 방화벽을 감지하며 VPN 차단을 방지하는 데 도움이 됩니다.</string>
+    <string name="settingsTelemetryScreenTitle">사용 통계</string>
+    <string name="settingsTelemetryScreenInfo"><![CDATA[이 통계에는 회원님의 IP 주소가 담기지 않으며 식별에 사용할 수 없습니다. 제 3자에게 공유하지도 않습니다. <a href="%1$s">더 알아보기</a>]]></string>
+    <string name="netshield_settings_description_not_html">웹 사이트와 앱들의 광고, 멀웨어 및 트래커들로부터 보호 받으세요. %1$s</string>
+    <string name="netshield_settings_description_tv">제 3자(타사) 광고, 트래커, 멀웨어로부터 회원님을 보호합니다. NetShield는 YouTube 및 Netflix와 같은 스트리밍 서비스에 내장된 광고를 차단하지 않습니다.</string>
+    <string name="netshield_settings_more_info_title_tv">NetShield 작동 방식</string>
+    <string-array name="netshield_settings_more_info_paragraphs_tv">
+        <item>NetShield는 광고, 트래커 및 멀웨어로 알려진 제 3 자(타사)의 도메인으로의 DNS 요청을 차단합니다.</item>
+        <item>즉, 브라우저 또는 제 3자(타사) 광고 서비스를 사용하는 무료 앱으로부터 광고를 수신받지 않음을 의미합니다.</item>
+        <item>하지만, YouTube 및 Netflix와 같은 스트리밍 플랫폼의 광고는 자체 서버에서 직접 광고가 제공되기 때문에 차단할 수 없습니다.</item>
+    </string-array>
+    <string name="settings_icon_change_description">비밀 아이콘으로 Proton VPN 앱을 위장하세요.
+알림은 여전히 기본 Proton VPN 이름 및 아이콘으로 표시됩니다. %1$s</string>
+    <string name="settings_icon_change_learn_more">더 알아보기</string>
+    <string name="learn_more">더 알아보기</string>
+    <string name="netshield_state_on" comment="Describes state, not action">켬</string>
+    <string name="netshield_state_off" comment="Describes state, not action">끔</string>
+    <string name="netshield_state_unavailable" comment="Describes state, not action">사용할 수 없음</string>
+    <string name="split_tunneling_state_on" comment="Describes state, not action">켬</string>
+    <string name="split_tunneling_state_off" comment="Describes state, not action">끔</string>
+    <string name="vpn_accelerator_state_on" comment="Describes state, not action">켬</string>
+    <string name="vpn_accelerator_state_off" comment="Describes state, not action">끔</string>
+    <string name="lan_state_on" comment="Describes state, not action">켬</string>
+    <string name="lan_state_off" comment="Describes state, not action">끔</string>
+    <string name="alt_routing_state_on" comment="Describes state, not action">켬</string>
+    <string name="alt_routing_state_off" comment="Describes state, not action">끔</string>
+    <string name="custom_dns_state_on" comment="Describes state, not action">켬</string>
+    <string name="custom_dns_state_off" comment="Describes state, not action">끔</string>
+    <string name="custom_dns_state_unavailable" comment="Describes state, not action">사용할 수 없음</string>
+    <string name="custom_dns_item_removed_snackbar">항목이 삭제되었습니다</string>
+    <string name="netshield_free_description">웹사이트 및 앱에서 광고, 트래커와 멀웨어를 차단하세요</string>
+    <string name="netshield_what_data_means">NetShield 통계 설명</string>
+    <string name="netshield_ads_title">광고</string>
+    <string name="netshield_ads_details">광고 및 보이지 않는 광고 트래커</string>
+    <string name="netshield_trackers_title">트래커</string>
+    <string name="netshield_trackers_details">인터넷 활동에 대한 정보를 저장하고 공유하는 쿠키와 기타 트래커</string>
+    <string name="netshield_data_title">데이터</string>
+    <string name="netshield_data_details">NetShield로 차단된 광고, 트래커, 멀웨어의 개수</string>
+    <plurals name="netshield_ads_blocked" comment="Number of ads blocked by netshield. Number displayed above the text">
+        <item quantity="other">차단된 광고</item>
+    </plurals>
+    <plurals name="netshield_trackers_stopped" comment="Number of trackers stopped by netshield. Number displayed above the text">
+        <item quantity="other">멈춘 트래커</item>
+    </plurals>
+    <string name="netshield_data_saved" comment="Total data saved by netshield shown in kb/mb">데이터 절약됨</string>
+    <string name="netshield_setting_warning">일부 웹사이트는 광고 그리고 트래커 차단 중에 제대로 로드되지 않을 수도 있습니다.</string>
+    <string name="netshield_setting_block_adult_content">성인물 차단</string>
+    <string name="dialogDontShowAgain">다음부터 표시하지 않음</string>
+    <string name="guestHoleNotificationContent">네트워크 문제를 우회하려고 노력하고 있습니다. 이는 Proton VPN에 접근하는데 도움을 줄 것입니다.</string>
+    <string name="errorTunMultiUserPermission">듀얼 앱(예를 들어 듀얼 메신저)과 분할 터널링 사이에 충돌이 생겨 VPN 연결을 구성할 수 없습니다. 둘 중 하나를 비활성화 하고 기기를 재부팅 하세요.</string>
+    <string name="errorTorrentNotAllowed">이 서버에서는 P2P를 사용할 수 없습니다</string>
+    <string name="error_profile_fallback_unavailable">연결에 실패했습니다. 프로필에 대한 서버 선택을 사용할 수 없습니다.</string>
+    <string name="profileProtocolNotAvailable">이 프로필의 VPN 프로토콜은 현재 사용할 수 없습니다. 연결하려면 다른 프로토콜로 바꿔 보세요.</string>
+    <string name="stateConnectedTo">%1$s에 연결됨</string>
+    <string name="stateNotConnected">연결되어 있지 않음</string>
+    <string name="nameEurope">유럽</string>
+    <string name="nameAmerica">아메리카</string>
+    <string name="nameAsia">아시아</string>
+    <string name="nameAfricaAndMiddleEast">아프리카 &amp; 중동</string>
+    <string name="nameOceania">오세아니아</string>
+    <string name="tv_row_settings">설정</string>
+    <string name="tv_card_lan_connections_label">LAN</string>
+    <string name="tv_card_split_tunneling_label">분할 터널링</string>
+    <string name="tv_card_protocol_label">프로토콜</string>
+    <string name="tv_dialog_delete_server_title">%1$s 서버를 삭제하시겠습니까?</string>
+    <string name="tv_detail_default_connection_checkbox_short">선호</string>
+    <string name="tv_detail_connect_streaming">Plus 플랜으로 스트리밍을</string>
+    <string name="tv_detail_connect">연결</string>
+    <string name="tv_detail_description_streaming_country">Proton VPN Plus 플랜으로 좋아하는 스트리밍과 더 많은 앱으로의 접근을.</string>
+    <string name="tv_detail_description_no_streaming_country">Proton VPN Plus 플랜으로 좋아하는 스트리밍 콘텐츠를 더 즐겨보세요.</string>
+    <string name="tv_detail_description_country_not_available">이 국가는 이용할 수 없습니다. Proton VPN Plus 플랜으로 더 많은 스트리밍 옵션을 이용해보세요.</string>
+    <string name="tv_detail_description_plus">내 앱으로 좋아하는 비디오, 영화, 스포츠를 스트리밍 해보세요.</string>
+    <string name="tv_login_title_welcome">좋아하는 비디오 컨텐츠를 스트리밍 해보세요</string>
+    <string name="tv_login_welcome_description_bottom"><![CDATA[<b>%1$s</b>에서 Proton VPN 계정을 가입하세요]]></string>
+    <string name="back">뒤로가기</string>
+    <string name="tv_vpn_error_dialog_title">VPN 연결 실패</string>
+    <string name="tv_signout_label">로그아웃</string>
+    <string name="tv_signout_dialog_title">정말로 로그아웃하시겠습니까?</string>
+    <string name="tv_signout_dialog_description_connected">이렇게 하면 VPN 서버에서 TV 연결이 끊어집니다.</string>
+    <string name="tv_signout_dialog_ok">로그아웃</string>
+    <string name="tv_quick_connect_recommened">추천</string>
+    <string name="tv_quick_connect_favourite">즐겨찾기</string>
+    <string name="tv_country_maintenance_dialog_title">국가를 사용할 수 없습니다</string>
+    <string name="tv_country_maintenance_dialog_description">나중에 다시 시도하거나 다른 국가를 선택해주세요.</string>
+    <!-- The placeholder is replaced with a 0-100 value indicating the server load in percent.
+         Please note the double % sign after the placeholder. It is displayed as a single % sign in the app.
+
+         Example: 76% server load -->
+    <string name="tv_server_list_load">서버 부하율 %1$s%%</string>
+    <string name="tv_recently_used_servers">최근 사용된 서버</string>
+    <string name="tv_available_servers">사용 가능한 서버</string>
+    <string name="tv_locked_servers">잠금된 서버</string>
+    <string name="tv_other_servers">다른 서버</string>
+    <string name="tv_server_list">서버 목록</string>
+    <string name="tv_server_list_action_unavailable">사용할 수 없음</string>
+    <string name="notification_subscription_expired_title">회원님의 Proton VPN 구독이 만료되었습니다</string>
+    <string name="notification_subscription_expired_content">비록 회원님의 요금제가 다운그레이드 되었지만, 해당 요금제에서 사용 가능한 가장 빠른 서버에 접속하고 있습니다.</string>
+    <string name="notification_subscription_expired_no_reconnection_content">회원님의 구독 단계가 하락되었습니다.</string>
+    <string name="notification_delinquent_title">나의 Proton VPN 계정에 보류 중인 청구서가 있습니다.</string>
+    <string name="notification_delinquent_content">구독을 다시 활성화 시키기 위해 잠깐 시간을 내어 결제 정보를 업데이트 해주세요.</string>
+    <string name="notification_max_sessions_title">기기를 연결할 수 있는 최대 개수에 도달했습니다.</string>
+    <!-- The number of devices will always be greater than 1. -->
+    <plurals name="notification_max_sessions_upsell_content">
+        <item quantity="other">이 기기에서 연결하려면 다른 기기에서 연결 해제하거나 Plus로 업그레이드하여 최대 %1$d개의 기기에서 동시에 연결하세요.</item>
+    </plurals>
+    <string name="notification_max_sessions_content">이 기기에서 연결하려면 다른 기기의 연결을 끊어주세요.</string>
+    <string name="notification_cancel_to_free">Free 요금제를 사용하고 있습니다. Free 서버와 기능을 이용할 수 있습니다.</string>
+    <string name="notification_cancel_to_basic">Basic 요금제를 사용하고 있습니다. Basic &amp; Free 서버 및 기능을 이용할 수 있습니다.</string>
+    <string name="notification_cancel_to_delinquent">미지불된 금액이 결제된 후에 다시 프리미엄 기능에 접근할 수 있습니다.</string>
+    <string name="reconnect_from_server">서버에서: </string>
+    <string name="reconnect_to_server">서버로: </string>
+    <string name="no_thanks">괜찮습니다</string>
+    <string name="enable">활성화</string>
+    <string name="notification_smart_protocol_disabled_title">Smart Protocol은 현재 비활성화 되었습니다</string>
+    <string name="notification_smart_protocol_disabled_content">Proton VPN이 현재 네트워크에서는 VPN에 연결할 수 없음을 감지했습니다. Smart Protocol을 활성화하면 이러한 제한을 우회할 수도 있습니다.</string>
+    <string name="notification_streaming_blocked_title">스트리밍에 문제가 있나요?</string>
+    <string name="notification_streaming_blocked_text">대다수의 스트리밍 서비스는 무료 VPN 서버에 대한 연결을 감지 및 차단합니다. Proton VPN Plus로 업그레이드하여 이러한 차단을 우회할 수 있습니다.</string>
+    <string name="upsell_advanced_features">고급 기능: NetShield, Secure Core, Tor, P2P</string>
+    <string name="upsell_streaming_services">전 세계 어디에서나 스트리밍 서비스(Netflix, Disney+ 등) 에 액세스</string>
+    <!-- Number of servers available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_servers">
+        <item quantity="other">%1$d개 서버</item>
+    </plurals>
+    <!-- Number of countries available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_countries">
+        <item quantity="other">%1$d개 국가</item>
+    </plurals>
+    <string name="upsell_upgrade_again">다시 업그레이드하고 모든 기능들을 즐기세요:</string>
+    <plurals name="upgrade_devices_title">
+        <item quantity="other">%1$d개의 장치를 한 번에 보호하세요</item>
+    </plurals>
+    <string name="upgrade_devices_text">Proton VPN은 8개의 다른 플랫폼에서 사용할 수 있습니다.</string>
+    <string name="upgrade_plus_title">프라이버시를 업그레이드하세요</string>
+    <string name="upgrade_plus_message">VPN Plus에서 고급 프라이버시 보호 기능과 더욱 빠른 속도를 제공합니다.</string>
+    <string name="upgrade_netshield_title">광고 없는 브라우징</string>
+    <string name="upgrade_netshield_message"><![CDATA[<b>NetShield</b>가 광고와 트래커, 멀웨어를 차단합니다.]]></string>
+    <string name="upgrade_secure_core_title">암호화가 두 배로</string>
+    <string name="upgrade_secure_core_message"><![CDATA[<b>Secure Core</b>가 사용자의 VPN 연결에 한 겹의 암호화를 더합니다.]]></string>
+    <string name="upgrade_p2p_title">P2P (peer-to-peer) 다운로드와 파일 공유를 잠금 해제하세요 </string>
+    <string name="upgrade_p2p_text">업로드와 다운로드 속도를 개선하면서 IP 주소는 숨깁니다.</string>
+    <string name="upgrade_profiles_title">자주 연결하는 연결에 더 빠르게 접근하세요.</string>
+    <string name="upgrade_profiles_text">프로필을 VPN Plus로 잠금 해제하세요.</string>
+    <string name="upgrade_streaming_title">4K로 스트리밍</string>
+    <string name="upgrade_streaming_text">전세계에 있는 영화와 TV 콘텐츠를 즐겨보세요.</string>
+    <string name="upgrade_streaming_block_title">VPN 차단을 우회하려면 업그레이드</string>
+    <string name="upgrade_streaming_block_text">VPN Plus 서버를 이용하면 전 세계의 좋아하는 영화와 TV 프로그램을 즐길 수 있습니다.</string>
+    <string name="upgrade_tor_title">한 번의 탭으로 Tor 네트워크에 접근하세요</string>
+    <string name="upgrade_tor_text">쓰던 브라우저에서 숨겨진 서비스와 onion 사이트로 연결하세요.</string>
+    <string name="upgrade_vpn_accelerator_title">더욱 빠른 브라우징</string>
+    <!--
+        %1$s - speed in Gbps
+        Example:
+        Unlock faster, less crowded servers with speeds of up to 10 Gbps.
+    -->
+    <string name="upgrade_vpn_accelerator_message">최대 %1$d Gbps의 속도를 제공할 수 있는 빠르면서 쾌적한 서버를 이용할 수 있습니다.</string>
+    <string name="upgrade_split_tunneling_title">하나로 두 가지 이득을 얻으세요</string>
+    <string name="upgrade_split_tunneling_message"><![CDATA[<b>분할 터널링</b>으로 VPN에 들어갈 트래픽을 분류하세요.]]></string>
+    <string name="upgrade_customization_title">향상된 VPN 사용자화를 잠금 해제하세요</string>
+    <string name="upgrade_customization_message"><![CDATA[VPN Plus로 <b>LAN 연결</b>, <b>커스텀 DNS</b> 및 <b>NAT type 2</b>를 잠금 해제하세요.]]></string>
+    <string name="upgrade_all_countries_title">모든 국가로의 접근</string>
+    <!-- Number of servers inserted as %1$s in the "upgrade_plus_countries_title_new".
+         The number is rounded to the hundreds, e.g. for a value of 1234 the number used in this text is 1200.
+
+         Example:
+         1200 secure servers
+         -->
+    <plurals name="upgrade_plus_servers_new">
+        <item quantity="other">%d개 보안 서버</item>
+    </plurals>
+    <!-- Number of countries inserted as %2$s in "upgrade_plus_countries_title_new".
+
+         Example:
+         55 countries
+         -->
+    <plurals name="upgrade_plus_countries">
+        <item quantity="other">%d개 국가</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with "upgrade_plus_servers_new"
+     %2$s - replaced with "upgrade_plus_countries"
+
+     Example:
+     Unlock 1300+ secure servers in 61 countries with VPN Plus.
+     -->
+    <string name="upgrade_plus_countries_title_new"><![CDATA[<b>VPN Plus</b>로 %2$s 내의 %1$s 잠금 해제]]></string>
+    <string name="mail_app_name" translateable="false">Proton Mail</string>
+    <string name="upgrade_unlimited_all_apps_title">Proton Unlimited로 완벽한 프라이버시 보호 커버리지를 경험해 보세요</string>
+    <string name="upgrade_unlimited_all_apps_description">Proton VPN, Mail, Calendar, Drive 및 Pass의 모든 프리미엄 기능을 잠금 해제하세요.</string>
+    <string name="upgrade_unlimited_more">기타 등등</string>
+    <string name="upgrade_unlimited_vpn_unlimited_countries">모든 국가 잠금해제</string>
+    <string name="upgrade_unlimited_vpn_all_features">기타 모든 VPN Plus 기능</string>
+    <string name="upgrade_unlimited_vpn_any_location">어떠한 지역이든 선택하세요</string>
+    <string name="upgrade_unlimited_vpn_higher_speeds">더 빠른 VPN 속도</string>
+    <plurals name="upgrade_unlimited_vpn_many_devices">
+        <item quantity="other">%1$d개의 장치를 한 번에 보호하세요</item>
+    </plurals>
+    <string name="upgrade_unlimited_vpn_streaming">안전한 영상 스트리밍</string>
+    <string name="upgrade_unlimited_vpn_adblocker">광고 차단기 및 멀웨어 보호</string>
+    <string name="upgrade_unlimited_vpn_double_vpn">더블 VPN</string>
+    <string name="upgrade_unlimited_vpn_p2p">P2P 지원</string>
+    <plurals name="upgrade_unlimited_mail_custom_domains">
+        <item quantity="other">%1$d개 커스텀 이메일 도메인</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_attachments">
+        <item quantity="other">첨부 파일 %1$d MB</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_many_addresses">
+        <item quantity="other">이메일 주소 %1$d개</item>
+    </plurals>
+    <string name="upgrade_unlimited_mail_unlimited_folders">무제한 폴더 및 필터</string>
+    <string name="upgrade_unlimited_mail_dark_web">다크 웹 모니터링</string>
+    <string name="upgrade_unlimited_mail_aliases">무제한 hide-my-email 별칭</string>
+    <string name="upgrade_unlimited_mail_autoreply">자동 회신</string>
+    <string name="upgrade_unlimited_mail_scheduled_send">예약 전송</string>
+    <plurals name="upgrade_unlimited_calendar_calendars">
+        <item quantity="other">%1$d개의 개인 캘린더</item>
+    </plurals>
+    <string name="upgrade_unlimited_calendar_sharing">일정 공유</string>
+    <string name="upgrade_unlimited_calendar_invites">전송 및 받은 초대</string>
+    <string name="upgrade_unlimited_drive_encryption">파일 공유 암호화</string>
+    <string name="upgrade_unlimited_drive_storage_size">사진, 파일, 메일을 위한 %1$d GB 총 저장 공간</string>
+    <string name="upgrade_unlimited_drive_link_share">링크로 사진 및 파일 공유</string>
+    <string name="upgrade_unlimited_drive_sharing_security">향상된 파일 공유 보안 기능</string>
+    <string name="upgrade_unlimited_drive_version_history">버전 기록</string>
+    <string name="upgrade_unlimited_pass_manager">암호화된 비밀번호 관리자</string>
+    <string name="upgrade_unlimited_pass_logins_aliases">무제한 로그인 및 hide-my-email 별칭</string>
+    <plurals name="upgrade_unlimited_pass_vaults">
+        <item quantity="other">%1$d개 금고</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_logins">무제한 로그인</string>
+    <string name="upgrade_unlimited_pass_aliases">무제한 hide-my-email 별칭</string>
+    <string name="upgrade_unlimited_pass_credit_cards">무제한 신용 카드</string>
+    <string name="upgrade_unlimited_pass_devices">기기 개수 무제한</string>
+    <plurals name="upgrade_unlimited_pass_users">
+        <item quantity="other">최대 %1$d명과 공유하기</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_2fa_auth">2단계 인증기 내장</string>
+    <string name="upgrade_not_now_button">다음에</string>
+    <!-- Content description for plan selection list.
+         Only used by accessibility services.
+
+         Example:
+         When the plan selection control is focused, and the first plan name is "VPN Plus"
+         TalkBack will read:
+         "VPN Plus, 1 of 2, in list Upgrade options" -->
+    <string name="upgrade_plan_selection_content_description">업그레이드 옵션</string>
+    <!-- Text in a "badge" element that has a rounded border and represents the Plus VPN plan.
+         May be used as a table header or like an icon. -->
+    <string name="badge_plan_plus">Plus</string>
+    <!-- Content description prefix for value in the benefits table row for the free plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_plus">Plus 플랜:</string>
+    <!-- Content description prefix for value in the benefits table row for the plus plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_free">무료 플랜:</string>
+    <string name="upsell_panel_content_description_yes">예</string>
+    <string name="upsell_panel_content_description_no">아니오</string>
+    <string name="upsell_panel_table_header_plan_free">무료</string>
+    <string name="upsell_panel_general_benefit_block_ads">광고 및 추적기 차단</string>
+    <string name="upsell_panel_general_benefit_countries">사용 가능한 국가</string>
+    <!-- %1$s - number of countries rounded to full tens. Example: 120+, 130+, 140+ -->
+    <string name="upsell_panel_general_benefit_countries_rounded">%1$d+</string>
+    <string name="upsell_panel_general_benefit_devices">보호되는 기기</string>
+    <string name="upsell_panel_general_benefit_location">원하는 위치 선택</string>
+    <string name="upsell_panel_general_benefit_server">원하는 서버 선택</string>
+    <string name="upsell_panel_general_benefit_shows">모든 국가의 TV 프로그램 시청</string>
+    <string name="upsell_panel_general_benefit_speed">서버 속도</string>
+    <string name="upsell_panel_general_benefit_speed_standard">일반</string>
+    <string name="upsell_panel_general_benefit_speed_highest">가장 빠름</string>
+    <string name="upsell_panel_adv_customization_title">정제된 연결</string>
+    <string name="upsell_panel_adv_customization_description">LAN 연결을 허용하고, 사용자 지정 DNS를 설정하며, NAT 유형을 선택해 보세요. 고급 관리 기능은 모두 Plus에서 사용할 수 있습니다.</string>
+    <string name="upsell_panel_adv_customization_benefit_lan">프린터와 홈 디바이스에 연결</string>
+    <string name="upsell_panel_adv_customization_benefit_dns">나만의 DNS 서비스 그대로 사용</string>
+    <string name="upsell_panel_adv_customization_benefit_gaming">게이밍을 위한 더 나은 연결 성능</string>
+    <!--
+        %1$s - country name in nominative
+
+        Warning country names are inserted in the nominative case.
+        For inflicted languages translate the following phrase instead:
+        Get VPN Plus to access: %1$s
+        -->
+    <string name="upsell_panel_country_title">VPN Plus로 %1$s 잠금 해제</string>
+    <string name="upsell_panel_countries_title"> VPN Plus로 모든 국가 잠금 해제</string>
+    <string name="upsell_panel_country_benefit_speed">초고속 서버</string>
+    <string name="upsell_panel_country_benefit_shows">특정 국가 전용 콘텐츠를 시정하세요</string>
+    <string name="upsell_panel_devices_title">가지고 있는 모든 기기에서 연결</string>
+    <string name="upsell_panel_devices_description">휴대폰, 컴퓨터, TV 등등 모든 기기에서 누리는 VPN.</string>
+    <string name="upsell_panel_netshield_title">방해 없이 탐색하세요</string>
+    <string name="upsell_panel_netshield_benefit_ads">브라우징 중에도 광고가 차단됩니다</string>
+    <string name="upsell_panel_netshield_benefit_trackers">나를 추적하는 트래커를 중단시키세요</string>
+    <string name="upsell_panel_netshield_benefit_malware">멀웨어 및 피싱 보호</string>
+    <string name="upsell_panel_netshield_benefit_load_speed">페이지가 더 빠르게 로드됩니디 </string>
+    <string name="upsell_panel_onboarding_title">VPN Plus로 더 많은 혜택 누리기</string>
+    <string name="upsell_panel_p2p_title">최대 속도로 다운로드</string>
+    <string name="upsell_panel_p2p_description">일반 Torrent 클라이언트를 사용하면서 파일 공유에 최적화된 서버에 접근하세요.</string>
+    <string name="upsell_panel_p2p_benefit_p2p">P2P 파일 공유</string>
+    <string name="upsell_panel_profiles_title">스트리밍, 게이밍, 업무: 각 용도에 맞는 프로필 사용하기</string>
+    <string name="upsell_panel_profiles_description">나만의 방식으로 연결을 지정하세요. 그 구성으로 다시 연결하고 싶을 때는 탭 한 번이면 끝.</string>
+    <string name="upsell_panel_profiles_benefit_profiles">저장된 프로필</string>
+    <string name="upsell_panel_profiles_benefit_profiles_unlimited">무제한</string>
+    <string name="upsell_panel_secure_core_title">나와 웹 사이의 2개의 암호화 레이어</string>
+    <string name="upsell_panel_secure_core_description">선택한 국가로 직접 연결되지 않고, 스위스, 아이슬란드, 스웨덴에 위치한 Proton 서버를 한 번 더 거쳐 연결합니다.</string>
+    <string name="upsell_panel_secure_core_benefit_secure_core">Secure Core</string>
+    <string name="upsell_panel_speed_title">더 빠른 속도로 스트리밍, 게이밍, 다운로드하세요</string>
+    <string name="upsell_panel_speed_benefit_servers">초고속 서버</string>
+    <string name="upsell_panel_speed_benefit_gaming">게임 중 응답 시간</string>
+    <string name="upsell_panel_speed_benefit_gaming_slow">느림</string>
+    <string name="upsell_panel_speed_benefit_gaming_fast">빠름</string>
+    <string name="upsell_panel_speed_benefit_video">버퍼링 없이 비디오 스트리밍</string>
+    <string name="upsell_panel_speed_benefit_p2p">P2P 다운로드 지원</string>
+    <string name="upsell_panel_split_tunneling_title">VPN을 사용하는 앱 선택</string>
+    <string name="upsell_panel_split_tunneling_description">브라우저는 VPN으로 안전하게, 금융 앱은 일반 네트워크로 빠르게. 앱마다 원하는 대로 자유롭게 설정하세요.</string>
+    <string name="upsell_panel_split_tunneling_benefit_split">분할 터널링</string>
+    <string name="upsell_panel_streaming_title">좋아하는 스트리밍 서비스로 영상 시청</string>
+    <string name="upsell_panel_streaming_benefit_shows">모든 국가의 TV 프로그램 시청</string>
+    <!-- The asterisk points to upsell_panel_streaming_footer -->
+    <string name="upsell_panel_streaming_benefit_platforms">모든 메이저 스트리밍 서비스 플랫폼 지원 *</string>
+    <string name="upsell_panel_streaming_benefit_hd">버퍼링 없이 HD로 스트리밍</string>
+    <string name="upsell_panel_streaming_benefit_devices">한 번에 기기 모두를 연결</string>
+    <string name="upsell_panel_streaming_footer">* 해당 스트리밍 서비스의 구독이 필요합니다.</string>
+    <string name="upsell_panel_streaming_block_title">VPN 차단을 우회하려면 업그레이드</string>
+    <string name="upsell_panel_streaming_block_description">VPN Plus로 전세계의 모든 영화나 TV 프로그램에 자유롭게 접근하여 스트리밍하세요.</string>
+    <string name="upsell_panel_tor_title">Tor Browser 없이 Onion 사이트에 접근</string>
+    <string name="upsell_panel_tor_description">평소 브라우저에서도 .onion사이트에 접근하세요.</string>
+    <string name="upsell_panel_tor_benefit_tor">VPN을 통한 Tor</string>
+    <string name="upsell_card_countries_title">전세계 커버리지</string>
+    <!-- Parameters:
+        %1$d - number of servers rounded up to 100s (e.g. 600, 1200)
+        %2$s - replaced with "upgrade_plus_countries"
+
+        Example:
+        1700+ server locations in 63 countries -->
+    <string name="upsell_card_countries_description">%2$s개 국가의 %1$d개 이상 서버</string>
+    <string name="upsell_card_customization_title">이게 다가 아닙니다…</string>
+    <string name="upsell_card_customization_description">더 많은 프라이버시 기능과 성능을 잠금 해제하세요</string>
+    <plurals name="upsell_card_devices_title">
+        <item quantity="other">%1$d개 디바이스 보호</item>
+    </plurals>
+    <string name="upsell_card_devices_description">사용자의 모든 기기에서 누리는 보안과 프라이버시</string>
+    <string name="upsell_card_netshield_title">NetShield</string>
+    <string name="upsell_card_netshield_description">광고, 멀웨어 및 트래커 차단</string>
+    <string name="upsell_card_secure_core_title">Secure Core</string>
+    <string name="upsell_card_secure_core_description">VPN 연결에 암호화 계층 추가</string>
+    <string name="upsell_card_p2p_title">P2P 지원</string>
+    <string name="upsell_card_p2p_description">BitTorrent와 다른 파일 공유 프로토콜로 파일을 다운로드하세요</string>
+    <string name="upsell_card_profiles_title">프로필</string>
+    <string name="upsell_card_profiles_description">커스텀 VPN 연결 생성</string>
+    <string name="upsell_card_speed_title">더 빠른 브라우징</string>
+    <!-- Parameters:
+        %1$d - max server speed in Gbps (preserve the non-breaking space between the number and Gbps).
+        Example:
+        Browse at even higher speeds (up to 10&160;Gbps) -->
+    <string name="upsell_card_speed_description">더 빠른 속도로 브라우징 하세요 (최대 %1$d Gbps)</string>
+    <string name="upsell_card_split_tunneling_title">분할 터널링</string>
+    <string name="upsell_card_split_tunneling_description">한 번에 두 곳의 위치에서 브라우징하세요</string>
+    <string name="upsell_card_streaming_title">스트리밍</string>
+    <string name="upsell_card_streaming_description">선호하는 영화와 TV 쇼를 시청하세요</string>
+    <string name="upsell_card_tor_title">Tor over VPN</string>
+    <string name="upsell_card_tor_description">추가적인 개인 정보 보호를 위해 VPN 연결을 통해 Tor 네트워크를 사용하세요</string>
+    <string name="upsell_tv_all_countries_title">Plus로 모든 국가에 접근하세요</string>
+    <!-- Format for upselling countries on TV".
+        %1$s - replaced with upgrade_plus_servers_new plurals key (e.g. 1 secure server or 10 secure servers)
+        %2$s - replaced with upgrade_plus_countries plurals key (e.g. 1 country or 10 countries)
+
+        Example: Unlock 16821 secure servers in 127 countries. Go to the Proton VPN website to upgrade your plan.
+    -->
+    <string name="upsell_tv_all_countries_description">%2$s내의 %1$s 잠금 해제</string>
+    <string name="upsell_tv_netshield_title">Plus로 광고 없는 인터넷 서핑을 즐기실 수 있습니다</string>
+    <string name="upsell_tv_netshield_description"><![CDATA[<b>NetShield</b>로 광고와 트래커, 멀웨어를 차단하세요.]]></string>
+    <string name="upsell_tv_split_tunneling_title">Plus와 함께 두 가지 혜택을 누리세요</string>
+    <string name="upsell_tv_split_tunneling_description"><![CDATA[<b>분할 터널링</b>으로 VPN에 들어갈 트래픽을 분류하세요.]]></string>
+    <string name="upsell_tv_subscription_expired_title">구독 기간이 만료되었습니다.</string>
+    <string name="upsell_tv_subscription_expired_description">다시 Plus 서버 및 기능에 접근하려면 업그레이드 하세요.</string>
+    <string name="upsell_tv_customization_title">플러스로 고급 VPN 사용자화를 이용하세요.</string>
+    <string name="upsell_tv_customization_description"><![CDATA[<b>LAN 연결</b>, <b>사용자 지정 DNS</b> 및 더 많은 고급 VPN 기능을 이용하세요.]]></string>
+    <string name="upsell_tv_fallback_description">Proton VPN 웹사이트에서 플랜을 업그레이드하세요.</string>
+    <!-- Format for price per period of time.
+        %1$s - replaced with price and currency (e.g. "$100")
+        %2$s - replaced with time period, one of payment_price_per_ (e.g. "month", "week")
+
+        Examples:
+        50 PLN /month
+        $100 /year
+    -->
+    <string name="payment_price_with_period">%1$s /%2$s</string>
+    <string name="payment_price_per_day">일</string>
+    <string name="payment_price_per_week">주</string>
+    <string name="payment_price_per_month">월간</string>
+    <string name="payment_price_per_year">연간</string>
+    <plurals name="payment_price_cycle_label_day">
+        <item quantity="other">%1$d일</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_week">
+        <item quantity="other">%1$d주</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_month">
+        <item quantity="other">%1$d개월</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_year">
+        <item quantity="other">%1$d년</item>
+    </plurals>
+    <string name="payment_select_your_plan">플랜을 선택하세요.</string>
+    <!-- Label on a button for purchasing a subscription.
+         Parameter: %1$s - plan name
+         Plan names are not translated.
+
+         Example: "Get VPN Plus", "Get Proton Unlimited". -->
+    <string name="payment_button_get_plan">%1$s 구독</string>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_discount_renewal_price_message_daily">
+        <item quantity="other">특별 할인. 매 %2$d일마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_discount_renewal_price_message_weekly">
+        <item quantity="other">특별 할인. 매 %2$d주마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_discount_renewal_price_message_monthly">
+        <item quantity="other">특별 할인. 매 %2$d개월마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_discount_renewal_price_message_yearly">
+        <item quantity="other">특별 할인. 매 %2$d년마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_renewal_price_message_daily">
+        <item quantity="other">매 %2$d일마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_renewal_price_message_weekly">
+        <item quantity="other">매 %2$d주마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_renewal_price_message_monthly">
+        <item quantity="other">매 %2$d개월마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_renewal_price_message_yearly">
+        <item quantity="other">매 %2$d주마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_daily">
+        <item quantity="other">매 %2$d일간 %1$s</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_weekly">
+        <item quantity="other">매 %2$d주간 %1$s</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_monthly">
+        <item quantity="other">매 %2$d달간 %1$s</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_yearly">
+        <item quantity="other">매 %2$d년간 %1$s</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_for_days">
+        <item quantity="other">첫 %1$d일간</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_for_weeks">
+        <item quantity="other">첫 %1$d주간</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_for_months">
+        <item quantity="other">첫 %1$d개월간</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_discount_for_years">
+        <item quantity="other">첫 %1$d년간</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_rest_daily">
+        <item quantity="other">이후 매 %2$d일마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_rest_weekly">
+        <item quantity="other">이후 매 %2$d주마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_rest_monthly">
+        <item quantity="other">이후 매 %2$d개월마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_rest_yearly">
+        <item quantity="other">이후 매 %2$d년마다 %1$s(으)로 자동 갱신됩니다.</item>
+    </plurals>
+    <!-- Explains renewal cycle when first there's a discount price for several periods
+     (e.g. 2 months) and then the subscription renews at full price.
+     Periods (days, months etc) are never mixed between the messages, the whole message uses one
+     unit.
+
+     Parameters:
+      %1$s - one of payment_multi_renewal_discount_*
+      %2$s - one of payment_multi_renewal_discount_for_*
+      %3$s - one of payment_multi_renewal_rest_*
+
+     Examples:
+      "$2.99/month for the first 2 months, then auto renews at $3.99/month"
+      "$19.99/year for the first 3 years, then auto renews at $24.99/year"
+      "$3.99 every 2 months for the first 4 months, then auto renews at 5.99 every 2 months"
+    -->
+    <string name="payment_multi_renewal_template">%1$s %2$s, %3$s</string>
+    <string name="smart_routing_title">Smart Routing</string>
+    <string name="smart_routing_description">이 기술로 Proton VPN은 이용이 어려운 국가에서도 더 높은 속도와 보안을 제공하고 있습니다.</string>
+    <string name="tor_title">Tor</string>
+    <string name="server_load_title">서버 부하율</string>
+    <string name="activity_information_learn_more">더 알아보기</string>
+    <string name="server_load_low">낮음</string>
+    <string name="server_load_medium">중간</string>
+    <string name="server_load_high">높음</string>
+    <!-- Override Human verification links from core -->
+    <string name="onboarding_welcome_title">Proton VPN에 오신 것을 환영합니다</string>
+    <string name="onboarding_welcome_description">브라우징은 은밀하게, 막힌 컨텐츠는 열리게, 디지털 자유를 그렇게 누려보세요.</string>
+    <string name="onboarding_welcome_action">시작하기</string>
+    <string name="upgrade_success_get_started_button">시작하기</string>
+    <string name="dynamic_report_suggestion_didnt_work">소용이 없었나요?</string>
+    <string name="dynamic_report_contact_us">연락하기</string>
+    <string name="dynamic_report_tips_description">이 팁들이 문제를 더 빨리 해결하는데 도움이 될 수 있습니다.</string>
+    <string name="dynamic_report_tips_title">빠른 수정</string>
+    <string name="dynamic_report_logs_title">오류 로그 보내기</string>
+    <string name="dynamic_report_logs_tooltip">오류 로그는 무엇이 잘못되었고 어떤 작업이 문제로 이어졌는지 보여줍니다. 당사는 엔지니어들이 문제를 해결하도록 돕는 데에만 사용할 예정입니다.</string>
+    <string name="dynamic_report_error_title">리포트 전송에 실패했습니다.</string>
+    <string name="dynamic_report_completion_error_description_generic">리포트 전송에 실패했습니다. 다시 시도하세요.</string>
+    <string name="dynamic_report_completion_error_description_no_internet">리포트 전송에 실패했습니다. 연결 확인 후 다시 시도하세요.</string>
+    <string name="dynamic_report_completion_error_description_timeout">리포트 전송에 실패했습니다. 연결 시간이 초과되었습니다. 다시 시도하세요.</string>
+    <string name="dynamic_report_completion_success_title">피드백 주셔서 정말 감사합니다. 최대한 빠른 시일 내로 답장해 드리겠습니다.</string>
+    <string name="dynamic_report_success_title">피드백 주셔서 감사합니다</string>
+    <string name="dynamic_report_success_description">가능한 빨리 다시 뵙겠습니다.</string>
+    <string name="dynamic_report_field_mandatory">필수 항목</string>
+    <string name="dynamic_report_logs_description">로그는 어떤 작업에서부터 오류가 발생하게 되었는지 보여주는 파일입니다. 엔지니어들이 버그를 고치는 것을 도울 때가 아니면 절대 사용되지 않습니다.</string>
+    <string name="dynamic_report_logs_missing">오류 로그는 저희가 문제의 근원으로 다가서는 데 도움을 줍니다. 이것을 포함하지 않는다면 저희는 제대로 조사하지 못할 수도 있습니다.</string>
+    <string name="dynamic_report_step1">1/3 단계</string>
+    <string name="dynamic_report_step2">2/3 단계</string>
+    <string name="dynamic_report_step3">3/3 단계</string>
+    <string name="dynamic_report_your_issue_headline">문제가 무엇인가요?</string>
+    <string name="update_screen_title">Proton VPN 업데이트</string>
+    <string name="update_screen_description">이전 버전의 Proton VPN에서는 문제를 겪기 쉽습니다.</string>
+    <string name="update_banner_description_settings">새로운 버전의 앱을 사용할 수 있습니다</string>
+    <string name="update_banner_warning_vpn_connected_title">VPN이 일시적으로 연결 해제됩니다</string>
+    <string name="update_banner_warning_vpn_connected_message">업데이트를 완료하기 위해 앱 재시작이 필요합니다. 완료 후 다시 자동으로 연결됩니다.</string>
+    <string name="dialog_create_account_title">계속하기 위해 계정 생성하기</string>
+    <string name="dialog_create_account_action_create">계정 생성</string>
+    <string name="dialog_create_account_action_signin">로그인</string>
+    <string name="server_search_menu_title">검색</string>
+    <string name="search_empty_result_subtitle">다른 키워드를 입력해주세요</string>
+    <string name="search_empty_result_title">결과를 찾을 수 없음</string>
+    <!-- Content description for an icon button that clears search query in the input field. -->
+    <string name="search_clear_query_content_description">삭제</string>
+    <!-- Content description for an icon button that clears text in an input field. -->
+    <string name="clear_text_field_content_description">삭제</string>
+    <!-- Example: Want to connect to Italy? -->
+    <string name="upgrade_country_title">특정 국가로 연결하고 싶으세요?</string>
+    <string name="upgrade_country_message"><![CDATA[VPN Plus로 <b>국가 선택</b>을 잠금 해제하세요.]]></string>
+    <string name="free_connections_info_message">Proton Free가 사용 가능한 가장 빠른 서버에 자동으로 연결합니다. 보통 소재한 곳에서 가장 가까운 서버가 선택됩니다.</string>
+    <string name="free_connections_info_server_locations">무료 서버 지역 (%1$d)</string>
+    <string name="free_connections_info_banner_text">VPN Plus로 모든 국가에 접근하세요</string>
+    <string name="free_connection_info_title">무료 연결</string>
+    <string name="search_upsell_banner_title">언제 어디서나 스트리밍</string>
+    <!-- Example: Unlock geoblocked content from 10 countries with VPN Plus. -->
+    <plurals name="search_upsell_banner_message">
+        <item quantity="other">VPN Plus로 %1$d개 국가서 차단된 컨텐츠를 해제하세요</item>
+    </plurals>
+    <string name="select_default_connection">기본 연결을 선택하세요</string>
+    <string name="settings_default_connection_title">기본 연결</string>
+    <string name="fastest_country_description">지역에 기반한 최적의 서버</string>
+    <string name="settings_connection_preferences_title">연결 설정</string>
+    <string name="settings_connection_preferences_snackbar_message_excluded_location_removed">항목이 삭제되었습니다</string>
+    <string name="settings_excluded_locations_title">제외된 위치</string>
+    <string name="settings_excluded_locations_description">선택된 위치는 가장 빠르게로 연결한 경우 사용되지 않습니다.</string>
+    <string name="settings_excluded_locations_unavailable">사용 가능한 위치 없음</string>
+    <string name="settings_excluded_locations_selection_hint">선택...</string>
+    <string name="settings_excluded_locations_accessibility_label_deletion">제외된 위치에서 삭제</string>
+    <string name="settings_excluded_locations_accessibility_label_city">도시</string>
+    <string name="settings_excluded_locations_accessibility_label_country">국가</string>
+    <string name="settings_excluded_locations_accessibility_label_state">주/도</string>
+    <string name="settings_last_connection_title">최근 연결</string>
+    <string name="settings_last_connection_description">가장 최근에 사용한 연결</string>
+    <string name="settings_change_icon_title">앱 아이콘</string>
+    <string name="settings_change_icon_details">사용자의 기기에서 어떻게 Proton VPN이 표시될지 커스터마이징 하세요. 왜죠?</string>
+    <string name="settings_change_icon_confirmation_title">앱 아이콘을 변경하시겠어요?</string>
+    <string name="settings_change_icon_confirmation_details">이 작업은 Proton VPN 앱을 종료시킵니다. Proton VPN을 재시작하려면, 새 앱 아이콘을 탭 하세요.</string>
+    <string name="settings_change_icon_header_protonvpn">Proton VPN</string>
+    <string name="settings_change_icon_header_discreet">위장 앱 아이콘</string>
+    <string name="settings_widget_title">위젯</string>
+    <string name="settings_widget_selection_title">Proton VPN 위젯을 사용해 보세요</string>
+    <string name="settings_widget_selection_description">홈 화면에서 연결 상태를 확인하고 선호하는 VPN 서버에 연결하세요.</string>
+    <!-- Placeholder is for non-translatable app_name-->
+    <string name="setting_widget_selection_additional_description">위젯을 추가하려면, 홈 화면의 아무 곳이나 길게 누른 다음 위젯 메뉴에서 %1$s을 선택하세요.</string>
+    <string name="settings_widget_selection_button_title">위젯 추가</string>
+    <string name="setting_widget_try_title">Proton VPN 위젯을 사용해 보세요</string>
+    <!-- Content description used by accessibility services for a button for dismissing (hiding)
+         a notification banner (usually used for special offers). -->
+    <string name="notification_banner_dismiss_accessibility_label">배너 무시</string>
+    <!-- Time left in a countdown, it shows two units of time, e.g. days and hours, hours and minutes.
+         %1$s - larger unit of time, one of: time_left_days, time_left_hours, time_left_minutes
+         %2$s - smaller unit of time, one of: time_left_hours, time_left_minutes, time_left_seconds
+
+         Examples:
+         3 days 11 hours left
+         1 hour 32 minutes left
+         0 minutes 50 seconds left
+     -->
+    <string name="offer_time_left">%1$s %2$s 남음</string>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_seconds">
+        <item quantity="other">%1$d초</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_minutes">
+        <item quantity="other">%1$d분</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 hours 5 minutes left -->
+    <plurals name="time_left_hours">
+        <item quantity="other">%1$d시간</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 days 5 hours left -->
+    <plurals name="time_left_days">
+        <item quantity="other">%1$d일</item>
+    </plurals>
+    <string name="server_change_max_reached">현재 무료 서버 최대 변경 횟수에 도달했습니다.</string>
+    <string name="server_change_upsell">VPN Plus로 무제한 변경 기능 사용</string>
+    <string name="server_change_button_title">서버 변경</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services.
+
+        %1$s - replaced with "time_left_minutes"
+        %2$s - replaced with "time_left_seconds"
+        Example:
+        Available in 1 minute 23 seconds.
+      -->
+    <string name="server_change_button_time_left_content_description">%1$s %2$s내에 가능</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services and only if time left is less than 1 minute.
+
+        %1$s - replaced with "time_left_seconds"
+        Example:
+        Available in 23 seconds.
+      -->
+    <string name="server_change_button_time_left_seconds_content_description">%1$s 내에 가능</string>
+    <string name="server_change_progress_finished_contend_description">지금 사용 가능</string>
+    <string name="not_wanted_country_title">원하신 국가가 아닌가요?</string>
+    <string name="not_wanted_country_description">모든 서버에 접근하기 위해 업그레이드</string>
+    <string name="whats_new_title">새로운 소식</string>
+    <string name="whats_new_profiles_title">프로필 기능이 돌아왔습니다</string>
+    <string name="whats_new_profiles_description">선택한 위치, 서버 및 프로토콜로 사용자 지정 연결을 만들고 저장하세요.</string>
+    <string name="whats_new_widget_title">위젯을 소개합니다</string>
+    <string name="whats_new_widget_description">이제 홈 화면에서 떠나지 않고도 VPN을 확인 및 관리할 수 있어요.</string>
+    <string name="whats_new_add_widget_button">위젯 추가</string>
+    <string name="welcome_plus_title">VPN Plus에 오신 것을 환영합니다</string>
+    <string name="welcome_plus_description">더 많은 개인정보 보호 기능과 강력한 성능, 그리고 한 차원 높은 VPN 사용자화를 사용해 보세요.</string>
+    <string name="welcome_unlimited_title">Proton Unlimited에 오신 것을 환영합니다</string>
+    <string name="welcome_unlimited_description">프리미엄 Proton VPN, Mail, Calendar, Drive, Pass 및 Wallet 기능을 잠금 해제하셨어요.</string>
+    <string name="welcome_generic_title">축하합니다</string>
+    <string name="welcome_generic_description">구독을 업그레이드 했습니다. 한 차원 높은 개인정보 보호 기능과 성능을 즐겨보세요.</string>
+    <!-- Text added to button labels that open links in a browser (as opposed to performing actions
+         within the app). Only used by accessibility services like screen readers.
+         Example:
+         a button with "Learn more" label and this suffix will be read by a screen reader as:
+         "Learn more, external link button"
+     -->
+    <string name="accessibility_external_link_suffix">외부 링크</string>
+    <string name="no_logs_banner_title">노-로그 인증을 받은 VPN</string>
+    <string name="no_logs_banner_description">사용자의 VPN 활동은 스위스의 개인정보 보호법대로 보호됩니다. 당사는 사용자의 온라인 상에서 추적하거나 정보를 제 3자와 공유하지 않습니다.</string>
+    <!-- tag(Redesign_2023) Bottom bar label for home screen -->
+    <string name="bottom_nav_home">홈</string>
+    <string name="bottom_nav_gateways">게이트웨이</string>
+    <string name="bottom_nav_profiles">프로필</string>
+    <!-- tag(Redesign_2023) Bottom bar label for country list screen -->
+    <string name="bottom_nav_countries">국가</string>
+    <!-- tag(Redesign_2023) Bottom bar label for settings screen -->
+    <string name="botton_nav_settings">설정</string>
+    <!-- tag(Redesign_2023)
+         Text added to button labels that open a UI element (e.g. a panel).
+         Only used by accessibility services.
+         Example:
+         a button with label "connection details" and this action label will be read by a screen
+         reader as:
+         "Connection details, button. Double tap to open"
+    -->
+    <string name="accessibility_action_open">열기</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that initiate a VPN connection.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland will be read by a screen reader as:
+         "Switzerland. Double tap to connect"
+        -->
+    <string name="accessibility_action_connect">연결</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that redirect the user to upgrade their subscription plan.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland that requires upgrading subscription to become
+         available will be read by a screen reader as:
+         "Unavailable, Switzerland. Double tap to upgrade"
+        -->
+    <string name="accessibility_action_upgrade">업그레이드</string>
+    <!-- tag(Redesign_2023)
+     Text added to clickable elements that initiate a search.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_search">검색</string>
+    <!--
+     Text added to clickable elements that provide negative feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_negative">좋지 않음</string>
+    <!--
+     Text added to clickable elements that provide positive feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_positive">좋음</string>
+    <!--
+     Text added to clickable elements that allows to submit either positive or negative feedback.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_submit_feedback">제출</string>
+    <!-- Name of action for opening a screen/panel for an item.
+         The action is listed in a menu of additional actions available to accessibility services.
+
+         Example:
+         - item in a list of countries has a custom action to open list of cities in the country
+         - item in a list of cities has a custom action to open list of servers in the city
+         -->
+    <string name="accessibility_menu_action_open">열기</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable because servers
+         are in maintenance.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are in maintenance will be read by a
+         screen reader as:
+         "in maintenance, Switzerland"
+     -->
+    <string name="accessibility_item_in_maintenance">유지 보수 중</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are unavailable will be read by a screen
+         reader as:
+         "unavailable, Switzerland"
+     -->
+    <string name="accessibility_item_unavailable">사용할 수 없음</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when there is active connection to it.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland when there is a VPN connection to a server in this country
+         will be read by a screen reader as:
+         "Switzerland, connected"
+     -->
+    <string name="accessibility_item_connected">연결됨</string>
+    <!-- tag(Redesign_2023): label indicating that a server supports peer-to-peer. -->
+    <string name="server_feature_label_p2p">P2P</string>
+    <!-- tag(Redesign_2023): label indicating that a server routes connection through the Tor network. -->
+    <string name="server_feature_label_tor">Tor</string>
+    <string name="server_feature_content_description_p2p">피어 투 피어</string>
+    <string name="server_feature_content_description_tor">Tor</string>
+    <string name="server_feature_content_description_smart_routing">Smart Routing</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest country is connected to. -->
+    <string name="fastest_country">가장 빠른 국가</string>
+    <string name="fastest_country_excluding_my_country">가장 빠른 국가 (현재 거주 국가 제외)</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest free server is connected to. -->
+    <string name="fastest_free_server">가장 빠른 무료 서버</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Iceland
+     -->
+    <string name="connection_info_secure_core_full_iceland">아이슬란드를 통한 %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Sweden
+     -->
+    <string name="connection_info_secure_core_full_sweden">스웨덴을 통한 %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_switzerland">스위스를 통한 %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - exit country name in nominative case
+         %2$s - entry country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_other">%2$s을(를) 통한 %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_iceland">아이슬란드를 통한 </string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_sweden">스웨덴을 통한 </string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_switzerland">스위스를 통해</string>
+    <!--
+         Label describing a Secure Core connection via the fastest Secure Core country.
+         It is displayed below country name, for example:
+         Italy
+         via Secure Core
+    -->
+    <string name="connection_info_secure_core_entry_fastest">(Secure Core 사용)</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - entry country name in nominative case
+         Example: via Switzerland
+    -->
+    <string name="connection_info_secure_core_entry_other">%1$s 경유</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         three countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+
+     -->
+    <string name="connection_info_auto_selected_free_countries">[flags] (으)로 부터 자동 선택됨</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         several countries. Used instead of connection_info_auto_selected_free_countries when there
+         are more than 3 countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+         $1%d - replaced with number of additional countries (beyond the 3 flags).
+
+         Example, if there are 5 countries to select from the text will be:
+         Auto selected from [flags]+2
+         -->
+    <string name="connection_info_auto_selected_free_countries_more">[flags]+%1$d (으)로 부터 자동 선택됨</string>
+    <!-- tag(Redesign_2023)
+         Accessibility label describing a connection to a free server that is automatically selected
+         from one in several countries. Placed directly below fastest_free_server.
+         This text replaces connection_info_auto_selected_free_servers for screen readers.
+         $1%d - replaced with number of countries.
+         -->
+    <plurals name="connection_info_accessibility_auto_selected_free_countries">
+        <item quantity="other">%1$d개 국가에서 자동 선택됨</item>
+    </plurals>
+    <string name="connection_info_auto_selected_free_countries_plain">무료 국가에서 자동 선택되었습니다.</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that the connection details in the card are
+         are that of the previous connection.
+
+         Example:
+         Last connected to
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         -->
+    <string name="connection_card_label_last_connected">마지막 연결:</string>
+    <!--
+        Label above the connection card indicating text which acts as a button and leads to
+        customization bottom sheet of default connection
+     -->
+    <string name="connection_card_label_default_connection">기본 연결</string>
+    <!-- Label above the connection card when not connected and the user is on the free plan.
+         The connection card always shows "Fastest free server" (fastest_free_server) for free
+         users. -->
+    <string name="connection_card_label_free_connection">Free 연결</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is being established.
+     -->
+    <string name="connection_card_label_connecting">다음에 연결 중…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection to a different server is
+         being established. It\'s shown only in response to user clicking the "Change server" button.
+     -->
+    <string name="connection_card_label_changing_server">서버 변경 중…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is established and the user
+         is safely browsing as if they were in the location indicated in the connection card.
+
+         Example:
+         Browsing safely from
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         Germany
+     -->
+    <string name="connection_card_label_connected">안전하게 다음 위치에서 탐색 중:</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with details of the current VPN connection.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "connection details, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_connection_details">연결 세부 사항</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with information about connections in free plan.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "more information about free connections, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_free_connections">무료 연결에 대한 추가 정보</string>
+    <string name="connection_card_label_connection_feedback">연결 상태는 양호했나요?</string>
+    <!-- tag(Redesign_2023)
+         Displayed above the list of recently made connections.
+     -->
+    <string name="recents_headline">최근</string>
+    <!-- Displayed above the list of VPN Plus features in the home screen -->
+    <string name="home_upsell_carousel_headline">VPN Plus 살펴보기</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_pin">고정</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_unpin">고정 해제</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_remove">제거</string>
+    <!-- tag(Redesign_2023)
+         State description of a pinned recent item.
+         Only used by accessibility service.
+    -->
+    <string name="recent_action_accessibility_state_pinned">고정됨</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_country_servers_in_maintenance">이 국가 내의 모든 서버는 유지 보수 상태입니다.</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_city_servers_in_maintenance">이 도시 내의 모든 서버는 유지 보수 상태입니다.</string>
+    <!-- State means here US state, like California -->
+    <string name="message_state_servers_in_maintenance">이 국가 내의 모든 서버는 유지보수 중입니다.</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_in_maintenance">서버가 점검 중입니다</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_not_available">서버를 이용할 수 없습니다.</string>
+    <string name="message_server_location_excluded">서버 위치 제외됨</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog when all servers of a gateway are in maintenance -->
+    <string name="message_gateway_in_maintenance">게이트웨이가 점검 중입니다.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_sign_out">로그아웃</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_title">설정</string>
+    <string name="gateways_title">게이트웨이</string>
+    <string name="countries_title">국가</string>
+    <string name="profiles_title">프로필</string>
+    <string name="settings_autoconnect_title">자동 연결</string>
+    <string name="settings_autoconnect_boot_description">기기가 실행되면 빠른 연결을 사용하여 자동으로 VPN에 연결됩니다.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_features">특징</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_netshield_title">NetShield</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_split_tunneling_title">분할 터널링</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_kill_switch_title">킬 스위치</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_connection_category">연결</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_protocol_title">프로토콜</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_vpn_accelerator_title">VPN Accelerator</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_advanced_settings_title">고급 설정</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_general">일반</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_account">계정</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_notifications_title">알림</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_support">지원</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_help_center_title">지원 센터</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_report_issue_title">문제 제보하기</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_debug_logs_title">디버그 로그</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_improve_proton">Proton 개선하기</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_fight_censorship_title">검열에 맞서도록 도와주세요</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_rate_us_title">Proton VPN 평가</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_app_version">앱 버전: %1$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_third_party_licenses">제3자 라이센스</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_title">로그아웃하시겠습니까?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_message">VPN 연결이 해제됩니다.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_dont_ask_again">다시 묻지 않기</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_action">로그아웃</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_action_cancel">취소</string>
+    <string name="dialog_action_change_icon">아이콘 변경</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_all">전체</string>
+    <string name="country_filter_cities">도시</string>
+    <string name="country_filter_states">주</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_secure_core">Secure Core</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_p2p">P2P</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_tor">Tor</string>
+    <string name="country_filter_all_list_header">전체 국가 (%1$d)</string>
+    <string name="country_filter_all_list_header_free">Plus 국가 (%1$d)</string>
+    <string name="country_filter_countries_list_header">국가 (%1$d)</string>
+    <string name="country_filter_cities_list_header">도시 (%1$d)</string>
+    <string name="country_filter_states_list_header">시/주 (%1$d)</string>
+    <string name="country_filter_servers_list_header">서버</string>
+    <string name="country_filter_secure_core_list_header">Secure Core 도시 (%1$d)</string>
+    <string name="country_filter_p2p_list_header">P2P 국가 (%1$d)</string>
+    <string name="country_filter_p2p_list_header_cities">P2P 도시 (%1$d)</string>
+    <string name="country_filter_p2p_list_header_states">P2P 도시 (%1$d)</string>
+    <string name="counrty_filter_p2p_servers_list_header">P2P 서버</string>
+    <string name="country_filter_tor_list_header">Tor 국가 (%1$d)</string>
+    <string name="country_filter_tor_servers_list_header">Tor 서버</string>
+    <string name="country_filter_info_label">정보</string>
+    <!-- Content description for server load indicator. Used by accessibility services only.
+         Note: the trailing \'%\' sign needs to be doubled
+         (this doesn\'t apply to other percent sign characters, e.g. ٪). -->
+    <string name="country_filter_server_load_content_description">부하: %1$s%%</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is connected and network is protected
+    -->
+    <string name="vpn_status_connected">보호됨</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is not connected and network is not protected
+    -->
+    <string name="vpn_status_disabled">노출됨</string>
+    <!-- tag(Redesign_2023)
+         Text is shown while connection is being established
+    -->
+    <string name="vpn_status_connecting">회원님의 디지털 신원을 보호하고 있습니다</string>
+    <!-- tag(Redesign_2023)
+         Displays Country name and IP of user if he is not connected.
+         First parameter is country, second is IP.
+         Ex: Poland · 192.1.1.1.1
+    -->
+    <string name="vpn_status_disabled_location">%1$s · %2$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_subtitle">연결 세부사항</string>
+    <string name="connection_details_features_title">특징</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_show_ip">IP 보기</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_back">이전</string>
+    <string name="accessibility_close">닫기</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_my_ip">내 IP</string>
+    <string name="connection_details_my_ipv4">나의 IPv4</string>
+    <string name="connection_details_my_ipv6">나의 IPv6</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_ip">VPN IP</string>
+    <string name="connection_details_vpn_ip4_6">VPN IPv4/IPv6</string>
+    <string name="connection_details_vpn_ipv4">VPN IPv4</string>
+    <string name="connection_details_vpn_ipv6">VPN IPv6</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates for how long user has been connected. Like \'Connected for 2hours\'
+    -->
+    <string name="connection_details_connected_for">다음으로 연결됨:</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server">서버</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_gateway">게이트웨이</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_country">국가</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_city">시/군/구</string>
+    <!-- Label for server location "state", as a state of the USA. -->
+    <string name="connection_details_state">주/도</string>
+    <!-- Label for server smart routing, a country which is routed through. -->
+    <string name="connection_details_smart_routing">다음 국가 경유:</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates Server load, on the left side will be Server load, and on the right actual load values.
+    -->
+    <string name="connection_details_server_load">서버 부하</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_question">서버 부하가 무엇인가요?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_description">서버 부하는 서버가 최대 수용량에 얼마나 근접했는지 보여줍니다.\n\n높은 서버 부하는 연결 속도를 늦출 수 있습니다.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_title">낮음 (1-75%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_description">번개처럼 빠르게</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_title">보통 (76-90%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_description">웬만해서는 VPN 속도에 영향을 미치지 않음</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_title">높음 (91-100%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_description">VPN이 평소보다 느릴 수 있습니다 </string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol">프로토콜</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol_description">프로토콜은 여러분의 기기가 서버에 접속하고 통신하기 위해 따를 일련의 지침을 말합니다.</string>
+    <!-- tag(Redesign_2023)
+         Label in front of upload speed in connection details. It is followed by upload speed number and unit.
+    -->
+    <string name="connection_details_upload">업로드</string>
+    <!-- tag(Redesign_2023)
+         Label in front of download speed in connection details. It is followed by download speed number and unit.
+    -->
+    <string name="connection_details_download">다운로드</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_section_vpn_speed">VPN 속도</string>
+    <string name="connection_details_section_ip">IP 주소</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_question">VPN 속도가 무엇인가요?</string>
+    <string name="info_dialog_secure_core_title">Secure Core</string>
+    <string name="info_dialog_p2p_title">P2P</string>
+    <string name="info_dialog_secure_core_description">Secure Core는 최대의 보안을 갖는 두 번째 VPN 서버를 경유하여 목적지 서버로 연결합니다.\n\n이런 높은 수준의 보호는 높아진 레이턴시와 느려진 속도를 유발할 수 있습니다.</string>
+    <string name="info_secure_core_standard_header">일반 VPN 연결</string>
+    <string name="info_secure_core_secure_header">Secure Core VPN 연결</string>
+    <string name="info_dialog_tor_description">Tor 서버에 접속하면 히든 서비스와 어니언 사이트에 어느 브라우저를 사용해도 접근할 수 있습니다.</string>
+    <string name="info_dialog_button_learn_more_tor">Tor 네트워크에 접속하는 방법</string>
+    <string name="info_dialog_button_learn_more_p2p">P2P를 이용해 토렌트하는 방법</string>
+    <string name="info_dialog_button_learn_more_ipaddress">IP 주소란?</string>
+    <string name="info_dialog_button_learn_more_streaming">스트리밍 도움이 필요하신가요?</string>
+    <string name="info_dialog_streaming_title">스트리밍</string>
+    <string name="info_dialog_streaming_description">스트리밍 서버는 빠르고 안전하게 TV와 영화 다시 보기를 시청할 수 있도록 설계되었습니다.</string>
+    <string name="info_dialog_how_to_stream">스트리밍 하는 방법:</string>
+    <!-- item 1 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_1">휴대폰의 설정으로 이동한 뒤 위치 서비스를 비활성화 하세요.</string>
+    <!-- item 2 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_2">스트리밍 서비스를 재시작 하세요.</string>
+    <!-- item 3 in the numbered list (last item) -->
+    <string name="info_dialog_how_to_stream_step_3">Plus 서버에 접속한 뒤 스트리밍을 시작하세요.</string>
+    <string name="info_dialog_profiles_title">프로필</string>
+    <string name="info_dialog_ipaddress_title">IP 주소</string>
+    <string name="info_dialog_ipv6_traffic_title">IPv6 트래픽</string>
+    <string name="info_dialog_profiles_description">프로필은 필요에 맞게 커스터마이징하고 빠르게 접근할 수 있도록 저장할 수 있는 맞춤형 VPN 연결 방식입니다.\n\n선호하는 위치를 설정하고 보안, 성능, 게임 또는 기타 시나리오에 맞게 설정을 최적화하세요.</string>
+    <string name="info_dialog_ipaddress_description">VPN이 사용자의 실제 IP 주소를 가립니다. VPN상의 위치에서 브라우징하는 것 처럼 보이기 때문에, 사용자의 온라인 활동이 기기와 연관되지 않게 됩니다.</string>
+    <string name="info_dialog_ipv6_traffic_description">인터넷 프로토콜(IP)은 장치에 주소를 할당하고 인터넷 트래픽을 라우팅합니다. IPv6는 더 많은 주소와 더 향상된 연결을 제공하는 최신 버전이지만 아직 보편적으로 채택되지는 않았습니다.</string>
+    <string name="connection_feature_p2p_title">P2P</string>
+    <string name="connection_feature_p2p_description">P2P 파일 공유가 이 서버에서 활성화 되었습니다.</string>
+    <string name="connection_feature_tor_title">Tor</string>
+    <string name="connection_feature_tor_description">일반적인 브라우저에서 .onion 사이트에 접속할 수 있습니다.</string>
+    <string name="connection_feature_secure_core_title">Secure Core</string>
+    <string name="connection_feature_secure_core_description">사용자의 활동이 2개 고도의 보안의 VPN 서버들 뒤로 암호화되어 있습니다.</string>
+    <string name="connection_feature_streaming_title">스트리밍 서비스</string>
+    <string name="connection_feature_streaming_description">이 서버는 TV 및 영화 다시보기에 최적화 되어있습니다.</string>
+    <string name="connection_feature_smart_routing_title">Smart Routing</string>
+    <string name="connection_feature_smart_routing_description">물리적으로 다른 곳에 위치한 서버를 통해 목적지 국가로 연결합니다.</string>
+    <!-- Placeholder will be replaced by a list of country names separated by commas, e.g, Connects you to your destination country through servers physically located elsewhere: Canada, Mexico, United States.  -->
+    <string name="connection_feature_smart_routing_description_with_countries">목적지 국가와 물리적으로 다른 위치에 속해 있는 서버를 통해 연결합니다: %1$s.</string>
+    <!--
+        %1$s - physical server location country
+        %2$s - destination country
+        Warning: country names are inserted in the nominative case.
+        For INFLECTED languages, translate the following phrase instead:
+        "Your physical server location: %1$s.\nYour browsing country: %2$s"
+    -->
+    <string name="country_smart_routing_info">%1$s에 위치한 서버지만, %2$s에서 탐색하는 것으로 표시됩니다.</string>
+    <!--
+        Displayed next to an icon which provides more information if clicked
+    -->
+    <string name="connection_details_info_label">정보</string>
+    <!-- tag(Redesign_2023)
+         Used for button title to learn more about different contexts
+    -->
+    <string name="connection_details_learn_more">더 알아보기</string>
+    <!-- tag(Redesign_2023)
+        Used to describe IP which is not known
+    -->
+    <string name="connection_details_unknown_ip">알 수 없음</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_description">이 그래프는 지금의 업로드와 다운로드 활동의 속도를 보여줍니다. VPN 접속은 보통 일반적인 온라인 활동에 지장을 주지 않습니다.</string>
+    <string name="speed_bytes_per_second">%1$s B/초</string>
+    <string name="speed_kilobytes_per_second">%1$s KB/초</string>
+    <string name="speed_megabytes_per_second">%1$s MB/초</string>
+    <string name="speed_gigabytes_per_second">%1$s GB/초</string>
+    <string name="speed_terabytes_per_second">%1$s TB/초</string>
+    <!-- Used as graph label to indicate speed measurement. Example: Speed KB/s or Speed MB/s-->
+    <string name="speed_graph_title">%1$s 속도</string>
+    <string name="bytes_per_second">B/초</string>
+    <string name="kilobytes_per_second">KB/초</string>
+    <string name="megabytes_per_second">MB/초</string>
+    <string name="gigabytes_per_second">GB/초</string>
+    <string name="terabytes_per_second">TB/초</string>
+    <plurals name="full_name_speed_bytes_per_second">
+        <item quantity="other">초당 %1$s바이트</item>
+    </plurals>
+    <plurals name="full_name_speed_kilobytes_per_second">
+        <item quantity="other">초당 %1$s킬로바이트</item>
+    </plurals>
+    <plurals name="full_name_speed_megabytes_per_second">
+        <item quantity="other">초당 %1$s메가바이트</item>
+    </plurals>
+    <plurals name="full_name_speed_gigabytes_per_second">
+        <item quantity="other">초당 %1$s기가바이트</item>
+    </plurals>
+    <plurals name="full_name_speed_terabytes_per_second">
+        <item quantity="other">초당 %1$s테라바이트</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_bytes">
+        <item quantity="other">%1$s바이트</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_kilobytes">
+        <item quantity="other">%1$s킬로바이트</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_megabytes">
+        <item quantity="other">%1$s메가바이트</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_gigabytes">
+        <item quantity="other">%1$s기가바이트</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_terabytes">
+        <item quantity="other">%1$s테라바이트</item>
+    </plurals>
+    <string name="traffic_volume_bytes">%1$s B</string>
+    <string name="traffic_volume_kilobytes">%1$s KB</string>
+    <string name="traffic_volume_megabytes">%1$s MB</string>
+    <string name="traffic_volume_gigabytes">%1$s GB</string>
+    <string name="traffic_volume_terabytes">%1$s TB</string>
+    <!-- tag(Redesign_2023)
+         Shown at the top status view if app detects that there is no usable network to connect to VPN
+    -->
+    <string name="error_vpn_waiting_for_network">네트워크 대기 중</string>
+    <!-- tag(Redesign_2023) -->
+    <plurals name="connection_details_days">
+        <item quantity="other">%1$d일</item>
+    </plurals>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_hours_shortened">%1$d 시간</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_minutes_shortened">%1$d 분</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_seconds_shortened">%1$d 초</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceTitle">연결 실패</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceDescription">이 디바이스가 VPN 연결을 허용하지 않습니다.</string>
+    <string name="create_profile_title">프로필 생성</string>
+    <!-- Title for the screen where user can edit a profile.
+         %1$s - name of the profile being edited. -->
+    <string name="edit_profile_title">%1$s 편집</string>
+    <string name="edit_profile_dialog_action">프로필 편집</string>
+    <string name="create_profile_name_hint">프로필 이름</string>
+    <string name="create_profile_name_error_empty">프로필 이름을 입력하세요</string>
+    <string name="create_profile_name_error_too_long">프로필 이름은 30자 이하여야 합니다</string>
+    <string name="create_profile_type_and_location_title">연결 종류와 위치를 선택하세요</string>
+    <string name="create_profile_features_and_settings_title">기능 및 설정</string>
+    <string name="configure_profile_features_and_settings_title">프로필 설정 구성하기</string>
+    <string name="configure_profile_features_and_settings_description">프로필 설정으로 연결시 VPN 설정이 재정의됩니다.</string>
+    <!--
+        First input will be for current step, second one will be for total number of steps
+        Example: Step 3 of 7
+     -->
+    <string name="create_profile_steps">%2$d 단계 중 %1$d 단계</string>
+    <string name="create_profile_button_next">다음</string>
+    <!-- Important: please note the double % sign after 400. It is displayed as a single % in the app.
+         (this doesn\'t apply to other percent sign characters, e.g. ٪)
+         %1$s - will have translated learn_more value -->
+    <string name="settings_vpn_accelerator_description">성능 향상 기술을 통해 인터넷 연결 속도를 최대 400%% 향상시킵니다. %1$s</string>
+    <string name="settings_account_settings_title">계정 설정</string>
+    <string name="settings_account_change_password">비밀번호 변경</string>
+    <string name="settings_account_recovery_email">복구 이메일</string>
+    <string name="settings_account_recovery_email_not_set">설정하지 않음</string>
+    <string name="settings_account_security_keys">보안 키</string>
+    <!-- Label of a button that opens user\'s account page -->
+    <string name="settings_account_button_my_account">내 계정</string>
+    <string name="settings_account_button_delete_account">계정 삭제</string>
+    <string name="settings_custom_dns_title">사용자 지정 DNS</string>
+    <string name="settings_custom_dns_description_tv">자체 호스팅 또는 타사 도메인 이름 시스템(DNS)을 사용하여 VPN에 연결합니다.</string>
+    <string name="settings_add_dns_placeholder">192.0.2.0</string>
+    <string name="settings_add_dns_title">새로운 DNS 서버 추가</string>
+    <string name="settings_add_dns_new_entry_button">추가</string>
+    <string name="settings_add_dns_description">서버의 IPv4 또는 IPv6 주소를 입력하세요</string>
+    <string name="settings_add_dns_invalid_input">유효한 IPv4 또는 IPv6 주소를 입력하세요</string>
+    <string name="settings_add_dns_empty_input">IPv4 또는 IPv6 주소를 입력하세요</string>
+    <string name="settings_add_dns_duplicate_input">서버가 이미 추가되어 있습니다</string>
+    <string name="settings_advanced_dns_description">자체 호스팅 또는 타사 도메인 이름 시스템(DNS)을 사용하여 VPN에 연결합니다. 더 알아보기</string>
+    <!-- %1$d - Corresponds to number of servers added -->
+    <string name="settings_dns_list_title">서버 (%1$d)</string>
+    <string name="settings_dns_list_description">만일 사용 자 지정 DNS 서버가 작동하지 않는 경우 일반 VPN DNS가 대체되어 사용됩니다.</string>
+    <string name="settings_dns_list_description_multiple">이 서버들에 순서대로 연결하도록 시도합니다. 둘 중 어느 것도 작동하지 않는다면 VPN DNS가 사용됩니다.</string>
+    <string name="settings_changes_apply_on_reconnect_toast">재연결시 변경 사항이 적용됩니다</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_title">NetShield가 비활성화됩니다</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message">NetShield는 사용자 지정 DNS가 사용될 때 광고, 추적기 및 악성코드를 필터링할 수 없습니다. 더 알아보기</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message_tv">NetShield는 사용자 지정 DNS가 사용될 때 광고, 트래커 및 멀웨어를 필터링할 수 없습니다.</string>
+    <string name="settings_advanced_alternative_routing_title">대체 라우팅</string>
+    <string name="settings_advanced_alternative_routing_description">Proton 서비스가 네트워크 제한으로 막혔다면, 대체 네트워크 라우딩을 이용해서 연결해보세요.</string>
+    <string name="settings_advanced_allow_lan_title">LAN 연결</string>
+    <string name="settings_advanced_allow_lan_description">로컬 네트워크에 있는 프린터, 스피커 및 기타 기기에 연결할 수 있게 합니다.</string>
+    <string name="settings_advanced_allow_lan_description_tv">로컬 네트워크에 있는 스피커, 컴퓨터 및 기타 기기에 연결합니다</string>
+    <string name="settings_advanced_allow_lan_title_tv">LAN 연결 허용</string>
+    <string name="settings_advanced_nat_type_title">NAT 방식</string>
+    <!-- %1$s - will have translated learn_more value -->
+    <string name="settings_advanced_nat_type_description">네트워크 주소 변환 방식을 선택하세요. %1$s</string>
+    <string name="settings_advanced_nat_type_description_no_learn">네트워크 주소 변환 방식을 선택하세요.</string>
+    <string name="settings_advanced_nat_type_strict">엄격하게 (3번)</string>
+    <string name="settings_advanced_nat_type_strict_short">유형 3</string>
+    <string name="settings_advanced_nat_type_moderate">일반형 (type 2)</string>
+    <string name="settings_advanced_nat_type_moderate_short">유형 2</string>
+    <string name="settings_advanced_nat_type_strict_description">네트워크에 들어오는 데이터를 통제합니다. 확실한 만큼 피어 투 피어 (P2P) 게이밍 접속이 어려워질 수 있습니다.</string>
+    <string name="settings_advanced_nat_type_moderate_description">네트워크에 들어오는 데이터를 일부 통제합니다. 온라인 비디오 게이밍에 최적화 되어있습니다.</string>
+    <string name="settings_split_tunneling_description">VPN이 보호할 앱과 IP 주소를 지정하여 연결을 사용자화할 수 있습니다. %1$s</string>
+    <string name="settings_protocol_description">VPN 프로토콜은 서버와 여러분의 장치 사이에서 데이터가 이동하는 방식을 정의합니다. %1$s</string>
+    <string name="settings_protocol_description_no_link">VPN 프로토콜은 서버와 내 기기 사이에서 데이터가 이동하는 방식을 정의합니다.</string>
+    <string name="settings_protocol_section_speed">속도 (UDP)</string>
+    <string name="settings_protocol_section_reliability">안정성 (TCP)</string>
+    <string name="settings_protocol_smart_title">스마트</string>
+    <string name="settings_protocol_smart_description">연결 환경에 최적인 프로토콜을 자동으로 선택합니다.</string>
+    <string name="settings_protocol_wireguard_title">WireGuard</string>
+    <string name="settings_protocol_smart_protun_description">최적 프로토콜 자동 선택 [실험 기능].</string>
+    <string name="settings_protocol_wireguard_udp_description">최첨단 프로토콜을 통해 보안 및 성능을 확보합니다.</string>
+    <string name="settings_protocol_wireguard_tcp_description">최첨단 프로토콜을 통해 보안 및 성능을 확보합니다.</string>
+    <string name="settings_protocol_stealth_title">Stealth</string>
+    <string name="settings_protocol_stealth_description">검열로부터 VPN 연결을 숨겨서 차단을 극복합니다. 이 프로토콜은 DPI(Deep Packet Insptection)에 내성이 있으나 다른 프로토콜만큼 빠르지는 않습니다.
+Stealth는 Proton VPN만의 기능입니다.</string>
+    <!-- Text on a badge displayed next to the "smart" protocol name in settings -->
+    <string name="settings_protocol_badge_recommended">권장</string>
+    <string name="settings_protocol_badge_experimental">실험기능</string>
+    <string name="settings_split_tunneling_mode_title">모드</string>
+    <string name="settings_split_tunneling_mode_standard">제외</string>
+    <string name="settings_split_tunneling_mode_inverse">포함</string>
+    <string name="settings_split_tunneling_mode_description_standard">선택한 앱과 IP 주소가 VPN 연결에서 제외됩니다.</string>
+    <string name="settings_split_tunneling_mode_description_inverse">선택한 앱과 IP 주소만이 VPN에 연결되고 그 외 트래픽은 보호되지 않습니다.</string>
+    <string name="settings_split_tunneling_excluded_apps">제외된 앱</string>
+    <string name="settings_split_tunneling_excluded_ips">제외된 IP 주소</string>
+    <string name="settings_split_tunneling_included_apps">포함된 앱</string>
+    <string name="settings_split_tunneling_included_ips">포함된 IP 주소</string>
+    <string name="settings_split_tunneling_empty" comment="Used to indicate that no IP or Apps are included in split tunneling">없음</string>
+    <string name="settings_split_tunneling_excluded_format" comment="Used for describing excluded items. Example: Chrome, Facebook and 2 more. The same logic used for IP addresses too.">%1$s, %2$s 외 %3$d개</string>
+    <string name="settings_split_tunneling_already_excluded">이미 제외됨</string>
+    <string name="settings_split_tunneling_already_included">이미 포함됨</string>
+    <string name="settings_split_tunneling_remove_ip_dialog_message">IP 주소를 목록에서 삭제하시겠습니까?</string>
+    <string name="settings_split_tunneling_ip_removed_message">IP 주소 삭제됨</string>
+    <string name="settings_theme_title">테마</string>
+    <string name="settings_theme_value_auto">기기 테마</string>
+    <string name="settings_theme_value_light">라이트</string>
+    <string name="settings_theme_value_dark">다크</string>
+    <string name="settings_dialog_reconnect">다음에 연결할 때 새 설정이 적용됩니다.</string>
+    <string name="settings_needs_reconnect_banner">다음에 연결할 때 새 설정이 적용됩니다.</string>
+    <string name="private_dns_conflict_banner_custom_dns_title">사용자 지정 DNS 사용 불가</string>
+    <string name="private_dns_conflict_banner_custom_dns_description">사용자의 기기에 Proton VPN의 사용자 지정 DNS가 작동하지 않도록 하는 타사 DNS가 사용되고 있습니다. 더 알아보기</string>
+    <string name="private_dns_conflict_banner_custom_dns_description_tv">사용자의 기기에 Proton VPN의 사용자 지정 DNS가 작동하지 않도록 하는 타사 DNS가 사용되고 있습니다.</string>
+    <string name="private_dns_conflict_banner_netshield_title">NetShield 사용 불가</string>
+    <string name="private_dns_conflict_banner_netshield_description">사용자의 기기에 NetShield가 작동하지 않도록 하는 타사 DNS가 사용되고 있습니다. 더 알아보기</string>
+    <string name="private_dns_conflict_banner_network_settings_button">네트워크 설정</string>
+    <string name="custom_dns_conflict_banner_netshield_title">NetShield 사용 불가</string>
+    <string name="custom_dns_conflict_banner_netshield_description">사용자 지정 DNS가 활성화되어 NetShield가 미작동됩니다. 더 알아보기</string>
+    <string name="custom_dns_conflict_banner_netshield_title_tv">NetShield를 사용하려면 사용자 지정 DNS를 해제하세요.</string>
+    <string name="custom_dns_conflict_banner_netshield_description_tv">사용자 지정 DNS가 활성화되어 NetShield가 작동하지 않습니다.</string>
+    <string name="custom_dns_conflict_banner_disable_custom_dns_button">사용자 지정 DNS 해제</string>
+    <string name="info_secure_core_standard_high_privacy">강화된 개인정보 보호</string>
+    <string name="info_secure_core_standard_lower_latency">낮은 레이턴시</string>
+    <string name="info_secure_core_advanced_privacy">향상된 개인정보 보호</string>
+    <string name="info_secure_core_higher_latency">높은 레이턴시</string>
+    <string name="info_p2p_what_title">P2P가 무엇인가요?</string>
+    <string name="info_p2p_what_description">피어 투 피어 (P2P)는 사용자가 다른 기기와 파일을 직접적으로 연결 및 공유할 수 있는 기술을 의미합니다.\n\nProton의 P2P 서버는 이러한 파일 공유를 지원하도록 특별히 설계되었습니다.</string>
+    <string name="info_p2p_torrenting_title">토렌트한다는 것은?</string>
+    <string name="info_p2p_torrenting_description">P2P 네트워크를 통하여 대용량 파일을 빠르게 공유하고 다운로드함을 말합니다.</string>
+    <string name="info_p2p_why_title">토렌트에 P2P 서버를 쓰는 이유라면?</string>
+    <string name="info_p2p_why_description_speed">업로드와 다운로드 속도가 더욱 증가됩니다</string>
+    <string name="info_p2p_why_description_logs">활동 로그가 없습니다</string>
+    <string name="info_p2p_why_description_hide">사용자의 IP 주소를 서비스 제공자와 피어로부터 숨깁니다</string>
+    <string name="info_dialog_smart_routing_description">Smart Routing은 가상 서버를 이용하여 접근이 어려운 국가에 VPN 커버리지를 제공합니다.\n\nSmart Routing 서버에 접속했다면 물리적 서버의 위치와 상관없이 목적지 국가에서 탐색하는 것으로 보이게 됩니다.\n\nSmart Routing은 보통 안티-프라이버시 법령과 기타 유형의 검열을 우회하는 데 쓸모가 있습니다.</string>
+    <string name="notifications_channel_connection_status_name">연결 상태</string>
+    <string name="notifications_channel_connection_status_description">현재 어느 서버애 연결되었는지와 VPN의 속도를 보여줍니다.</string>
+    <string name="notifications_channel_connection_errors_name">연결 오류</string>
+    <string name="notifications_channel_connection_errors_description">문제에 따른 VPN 연결의 일시 중지 또는 정지가 발생할 경우 알려줍니다.</string>
+    <string name="notifications_channel_connection_tips_name">연결 팁</string>
+    <string name="notifications_channel_connection_tips_description">Proton VPN을 더 많이 활용하는 데 도움이 되는 컨텍스트 팁.</string>
+    <string name="countries_upsell_banner_description">VPN Plus로 어디로든 연결하기</string>
+    <string name="secure_core_upsell_banner_description">VPN 연결에 암호화 계층 추가</string>
+    <string name="p2p_upsell_banner_description">BitTorrent와 다른 파일 공유 프로토콜로 파일을 다운로드하세요</string>
+    <string name="tor_upsell_banner_description">추가적인 개인 정보 보호를 위해 VPN 연결을 통해 Tor 네트워크를 사용하세요</string>
+    <string name="vpnplus_upsell_banner_description">VPN Plus로 업그레이드</string>
+    <string name="search_zero_screen_title">다음을 검색해 보세요…</string>
+    <string name="search_zero_screen_info_countries_title">국가</string>
+    <string name="search_zero_screen_info_cities_title">도시</string>
+    <string name="search_zero_screen_info_servers_title">서버</string>
+    <string name="search_zero_screen_info_countries_examples">스위스, 미국, 이탈리아, 캐나다…</string>
+    <string name="search_zero_screen_info_cities_examples">뉴욕, 런던, 도쿄, 시드니…</string>
+    <string name="search_zero_screen_info_servers_examples">JP#50, CA#3, IT#14…</string>
+    <string name="error_fetching_prices">가격을 불러오던 중 오류가 발생했습니다.</string>
+    <string name="tv_settings_split_tunneling_description">VPN이 보호할 앱과 IP 주소를 지정하여 연결을 사용자화할 수 있습니다.</string>
+    <string name="tv_settings_split_tunneling_mode_description_standard">선택된 앱들이 VPN 연결에서 제외됩니다.</string>
+    <string name="tv_settings_split_tunneling_mode_description_inverse">오직 선택된 앱만이 VPN을 통해 연결됩니다. 제외된 항목은 보호되지 않습니다.</string>
+    <string name="profile_action_edit">수정</string>
+    <string name="profile_action_duplicate">복제</string>
+    <string name="profile_action_delete">삭제</string>
+    <!-- Label when showing profile\'s NAT (Network Address Translation) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_nat_title">NAT</string>
+    <!-- Label when showing profile\'s LAN (Local Area Network) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_lan_title">LAN</string>
+    <string name="profile_needs_reconnect">연결이 다시 시작됩니다.</string>
+    <string name="profile_overrides_setting">해당 설정값들이 <b>%1$s</b>(으)로 연결되며 프로필 내에서만 관리할 수 있습니다.</string>
+    <string name="initial_profile_name_streaming_us">미국 스트리밍</string>
+    <string name="initial_profile_name_work_school">직장/학교</string>
+    <string name="initial_profile_name_anti_censorship">반검열</string>
+    <string name="initial_profile_name_gaming">게이밍</string>
+    <string name="initial_profile_name_max_security">최대 보안</string>
+    <string name="create_profile_pick_country_title">국가</string>
+    <string name="create_profile_pick_type_title">종류</string>
+    <string name="create_profile_type_standard">표준</string>
+    <string name="create_profile_type_secure_core">Secure Core</string>
+    <string name="create_profile_type_p2p">P2P</string>
+    <string name="create_profile_gateway">게이트웨이</string>
+    <string name="create_profile_pick_state_title">주</string>
+    <string name="create_profile_pick_city_title">도시</string>
+    <string name="create_profile_pick_server_title">서버</string>
+    <string name="create_profile_pick_gateway_title">게이트웨이</string>
+    <string name="create_profile_pick_netshield_title">NetShield</string>
+    <string name="create_profile_pick_netshield_description">광고, 추적기 그리고 멀웨어를 웹사이트들과 앱들에서 차단합니다</string>
+    <string name="create_profile_pick_protocol_title">프로토콜</string>
+    <string name="create_profile_pick_nat_title">NAT 종류</string>
+    <!--
+         Example:
+         if a profile named "My Profile" is duplicated, the new suggested name is "My Profile (copy)"
+     -->
+    <string name="create_profile_copy_name">%1$s (복사)</string>
+    <string name="create_profile_fastest_city">가장 빠른 도시</string>
+    <string name="create_profile_fastest_state">가장 빠른 주</string>
+    <string name="create_profile_fastest_server">가장 빠른 서버</string>
+    <string name="create_profile_pick_middle_country_title">중간 지점 국가</string>
+    <string name="profiles_zero_state_title">첫 프로필 생성하기</string>
+    <string name="profiles_zero_state_description">프로필은 사용자가 선택한 지역, 서버 그리고 프로토콜로 구성된 연결입니다.</string>
+    <string name="profiles_button_create_profile">프로필 생성</string>
+    <string name="profile_deleted_snackbar_message">프로필 삭제됨</string>
+    <string name="profile_connected_edit_setting">이 설정값은 활성 프로필에 연결됩니다. \n\n설정값을 변경하려면 프로필을 편집하거나 일반 VPN 설정을 수정하려면 연결 해제하세요.</string>
+    <string name="profile_connected_dialog_title">프로필 내의 %1$s 관리</string>
+    <string name="undo">실행 취소</string>
+    <string name="profile_unavailable_dialog_title">프로필 이용 불가능</string>
+    <!-- %1$s - profile name
+         Example: Your server selection for MyProfile is unavailable. Select a different server or try again later -->
+    <string name="profile_unavailable_dialog_message">선택하신 서버 %1$s가 이용할 수 없는 상태입니다. 다른 서버를 선택하시거나 나중에 다시 시도하세요.</string>
+    <string name="profile_location_excluded_dialog_message"><![CDATA[선택한 지역 <b>%1$s</b>은(는) 사용할 수 없습니다. 다른 서버를 선택하거나 제외된 위치를 확인하거나 나중에 다시 시도하세요.]]></string>
+    <!-- %1$d - profile icon number
+         Example: Icon 1, Icon 2, ... -->
+    <string name="profile_icon_accessibility">아이콘 %1$d</string>
+    <!-- %1$d - profile icon number
+         Example: Color 1, Color 2, ... -->
+    <string name="profile_color_accessibility">색상 %1$d</string>
+    <string name="generic_info_label">정보</string>
+    <!-- Branded name for a feature that opens url after VPN connection to given profile is established.
+         Please don't use & in translation and capitalize key words. -->
+    <string name="create_profile_connect_and_go_label">연결 및 시작하기</string>
+    <!-- Displayed as a badge next to create_profile_auto_open_label ("Auto-launch website [NEW]") -->
+    <string name="create_profile_auto_open_label_badge">신규</string>
+    <string name="create_profile_auto_open_url_input_label">웹사이트 URL</string>
+    <string name="create_profile_auto_open_url_private_mode_label">시크릿 브라우징 모드 사용</string>
+    <!-- Label for disabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_off">끔</string>
+    <string name="profile_auto_open_app_failed_to_launch">연결 및 시작하기: 애플리케이션을 찾을 수 없음</string>
+    <!-- Label for enabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_website">웹 사이트 열기</string>
+    <string name="profile_auto_open_app">앱 열기</string>
+    <string name="create_profile_auto_open_description">이 프로필로 연결할 때 선택한 웹 사이트을 자동으로 열어줍니다.</string>
+    <string name="create_profile_auto_open_app_input_hint">앱 선택하기</string>
+    <string name="create_profile_auto_open_app_input_label">앱</string>
+    <string name="create_profile_auto_open_app_no_apps">앱을 찾을 수 없습니다</string>
+    <string name="profile_auto_open_error_invalid_url">유효한 URL을 입력하세요.</string>
+    <string name="nps_how_likely_question">Proton VPN을 친구나 동료에게 얼마나 추천하실 것 같나요?</string>
+    <string name="nps_additional_comment_title">저희에게 이 점수를 주신 이유를 알려주세요</string>
+    <string name="nps_additional_comment_optional">선택</string>
+    <string name="nps_rating_low_values_explain">0은 매우 가능성 낮음</string>
+    <string name="nps_rating_high_values_explain">10은 매우 가능성 있음</string>
+    <string name="nps_toast_submit_message">공유해주셔서 감사합니다. 회원님의 피드백은 Proton VPN을 향상시키는데 도움이 됩니다.</string>
+    <string name="nps_submit_error_char_limit">응답이 250자 이상이여야 합니다.</string>
+    <string name="nps_button_submit_title">익명으로 공유</string>
+    <string name="widget_preview_switzerland">스위스</string>
+    <string name="widget_preview_spain">스페인</string>
+    <string name="widget_preview_germany">독일</string>
+    <string name="widget_preview_france">프랑스</string>
+    <string name="widget_status_unprotected">보호되지 않음</string>
+    <string name="widget_status_error">오류</string>
+    <string name="widget_status_connecting">연결 중</string>
+    <string name="widget_sign_in">로그인</string>
+    <string name="widget_toast_added_message">위젯이 홈 화면에 추가되었습니다.</string>
+    <string name="settings_advanced_ipv6_title">IPv6 지원</string>
+    <string name="settings_advanced_ipv6_description">VPN을 통해 IPv6 트래픽을 터널링합니다. IPv6 네트워크와의 호환성을 향상시킬 수 있습니다.</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_message">이 주소를 사용하려면 VPN 터널을 통해 IPv6 연결을 허용해야 합니다.</string>
+    <string name="setting_ipv6_disabled_dialog_action_enable">IPv6 활성화</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_title">IPv6가 비활성화됨</string>
+    <string name="settings_ipv6_enabled_toast">IPv6가 활성화됨</string>
+    <string name="info_dialog_ipv6_traffic_benefits1">IPv6 전용 웹사이트 및 서비스에 대한 접근을 보장합니다.</string>
+    <string name="info_dialog_ipv6_traffic_benefits2">IPv6에 의존하는 네트워크의 문제를 방지합니다.</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks1">노후화된 네트워크나 앱에서는 작동하지 않을 수 있습니다.</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks2">일부 네트워크는 IPv6 트래픽을 불규칙적으로 처리합니다</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks_title">단점</string>
+    <string name="info_dialog_ipv6_traffic_benefits_title">이점</string>
+    <string name="settings_lan_allow_direct_connection_title">직접 장치 연결 허용</string>
+    <string name="settings_lan_allow_direct_connection_description">스마트 TV, Android Auto 및 자체 네트워크를 생성하는 다른 장치에 연결할 수 있습니다. 보안 극대화를 위하여 이러한 특수 상황에만 기능을 활성화하십시오.</string>
+    <string name="no_connections_title">사용 가능한 VPN 연결 없음</string>
+    <string name="no_connections_description_loading_error">서버 목록을 불러오지 못했습니다.</string>
+    <string name="no_connections_description_no_servers">관리자에게 내 계정의 VPN 접근 활성화를 요청하십시오.</string>
+    <string name="no_connections_action_refresh">새로고침</string>
+    <string name="no_connections_action_sign_out">로그아웃</string>
+    <string name="no_connections_help_contact_us"><![CDATA[도움이 필요하세요? <a href="">문의해 주세요</a>]]></string>
+    <string name="no_connections_help_follow_instructions"><![CDATA[관리자가 VPN 접근 활성화에 도움이 필요하다면, <a href="">이 지침</a>을 보내십시오.]]></string>
+    <string name="settings_protocol_proton_protocols">Proton 프로토콜</string>
+    <string name="settings_protocol_proton_protocols_description">Proton VPN가 자체적으로 구현한 WireGuard를 사용합니다. 실험적인 기능으로, 일부 불안정성을 경험할 수 있습니다.</string>
+    <string name="connection_preferences_smart_discovery_dialog_title">원하던 국가가 아닌가요?</string>
+    <string name="connection_preferences_smart_discovery_dialog_message">자동으로 연결된 위치를 선호하지 않는 경우, 가장 빠른 국가에서 해당 위치를 제외할 수 있어요.</string>
+    <string name="excluded_locations_adoption_title">원치 않는 위치 피하기</string>
+    <string name="excluded_locations_adoption_description"><![CDATA[이제 <b>가장 빠른 연결</b>에서 연결되는 도시나 국가를 제외할 수 있어요.]]></string>
+    <string name="session_fork_no_account_title">Android TV에서 로그인</string>
+    <string name="session_fork_no_account_message">TV에서 Proton VPN을 사용하려면 이 기기에서 로그인을 완료해야 합니다</string>
+    <string name="session_fork_no_account_footnote"><![CDATA[앱 사용시 <a href="">이용 약관</a>에 동의하는 것으로 간주됩니다.]]></string>
+    <string name="session_fork_no_account_signup_button">계정 만들기</string>
+    <string name="session_fork_no_account_signin_button">로그인</string>
+    <string name="session_fork_confirmation_title">Android TV에서 로그인하시나요?</string>
+    <string name="session_fork_confirmation_message">TV의 Proton 계정 접근을 허용합니다.</string>
+    <string name="session_fork_confirmation_bottom_note">신뢰하는 기기에서만 로그인하세요</string>
+    <string name="session_fork_confirmation_too_soon_toast">계속하기 전 확인해 주세요</string>
+    <string name="session_fork_success_title">로그인 성공</string>
+    <string name="session_fork_success_message">TV에서 로그인 되었습니다.</string>
+    <string name="session_fork_error_expired_title">코드 만료됨</string>
+    <string name="session_fork_error_expired_message">새로운 코드를 생성한 뒤 다시 시도하세요.</string>
+    <string name="session_fork_error_generic_title">로그인할 수 없음</string>
+    <string name="session_fork_error_fatal_message">네트워크 확인 후 다시 시도하세요. 문제가 다시 발생한다면, Proton 고객 지원 팀으로 문의해 주세요. </string>
+    <string name="session_fork_error_network_message">네트워크 상태 확인 후 다시 시도하세요.</string>
+    <string name="session_fork_error_try_fallback_message">TV에서 다른 방법으로 로그인하려면 \'로그인에 문제를 겪고 계신가요?\'\를 클릭하세요.</string>
+    <string name="session_fork_error_report_button">문제 보고</string>
+    <string name="session_fork_qr_code_content_description">QR코드</string>
+    <string name="session_fork_qr_code_message">QR 코드를 스캔하여 로그인하거나 계정을 생성하세요.</string>
+    <string name="session_fork_qr_code_trouble_button">로그인에 문제를 겪고 계신가요?</string>
+    <string name="session_fork_qr_code_error_expired">보안 상의 이유로 인증 코드가 만료되었습니다.</string>
+    <string name="session_fork_qr_code_error_network">네트워크 상태 확인 후 다시 시도하세요</string>
+    <string name="session_fork_qr_code_error_create_new_button">새 코드 만들기</string>
+    <string name="session_fork_user_code_title">코드를 스캔할 수 없다면? 수동으로 로그인하세요.</string>
+    <string name="session_fork_user_code_step1"><![CDATA[다음 사이트로 이동하세요: <b>%1$s</b>]]></string>
+    <string name="session_fork_user_code_step2">로그인 하거나 계정을 생성하세요</string>
+    <!-- Parameter: 8 character alphanumeric code, e.g. "AB12 CD34" -->
+    <string name="session_fork_user_code_step3"><![CDATA[다음 코드를 입력하세요: <b>%1$s</b>]]></string>
+    <!-- Parameter: web address for the support website, e.g. "protonvpn.com/support" -->
+    <string name="session_fork_user_code_support"><![CDATA[여전히 도움이 필요하시다면? <b>%1$s</b>에 방문하세요]]></string>
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2022 Proton AG
+  ~ This file is part of Proton AG and ProtonCore.
+  ~
+  ~ ProtonCore is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ ProtonCore is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with ProtonCore.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="core_app_scheme" translatable="false">protonvpn</string>
+    <bool name="core_feature_account_recovery_enabled">true</bool>
+    <bool name="core_feature_account_recovery_reset_enabled">false</bool>
+    <bool name="core_feature_auth_signin_two_step_enabled">true</bool>
+    <bool name="core_feature_auth_signup_show_congrats">false</bool>
+    <bool name="core_feature_auth_signin_show_long_login_toast">true</bool>
+    <bool name="core_feature_auth_signin_show_troubleshoot_button">true</bool>
+    <bool name="core_feature_auth_sso_enabled">true</bool>
+    <bool name="core_feature_credential_less_enabled">false</bool>
+    <bool name="core_feature_device_recovery_enabled">false</bool>
+    <bool name="core_feature_notifications_enabled">true</bool>
+    <bool name="core_feature_payments_v5_enabled">true</bool>
+    <!-- VPN already handle the Notification Permission (after successful vpn connection). -->
+    <bool name="core_feature_notifications_permission_request_enabled">false</bool>
+    <bool name="core_feature_device_migration_enabled">true</bool>
+    <bool name="core_feature_password_policy_enabled">true</bool>
+
+    <integer name="core_feature_event_manager_worker_repeat_internal_foreground_seconds">120</integer>
+    <integer name="core_feature_event_manager_worker_repeat_internal_background_seconds">43200</integer> <!-- 12h -->
+    <integer name="core_feature_event_manager_worker_backoff_delay_seconds">60</integer>
+</resources>

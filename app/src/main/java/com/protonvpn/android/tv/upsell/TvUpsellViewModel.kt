@@ -1,0 +1,116 @@
+/*
+ * Copyright (c) 2025 Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.android.tv.upsell
+
+import android.content.Context
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.protonvpn.android.R
+import com.protonvpn.android.ui.home.ServerListUpdaterPrefs
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
+
+@OptIn(ExperimentalCoroutinesApi::class)
+@HiltViewModel
+class TvUpsellViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
+    private val serverListUpdaterPrefs: ServerListUpdaterPrefs,
+) : ViewModel() {
+
+    data class ViewState(
+        @DrawableRes val imageResId: Int,
+        @StringRes val titleResId: Int,
+        @StringRes val descriptionResId: Int,
+        val descriptionArgs: (Context) -> Array<String> = { emptyArray() },
+    )
+
+    val viewStateFlow: StateFlow<ViewState?> = savedStateHandle
+        .getStateFlow<TvUpsellContent?>(
+            key = KEY_PAID_FEATURE,
+            initialValue = null,
+        )
+        .filterNotNull()
+        .mapLatest { paidFeature ->
+            when (paidFeature) {
+                TvUpsellContent.AllCountries -> ViewState(
+                    imageResId = R.drawable.worldwide_coverage_tv,
+                    titleResId = R.string.upsell_tv_all_countries_title,
+                    descriptionResId = R.string.upsell_tv_all_countries_description,
+                    descriptionArgs = { context ->
+                        arrayOf(
+                            context.resources.getQuantityString(
+                                R.plurals.upgrade_plus_servers_new,
+                                serverListUpdaterPrefs.vpnServerCount,
+                                serverListUpdaterPrefs.vpnServerCount,
+                            ),
+                            context.resources.getQuantityString(
+                                R.plurals.upgrade_plus_countries,
+                                serverListUpdaterPrefs.vpnCountryCount,
+                                serverListUpdaterPrefs.vpnCountryCount,
+                            ),
+                        )
+                    },
+                )
+
+                TvUpsellContent.CustomDns,
+                TvUpsellContent.LanConnections -> ViewState(
+                    imageResId = R.drawable.customisation_tv,
+                    titleResId = R.string.upsell_tv_customization_title,
+                    descriptionResId = R.string.upsell_tv_customization_description,
+                )
+
+                TvUpsellContent.NetShield -> ViewState(
+                    imageResId = R.drawable.netshield_tv,
+                    titleResId = R.string.upsell_tv_netshield_title,
+                    descriptionResId = R.string.upsell_tv_netshield_description,
+                )
+
+                TvUpsellContent.SplitTunneling -> ViewState(
+                    imageResId = R.drawable.split_tunneling_tv,
+                    titleResId = R.string.upsell_tv_split_tunneling_title,
+                    descriptionResId = R.string.upsell_tv_split_tunneling_description,
+                )
+
+                TvUpsellContent.SubscriptionExpired -> ViewState(
+                    imageResId = R.drawable.upsell_tv_subscription_expired,
+                    titleResId = R.string.upsell_tv_subscription_expired_title,
+                    descriptionResId = R.string.upsell_tv_subscription_expired_description
+                )
+            }
+        }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(),
+            initialValue = null,
+        )
+
+    companion object {
+        const val KEY_PAID_FEATURE = "paid_feature_key"
+    }
+}

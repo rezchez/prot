@@ -1,0 +1,254 @@
+<!--
+ Copyright (c) 2017 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+
+    <!-- TV themes -->
+    <style name="AppTheme.TV.Leanback" parent="Theme.AppCompat.Leanback">
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Leanback</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/tvBackground</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="guidedActionsBackground">@color/tvGuidedActionsBackground</item>
+        <item name="guidedActionsBackgroundDark">@color/tvGuidedActionsBackgroundDark</item>
+        <item name="colorAccent">@color/tvAccent</item>
+        <item name="android:colorControlActivated">?colorAccent</item>
+        <item name="android:textSize">16sp</item>
+        <item name="serverLoadLow">@color/tvServerLoadLow</item>
+        <item name="serverLoadMedium">@color/tvServerLoadMedium</item>
+        <item name="serverLoadHigh">@color/tvServerLoadHigh</item>
+        <item name="serverInMaintenance">@color/tvInMaintenance</item>
+    </style>
+
+    <style name="AppTheme.TV.Browse" parent="Theme.AppCompat.Leanback.Browse">
+        <item name="android:windowBackground">@color/tvBackground</item>
+        <item name="defaultSearchColor">?colorAccent</item>
+        <item name="defaultSearchIconColor">@color/white</item>
+        <item name="defaultSearchBrightColor">?colorAccent</item>
+        <item name="colorAccent">@color/tvAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="serverLoadLow">@color/tvServerLoadLow</item>
+        <item name="serverLoadMedium">@color/tvServerLoadMedium</item>
+        <item name="serverLoadHigh">@color/tvServerLoadHigh</item>
+        <item name="serverInMaintenance">@color/tvInMaintenance</item>
+    </style>
+
+    <style name="OnboardingDialogStyle" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:windowMinWidthMajor">97%</item>
+        <item name="android:windowMinWidthMinor">97%</item>
+    </style>
+
+    <style name="SettingsItem">
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="TextView" />
+
+    <style name="TextView.Connected" parent="TextView">
+        <item name="android:background">@drawable/bg_rounded</item>
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:textAppearance">@style/Proton.Text.Overline.Strong</item>
+        <item name="android:text">@string/connected</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">?attr/colorOnPrimarySurface</item>
+    </style>
+
+    <style name="TextView.Drawer" parent="TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:textAppearance">@style/Proton.Text.DefaultSmall</item>
+        <item name="drawableTint">?attr/proton_icon_weak</item>
+    </style>
+
+    <style name="DefaultCardImageStyle" parent="Widget.Leanback.ImageCardView.ImageStyle">
+        <item name="android:layout_width">@dimen/tv_item_size_width</item>
+        <item name="android:layout_height">@dimen/tv_item_size_height</item>
+    </style>
+
+    <style name="DefaultCardStyle" parent="Widget.Leanback.ImageCardViewStyle">
+        <item name="cardBackground">@null</item>
+    </style>
+
+    <style name="DefaultCardTheme" parent="Theme.Leanback">
+        <item name="imageCardViewStyle">@style/DefaultCardStyle</item>
+        <item name="imageCardViewImageStyle">@style/DefaultCardImageStyle</item>
+    </style>
+
+    <style name="TvButton" parent="TextAppearance.AppCompat.Button">
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:backgroundTint">@color/tvButtonBg</item>
+        <item name="android:foreground">@drawable/tv_focus_foreground</item>
+    </style>
+
+    <style name="TvButtonCTA" parent="TvButton">
+        <item name="android:backgroundTint">@color/tvAccent</item>
+    </style>
+
+    <style name="TvButtonAlert" parent="TvButton">
+        <item name="android:backgroundTint">@color/tvAlert</item>
+    </style>
+
+    <style name="ShapeAppearance.Oval" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50dp</item>
+    </style>
+
+    <style name="TableRowLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">@dimen/screen_padding_horizontal</item>
+        <item name="android:paddingRight">@dimen/screen_padding_horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="TableLabelText" parent="@style/Proton.Text.DefaultSmall.Weak">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <style name="TableValueText" parent="@style/Proton.Text.DefaultSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">end</item>
+    </style>
+
+    <!--
+      item_server_switch.xml is included both in regular UI and in notification.
+      Notifications should not use the application styles.
+      -->
+    <style name="ThemeOverlay.ProtonItemServerSwitch" parent="">
+        <item name="serverSwitchArrowDrawable">@drawable/ic_proton_arrow_right</item>
+        <item name="serverSwitchLabelTextStyle">@style/Proton.Text.Caption</item>
+        <item name="serverSwitchServerTextStyle">@style/Proton.Text.DefaultSmall</item>
+    </style>
+
+    <style name="ThemeOverlay.ProtonItemServerSwitch.Notification" parent="">
+        <item name="serverSwitchArrowDrawable">@drawable/ic_arrow_forward_grey</item>
+        <item name="serverSwitchLabelTextStyle">@style/TextAppearance.Compat.Notification.Info</item>
+        <item name="serverSwitchServerTextStyle">@style/TextAppearance.Compat.Notification</item>
+    </style>
+
+    <style name="FabMenuLabelStyle">
+        <item name="android:background">@drawable/bg_fab_label</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAppearance">@style/Proton.Text.DefaultSmall</item>
+    </style>
+
+    <style name="SectionHeadlineText">
+        <item name="android:textAppearance">@style/Proton.Text.DefaultSmall.Medium</item>
+        <item name="android:textColor">?attr/proton_text_hint</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="SectionHeadlineText.Brand">
+        <item name="android:textColor">?attr/proton_text_accent</item>
+    </style>
+
+    <style name="ProtonTheme.Vpn.Mobile">
+        <item name="serverLoadLow">@color/puerto_rico</item>
+        <item name="serverLoadMedium">@color/texas_Rose</item>
+        <item name="serverLoadHigh">@color/pomegranate</item>
+        <item name="serverInMaintenance">#989DA9</item>
+        <item name="strong_red_color">@color/pomegranate</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.ProtonVpnBottomSheet</item>
+    </style>
+
+    <!-- Force dark splash screen even if system uses light mode - only on older devices -->
+    <style name="ProtonTheme.Splash.Vpn.DarkPreferred">
+        <!-- baltic_sea corresponds to shade_0 in dark mode -->
+        <item name="windowSplashScreenBackground">@color/baltic_sea</item>
+        <item name="postSplashScreenTheme">@style/ProtonTheme.Vpn.Mobile</item>
+    </style>
+
+    <!-- Custom color buttons -->
+    <style name="ThemeOverlay.ProtonButton.Neutral" parent="">
+        <item name="colorPrimary">?attr/proton_interaction_strong</item>
+        <item name="proton_icon_accent">?attr/proton_interaction_strong</item>
+        <item name="proton_text_accent">?attr/proton_text_norm</item>
+    </style>
+
+    <style name="ThemeOverlay.ProtonButton.Red" parent="">
+        <item name="colorPrimary">?attr/strong_red_color</item>
+        <item name="proton_interaction_norm">?attr/strong_red_color</item>
+        <item name="proton_interaction_weak">?attr/strong_red_color</item>
+        <item name="proton_icon_accent">?attr/strong_red_color</item>
+        <item name="proton_text_accent">?attr/strong_red_color</item>
+    </style>
+
+    <style name="ThemeOverlay.ProtonVpnBottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/ProtonVpnBottomSheet</item>
+        <item name="elevationOverlayEnabled">false</item>
+    </style>
+
+    <style name="ProtonVpnBottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.ProtonVpnBottomSheet</item>
+        <item name="backgroundTint">@color/background_norm</item>
+    </style>
+
+    <style name="ShapeAppearance.ProtonVpnBottomSheet" parent="ProtonBottomSheetShapeOverlay">
+        <item name="cornerSizeTopRight">28dp</item>
+        <item name="cornerSizeTopLeft">28dp</item>
+    </style>
+
+    <style name="ProtonTheme.Vpn.TvDialog">
+        <item name="materialAlertDialogTheme">@style/Proton.ThemeOverlay.AlertDialog.Tv</item>
+    </style>
+
+    <style name="Proton.ThemeOverlay.AlertDialog.Tv">
+        <item name="buttonBarPositiveButtonStyle">@style/Proton.MaterialDialogButtonStyle.Tv</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Proton.MaterialDialogButtonStyle.Tv</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Proton.MaterialDialogButtonStyle.Tv</item>
+    </style>
+
+    <style name="Proton.MaterialDialogButtonStyle.Tv">
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:background">@drawable/tv_focus_foreground</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+</resources>

@@ -1,0 +1,585 @@
+/*
+ * Copyright (c) 2022. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.app.telemetry
+
+import app.cash.turbine.test
+import com.protonvpn.android.auth.usecase.CurrentUser
+import com.protonvpn.android.excludedlocations.data.ExcludedLocationsDao
+import com.protonvpn.android.excludedlocations.usecases.ObserveExcludedLocations
+import com.protonvpn.android.models.config.TransmissionProtocol
+import com.protonvpn.android.models.config.VpnProtocol
+import com.protonvpn.android.models.vpn.ConnectionParams
+import com.protonvpn.android.netshield.NetShieldProtocol
+import com.protonvpn.android.redesign.CountryId
+import com.protonvpn.android.redesign.recents.usecases.ConnectionFeedback
+import com.protonvpn.android.redesign.vpn.ConnectIntent
+import com.protonvpn.android.servers.Server
+import com.protonvpn.android.servers.api.SERVER_FEATURE_P2P
+import com.protonvpn.android.servers.api.SERVER_FEATURE_RESTRICTED
+import com.protonvpn.android.servers.api.SERVER_FEATURE_SECURE_CORE
+import com.protonvpn.android.servers.api.SERVER_FEATURE_STREAMING
+import com.protonvpn.android.settings.data.CustomDnsSettings
+import com.protonvpn.android.settings.data.EffectiveCurrentUserSettings
+import com.protonvpn.android.settings.data.LocalUserSettings
+import com.protonvpn.android.settings.data.SplitTunnelingSettings
+import com.protonvpn.android.telemetry.ConnectionTelemetrySentryDebugEnabled
+import com.protonvpn.android.telemetry.DefaultCommonDimensions
+import com.protonvpn.android.telemetry.DefaultTelemetryReporter
+import com.protonvpn.android.telemetry.Telemetry
+import com.protonvpn.android.telemetry.TelemetryFlowHelper
+import com.protonvpn.android.telemetry.VpnConnectionTelemetry
+import com.protonvpn.android.ui.home.ServerListUpdaterPrefs
+import com.protonvpn.android.ui.storage.UiStateStorage
+import com.protonvpn.android.ui.storage.UiStateStoreProvider
+import com.protonvpn.android.vpn.ConnectTrigger
+import com.protonvpn.android.vpn.ConnectivityMonitor
+import com.protonvpn.android.vpn.DisconnectTrigger
+import com.protonvpn.android.vpn.ProtocolSelection
+import com.protonvpn.android.vpn.VpnState
+import com.protonvpn.android.vpn.VpnStateMonitor
+import com.protonvpn.android.vpn.alwayson.VpnAlwaysOn
+import com.protonvpn.android.vpn.alwayson.VpnAlwaysOnStorage
+import com.protonvpn.app.excludedlocations.TestExcludedLocationEntity
+import com.protonvpn.test.shared.InMemoryDataStoreFactory
+import com.protonvpn.test.shared.MockSharedPreferencesProvider
+import com.protonvpn.test.shared.TestCurrentUserProvider
+import com.protonvpn.test.shared.TestUser
+import com.protonvpn.test.shared.createAccountUser
+import com.protonvpn.test.shared.createServer
+import io.mockk.MockKAnnotations
+import io.mockk.Runs
+import io.mockk.coEvery
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.just
+import io.mockk.slot
+import io.mockk.verify
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.test.TestCoroutineScheduler
+import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
+import me.proton.core.auth.test.fake.FakeIsCredentialLessEnabled
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
+import java.util.EnumSet
+import kotlin.test.assertFalse
+import kotlin.time.Duration.Companion.days
+
+@OptIn(ExperimentalCoroutinesApi::class)
+class VpnConnectionTelemetryTests {
+
+    @MockK
+    private lateinit var mockTelemetry: Telemetry
+
+    @MockK
+    private lateinit var mockConnectivityMonitor: ConnectivityMonitor
+
+    @MockK
+    private lateinit var mockConnectionTelemetrySentryDebugEnabled: ConnectionTelemetrySentryDebugEnabled
+
+    @MockK
+    private lateinit var mockExcludedLocationsDao: ExcludedLocationsDao
+
+    private lateinit var currentUser: CurrentUser
+    private lateinit var testCurrentUserProvider: TestCurrentUserProvider
+    private lateinit var telemetryScope: TestScope
+    private lateinit var prefs: ServerListUpdaterPrefs
+    private lateinit var vpnStateMonitor: VpnStateMonitor
+    private lateinit var testScheduler: TestCoroutineScheduler
+
+    private lateinit var userSettingsFlow: MutableStateFlow<LocalUserSettings>
+
+    private lateinit var effectiveUserSettings: EffectiveCurrentUserSettings
+
+    private lateinit var vpnAlwaysOnStorage: VpnAlwaysOnStorage
+
+    private lateinit var uiStateStorage: UiStateStorage
+
+    private lateinit var vpnConnectionTelemetry: VpnConnectionTelemetry
+
+    private val plusServer = createServer(
+        serverName = "PLUS#1",
+        features = SERVER_FEATURE_STREAMING or SERVER_FEATURE_RESTRICTED,
+        tier = 2,
+        exitCountry = "CH"
+    )
+    private val secureCoreServer = createServer(
+        serverName = "SC#1",
+        features = SERVER_FEATURE_SECURE_CORE or SERVER_FEATURE_P2P,
+        tier = 2,
+        entryCountry = "CH",
+        exitCountry = "PL"
+    )
+    private val freeServer = createServer(
+        serverName = "FREE#1",
+        features = SERVER_FEATURE_P2P,
+        tier = 0,
+        exitCountry = "CH"
+    )
+
+    @Before
+    fun setup() {
+        MockKAnnotations.init(this)
+        prefs = ServerListUpdaterPrefs(MockSharedPreferencesProvider())
+        vpnStateMonitor = VpnStateMonitor()
+        testScheduler = TestCoroutineScheduler()
+
+        every {
+            mockConnectivityMonitor.defaultNetworkTransports
+        } returns EnumSet.of(ConnectivityMonitor.Transport.WIFI)
+        every { mockTelemetry.event(any(), any(), any(), any()) } returns Unit
+        coEvery { mockConnectionTelemetrySentryDebugEnabled.invoke() } returns true
+        every { mockExcludedLocationsDao.observeAll(any()) } returns flowOf(value = listOf(TestExcludedLocationEntity.create()))
+
+        telemetryScope = TestScope(UnconfinedTestDispatcher(testScheduler))
+        testCurrentUserProvider = TestCurrentUserProvider(TestUser.plusUser.vpnUser, createAccountUser())
+        currentUser = CurrentUser(provider = testCurrentUserProvider)
+        val commonDimensions =
+            DefaultCommonDimensions(currentUser, vpnStateMonitor, prefs, FakeIsCredentialLessEnabled(true))
+
+        userSettingsFlow = MutableStateFlow(value = LocalUserSettings.Default.copy(telemetry = true))
+
+        effectiveUserSettings = EffectiveCurrentUserSettings(
+            mainScope = telemetryScope.backgroundScope,
+            effectiveCurrentUserSettingsFlow = userSettingsFlow,
+        )
+
+        vpnAlwaysOnStorage = VpnAlwaysOnStorage(
+            mainScope = telemetryScope.backgroundScope,
+            localDataStoreFactory = InMemoryDataStoreFactory(),
+        )
+
+        uiStateStorage = UiStateStorage(
+            provider = UiStateStoreProvider(factory = InMemoryDataStoreFactory()),
+            currentUser = currentUser,
+        )
+
+        vpnConnectionTelemetry = VpnConnectionTelemetry(
+            mainScope = telemetryScope.backgroundScope,
+            clock = testScheduler::currentTime,
+            commonDimensions = commonDimensions,
+            vpnStateMonitor = vpnStateMonitor,
+            connectivityMonitor = mockConnectivityMonitor,
+            telemetryHelperLazy = {
+                TelemetryFlowHelper(
+                    telemetryScope.backgroundScope,
+                    DefaultTelemetryReporter(mockTelemetry)
+                )
+            },
+            isSentryDebugEnabled = mockConnectionTelemetrySentryDebugEnabled,
+            effectiveCurrentUserSettings = effectiveUserSettings,
+            observeExcludedLocations = ObserveExcludedLocations(
+                mainScope = telemetryScope.backgroundScope,
+                currentUser = currentUser,
+                excludedLocationsDao = mockExcludedLocationsDao,
+            ),
+            currentUser = currentUser,
+            now = testScheduler::currentTime,
+            vpnAlwaysOnStorage = vpnAlwaysOnStorage,
+            uiStateStorage = uiStateStorage,
+        )
+        vpnConnectionTelemetry.start()
+    }
+
+    @Test
+    fun `when connection is established then vpn_connection event is sent`() {
+        prefs.lastKnownCountry = "PL"
+        prefs.lastKnownIsp = "Test ISP"
+        val connectionParams = createConnectionParams(
+            plusServer,
+            ProtocolSelection(VpnProtocol.WireGuard, TransmissionProtocol.UDP),
+            443
+        )
+
+        connectSequence(connectionParams)
+
+        val expectedValues = mapOf("time_to_connection" to 10L)
+        val expectedDimensions = mapOf(
+            "outcome" to "success",
+            "user_tier" to "paid",
+            "vpn_status" to "off",
+            "vpn_trigger" to "auto",
+            "server" to "PLUS#1",
+            "server_features" to "restricted,streaming",
+            "vpn_country" to "CH",
+            "user_country" to "PL",
+            "isp" to "Test ISP",
+            "protocol" to "wireguard_udp",
+            "port" to "443",
+            "network_type" to "wifi",
+            "entry_ip" to "1.2.3.4",
+            "is_ipv6_enabled" to "false",
+            "has_active_exclusions" to "false",
+            "is_smart_protocol" to "false",
+        )
+        verify {
+            mockTelemetry.event(
+                VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", expectedValues, expectedDimensions
+            )
+        }
+    }
+
+    @Test
+    fun `when connecting to free server then free is added to features`() {
+        val connectionParams = createConnectionParams(
+            freeServer,
+            ProtocolSelection(VpnProtocol.WireGuard, TransmissionProtocol.UDP),
+            443
+        )
+        val dimensions = slot<Map<String, String>>()
+        every { mockTelemetry.event(any(), any(), any(), capture(dimensions), any()) } just Runs
+
+        connectSequence(connectionParams)
+
+        verify { mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", any(), any()) }
+        assertEquals("free,p2p", dimensions.captured["server_features"])
+    }
+
+    @Test
+    fun `when connecting is aborted an aborted event is sent`() {
+        prefs.lastKnownCountry = "PL"
+        prefs.lastKnownIsp = "Test ISP"
+        val dimensions = slot<Map<String, String>>()
+        every { mockTelemetry.event(any(), any(), any(), capture(dimensions)) } returns Unit
+
+        vpnConnectionTelemetry.onConnectionStart(ConnectTrigger.QuickConnect("Test"), false)
+        testScheduler.advanceTimeBy(10)
+        vpnConnectionTelemetry.onConnectionAbort()
+
+        val expectedValues = mapOf("time_to_connection" to 10L)
+        val expectedDimensions = mapOf(
+            "outcome" to "aborted",
+            "user_tier" to "paid",
+            "vpn_status" to "off",
+            "vpn_trigger" to "quick",
+            "server" to "n/a",
+            "server_features" to "n/a",
+            "vpn_country" to "n/a",
+            "user_country" to "PL",
+            "isp" to "Test ISP",
+            "protocol" to "n/a",
+            "port" to "n/a",
+            "network_type" to "wifi",
+            "entry_ip" to "n/a",
+            "is_ipv6_enabled" to "n/a",
+            "has_active_exclusions" to "false",
+        )
+        verify {
+            mockTelemetry.event(
+                VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", expectedValues, expectedDimensions
+            )
+        }
+
+        // Make another connection to test that no state from the previous one is carried over.
+        testScheduler.advanceTimeBy(1000)
+        connectSequence(createConnectionParams(plusServer, ProtocolSelection.REAL_PROTOCOLS[0], 123))
+
+        verify {
+            mockTelemetry.event(
+                VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", mapOf("time_to_connection" to 10L), any()
+            )
+        }
+        assertEquals("auto", dimensions.captured["vpn_trigger"])
+    }
+
+    @Test
+    fun `when new connection is started while connecting then an aborted outcome is reported for old connection`() {
+        val dimensions = slot<Map<String, String>>()
+        every { mockTelemetry.event(any(), any(), any(), capture(dimensions)) } returns Unit
+
+        vpnConnectionTelemetry.onConnectionStart(ConnectTrigger.QuickConnect("Test"), false)
+        testScheduler.advanceTimeBy(10)
+
+        vpnConnectionTelemetry.onConnectionStart(ConnectTrigger.Auto("Test"), false)
+        verify(exactly = 1) {
+            mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", any(), any())
+        }
+        assertEquals("aborted", dimensions.captured["outcome"])
+        assertEquals("quick", dimensions.captured["vpn_trigger"])
+
+        // Finish the new connection.
+        val connectionParams = createConnectionParams(plusServer, ProtocolSelection.REAL_PROTOCOLS[0], 123)
+        vpnStateMonitor.updateStatus(VpnStateMonitor.Status(VpnState.Connected, connectionParams))
+
+        verify(exactly = 2) {
+            mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", any(), any())
+        }
+        assertEquals("success", dimensions.captured["outcome"])
+        assertEquals("auto", dimensions.captured["vpn_trigger"])
+    }
+
+    @Test
+    fun `when disconnecting while connecting then aborted outcome is reported`() {
+        val dimensions = slot<Map<String, String>>()
+        every { mockTelemetry.event(any(), any(), any(), capture(dimensions)) } returns Unit
+        vpnConnectionTelemetry.onConnectionStart(ConnectTrigger.QuickConnect("Test"), false)
+        vpnConnectionTelemetry.onDisconnectionTrigger(DisconnectTrigger.QuickConnect("test"), null)
+
+        verify(exactly = 1) {
+            mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", any(), capture(dimensions))
+        }
+        assertEquals("aborted", dimensions.captured["outcome"])
+    }
+
+    @Test
+    fun `when disconnecting due to error while connecting then failure outcome is reported`() {
+        val dimensions = slot<Map<String, String>>()
+        every { mockTelemetry.event(any(), any(), any(), capture(dimensions)) } returns Unit
+        vpnConnectionTelemetry.onConnectionStart(ConnectTrigger.QuickConnect("Test"), false)
+        vpnConnectionTelemetry.onDisconnectionTrigger(DisconnectTrigger.Error("error"), null)
+
+        verify(exactly = 1) {
+            mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", any(), capture(dimensions))
+        }
+        assertEquals("failure", dimensions.captured["outcome"])
+    }
+
+    @Test
+    fun `when connecting requires disconnecting first then no failure is reported`() {
+        testDisconnectForNewConnection(DisconnectTrigger.NewConnection)
+    }
+
+    @Test
+    fun `when reconnecting requires disconnecting first then no failure is reported`() {
+        testDisconnectForNewConnection(DisconnectTrigger.Reconnect("test"))
+    }
+
+    @Test
+    fun `GIVEN whether connection feedback has been shown or not WHEN disconnection is triggered THEN user feedback dimension is added`() = telemetryScope.runTest {
+        val dimensionsSlot = slot<Map<String, String>>()
+        listOf(
+            false to listOf(
+                ConnectionFeedback.None to "unknown",
+                ConnectionFeedback.Negative to "negative",
+                ConnectionFeedback.Positive to "positive",
+            ),
+            true to listOf(
+                ConnectionFeedback.None to "ignore",
+                ConnectionFeedback.Negative to "negative",
+                ConnectionFeedback.Positive to "positive",
+            ),
+        ).forEach { (hasShownConnectionFeedback,  connectionFeedbackList) ->
+            connectionFeedbackList.forEach { (connectionFeedback, expectedUserConnectionFeedback) ->
+                val connectionParams = createConnectionParams(plusServer, ProtocolSelection.REAL_PROTOCOLS[0], 123)
+                connectSequence(connectionParams)
+                uiStateStorage.update {
+                    it.copy(
+                        hasShownConnectionFeedback = hasShownConnectionFeedback,
+                        connectionFeedback = connectionFeedback,
+                    )
+                }
+                every {
+                    mockTelemetry.event(
+                        measurementGroup = "vpn.any.connection",
+                        event = "vpn_disconnection",
+                        values = mapOf("session_length" to 0),
+                        dimensions = capture(dimensionsSlot),
+                    )
+                } returns Unit
+
+                vpnConnectionTelemetry.onDisconnectionTrigger(DisconnectTrigger.NewConnection, null)
+
+                assertEquals(expectedUserConnectionFeedback, dimensionsSlot.captured["user_feedback"])
+            }
+        }
+    }
+
+    @Test
+    fun `WHEN disconnection is triggered THEN user feedback is reset`() = telemetryScope.runTest {
+        val connectionParams = createConnectionParams(plusServer, ProtocolSelection.REAL_PROTOCOLS[0], 123)
+        connectSequence(connectionParams)
+        uiStateStorage.update {
+            it.copy(
+                hasShownConnectionFeedback = true,
+                connectionFeedback = ConnectionFeedback.Negative,
+            )
+        }
+
+        vpnConnectionTelemetry.onDisconnectionTrigger(DisconnectTrigger.NewConnection, null)
+
+        uiStateStorage.state.test {
+            val uiStoredState = awaitItem()
+
+            assertEquals(ConnectionFeedback.None, uiStoredState.connectionFeedback)
+            assertFalse(uiStoredState.hasShownConnectionFeedback)
+        }
+    }
+
+    @Test
+    fun `WHEN disconnection is triggered THEN user tenure dimension is added`() = telemetryScope.runTest {
+        val dimensionsSlot = slot<Map<String, String>>()
+        testScheduler.advanceTimeBy(delayTimeMillis = System.currentTimeMillis())
+        val currentTime = testScheduler.currentTime
+        listOf(
+            0.days to "0",
+            1.days to "1",
+            2.days to "2",
+            3.days to "3-7",
+            7.days to "3-7",
+            8.days to "8-30",
+            30.days to "8-30",
+            31.days to "31-90",
+            90.days to "31-90",
+            91.days to "91-365",
+            365.days to "91-365",
+            366.days to ">366",
+            500.days to ">366",
+        ).forEach { (daysSinceUserCreation, expectedTenure) ->
+            val createdAtUtc = currentTime.minus(daysSinceUserCreation.inWholeMilliseconds)
+            val connectionParams = createConnectionParams(plusServer, ProtocolSelection.REAL_PROTOCOLS[0], 123)
+            connectSequence(connectionParams)
+            testCurrentUserProvider.set(TestUser.plusUser.vpnUser, createAccountUser(createdAtUtc = createdAtUtc))
+            every {
+                mockTelemetry.event(
+                    measurementGroup = "vpn.any.connection",
+                    event = "vpn_disconnection",
+                    values = mapOf("session_length" to 0),
+                    dimensions = capture(dimensionsSlot),
+                )
+            } returns Unit
+
+            vpnConnectionTelemetry.onDisconnectionTrigger(DisconnectTrigger.NewConnection, null)
+
+            assertEquals(expectedTenure, dimensionsSlot.captured["tenure"])
+        }
+    }
+
+    @Test
+    fun `GIVEN client features WHEN disconnection is triggered THEN client features dimension is added`() = telemetryScope.runTest {
+        userSettingsFlow.value = LocalUserSettings.Default.copy(
+            customDns = CustomDnsSettings(
+                toggleEnabled = true,
+                rawDnsList = listOf("8.8.8.8"),
+            ),
+            lanConnections = true,
+            randomizedNat = false,
+            netShield = NetShieldProtocol.ENABLED_EXTENDED,
+            splitTunneling = SplitTunnelingSettings(
+                isEnabled = true,
+            ),
+        )
+        val dimensionsSlot = slot<Map<String, String>>()
+        val connectionParams = createConnectionParams(plusServer, ProtocolSelection.REAL_PROTOCOLS[0], 123)
+        val vpnAlwaysOn = VpnAlwaysOn(isEnabled = true, isLockdownEnabled = true)
+        val expectedClientFeatures = "connection_preferences,custom_dns,kill_switch,lan_connections,moderate_nat,netshield,split_tunneling"
+        connectSequence(connectionParams)
+        vpnAlwaysOnStorage.setVpnAlwaysOn(vpnAlwaysOn = vpnAlwaysOn)
+        every {
+            mockTelemetry.event(
+                measurementGroup = "vpn.any.connection",
+                event = "vpn_disconnection",
+                values = mapOf("session_length" to 0),
+                dimensions = capture(dimensionsSlot),
+            )
+        } returns Unit
+
+        vpnConnectionTelemetry.onDisconnectionTrigger(DisconnectTrigger.NewConnection, null)
+
+        assertEquals(expectedClientFeatures, dimensionsSlot.captured["client_features"])
+    }
+
+    private fun testDisconnectForNewConnection(disconnectTrigger: DisconnectTrigger) {
+        val dimensions = slot<Map<String, String>>()
+        every { mockTelemetry.event(any(), any(), any(), capture(dimensions)) } returns Unit
+
+        val connectionParams = createConnectionParams(plusServer, ProtocolSelection.REAL_PROTOCOLS[0], 123)
+        connectSequence(connectionParams) // Put VpnConnectionTelemetry in "connected" state.
+        verify(exactly = 1) {
+            mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", any(), any())
+        }
+
+        vpnConnectionTelemetry.onConnectionStart(ConnectTrigger.QuickConnect("Test"), false)
+        vpnConnectionTelemetry.onDisconnectionTrigger(disconnectTrigger, null)
+        vpnStateMonitor.updateStatus(VpnStateMonitor.Status(VpnState.Disabled, null))
+        verify { mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_disconnection", any(), any()) }
+        verify(exactly = 1) {
+            mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", any(), any())
+        }
+
+        vpnStateMonitor.updateStatus(VpnStateMonitor.Status(VpnState.Connected, connectionParams))
+
+        verify(exactly = 2) {
+            mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", any(), any())
+        }
+        assertEquals("success", dimensions.captured["outcome"])
+        assertEquals("quick", dimensions.captured["vpn_trigger"])
+    }
+
+    @Test
+    fun `when connected and local agent connection is reestablished then no events are sent`() {
+        val dimensions = slot<Map<String, String>>()
+        every { mockTelemetry.event(any(), any(), any(), capture(dimensions)) } returns Unit
+
+        val connectionParams = createConnectionParams(plusServer, ProtocolSelection.REAL_PROTOCOLS[0], 123)
+        connectSequence(connectionParams)
+        verify(exactly = 1) {
+            mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", any(), any())
+        }
+        testScheduler.advanceTimeBy(100)
+        // Simulate local agent reconnection.
+        vpnStateMonitor.updateStatus(VpnStateMonitor.Status(VpnState.Connecting, connectionParams))
+        vpnStateMonitor.updateStatus(VpnStateMonitor.Status(VpnState.Connected, connectionParams))
+        // No new events.
+        verify(exactly = 1) {
+            mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", any(), any())
+        }
+        testScheduler.advanceTimeBy(100)
+
+        // Total duration is reported on disconnect.
+        vpnConnectionTelemetry.onDisconnectionTrigger(DisconnectTrigger.QuickConnect("test"), null)
+        val expectedValues = mapOf("session_length" to 200L)
+        verify(exactly = 1) {
+            mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_disconnection", expectedValues, any())
+        }
+    }
+
+    @Test
+    fun `when connecting to SC country the exit country is reported as vpn_country`() {
+        val connectionParams = createConnectionParams(secureCoreServer, ProtocolSelection.REAL_PROTOCOLS[0], 123)
+        connectSequence(connectionParams)
+
+        val dimensions = slot<Map<String, String>>()
+        verify(exactly = 1) {
+            mockTelemetry.event(VpnConnectionTelemetry.MEASUREMENT_GROUP, "vpn_connection", any(), capture(dimensions))
+        }
+        assertEquals("PL", dimensions.captured["vpn_country"])
+    }
+
+    private fun createConnectionParams(server: Server, protocolSelection: ProtocolSelection, port: Int) =
+        ConnectionParams(
+            ConnectIntent.FastestInCountry(CountryId.fastest, emptySet()),
+            server,
+            server.connectingDomains.first(),
+            protocolSelection.vpn,
+            transmissionProtocol = protocolSelection.transmission,
+            port = port
+        )
+
+    private fun connectSequence(connectionParams: ConnectionParams) {
+        vpnConnectionTelemetry.onConnectionStart(ConnectTrigger.Auto("Test"), false)
+        testScheduler.advanceTimeBy(10)
+        vpnStateMonitor.updateStatus(VpnStateMonitor.Status(VpnState.Connected, connectionParams))
+        testScheduler.runCurrent()
+    }
+}

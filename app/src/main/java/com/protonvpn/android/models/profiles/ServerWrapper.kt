@@ -1,0 +1,54 @@
+/*
+ * Copyright (c) 2017 Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+package com.protonvpn.android.models.profiles
+
+import com.protonvpn.android.servers.Server
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class ServerWrapper(
+    val type: ProfileType,
+    val country: String,
+    val serverId: String?
+) {
+
+    enum class ProfileType {
+        FASTEST, RANDOM, RANDOM_IN_COUNTRY, FASTEST_IN_COUNTRY, DIRECT
+    }
+
+    override fun toString() =
+        "type: $type country: $country serverId: $serverId"
+
+    val isPreBakedProfile get() = type == ProfileType.FASTEST || type == ProfileType.RANDOM
+
+    companion object {
+
+        @JvmStatic
+        fun makePreBakedFastest() =
+            ServerWrapper(ProfileType.FASTEST, "", "")
+
+        @JvmStatic
+        fun makeWithServer(server: Server) =
+            ServerWrapper(ProfileType.DIRECT, server.exitCountry, server.serverId)
+
+        @JvmStatic
+        fun makeFastestForCountry(country: String) =
+            ServerWrapper(ProfileType.FASTEST_IN_COUNTRY, country, "")
+    }
+}

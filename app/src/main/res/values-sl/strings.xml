@@ -1,0 +1,2023 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2017 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_icon_name_classic">Klasično</string>
+    <string name="app_icon_name_dark">Temna</string>
+    <string name="app_icon_name_retro">Retro</string>
+    <string name="app_icon_name_weather">Vreme</string>
+    <string name="app_icon_name_notes">Opombe</string>
+    <string name="app_icon_name_calculator">Računalo</string>
+    <string name="login">Prijava</string>
+    <string name="menuActionSignOut">Odjava</string>
+    <string name="connectionAllocationHelpTitle">Hvala za nadgradnjo</string>
+    <string name="connectionAllocationHelpDescription1">Če želite začeti svojo pot s Proton VPN, dodelite povezave VPN svojemu računu ali kateremu koli drugemu pod računu.</string>
+    <string name="connectionAllocationHelpDescription2">Ta korak bo trajal le nekaj minut. Potem se boste lahko prijavili in zaščitili vse svoje naprave.</string>
+    <string name="connectionAllocationHelpDescription1AskAdmin">Za ta račun trenutno ni omogočena povezava VPN. Če želite začeti svojo pot s Proton VPN, se obrnite na skrbnika. </string>
+    <string name="connectionAllocationHelpAssignConnectionsButton">Omogoči povezave VPN</string>
+    <string name="connectionAllocationHelpLoginAgainButton">Ponovno se prijavite</string>
+    <!-- tag(Redesign_2023) "OK" button on dialogs -->
+    <string name="ok">V redu</string>
+    <string name="dialogLearnMore">Več informacij</string>
+    <string name="connected">Povezano</string>
+    <string name="buttonConnect">Poveži</string>
+    <string name="loaderConnectingTo">Povezovanje z %1$s</string>
+    <string name="loaderNotConnected">Ni povezave (niste zaščiteni)</string>
+    <string name="loaderConnectedTo">Povezano z %1$s</string>
+    <string name="loaderDisconnecting">Prekinjanje povezave</string>
+    <string name="loaderReconnecting">Ponovno povezovanje</string>
+    <string name="loaderReconnectNoNetwork">Čakanje na uporabno omrežje</string>
+    <string name="loaderCheckingAvailability">Preverjanje razpoložljivosti strežnika</string>
+    <string name="quickConnect">Hitro povezovanje</string>
+    <!-- Displays a percentage value. Please use %% sign for %.
+         Example value: "70%" -->
+    <string name="serverLoad">%1$s%%</string>
+    <string name="cancel">Prekliči</string>
+    <string name="close">Zapri</string>
+    <string name="dialogContinue">Nadaljuj</string>
+    <string name="drawerReportProblem">Prijava napake</string>
+    <string name="action_done">Končano</string>
+    <string name="action_share">Deli</string>
+    <string name="accountFree">Proton Free</string>
+    <string name="restrictedMaintenanceTitle">Vzdrževalna dela v teku</string>
+    <string name="restrictedMaintenanceDescription">Strežnik, s katerim se trenutno poskušate povezati, je v vzdrževanju. Poskusite z drugim strežnikom.</string>
+    <string name="restricted_location_excluded_dialog_title">Povezava ni uspela</string>
+    <string name="restricted_location_excluded_dialog_description">Ni na voljo nobenih strežnikov. Izberite lokacijo ročno ali uredite izključene lokacije.</string>
+    <string name="errorUserDelinquent"><![CDATA[Vaš račun ima trenutno zapadli račun. Vse neplačane račune plačajte na &#160;<a href="https://account.protonvpn.com">account.protonvpn.com</a>]]></string>
+    <string name="errorMaxSessions">Dosegli ste največje dovoljeno število hkratnih povezav za vaš račun. Za več povezav nadgradite svoj paket Proton VPN.</string>
+    <string name="listItemMaintenance">Vzdrževalna dela v teku</string>
+    <string name="insufficientPermissionsTitle">Potrebno je ukrepanje uporabnika</string>
+    <string name="insufficientPermissionsDetails">Povezave VPN ni bilo mogoče samodejno vzpostaviti. Povežite se enkrat ročno, da podelite dovoljenja.</string>
+    <string name="log_title">Dnevnik</string>
+    <string name="disconnect">Prekini</string>
+    <string name="state_connecting">Povezovanje …</string>
+    <string name="state_connected">Povezano</string>
+    <string name="state_disconnecting">Prekinjanje povezave …</string>
+    <string name="state_error">Napaka</string>
+    <string name="error_server_list_load_failed">Preverite povezavo in poskusite znova.</string>
+    <string name="error_server_unreachable">Ni se bilo možno povezati z VPN. Prosimo, preverite svojo povezavo in poskusite ponovno.</string>
+    <string name="error_auth_failed">Preverjanje pristnosti uporabnika ni uspelo</string>
+    <string name="error_generic">Neznana napaka pri povezovanju.</string>
+    <string name="error_generic_with_reason">Proton VPN ni mogel vzpostaviti povezave VPN. Prosimo, poskusite znova čez nekaj sekund.<br/><br/> Podrobnosti: %1$s</string>
+    <string name="reconnect">Ponovno vzpostavite povezavo</string>
+    <string name="reconnect_now">Zdaj se ponovno povežite</string>
+    <string name="try_reconnecting">Poskusite znova vzpostaviti povezavo</string>
+    <string name="connect">Poveži</string>
+    <string name="upgrade">Nadgradi</string>
+    <string name="retry">Poskusite znova</string>
+    <string name="report_message">Prijavi sporočilo</string>
+    <string name="report_bug_email_label">Vaš e-poštni naslov</string>
+    <string name="report_bug_email_hint">Vnesite svoj e-poštni naslov</string>
+    <string name="report_bug_message_label">Sporočilo</string>
+    <string name="report_bug_message_hint">Opišite napako ter kako in kje ste jo našli</string>
+    <string name="send_report">Pošlji poročilo</string>
+    <string name="report_sent">Poročilo poslano</string>
+    <string name="discardChanges">Zavržem neshranjene spremembe?</string>
+    <string name="discardChangesButtonDiscard">Zavrzi spremembe</string>
+    <string name="discardChangesButtonKeepEditing">Nadaljuj z urejanjem</string>
+    <string name="done">KONČANO</string>
+    <string name="add">Dodaj</string>
+    <string name="copy_to_clipboard">Kopiraj</string>
+    <string name="copied_to_clipboard">Kopirano v odložišče</string>
+    <string name="got_it">Razumem</string>
+    <string name="exclude_locations">Izključi lokacije</string>
+    <string name="excluded_locations">Izključene lokacije</string>
+    <string name="cannot_connect">Ne morem se povezati</string>
+    <string name="skip">Preskoči</string>
+    <string name="something_went_wrong">Nekaj je šlo narobe</string>
+    <string name="try_again">Poskusite ponovno</string>
+    <string name="delete">Izbriši</string>
+    <string name="menu_option_move_to_top" comment="command used to move an item to the top of the list">Premakni na vrh</string>
+    <string name="menu_option_move_up" comment="command used to move an item one position up in the list">Premakni navzgor</string>
+    <string name="menu_option_move_down" comment="command used to move an item one position down in the list">Premakni navzdol</string>
+    <string name="remove">Odstrani</string>
+    <string name="saveButton">Shrani</string>
+    <string name="ipWithPlaceholder">IP: %1$s</string>
+    <string name="activityLicensesTitle">Licence tretjih oseb</string>
+    <string name="stateFragmentUnknownIp">Neznano</string>
+    <string name="noVpnPermissionMainTitle">Potrebno je dejanje za povezavo z VPN</string>
+    <string name="noVpnPermissionMainMessage">Za povezavo s Proton VPN naredite naslednje:</string>
+    <string name="noVpnPermissionGrantPermissionTitle">Dodelite dovoljenje VPN</string>
+    <string name="noVpnPermissionGrantPemrissionMessage">Android potrebuje vaše dovoljenje za povezavo s Proton VPN. Odobrite ga tako, da tapnete »V redu«, ko se od Androida prikaže okno »Zahteva za povezavo«.</string>
+    <string name="noVpnPermissionDisableAlwaysOnTitle">Onemogočite trajno aktivno omrežje VPN drugih aplikacij</string>
+    <string name="noVpnPermissionDisableAlwaysOnMessage">Android ne podpira več aplikacij VPN. Onemogočite trajno aktivno omrežje VPN drugih aplikacij, razen za Proton VPN.</string>
+    <string name="noVpnPermissionProtonAppLabel">Aplikacija Proton VPN</string>
+    <string name="noVpnPermissionOtherAppLabel">Druge aplikacije VPN</string>
+    <string name="noVpnPermissionOpenSettings">Odprite nastavitve VPN za Android</string>
+    <string name="noNotificationPermissionGrantTitle">Ne pustite se ujeti …</string>
+    <string name="noNotificationPermissionGrantDescription">Omogočite obvestila, če želite biti obveščeni o spremembah stanja vaše povezave.</string>
+    <string name="noNotificationPermissionGrantNowTitle">Omogoči obvestila</string>
+    <string name="error_prepare_vpn_description"><![CDATA[Onemogočite vedno vključeno VPN za vse druge aplikacije VPN v sistemskih nastavitvah Android VPN, saj to preprečuje Proton VPN vzpostavitev povezave VPN. Dodelite tudi dovoljenja VPN, če se prikaže pogovorno okno, ki zahteva dovoljenja VPN. Morda bo treba odstraniti tudi druge aplikacije VPN, da preprečite spore. Nato poskusite znova. <a href="%1$s">Več o tem</a>]]></string>
+    <string name="error_prepare_vpn_settings">Pojdite na nastavitve VPN za Android</string>
+    <string name="error_prepare_vpn_title">Napaka: Težava z dovoljenjem VPN</string>
+    <string name="error_server_not_set">Strežnik ni več na voljo</string>
+    <string name="bugReportErrorEmptyEmail">E-pošta ne sme biti prazna.</string>
+    <string name="bugReportErrorInvalidEmail">Neveljaven e-poštni naslov</string>
+    <string name="bugReportLabelVpnLogsTitle">Vključite dnevnike napak</string>
+    <string name="bugReportErrorLabelVpnLogsDescription">To pošilja lokalne dnevnike napak (ne beležimo dejavnosti), ki nam pomagajo odpraviti vašo težavo</string>
+    <string name="profileFastest">Najhitrejše</string>
+    <string name="profileRandom">Naključno</string>
+    <string name="loaderErrorNoInternet">Ni spletne povezave</string>
+    <string name="loaderErrorGeneric">Nekaj je šlo narobe</string>
+    <string name="inputIpAddressLabel">IP naslov</string>
+    <string name="inputIpAddressHelp">Vnesite IPv4 ali IPv6 naslov strežnika</string>
+    <string name="inputIpAddressErrorInvalid">Neveljaven IP naslov</string>
+    <!-- Displayed as a badge next to setting item ("Widget [NEW]") -->
+    <string name="settings_new_label_badge">NOVO</string>
+    <!-- Displayed as a badge next to setting item ("Proton protocols [BETA]") -->
+    <string name="settings_beta_label_badge">BETA</string>
+    <string name="settingsExcludedIPAddressesListHeader">Izključeni naslovi IP (%1$d)</string>
+    <string name="settingsIncludedIPAddressesListHeader">Vključeni naslovi IP (%1$d)</string>
+    <string name="settingsExcludedApps">Izvzete aplikacije</string>
+    <string name="settingsExcludedAppsEmpty">Dodajte aplikacije, ki jih želite izključiti iz prometa VPN.</string>
+    <string name="settingsIncludedAppsEmpty">Dodajte aplikacije, ki bodo vključene v promet VPN.</string>
+    <string name="settingsExcludedAppsSelectedHeader">Izključene aplikacije (%1$d)</string>
+    <string name="settingsIncludedAppsSelectedHeader">Vključene aplikacije (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableRegularHeader">Vse druge običajne aplikacije (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableSystemHeader">Vse druge sistemske aplikacije (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableHeader">Vse druge aplikacije (%1$d)</string>
+    <string name="settingsExcludedAppsLoadSystemAppsButton">Pokaži sistemske aplikacije</string>
+    <string name="settingsSplitTunnelAppsShowSystemAppsCheckbox">Pokaži sistemske aplikacije</string>
+    <string name="settingsSplitTunnelingExcludedAppsList">Te aplikacije so izključene iz vaše povezave VPN.</string>
+    <string name="settingsSplitTunnelingIncludedAppsList">Samo te aplikacije se povežejo prek VPN.</string>
+    <!-- Description for action to add an application to "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to excluded apps"
+    -->
+    <string name="accessibility_action_add_excluded_app">Dodaj med izvzete aplikacije</string>
+    <!-- Description for action to remove an application from "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from excluded apps"
+    -->
+    <string name="accessibility_action_remove_excluded_app">Odstrani iz izvzetih aplikacij</string>
+    <!-- Description for action to add an application to "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to included apps"
+    -->
+    <string name="accessibility_action_add_included_app">Dodaj med vključene aplikacije</string>
+    <!-- Description for action to remove an application from "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from included apps"
+    -->
+    <string name="accessibility_action_remove_included_app">Odstrani iz vključenih aplikacij</string>
+    <string name="accessibility_action_copy_to_clipboard">Kopiraj v odložišče</string>
+    <string name="accessibility_action_item_delete">Izbriši</string>
+    <string name="accessibility_action_item_move_up">Premakni navzgor</string>
+    <string name="accessibility_action_item_move_down">Premakni navzdol</string>
+    <string name="tileConnected">Povezano: %1$s</string>
+    <string name="openUrlError">%1$s ni bilo mogoče odpreti. Na vaši napravi ni zaznati spletnega brskalnika.</string>
+    <string name="loaderErrorTimeout">Povezava je potekla, prosimo poskusite znova.</string>
+    <string name="troubleshootButton">Odpravljanje težav</string>
+    <string name="activityTroubleshootTitle">Odpravljanje težav</string>
+    <string name="troubleshootPotentialSolutionsSectionTitle">Možne rešitve</string>
+    <string name="troubleshootNoInternetDescription">Prepričajte se, da vaša spletna povezava deluje.</string>
+    <string name="troubleshootNoInternetTitle">Ni spletne povezave</string>
+    <string name="troubleshootIspProblemTitle">Težava s ponudnikom spletnih storitev (ISP)</string>
+    <string name="troubleshootIspProblemDescription"><![CDATA[Poskusite se povezati s Protonom iz drugega omrežja (ali uporabite <a href=\'%1$s\'>Tor</a>)]]></string>
+    <string name="troubleshootAntivirusProblemTitle">Protivirusne motnje</string>
+    <string name="troubleshootAntivirusProblemDescription">Začasno onemogočite ali odstranite protivirusni program.</string>
+    <string name="troubleshootProxyFirewallProblemTitle">Motnje na povezavi posredniškega strežnika ali požarnega zidu</string>
+    <string name="troubleshootProxyFirewallProblemDescription">Onemogočite posredniške strežnike ali požarne zidove oziroma se obrnite na skrbnika omrežja.</string>
+    <string name="troubleshootProtonDownTitle">Proton ne deluje.</string>
+    <string name="troubleshootProtonDownDescription"><![CDATA[Preverite <a href=\"%1$s\">Proton Status</a> za stanje našega sistema.]]></string>
+    <string name="troubleshootContactUsSectionTitle">Še vedno potrebuješ pomoč? Kontaktirajte nas neposredno</string>
+    <string name="troubleshootCustomerSupport">Podpora strankam</string>
+    <string name="settingsAllowAlternativeRoutingTitle">Alternativno usmerjanje</string>
+    <string name="settingsAllowAlternativeRoutingDescription"><![CDATA[V primeru, da je Proton blokiran, dovolite aplikaciji, da preizkusi alternativne poti za doseganje strežnikov Proton. <a href="%1$s">Več o tem</a>.]]></string>
+    <string name="troubleshootGovernmentBlockTitle">Blokada s strani države</string>
+    <string name="troubleshootGovernmentBlockDescription"><![CDATA[Vaša država morda blokira dostop do Protona. Poskusite uporabiti <a href=\'%1$s\'>Tor</a> za dostop do Protona.]]></string>
+    <string name="settingsKillSwitchEnableTitle">Kako omogočiti odklopno stikalo</string>
+    <string name="settingsKillSwitchEnableStep1">1. Odprite nastavitve naprave</string>
+    <!-- %1$s here will be replaced by "gear" icon -->
+    <string name="settingsKillSwitchEnableStep2">2. Poiščite Proton VPN in tapnite %1$s</string>
+    <!-- Content description for the "gear" icon in settingsKillSwitchEnableStep2. Used only by accessibility services. -->
+    <string name="settingsKillSwitchEnableStep2_gearIconContentDescription">nastavitve</string>
+    <!-- The phrases "Always-on VPN" and "Block connections without VPN" needs to be translated exactly
+         the same as in Android VPN settings. -->
+    <string name="settingsKillSwitchEnableStep3"><![CDATA[3. Omogočite »<b>Vedno vklopljen VPN</b>« in »<b>Blokiraj povezave brez VPN-ja</b>«]]></string>
+    <string name="settingsKillSwitchAndroidSettingsButton">Nastavitve</string>
+    <string name="settingsKillSwitchLearnMoreButton">Kaj je odklopno stikalo?</string>
+    <string name="settingsKillSwitchWarningMain">Ko je odklopno stikalo vklopljeno, se ne boste mogli povezati z:</string>
+    <string name="settingsKillSwitchWarningPoint1">Spletna mesta in aplikacije, izključene iz vaše VPN povezave prek deljenega tuneliranja</string>
+    <string name="settingsKillSwitchWarningPoint2">Naprave v vašem lokalnem omrežju (LAN)</string>
+    <string name="settingsEnableTelemetryTitle">Delite anonimne podatke o uporabi</string>
+    <string name="settingsEnableTelemetryDescription">Podatki o uporabi nam pomagajo premagati blokade VPN in izboljšati delovanje aplikacije.</string>
+    <string name="settingsSendCrashReportsTitle">Delite anonimna poročila o zrušitvah</string>
+    <string name="settingsSendCrashReportsDescription">Poročila o zrušitvah nam pomagajo odpraviti napake, zaznati požarne zidove in se izogniti blokadam VPN.</string>
+    <string name="settingsTelemetryScreenTitle">Statistika uporabe</string>
+    <string name="settingsTelemetryScreenInfo"><![CDATA[Ti statistični podatki ne vsebujejo vašega naslova IP in jih ni mogoče uporabiti za vašo identifikacijo. Nikoli jih ne bomo delili s tretjimi osebami. <a href="%1$s">Več o tem</a>]]></string>
+    <string name="netshield_settings_description_not_html">Zaščitite se pred oglasi, zlonamerno programsko opremo in sledilniki na spletnih straneh in v aplikacijah. %1$s</string>
+    <string name="netshield_settings_description_tv">Ščiti vas pred oglasi, sledilniki in zlonamerno programsko opremo tretjih oseb. NetShield ne blokira oglasov, ki so vgrajeni v storitve pretakanja, kot sta YouTube in Netflix.</string>
+    <string name="netshield_settings_more_info_title_tv">Kako deluje NetShield</string>
+    <string-array name="netshield_settings_more_info_paragraphs_tv">
+        <item>NetShield blokira zahteve DNS do domen tretjih oseb, znanih po oglasih, sledilnikih in zlonamerni programski opremi.</item>
+        <item>To pomeni, da ne boste prejemali oglasov iz brskalnika ali brezplačnih aplikacij, ki uporabljajo oglaševalske storitve tretjih oseb.</item>
+        <item>Vendar pa ne more blokirati oglasov s platform za pretakanje, kot sta YouTube in Netflix, saj njihovi oglasi prihajajo z njihovih lastnih strežnikov.</item>
+    </string-array>
+    <string name="settings_icon_change_description">Prikrijte aplikacijo Proton VPN z diskretno ikono. Obvestila bodo še vedno prikazovala privzeto ime in ikono Proton VPN. %1$s</string>
+    <string name="settings_icon_change_learn_more">Več informacij</string>
+    <string name="learn_more">Izvedi več</string>
+    <string name="netshield_state_on" comment="Describes state, not action">Vključeno</string>
+    <string name="netshield_state_off" comment="Describes state, not action">Izklopljeno</string>
+    <string name="netshield_state_unavailable" comment="Describes state, not action">Ni na voljo</string>
+    <string name="split_tunneling_state_on" comment="Describes state, not action">Vključeno</string>
+    <string name="split_tunneling_state_off" comment="Describes state, not action">Izklopljeno</string>
+    <string name="vpn_accelerator_state_on" comment="Describes state, not action">Vključeno</string>
+    <string name="vpn_accelerator_state_off" comment="Describes state, not action">Izklopljeno</string>
+    <string name="lan_state_on" comment="Describes state, not action">Vključeno</string>
+    <string name="lan_state_off" comment="Describes state, not action">Izklopljeno</string>
+    <string name="alt_routing_state_on" comment="Describes state, not action">Vključeno</string>
+    <string name="alt_routing_state_off" comment="Describes state, not action">Izklopljeno</string>
+    <string name="custom_dns_state_on" comment="Describes state, not action">Vključeno</string>
+    <string name="custom_dns_state_off" comment="Describes state, not action">Izklopljeno</string>
+    <string name="custom_dns_state_unavailable" comment="Describes state, not action">Ni na voljo</string>
+    <string name="custom_dns_item_removed_snackbar">Predmet odstranjen</string>
+    <string name="netshield_free_description">Blokirajte oglase, sledilnike in zlonamerno programsko opremo na spletnih mestih in v aplikacijah</string>
+    <string name="netshield_what_data_means">Pojasnilo statistike NetShield</string>
+    <string name="netshield_ads_title">Oglasi</string>
+    <string name="netshield_ads_details">Oglasi in nevidni sledilniki oglasov</string>
+    <string name="netshield_trackers_title">Sledilniki</string>
+    <string name="netshield_trackers_details">Piškotki in drugi sledilniki, ki shranjujejo in delijo informacije o vaši internetni dejavnosti</string>
+    <string name="netshield_data_title">Podatki</string>
+    <string name="netshield_data_details">Količina neželenih podatkov iz oglasov, sledilnikov in zlonamerne programske opreme, ki jih blokira NetShield</string>
+    <plurals name="netshield_ads_blocked" comment="Number of ads blocked by netshield. Number displayed above the text">
+        <item quantity="one">Oglas blokiran</item>
+        <item quantity="two">Oglasa blokirana</item>
+        <item quantity="few">Oglasi blokirani</item>
+        <item quantity="other">Oglasov blokiranih</item>
+    </plurals>
+    <plurals name="netshield_trackers_stopped" comment="Number of trackers stopped by netshield. Number displayed above the text">
+        <item quantity="one">Sledilnik ustavljen</item>
+        <item quantity="two">Sledilnika ustavljena</item>
+        <item quantity="few">Sledilniki ustavljeni</item>
+        <item quantity="other">Sledilnikov ustavljenih</item>
+    </plurals>
+    <string name="netshield_data_saved" comment="Total data saved by netshield shown in kb/mb">Shranjeni podatki</string>
+    <string name="netshield_setting_warning">Nekatere spletne strani se morda ne bodo pravilno naložile, če so oglasi in sledilniki blokirani.</string>
+    <string name="netshield_setting_block_adult_content">Blokiraj vsebine za odrasle</string>
+    <string name="dialogDontShowAgain">Ne prikaži več</string>
+    <string name="guestHoleNotificationContent">Poskušam zaobiti težave z omrežjem. To vam bo pomagalo dostopati do Proton VPN.</string>
+    <string name="errorTunMultiUserPermission">Zaradi konflikta med dvojno aplikacijo (na primer Dual Messenger) in deljenim tuneliranjem ni bilo mogoče vzpostaviti povezave VPN. Onemogočite eno od teh možnosti in znova zaženite napravo.</string>
+    <string name="errorTorrentNotAllowed">P2P na tem strežniku ni dovoljen</string>
+    <string name="error_profile_fallback_unavailable">Povezava ni uspela. Izbira strežnika za profil ni na voljo.</string>
+    <string name="profileProtocolNotAvailable">Ta profil protokola VPN trenutno ni na voljo. Če želite vzpostaviti povezavo, spremenite protokol.</string>
+    <string name="stateConnectedTo">Povezano z %1$s</string>
+    <string name="stateNotConnected">Niste povezani</string>
+    <string name="nameEurope">Evropa</string>
+    <string name="nameAmerica">Amerika</string>
+    <string name="nameAsia">Azija</string>
+    <string name="nameAfricaAndMiddleEast">Afrika &amp; Bližnji vzhod</string>
+    <string name="nameOceania">Oceanija</string>
+    <string name="tv_row_settings">Nastavitve</string>
+    <string name="tv_card_lan_connections_label">LAN</string>
+    <string name="tv_card_split_tunneling_label">Razdeljeno tuneliranje</string>
+    <string name="tv_card_protocol_label">Protokol</string>
+    <string name="tv_dialog_delete_server_title">Izbriši strežnik %1$s?</string>
+    <string name="tv_detail_default_connection_checkbox_short">Najljubša</string>
+    <string name="tv_detail_connect_streaming">Pretakajte s Plusom</string>
+    <string name="tv_detail_connect">Poveži</string>
+    <string name="tv_detail_description_streaming_country">Pretakajte svojo najljubšo vsebino. Dostopajte do več aplikacij s paketom Proton VPN Plus.</string>
+    <string name="tv_detail_description_no_streaming_country">Pretakajte več svoje najljubše vsebine s paketom Proton VPN Plus.</string>
+    <string name="tv_detail_description_country_not_available">Ta država ni na voljo. Pridobite več možnosti pretakanja s paketom Proton VPN Plus.</string>
+    <string name="tv_detail_description_plus">S svojimi aplikacijami pretakajte svoje najljubše videoposnetke, filme ali šport.</string>
+    <string name="tv_login_title_welcome">Pretakajte svojo najljubšo video vsebino</string>
+    <string name="tv_login_welcome_description_bottom"><![CDATA[Pridobite svoj račun Proton VPN na <b>%1$s</b>]]></string>
+    <string name="back">Nazaj</string>
+    <string name="tv_vpn_error_dialog_title">Povezava VPN ni uspela</string>
+    <string name="tv_signout_label">Odjava</string>
+    <string name="tv_signout_dialog_title">Ali ste prepričani, da se želite izpisati?</string>
+    <string name="tv_signout_dialog_description_connected">S tem boste prekinili povezavo med televizorjem in katerim koli strežnikom VPN.</string>
+    <string name="tv_signout_dialog_ok">Odjava</string>
+    <string name="tv_quick_connect_recommened">Priporočeno</string>
+    <string name="tv_quick_connect_favourite">Priljubljene</string>
+    <string name="tv_country_maintenance_dialog_title">Država ni na voljo</string>
+    <string name="tv_country_maintenance_dialog_description">Poskusite znova pozneje ali izberite drugo državo.</string>
+    <!-- The placeholder is replaced with a 0-100 value indicating the server load in percent.
+         Please note the double % sign after the placeholder. It is displayed as a single % sign in the app.
+
+         Example: 76% server load -->
+    <string name="tv_server_list_load">%1$s%% obremenitev strežnika</string>
+    <string name="tv_recently_used_servers">Nedavno uporabljeni strežniki</string>
+    <string name="tv_available_servers">Razpoložljivi strežniki</string>
+    <string name="tv_locked_servers">Zaklenjeni strežniki</string>
+    <string name="tv_other_servers">Drugi strežniki</string>
+    <string name="tv_server_list">Seznam strežnikov</string>
+    <string name="tv_server_list_action_unavailable">Ni na voljo</string>
+    <string name="notification_subscription_expired_title">Vaš naročniški paket Proton VPN je potekel</string>
+    <string name="notification_subscription_expired_content">Vaš paket smo morali znižati, vendar vas ponovno povezujemo z najhitrejšim strežnikom, ki je na voljo v tem paketu.</string>
+    <string name="notification_subscription_expired_no_reconnection_content">Vaša naročnina je bila znižana.</string>
+    <string name="notification_delinquent_title">Vaš račun Proton VPN ima neplačane račune</string>
+    <string name="notification_delinquent_content">Vzemite si trenutek in posodobite podatke za obračun, da bo vaša naročnina ostala aktivna.</string>
+    <string name="notification_max_sessions_title">Dosegli ste največjo omejitev naprave</string>
+    <!-- The number of devices will always be greater than 1. -->
+    <plurals name="notification_max_sessions_upsell_content">
+        <item quantity="one">Prekinite povezavo z drugo napravo, da povežete to, ali nadgradite na Plus, da boste hkrati povezali do %1$d napravo.</item>
+        <item quantity="two">Prekinite povezavo z drugo napravo, da povežete to, ali nadgradite na Plus, da boste hkrati povezali do %1$d napravi.</item>
+        <item quantity="few">Prekinite povezavo z drugo napravo, da povežete to, ali nadgradite na Plus, da boste hkrati povezali do %1$d naprave.</item>
+        <item quantity="other">Prekinite povezavo z drugo napravo, da povežete to, ali nadgradite na Plus, da boste hkrati povezali do %1$d naprav.</item>
+    </plurals>
+    <string name="notification_max_sessions_content">Odklopite drugo napravo, da povežete to.</string>
+    <string name="notification_cancel_to_free">Ste na brezplačnem paketu. Na voljo so brezplačni strežniki in funkcije.</string>
+    <string name="notification_cancel_to_basic">Ste na osnovnem paketu. Osnovni &amp; brezplačni strežniki in funkcije so na voljo.</string>
+    <string name="notification_cancel_to_delinquent">Po plačilu čakajočih računov boste lahko znova dostopali do premijskih funkcij.</string>
+    <string name="reconnect_from_server">Iz strežnika: </string>
+    <string name="reconnect_to_server">Na strežnik: </string>
+    <string name="no_thanks">Ne, hvala.</string>
+    <string name="enable">Omogoči</string>
+    <string name="notification_smart_protocol_disabled_title">Pametni protokol je trenutno onemogočen</string>
+    <string name="notification_smart_protocol_disabled_content">Proton VPN je zaznal, da vaše trenutno omrežje preprečuje povezavo z VPN. Če omogočite pametni protokol, lahko zaobidete te omejitve.</string>
+    <string name="notification_streaming_blocked_title">Pretakanje ne deluje?</string>
+    <string name="notification_streaming_blocked_text">Številne pretočne storitve zaznajo in blokirajo povezave iz brezplačnih VPN strežnikov. Nadgradite na Proton VPN Plus, da zaobidete blokiranje.</string>
+    <string name="upsell_advanced_features">Napredne funkcije: NetShield, Secure Core, Tor, P2P</string>
+    <string name="upsell_streaming_services">Dostopajte do storitev pretakanja (Netflix, Disney+ itd.) kjer koli na svetu</string>
+    <!-- Number of servers available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_servers">
+        <item quantity="one">%1$d strežnik</item>
+        <item quantity="two">%1$d strežnika</item>
+        <item quantity="few">%1$d strežniki</item>
+        <item quantity="other">%1$d strežnikov</item>
+    </plurals>
+    <!-- Number of countries available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_countries">
+        <item quantity="one">%1$d država</item>
+        <item quantity="two">%1$d državi</item>
+        <item quantity="few">%1$d države</item>
+        <item quantity="other">%1$d držav</item>
+    </plurals>
+    <string name="upsell_upgrade_again">Znova nadgradite in uživajte v vseh funkcijah:</string>
+    <plurals name="upgrade_devices_title">
+        <item quantity="one">Zaščitite %1$d napravo hkrati</item>
+        <item quantity="two">Zaščitite %1$d napravi hkrati</item>
+        <item quantity="few">Zaščitite %1$d naprave hkrati</item>
+        <item quantity="other">Zaščitite %1$d naprav hkrati</item>
+    </plurals>
+    <string name="upgrade_devices_text">Proton VPN je na voljo na 8 različnih platformah.</string>
+    <string name="upgrade_plus_title">Nadgradite svojo zasebnost</string>
+    <string name="upgrade_plus_message">Zagotovite si napredne funkcije zasebnosti in večjo hitrost z VPN Plus.</string>
+    <string name="upgrade_netshield_title">Uživajte v brskanju brez oglasov</string>
+    <string name="upgrade_netshield_message"><![CDATA[Blokirajte oglase, sledilnike in zlonamerno programsko opremo z <b>NetShield</b>.]]></string>
+    <string name="upgrade_secure_core_title">Podvojite šifriranje</string>
+    <string name="upgrade_secure_core_message"><![CDATA[Dodajte še eno plast šifriranja svoji VPN povezavi s <b>Secure Core</b>.]]></string>
+    <string name="upgrade_p2p_title">Odklenite prenose enakovrednih (P2P) in skupno rabo datotek </string>
+    <string name="upgrade_p2p_text">Izboljšajte hitrost nalaganja in prenosa, medtem ko skrivate svoj naslov IP.</string>
+    <string name="upgrade_profiles_title">Zagotovite si hiter dostop do pogostih povezav</string>
+    <string name="upgrade_profiles_text">Odklenite profile z VPN Plus</string>
+    <string name="upgrade_streaming_title">Pretakajte v 4K</string>
+    <string name="upgrade_streaming_text">Uživajte v svojih najljubših filmih in serijah kjer koli na svetu.</string>
+    <string name="upgrade_streaming_block_title">Nadgradite, da obidete blokade VPN</string>
+    <string name="upgrade_streaming_block_text">Strežniki VPN Plus vam omogočajo uživanje v vaših najljubših filmih in TV-oddajah z vsega sveta.</string>
+    <string name="upgrade_tor_title">Dostopajte do omrežja Tor z enim dotikom</string>
+    <string name="upgrade_tor_text">Povežite se s skritimi storitvami in Tor spletnimi mesti z običajnim brskalnikom.
+​</string>
+    <string name="upgrade_vpn_accelerator_title">Brskajte pri še višjih hitrostih</string>
+    <!--
+        %1$s - speed in Gbps
+        Example:
+        Unlock faster, less crowded servers with speeds of up to 10 Gbps.
+    -->
+    <string name="upgrade_vpn_accelerator_message">Odklenite hitrejše strežnike z manj gneče s hitrostmi do %1$d Gb/s.</string>
+    <string name="upgrade_split_tunneling_title">Izkoristite najboljše iz obeh svetov</string>
+    <string name="upgrade_split_tunneling_message"><![CDATA[Razdelite promet na tunele VPN in tunele brez VPN z <b>deljenim tuneliranjem</b>.]]></string>
+    <string name="upgrade_customization_title">Odklenite napredno prilagoditev VPN</string>
+    <string name="upgrade_customization_message"><![CDATA[Odklenite <b>LAN povezave</b>, <b>DNS po meri</b> in <b>NAT tipa 2</b> z VPN Plus.]]></string>
+    <string name="upgrade_all_countries_title">Dostop do vseh držav</string>
+    <!-- Number of servers inserted as %1$s in the "upgrade_plus_countries_title_new".
+         The number is rounded to the hundreds, e.g. for a value of 1234 the number used in this text is 1200.
+
+         Example:
+         1200 secure servers
+         -->
+    <plurals name="upgrade_plus_servers_new">
+        <item quantity="one">%d varen strežnik</item>
+        <item quantity="two">%d varna strežnika</item>
+        <item quantity="few">%d varni strežniki</item>
+        <item quantity="other">%d varnih strežnikov</item>
+    </plurals>
+    <!-- Number of countries inserted as %2$s in "upgrade_plus_countries_title_new".
+
+         Example:
+         55 countries
+         -->
+    <plurals name="upgrade_plus_countries">
+        <item quantity="one">%d država</item>
+        <item quantity="two">%d državi</item>
+        <item quantity="few">%d države</item>
+        <item quantity="other">%d držav</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with "upgrade_plus_servers_new"
+     %2$s - replaced with "upgrade_plus_countries"
+
+     Example:
+     Unlock 1300+ secure servers in 61 countries with VPN Plus.
+     -->
+    <string name="upgrade_plus_countries_title_new"><![CDATA[Odklenite %1$s v %2$s z <b>VPN Plus</b>.]]></string>
+    <string name="mail_app_name" translateable="false">Proton Mail</string>
+    <string name="upgrade_unlimited_all_apps_title">Zagotovite si popolno zasebno pokritost s Proton Unlimited</string>
+    <string name="upgrade_unlimited_all_apps_description">Odklenite vse premijske funkcije iz Proton VPN, pošte, koledarja, Drive in Pass.</string>
+    <string name="upgrade_unlimited_more">In več</string>
+    <string name="upgrade_unlimited_vpn_unlimited_countries">Odkleni vse države</string>
+    <string name="upgrade_unlimited_vpn_all_features">Vse druge funkcije VPN Plus</string>
+    <string name="upgrade_unlimited_vpn_any_location">Izberite poljubno lokacijo</string>
+    <string name="upgrade_unlimited_vpn_higher_speeds">Še večje hitrosti VPN</string>
+    <plurals name="upgrade_unlimited_vpn_many_devices">
+        <item quantity="one">Zaščitite %1$d napravo hkrati</item>
+        <item quantity="two">Zaščitite %1$d napravi hkrati</item>
+        <item quantity="few">Zaščitite %1$d naprave hkrati</item>
+        <item quantity="other">Zaščitite %1$d naprav hkrati</item>
+    </plurals>
+    <string name="upgrade_unlimited_vpn_streaming">Varni pretočni prenos</string>
+    <string name="upgrade_unlimited_vpn_adblocker">Onemogočanje oglasov in zaščita pred zlonamerno programsko opremo</string>
+    <string name="upgrade_unlimited_vpn_double_vpn">Dvojni VPN</string>
+    <string name="upgrade_unlimited_vpn_p2p">Podpora za P2P</string>
+    <plurals name="upgrade_unlimited_mail_custom_domains">
+        <item quantity="one">%1$d e-poštna domena po meri</item>
+        <item quantity="two">%1$d e-poštni domeni po meri</item>
+        <item quantity="few">%1$d e-poštne domene po meri</item>
+        <item quantity="other">%1$d e-poštnih domen po meri</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_attachments">
+        <item quantity="one">%1$d MB priponka</item>
+        <item quantity="two">%1$d MB priponki</item>
+        <item quantity="few">%1$d MB priponk</item>
+        <item quantity="other">%1$d MB priponk</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_many_addresses">
+        <item quantity="one">%1$d e-poštni naslov</item>
+        <item quantity="two">%1$d e-poštna naslova</item>
+        <item quantity="few">%1$d e-poštni naslovi</item>
+        <item quantity="other">%1$d e-poštnih naslovov</item>
+    </plurals>
+    <string name="upgrade_unlimited_mail_unlimited_folders">Neomejeno število map in filtrov</string>
+    <string name="upgrade_unlimited_mail_dark_web">Spremljanje temnega spleta</string>
+    <string name="upgrade_unlimited_mail_aliases">Neomejeno število vzdevkov hide-my-email</string>
+    <string name="upgrade_unlimited_mail_autoreply">Samodejni odgovor</string>
+    <string name="upgrade_unlimited_mail_scheduled_send">Načrtovano pošiljanje</string>
+    <plurals name="upgrade_unlimited_calendar_calendars">
+        <item quantity="one">%1$d osebni koledar</item>
+        <item quantity="two">%1$d osebna koledarja</item>
+        <item quantity="few">%1$d osebni koledarji</item>
+        <item quantity="other">%1$d osebnih koledarjev</item>
+    </plurals>
+    <string name="upgrade_unlimited_calendar_sharing">Deljenje koledarja</string>
+    <string name="upgrade_unlimited_calendar_invites">Pošiljanje in prejemanje povabil</string>
+    <string name="upgrade_unlimited_drive_encryption">Šifrirana shramba za datoteke</string>
+    <string name="upgrade_unlimited_drive_storage_size">%1$d GB skupne shrambe za fotografije, datoteke in pošto</string>
+    <string name="upgrade_unlimited_drive_link_share">Deli fotografije in datoteke prek povezave</string>
+    <string name="upgrade_unlimited_drive_sharing_security">Napredna varnost deljenja</string>
+    <string name="upgrade_unlimited_drive_version_history">Zgodovina različic</string>
+    <string name="upgrade_unlimited_pass_manager">Šifriran upravitelj gesel</string>
+    <string name="upgrade_unlimited_pass_logins_aliases">Neomejeno prijav in vzdevkov za hide-my-email</string>
+    <plurals name="upgrade_unlimited_pass_vaults">
+        <item quantity="one">%1$d trezor</item>
+        <item quantity="two">%1$d trezorja</item>
+        <item quantity="few">%1$d trezorji</item>
+        <item quantity="other">%1$d trezorjev</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_logins">Neomejeno prijav</string>
+    <string name="upgrade_unlimited_pass_aliases">Neomejeno število vzdevkov hide-my-email</string>
+    <string name="upgrade_unlimited_pass_credit_cards">Neomejeno število plačilnih kartic</string>
+    <string name="upgrade_unlimited_pass_devices">Neomejeno število naprav</string>
+    <plurals name="upgrade_unlimited_pass_users">
+        <item quantity="one">Dajte v skupno rabo z %1$d osebo</item>
+        <item quantity="two">Dajte v skupno rabo z %1$d osebama</item>
+        <item quantity="few">Dajte v skupno rabo z %1$d osebami</item>
+        <item quantity="other">Dajte v skupno rabo z %1$d osebami</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_2fa_auth">Vgrajen modul za preverjanje pristnosti 2FA</string>
+    <string name="upgrade_not_now_button">Ne zdaj</string>
+    <!-- Content description for plan selection list.
+         Only used by accessibility services.
+
+         Example:
+         When the plan selection control is focused, and the first plan name is "VPN Plus"
+         TalkBack will read:
+         "VPN Plus, 1 of 2, in list Upgrade options" -->
+    <string name="upgrade_plan_selection_content_description">Možnosti nadgradnje</string>
+    <!-- Text in a "badge" element that has a rounded border and represents the Plus VPN plan.
+         May be used as a table header or like an icon. -->
+    <string name="badge_plan_plus">Plus</string>
+    <!-- Content description prefix for value in the benefits table row for the free plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_plus">Paket Plus:</string>
+    <!-- Content description prefix for value in the benefits table row for the plus plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_free">Brezplačen paket:</string>
+    <string name="upsell_panel_content_description_yes">Da</string>
+    <string name="upsell_panel_content_description_no">Ne</string>
+    <string name="upsell_panel_table_header_plan_free">Brezplačno</string>
+    <string name="upsell_panel_general_benefit_block_ads">Block ads and trackers</string>
+    <string name="upsell_panel_general_benefit_countries">Razpoložljive države</string>
+    <!-- %1$s - number of countries rounded to full tens. Example: 120+, 130+, 140+ -->
+    <string name="upsell_panel_general_benefit_countries_rounded">%1$d+</string>
+    <string name="upsell_panel_general_benefit_devices">Zaščitene naprave</string>
+    <string name="upsell_panel_general_benefit_location">Choose your location</string>
+    <string name="upsell_panel_general_benefit_server">Izberite svoj strežnik</string>
+    <string name="upsell_panel_general_benefit_shows">Glejte svoje serije iz katere koli države</string>
+    <string name="upsell_panel_general_benefit_speed">Hitrost strežnika</string>
+    <string name="upsell_panel_general_benefit_speed_standard">Standardno</string>
+    <string name="upsell_panel_general_benefit_speed_highest">Najvišja</string>
+    <string name="upsell_panel_adv_customization_title">Natančno prilagodite povezavo</string>
+    <string name="upsell_panel_adv_customization_description">Omogočite povezave prek lokalnega omrežja (LAN), nastavite lastni DNS in izberite vrsto NAT. V paketu Plus so vključene vse napredne nastavitve.</string>
+    <string name="upsell_panel_adv_customization_benefit_lan">Dostop do tiskalnikov in ostalih domačih naprav</string>
+    <string name="upsell_panel_adv_customization_benefit_dns">Uporabite lastno storitev DNS</string>
+    <string name="upsell_panel_adv_customization_benefit_gaming">Boljše povezave za igranje</string>
+    <!--
+        %1$s - country name in nominative
+
+        Warning country names are inserted in the nominative case.
+        For inflicted languages translate the following phrase instead:
+        Get VPN Plus to access: %1$s
+        -->
+    <string name="upsell_panel_country_title">Pridobite VPN Plus za dostop do: %1$s</string>
+    <string name="upsell_panel_countries_title">Odklenite vse države s storitvijo VPN Plus</string>
+    <string name="upsell_panel_country_benefit_speed">Hitri strežniki</string>
+    <string name="upsell_panel_country_benefit_shows">Glejte oddaje, ki so na voljo le v tujini</string>
+    <string name="upsell_panel_devices_title">Zaščitite vse svoje naprave</string>
+    <string name="upsell_panel_devices_description">Od telefona do televizorja, in vse, kar je vmes.</string>
+    <string name="upsell_panel_netshield_title">Brskajte brez prekinitev</string>
+    <string name="upsell_panel_netshield_benefit_ads">Oglasi blokirani med brskanjem</string>
+    <string name="upsell_panel_netshield_benefit_trackers">Preprečite sledilcem, da bi vam sledili</string>
+    <string name="upsell_panel_netshield_benefit_malware">Zaščita pred zlonamerno programsko opremo in lažnim predstavljanjem</string>
+    <string name="upsell_panel_netshield_benefit_load_speed">Strani se nalagajo hitreje </string>
+    <string name="upsell_panel_onboarding_title">Get more with VPN Plus</string>
+    <string name="upsell_panel_p2p_title">Prenosi s polno hitrostjo</string>
+    <string name="upsell_panel_p2p_description">Strežniki, namenjeni za izmenjavo datotek z uporabo običajnega torrent odjemalca.</string>
+    <string name="upsell_panel_p2p_benefit_p2p">Izmenjava datotek P2P</string>
+    <string name="upsell_panel_profiles_title">Pretakanje, igranje iger, delo: vsaka dejavnost ima svoj profil</string>
+    <string name="upsell_panel_profiles_description">Shranite nastavitve povezav in se znova povežite z enim klikom.</string>
+    <string name="upsell_panel_profiles_benefit_profiles">Shranjeni profili</string>
+    <string name="upsell_panel_profiles_benefit_profiles_unlimited">Neomejeno</string>
+    <string name="upsell_panel_secure_core_title">Dve plasti šifriranja med vami in spletom</string>
+    <string name="upsell_panel_secure_core_description">Preden je povezava usmerjena v izbrano državo, gre prek strežnika Proton v Švici, na Islandiji ali Švedskem.</string>
+    <string name="upsell_panel_secure_core_benefit_secure_core">Secure Core</string>
+    <string name="upsell_panel_speed_title">Hitrejše pretakanje vsebin, igranje iger in prenašanje datotek</string>
+    <string name="upsell_panel_speed_benefit_servers">Hitri strežniki</string>
+    <string name="upsell_panel_speed_benefit_gaming">Odzivni čas med igranjem iger</string>
+    <string name="upsell_panel_speed_benefit_gaming_slow">Počasen</string>
+    <string name="upsell_panel_speed_benefit_gaming_fast">Hiter</string>
+    <string name="upsell_panel_speed_benefit_video">Pretočne video vsebine brez čakanja</string>
+    <string name="upsell_panel_speed_benefit_p2p">P2P downloads supported</string>
+    <string name="upsell_panel_split_tunneling_title">Izberite, katere aplikacije lahko uporabijo VPN</string>
+    <string name="upsell_panel_split_tunneling_description">Vaš brskalnik upirabi VPN, vaša bančna aplikacija za zaobide. Vi določite, za vsako aplikacijo posebej.</string>
+    <string name="upsell_panel_split_tunneling_benefit_split">Razdeljeno tuneliranje</string>
+    <string name="upsell_panel_streaming_title">Glejte svoje priljubljene storitve za pretočno predvajanje</string>
+    <string name="upsell_panel_streaming_benefit_shows">Watch shows from any country</string>
+    <!-- The asterisk points to upsell_panel_streaming_footer -->
+    <string name="upsell_panel_streaming_benefit_platforms">Podprte so vse popularne platforme za pretočno predvajanje *</string>
+    <string name="upsell_panel_streaming_benefit_hd">Glejte v HD ločljivosti brez čakanja na nalaganje</string>
+    <string name="upsell_panel_streaming_benefit_devices">Naprave, ki so hkrati povezane</string>
+    <string name="upsell_panel_streaming_footer">* Potrebna je naročnina na platformo za pretočno predvajanje.</string>
+    <string name="upsell_panel_streaming_block_title">Nadgradite, da obidete blokade VPN</string>
+    <string name="upsell_panel_streaming_block_description">Strežniki VPN Plus vam omogočajo uživanje v vaših najljubših filmih in TV-oddajah z vsega sveta.</string>
+    <string name="upsell_panel_tor_title">Spletne strani \"Onion\", brez potrebe po brskalniku Tor</string>
+    <string name="upsell_panel_tor_description">Dostop do .onion strani v brskalniku, katerega običajno uporabljate.</string>
+    <string name="upsell_panel_tor_benefit_tor">Tor preko VPN</string>
+    <string name="upsell_card_countries_title">Pokritost po vsem svetu</string>
+    <!-- Parameters:
+        %1$d - number of servers rounded up to 100s (e.g. 600, 1200)
+        %2$s - replaced with "upgrade_plus_countries"
+
+        Example:
+        1700+ server locations in 63 countries -->
+    <string name="upsell_card_countries_description">Več kot %1$d strežniških lokacij v %2$s</string>
+    <string name="upsell_card_customization_title">In veliko več …</string>
+    <string name="upsell_card_customization_description">Odklenite še več zmogljivosti in funkcij zasebnosti</string>
+    <plurals name="upsell_card_devices_title">
+        <item quantity="one">Zaščitite %1$d napravo</item>
+        <item quantity="two">Zaščitite %1$d napravi</item>
+        <item quantity="few">Zaščitite %1$d naprave</item>
+        <item quantity="other">Zaščitite %1$d naprav</item>
+    </plurals>
+    <string name="upsell_card_devices_description">Varnost in zasebnost na vseh vaših napravah</string>
+    <string name="upsell_card_netshield_title">NetShield</string>
+    <string name="upsell_card_netshield_description">Blokirajte oglase, zlonamerno programsko opremo in sledilnike</string>
+    <string name="upsell_card_secure_core_title">Secure Core</string>
+    <string name="upsell_card_secure_core_description">Dodajte še eno plast šifriranja svoji VPN povezavi s Secure Core</string>
+    <string name="upsell_card_p2p_title">Podpora za P2P</string>
+    <string name="upsell_card_p2p_description">​Prenesite datoteke prek BitTorrenta in drugih protokolov za skupno rabo datotek</string>
+    <string name="upsell_card_profiles_title">Profili</string>
+    <string name="upsell_card_profiles_description">Ustvarite VPN-povezave po meri</string>
+    <string name="upsell_card_speed_title">Hitrejše brskanje</string>
+    <!-- Parameters:
+        %1$d - max server speed in Gbps (preserve the non-breaking space between the number and Gbps).
+        Example:
+        Browse at even higher speeds (up to 10&160;Gbps) -->
+    <string name="upsell_card_speed_description">Brskajte pri še večjih hitrostih (do %1$d Gb/s)</string>
+    <string name="upsell_card_split_tunneling_title">Razdeljeno tuneliranje</string>
+    <string name="upsell_card_split_tunneling_description">Brskajte z dveh lokacij hkrati</string>
+    <string name="upsell_card_streaming_title">Pretakanje</string>
+    <string name="upsell_card_streaming_description">Glejte svoje najljubše filme in serije</string>
+    <string name="upsell_card_tor_title">Tor preko VPN</string>
+    <string name="upsell_card_tor_description">Za dodatno zasebnost uporabite omrežje Tor prek povezave VPN</string>
+    <string name="upsell_tv_all_countries_title">Dostop do vseh držav s Plus-om</string>
+    <!-- Format for upselling countries on TV".
+        %1$s - replaced with upgrade_plus_servers_new plurals key (e.g. 1 secure server or 10 secure servers)
+        %2$s - replaced with upgrade_plus_countries plurals key (e.g. 1 country or 10 countries)
+
+        Example: Unlock 16821 secure servers in 127 countries. Go to the Proton VPN website to upgrade your plan.
+    -->
+    <string name="upsell_tv_all_countries_description">Odkleni %1$s v %2$s.</string>
+    <string name="upsell_tv_netshield_title">Uživajte v brskanju brez oglasov s Plus-om</string>
+    <string name="upsell_tv_netshield_description"><![CDATA[Blokirajte oglase, sledilnike in zlonamerno programsko opremo z <b>NetShield</b>.]]></string>
+    <string name="upsell_tv_split_tunneling_title">Izkoristite najboljše iz obeh svetov s Plus-om</string>
+    <string name="upsell_tv_split_tunneling_description"><![CDATA[Razdelite promet na tunele VPN in tunele brez VPN z <b>deljenim tuneliranjem</b>.]]></string>
+    <string name="upsell_tv_subscription_expired_title">Naročnina je potekla</string>
+    <string name="upsell_tv_subscription_expired_description">Nadgradite za ponoven dostop do strežnikov Plus in funkcij.</string>
+    <string name="upsell_tv_customization_title">Pridobite napredno prilagoditev VPN-ja s Plus</string>
+    <string name="upsell_tv_customization_description"><![CDATA[Odklenite <b>LAN povezave</b>, <b>DNS po meri</b> in naprednejše funkcije VPN.]]></string>
+    <string name="upsell_tv_fallback_description">Pojdite na spletno mesto Proton VPN, da nadgradite svoj paket.</string>
+    <!-- Format for price per period of time.
+        %1$s - replaced with price and currency (e.g. "$100")
+        %2$s - replaced with time period, one of payment_price_per_ (e.g. "month", "week")
+
+        Examples:
+        50 PLN /month
+        $100 /year
+    -->
+    <string name="payment_price_with_period">%1$s /%2$s</string>
+    <string name="payment_price_per_day">day</string>
+    <string name="payment_price_per_week">week</string>
+    <string name="payment_price_per_month">mesec</string>
+    <string name="payment_price_per_year">leto</string>
+    <plurals name="payment_price_cycle_label_day">
+        <item quantity="one">%1$d day</item>
+        <item quantity="two">%1$d days</item>
+        <item quantity="few">%1$d days</item>
+        <item quantity="other">%1$d days</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_week">
+        <item quantity="one">%1$d week</item>
+        <item quantity="two">%1$d weeks</item>
+        <item quantity="few">%1$d weeks</item>
+        <item quantity="other">%1$d weeks</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_month">
+        <item quantity="one">%1$d month</item>
+        <item quantity="two">%1$d months</item>
+        <item quantity="few">%1$d months</item>
+        <item quantity="other">%1$d months</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_year">
+        <item quantity="one">%1$d year</item>
+        <item quantity="two">%1$d years</item>
+        <item quantity="few">%1$d years</item>
+        <item quantity="other">%1$d years</item>
+    </plurals>
+    <string name="payment_select_your_plan">Izberite svoj paket</string>
+    <!-- Label on a button for purchasing a subscription.
+         Parameter: %1$s - plan name
+         Plan names are not translated.
+
+         Example: "Get VPN Plus", "Get Proton Unlimited". -->
+    <string name="payment_button_get_plan">Pridobi %1$s</string>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_discount_renewal_price_message_daily">
+        <item quantity="one">Special offer. Auto renews at %1$s/day</item>
+        <item quantity="two">Special offer. Auto renews at %1$s every %2$d days</item>
+        <item quantity="few">Special offer. Auto renews at %1$s every %2$d days</item>
+        <item quantity="other">Special offer. Auto renews at %1$s every %2$d days</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_discount_renewal_price_message_weekly">
+        <item quantity="one">Special offer. Auto renews at %1$s/week</item>
+        <item quantity="two">Special offer. Auto renews at %1$s every %2$d weeks</item>
+        <item quantity="few">Special offer. Auto renews at %1$s every %2$d weeks</item>
+        <item quantity="other">Special offer. Auto renews at %1$s every %2$d weeks</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_discount_renewal_price_message_monthly">
+        <item quantity="one">Special offer. Auto renews at %1$s/month</item>
+        <item quantity="two">Special offer. Auto renews at %1$s every %2$d months</item>
+        <item quantity="few">Special offer. Auto renews at %1$s every %2$d months</item>
+        <item quantity="other">Special offer. Auto renews at %1$s every %2$d months</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_discount_renewal_price_message_yearly">
+        <item quantity="one">Special offer. Auto renews at %1$s/year</item>
+        <item quantity="two">Special offer. Auto renews at %1$s every %2$d years</item>
+        <item quantity="few">Special offer. Auto renews at %1$s every %2$d years</item>
+        <item quantity="other">Special offer. Auto renews at %1$s every %2$d years</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_renewal_price_message_daily">
+        <item quantity="one">Subscription auto renews at %1$s/day</item>
+        <item quantity="two">Subscription auto renews at %1$s every %2$d days</item>
+        <item quantity="few">Subscription auto renews at %1$s every %2$d days</item>
+        <item quantity="other">Subscription auto renews at %1$s every %2$d days</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_renewal_price_message_weekly">
+        <item quantity="one">Subscription auto renews at %1$s/week</item>
+        <item quantity="two">Subscription auto renews at %1$s every %2$d weeks</item>
+        <item quantity="few">Subscription auto renews at %1$s every %2$d weeks</item>
+        <item quantity="other">Subscription auto renews at %1$s every %2$d weeks</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_renewal_price_message_monthly">
+        <item quantity="one">Subscription auto renews at %1$s/month</item>
+        <item quantity="two">Subscription auto renews at %1$s every %2$d months</item>
+        <item quantity="few">Subscription auto renews at %1$s every %2$d months</item>
+        <item quantity="other">Subscription auto renews at %1$s every %2$d months</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_renewal_price_message_yearly">
+        <item quantity="one">Subscription auto renews at %1$s/year</item>
+        <item quantity="two">Subscription auto renews at %1$s every %2$d years</item>
+        <item quantity="few">Subscription auto renews at %1$s every %2$d years</item>
+        <item quantity="other">Subscription auto renews at %1$s every %2$d years</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_daily">
+        <item quantity="one">%1$s/day</item>
+        <item quantity="two">%1$s every %2$d days</item>
+        <item quantity="few">%1$s every %2$d days</item>
+        <item quantity="other">%1$s every %2$d days</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_weekly">
+        <item quantity="one">%1$s/week</item>
+        <item quantity="two">%1$s every %2$d weeks</item>
+        <item quantity="few">%1$s every %2$d weeks</item>
+        <item quantity="other">%1$s every %2$d weeks</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_monthly">
+        <item quantity="one">%1$s/month</item>
+        <item quantity="two">%1$s every %2$d months</item>
+        <item quantity="few">%1$s every %2$d months</item>
+        <item quantity="other">%1$s every %2$d months</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_yearly">
+        <item quantity="one">%1$s/year</item>
+        <item quantity="two">%1$s every %2$d years</item>
+        <item quantity="few">%1$s every %2$d years</item>
+        <item quantity="other">%1$s every %2$d years</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_for_days">
+        <item quantity="one">for the first day</item>
+        <item quantity="two">for the first %1$d days</item>
+        <item quantity="few">for the first %1$d days</item>
+        <item quantity="other">for the first %1$d days</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_for_weeks">
+        <item quantity="one">for the first week</item>
+        <item quantity="two">for the first %1$d weeks</item>
+        <item quantity="few">for the first %1$d weeks</item>
+        <item quantity="other">for the first %1$d weeks</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_for_months">
+        <item quantity="one">for the first month</item>
+        <item quantity="two">for the first %1$d months</item>
+        <item quantity="few">for the first %1$d months</item>
+        <item quantity="other">for the first %1$d months</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_discount_for_years">
+        <item quantity="one">for the first year</item>
+        <item quantity="two">for the first %1$d years</item>
+        <item quantity="few">for the first %1$d years</item>
+        <item quantity="other">for the first %1$d years</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_rest_daily">
+        <item quantity="one">then auto renews at %1$s/day</item>
+        <item quantity="two">then auto renews at %1$s every %2$d days</item>
+        <item quantity="few">then auto renews at %1$s every %2$d days</item>
+        <item quantity="other">then auto renews at %1$s every %2$d days</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_rest_weekly">
+        <item quantity="one">then auto renews at %1$s/week</item>
+        <item quantity="two">then auto renews at %1$s every %2$d weeks</item>
+        <item quantity="few">then auto renews at %1$s every %2$d weeks</item>
+        <item quantity="other">then auto renews at %1$s every %2$d weeks</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_rest_monthly">
+        <item quantity="one">then auto renews at %1$s/month</item>
+        <item quantity="two">then auto renews at %1$s every %2$d months</item>
+        <item quantity="few">then auto renews at %1$s every %2$d months</item>
+        <item quantity="other">then auto renews at %1$s every %2$d months</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_rest_yearly">
+        <item quantity="one">then auto renews at %1$s/year</item>
+        <item quantity="two">then auto renews at %1$s every %2$d years</item>
+        <item quantity="few">then auto renews at %1$s every %2$d years</item>
+        <item quantity="other">then auto renews at %1$s every %2$d years</item>
+    </plurals>
+    <!-- Explains renewal cycle when first there's a discount price for several periods
+     (e.g. 2 months) and then the subscription renews at full price.
+     Periods (days, months etc) are never mixed between the messages, the whole message uses one
+     unit.
+
+     Parameters:
+      %1$s - one of payment_multi_renewal_discount_*
+      %2$s - one of payment_multi_renewal_discount_for_*
+      %3$s - one of payment_multi_renewal_rest_*
+
+     Examples:
+      "$2.99/month for the first 2 months, then auto renews at $3.99/month"
+      "$19.99/year for the first 3 years, then auto renews at $24.99/year"
+      "$3.99 every 2 months for the first 4 months, then auto renews at 5.99 every 2 months"
+    -->
+    <string name="payment_multi_renewal_template">%1$s %2$s, %3$s</string>
+    <string name="smart_routing_title">Smart Routing</string>
+    <string name="smart_routing_description">Ta tehnologija omogoča Proton VPN, da zagotavlja višjo hitrost in varnost v državah, kjer je storitev otežena.</string>
+    <string name="tor_title">Tor</string>
+    <string name="server_load_title">Obremenitev strežnika</string>
+    <string name="activity_information_learn_more">Več informacij</string>
+    <string name="server_load_low">Nizko</string>
+    <string name="server_load_medium">Srednje</string>
+    <string name="server_load_high">Visoko</string>
+    <!-- Override Human verification links from core -->
+    <string name="onboarding_welcome_title">Dobrodošli v Proton VPN</string>
+    <string name="onboarding_welcome_description">Brskajte zasebno, dostopajte do blokirane vsebine in uživajte v digitalni svobodi.</string>
+    <string name="onboarding_welcome_action">Začnite</string>
+    <string name="upgrade_success_get_started_button">Začnite</string>
+    <string name="dynamic_report_suggestion_didnt_work">Ni delovalo?</string>
+    <string name="dynamic_report_contact_us">Kontaktirajte nas</string>
+    <string name="dynamic_report_tips_description">Ti nasveti vam lahko pomagajo rešiti vašo težavo hitreje.</string>
+    <string name="dynamic_report_tips_title">Hitri popravki</string>
+    <string name="dynamic_report_logs_title">Pošlji dnevnik z napakami</string>
+    <string name="dynamic_report_logs_tooltip">Dnevniki napak nam pokažejo, kaj se je zgodilo, in katera dejanja so privedla do težave. Uporabili jih bomo samo za pomoč našim inženirjem pri odpravljanju težav.</string>
+    <string name="dynamic_report_error_title">Vašega poročila nismo mogli poslati.</string>
+    <string name="dynamic_report_completion_error_description_generic">Vašega poročila nismo mogli poslati. Poskusite znova.</string>
+    <string name="dynamic_report_completion_error_description_no_internet">Vašega poročila nismo mogli poslati. Preverite povezavo in poskusite znova.</string>
+    <string name="dynamic_report_completion_error_description_timeout">Vašega poročila nismo mogli poslati. Časovna omejitev povezave je potekla, poskusite znova.</string>
+    <string name="dynamic_report_completion_success_title">Hvala za vaše mnenje. Odgovorili vam bomo v najkrajšem možnem času.</string>
+    <string name="dynamic_report_success_title">Hvala za vaše povratne informacije.</string>
+    <string name="dynamic_report_success_description">Odgovorili vam bomo takoj, ko bo mogoče.</string>
+    <string name="dynamic_report_field_mandatory">To polje je obvezno.</string>
+    <string name="dynamic_report_logs_description">Dnevnik je vrsta datoteke, ki nam prikazuje dejanja, ki ste jih izvedli in so povzročila napako. Uporabljali jih bomo samo za pomoč našim inženirjem pri odpravljanju napak.</string>
+    <string name="dynamic_report_logs_missing">Dnevniške datoteke z napakami nam pomagajo priti do jedra vaše težave. Če jih ne vključite, morda ne bomo mogli izvesti temeljite preiskave.</string>
+    <string name="dynamic_report_step1">Korak 1 od 3</string>
+    <string name="dynamic_report_step2">Korak 2 od 3</string>
+    <string name="dynamic_report_step3">Korak 3 od 3</string>
+    <string name="dynamic_report_your_issue_headline">Kaj je težava?</string>
+    <string name="update_screen_title">Posodobi Proton VPN</string>
+    <string name="update_screen_description">Verjetneje boste imeli težave na starejših različicah Proton VPN.</string>
+    <string name="update_banner_description_settings">Nova različica aplikacije je na voljo</string>
+    <string name="update_banner_warning_vpn_connected_title">VPN se bo za kratek čas prekinil</string>
+    <string name="update_banner_warning_vpn_connected_message">Aplikacijo je treba znova zagnati, da se posodobitev dokonča. Po tem boste samodejno ponovno povezani.</string>
+    <string name="dialog_create_account_title">Za nadaljevanje ustvarite račun</string>
+    <string name="dialog_create_account_action_create">Ustvarite račun</string>
+    <string name="dialog_create_account_action_signin">Prijava</string>
+    <string name="server_search_menu_title">Išči</string>
+    <string name="search_empty_result_subtitle">Poskusite z drugo ključno besedo</string>
+    <string name="search_empty_result_title">Ni najdenih rezultatov</string>
+    <!-- Content description for an icon button that clears search query in the input field. -->
+    <string name="search_clear_query_content_description">Počisti</string>
+    <!-- Content description for an icon button that clears text in an input field. -->
+    <string name="clear_text_field_content_description">Počisti</string>
+    <!-- Example: Want to connect to Italy? -->
+    <string name="upgrade_country_title">Se želite povezati z določeno državo?</string>
+    <string name="upgrade_country_message"><![CDATA[Odklenite <b>izbiro držav</b> z VPN Plus.]]></string>
+    <string name="free_connections_info_message">Brezplačni Proton vas samodejno poveže z najhitrejšim razpoložljivim strežnikom. To bo običajno vaši lokaciji najbližji strežnik.</string>
+    <string name="free_connections_info_server_locations">Lokacije brezplačnih strežnikov (%1$d)</string>
+    <string name="free_connections_info_banner_text">Dostopajte do vseh držav s storitvijo VPN Plus</string>
+    <string name="free_connection_info_title">Brezplačne povezave</string>
+    <string name="search_upsell_banner_title">Pretakajte od koder koli</string>
+    <!-- Example: Unlock geoblocked content from 10 countries with VPN Plus. -->
+    <plurals name="search_upsell_banner_message">
+        <item quantity="one">Odklenite geografsko blokirano vsebino iz %1$d države z VPN Plus</item>
+        <item quantity="two">Odklenite geografsko blokirano vsebino iz %1$d držav z VPN Plus</item>
+        <item quantity="few">Odklenite geografsko blokirano vsebino iz %1$d držav z VPN Plus</item>
+        <item quantity="other">Odklenite geografsko blokirano vsebino iz %1$d držav z VPN Plus</item>
+    </plurals>
+    <string name="select_default_connection">Izberite svojo privzeto povezavo</string>
+    <string name="settings_default_connection_title">Privzeta povezava</string>
+    <string name="fastest_country_description">Najboljši strežnik glede na vašo lokacijo</string>
+    <string name="settings_connection_preferences_title">Nastavitve povezave</string>
+    <string name="settings_connection_preferences_snackbar_message_excluded_location_removed">Predmet odstranjen</string>
+    <string name="settings_excluded_locations_title">Izključene lokacije</string>
+    <string name="settings_excluded_locations_description">Izbrane lokacije se nikoli ne bodo uporabljale, ko se povežete s povezavo Najhitrejša.</string>
+    <string name="settings_excluded_locations_unavailable">Na voljo ni lokacij</string>
+    <string name="settings_excluded_locations_selection_hint">Izberi …</string>
+    <string name="settings_excluded_locations_accessibility_label_deletion">Odstrani iz izvzetih aplikacij</string>
+    <string name="settings_excluded_locations_accessibility_label_city">Mesto</string>
+    <string name="settings_excluded_locations_accessibility_label_country">Država</string>
+    <string name="settings_excluded_locations_accessibility_label_state">Država</string>
+    <string name="settings_last_connection_title">Zadnja povezava</string>
+    <string name="settings_last_connection_description">Vaša nazadnje uporabljena povezava</string>
+    <string name="settings_change_icon_title">Ikona aplikacije</string>
+    <string name="settings_change_icon_details">Prilagodite videz aplikacije Proton VPN na svoji napravi. Zakaj?</string>
+    <string name="settings_change_icon_confirmation_title">Želite zamenjati ikono aplikacije?</string>
+    <string name="settings_change_icon_confirmation_details">S tem se bo aplikacija Proton VPN zaprla. Za ponovni zagon Proton VPN samo pritisnite novo ikono aplikacije.</string>
+    <string name="settings_change_icon_header_protonvpn">Proton VPN</string>
+    <string name="settings_change_icon_header_discreet">Diskretna ikona aplikacije</string>
+    <string name="settings_widget_title">Gradnik</string>
+    <string name="settings_widget_selection_title">Preizkusite gradnik Proton VPN</string>
+    <string name="settings_widget_selection_description">Preverite stanje povezave in dostopajte do svojih najljubših VPN povezav z začetnega zaslona.</string>
+    <!-- Placeholder is for non-translatable app_name-->
+    <string name="setting_widget_selection_additional_description">Če želite dodati gradnik, pritisnite in pridržite kjer koli na začetnem zaslonu, nato pa v meniju gradnikov izberite %1$s.</string>
+    <string name="settings_widget_selection_button_title">Dodaj gradnik</string>
+    <string name="setting_widget_try_title">Preizkusite gradnik Proton VPN</string>
+    <!-- Content description used by accessibility services for a button for dismissing (hiding)
+         a notification banner (usually used for special offers). -->
+    <string name="notification_banner_dismiss_accessibility_label">Opusti pasico</string>
+    <!-- Time left in a countdown, it shows two units of time, e.g. days and hours, hours and minutes.
+         %1$s - larger unit of time, one of: time_left_days, time_left_hours, time_left_minutes
+         %2$s - smaller unit of time, one of: time_left_hours, time_left_minutes, time_left_seconds
+
+         Examples:
+         3 days 11 hours left
+         1 hour 32 minutes left
+         0 minutes 50 seconds left
+     -->
+    <string name="offer_time_left">%1$s še %2$s</string>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_seconds">
+        <item quantity="one">%1$d sekunda</item>
+        <item quantity="two">%1$d sekundi</item>
+        <item quantity="few">%1$d sekunde</item>
+        <item quantity="other">%1$d sekund</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_minutes">
+        <item quantity="one">%1$d minuta</item>
+        <item quantity="two">%1$d minuti</item>
+        <item quantity="few">%1$d minute</item>
+        <item quantity="other">%1$d minut</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 hours 5 minutes left -->
+    <plurals name="time_left_hours">
+        <item quantity="one">%1$d ura</item>
+        <item quantity="two">%1$d uri</item>
+        <item quantity="few">%1$d ure</item>
+        <item quantity="other">%1$d ur</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 days 5 hours left -->
+    <plurals name="time_left_days">
+        <item quantity="one">%1$d dan</item>
+        <item quantity="two">%1$d dneva</item>
+        <item quantity="few">%1$d dnevi</item>
+        <item quantity="other">%1$d dni</item>
+    </plurals>
+    <string name="server_change_max_reached">Dosegli ste trenutno največje število brezplačnih sprememb strežnika.</string>
+    <string name="server_change_upsell">Pridobite neomejene spremembe z VPN Plus.</string>
+    <string name="server_change_button_title">Spremeni strežnik</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services.
+
+        %1$s - replaced with "time_left_minutes"
+        %2$s - replaced with "time_left_seconds"
+        Example:
+        Available in 1 minute 23 seconds.
+      -->
+    <string name="server_change_button_time_left_content_description">Na voljo v %1$s %2$s</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services and only if time left is less than 1 minute.
+
+        %1$s - replaced with "time_left_seconds"
+        Example:
+        Available in 23 seconds.
+      -->
+    <string name="server_change_button_time_left_seconds_content_description">Na voljo v %1$s</string>
+    <string name="server_change_progress_finished_contend_description">Na voljo sedaj</string>
+    <string name="not_wanted_country_title">Ni država, ki ste jo želeli?</string>
+    <string name="not_wanted_country_description">Nadgradite, da izberete kateri koli strežnik</string>
+    <string name="whats_new_title">Novosti</string>
+    <string name="whats_new_profiles_title">Profili so nazaj</string>
+    <string name="whats_new_profiles_description">Ustvarite in shranite povezave po meri z vašo izbrano lokacijo, strežnikom in protokolom.</string>
+    <string name="whats_new_widget_title">Predstavljamo gradnike</string>
+    <string name="whats_new_widget_description">Zdaj si lahko ogledate in upravljate svoj VPN, ne da bi zapustili začetni zaslon.</string>
+    <string name="whats_new_add_widget_button">Dodaj gradnik</string>
+    <string name="welcome_plus_title">Dobrodošli pri Proton Plus</string>
+    <string name="welcome_plus_description">Uživajte v dodatnih funkcijah zasebnosti, okrepljeni zmogljivosti in prilagoditvi VPN naslednje stopnje.</string>
+    <string name="welcome_unlimited_title">Dobrodošli v Proton Unlimited</string>
+    <string name="welcome_unlimited_description">Odklenili ste vse premijske funkcije Proton VPN, Mail, Calendar, Drive, Pass in Wallet.</string>
+    <string name="welcome_generic_title">Čestitamo</string>
+    <string name="welcome_generic_description">Nadgradili ste naročnino. Uživajte v naprednih funkcijah zasebnosti in zmogljivosti naslednje ravni.</string>
+    <!-- Text added to button labels that open links in a browser (as opposed to performing actions
+         within the app). Only used by accessibility services like screen readers.
+         Example:
+         a button with "Learn more" label and this suffix will be read by a screen reader as:
+         "Learn more, external link button"
+     -->
+    <string name="accessibility_external_link_suffix">zunanja povezava</string>
+    <string name="no_logs_banner_title">Preverjeni VPN brez sledenja prijav</string>
+    <string name="no_logs_banner_description">Vaša dejavnost ob uporabi VPN je zaščitena s švicarskimi zakoni o zasebnosti. Nikoli vam ne bomo sledili na spletu ali vaših podatkov delili s tretjimi osebami.</string>
+    <!-- tag(Redesign_2023) Bottom bar label for home screen -->
+    <string name="bottom_nav_home">Domov</string>
+    <string name="bottom_nav_gateways">Prehodi</string>
+    <string name="bottom_nav_profiles">Profili</string>
+    <!-- tag(Redesign_2023) Bottom bar label for country list screen -->
+    <string name="bottom_nav_countries">Države</string>
+    <!-- tag(Redesign_2023) Bottom bar label for settings screen -->
+    <string name="botton_nav_settings">Nastavitve</string>
+    <!-- tag(Redesign_2023)
+         Text added to button labels that open a UI element (e.g. a panel).
+         Only used by accessibility services.
+         Example:
+         a button with label "connection details" and this action label will be read by a screen
+         reader as:
+         "Connection details, button. Double tap to open"
+    -->
+    <string name="accessibility_action_open">odprto</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that initiate a VPN connection.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland will be read by a screen reader as:
+         "Switzerland. Double tap to connect"
+        -->
+    <string name="accessibility_action_connect">poveži</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that redirect the user to upgrade their subscription plan.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland that requires upgrading subscription to become
+         available will be read by a screen reader as:
+         "Unavailable, Switzerland. Double tap to upgrade"
+        -->
+    <string name="accessibility_action_upgrade">nadgradi</string>
+    <!-- tag(Redesign_2023)
+     Text added to clickable elements that initiate a search.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_search">išči</string>
+    <!--
+     Text added to clickable elements that provide negative feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_negative">Ni dobro</string>
+    <!--
+     Text added to clickable elements that provide positive feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_positive">dobro</string>
+    <!--
+     Text added to clickable elements that allows to submit either positive or negative feedback.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_submit_feedback">pošlji</string>
+    <!-- Name of action for opening a screen/panel for an item.
+         The action is listed in a menu of additional actions available to accessibility services.
+
+         Example:
+         - item in a list of countries has a custom action to open list of cities in the country
+         - item in a list of cities has a custom action to open list of servers in the city
+         -->
+    <string name="accessibility_menu_action_open">Odpri</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable because servers
+         are in maintenance.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are in maintenance will be read by a
+         screen reader as:
+         "in maintenance, Switzerland"
+     -->
+    <string name="accessibility_item_in_maintenance">vzdrževalna dela</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are unavailable will be read by a screen
+         reader as:
+         "unavailable, Switzerland"
+     -->
+    <string name="accessibility_item_unavailable">ni na voljo</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when there is active connection to it.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland when there is a VPN connection to a server in this country
+         will be read by a screen reader as:
+         "Switzerland, connected"
+     -->
+    <string name="accessibility_item_connected">povezano</string>
+    <!-- tag(Redesign_2023): label indicating that a server supports peer-to-peer. -->
+    <string name="server_feature_label_p2p">P2P</string>
+    <!-- tag(Redesign_2023): label indicating that a server routes connection through the Tor network. -->
+    <string name="server_feature_label_tor">Tor</string>
+    <string name="server_feature_content_description_p2p">vsak z vsakim (P2P)</string>
+    <string name="server_feature_content_description_tor">Tor</string>
+    <string name="server_feature_content_description_smart_routing">Smart Routing</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest country is connected to. -->
+    <string name="fastest_country">Najhitrejša država</string>
+    <string name="fastest_country_excluding_my_country">Najhitrejša država (brez moje države)</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest free server is connected to. -->
+    <string name="fastest_free_server">Najhitrejši brezplačni strežnik</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Iceland
+     -->
+    <string name="connection_info_secure_core_full_iceland">%1$s preko Islandije</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Sweden
+     -->
+    <string name="connection_info_secure_core_full_sweden">%1$s preko Švedske</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_switzerland">%1$s preko Švice</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - exit country name in nominative case
+         %2$s - entry country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_other">%1$s preko %2$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_iceland">preko Islandije</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_sweden">preko Švedske</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_switzerland">preko Švice</string>
+    <!--
+         Label describing a Secure Core connection via the fastest Secure Core country.
+         It is displayed below country name, for example:
+         Italy
+         via Secure Core
+    -->
+    <string name="connection_info_secure_core_entry_fastest">preko Secure Core</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - entry country name in nominative case
+         Example: via Switzerland
+    -->
+    <string name="connection_info_secure_core_entry_other">preko %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         three countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+
+     -->
+    <string name="connection_info_auto_selected_free_countries">Samodejno izbrano med [flags]</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         several countries. Used instead of connection_info_auto_selected_free_countries when there
+         are more than 3 countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+         $1%d - replaced with number of additional countries (beyond the 3 flags).
+
+         Example, if there are 5 countries to select from the text will be:
+         Auto selected from [flags]+2
+         -->
+    <string name="connection_info_auto_selected_free_countries_more">Samodejno izbrano iz [flags]+%1$d</string>
+    <!-- tag(Redesign_2023)
+         Accessibility label describing a connection to a free server that is automatically selected
+         from one in several countries. Placed directly below fastest_free_server.
+         This text replaces connection_info_auto_selected_free_servers for screen readers.
+         $1%d - replaced with number of countries.
+         -->
+    <plurals name="connection_info_accessibility_auto_selected_free_countries">
+        <item quantity="one">Samodejno izbrano iz %1$d države</item>
+        <item quantity="two">Samodejno izbrano iz %1$d držav</item>
+        <item quantity="few">Samodejno izbrano iz %1$d držav</item>
+        <item quantity="other">Samodejno izbrano iz %1$d držav</item>
+    </plurals>
+    <string name="connection_info_auto_selected_free_countries_plain">Samodejno izbrano iz brezplačnih držav</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that the connection details in the card are
+         are that of the previous connection.
+
+         Example:
+         Last connected to
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         -->
+    <string name="connection_card_label_last_connected">Nazadnje povezan z</string>
+    <!--
+        Label above the connection card indicating text which acts as a button and leads to
+        customization bottom sheet of default connection
+     -->
+    <string name="connection_card_label_default_connection">Privzeta povezava</string>
+    <!-- Label above the connection card when not connected and the user is on the free plan.
+         The connection card always shows "Fastest free server" (fastest_free_server) for free
+         users. -->
+    <string name="connection_card_label_free_connection">Brezplačna povezava</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is being established.
+     -->
+    <string name="connection_card_label_connecting">Povezovanje z …</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection to a different server is
+         being established. It\'s shown only in response to user clicking the "Change server" button.
+     -->
+    <string name="connection_card_label_changing_server">Menjavanje strežnika …</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is established and the user
+         is safely browsing as if they were in the location indicated in the connection card.
+
+         Example:
+         Browsing safely from
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         Germany
+     -->
+    <string name="connection_card_label_connected">Varno brskanje iz</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with details of the current VPN connection.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "connection details, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_connection_details">podrobnosti povezave</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with information about connections in free plan.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "more information about free connections, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_free_connections">več informacij o brezplačnih povezavah</string>
+    <string name="connection_card_label_connection_feedback">Kakšna je vaša povezava?</string>
+    <!-- tag(Redesign_2023)
+         Displayed above the list of recently made connections.
+     -->
+    <string name="recents_headline">Nedavne</string>
+    <!-- Displayed above the list of VPN Plus features in the home screen -->
+    <string name="home_upsell_carousel_headline">Odkrijte VPN Plus</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_pin">Pripni</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_unpin">Odpni</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_remove">Odstrani</string>
+    <!-- tag(Redesign_2023)
+         State description of a pinned recent item.
+         Only used by accessibility service.
+    -->
+    <string name="recent_action_accessibility_state_pinned">Pripeto</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_country_servers_in_maintenance">Vsi strežniki v tej državi so v vzdrževanju</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_city_servers_in_maintenance">Vsi strežniki v tem mestu so v vzdrževanju</string>
+    <!-- State means here US state, like California -->
+    <string name="message_state_servers_in_maintenance">Vsi strežniki v tej državi so v vzdrževanju</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_in_maintenance">Poteka vzdrževanje strežnika</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_not_available">Strežnik ni na voljo</string>
+    <string name="message_server_location_excluded">Lokacija strežnika izključena</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog when all servers of a gateway are in maintenance -->
+    <string name="message_gateway_in_maintenance">Prehod v vzdrževanju</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_sign_out">Odjavi se</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_title">Nastavitve</string>
+    <string name="gateways_title">Prehodi</string>
+    <string name="countries_title">Države</string>
+    <string name="profiles_title">Profili</string>
+    <string name="settings_autoconnect_title">Samodejna povezava</string>
+    <string name="settings_autoconnect_boot_description">Samodejno vas poveže z VPN-jem s hitro povezavo, ko se naprava zažene.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_features">Funkcije</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_netshield_title">NetShield</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_split_tunneling_title">Razdeljeno tuneliranje</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_kill_switch_title">Odklopno stikalo</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_connection_category">Povezava</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_protocol_title">Protokol</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_vpn_accelerator_title">VPN pospeševalnik</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_advanced_settings_title">Napredne nastavitve</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_general">Splošno</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_account">Račun</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_notifications_title">Obvestila</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_support">Podpora</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_help_center_title">Center za pomoč</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_report_issue_title">Prijavi težavo</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_debug_logs_title">Dnevniki odpravljanja napak</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_improve_proton">Izboljšajte Proton</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_fight_censorship_title">Pomagajte nam v boju proti cenzuri</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_rate_us_title">Ocenite Proton VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_app_version">Različica aplikacije: %1$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_third_party_licenses">Licence tretjih oseb</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_title">Odjava?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_message">Povezava z VPN bo prekinjena.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_dont_ask_again">Ne sprašuj me več</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_action">Odjavi se</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_action_cancel">Prekliči</string>
+    <string name="dialog_action_change_icon">Spremeni ikono</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_all">Vse</string>
+    <string name="country_filter_cities">Mesta</string>
+    <string name="country_filter_states">Države</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_secure_core">Secure Core</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_p2p">P2P</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_tor">Tor</string>
+    <string name="country_filter_all_list_header">Vse države (%1$d)</string>
+    <string name="country_filter_all_list_header_free">Plus države (%1$d)</string>
+    <string name="country_filter_countries_list_header">Države (%1$d)</string>
+    <string name="country_filter_cities_list_header">Mesta (%1$d)</string>
+    <string name="country_filter_states_list_header">Države (%1$d)</string>
+    <string name="country_filter_servers_list_header">Strežniki</string>
+    <string name="country_filter_secure_core_list_header">„Secure Core” države (%1$d)</string>
+    <string name="country_filter_p2p_list_header">Države P2P (%1$d)</string>
+    <string name="country_filter_p2p_list_header_cities">P2P mesta (%1$d)</string>
+    <string name="country_filter_p2p_list_header_states">P2P države (%1$d)</string>
+    <string name="counrty_filter_p2p_servers_list_header">P2P strežniki</string>
+    <string name="country_filter_tor_list_header">Države Tor (%1$d)</string>
+    <string name="country_filter_tor_servers_list_header">Strežnikov Tor</string>
+    <string name="country_filter_info_label">Info</string>
+    <!-- Content description for server load indicator. Used by accessibility services only.
+         Note: the trailing \'%\' sign needs to be doubled
+         (this doesn\'t apply to other percent sign characters, e.g. ٪). -->
+    <string name="country_filter_server_load_content_description">Nalaganje: %1$s%%</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is connected and network is protected
+    -->
+    <string name="vpn_status_connected">Zaščiteni</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is not connected and network is not protected
+    -->
+    <string name="vpn_status_disabled">Ste nezaščiteni</string>
+    <!-- tag(Redesign_2023)
+         Text is shown while connection is being established
+    -->
+    <string name="vpn_status_connecting">Zaščita vaše digitalne identitete</string>
+    <!-- tag(Redesign_2023)
+         Displays Country name and IP of user if he is not connected.
+         First parameter is country, second is IP.
+         Ex: Poland · 192.1.1.1.1
+    -->
+    <string name="vpn_status_disabled_location">%1$s – %2$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_subtitle">Podrobnosti povezave</string>
+    <string name="connection_details_features_title">Funkcije</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_show_ip">Prikaži IP</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_back">Nazaj</string>
+    <string name="accessibility_close">Zapri</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_my_ip">Moj IP</string>
+    <string name="connection_details_my_ipv4">Moj IPv4</string>
+    <string name="connection_details_my_ipv6">Moj IPv6</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_ip">VPN IP</string>
+    <string name="connection_details_vpn_ip4_6">VPN IPv4/IPv6</string>
+    <string name="connection_details_vpn_ipv4">VPN IPv4</string>
+    <string name="connection_details_vpn_ipv6">VPN IPv6</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates for how long user has been connected. Like \'Connected for 2hours\'
+    -->
+    <string name="connection_details_connected_for">Povezan za</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server">Strežnik</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_gateway">Prehod</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_country">Država</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_city">Mesto</string>
+    <!-- Label for server location "state", as a state of the USA. -->
+    <string name="connection_details_state">Država</string>
+    <!-- Label for server smart routing, a country which is routed through. -->
+    <string name="connection_details_smart_routing">Preusmerjeno skozi</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates Server load, on the left side will be Server load, and on the right actual load values.
+    -->
+    <string name="connection_details_server_load">Obremenitev strežnika</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_question">Kaj je obremenitev strežnika?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_description">Obremenitev strežnika kaže, kako blizu je strežnik svojim največjim zmogljivostim.\n\nVelika obremenitev strežnika lahko upočasni vašo povezavo.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_title">Nizka (1-75 %)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_description">Bliskovite hitrosti</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_title">Srednja (76-90 %)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_description">Ni verjetno, da bo vplivalo na hitrost VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_title">Visoka (91-100%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_description">VPN lahko deluje počasneje kot običajno </string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol">Protokol</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol_description">Protokol je nabor navodil, ki jim vaša naprava sledi za povezavo in komunikacijo s strežnikom.</string>
+    <!-- tag(Redesign_2023)
+         Label in front of upload speed in connection details. It is followed by upload speed number and unit.
+    -->
+    <string name="connection_details_upload">Naloži</string>
+    <!-- tag(Redesign_2023)
+         Label in front of download speed in connection details. It is followed by download speed number and unit.
+    -->
+    <string name="connection_details_download">Prenos</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_section_vpn_speed">Hitrost VPN</string>
+    <string name="connection_details_section_ip">IP naslov</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_question">Kaj je hitrost VPN?</string>
+    <string name="info_dialog_secure_core_title">Secure Core</string>
+    <string name="info_dialog_p2p_title">P2P</string>
+    <string name="info_dialog_secure_core_description">Secure Core vas poveže z vašim ciljnim strežnikom prek drugega, maksimalno varnega strežnika VPN.\n\nTa višja raven zaščite lahko povzroči večjo zakasnitev in nižje hitrosti.</string>
+    <string name="info_secure_core_standard_header">Standardna povezava VPN </string>
+    <string name="info_secure_core_secure_header">Secure Core VPN povezava</string>
+    <string name="info_dialog_tor_description">Povežite se s strežnikom Tor za dostop do skritih storitev in Tor spletnih mest s katerim koli brskalnikom.</string>
+    <string name="info_dialog_button_learn_more_tor">Kako dostopati do omrežja Tor</string>
+    <string name="info_dialog_button_learn_more_p2p">Kako uporabljati torrente s P2P</string>
+    <string name="info_dialog_button_learn_more_ipaddress">Kaj je naslov IP?</string>
+    <string name="info_dialog_button_learn_more_streaming">Potrebujete pomoč glede pretakanja?</string>
+    <string name="info_dialog_streaming_title">Pretakanje</string>
+    <string name="info_dialog_streaming_description">Pretočni strežniki so zasnovani za hitro in varno predvajanje televizije in filmov.</string>
+    <string name="info_dialog_how_to_stream">Kako pretakati:</string>
+    <!-- item 1 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_1">Pojdite v nastavitve telefona in izklopite lokacijske storitve.</string>
+    <!-- item 2 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_2">Ponovno zaženite storitve pretočnega predvajanja</string>
+    <!-- item 3 in the numbered list (last item) -->
+    <string name="info_dialog_how_to_stream_step_3">Povežite se s katerim koli strežnikom Plus in začnite pretakati</string>
+    <string name="info_dialog_profiles_title">Profili</string>
+    <string name="info_dialog_ipaddress_title">IP naslov</string>
+    <string name="info_dialog_ipv6_traffic_title">Promet IPv6</string>
+    <string name="info_dialog_profiles_description">Profili so prilagojene povezave VPN, ki jih lahko prilagodite svojim potrebam in shranite za hiter dostop.\n\nNastavite želeno lokacijo in optimizirajte nastavitve za varnost, zmogljivost, igranje iger ali kateri koli drug scenarij.</string>
+    <string name="info_dialog_ipaddress_description">Vaš VPN IP prikriva vaš pravi IP naslov. Zaradi tega je videti, kot da brskate z lokacije VPN, zato vaše spletne dejavnosti ni mogoče povezati z vašo napravo.</string>
+    <string name="info_dialog_ipv6_traffic_description">Internetni protokol (IP) dodeljuje naslove napravam in usmerja internetni promet. IPv6 je najnovejša različica, ki ponuja več naslovov in boljšo povezljivost, vendar še ni splošno sprejeta.</string>
+    <string name="connection_feature_p2p_title">P2P</string>
+    <string name="connection_feature_p2p_description">V tem strežniku je omogočena izmenjava datotek peer-to-peer (P2P).</string>
+    <string name="connection_feature_tor_title">Tor</string>
+    <string name="connection_feature_tor_description">S spletnimi mesti .onion se lahko povežete z običajnim brskalnikom.</string>
+    <string name="connection_feature_secure_core_title">Secure Core</string>
+    <string name="connection_feature_secure_core_description">Vaše dejavnosti so šifrirane za 2 visoko zavarovanima strežnikoma VPN.</string>
+    <string name="connection_feature_streaming_title">Pretakanje</string>
+    <string name="connection_feature_streaming_description">Ta strežnik je optimiziran za predvajanje televizije in filmov.</string>
+    <string name="connection_feature_smart_routing_title">Smart Routing</string>
+    <string name="connection_feature_smart_routing_description">Povezuje vas z vašo ciljno državo prek strežnikov, ki so fizično nameščeni drugje.</string>
+    <!-- Placeholder will be replaced by a list of country names separated by commas, e.g, Connects you to your destination country through servers physically located elsewhere: Canada, Mexico, United States.  -->
+    <string name="connection_feature_smart_routing_description_with_countries">Povezuje vas z vašo ciljno državo prek strežnikov, ki so fizično nameščeni drugje: %1$s.</string>
+    <!--
+        %1$s - physical server location country
+        %2$s - destination country
+        Warning: country names are inserted in the nominative case.
+        For INFLECTED languages, translate the following phrase instead:
+        "Your physical server location: %1$s.\nYour browsing country: %2$s"
+    -->
+    <string name="country_smart_routing_info">Strežniki se fizično nahajajo v %1$s, vendar bo videti, kot da brskate iz %2$s.</string>
+    <!--
+        Displayed next to an icon which provides more information if clicked
+    -->
+    <string name="connection_details_info_label">Podrobnosti</string>
+    <!-- tag(Redesign_2023)
+         Used for button title to learn more about different contexts
+    -->
+    <string name="connection_details_learn_more">Izvedi več</string>
+    <!-- tag(Redesign_2023)
+        Used to describe IP which is not known
+    -->
+    <string name="connection_details_unknown_ip">Neznan</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_description">Ta graf prikazuje hitrost vaše trenutne dejavnosti nalaganja in prenosa. Vaša povezava VPN verjetno ne bo upočasnila običajne spletne dejavnosti.</string>
+    <string name="speed_bytes_per_second">%1$s B/s</string>
+    <string name="speed_kilobytes_per_second">%1$s KB/s</string>
+    <string name="speed_megabytes_per_second">%1$s MB/s</string>
+    <string name="speed_gigabytes_per_second">%1$s GB/s</string>
+    <string name="speed_terabytes_per_second">%1$s TB/s</string>
+    <!-- Used as graph label to indicate speed measurement. Example: Speed KB/s or Speed MB/s-->
+    <string name="speed_graph_title">Hitrost %1$s</string>
+    <string name="bytes_per_second">B/s</string>
+    <string name="kilobytes_per_second">KB/s</string>
+    <string name="megabytes_per_second">MB/s</string>
+    <string name="gigabytes_per_second">GB/s</string>
+    <string name="terabytes_per_second">TB/s</string>
+    <plurals name="full_name_speed_bytes_per_second">
+        <item quantity="one">%1$s bajt na sekundo</item>
+        <item quantity="two">%1$s bajta na sekundo</item>
+        <item quantity="few">%1$s bajte na sekundo</item>
+        <item quantity="other">%1$s bajtov na sekundo</item>
+    </plurals>
+    <plurals name="full_name_speed_kilobytes_per_second">
+        <item quantity="one">%1$s kilobajt na sekundo</item>
+        <item quantity="two">%1$s kilobajta na sekundo</item>
+        <item quantity="few">%1$s kilobajti na sekundo</item>
+        <item quantity="other">%1$s kilobajtov na sekundo</item>
+    </plurals>
+    <plurals name="full_name_speed_megabytes_per_second">
+        <item quantity="one">%1$s megabajt na sekundo</item>
+        <item quantity="two">%1$s megabajta na sekundo</item>
+        <item quantity="few">%1$s megabajti na sekundo</item>
+        <item quantity="other">%1$s megabajtov na sekundo</item>
+    </plurals>
+    <plurals name="full_name_speed_gigabytes_per_second">
+        <item quantity="one">%1$s gigabajt na sekundo</item>
+        <item quantity="two">%1$s gigabajta na sekundo</item>
+        <item quantity="few">%1$s gigabajti na sekundo</item>
+        <item quantity="other">%1$s gigabajtov na sekundo</item>
+    </plurals>
+    <plurals name="full_name_speed_terabytes_per_second">
+        <item quantity="one">%1$s terabajt na sekundo</item>
+        <item quantity="two">%1$s terabajta na sekundo</item>
+        <item quantity="few">%1$s terabajti na sekundo</item>
+        <item quantity="other">%1$s terabajtov na sekundo</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_bytes">
+        <item quantity="one">%1$s bajt</item>
+        <item quantity="two">%1$s bajta</item>
+        <item quantity="few">%1$s bajti</item>
+        <item quantity="other">%1$s bajtov</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_kilobytes">
+        <item quantity="one">%1$s kilobajt</item>
+        <item quantity="two">%1$s kilobajta</item>
+        <item quantity="few">%1$s kilobajti</item>
+        <item quantity="other">%1$s kilobajtov</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_megabytes">
+        <item quantity="one">%1$s megabajt</item>
+        <item quantity="two">%1$s megabajta</item>
+        <item quantity="few">%1$s megabajti</item>
+        <item quantity="other">%1$s megabajtov</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_gigabytes">
+        <item quantity="one">%1$s gigabajt</item>
+        <item quantity="two">%1$s gigabajta</item>
+        <item quantity="few">%1$s gigabajti</item>
+        <item quantity="other">%1$s gigabajtov</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_terabytes">
+        <item quantity="one">%1$s terabajt</item>
+        <item quantity="two">%1$s terabajta</item>
+        <item quantity="few">%1$s terabajti</item>
+        <item quantity="other">%1$s terabajtov</item>
+    </plurals>
+    <string name="traffic_volume_bytes">%1$s B</string>
+    <string name="traffic_volume_kilobytes">%1$s KB</string>
+    <string name="traffic_volume_megabytes">%1$s MB</string>
+    <string name="traffic_volume_gigabytes">%1$s GB</string>
+    <string name="traffic_volume_terabytes">%1$s TB</string>
+    <!-- tag(Redesign_2023)
+         Shown at the top status view if app detects that there is no usable network to connect to VPN
+    -->
+    <string name="error_vpn_waiting_for_network">Čakam na omrežje</string>
+    <!-- tag(Redesign_2023) -->
+    <plurals name="connection_details_days">
+        <item quantity="one">%1$d dan</item>
+        <item quantity="two">%1$d dneva</item>
+        <item quantity="few">%1$d dnevi</item>
+        <item quantity="other">%1$d dni</item>
+    </plurals>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_hours_shortened">%1$d ura</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_minutes_shortened">%1$d minut</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_seconds_shortened">%1$d sek</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceTitle">Povezava ni uspela</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceDescription">​
+Ta naprava ne dovoljuje povezav VPN.</string>
+    <string name="create_profile_title">Ustvari profil</string>
+    <!-- Title for the screen where user can edit a profile.
+         %1$s - name of the profile being edited. -->
+    <string name="edit_profile_title">Uredi %1$s</string>
+    <string name="edit_profile_dialog_action">Urejanje profila</string>
+    <string name="create_profile_name_hint">Ime profila</string>
+    <string name="create_profile_name_error_empty">Vnesite ime profila</string>
+    <string name="create_profile_name_error_too_long">Ime profila ima lahko največ 30 znakov</string>
+    <string name="create_profile_type_and_location_title">Izberite vrsto povezave in lokacijo</string>
+    <string name="create_profile_features_and_settings_title">Funkcije in nastavitve</string>
+    <string name="configure_profile_features_and_settings_title">Nastavi nastavitve profila</string>
+    <string name="configure_profile_features_and_settings_description">Nastavitve profila bodo med povezavo zamenjale vaše nastavitve VPN.</string>
+    <!--
+        First input will be for current step, second one will be for total number of steps
+        Example: Step 3 of 7
+     -->
+    <string name="create_profile_steps">Korak %1$d od %2$d</string>
+    <string name="create_profile_button_next">Naslednji</string>
+    <!-- Important: please note the double % sign after 400. It is displayed as a single % in the app.
+         (this doesn\'t apply to other percent sign characters, e.g. ٪)
+         %1$s - will have translated learn_more value -->
+    <string name="settings_vpn_accelerator_description">Povečajte hitrost povezave do 400%% s tehnologijami za izboljšanje zmogljivosti. %1$s</string>
+    <string name="settings_account_settings_title">Nastavitve računa</string>
+    <string name="settings_account_change_password">Spremeni geslo</string>
+    <string name="settings_account_recovery_email">E-poštni naslov za obnovitev</string>
+    <string name="settings_account_recovery_email_not_set">Ni nastavljeno</string>
+    <string name="settings_account_security_keys">Varnostni ključi</string>
+    <!-- Label of a button that opens user\'s account page -->
+    <string name="settings_account_button_my_account">Moj račun</string>
+    <string name="settings_account_button_delete_account">Izbrišite račun</string>
+    <string name="settings_custom_dns_title">DNS po meri</string>
+    <string name="settings_custom_dns_description_tv">Povežite se z VPN-jem z lastnim gostovanjem ali sistemom domenskih imen (DNS) tretje osebe.</string>
+    <string name="settings_add_dns_placeholder">192.0.2.0</string>
+    <string name="settings_add_dns_title">Dodaj nov strežnik DNS</string>
+    <string name="settings_add_dns_new_entry_button">Dodaj</string>
+    <string name="settings_add_dns_description">Vnesite IPv4 ali IPv6 naslov strežnika</string>
+    <string name="settings_add_dns_invalid_input">Vnesite veljaven naslov IPv4 ali IPv6</string>
+    <string name="settings_add_dns_empty_input">Vnesite naslov IPv4 ali IPv6</string>
+    <string name="settings_add_dns_duplicate_input">Strežnik je že dodan</string>
+    <string name="settings_advanced_dns_description">Povežite se z VPN-jem z lastnim gostovanjem ali sistemom domenskih imen (DNS) tretje osebe. Več o tem</string>
+    <!-- %1$d - Corresponds to number of servers added -->
+    <string name="settings_dns_list_title">Strežniki (%1$d)</string>
+    <string name="settings_dns_list_description">Če vaš strežnik DNS po meri ne deluje, bo uporabljen standardni DNS VPN.</string>
+    <string name="settings_dns_list_description_multiple">Poskusili se bomo povezati s temi strežniki po vrsti. Če noben od njih ne bo deloval, bo uporabljen VPN DNS.</string>
+    <string name="settings_changes_apply_on_reconnect_toast">Spremembe veljajo ob ponovni vzpostavitvi povezave</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_title">NetShield ne bo na voljo.</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message">NetShield ne more filtrirati oglasov, sledilnikov in zlonamerne programske opreme, ko je uporabljen DNS po meri. Izvedi več</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message_tv">NetShield ne more filtrirati oglasov, sledilnikov in zlonamernega programja, ko je uporabljen DNS po meri.</string>
+    <string name="settings_advanced_alternative_routing_title">Alternativno usmerjanje</string>
+    <string name="settings_advanced_alternative_routing_description">Če so storitve Proton blokirane zaradi omrežnih omejitev, bomo poskušali uporabiti alternativno omrežno usmerjanje, da vas povežemo z našimi spletnimi mesti.</string>
+    <string name="settings_advanced_allow_lan_title">LAN povezave</string>
+    <string name="settings_advanced_allow_lan_description">Omogoča povezovanje s tiskalniki, zvočniki in drugimi napravami v lokalnem omrežju.</string>
+    <string name="settings_advanced_allow_lan_description_tv">Povežite se z zvočniki, računalniki in drugimi napravami v lokalnem omrežju</string>
+    <string name="settings_advanced_allow_lan_title_tv">Dovoli LAN povezave</string>
+    <string name="settings_advanced_nat_type_title">NAT tip</string>
+    <!-- %1$s - will have translated learn_more value -->
+    <string name="settings_advanced_nat_type_description">Izberite vrsto prevajanja omrežnih naslovov za vašo povezavo. %1$s</string>
+    <string name="settings_advanced_nat_type_description_no_learn">Izberite vrsto prevajanja omrežnih naslovov za vašo povezavo.</string>
+    <string name="settings_advanced_nat_type_strict">Strogo (tip 3)</string>
+    <string name="settings_advanced_nat_type_strict_short">Vrsta 3</string>
+    <string name="settings_advanced_nat_type_moderate">Zmerno (tip 2)</string>
+    <string name="settings_advanced_nat_type_moderate_short">Vrsta 2</string>
+    <string name="settings_advanced_nat_type_strict_description">Omejuje podatke, ki vstopajo v vaše omrežje. Ta možnost je bolj varna, vendar lahko oteži povezave P2P pri igranju iger.</string>
+    <string name="settings_advanced_nat_type_moderate_description">Nekatere omejitve podatkov, ki vstopajo v vaše omrežje. Ta možnost je najboljša za spletne video igre.</string>
+    <string name="settings_split_tunneling_description">Prilagodite povezavo tako, da določite, katere aplikacije in IP naslovi so zaščiteni z omrežjem VPN. %1$s</string>
+    <string name="settings_protocol_description">VPN protokol določa način prenosa podatkov med strežnikom VPN in vašo napravo. %1$s</string>
+    <string name="settings_protocol_description_no_link">Protokol VPN določa, kako se podatki premikajo med strežnikom VPN in vašo napravo.</string>
+    <string name="settings_protocol_section_speed">Hitrost (UDP)</string>
+    <string name="settings_protocol_section_reliability">Zanesljivost (TCP)</string>
+    <string name="settings_protocol_smart_title">Smart</string>
+    <string name="settings_protocol_smart_description">Samodejno izbere najboljši protokol za vašo povezavo.</string>
+    <string name="settings_protocol_wireguard_title">WireGuard</string>
+    <string name="settings_protocol_smart_protun_description">Samodejno izbere najboljši protokol za vašo povezavo [poskusno].</string>
+    <string name="settings_protocol_wireguard_udp_description">Najsodobnejši protokol za varnost in zmogljivost.</string>
+    <string name="settings_protocol_wireguard_tcp_description">Najsodobnejši protokol za varnost in zmogljivost.</string>
+    <string name="settings_protocol_stealth_title">Stealth</string>
+    <string name="settings_protocol_stealth_description">Zaobide blokade VPN tako, da skrije vašo VPN povezavo pred regulatorji. Ta protokol je odporen na globoko pregledovanje paketov (DPI), vendar morda ni tako hiter kot drugi protokoli. Stealth je protokol, ki je na voljo izključno za Proton VPN.</string>
+    <!-- Text on a badge displayed next to the "smart" protocol name in settings -->
+    <string name="settings_protocol_badge_recommended">Priporočeno</string>
+    <string name="settings_protocol_badge_experimental">Poskusno</string>
+    <string name="settings_split_tunneling_mode_title">Način</string>
+    <string name="settings_split_tunneling_mode_standard">Izključi</string>
+    <string name="settings_split_tunneling_mode_inverse">Vključi</string>
+    <string name="settings_split_tunneling_mode_description_standard">Izbrane aplikacije in naslovi IP so izključeni iz povezave VPN.</string>
+    <string name="settings_split_tunneling_mode_description_inverse">Samo izbrane aplikacije in naslovi IP se povezujejo prek VPN, ves ostali promet je nezaščiten.</string>
+    <string name="settings_split_tunneling_excluded_apps">Izvzete aplikacije</string>
+    <string name="settings_split_tunneling_excluded_ips">Izvzeti IP naslovi</string>
+    <string name="settings_split_tunneling_included_apps">Vključene aplikacije</string>
+    <string name="settings_split_tunneling_included_ips">Vključeni naslovi IP</string>
+    <string name="settings_split_tunneling_empty" comment="Used to indicate that no IP or Apps are included in split tunneling">Brez</string>
+    <string name="settings_split_tunneling_excluded_format" comment="Used for describing excluded items. Example: Chrome, Facebook and 2 more. The same logic used for IP addresses too.">%1$s, %2$s in dodatno še %3$d</string>
+    <string name="settings_split_tunneling_already_excluded">Že izključeno</string>
+    <string name="settings_split_tunneling_already_included">Že vključeno</string>
+    <string name="settings_split_tunneling_remove_ip_dialog_message">Želite odstraniti naslov IP s seznama?</string>
+    <string name="settings_split_tunneling_ip_removed_message">IP-naslov je bil odstranjen</string>
+    <string name="settings_theme_title">Tema</string>
+    <string name="settings_theme_value_auto">Tema naprave</string>
+    <string name="settings_theme_value_light">Svetla</string>
+    <string name="settings_theme_value_dark">Temna</string>
+    <string name="settings_dialog_reconnect">Nove nastavitve bodo veljale ob naslednji povezavi.</string>
+    <string name="settings_needs_reconnect_banner">Nove nastavitve bodo veljale ob naslednji povezavi.</string>
+    <string name="private_dns_conflict_banner_custom_dns_title">DNS po meri ni na voljo</string>
+    <string name="private_dns_conflict_banner_custom_dns_description">Vaša naprava uporablja DNS tretje osebe, kar preprečuje delovanje DNS po meri od Proton VPN. Več o tem</string>
+    <string name="private_dns_conflict_banner_custom_dns_description_tv">Vaša naprava uporablja DNS tretje osebe, kar preprečuje delovanje DNS-ja po meri od Proton VPN.</string>
+    <string name="private_dns_conflict_banner_netshield_title">NetShield ni na voljo</string>
+    <string name="private_dns_conflict_banner_netshield_description">Naprava uporablja strežnik DNS tretje osebe, kar preprečuje delovanje NetShield. Več informacij</string>
+    <string name="private_dns_conflict_banner_network_settings_button">Nastavitve omrežja</string>
+    <string name="custom_dns_conflict_banner_netshield_title">NetShield ni na voljo</string>
+    <string name="custom_dns_conflict_banner_netshield_description">Omogočen je DNS po meri, kar preprečuje delovanje NetShield. Več o tem</string>
+    <string name="custom_dns_conflict_banner_netshield_title_tv">Izklopite DNS po meri, če želite uporabljati NetShield</string>
+    <string name="custom_dns_conflict_banner_netshield_description_tv">Omogočen je DNS po meri, kar preprečuje delovanje NetShield.</string>
+    <string name="custom_dns_conflict_banner_disable_custom_dns_button">Izklopite DNS po meri</string>
+    <string name="info_secure_core_standard_high_privacy">Visoka zasebnost</string>
+    <string name="info_secure_core_standard_lower_latency">Manjša zakasnitev</string>
+    <string name="info_secure_core_advanced_privacy">Napredna zasebnost</string>
+    <string name="info_secure_core_higher_latency">Večja zakasnitev</string>
+    <string name="info_p2p_what_title">Kaj je P2P?</string>
+    <string name="info_p2p_what_description">Tehnologija povezave vsak z vsakim (P2P) vam omogoča povezavo in skupno rabo datotek neposredno z drugimi napravami.\n\nNaši strežniki P2P so zasnovani posebej za podporo te vrste skupne rabe datotek.</string>
+    <string name="info_p2p_torrenting_title">Kaj je torrenting?</string>
+    <string name="info_p2p_torrenting_description">Hitro deljenje in nalaganje velikih datotek prek omrežja enakovrednih P2P.</string>
+    <string name="info_p2p_why_title">Zakaj uporabljati strežnik P2P pri torrenting?</string>
+    <string name="info_p2p_why_description_speed">Povečane hitrosti nalaganja in prenosa</string>
+    <string name="info_p2p_why_description_logs">Ni dnevnikov dejavnosti</string>
+    <string name="info_p2p_why_description_hide">Skrijte svoj naslov IP pred ponudnikom storitev in podobnimi</string>
+    <string name="info_dialog_smart_routing_description">Smart Routing nam omogoča zagotavljanje pokritosti VPN v težko dostopnih državah.\n\nKo se povežete s strežnikom pametnega usmerjanja, se bo zdelo, kot da brskate v ciljni državi, čeprav se fizični strežnik nahaja drugje. \n\nPametno usmerjanje se običajno uporablja za izogibanje zakonom o zasebnosti in drugim oblikam cenzure.</string>
+    <string name="notifications_channel_connection_status_name">Stanje povezave</string>
+    <string name="notifications_channel_connection_status_description">Prikaže, s katerim strežnikom ste povezani, in hitrost vašega VPN.</string>
+    <string name="notifications_channel_connection_errors_name">Napaka v povezavi</string>
+    <string name="notifications_channel_connection_errors_description">Opozori vas na težave, ki ustavijo ali zaustavijo vašo povezavo VPN.</string>
+    <string name="notifications_channel_connection_tips_name">Nasveti za povezavo</string>
+    <string name="notifications_channel_connection_tips_description">Kontekstualni nasveti, ki vam pomagajo kar najbolje izkoristiti Proton VPN.</string>
+    <string name="countries_upsell_banner_description">Dostopajte do vseh držav s storitvijo VPN Plus</string>
+    <string name="secure_core_upsell_banner_description">Dodajte še eno plast šifriranja svoji VPN povezavi</string>
+    <string name="p2p_upsell_banner_description">​Prenesite datoteke prek BitTorrenta in drugih protokolov za skupno rabo datotek</string>
+    <string name="tor_upsell_banner_description">Za dodatno zasebnost uporabite omrežje Tor prek povezave VPN</string>
+    <string name="vpnplus_upsell_banner_description">Nadgradite na VPN Plus</string>
+    <string name="search_zero_screen_title">Poskusite najti ...</string>
+    <string name="search_zero_screen_info_countries_title">Države</string>
+    <string name="search_zero_screen_info_cities_title">Mesta</string>
+    <string name="search_zero_screen_info_servers_title">Strežniki</string>
+    <string name="search_zero_screen_info_countries_examples">Švica, ZDA, Italija, Kanada, ...</string>
+    <string name="search_zero_screen_info_cities_examples">New York, London, Tokio, Sydney, …</string>
+    <string name="search_zero_screen_info_servers_examples">JP#50, CA#3, IT#14, …</string>
+    <string name="error_fetching_prices">Napaka pri pridobivanju cen.</string>
+    <string name="tv_settings_split_tunneling_description">Prilagodite svojo povezavo tako, da določite, katere aplikacije so zaščitene s storitvijo VPN.</string>
+    <string name="tv_settings_split_tunneling_mode_description_standard">Izbrane aplikacije so izključene iz povezave VPN.</string>
+    <string name="tv_settings_split_tunneling_mode_description_inverse">Samo izbrane aplikacije se povežejo prek VPN, ves ostali promet je nezaščiten.</string>
+    <string name="profile_action_edit">Uredi</string>
+    <string name="profile_action_duplicate">Podvoji</string>
+    <string name="profile_action_delete">Izbriši</string>
+    <!-- Label when showing profile\'s NAT (Network Address Translation) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_nat_title">NAT</string>
+    <!-- Label when showing profile\'s LAN (Local Area Network) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_lan_title">LAN</string>
+    <string name="profile_needs_reconnect">To bo znova zagnalo vašo povezavo.</string>
+    <string name="profile_overrides_setting">Te nastavitve so povezane z <b>%1$s</b> in jih je mogoče upravljati samo v razdelku Profili.</string>
+    <string name="initial_profile_name_streaming_us">Pretakanje ZDA</string>
+    <string name="initial_profile_name_work_school">Služba/šola</string>
+    <string name="initial_profile_name_anti_censorship">Proti cenzuri</string>
+    <string name="initial_profile_name_gaming">Igranje</string>
+    <string name="initial_profile_name_max_security">Najvišja varnost</string>
+    <string name="create_profile_pick_country_title">Država</string>
+    <string name="create_profile_pick_type_title">Vrsta</string>
+    <string name="create_profile_type_standard">Standardno</string>
+    <string name="create_profile_type_secure_core">Secure Core</string>
+    <string name="create_profile_type_p2p">P2P</string>
+    <string name="create_profile_gateway">Prehod</string>
+    <string name="create_profile_pick_state_title">Država</string>
+    <string name="create_profile_pick_city_title">Mesto</string>
+    <string name="create_profile_pick_server_title">Strežnik</string>
+    <string name="create_profile_pick_gateway_title">Prehod</string>
+    <string name="create_profile_pick_netshield_title">NetShield</string>
+    <string name="create_profile_pick_netshield_description">Blokirajte oglase, sledilnike in zlonamerno programsko opremo na spletnih mestih in v aplikacijah</string>
+    <string name="create_profile_pick_protocol_title">Protokol</string>
+    <string name="create_profile_pick_nat_title">NAT tip</string>
+    <!--
+         Example:
+         if a profile named "My Profile" is duplicated, the new suggested name is "My Profile (copy)"
+     -->
+    <string name="create_profile_copy_name">%1$s (kopija)</string>
+    <string name="create_profile_fastest_city">Najhitrejši</string>
+    <string name="create_profile_fastest_state">Najhitrejši</string>
+    <string name="create_profile_fastest_server">Najhitrejši</string>
+    <string name="create_profile_pick_middle_country_title">Srednja država</string>
+    <string name="profiles_zero_state_title">Ustvarite svoj prvi profil</string>
+    <string name="profiles_zero_state_description">Profili so shranjene povezave z vašo izbrano lokacijo, strežnikom in protokolom.</string>
+    <string name="profiles_button_create_profile">Ustvari profil</string>
+    <string name="profile_deleted_snackbar_message">Profil je izbrisan</string>
+    <string name="profile_connected_edit_setting">Ta nastavitev je povezana z vašim aktivnim profilom. \n\nUredite svoj profil, če želite narediti spremembe, ali pa prekinite povezavo, če želite urediti splošne nastavitve VPN.</string>
+    <string name="profile_connected_dialog_title">Upravljajte %1$s v profilih</string>
+    <string name="undo">Razveljavi</string>
+    <string name="profile_unavailable_dialog_title">Profil ni na voljo</string>
+    <!-- %1$s - profile name
+         Example: Your server selection for MyProfile is unavailable. Select a different server or try again later -->
+    <string name="profile_unavailable_dialog_message">Vaša izbira strežnika za %1$s ni na voljo. Izberite drug strežnik ali poskusite znova pozneje.</string>
+    <string name="profile_location_excluded_dialog_message"><![CDATA[Vaša izbira strežnika za <b>%1$s</b> ni na voljo. Izberite drug strežnik, preverite izključene lokacije ali poskusite znova pozneje.]]></string>
+    <!-- %1$d - profile icon number
+         Example: Icon 1, Icon 2, ... -->
+    <string name="profile_icon_accessibility">Ikona %1$d</string>
+    <!-- %1$d - profile icon number
+         Example: Color 1, Color 2, ... -->
+    <string name="profile_color_accessibility">Barva %1$d</string>
+    <string name="generic_info_label">Informacija</string>
+    <!-- Branded name for a feature that opens url after VPN connection to given profile is established.
+         Please don't use & in translation and capitalize key words. -->
+    <string name="create_profile_connect_and_go_label">Poveži se in odpri</string>
+    <!-- Displayed as a badge next to create_profile_auto_open_label ("Auto-launch website [NEW]") -->
+    <string name="create_profile_auto_open_label_badge">Novo</string>
+    <string name="create_profile_auto_open_url_input_label">URL spletne strani</string>
+    <string name="create_profile_auto_open_url_private_mode_label">Uporabite način zasebnega brskanja</string>
+    <!-- Label for disabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_off">Izklopljeno</string>
+    <string name="profile_auto_open_app_failed_to_launch">Poveži se in pojdi: aplikacije ni bilo mogoče najti</string>
+    <!-- Label for enabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_website">Odprite spletno mesto</string>
+    <string name="profile_auto_open_app">Odpri aplikacijo</string>
+    <string name="create_profile_auto_open_description">Samodejno odpri spletno mesto po vaši izbiri, ko se povežete s tem profilom.</string>
+    <string name="create_profile_auto_open_app_input_hint">Izberite aplikacijo</string>
+    <string name="create_profile_auto_open_app_input_label">Aplikacija</string>
+    <string name="create_profile_auto_open_app_no_apps">Ni najdenih aplikacij.</string>
+    <string name="profile_auto_open_error_invalid_url">Vnesite veljaven URL</string>
+    <string name="nps_how_likely_question">Kako verjetno je, da boste Proton VPN priporočili prijatelju ali sodelavcu?</string>
+    <string name="nps_additional_comment_title">Sporočite nam, zakaj ste podali to oceno.</string>
+    <string name="nps_additional_comment_optional">Neobvezno</string>
+    <string name="nps_rating_low_values_explain">0 je zelo malo verjetno</string>
+    <string name="nps_rating_high_values_explain">10 je zelo verjetno</string>
+    <string name="nps_toast_submit_message">Hvala! Vaše povratne informacije nam pomagajo izboljšati Proton VPN.</string>
+    <string name="nps_submit_error_char_limit">Vaš odgovor mora vsebovati največ 250 znakov.</string>
+    <string name="nps_button_submit_title">Deli anonimno</string>
+    <string name="widget_preview_switzerland">Švica</string>
+    <string name="widget_preview_spain">Španija</string>
+    <string name="widget_preview_germany">Nemčija</string>
+    <string name="widget_preview_france">Francija</string>
+    <string name="widget_status_unprotected">Nezaščiten</string>
+    <string name="widget_status_error">Napaka</string>
+    <string name="widget_status_connecting">Povezovanje</string>
+    <string name="widget_sign_in">Prijava</string>
+    <string name="widget_toast_added_message">Gradnik je bil dodan na začetni zaslon</string>
+    <string name="settings_advanced_ipv6_title">Podpora za IPv6</string>
+    <string name="settings_advanced_ipv6_description">Tunelira promet IPv6 prek VPN-ja. Lahko izboljša združljivost z omrežji IPv6.</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_message">Za uporabo tega naslova morate dovoliti povezave IPv6 prek tunela VPN.</string>
+    <string name="setting_ipv6_disabled_dialog_action_enable">Omogoči IPv6</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_title">IPv6 onemogočeno</string>
+    <string name="settings_ipv6_enabled_toast">IPv6 omogočen</string>
+    <string name="info_dialog_ipv6_traffic_benefits1">Omogoča dostop do spletnih strani in storitev samo za IPv6.</string>
+    <string name="info_dialog_ipv6_traffic_benefits2">Preprečuje težave v omrežjih, ki temeljijo na IPv6</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks1">Morda ne bo dobro delovalo s starejšimi omrežji ali aplikacijami</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks2">Nekatera omrežja obravnavajo promet IPv6 nepredvidljivo.</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks_title">Slabosti</string>
+    <string name="info_dialog_ipv6_traffic_benefits_title">Prednosti</string>
+    <string name="settings_lan_allow_direct_connection_title">Omogoči neposredne povezave naprav</string>
+    <string name="settings_lan_allow_direct_connection_description">Povežite se s pametnimi televizorji, sistemom Android Auto in drugimi napravami, ki ustvarjajo lastno omrežje. Za največjo varnost omogočite to možnost le pri povezovanju s temi napravami.</string>
+    <string name="no_connections_title">Povezav VPN ni na voljo</string>
+    <string name="no_connections_description_loading_error">Seznama strežnikov ni bilo mogoče naložiti.</string>
+    <string name="no_connections_description_no_servers">Prosite skrbnika, da za vaš račun omogoči dostop do VPN.</string>
+    <string name="no_connections_action_refresh">Osveži</string>
+    <string name="no_connections_action_sign_out">Odjavi se</string>
+    <string name="no_connections_help_contact_us"><![CDATA[Potrebujete pomoč? <a href="">Stopite v stik z nami</a>]]></string>
+    <string name="no_connections_help_follow_instructions"><![CDATA[Če vaš skrbnik potrebuje pomoč pri omogočanju dostopa do VPN, mu pošljite <a href="">ta navodila</a>.]]></string>
+    <string name="settings_protocol_proton_protocols">Proton protokoli</string>
+    <string name="settings_protocol_proton_protocols_description">Uporabite lastno Proton VPN implementacijo WireGuarda. To je eksperimentalna funkcija, zato boste morda izkusili nekaj nestabilnosti.</string>
+    <string name="connection_preferences_smart_discovery_dialog_title">Ni država, ki ste jo želeli?</string>
+    <string name="connection_preferences_smart_discovery_dialog_message">Če obstajajo lokacije, na katere se ne želite samodejno povezati, jih lahko izključite iz Najhitrejša država.</string>
+    <string name="excluded_locations_adoption_title">Izogni se neželenim lokacijam</string>
+    <string name="excluded_locations_adoption_description"><![CDATA[Zdaj lahko izključite države in mesta iz povezav <b>Najhitrejše</b>.]]></string>
+    <string name="session_fork_no_account_title">Prijavite se na Android TV</string>
+    <string name="session_fork_no_account_message">Dokončajte prijavo na tej napravi, da boste lahko začeli uporabljati Proton VPN na svojem televizorju</string>
+    <string name="session_fork_no_account_footnote"><![CDATA[Z uporabo te aplikacije sprejemate naše <a href="">Pogoje storitve</a>.]]></string>
+    <string name="session_fork_no_account_signup_button">Ustvarite račun</string>
+    <string name="session_fork_no_account_signin_button">Prijava</string>
+    <string name="session_fork_confirmation_title">Ali se želite prijaviti v Android TV?</string>
+    <string name="session_fork_confirmation_message">Ta postopek bo televizorju omogočil dostop do vašega računa Proton.</string>
+    <string name="session_fork_confirmation_bottom_note">Prijavite se le na napravah, ki jim zaupate</string>
+    <string name="session_fork_confirmation_too_soon_toast">Preden nadaljujete preberite naslednje informacije</string>
+    <string name="session_fork_success_title">Prijava je zaključena</string>
+    <string name="session_fork_success_message">Sedaj ste prijavljeni na svojem televizorju.</string>
+    <string name="session_fork_error_expired_title">Koda je potekla</string>
+    <string name="session_fork_error_expired_message">Na televizorju ustvarite novo kodo in poskusite še enkrat.</string>
+    <string name="session_fork_error_generic_title">Prijava ni uspela</string>
+    <string name="session_fork_error_fatal_message">Preverite svojo omrežno povezavo in poskusite znova. Če težava še vedno obstaja, se obrnite na našo službo za podporo strankam. </string>
+    <string name="session_fork_error_network_message">Preverite svojo omrežno povezavo in poskusite znova.</string>
+    <string name="session_fork_error_try_fallback_message">Na televizorju kliknite \'Težave pri prijavi?\', da sledite alternativnim navodilom.</string>
+    <string name="session_fork_error_report_button">Prijavi težavo</string>
+    <string name="session_fork_qr_code_content_description">QR koda</string>
+    <string name="session_fork_qr_code_message">Za prijavo ali ustvarjanje računa odčitajte QR-kodo.</string>
+    <string name="session_fork_qr_code_trouble_button">Težave pri prijavi?</string>
+    <string name="session_fork_qr_code_error_expired">Zaradi varnostnih razlogov je potekel rok veljavnosti potrditvenega kode</string>
+    <string name="session_fork_qr_code_error_network">Preverite svojo omrežno povezavo in poskusite znova</string>
+    <string name="session_fork_qr_code_error_create_new_button">Ustvarite novo kodo</string>
+    <string name="session_fork_user_code_title">Ne morete odčitati kode? Prijavite se ročno</string>
+    <string name="session_fork_user_code_step1"><![CDATA[Pojdite na: <b>%1$s</b>]]></string>
+    <string name="session_fork_user_code_step2">Vpišite se ali ustvarite račun</string>
+    <!-- Parameter: 8 character alphanumeric code, e.g. "AB12 CD34" -->
+    <string name="session_fork_user_code_step3"><![CDATA[Vnesite kodo: <b>%1$s</b>]]></string>
+    <!-- Parameter: web address for the support website, e.g. "protonvpn.com/support" -->
+    <string name="session_fork_user_code_support"><![CDATA[Potrebujete dodatno pomoč? Obiščite <b>%1$s</b>]]></string>
+</resources>

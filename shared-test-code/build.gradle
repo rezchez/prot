@@ -1,0 +1,162 @@
+/*
+ * Copyright (c) 2022. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+plugins {
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.proton.vpn.android.library)
+}
+
+android {
+    namespace 'com.protonvpn.test.shared'
+
+    defaultConfig {
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    // Same flavors as in the app module.
+    flavorDimensions = ["environment", "functionality", "distribution"]
+    productFlavors {
+        production {
+            dimension "environment"
+        }
+        black {
+            dimension "environment"
+        }
+        bti {
+            dimension "environment"
+        }
+
+        vanilla {
+            dimension "functionality"
+        }
+        google {
+            dimension "functionality"
+        }
+
+        playStore {
+            dimension "distribution"
+        }
+        amazon {
+            dimension "distribution"
+        }
+        direct {
+            dimension "distribution"
+        }
+        openSource {
+            dimension "distribution"
+        }
+        dev {
+            dimension "distribution"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled = true
+    }
+
+    kotlinOptions {
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring(libs.android.tools.desugar.jdk.libs)
+
+    ksp(libs.dagger.hilt.compiler)
+    implementation(libs.dagger.hilt.android)
+    implementation(libs.dagger.hilt.android.testing)
+    implementation(libs.androidx.hilt.work)
+    ksp(libs.androidx.hilt.compiler)
+
+    implementation project(':app')
+    implementation(libs.proton.core.auth.dagger)
+    implementation(libs.proton.core.account.data)
+    implementation(libs.proton.core.account.recovery.dagger)
+    implementation(libs.proton.core.account.recovery.test) {
+        // account-recovery modules are pulling in notification-dagger.
+        exclude group: "me.proton.core", module: "notification"
+        exclude group: "me.proton.core", module: "notification-dagger"
+    }
+    implementation(libs.proton.core.configuration.data)
+    implementation(libs.proton.core.crypto.android)
+    implementation(libs.proton.core.domain)
+    implementation(libs.proton.core.event.manager.data)
+    implementation(libs.proton.core.feature.flag.data)
+    implementation(libs.proton.core.human.verification.data)
+    implementation(libs.proton.core.network.data)
+    implementation(libs.proton.core.network.domain)
+    implementation(libs.proton.core.network.presentation)
+    implementation(libs.proton.core.notification.data)
+    implementation(libs.proton.core.notification.domain)
+    implementation(libs.proton.core.notification.test) {
+        // It's pulling in notification-dagger.
+        exclude group: "me.proton.core", module: "notification"
+        exclude group: "me.proton.core", module: "notification-dagger"
+    }
+    implementation(libs.proton.core.observability.data)
+    implementation(libs.proton.core.payment.data)
+    // Core puts dependencies of auth-test and data-test on IAP. It's incorrect and forces us to
+    // include IAP for test code as a workaround.
+    googleImplementation(libs.proton.core.payment.iap)
+    implementation(libs.proton.core.presentation)
+    implementation(libs.proton.core.plan.domain)
+    implementation(libs.proton.core.plan.presentation)
+    implementation(libs.proton.core.push.data)
+    implementation(libs.proton.core.telemetry.data)
+    implementation(libs.proton.core.test.kotlin)
+    implementation(libs.proton.core.user.domain)
+    implementation(libs.proton.core.user.recovery.data)
+    implementation(libs.proton.core.user.settings.data)
+    implementation(libs.proton.core.user)
+    implementation(libs.proton.core.util.android.dagger)
+    implementation(libs.proton.core.util.android.datetime)
+    implementation(libs.proton.core.util.kotlin)
+
+    implementation(testFixtures(libs.proton.payment))
+
+    implementation(libs.androidx.datastore.core)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.work.runtime)
+    implementation(libs.androidx.work.runtime.ktx)
+
+    implementation(libs.okhttp3.tls)
+    implementation(libs.okhttp3.mockwebserver)
+    implementation(libs.google.guava)
+
+    implementation(libs.proton.test.fusion)
+    implementation(libs.proton.vpn.govpnlib)
+
+    implementation(libs.kotlinx.coroutines.test) {
+        // https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-debug#debug-agent-and-android
+        exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
+    }
+    implementation(libs.turbine)
+
+    implementation(libs.kotlinx.serialization.json)
+
+    compileOnly(libs.mockk) // Tests will include mockk or mockk-android depending on type.
+}

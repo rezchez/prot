@@ -1,0 +1,1964 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2017 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_icon_name_classic">Clasică</string>
+    <string name="app_icon_name_dark">Întunecată</string>
+    <string name="app_icon_name_retro">Retro</string>
+    <string name="app_icon_name_weather">Meteo</string>
+    <string name="app_icon_name_notes">Notițe</string>
+    <string name="app_icon_name_calculator">Calculator</string>
+    <string name="login">Conectare</string>
+    <string name="menuActionSignOut">Deconectare</string>
+    <string name="connectionAllocationHelpTitle">Vă mulțumim pentru achiziționare</string>
+    <string name="connectionAllocationHelpDescription1">Pentru a începe utilizarea Proton VPN atribuiți contului sau oricărui cont secundar conexiuni VPN.</string>
+    <string name="connectionAllocationHelpDescription2">Acest pas va dura doar câteva minute. După aceasta veți putea să vă conectați și să vă protejați toate dispozitivele.</string>
+    <string name="connectionAllocationHelpDescription1AskAdmin">Momentan nu există nici o conexiune VPN activată pentru acest cont. Pentru a începe să utilizați Proton VPN, contactați-vă administratorul contului.</string>
+    <string name="connectionAllocationHelpAssignConnectionsButton">Activare conexiuni VPN</string>
+    <string name="connectionAllocationHelpLoginAgainButton">Reconectați-vă</string>
+    <!-- tag(Redesign_2023) "OK" button on dialogs -->
+    <string name="ok">OK</string>
+    <string name="dialogLearnMore">Detalii</string>
+    <string name="connected">Conectat</string>
+    <string name="buttonConnect">Conectare</string>
+    <string name="loaderConnectingTo">Se conectează la %1$s</string>
+    <string name="loaderNotConnected">Neconectat (Neprotejat)</string>
+    <string name="loaderConnectedTo">Conectat la %1$s</string>
+    <string name="loaderDisconnecting">Se deconectează</string>
+    <string name="loaderReconnecting">Se reconectează</string>
+    <string name="loaderReconnectNoNetwork">Se așteaptă o rețea utilizabilă</string>
+    <string name="loaderCheckingAvailability">Se verifică disponibilitatea serverului</string>
+    <string name="quickConnect">Conectare rapidă</string>
+    <!-- Displays a percentage value. Please use %% sign for %.
+         Example value: "70%" -->
+    <string name="serverLoad">%1$s%%</string>
+    <string name="cancel">Anulare</string>
+    <string name="close">Închidere</string>
+    <string name="dialogContinue">Continuare</string>
+    <string name="drawerReportProblem">Raportare o problemă</string>
+    <string name="action_done">Gata</string>
+    <string name="action_share">Partajare</string>
+    <string name="accountFree">Proton Free</string>
+    <string name="restrictedMaintenanceTitle">În întreținere</string>
+    <string name="restrictedMaintenanceDescription">Serverul la care se dorește conectarea este în întreținere. Încercați alt server.</string>
+    <string name="restricted_location_excluded_dialog_title">Conexiunea a eșuat</string>
+    <string name="restricted_location_excluded_dialog_description">Nu există servere disponibile. Alegeți manual o țară sau editați țările excluse.</string>
+    <string name="errorUserDelinquent"><![CDATA[Contul are în prezent o factură restantă. Vă rugăm să plătiți toate facturile neachitate la adresa&#160;<a href="https://account.protonvpn.com">account.protonvpn.com</a>]]></string>
+    <string name="errorMaxSessions">Ați atins numărul maxim de conexiuni simultane permise pentru acest cont. Modificați-vă planul Proton VPN pentru a obține mai multe conexiuni.</string>
+    <string name="listItemMaintenance">În întreținere</string>
+    <string name="insufficientPermissionsTitle">Este necesară acțiunea utilizatorului</string>
+    <string name="insufficientPermissionsDetails">Nu s-a putut stabili automat conexiunea VPN. Conectați manual o dată pentru a acorda permisiuni.</string>
+    <string name="log_title">Jurnal</string>
+    <string name="disconnect">Deconectare</string>
+    <string name="state_connecting">Se conectează…</string>
+    <string name="state_connected">Conectat</string>
+    <string name="state_disconnecting">Se deconectează…</string>
+    <string name="state_error">Eroare</string>
+    <string name="error_server_list_load_failed">Verificați conexiunea și reîncercați.</string>
+    <string name="error_server_unreachable">Nu s-a putut conecta la VPN. Verificați conexiunea și reîncercați.</string>
+    <string name="error_auth_failed">Autentificare utilizator eșuată.</string>
+    <string name="error_generic">Eroare nespecificată la conectare.</string>
+    <string name="error_generic_with_reason">Proton VPN nu a putut stabili o conexiune cu VPN. Reîncercați peste câteva secunde.<br/><br/> Detalii: %1$s</string>
+    <string name="reconnect">Reconectare</string>
+    <string name="reconnect_now">Reconectare</string>
+    <string name="try_reconnecting">Încercare reconectare</string>
+    <string name="connect">Conectare</string>
+    <string name="upgrade">Modificare</string>
+    <string name="retry">Reîncercare</string>
+    <string name="report_message">Mesaj raport</string>
+    <string name="report_bug_email_label">Adresa de e-mail</string>
+    <string name="report_bug_email_hint">Introduceți adresa de e-mail</string>
+    <string name="report_bug_message_label">Mesaj</string>
+    <string name="report_bug_message_hint">Descrieți eroarea, cum și unde ați detectat-o</string>
+    <string name="send_report">Trimitere raport</string>
+    <string name="report_sent">Raport trimis</string>
+    <string name="discardChanges">Anulați modificările nesalvate?</string>
+    <string name="discardChangesButtonDiscard">Ignorare modificări</string>
+    <string name="discardChangesButtonKeepEditing">Continuare editare</string>
+    <string name="done">GATA</string>
+    <string name="add">ADĂUGARE</string>
+    <string name="copy_to_clipboard">Copiere</string>
+    <string name="copied_to_clipboard">Copiat în memorie.</string>
+    <string name="got_it">Am înțeles</string>
+    <string name="exclude_locations">Excludere țări</string>
+    <string name="excluded_locations">Țări excluse</string>
+    <string name="cannot_connect">Nu se poate conecta</string>
+    <string name="skip">Omitere</string>
+    <string name="something_went_wrong">Ceva nu a funcționat corect</string>
+    <string name="try_again">Reîncercați</string>
+    <string name="delete">Ștergere</string>
+    <string name="menu_option_move_to_top" comment="command used to move an item to the top of the list">Mutare la început</string>
+    <string name="menu_option_move_up" comment="command used to move an item one position up in the list">Mutare în sus</string>
+    <string name="menu_option_move_down" comment="command used to move an item one position down in the list">Mutare în jos</string>
+    <string name="remove">Eliminare</string>
+    <string name="saveButton">Salvare</string>
+    <string name="ipWithPlaceholder">IP: %1$s</string>
+    <string name="activityLicensesTitle">Licențe terțe</string>
+    <string name="stateFragmentUnknownIp">Necunoscut</string>
+    <string name="noVpnPermissionMainTitle">Acțiune necesară pentru conectarea la VPN</string>
+    <string name="noVpnPermissionMainMessage">Pentru a vă conecta la Proton VPN, executați următoarele:</string>
+    <string name="noVpnPermissionGrantPermissionTitle">Acordați permisiunea VPN</string>
+    <string name="noVpnPermissionGrantPemrissionMessage">Android are nevoie de permisiunea de a se conecta la Proton VPN. Acordați-o atingând pe «OK» când vedeți fereastra „Solicitare conexiune” de pe Android.</string>
+    <string name="noVpnPermissionDisableAlwaysOnTitle">Dezactivare VPN permanent pentru alte aplicații VPN</string>
+    <string name="noVpnPermissionDisableAlwaysOnMessage">Android nu suportă aplicații VPN multiple. Dezactivați VPN permanent pentru orice aplicație VPN exceptând Proton VPN.</string>
+    <string name="noVpnPermissionProtonAppLabel">Aplicația Proton VPN</string>
+    <string name="noVpnPermissionOtherAppLabel">Alte aplicații VPN</string>
+    <string name="noVpnPermissionOpenSettings">Deschidere setări VPN</string>
+    <string name="noNotificationPermissionGrantTitle">Nu vă lăsați surprinși…</string>
+    <string name="noNotificationPermissionGrantDescription">Activați notificările pentru a primi notificări privind starea conexiunii.</string>
+    <string name="noNotificationPermissionGrantNowTitle">Activare notificări</string>
+    <string name="error_prepare_vpn_description"><![CDATA[Dezactivați opțiunea VPN permanent pentru toate celelalte aplicații VPN din setările VPN ale sistemului Android, deoarece acest lucru împiedică Proton VPN să stabilească o conexiune VPN. Acordați permisiuni VPN dacă apare un dialog care solicită permisiuni VPN. Este posibil ca și alte aplicații VPN să trebuiască să fie dezinstalate pentru a preveni conflictele. După aceea, reîncercați. <a href="%1$s">Detalii</a>]]></string>
+    <string name="error_prepare_vpn_settings">Accesați setările VPN Android</string>
+    <string name="error_prepare_vpn_title">Eroare: problemă permisiunii VPN</string>
+    <string name="error_server_not_set">Serverul nu mai este disponibil</string>
+    <string name="bugReportErrorEmptyEmail">E-mailul nu poate fi gol</string>
+    <string name="bugReportErrorInvalidEmail">Adresă de e-mail nevalidă</string>
+    <string name="bugReportLabelVpnLogsTitle">Includere jurnal de erori</string>
+    <string name="bugReportErrorLabelVpnLogsDescription">Aceasta va trimite jurnalul de erori local (nu vă înregistrăm activitatea) pentru a ne ajuta să rezolvăm problema.</string>
+    <string name="profileFastest">Cel mai rapid</string>
+    <string name="profileRandom">Aleatoriu</string>
+    <string name="loaderErrorNoInternet">Nu există conexiune la internet</string>
+    <string name="loaderErrorGeneric">Ceva nu a funcționat corect</string>
+    <string name="inputIpAddressLabel">Adresa IP</string>
+    <string name="inputIpAddressHelp">Introduceți adresa IPv4 sau IPv6 a serverului</string>
+    <string name="inputIpAddressErrorInvalid">Adresă IP nevalidă</string>
+    <!-- Displayed as a badge next to setting item ("Widget [NEW]") -->
+    <string name="settings_new_label_badge">NOU</string>
+    <!-- Displayed as a badge next to setting item ("Proton protocols [BETA]") -->
+    <string name="settings_beta_label_badge">BETA</string>
+    <string name="settingsExcludedIPAddressesListHeader">Adrese IP excluse (%1$d)</string>
+    <string name="settingsIncludedIPAddressesListHeader">Adrese IP incluse (%1$d)</string>
+    <string name="settingsExcludedApps">Aplicații excluse</string>
+    <string name="settingsExcludedAppsEmpty">Adăugare aplicații pentru excluderea de la traficul prin VPN.</string>
+    <string name="settingsIncludedAppsEmpty">Adăugare aplicații pentru includerea în traficul prin VPN.</string>
+    <string name="settingsExcludedAppsSelectedHeader">Aplicații excluse (%1$d)</string>
+    <string name="settingsIncludedAppsSelectedHeader">Aplicații incluse (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableRegularHeader">Toate aplicațiile obișnuite (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableSystemHeader">Toate aplicațiile de sistem (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableHeader">Toate celelalte aplicații (%1$d)</string>
+    <string name="settingsExcludedAppsLoadSystemAppsButton">Afișare aplicații de sistem</string>
+    <string name="settingsSplitTunnelAppsShowSystemAppsCheckbox">Afișare aplicații de sistem</string>
+    <string name="settingsSplitTunnelingExcludedAppsList">Aceste aplicații sunt excluse din conexiunea VPN.</string>
+    <string name="settingsSplitTunnelingIncludedAppsList">Doar aceste aplicații se conectează prin VPN.</string>
+    <!-- Description for action to add an application to "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to excluded apps"
+    -->
+    <string name="accessibility_action_add_excluded_app">Adăugare la aplicații excluse</string>
+    <!-- Description for action to remove an application from "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from excluded apps"
+    -->
+    <string name="accessibility_action_remove_excluded_app">Eliminare din aplicații excluse</string>
+    <!-- Description for action to add an application to "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to included apps"
+    -->
+    <string name="accessibility_action_add_included_app">Adăugare la aplicații incluse</string>
+    <!-- Description for action to remove an application from "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from included apps"
+    -->
+    <string name="accessibility_action_remove_included_app">Eliminare din aplicații incluse</string>
+    <string name="accessibility_action_copy_to_clipboard">Copiere în memorie</string>
+    <string name="accessibility_action_item_delete">Ștergere</string>
+    <string name="accessibility_action_item_move_up">Mutare în sus</string>
+    <string name="accessibility_action_item_move_down">Mutare în jos</string>
+    <string name="tileConnected">Conectat: %1$s</string>
+    <string name="openUrlError">%1$s nu a putut fi deschisă. Navigatorul web nu a fost detectat pe dispozitiv.</string>
+    <string name="loaderErrorTimeout">Conexiunea a expirat. Reîncercați.</string>
+    <string name="troubleshootButton">Depanare</string>
+    <string name="activityTroubleshootTitle">Depanare</string>
+    <string name="troubleshootPotentialSolutionsSectionTitle">Soluții potențiale</string>
+    <string name="troubleshootNoInternetDescription">Asigurați-vă că aveți conexiune la internet.</string>
+    <string name="troubleshootNoInternetTitle">Fără conexiune la internet</string>
+    <string name="troubleshootIspProblemTitle">Problemă cu furnizorul de servicii internet (ISP)</string>
+    <string name="troubleshootIspProblemDescription"><![CDATA[Încercați să vă conectați la Proton dintr-o altă rețea (sau folosiți <a href=\'%1$s\'>Tor</a>)]]></string>
+    <string name="troubleshootAntivirusProblemTitle">Interferență antivirus</string>
+    <string name="troubleshootAntivirusProblemDescription">Dezactivați temporar sau eliminați antivirusul.</string>
+    <string name="troubleshootProxyFirewallProblemTitle">Interferență Proxy/Paravan de protecție</string>
+    <string name="troubleshootProxyFirewallProblemDescription">Dezactivați setările din proxy sau paravanul de protecție sau contactați administratorul de rețea.</string>
+    <string name="troubleshootProtonDownTitle">Proton indisponibil</string>
+    <string name="troubleshootProtonDownDescription"><![CDATA[Consultați <a href=\"%1$s\">Starea Proton</a> pentru starea sistemului nostru.]]></string>
+    <string name="troubleshootContactUsSectionTitle">Încă aveți nevoie de ajutor? Contactați-ne direct.</string>
+    <string name="troubleshootCustomerSupport">Asistență clienți</string>
+    <string name="settingsAllowAlternativeRoutingTitle">Rută alternativă</string>
+    <string name="settingsAllowAlternativeRoutingDescription"><![CDATA[În cazul în care Proton este blocat, se permite aplicației să încerce căi alternative pentru a se conecta la serverele Proton. <a href="%1$s">Detalii</a>]]></string>
+    <string name="troubleshootGovernmentBlockTitle">Blocare guvernamentală</string>
+    <string name="troubleshootGovernmentBlockDescription"><![CDATA[Țara unde vă aflați ar putea bloca accesul la Proton. Încercați să folosiți <a href=\'%1$s\'>Tor</a> pentru a accesa Proton.]]></string>
+    <string name="settingsKillSwitchEnableTitle">Cum se activează întrerupătorul de conexiune</string>
+    <string name="settingsKillSwitchEnableStep1">1. Deschideți setările dispozitivului</string>
+    <!-- %1$s here will be replaced by "gear" icon -->
+    <string name="settingsKillSwitchEnableStep2">2. Găsiți Proton VPN și apăsați pe %1$s</string>
+    <!-- Content description for the "gear" icon in settingsKillSwitchEnableStep2. Used only by accessibility services. -->
+    <string name="settingsKillSwitchEnableStep2_gearIconContentDescription">setări</string>
+    <!-- The phrases "Always-on VPN" and "Block connections without VPN" needs to be translated exactly
+         the same as in Android VPN settings. -->
+    <string name="settingsKillSwitchEnableStep3"><![CDATA[3. Activați „<b>VPN permanent</b>” și „<b>Blocare conexiuni fără VPN</b>”]]></string>
+    <string name="settingsKillSwitchAndroidSettingsButton">Setări</string>
+    <string name="settingsKillSwitchLearnMoreButton">Ce este întrerupătorul de conexiune?</string>
+    <string name="settingsKillSwitchWarningMain">Când întrerupătorul de conexiune este activat, nu vă veți putea conecta la:</string>
+    <string name="settingsKillSwitchWarningPoint1">Pagini web și aplicații excluse de la conexiunea VPN prin divizarea traficului.</string>
+    <string name="settingsKillSwitchWarningPoint2">Dispozitive din rețeaua locală (LAN).</string>
+    <string name="settingsEnableTelemetryTitle">Partajare anonimă statistici de utilizare</string>
+    <string name="settingsEnableTelemetryDescription">Datele de utilizare ne ajută să depășim blocările VPN-ului și să îmbunătățim performanța aplicației.</string>
+    <string name="settingsSendCrashReportsTitle">Partajare anonimă rapoarte de erori</string>
+    <string name="settingsSendCrashReportsDescription">Rapoartele de erori ne ajută să reparăm erorile, să detectăm paravanele de protecție și să evităm blocările VPN-ului.</string>
+    <string name="settingsTelemetryScreenTitle">Statistici de utilizare</string>
+    <string name="settingsTelemetryScreenInfo"><![CDATA[Aceste statistici nu vă conțin adresa IP și nu pot fi utilizate să vă identifice. Nu le vom partaja cu terțe părți. <a href="%1$s">Detalii</a>]]></string>
+    <string name="netshield_settings_description_not_html">Vă protejați de reclame, malware și instrumente de urmărire de pe site-uri și aplicații. %1$s</string>
+    <string name="netshield_settings_description_tv">Vă protejează de reclame de la terțe părți, de instrumente de urmărire și de programe malițioase. NetShield nu blochează reclamele încorporate în serviciile de transmisie în flux, cum ar fi YouTube și Netflix.</string>
+    <string name="netshield_settings_more_info_title_tv">Cum funcționează NetShield</string>
+    <string-array name="netshield_settings_more_info_paragraphs_tv">
+        <item>NetShield blochează solicitările DNS către domenii terțe parte cunoscute ca surse de reclame, instrumente de urmărire și programe malițioase.</item>
+        <item>Aceasta înseamnă că nu veți primi reclame în navigatorul web sau aplicații gratuite care utilizează servicii de publicitate terță parte.</item>
+        <item>Totuși, nu poate bloca reclamele de pe platformele de transmisie în flux precum YouTube și Netflix, deoarece reclamele lor provin de pe propriile servere.</item>
+    </string-array>
+    <string name="settings_icon_change_description">Deghizați aplicația Proton VPN cu o pictogramă discretă. Notificările vor afișa în continuare numele și pictograma implicite Proton VPN. %1$s</string>
+    <string name="settings_icon_change_learn_more">Detalii</string>
+    <string name="learn_more">Detalii</string>
+    <string name="netshield_state_on" comment="Describes state, not action">Pornit</string>
+    <string name="netshield_state_off" comment="Describes state, not action">Oprit</string>
+    <string name="netshield_state_unavailable" comment="Describes state, not action">Indisponibil</string>
+    <string name="split_tunneling_state_on" comment="Describes state, not action">Pornit</string>
+    <string name="split_tunneling_state_off" comment="Describes state, not action">Oprit</string>
+    <string name="vpn_accelerator_state_on" comment="Describes state, not action">Pornit</string>
+    <string name="vpn_accelerator_state_off" comment="Describes state, not action">Oprit</string>
+    <string name="lan_state_on" comment="Describes state, not action">Pornită</string>
+    <string name="lan_state_off" comment="Describes state, not action">Oprită</string>
+    <string name="alt_routing_state_on" comment="Describes state, not action">Pornită</string>
+    <string name="alt_routing_state_off" comment="Describes state, not action">Oprită</string>
+    <string name="custom_dns_state_on" comment="Describes state, not action">Activat</string>
+    <string name="custom_dns_state_off" comment="Describes state, not action">Dezactivat</string>
+    <string name="custom_dns_state_unavailable" comment="Describes state, not action">Indisponibil</string>
+    <string name="custom_dns_item_removed_snackbar">Articolul a fost șters.</string>
+    <string name="netshield_free_description">Blocați reclame, instrumente de urmărire și malware pe pagini web și aplicații</string>
+    <string name="netshield_what_data_means">Statisticile NetShield explicate</string>
+    <string name="netshield_ads_title">Reclame</string>
+    <string name="netshield_ads_details">Reclame și instrumente invizibile de urmărire a reclamelor</string>
+    <string name="netshield_trackers_title">Instrumente de urmărire</string>
+    <string name="netshield_trackers_details">Cookie-uri și alte instrumente de urmărire care stochează și partajează informații despre activitatea dvs. pe internet.</string>
+    <string name="netshield_data_title">Date</string>
+    <string name="netshield_data_details">Cantitatea de date nedorite din reclame, instrumente de urmărire și programe malware blocate de NetShield.</string>
+    <plurals name="netshield_ads_blocked" comment="Number of ads blocked by netshield. Number displayed above the text">
+        <item quantity="one">Reclamă blocată</item>
+        <item quantity="few">Reclame blocate</item>
+        <item quantity="other">Reclame blocate</item>
+    </plurals>
+    <plurals name="netshield_trackers_stopped" comment="Number of trackers stopped by netshield. Number displayed above the text">
+        <item quantity="one">Urmăritor oprit</item>
+        <item quantity="few">Urmăritori opriți</item>
+        <item quantity="other">Urmăritori opriți</item>
+    </plurals>
+    <string name="netshield_data_saved" comment="Total data saved by netshield shown in kb/mb">Date salvate</string>
+    <string name="netshield_setting_warning">Este posibil ca unele site-uri web să nu se încarce corect atunci când reclamele și instrumentele de urmărire sunt blocate.</string>
+    <string name="netshield_setting_block_adult_content">Blocare conținut pentru adulți</string>
+    <string name="dialogDontShowAgain">Nu mai arăta</string>
+    <string name="guestHoleNotificationContent">Se încearcă evitarea problemelor de rețea. Acest lucru vă va ajuta să accesați Proton VPN.</string>
+    <string name="errorTunMultiUserPermission">Nu s-a putut inițializa conexiunea VPN din cauza unui conflict între două aplicații (de exemplu Dual Messenger) și divizarea traficului. Dezactivați una dintre ele și reporniți dispozitivul.</string>
+    <string name="errorTorrentNotAllowed">P2P nu este permis pe acest server</string>
+    <string name="error_profile_fallback_unavailable">Conexiune eșuată. Serverul selectat pentru profil nu este disponibil.</string>
+    <string name="profileProtocolNotAvailable">Acest profil de protocol VPN nu este momentan disponibil. Pentru conectare, schimbați protocolul.</string>
+    <string name="stateConnectedTo">Conectat la %1$s</string>
+    <string name="stateNotConnected">Nu există conexiune</string>
+    <string name="nameEurope">Europa</string>
+    <string name="nameAmerica">America</string>
+    <string name="nameAsia">Asia</string>
+    <string name="nameAfricaAndMiddleEast">Africa și Orientul Mijlociu</string>
+    <string name="nameOceania">Oceania</string>
+    <string name="tv_row_settings">Setări</string>
+    <string name="tv_card_lan_connections_label">LAN</string>
+    <string name="tv_card_split_tunneling_label">Divizare trafic</string>
+    <string name="tv_card_protocol_label">Protocol</string>
+    <string name="tv_dialog_delete_server_title">Ștergeți serverul %1$s?</string>
+    <string name="tv_detail_default_connection_checkbox_short">Favorită</string>
+    <string name="tv_detail_connect_streaming">Transmisii în flux cu Plus</string>
+    <string name="tv_detail_connect">Conectare</string>
+    <string name="tv_detail_description_streaming_country">Vizionați conținutul preferat de transmisii în flux. Accesați mai multe aplicații cu un plan Proton VPN Plus.</string>
+    <string name="tv_detail_description_no_streaming_country">Vizionați conținutul preferat de transmisii în flux cu un plan Proton VPN Plus.</string>
+    <string name="tv_detail_description_country_not_available">Această țară nu este disponibilă. Obțineți mai multe opțiuni de vizionare a conținutului transmis în flux cu un plan Proton VPN Plus.</string>
+    <string name="tv_detail_description_plus">Vizionați videoclipurile, filme sau sporturile favorite cu aplicațiile dvs.</string>
+    <string name="tv_login_title_welcome">Vizionați conținutul video preferat</string>
+    <string name="tv_login_welcome_description_bottom"><![CDATA[Obțineți contul Proton VPN la <b>%1$s</b>]]></string>
+    <string name="back">Înapoi</string>
+    <string name="tv_vpn_error_dialog_title">Conexiunea VPN a eșuat</string>
+    <string name="tv_signout_label">Deconectare</string>
+    <string name="tv_signout_dialog_title">Vă deconectați?</string>
+    <string name="tv_signout_dialog_description_connected">Aceasta va deconecta televizorul de la orice server VPN.</string>
+    <string name="tv_signout_dialog_ok">Deconectare</string>
+    <string name="tv_quick_connect_recommened">Recomandat</string>
+    <string name="tv_quick_connect_favourite">Favorită</string>
+    <string name="tv_country_maintenance_dialog_title">Țara nu este disponibilă</string>
+    <string name="tv_country_maintenance_dialog_description">Reîncercați mai târziu sau selectați o altă țară.</string>
+    <!-- The placeholder is replaced with a 0-100 value indicating the server load in percent.
+         Please note the double % sign after the placeholder. It is displayed as a single % sign in the app.
+
+         Example: 76% server load -->
+    <string name="tv_server_list_load">%1$s %% încărcare server</string>
+    <string name="tv_recently_used_servers">Servere utilizate recent</string>
+    <string name="tv_available_servers">Servere disponibile</string>
+    <string name="tv_locked_servers">Servere blocate</string>
+    <string name="tv_other_servers">Alte servere</string>
+    <string name="tv_server_list">Listă servere</string>
+    <string name="tv_server_list_action_unavailable">Indisponibil</string>
+    <string name="notification_subscription_expired_title">Abonamentul Proton VPN a expirat</string>
+    <string name="notification_subscription_expired_content">A trebuit să vă retrogradăm planul, dar vă reconectăm la cel mai rapid server disponibil în noul plan.</string>
+    <string name="notification_subscription_expired_no_reconnection_content">Abonamentul a fost retrogradat.</string>
+    <string name="notification_delinquent_title">Contul Proton VPN are facturi în așteptare</string>
+    <string name="notification_delinquent_content">Actualizați-vă informațiile de facturare pentru a păstra abonamentul activ.</string>
+    <string name="notification_max_sessions_title">Ați atins limita maximă de dispozitive folosite</string>
+    <!-- The number of devices will always be greater than 1. -->
+    <plurals name="notification_max_sessions_upsell_content">
+        <item quantity="one">Deconectați un alt dispozitiv pentru a-l conecta pe acesta sau treceți la planul Plus pentru a avea până la %1$d dispozitiv conectat.</item>
+        <item quantity="few">Deconectați un alt dispozitiv pentru a-l conecta pe acesta sau treceți la planul Plus pentru a avea până la %1$d dispozitive conectate simultan.</item>
+        <item quantity="other">Deconectați un alt dispozitiv pentru a-l conecta pe acesta sau treceți la planul Plus pentru a avea până la %1$d de dispozitive conectate simultan.</item>
+    </plurals>
+    <string name="notification_max_sessions_content">Deconectați un alt dispozitiv pentru a-l conecta pe acesta.</string>
+    <string name="notification_cancel_to_free">Sunteți pe planul gratuit. Sunt disponibile serverele și funcțiile gratuite.</string>
+    <string name="notification_cancel_to_basic">Sunteți pe planul Basic. Sunt disponibile servere gratuite și funcții Basic.</string>
+    <string name="notification_cancel_to_delinquent">Veți putea accesa din nou funcțiile premium după achitarea facturilor în așteptare.</string>
+    <string name="reconnect_from_server">De la serverul: </string>
+    <string name="reconnect_to_server">La serverul: </string>
+    <string name="no_thanks">Nu, mulțumesc</string>
+    <string name="enable">Activare</string>
+    <string name="notification_smart_protocol_disabled_title">Smart Protocol este acum dezactivat</string>
+    <string name="notification_smart_protocol_disabled_content">Proton VPN a detectat că rețeaua curentă împiedică o conexiune la VPN. Activarea funcției Smart Protocol ar putea ocoli aceste limitări.</string>
+    <string name="notification_streaming_blocked_title">Redarea transmisiilor în flux nu funcționează?</string>
+    <string name="notification_streaming_blocked_text">Multe servicii de transmisie în flux detectează și blochează conexiunile de la servere VPN gratuite. Actualizați la Proton VPN Plus pentru a ocoli aceste blocaje.</string>
+    <string name="upsell_advanced_features">Funcții avansate: NetShield, Secure Core, Tor, P2P</string>
+    <string name="upsell_streaming_services">Accesați serviciile de transmisie în flux (Netflix, Disney+, etc.) de oriunde în lume</string>
+    <!-- Number of servers available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_servers">
+        <item quantity="one">%1$d server</item>
+        <item quantity="few">%1$d servere</item>
+        <item quantity="other">%1$d de servere</item>
+    </plurals>
+    <!-- Number of countries available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_countries">
+        <item quantity="one">%1$d țară</item>
+        <item quantity="few">%1$d țări</item>
+        <item quantity="other">%1$d de țări</item>
+    </plurals>
+    <string name="upsell_upgrade_again">Remodernizați planul pentru a accesa toate funcțiile:</string>
+    <plurals name="upgrade_devices_title">
+        <item quantity="one">Protejați %1$d dispozitiv</item>
+        <item quantity="few">Protejați %1$d dispozitive simultan</item>
+        <item quantity="other">Protejați %1$d de dispozitive simultan</item>
+    </plurals>
+    <string name="upgrade_devices_text">Proton VPN este disponibil pe 8 platforme diferite.</string>
+    <string name="upgrade_plus_title">Îmbunătățiți-vă confidențialitatea</string>
+    <string name="upgrade_plus_message">Obțineți funcții avansate de confidențialitate și viteze maxime cu VPN Plus.</string>
+    <string name="upgrade_netshield_title">Bucurați-vă de navigare pe internet fără reclame</string>
+    <string name="upgrade_netshield_message"><![CDATA[Blocați reclamele, utilitarele de urmărire și programele malware cu <b>NetShield</b>.]]></string>
+    <string name="upgrade_secure_core_title">Dublați criptarea</string>
+    <string name="upgrade_secure_core_message"><![CDATA[Adăugați încă un nivel de criptare cu conexiunea VPN prin <b>Secure Core</b>.]]></string>
+    <string name="upgrade_p2p_title">Deblocați descărcările și partajările persoană-la-persoană (P2P)</string>
+    <string name="upgrade_p2p_text">Îmbunătățiți-vă viteza de încărcare și descărcare ascunzându-vă și adresa IP.</string>
+    <string name="upgrade_profiles_title">Obțineți acces rapid la conexiunile frecvent utilizate</string>
+    <string name="upgrade_profiles_text">Deblocați profilurile cu VPN Plus</string>
+    <string name="upgrade_streaming_title">Vizionați în 4K</string>
+    <string name="upgrade_streaming_text">Bucurați-vă de filmele și emisiunile TV favorite de oriunde din lume.</string>
+    <string name="upgrade_streaming_block_title">Treceți la un plan cu plată pentru a ocoli blocările prin VPN</string>
+    <string name="upgrade_streaming_block_text">Serverele VPN Plus vă permit să vă bucurați de filmele și serialele preferate din întreaga lume.</string>
+    <string name="upgrade_tor_title">Accesați rețeaua Tor cu o singură atingere</string>
+    <string name="upgrade_tor_text">Conectați-vă la serviciile ascunse și site-urile onion cu navigatorul web obișnuit.</string>
+    <string name="upgrade_vpn_accelerator_title">Navigați cu viteze și mai mari</string>
+    <!--
+        %1$s - speed in Gbps
+        Example:
+        Unlock faster, less crowded servers with speeds of up to 10 Gbps.
+    -->
+    <string name="upgrade_vpn_accelerator_message">Deblocați servere mai rapide și mai puțin aglomerate, cu viteze de până la %1$d Gbps.</string>
+    <string name="upgrade_split_tunneling_title">Obțineți maximum din ambele părți</string>
+    <string name="upgrade_split_tunneling_message"><![CDATA[Divizați-vă traficul în tuneluri VPN și non-VPN cu funcția de <b>divizare trafic</b>.]]></string>
+    <string name="upgrade_customization_title">Deblocați personalizarea avansată pentru VPN</string>
+    <string name="upgrade_customization_message"><![CDATA[Deblocați <b>Conexiunile în LAN</b>, <b>DNS-urile personale</b> și <b>NAT tip 2</b> cu VPN Plus.]]></string>
+    <string name="upgrade_all_countries_title">Accesați toate țările</string>
+    <!-- Number of servers inserted as %1$s in the "upgrade_plus_countries_title_new".
+         The number is rounded to the hundreds, e.g. for a value of 1234 the number used in this text is 1200.
+
+         Example:
+         1200 secure servers
+         -->
+    <plurals name="upgrade_plus_servers_new">
+        <item quantity="one">%d server securizat</item>
+        <item quantity="few">%d servere securizate</item>
+        <item quantity="other">%d de servere securizate</item>
+    </plurals>
+    <!-- Number of countries inserted as %2$s in "upgrade_plus_countries_title_new".
+
+         Example:
+         55 countries
+         -->
+    <plurals name="upgrade_plus_countries">
+        <item quantity="one">%d țară</item>
+        <item quantity="few">%d țări</item>
+        <item quantity="other">%d de țări</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with "upgrade_plus_servers_new"
+     %2$s - replaced with "upgrade_plus_countries"
+
+     Example:
+     Unlock 1300+ secure servers in 61 countries with VPN Plus.
+     -->
+    <string name="upgrade_plus_countries_title_new"><![CDATA[Deblocați %1$s în %2$s cu <b>VPN Plus</b>.]]></string>
+    <string name="mail_app_name" translateable="false">Proton Mail</string>
+    <string name="upgrade_unlimited_all_apps_title">Obțineți o acoperire completă a confidențialității cu Proton Unlimited</string>
+    <string name="upgrade_unlimited_all_apps_description">Deblocați toate funcțiile premium ale Proton VPN, Mail, Calendar, Unitate și Pass.</string>
+    <string name="upgrade_unlimited_more">Și altele</string>
+    <string name="upgrade_unlimited_vpn_unlimited_countries">Deblocați toate țările</string>
+    <string name="upgrade_unlimited_vpn_all_features">Toate celelalte funcții din VPN Plus</string>
+    <string name="upgrade_unlimited_vpn_any_location">Alegeți orice țară</string>
+    <string name="upgrade_unlimited_vpn_higher_speeds">Viteze în VPN și mai mari</string>
+    <plurals name="upgrade_unlimited_vpn_many_devices">
+        <item quantity="one">Protejați %1$d dispozitiv</item>
+        <item quantity="few">Protejați %1$d dispozitive simultan</item>
+        <item quantity="other">Protejați %1$d de dispozitive simultan</item>
+    </plurals>
+    <string name="upgrade_unlimited_vpn_streaming">Transmisii în flux securizate</string>
+    <string name="upgrade_unlimited_vpn_adblocker">Protecție programe malițioase și reclame</string>
+    <string name="upgrade_unlimited_vpn_double_vpn">VPN dublu</string>
+    <string name="upgrade_unlimited_vpn_p2p">Suport P2P</string>
+    <plurals name="upgrade_unlimited_mail_custom_domains">
+        <item quantity="one">Domenii personale de e-mail: %1$d</item>
+        <item quantity="few">Domenii personale de e-mail: %1$d</item>
+        <item quantity="other">Domenii personale de e-mail: %1$d</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_attachments">
+        <item quantity="one">Atașamente de %1$d MiB</item>
+        <item quantity="few">Atașamente de %1$d MiB</item>
+        <item quantity="other">Atașamente de %1$d MiB</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_many_addresses">
+        <item quantity="one">Adrese de e-mail: %1$d</item>
+        <item quantity="few">Adrese de e-mail: %1$d</item>
+        <item quantity="other">Adrese de e-mail: %1$d</item>
+    </plurals>
+    <string name="upgrade_unlimited_mail_unlimited_folders">Foldere și etichete nelimitate</string>
+    <string name="upgrade_unlimited_mail_dark_web">Monitorizare pe internetul ascuns</string>
+    <string name="upgrade_unlimited_mail_aliases">Aliasuri hide-my-email nelimitate</string>
+    <string name="upgrade_unlimited_mail_autoreply">Răspunsuri automate</string>
+    <string name="upgrade_unlimited_mail_scheduled_send">Trimitere planificată</string>
+    <plurals name="upgrade_unlimited_calendar_calendars">
+        <item quantity="one">Calendare personale: %1$d</item>
+        <item quantity="few">Calendare personale: %1$d</item>
+        <item quantity="other">Calendare personale: %1$d</item>
+    </plurals>
+    <string name="upgrade_unlimited_calendar_sharing">Partajare calendar</string>
+    <string name="upgrade_unlimited_calendar_invites">Trimiteți și primiți invitații</string>
+    <string name="upgrade_unlimited_drive_encryption">Stocare criptată de fișiere</string>
+    <string name="upgrade_unlimited_drive_storage_size">%1$d GiB spațiu total de stocare pentru fotografii, fișiere și mesaje pe e-mail</string>
+    <string name="upgrade_unlimited_drive_link_share">Partajați fotografii și fișiere cu legături web</string>
+    <string name="upgrade_unlimited_drive_sharing_security">Securitate avansată pentru partajări</string>
+    <string name="upgrade_unlimited_drive_version_history">Istoric versiuni</string>
+    <string name="upgrade_unlimited_pass_manager">Manager criptat de parole</string>
+    <string name="upgrade_unlimited_pass_logins_aliases">Conectări nelimitate și aliasuri hide-my-email</string>
+    <plurals name="upgrade_unlimited_pass_vaults">
+        <item quantity="one">Seifuri: %1$d</item>
+        <item quantity="few">Seifuri: %1$d</item>
+        <item quantity="other">Seifuri: %1$d</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_logins">Conectări nelimitate</string>
+    <string name="upgrade_unlimited_pass_aliases">Aliasuri hide-my-email nelimitate</string>
+    <string name="upgrade_unlimited_pass_credit_cards">Carduri de plată nelimitate</string>
+    <string name="upgrade_unlimited_pass_devices">Dispozitive nelimitate</string>
+    <plurals name="upgrade_unlimited_pass_users">
+        <item quantity="one">Partajați cu încă %1$d persoană</item>
+        <item quantity="few">Partajați cu maxim %1$d persoane</item>
+        <item quantity="other">Partajați cu maxim %1$d de persoane</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_2fa_auth">Autentificare cu doi factori integrată</string>
+    <string name="upgrade_not_now_button">Nu acum</string>
+    <!-- Content description for plan selection list.
+         Only used by accessibility services.
+
+         Example:
+         When the plan selection control is focused, and the first plan name is "VPN Plus"
+         TalkBack will read:
+         "VPN Plus, 1 of 2, in list Upgrade options" -->
+    <string name="upgrade_plan_selection_content_description">Opțiuni de modernizare</string>
+    <!-- Text in a "badge" element that has a rounded border and represents the Plus VPN plan.
+         May be used as a table header or like an icon. -->
+    <string name="badge_plan_plus">Plus</string>
+    <!-- Content description prefix for value in the benefits table row for the free plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_plus">Planul Plus:</string>
+    <!-- Content description prefix for value in the benefits table row for the plus plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_free">Planul Free:</string>
+    <string name="upsell_panel_content_description_yes">Da</string>
+    <string name="upsell_panel_content_description_no">Nu</string>
+    <string name="upsell_panel_table_header_plan_free">Free</string>
+    <string name="upsell_panel_general_benefit_block_ads">Blocați reclame și urmăritori</string>
+    <string name="upsell_panel_general_benefit_countries">Țări disponibile</string>
+    <!-- %1$s - number of countries rounded to full tens. Example: 120+, 130+, 140+ -->
+    <string name="upsell_panel_general_benefit_countries_rounded">peste %1$d</string>
+    <string name="upsell_panel_general_benefit_devices">Dispozitive protejate</string>
+    <string name="upsell_panel_general_benefit_location">Alegeți orice loc</string>
+    <string name="upsell_panel_general_benefit_server">Alegeți-vă serverul</string>
+    <string name="upsell_panel_general_benefit_shows">Vizionați emisiunile favorite din orice țară</string>
+    <string name="upsell_panel_general_benefit_speed">Viteză server</string>
+    <string name="upsell_panel_general_benefit_speed_standard">Standard</string>
+    <string name="upsell_panel_general_benefit_speed_highest">Maximă</string>
+    <string name="upsell_panel_adv_customization_title">Ajustați-vă conexiunea</string>
+    <string name="upsell_panel_adv_customization_description">Permiteți conexiuni LAN, setați un DNS personal și alegeți tipul de NAT. Controalele avansate, toate în planul Plus.</string>
+    <string name="upsell_panel_adv_customization_benefit_lan">Accesați imprimanta și dispozitivele locale</string>
+    <string name="upsell_panel_adv_customization_benefit_dns">Folosiți propriul serviciu de DNS</string>
+    <string name="upsell_panel_adv_customization_benefit_gaming">Conexiune mai bună pentru jocuri</string>
+    <!--
+        %1$s - country name in nominative
+
+        Warning country names are inserted in the nominative case.
+        For inflicted languages translate the following phrase instead:
+        Get VPN Plus to access: %1$s
+        -->
+    <string name="upsell_panel_country_title">Deblocați %1$s cu VPN Plus</string>
+    <string name="upsell_panel_countries_title">Deblocați toate țările cu VPN Plus</string>
+    <string name="upsell_panel_country_benefit_speed">Servere de mare viteză</string>
+    <string name="upsell_panel_country_benefit_shows">Vizionați emisiuni disponibile doar în afara țării</string>
+    <string name="upsell_panel_devices_title">Protejați fiecare dispozitiv deținut</string>
+    <string name="upsell_panel_devices_description">Telefonul, laptop-ul, TV-ul și orice altceva asemănător.</string>
+    <string name="upsell_panel_netshield_title">Navigare fără întreruperi</string>
+    <string name="upsell_panel_netshield_benefit_ads">Blocare reclame în timp ce navigați</string>
+    <string name="upsell_panel_netshield_benefit_trackers">Oprire instrumente de urmărire care vă monitorizează</string>
+    <string name="upsell_panel_netshield_benefit_malware">Protecție împotriva programelor malițioase și a înșelăciunilor</string>
+    <string name="upsell_panel_netshield_benefit_load_speed">Paginile se încarcă mai repede</string>
+    <string name="upsell_panel_onboarding_title">Obțineți mai mult cu VPN Plus</string>
+    <string name="upsell_panel_p2p_title">Descărcări cu viteză maximă</string>
+    <string name="upsell_panel_p2p_description">Servere construite pentru partajarea fișierelor, cu clientul torrent obișnuit.</string>
+    <string name="upsell_panel_p2p_benefit_p2p">Partajare fișiere P2P</string>
+    <string name="upsell_panel_profiles_title">Transmisii în flux, jocuri, muncă: câte un profil pentru fiecare</string>
+    <string name="upsell_panel_profiles_description">Configurați-vă conexiunile în felul propriu, apoi reconectați-vă la oricare dintre ele cu o singură atingere.</string>
+    <string name="upsell_panel_profiles_benefit_profiles">Profiluri salvate</string>
+    <string name="upsell_panel_profiles_benefit_profiles_unlimited">Nelimitate</string>
+    <string name="upsell_panel_secure_core_title">Două straturi de criptare între dvs. și web</string>
+    <string name="upsell_panel_secure_core_description">Direcționat printr-un server Proton din Elveția, Islanda sau Suedia înainte de țara aleasă.</string>
+    <string name="upsell_panel_secure_core_benefit_secure_core">Secure Core</string>
+    <string name="upsell_panel_speed_title">Vizionați, jucați și descărcați mai repede</string>
+    <string name="upsell_panel_speed_benefit_servers">Servere de mare viteză</string>
+    <string name="upsell_panel_speed_benefit_gaming">Timp de răspuns rapid în jocuri</string>
+    <string name="upsell_panel_speed_benefit_gaming_slow">Mare</string>
+    <string name="upsell_panel_speed_benefit_gaming_fast">Mic</string>
+    <string name="upsell_panel_speed_benefit_video">Vizionare videoclipuri fără sacadare</string>
+    <string name="upsell_panel_speed_benefit_p2p">Descărcări P2P suportate</string>
+    <string name="upsell_panel_split_tunneling_title">Alegeți care aplicații trec prin VPN</string>
+    <string name="upsell_panel_split_tunneling_description">Navigatorul web prin VPN, aplicația bancară în afara sa. Puteți alege, aplicație cu aplicație.</string>
+    <string name="upsell_panel_split_tunneling_benefit_split">Divizare trafic</string>
+    <string name="upsell_panel_streaming_title">Vizionați serviciile de transmisie în flux favorite</string>
+    <string name="upsell_panel_streaming_benefit_shows">Vizionați emisiuni din orice țară</string>
+    <!-- The asterisk points to upsell_panel_streaming_footer -->
+    <string name="upsell_panel_streaming_benefit_platforms">Sunt suportate toate platformele majore de transmisie în flux *</string>
+    <string name="upsell_panel_streaming_benefit_hd">Vizionați în HD fără sacadare</string>
+    <string name="upsell_panel_streaming_benefit_devices">Dispozitive conectate simultan</string>
+    <string name="upsell_panel_streaming_footer">* Necesită un abonament la platforma de transmisie în flux.</string>
+    <string name="upsell_panel_streaming_block_title">Treceți la un plan cu plată pentru a ocoli blocările prin VPN</string>
+    <string name="upsell_panel_streaming_block_description">Serverele VPN Plus vă permit să vă bucurați de filmele și serialele preferate din întreaga lume.</string>
+    <string name="upsell_panel_tor_title">Site-uri Onion, fără a fi nevoie de navigator web Tor</string>
+    <string name="upsell_panel_tor_description">Accesați site-urile .onion în navigatorul web pe care îl utilizați deja.</string>
+    <string name="upsell_panel_tor_benefit_tor">Tor prin VPN</string>
+    <string name="upsell_card_countries_title">Acoperire mondială</string>
+    <!-- Parameters:
+        %1$d - number of servers rounded up to 100s (e.g. 600, 1200)
+        %2$s - replaced with "upgrade_plus_countries"
+
+        Example:
+        1700+ server locations in 63 countries -->
+    <string name="upsell_card_countries_description">Peste %1$d de servere în %2$s</string>
+    <string name="upsell_card_customization_title">Și multe altele…</string>
+    <string name="upsell_card_customization_description">Deblocați și mai multă performanță și funcții de confidențialitate</string>
+    <plurals name="upsell_card_devices_title">
+        <item quantity="one">Protejați %1$d dispozitiv</item>
+        <item quantity="few">Protejați %1$d dispozitive</item>
+        <item quantity="other">Protejați %1$d de dispozitive</item>
+    </plurals>
+    <string name="upsell_card_devices_description">Securitate și intimitate pe toate dispozitivele</string>
+    <string name="upsell_card_netshield_title">NetShield</string>
+    <string name="upsell_card_netshield_description">Blocați reclame, malware și instrumente de urmărire</string>
+    <string name="upsell_card_secure_core_title">Secure Core</string>
+    <string name="upsell_card_secure_core_description">Adăugați încă un nivel de criptare a conexiunii VPN</string>
+    <string name="upsell_card_p2p_title">Suport P2P</string>
+    <string name="upsell_card_p2p_description">Descărcați fișiere prin BitTorrent și alte protocoale de partajare fișiere</string>
+    <string name="upsell_card_profiles_title">Profiluri</string>
+    <string name="upsell_card_profiles_description">Creare conexiuni VPN personale</string>
+    <string name="upsell_card_speed_title">Navigare pe internet mai rapidă</string>
+    <!-- Parameters:
+        %1$d - max server speed in Gbps (preserve the non-breaking space between the number and Gbps).
+        Example:
+        Browse at even higher speeds (up to 10&160;Gbps) -->
+    <string name="upsell_card_speed_description">Navigați pe web la viteze și mai mari (până la %1$d Gbps)</string>
+    <string name="upsell_card_split_tunneling_title">Divizare trafic</string>
+    <string name="upsell_card_split_tunneling_description">Navigați pe internet din două locuri deodată</string>
+    <string name="upsell_card_streaming_title">Transmisii în flux</string>
+    <string name="upsell_card_streaming_description">Vizionați filmele și emisiunile TV favorite</string>
+    <string name="upsell_card_tor_title">Tor prin VPN</string>
+    <string name="upsell_card_tor_description">Utilizați rețeaua Tor prin conexiunea VPN pentru intimitate suplimentară</string>
+    <string name="upsell_tv_all_countries_title">Accesați toate țările cu Plus</string>
+    <!-- Format for upselling countries on TV".
+        %1$s - replaced with upgrade_plus_servers_new plurals key (e.g. 1 secure server or 10 secure servers)
+        %2$s - replaced with upgrade_plus_countries plurals key (e.g. 1 country or 10 countries)
+
+        Example: Unlock 16821 secure servers in 127 countries. Go to the Proton VPN website to upgrade your plan.
+    -->
+    <string name="upsell_tv_all_countries_description">Deblocați %1$s din %2$s.</string>
+    <string name="upsell_tv_netshield_title">Bucurați-vă de navigarea fără reclame cu Plus</string>
+    <string name="upsell_tv_netshield_description"><![CDATA[Blocați reclamele, uneltele de urmărire și programele malițioase cu <b>NetShield</b>.]]></string>
+    <string name="upsell_tv_split_tunneling_title">Obțineți maxim din ambele lumi cu Plus</string>
+    <string name="upsell_tv_split_tunneling_description"><![CDATA[Divizați-vă traficul în tuneluri VPN și non-VPN cu funcția de <b>divizare trafic</b>.]]></string>
+    <string name="upsell_tv_subscription_expired_title">Abonamentul a expirat</string>
+    <string name="upsell_tv_subscription_expired_description">Modificați planul pentru a obține din nou acces la serverele și funcțiile Plus.</string>
+    <string name="upsell_tv_customization_title">Obțineți personalizări VPN avansate cu Plus</string>
+    <string name="upsell_tv_customization_description"><![CDATA[Deblocați <b>Conexiunile în LAN</b>, <b>DNS-urile personale</b> și mai multe funcții VPN avansate.]]></string>
+    <string name="upsell_tv_fallback_description">Accesați site-ul web Proton VPN pentru a vă modifica planul.</string>
+    <!-- Format for price per period of time.
+        %1$s - replaced with price and currency (e.g. "$100")
+        %2$s - replaced with time period, one of payment_price_per_ (e.g. "month", "week")
+
+        Examples:
+        50 PLN /month
+        $100 /year
+    -->
+    <string name="payment_price_with_period">%1$s/%2$s</string>
+    <string name="payment_price_per_day">zi</string>
+    <string name="payment_price_per_week">săptămână</string>
+    <string name="payment_price_per_month">lună</string>
+    <string name="payment_price_per_year">an</string>
+    <plurals name="payment_price_cycle_label_day">
+        <item quantity="one">%1$d zi</item>
+        <item quantity="few">%1$d zile</item>
+        <item quantity="other">%1$d de zile</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_week">
+        <item quantity="one">%1$d săptămână</item>
+        <item quantity="few">%1$d săptămâni</item>
+        <item quantity="other">%1$d de săptămâni</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_month">
+        <item quantity="one">%1$d lună</item>
+        <item quantity="few">%1$d luni</item>
+        <item quantity="other">%1$d de luni</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_year">
+        <item quantity="one">%1$d an</item>
+        <item quantity="few">%1$d ani</item>
+        <item quantity="other">%1$d de ani</item>
+    </plurals>
+    <string name="payment_select_your_plan">Selectați planul</string>
+    <!-- Label on a button for purchasing a subscription.
+         Parameter: %1$s - plan name
+         Plan names are not translated.
+
+         Example: "Get VPN Plus", "Get Proton Unlimited". -->
+    <string name="payment_button_get_plan">Luați %1$s</string>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_discount_renewal_price_message_daily">
+        <item quantity="one">Ofertă specială. Reînnoire automată cu %1$s/zi.</item>
+        <item quantity="few">Ofertă specială. Reînnoire automată cu %1$s la fiecare %2$d zile.</item>
+        <item quantity="other">Ofertă specială. Reînnoire automată cu %1$s la fiecare %2$d de zile.</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_discount_renewal_price_message_weekly">
+        <item quantity="one">Ofertă specială. Reînnoire automată cu %1$s/săptămână.</item>
+        <item quantity="few">Ofertă specială. Reînnoire automată cu %1$s la fiecare %2$d săptămâni.</item>
+        <item quantity="other">Ofertă specială. Reînnoire automată cu %1$s la fiecare %2$d de săptămâni.</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_discount_renewal_price_message_monthly">
+        <item quantity="one">Ofertă specială. Reînnoire automată cu %1$s/lună.</item>
+        <item quantity="few">Ofertă specială. Reînnoire automată cu %1$s la fiecare %2$d luni.</item>
+        <item quantity="other">Ofertă specială. Reînnoire automată cu %1$s la fiecare %2$d de luni.</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_discount_renewal_price_message_yearly">
+        <item quantity="one">Ofertă specială. Reînnoire automată cu %1$s/an.</item>
+        <item quantity="few">Ofertă specială. Reînnoire automată cu %1$s la fiecare %2$d ani.</item>
+        <item quantity="other">Ofertă specială. Reînnoire automată cu %1$s la fiecare %2$d de ani.</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_renewal_price_message_daily">
+        <item quantity="one">Abonamentul se reînnoiește automat cu %1$s/zi.</item>
+        <item quantity="few">Abonamentul se reînnoiește automat cu %1$s la fiecare %2$d zile.</item>
+        <item quantity="other">Abonamentul se reînnoiește automat cu %1$s la fiecare %2$d de zile.</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_renewal_price_message_weekly">
+        <item quantity="one">Abonamentul se reînnoiește automat cu %1$s/săptămână.</item>
+        <item quantity="few">Abonamentul se reînnoiește automat cu %1$s la fiecare %2$d săptămâni.</item>
+        <item quantity="other">Abonamentul se reînnoiește automat cu %1$s la fiecare %2$d de săptămâni.</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_renewal_price_message_monthly">
+        <item quantity="one">Abonamentul se reînnoiește automat cu %1$s/lună.</item>
+        <item quantity="few">Abonamentul se reînnoiește automat cu %1$s la fiecare %2$d lună.</item>
+        <item quantity="other">Abonamentul se reînnoiește automat cu %1$s la fiecare %2$d de luni.</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_renewal_price_message_yearly">
+        <item quantity="one">Abonamentul se reînnoiește automat cu %1$s/an.</item>
+        <item quantity="few">Abonamentul se reînnoiește automat cu %1$s la fiecare %2$d ani.</item>
+        <item quantity="other">Abonamentul se reînnoiește automat cu %1$s la fiecare %2$d de ani.</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_daily">
+        <item quantity="one">%1$s/zi</item>
+        <item quantity="few">%1$s la fiecare %2$d zile</item>
+        <item quantity="other">%1$s la fiecare %2$d de zile</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_weekly">
+        <item quantity="one">%1$s/săptămână</item>
+        <item quantity="few">%1$s la fiecare %2$d săptămâni</item>
+        <item quantity="other">%1$s la fiecare %2$d de săptămâni</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_monthly">
+        <item quantity="one">%1$s/lună</item>
+        <item quantity="few">%1$s la fiecare %2$d luni</item>
+        <item quantity="other">%1$s la fiecare %2$d de luni</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_yearly">
+        <item quantity="one">%1$s/an</item>
+        <item quantity="few">%1$s la fiecare %2$d ani</item>
+        <item quantity="other">%1$s la fiecare %2$d de ani</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_for_days">
+        <item quantity="one">pentru prima zi</item>
+        <item quantity="few">pentru primele %1$d zile</item>
+        <item quantity="other">pentru primele %1$d de zile</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_for_weeks">
+        <item quantity="one">pentru prima săptămână</item>
+        <item quantity="few">pentru primele %1$d săptămâni</item>
+        <item quantity="other">pentru primele %1$d de săptămâni</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_for_months">
+        <item quantity="one">pentru prima lună</item>
+        <item quantity="few">pentru primele %1$d luni</item>
+        <item quantity="other">pentru primele %1$d de luni</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_discount_for_years">
+        <item quantity="one">pentru primul an</item>
+        <item quantity="few">pentru primii %1$d ani</item>
+        <item quantity="other">pentru primii %1$d de ani</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_rest_daily">
+        <item quantity="one">apoi se reînnoiește cu %1$s/zi</item>
+        <item quantity="few">apoi se reînnoiește cu %1$s la fiecare %2$d zile</item>
+        <item quantity="other">apoi se reînnoiește cu %1$s la fiecare %2$d de zile</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_rest_weekly">
+        <item quantity="one">apoi se reînnoiește cu %1$s/săptămână</item>
+        <item quantity="few">apoi se reînnoiește cu %1$s la fiecare %2$d săptămâni</item>
+        <item quantity="other">apoi se reînnoiește cu %1$s la fiecare %2$d de săptămâni</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_rest_monthly">
+        <item quantity="one">apoi se reînnoiește cu %1$s/lună</item>
+        <item quantity="few">apoi se reînnoiește cu %1$s la fiecare %2$d luni</item>
+        <item quantity="other">apoi se reînnoiește cu %1$s la fiecare %2$d de luni</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_rest_yearly">
+        <item quantity="one">apoi se reînnoiește cu %1$s/an</item>
+        <item quantity="few">apoi se reînnoiește cu %1$s la fiecare %2$d ani</item>
+        <item quantity="other">apoi se reînnoiește cu %1$s la fiecare %2$d de ani</item>
+    </plurals>
+    <!-- Explains renewal cycle when first there's a discount price for several periods
+     (e.g. 2 months) and then the subscription renews at full price.
+     Periods (days, months etc) are never mixed between the messages, the whole message uses one
+     unit.
+
+     Parameters:
+      %1$s - one of payment_multi_renewal_discount_*
+      %2$s - one of payment_multi_renewal_discount_for_*
+      %3$s - one of payment_multi_renewal_rest_*
+
+     Examples:
+      "$2.99/month for the first 2 months, then auto renews at $3.99/month"
+      "$19.99/year for the first 3 years, then auto renews at $24.99/year"
+      "$3.99 every 2 months for the first 4 months, then auto renews at 5.99 every 2 months"
+    -->
+    <string name="payment_multi_renewal_template">%1$s %2$s, %3$s</string>
+    <string name="smart_routing_title">Smart Routing</string>
+    <string name="smart_routing_description">Această tehnologie permite ca Proton VPN să ofere viteză și securitate mai mare în țările dificil de accesat.</string>
+    <string name="tor_title">Tor</string>
+    <string name="server_load_title">Solicitare server</string>
+    <string name="activity_information_learn_more">Detalii</string>
+    <string name="server_load_low">Redusă</string>
+    <string name="server_load_medium">Medie</string>
+    <string name="server_load_high">Mare</string>
+    <!-- Override Human verification links from core -->
+    <string name="onboarding_welcome_title">Bine ați venit la Proton VPN</string>
+    <string name="onboarding_welcome_description">Navigați în privat, accesați conținutul blocat și bucurați-vă de libertatea digitală.</string>
+    <string name="onboarding_welcome_action">Să începem</string>
+    <string name="upgrade_success_get_started_button">Să începem</string>
+    <string name="dynamic_report_suggestion_didnt_work">Nu a funcționat?</string>
+    <string name="dynamic_report_contact_us">Contactați-ne</string>
+    <string name="dynamic_report_tips_description">Aceste sfaturi ar putea ajuta la rezolvarea mai rapidă a problemei.</string>
+    <string name="dynamic_report_tips_title">Rezolvări rapide</string>
+    <string name="dynamic_report_logs_title">Trimitere jurnale de erori</string>
+    <string name="dynamic_report_logs_tooltip">Jurnalele de eroare ne arată ce nu a funcționat și ce acțiuni au dus la problema apărută. Le vom folosi doar pentru a ajuta inginerii noștri să remedieze problema.</string>
+    <string name="dynamic_report_error_title">Nu s-a putut trimite raportul.</string>
+    <string name="dynamic_report_completion_error_description_generic">Nu s-a putut trimite raportul. Mai încercați.</string>
+    <string name="dynamic_report_completion_error_description_no_internet">Nu s-a putut trimite raportul. Verificați conexiunea și reîncercați.</string>
+    <string name="dynamic_report_completion_error_description_timeout">Nu s-a putut trimite raportul. Conexiunea a expirat. Reîncercați.</string>
+    <string name="dynamic_report_completion_success_title">Vă mulțumim pentru informații. Vom reveni cât de repede putem.</string>
+    <string name="dynamic_report_success_title">Vă mulțumim pentru feedback.</string>
+    <string name="dynamic_report_success_description">Vă vom contacta cât de curând posibil.</string>
+    <string name="dynamic_report_field_mandatory">Acest câmp este obligatoriu</string>
+    <string name="dynamic_report_logs_description">Un jurnal este un tip de fișier care ne arată acțiunile pe care le-ați întreprins care au dus la o eroare. Le vom folosi doar pentru a ajuta inginerii noștri să remedieze erorile.</string>
+    <string name="dynamic_report_logs_missing">Jurnalele de erori ne ajută să ajungem la baza problemei. Dacă nu le includeți, s-ar putea să nu putem investiga pe deplin problema.</string>
+    <string name="dynamic_report_step1">Pasul 1 din 3</string>
+    <string name="dynamic_report_step2">Pasul 2 din 3</string>
+    <string name="dynamic_report_step3">Pasul 3 din 3</string>
+    <string name="dynamic_report_your_issue_headline">Care este problema?</string>
+    <string name="update_screen_title">Actualizare Proton VPN</string>
+    <string name="update_screen_description">Este mai probabil să aveți probleme cu versiunile mai vechi ale Proton VPN .</string>
+    <string name="update_banner_description_settings">Este disponibilă o versiune nouă</string>
+    <string name="update_banner_warning_vpn_connected_title">VPN-ul se va deconecta pentru scurt timp</string>
+    <string name="update_banner_warning_vpn_connected_message">Aplicația trebuie să repornească pentru a finaliza actualizarea. Conexiunea va fi refăcută automat ulterior.</string>
+    <string name="dialog_create_account_title">Creați un cont pentru a continua</string>
+    <string name="dialog_create_account_action_create">Creare cont</string>
+    <string name="dialog_create_account_action_signin">Conectare</string>
+    <string name="server_search_menu_title">Căutare</string>
+    <string name="search_empty_result_subtitle">Încercați alt cuvânt cheie</string>
+    <string name="search_empty_result_title">Nu s-au găsit rezultate.</string>
+    <!-- Content description for an icon button that clears search query in the input field. -->
+    <string name="search_clear_query_content_description">Golire</string>
+    <!-- Content description for an icon button that clears text in an input field. -->
+    <string name="clear_text_field_content_description">Golire</string>
+    <!-- Example: Want to connect to Italy? -->
+    <string name="upgrade_country_title">Doriți să vă conectați la o anumită țară?</string>
+    <string name="upgrade_country_message"><![CDATA[Deblocați <b>selectarea țărilor</b> cu VPN Plus.]]></string>
+    <string name="free_connections_info_message">Proton gratuit vă conectează automat la cel mai rapid server disponibil. Acesta va fi în mod normal cel mai apropiat server de locul de unde vă conectați.</string>
+    <string name="free_connections_info_server_locations">Țări cu servere gratuite (%1$d)</string>
+    <string name="free_connections_info_banner_text">Accesați toate țările cu VPN Plus</string>
+    <string name="free_connection_info_title">Conexiuni gratuite</string>
+    <string name="search_upsell_banner_title">Vizionați transmisii în flux de oriunde</string>
+    <!-- Example: Unlock geoblocked content from 10 countries with VPN Plus. -->
+    <plurals name="search_upsell_banner_message">
+        <item quantity="one">Deblocați conținutul blocat geografic din %1$d țară cu VPN Plus</item>
+        <item quantity="few">Deblocați conținutul blocat geografic din %1$d țări cu VPN Plus</item>
+        <item quantity="other">Deblocați conținutul blocat geografic din %1$d de țări cu VPN Plus</item>
+    </plurals>
+    <string name="select_default_connection">Selectați conexiunea implicită</string>
+    <string name="settings_default_connection_title">Conexiune implicită</string>
+    <string name="fastest_country_description">Cel mai bun server disponibil</string>
+    <string name="settings_connection_preferences_title">Preferințe conexiune</string>
+    <string name="settings_connection_preferences_snackbar_message_excluded_location_removed">Articolul a fost eliminat</string>
+    <string name="settings_excluded_locations_title">Țări excluse</string>
+    <string name="settings_excluded_locations_description">Țările selectate nu vor fi folosite niciodată la conectarea rapidă.</string>
+    <string name="settings_excluded_locations_unavailable">Nu există țări disponibile</string>
+    <string name="settings_excluded_locations_selection_hint">Selectare…</string>
+    <string name="settings_excluded_locations_accessibility_label_deletion">Eliminare din țările excluse</string>
+    <string name="settings_excluded_locations_accessibility_label_city">Oraș</string>
+    <string name="settings_excluded_locations_accessibility_label_country">Țara</string>
+    <string name="settings_excluded_locations_accessibility_label_state">Stat</string>
+    <string name="settings_last_connection_title">Ultima conexiune</string>
+    <string name="settings_last_connection_description">Ultima conexiune folosită</string>
+    <string name="settings_change_icon_title">Pictogramă aplicație</string>
+    <string name="settings_change_icon_details">Personalizați modul în care aplicația Proton VPN apare pe dispozitiv. De ce?</string>
+    <string name="settings_change_icon_confirmation_title">Modificați pictograma aplicației?</string>
+    <string name="settings_change_icon_confirmation_details">Acest lucru va determina închiderea aplicației Proton VPN. Pentru a reporni Proton VPN, trebuie doar să atingeți nou pictogramă a aplicației.</string>
+    <string name="settings_change_icon_header_protonvpn">Proton VPN</string>
+    <string name="settings_change_icon_header_discreet">Pictogramă discretă aplicație</string>
+    <string name="settings_widget_title">Widget</string>
+    <string name="settings_widget_selection_title">Încercați widget-ul Proton VPN</string>
+    <string name="settings_widget_selection_description">Vedeți starea conexiunii și accesați conexiunile VPN preferate direct de pe ecranul principal.</string>
+    <!-- Placeholder is for non-translatable app_name-->
+    <string name="setting_widget_selection_additional_description">Pentru a adăuga widget-ul, țineți apăsat oriunde pe ecranul de pornire, apoi selectați %1$s din meniul afișat.</string>
+    <string name="settings_widget_selection_button_title">Adăugare widget</string>
+    <string name="setting_widget_try_title">Încercați widget-ul Proton VPN</string>
+    <!-- Content description used by accessibility services for a button for dismissing (hiding)
+         a notification banner (usually used for special offers). -->
+    <string name="notification_banner_dismiss_accessibility_label">Ascundere banner</string>
+    <!-- Time left in a countdown, it shows two units of time, e.g. days and hours, hours and minutes.
+         %1$s - larger unit of time, one of: time_left_days, time_left_hours, time_left_minutes
+         %2$s - smaller unit of time, one of: time_left_hours, time_left_minutes, time_left_seconds
+
+         Examples:
+         3 days 11 hours left
+         1 hour 32 minutes left
+         0 minutes 50 seconds left
+     -->
+    <string name="offer_time_left">Au rămas %1$s %2$s</string>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_seconds">
+        <item quantity="one">%1$d secundă</item>
+        <item quantity="few">%1$d secunde</item>
+        <item quantity="other">%1$d de secunde</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_minutes">
+        <item quantity="one">%1$d minut</item>
+        <item quantity="few">%1$d minute</item>
+        <item quantity="other">%1$d de minute</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 hours 5 minutes left -->
+    <plurals name="time_left_hours">
+        <item quantity="one">%1$d oră</item>
+        <item quantity="few">%1$d ore</item>
+        <item quantity="other">%1$d de ore</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 days 5 hours left -->
+    <plurals name="time_left_days">
+        <item quantity="one">%1$d zi</item>
+        <item quantity="few">%1$d zile</item>
+        <item quantity="other">%1$d de zile</item>
+    </plurals>
+    <string name="server_change_max_reached">Ați atins numărul maxim de schimbări de servere gratuite pentru moment.</string>
+    <string name="server_change_upsell">Obțineți modificări nelimitate cu VPN Plus.</string>
+    <string name="server_change_button_title">Schimbare server</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services.
+
+        %1$s - replaced with "time_left_minutes"
+        %2$s - replaced with "time_left_seconds"
+        Example:
+        Available in 1 minute 23 seconds.
+      -->
+    <string name="server_change_button_time_left_content_description">Disponibil peste %1$s %2$s</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services and only if time left is less than 1 minute.
+
+        %1$s - replaced with "time_left_seconds"
+        Example:
+        Available in 23 seconds.
+      -->
+    <string name="server_change_button_time_left_seconds_content_description">Disponibil peste %1$s</string>
+    <string name="server_change_progress_finished_contend_description">Disponibil acum</string>
+    <string name="not_wanted_country_title">Nu este țara pe care o doriți?</string>
+    <string name="not_wanted_country_description">Schimbați planul abonamentului pentru alege orice server</string>
+    <string name="whats_new_title">Ce este nou</string>
+    <string name="whats_new_profiles_title">Profilurile au revenit</string>
+    <string name="whats_new_profiles_description">Creați și salvați conexiuni personale alegându-vă locul, serverul și protocolul.</string>
+    <string name="whats_new_widget_title">Vă prezentăm widget-urile</string>
+    <string name="whats_new_widget_description">Acum vă puteți vedea și gestiona VPN-ul fără a părăsi ecranul principal.</string>
+    <string name="whats_new_add_widget_button">Adăugare widget</string>
+    <string name="welcome_plus_title">Bun venit la VPN Plus</string>
+    <string name="welcome_plus_description">Bucurați-vă de funcții suplimentare de confidențialitate, performanță îmbunătățită și personalizare VPN la nivelul următor.</string>
+    <string name="welcome_unlimited_title">Bun venit la Proton Unlimited</string>
+    <string name="welcome_unlimited_description">Ați deblocat toate funcțiile premium din Proton VPN, Mail, Calendar, Drive, Pass și Wallet.</string>
+    <string name="welcome_generic_title">Felicitări</string>
+    <string name="welcome_generic_description">V-ați modificat abonamentul. Bucurați-vă de funcțiile de confidențialitate și performanță de nivel superior.</string>
+    <!-- Text added to button labels that open links in a browser (as opposed to performing actions
+         within the app). Only used by accessibility services like screen readers.
+         Example:
+         a button with "Learn more" label and this suffix will be read by a screen reader as:
+         "Learn more, external link button"
+     -->
+    <string name="accessibility_external_link_suffix">legătură web externă</string>
+    <string name="no_logs_banner_title">VPN certificat fără jurnalizare</string>
+    <string name="no_logs_banner_description">Activitatea prin VPN vă este protejată de legile elvețiene privind confidențialitatea. Nu vă vom urmări niciodată online și nu vă vom partaja informațiile cu terțe părți.</string>
+    <!-- tag(Redesign_2023) Bottom bar label for home screen -->
+    <string name="bottom_nav_home">Început</string>
+    <string name="bottom_nav_gateways">Porți de acces</string>
+    <string name="bottom_nav_profiles">Profiluri</string>
+    <!-- tag(Redesign_2023) Bottom bar label for country list screen -->
+    <string name="bottom_nav_countries">Țări</string>
+    <!-- tag(Redesign_2023) Bottom bar label for settings screen -->
+    <string name="botton_nav_settings">Setări</string>
+    <!-- tag(Redesign_2023)
+         Text added to button labels that open a UI element (e.g. a panel).
+         Only used by accessibility services.
+         Example:
+         a button with label "connection details" and this action label will be read by a screen
+         reader as:
+         "Connection details, button. Double tap to open"
+    -->
+    <string name="accessibility_action_open">deschidere</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that initiate a VPN connection.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland will be read by a screen reader as:
+         "Switzerland. Double tap to connect"
+        -->
+    <string name="accessibility_action_connect">conectare</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that redirect the user to upgrade their subscription plan.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland that requires upgrading subscription to become
+         available will be read by a screen reader as:
+         "Unavailable, Switzerland. Double tap to upgrade"
+        -->
+    <string name="accessibility_action_upgrade">modificare</string>
+    <!-- tag(Redesign_2023)
+     Text added to clickable elements that initiate a search.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_search">căutare</string>
+    <!--
+     Text added to clickable elements that provide negative feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_negative">nu este bună</string>
+    <!--
+     Text added to clickable elements that provide positive feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_positive">este bună</string>
+    <!--
+     Text added to clickable elements that allows to submit either positive or negative feedback.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_submit_feedback">trimitere</string>
+    <!-- Name of action for opening a screen/panel for an item.
+         The action is listed in a menu of additional actions available to accessibility services.
+
+         Example:
+         - item in a list of countries has a custom action to open list of cities in the country
+         - item in a list of cities has a custom action to open list of servers in the city
+         -->
+    <string name="accessibility_menu_action_open">Deschidere</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable because servers
+         are in maintenance.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are in maintenance will be read by a
+         screen reader as:
+         "in maintenance, Switzerland"
+     -->
+    <string name="accessibility_item_in_maintenance">în mentenanță</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are unavailable will be read by a screen
+         reader as:
+         "unavailable, Switzerland"
+     -->
+    <string name="accessibility_item_unavailable">indisponibil</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when there is active connection to it.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland when there is a VPN connection to a server in this country
+         will be read by a screen reader as:
+         "Switzerland, connected"
+     -->
+    <string name="accessibility_item_connected">conectat</string>
+    <!-- tag(Redesign_2023): label indicating that a server supports peer-to-peer. -->
+    <string name="server_feature_label_p2p">P2P</string>
+    <!-- tag(Redesign_2023): label indicating that a server routes connection through the Tor network. -->
+    <string name="server_feature_label_tor">Tor</string>
+    <string name="server_feature_content_description_p2p">persoană-la-persoană</string>
+    <string name="server_feature_content_description_tor">Tor</string>
+    <string name="server_feature_content_description_smart_routing">Smart Routing</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest country is connected to. -->
+    <string name="fastest_country">Cea mai rapidă țară</string>
+    <string name="fastest_country_excluding_my_country">Cea mai rapidă țară (exclusiv țara mea)</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest free server is connected to. -->
+    <string name="fastest_free_server">Cel mai rapid server gratuit</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Iceland
+     -->
+    <string name="connection_info_secure_core_full_iceland">%1$s via Islanda</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Sweden
+     -->
+    <string name="connection_info_secure_core_full_sweden">%1$s via Suedia</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_switzerland">%1$s via Elveția</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - exit country name in nominative case
+         %2$s - entry country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_other">%1$s via %2$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_iceland">via Islanda</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_sweden">via Suedia</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_switzerland">prin Elveția</string>
+    <!--
+         Label describing a Secure Core connection via the fastest Secure Core country.
+         It is displayed below country name, for example:
+         Italy
+         via Secure Core
+    -->
+    <string name="connection_info_secure_core_entry_fastest">via Secure Core</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - entry country name in nominative case
+         Example: via Switzerland
+    -->
+    <string name="connection_info_secure_core_entry_other">via %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         three countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+
+     -->
+    <string name="connection_info_auto_selected_free_countries">Autoselectare din [flags]</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         several countries. Used instead of connection_info_auto_selected_free_countries when there
+         are more than 3 countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+         $1%d - replaced with number of additional countries (beyond the 3 flags).
+
+         Example, if there are 5 countries to select from the text will be:
+         Auto selected from [flags]+2
+         -->
+    <string name="connection_info_auto_selected_free_countries_more">Autoselectare din [flags]+%1$d</string>
+    <!-- tag(Redesign_2023)
+         Accessibility label describing a connection to a free server that is automatically selected
+         from one in several countries. Placed directly below fastest_free_server.
+         This text replaces connection_info_auto_selected_free_servers for screen readers.
+         $1%d - replaced with number of countries.
+         -->
+    <plurals name="connection_info_accessibility_auto_selected_free_countries">
+        <item quantity="one">Autoselectare din %1$d țară</item>
+        <item quantity="few">Autoselectare din %1$d țări</item>
+        <item quantity="other">Autoselectare din %1$d de țări</item>
+    </plurals>
+    <string name="connection_info_auto_selected_free_countries_plain">Autoselectare din țările planului gratuit.</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that the connection details in the card are
+         are that of the previous connection.
+
+         Example:
+         Last connected to
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         -->
+    <string name="connection_card_label_last_connected">Ultima conexiune la</string>
+    <!--
+        Label above the connection card indicating text which acts as a button and leads to
+        customization bottom sheet of default connection
+     -->
+    <string name="connection_card_label_default_connection">Conexiune implicită</string>
+    <!-- Label above the connection card when not connected and the user is on the free plan.
+         The connection card always shows "Fastest free server" (fastest_free_server) for free
+         users. -->
+    <string name="connection_card_label_free_connection">Conexiune gratuită</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is being established.
+     -->
+    <string name="connection_card_label_connecting">Se conectează la…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection to a different server is
+         being established. It\'s shown only in response to user clicking the "Change server" button.
+     -->
+    <string name="connection_card_label_changing_server">Se schimbă serverul…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is established and the user
+         is safely browsing as if they were in the location indicated in the connection card.
+
+         Example:
+         Browsing safely from
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         Germany
+     -->
+    <string name="connection_card_label_connected">Navigare sigură prin</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with details of the current VPN connection.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "connection details, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_connection_details">detalii conexiune</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with information about connections in free plan.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "more information about free connections, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_free_connections">mai multe informații despre conexiunile gratuite</string>
+    <string name="connection_card_label_connection_feedback">Cum vă este conexiunea?</string>
+    <!-- tag(Redesign_2023)
+         Displayed above the list of recently made connections.
+     -->
+    <string name="recents_headline">Recente</string>
+    <!-- Displayed above the list of VPN Plus features in the home screen -->
+    <string name="home_upsell_carousel_headline">Descoperiți VPN Plus</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_pin">Fixare</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_unpin">Anulare fixare</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_remove">Eliminare</string>
+    <!-- tag(Redesign_2023)
+         State description of a pinned recent item.
+         Only used by accessibility service.
+    -->
+    <string name="recent_action_accessibility_state_pinned">Fixat</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_country_servers_in_maintenance">Toate serverele din această țară sunt în mentenanță.</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_city_servers_in_maintenance">Toate serverele din acest oraș sunt în mentenanță.</string>
+    <!-- State means here US state, like California -->
+    <string name="message_state_servers_in_maintenance">Toate serverele din acest stat sunt în mentenanță.</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_in_maintenance">Servere în întreținere</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_not_available">Serverul nu este disponibil</string>
+    <string name="message_server_location_excluded">Loc server exclus</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog when all servers of a gateway are in maintenance -->
+    <string name="message_gateway_in_maintenance">Poartă de acces în mentenanță</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_sign_out">Deconectare</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_title">Setări</string>
+    <string name="gateways_title">Porți de acces</string>
+    <string name="countries_title">Țări</string>
+    <string name="profiles_title">Profiluri</string>
+    <string name="settings_autoconnect_title">Conectare automată</string>
+    <string name="settings_autoconnect_boot_description">Vă conectează automat la VPN folosind conectarea rapidă după ce a pornit dispozitivul.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_features">Funcții</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_netshield_title">NetShield</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_split_tunneling_title">Divizare trafic</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_kill_switch_title">Întrerupător de conexiune</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_connection_category">Conexiune</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_protocol_title">Protocol</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_vpn_accelerator_title">VPN Accelerator</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_advanced_settings_title">Setări avansate</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_general">Generale</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_account">Cont</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_notifications_title">Notificări</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_support">Asistență</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_help_center_title">Centrul de asistență</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_report_issue_title">Raportare problemă</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_debug_logs_title">Jurnal de depanare</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_improve_proton">Îmbunătățire Proton</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_fight_censorship_title">Ajutați-ne să luptăm cu cenzura</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_rate_us_title">Evaluați Proton VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_app_version">Versiune aplicație: %1$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_third_party_licenses">Licențe terțe</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_title">Deconectare?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_message">Se va întrerupe conexiunea prin VPN.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_dont_ask_again">Nu mă mai întreba</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_action">Deconectare</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_action_cancel">Anulare</string>
+    <string name="dialog_action_change_icon">Modificare pictogramă</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_all">Toate</string>
+    <string name="country_filter_cities">Orașe</string>
+    <string name="country_filter_states">State</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_secure_core">Secure Core</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_p2p">P2P</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_tor">Tor</string>
+    <string name="country_filter_all_list_header">Toate țările (%1$d)</string>
+    <string name="country_filter_all_list_header_free">Țări Plus (%1$d)</string>
+    <string name="country_filter_countries_list_header">Țări (%1$d)</string>
+    <string name="country_filter_cities_list_header">Orașe (%1$d)</string>
+    <string name="country_filter_states_list_header">Țări (%1$d)</string>
+    <string name="country_filter_servers_list_header">Servere</string>
+    <string name="country_filter_secure_core_list_header">Țări cu Secure Core (%1$d)</string>
+    <string name="country_filter_p2p_list_header">Țări P2P (%1$d)</string>
+    <string name="country_filter_p2p_list_header_cities">Orașe P2P (%1$d)</string>
+    <string name="country_filter_p2p_list_header_states">Țări P2P (%1$d)</string>
+    <string name="counrty_filter_p2p_servers_list_header">Servere P2P</string>
+    <string name="country_filter_tor_list_header">Țări Tor (%1$d)</string>
+    <string name="country_filter_tor_servers_list_header">Servere Tor</string>
+    <string name="country_filter_info_label">Informații</string>
+    <!-- Content description for server load indicator. Used by accessibility services only.
+         Note: the trailing \'%\' sign needs to be doubled
+         (this doesn\'t apply to other percent sign characters, e.g. ٪). -->
+    <string name="country_filter_server_load_content_description">Solicitare: %1$s %%</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is connected and network is protected
+    -->
+    <string name="vpn_status_connected">Conexiune protejată</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is not connected and network is not protected
+    -->
+    <string name="vpn_status_disabled">Conexiune neprotejată</string>
+    <!-- tag(Redesign_2023)
+         Text is shown while connection is being established
+    -->
+    <string name="vpn_status_connecting">Protejare identitate digitală</string>
+    <!-- tag(Redesign_2023)
+         Displays Country name and IP of user if he is not connected.
+         First parameter is country, second is IP.
+         Ex: Poland · 192.1.1.1.1
+    -->
+    <string name="vpn_status_disabled_location">%1$s · %2$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_subtitle">Detalii conexiune</string>
+    <string name="connection_details_features_title">Caracteristici</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_show_ip">Afișare IP</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_back">Înapoi</string>
+    <string name="accessibility_close">Închidere</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_my_ip">IP personal</string>
+    <string name="connection_details_my_ipv4">IPv4 locală</string>
+    <string name="connection_details_my_ipv6">IPv6 locală</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_ip">IP VPN</string>
+    <string name="connection_details_vpn_ip4_6">IPv4/IPv6 VPN</string>
+    <string name="connection_details_vpn_ipv4">IPv4 VPN</string>
+    <string name="connection_details_vpn_ipv6">IPv6 VPN</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates for how long user has been connected. Like \'Connected for 2hours\'
+    -->
+    <string name="connection_details_connected_for">Conectat timp de</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server">Server</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_gateway">Poartă de acces</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_country">Țara</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_city">Oraș</string>
+    <!-- Label for server location "state", as a state of the USA. -->
+    <string name="connection_details_state">Stat</string>
+    <!-- Label for server smart routing, a country which is routed through. -->
+    <string name="connection_details_smart_routing">Rutat prin</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates Server load, on the left side will be Server load, and on the right actual load values.
+    -->
+    <string name="connection_details_server_load">Solicitare server</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_question">Care este solicitarea serverului?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_description">Încărcarea serverului arată cât de aproape este un server de capacitatea sa maximă. \n\nO sarcină mare a serverului vă poate încetini conexiunea.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_title">Mică (1-75%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_description">Viteză foarte mare</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_title">Medie (76-90%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_description">Improbabil să afecteze viteza prin VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_title">Mare (91-100%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_description">Viteza prin VPN e mai redusă decât cea normală</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol">Protocol</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol_description">Un protocol este un set de instrucțiuni pe care dispozitivul personal urmează să se conecteze și să comunice cu un server.</string>
+    <!-- tag(Redesign_2023)
+         Label in front of upload speed in connection details. It is followed by upload speed number and unit.
+    -->
+    <string name="connection_details_upload">Încărcare</string>
+    <!-- tag(Redesign_2023)
+         Label in front of download speed in connection details. It is followed by download speed number and unit.
+    -->
+    <string name="connection_details_download">Descărcare</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_section_vpn_speed">Viteză VPN</string>
+    <string name="connection_details_section_ip">Adresa IP</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_question">Care este viteza prin VPN?</string>
+    <string name="info_dialog_secure_core_title">Secure Core</string>
+    <string name="info_dialog_p2p_title">P2P</string>
+    <string name="info_dialog_secure_core_description">Secure Core vă conectează la serverul de destinație printr-un al doilea server VPN de securitate maximă.\n\nAcest nivel mai mare de protecție poate provoca latență mai mare și viteze mai mici.</string>
+    <string name="info_secure_core_standard_header">Conexiune VPN standard</string>
+    <string name="info_secure_core_secure_header">Conexiune VPN Secure Core</string>
+    <string name="info_dialog_tor_description">Conectați-vă la un server Tor pentru a accesa servicii ascunse și site-uri de tip onion folosind orice navigator web.</string>
+    <string name="info_dialog_button_learn_more_tor">Cum se accesează rețeaua Tor?</string>
+    <string name="info_dialog_button_learn_more_p2p">Cum se folosește partajarea fișierelor prin torrent cu P2P</string>
+    <string name="info_dialog_button_learn_more_ipaddress">Ce este o adresă IP?</string>
+    <string name="info_dialog_button_learn_more_streaming">Aveți nevoie de ajutor pentru vizionare?</string>
+    <string name="info_dialog_streaming_title">Transmisii în flux</string>
+    <string name="info_dialog_streaming_description">Serverele pentru transmisii în flux sunt destinate pentru redarea rapidă și sigură a emisiunilor TV și a filmelor.</string>
+    <string name="info_dialog_how_to_stream">Cum să vizionați:</string>
+    <!-- item 1 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_1">Accesați setările telefonului și opriți serviciul de localizare.</string>
+    <!-- item 2 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_2">Reporniți serviciul de redare în flux.</string>
+    <!-- item 3 in the numbered list (last item) -->
+    <string name="info_dialog_how_to_stream_step_3">Conectați-vă la orice server Plus și începeți vizionarea.</string>
+    <string name="info_dialog_profiles_title">Profiluri</string>
+    <string name="info_dialog_ipaddress_title">Adresa IP</string>
+    <string name="info_dialog_ipv6_traffic_title">Trafic IPv6</string>
+    <string name="info_dialog_profiles_description">Profilurile sunt conexiuni VPN personalizate pe care vi le puteți adapta nevoilor și le puteți salva pentru acces rapid.\n\nSetați țara preferată și optimizați setările pentru securitate, performanță, jocuri sau orice alt scenariu.</string>
+    <string name="info_dialog_ipaddress_description">Adresa IP din VPN vă maschează adresa IP reală. Acest lucru face să pară că navigați de la adresa din VPN, astfel încât activitatea online nu vă poate fi corelată cu cea a dispozitivului.</string>
+    <string name="info_dialog_ipv6_traffic_description">Protocolul de internet (IP) atribuie adrese dispozitivelor și direcționează traficul de internet. IPv6 este cea mai recentă versiune, oferind mai multe adrese și o conectivitate mai bună, dar nu este încă adoptată universal.</string>
+    <string name="connection_feature_p2p_title">P2P</string>
+    <string name="connection_feature_p2p_description">Pe acest server este activată partajarea persoană-la-persoană.</string>
+    <string name="connection_feature_tor_title">Tor</string>
+    <string name="connection_feature_tor_description">Vă puteți conecta la adrese cu domeniul .onion cu navigatorul obișnuit.</string>
+    <string name="connection_feature_secure_core_title">Secure Core</string>
+    <string name="connection_feature_secure_core_description">Activitatea vă este criptată de două servere VPN cu securitate ridicată.</string>
+    <string name="connection_feature_streaming_title">Transmisii în flux</string>
+    <string name="connection_feature_streaming_description">Aceste servere este optimizat pentru redare filme și emisiuni TV.</string>
+    <string name="connection_feature_smart_routing_title">Smart Routing</string>
+    <string name="connection_feature_smart_routing_description">Vă conectează la țara de destinație prin servere care sunt situate fizic în altă parte.</string>
+    <!-- Placeholder will be replaced by a list of country names separated by commas, e.g, Connects you to your destination country through servers physically located elsewhere: Canada, Mexico, United States.  -->
+    <string name="connection_feature_smart_routing_description_with_countries">Vă conectează la țara de destinație prin servere care sunt situate fizic în altă parte: %1$s.</string>
+    <!--
+        %1$s - physical server location country
+        %2$s - destination country
+        Warning: country names are inserted in the nominative case.
+        For INFLECTED languages, translate the following phrase instead:
+        "Your physical server location: %1$s.\nYour browsing country: %2$s"
+    -->
+    <string name="country_smart_routing_info">Serverele se află fizic în %1$s, dar se pare că navigați din %2$s.</string>
+    <!--
+        Displayed next to an icon which provides more information if clicked
+    -->
+    <string name="connection_details_info_label">Informații</string>
+    <!-- tag(Redesign_2023)
+         Used for button title to learn more about different contexts
+    -->
+    <string name="connection_details_learn_more">Detalii</string>
+    <!-- tag(Redesign_2023)
+        Used to describe IP which is not known
+    -->
+    <string name="connection_details_unknown_ip">Necunoscut</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_description">Acest grafic arată viteza activității curente de încărcare și descărcare. Conexiunea prin VPN nu ar trebui să vă încetinească activitatea normală online.</string>
+    <string name="speed_bytes_per_second">%1$s B/s</string>
+    <string name="speed_kilobytes_per_second">%1$s KiB/s</string>
+    <string name="speed_megabytes_per_second">%1$s MiB/s</string>
+    <string name="speed_gigabytes_per_second">%1$s GiB/s</string>
+    <string name="speed_terabytes_per_second">%1$s TiB/s</string>
+    <!-- Used as graph label to indicate speed measurement. Example: Speed KB/s or Speed MB/s-->
+    <string name="speed_graph_title">Viteza %1$s</string>
+    <string name="bytes_per_second">B/s</string>
+    <string name="kilobytes_per_second">KiB/s</string>
+    <string name="megabytes_per_second">MiB/s</string>
+    <string name="gigabytes_per_second">GiB/s</string>
+    <string name="terabytes_per_second">TiB/s</string>
+    <plurals name="full_name_speed_bytes_per_second">
+        <item quantity="one">%1$s bait pe secundă</item>
+        <item quantity="few">%1$s baiți pe secundă</item>
+        <item quantity="other">%1$s de baiți pe secundă</item>
+    </plurals>
+    <plurals name="full_name_speed_kilobytes_per_second">
+        <item quantity="one">%1$s kibibait pe secundă</item>
+        <item quantity="few">%1$s kibibaiți pe secundă</item>
+        <item quantity="other">%1$s kibibaiți pe secundă</item>
+    </plurals>
+    <plurals name="full_name_speed_megabytes_per_second">
+        <item quantity="one">%1$s mibibait pe secundă</item>
+        <item quantity="few">%1$s mibibaiți pe secundă</item>
+        <item quantity="other">%1$s mibibaiți pe secundă</item>
+    </plurals>
+    <plurals name="full_name_speed_gigabytes_per_second">
+        <item quantity="one">%1$s gibibait pe secundă</item>
+        <item quantity="few">%1$s gibibaiți pe secundă</item>
+        <item quantity="other">%1$s gibibaiți pe secundă</item>
+    </plurals>
+    <plurals name="full_name_speed_terabytes_per_second">
+        <item quantity="one">%1$s tibibait pe secundă</item>
+        <item quantity="few">%1$s tibibaiți pe secundă</item>
+        <item quantity="other">%1$s tibibaiți pe secundă</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_bytes">
+        <item quantity="one">%1$s bait</item>
+        <item quantity="few">%1$s baiți</item>
+        <item quantity="other">%1$s baiți</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_kilobytes">
+        <item quantity="one">%1$s kibibait</item>
+        <item quantity="few">%1$s kibibaiți</item>
+        <item quantity="other">%1$s kibibaiți</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_megabytes">
+        <item quantity="one">%1$s mibibait</item>
+        <item quantity="few">%1$s mibibaiți</item>
+        <item quantity="other">%1$s mibibaiți</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_gigabytes">
+        <item quantity="one">%1$s gibibait</item>
+        <item quantity="few">%1$s gibibaiți</item>
+        <item quantity="other">%1$s gibibaiți</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_terabytes">
+        <item quantity="one">%1$s tibibait</item>
+        <item quantity="few">%1$s tibibaiți</item>
+        <item quantity="other">%1$s tibibaiți</item>
+    </plurals>
+    <string name="traffic_volume_bytes">%1$s B</string>
+    <string name="traffic_volume_kilobytes">%1$s KiB</string>
+    <string name="traffic_volume_megabytes">%1$s MiB</string>
+    <string name="traffic_volume_gigabytes">%1$s GiB</string>
+    <string name="traffic_volume_terabytes">%1$s TiB</string>
+    <!-- tag(Redesign_2023)
+         Shown at the top status view if app detects that there is no usable network to connect to VPN
+    -->
+    <string name="error_vpn_waiting_for_network">Se așteaptă rețeaua</string>
+    <!-- tag(Redesign_2023) -->
+    <plurals name="connection_details_days">
+        <item quantity="one">%1$d zi</item>
+        <item quantity="few">%1$d zile</item>
+        <item quantity="other">%1$d de zile</item>
+    </plurals>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_hours_shortened">%1$d h</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_minutes_shortened">%1$d min</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_seconds_shortened">%1$d sec</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceTitle">Conexiunea a eșuat</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceDescription">Acest dispozitiv nu permite conexiuni prin VPN.</string>
+    <string name="create_profile_title">Creare profil</string>
+    <!-- Title for the screen where user can edit a profile.
+         %1$s - name of the profile being edited. -->
+    <string name="edit_profile_title">Editare %1$s</string>
+    <string name="edit_profile_dialog_action">Editare profil</string>
+    <string name="create_profile_name_hint">Nume profil</string>
+    <string name="create_profile_name_error_empty">Introduceți numele profilului</string>
+    <string name="create_profile_name_error_too_long">Numele profilului trebuie să aibă maxim 30 de caractere</string>
+    <string name="create_profile_type_and_location_title">Selectați tipul și locul conexiunii</string>
+    <string name="create_profile_features_and_settings_title">Funcții și setări</string>
+    <string name="configure_profile_features_and_settings_title">Configurare setări profil</string>
+    <string name="configure_profile_features_and_settings_description">Setările profilului vor suprascrie setările din VPN la conectare.</string>
+    <!--
+        First input will be for current step, second one will be for total number of steps
+        Example: Step 3 of 7
+     -->
+    <string name="create_profile_steps">Pasul %1$d din %2$d</string>
+    <string name="create_profile_button_next">Înainte</string>
+    <!-- Important: please note the double % sign after 400. It is displayed as a single % in the app.
+         (this doesn\'t apply to other percent sign characters, e.g. ٪)
+         %1$s - will have translated learn_more value -->
+    <string name="settings_vpn_accelerator_description">Măriți viteza de conectare cu până la 400 %% cu tehnologii de îmbunătățire a performanței. %1$s</string>
+    <string name="settings_account_settings_title">Setări cont</string>
+    <string name="settings_account_change_password">Schimbare parolă</string>
+    <string name="settings_account_recovery_email">E-mail de recuperare</string>
+    <string name="settings_account_recovery_email_not_set">Nesetat</string>
+    <string name="settings_account_security_keys">Chei de securitate</string>
+    <!-- Label of a button that opens user\'s account page -->
+    <string name="settings_account_button_my_account">Contul meu</string>
+    <string name="settings_account_button_delete_account">Ștergere cont</string>
+    <string name="settings_custom_dns_title">DNS personal</string>
+    <string name="settings_custom_dns_description_tv">Conectare la VPN cu un sistem de nume de domenii (DNS) autogăzduit sau terță parte.</string>
+    <string name="settings_add_dns_placeholder">192.0.2.0</string>
+    <string name="settings_add_dns_title">Adăugare server DNS</string>
+    <string name="settings_add_dns_new_entry_button">Adăugare</string>
+    <string name="settings_add_dns_description">Introduceți adresa IPv4 sau IPv6 a serverului</string>
+    <string name="settings_add_dns_invalid_input">Introduceți o adresă IPv4 sau IPv6 validă</string>
+    <string name="settings_add_dns_empty_input">Introduceți o adresă IPv4 sau IPv6</string>
+    <string name="settings_add_dns_duplicate_input">Server deja adăugat.</string>
+    <string name="settings_advanced_dns_description">Conectare la VPN cu un sistem de nume de domenii (DNS) autogăzduit sau terță-parte. Detalii</string>
+    <!-- %1$d - Corresponds to number of servers added -->
+    <string name="settings_dns_list_title">Servere (%1$d)</string>
+    <string name="settings_dns_list_description">Dacă serverul DNS personal nu funcționează, va fi folosit DNS-ul standard din VPN.</string>
+    <string name="settings_dns_list_description_multiple">Se va încerca accesarea în ordine a acestor servere. Dacă nu funcționează niciunul, va fi folosit DNS-ul din VPN.</string>
+    <string name="settings_changes_apply_on_reconnect_toast">Modificările se vor aplica după reconectare</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_title">NetShield va fi indisponibil</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message">NetShield nu poate filtra reclame, instrumente de urmărire și malițioase când se folosește un DNS personal. Detalii</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message_tv">NetShield nu poate filtra reclamele, uneltele de urmărire și programele malițioase când se folosește un DNS personal.</string>
+    <string name="settings_advanced_alternative_routing_title">Rută alternativă</string>
+    <string name="settings_advanced_alternative_routing_description">Dacă serviciile Proton sunt blocate din cauza restricțiilor de rețea, vom încerca să utilizăm o rută alternativă de rețea pentru a vă conecta la site-urile noastre.</string>
+    <string name="settings_advanced_allow_lan_title">Conexiuni LAN</string>
+    <string name="settings_advanced_allow_lan_description">Vă permite să vă conectați la imprimante, boxe și alte dispozitive din rețeaua locală a dispozitivului.</string>
+    <string name="settings_advanced_allow_lan_description_tv">Vă conectați la boxe, calculatoare și alte dispozitive din rețeaua locală.</string>
+    <string name="settings_advanced_allow_lan_title_tv">Permitere conexiuni LAN</string>
+    <string name="settings_advanced_nat_type_title">Tip NAT</string>
+    <!-- %1$s - will have translated learn_more value -->
+    <string name="settings_advanced_nat_type_description">Selectați un tip de traducere a adreselor de rețea pentru conexiunea proprie. %1$s</string>
+    <string name="settings_advanced_nat_type_description_no_learn">Selectați un tip de traducere a adreselor de rețea pentru conexiunea proprie.</string>
+    <string name="settings_advanced_nat_type_strict">Strict (tip 3)</string>
+    <string name="settings_advanced_nat_type_strict_short">Tip 3</string>
+    <string name="settings_advanced_nat_type_moderate">Moderat (tip 2)</string>
+    <string name="settings_advanced_nat_type_moderate_short">Tip 2</string>
+    <string name="settings_advanced_nat_type_strict_description">Restricționează datele care intră în rețeaua proprie. Această opțiune este mai sigură, dar poate face mai dificilă conexiunile jocurilor cu utilizatori multipli.</string>
+    <string name="settings_advanced_nat_type_moderate_description">O anumită restricție la datele care intră în rețeaua personală. Această opțiune este cea mai bună pentru jocurile video online.</string>
+    <string name="settings_split_tunneling_description">Personalizați-vă conexiunea decizând care aplicații și adrese IP sunt protejate de VPN. %1$s</string>
+    <string name="settings_protocol_description">Un protocol VPN determină modul în care datele se mută între un server VPN și dispozitivul personal. %1$s</string>
+    <string name="settings_protocol_description_no_link">Un protocol VPN determină modul în care datele se mută între un server VPN și dispozitivul personal.</string>
+    <string name="settings_protocol_section_speed">Viteză (UDP)</string>
+    <string name="settings_protocol_section_reliability">Fiabilitate (TCP)</string>
+    <string name="settings_protocol_smart_title">Smart</string>
+    <string name="settings_protocol_smart_description">Autoselectează cel mai bun protocol pentru conexiune.</string>
+    <string name="settings_protocol_wireguard_title">WireGuard</string>
+    <string name="settings_protocol_smart_protun_description">Selectează automat cel mai bun protocol pentru conexiune [experimental].</string>
+    <string name="settings_protocol_wireguard_udp_description">Protocol de ultimă generație pentru securitate și performanță.</string>
+    <string name="settings_protocol_wireguard_tcp_description">Protocol de ultimă generație pentru securitate și performanță.</string>
+    <string name="settings_protocol_stealth_title">Stealth</string>
+    <string name="settings_protocol_stealth_description">Ocolește blocarea VPN prin ascunderea conexiunii VPN față de cenzori. Acest protocol este rezistent la IPA (inspecția profundă a pachetelor), dar este posibil să nu fie la fel de rapid ca alte protocoale. Stealth este exclusiv pentru Proton VPN.</string>
+    <!-- Text on a badge displayed next to the "smart" protocol name in settings -->
+    <string name="settings_protocol_badge_recommended">Recomandat</string>
+    <string name="settings_protocol_badge_experimental">Experimental</string>
+    <string name="settings_split_tunneling_mode_title">Mod</string>
+    <string name="settings_split_tunneling_mode_standard">Excludere</string>
+    <string name="settings_split_tunneling_mode_inverse">Includere</string>
+    <string name="settings_split_tunneling_mode_description_standard">Aplicațiile selectate și adresele IP sunt excluse din conexiunea VPN.</string>
+    <string name="settings_split_tunneling_mode_description_inverse">Doar aplicațiile selectate și adresele IP se conectează prin VPN, orice alt trafic nefiind protejat.</string>
+    <string name="settings_split_tunneling_excluded_apps">Aplicații excluse</string>
+    <string name="settings_split_tunneling_excluded_ips">Adrese IP excluse</string>
+    <string name="settings_split_tunneling_included_apps">Aplicații incluse</string>
+    <string name="settings_split_tunneling_included_ips">Adrese IP incluse</string>
+    <string name="settings_split_tunneling_empty" comment="Used to indicate that no IP or Apps are included in split tunneling">Niciuna</string>
+    <string name="settings_split_tunneling_excluded_format" comment="Used for describing excluded items. Example: Chrome, Facebook and 2 more. The same logic used for IP addresses too.">%1$s, %2$s și încă %3$d</string>
+    <string name="settings_split_tunneling_already_excluded">Deja exclus</string>
+    <string name="settings_split_tunneling_already_included">Deja inclusă</string>
+    <string name="settings_split_tunneling_remove_ip_dialog_message">Eliminați adresa IP din listă?</string>
+    <string name="settings_split_tunneling_ip_removed_message">Adresă IP eliminată.</string>
+    <string name="settings_theme_title">Tema</string>
+    <string name="settings_theme_value_auto">Temă dispozitiv</string>
+    <string name="settings_theme_value_light">Albă</string>
+    <string name="settings_theme_value_dark">Neagră</string>
+    <string name="settings_dialog_reconnect">Noile setări vor fi aplicate la următoarea conectare.</string>
+    <string name="settings_needs_reconnect_banner">Noile setări vor fi aplicate la următoarea conectare.</string>
+    <string name="private_dns_conflict_banner_custom_dns_title">DNS-ul personal nu este disponibil</string>
+    <string name="private_dns_conflict_banner_custom_dns_description">Dispozitivul folosește un DNS terță-parte care împiedică funcționarea DNS-ului personal din Proton VPN. Detalii</string>
+    <string name="private_dns_conflict_banner_custom_dns_description_tv">Acest dispozitiv folosește un DNS terță parte care împiedică funcționarea DNS-ului personal din Proton VPN.</string>
+    <string name="private_dns_conflict_banner_netshield_title">NetShield nu este disponibil</string>
+    <string name="private_dns_conflict_banner_netshield_description">Dispozitivul folosește un DNS terță-parte care împiedică NetShield să funcționeze. Detalii</string>
+    <string name="private_dns_conflict_banner_network_settings_button">Setări rețea</string>
+    <string name="custom_dns_conflict_banner_netshield_title">NetShield nu este disponibil</string>
+    <string name="custom_dns_conflict_banner_netshield_description">DNS-ul personal este activat și împiedică funcționarea NetShield. Detalii</string>
+    <string name="custom_dns_conflict_banner_netshield_title_tv">Dezactivați DNS-ul personal pentru a utiliza NetShield</string>
+    <string name="custom_dns_conflict_banner_netshield_description_tv">DNS-ul personal este activat și împiedică funcționarea NetShield.</string>
+    <string name="custom_dns_conflict_banner_disable_custom_dns_button">Opriți DNS-ul personal</string>
+    <string name="info_secure_core_standard_high_privacy">Intimitate mare</string>
+    <string name="info_secure_core_standard_lower_latency">Latență scăzută</string>
+    <string name="info_secure_core_advanced_privacy">Intimitate avansată</string>
+    <string name="info_secure_core_higher_latency">Latență mai mare</string>
+    <string name="info_p2p_what_title">Ce este P2P?</string>
+    <string name="info_p2p_what_description">Tehnologia persoană-la-persoană (P2P) vă permite să vă conectați și să partajați fișiere direct cu alte dispozitive.\n\nServerele noastre P2P sunt special concepute pentru a accepta acest tip de partajare a fișierelor.</string>
+    <string name="info_p2p_torrenting_title">Ce este partajarea prin fișiere torrent?</string>
+    <string name="info_p2p_torrenting_description">Partajarea și descărcarea rapidă a fișierelor mari printr-o rețea P2P.</string>
+    <string name="info_p2p_why_title">De să folosiți un server P2P când utilizați fișiere torrent?</string>
+    <string name="info_p2p_why_description_speed">Viteze de încărcare și descărcare crescute</string>
+    <string name="info_p2p_why_description_logs">Fără jurnale de activitate</string>
+    <string name="info_p2p_why_description_hide">Vă ascundeți adresa IP față de furnizorul de servicii și față de partenerii de transfer</string>
+    <string name="info_dialog_smart_routing_description">Smart Routing ne permite să oferim acoperire VPN în țările greu accesibile.\n\nCând vă conectați la un server Smart Routing, va părea că navigați în țara de destinație, chiar dacă serverul fizic este situat în altă parte.\n\nSmart Routing este de obicei folosit pentru a evita legile anti-confidențialitate și alte forme de cenzură.</string>
+    <string name="notifications_channel_connection_status_name">Stare conexiune</string>
+    <string name="notifications_channel_connection_status_description">Afișează la ce server sunteți conectat și viteza prin VPN.</string>
+    <string name="notifications_channel_connection_errors_name">Eroare conexiune</string>
+    <string name="notifications_channel_connection_errors_description">Vă alertează la probleme care suspendă sau opresc conexiunea VPN.</string>
+    <string name="notifications_channel_connection_tips_name">Sfaturi de conexiune</string>
+    <string name="notifications_channel_connection_tips_description">Sfaturi contextuale care vă ajută să beneficiați la maxim de Proton VPN.</string>
+    <string name="countries_upsell_banner_description">Accesați toate țările cu VPN Plus</string>
+    <string name="secure_core_upsell_banner_description">Adăugați încă un nivel de criptare a conexiunii VPN</string>
+    <string name="p2p_upsell_banner_description">Descărcați fișiere prin BitTorrent și alte protocoale de partajare fișiere</string>
+    <string name="tor_upsell_banner_description">Utilizați rețeaua Tor prin conexiunea VPN pentru intimitate suplimentară</string>
+    <string name="vpnplus_upsell_banner_description">Treceți la VPN Plus</string>
+    <string name="search_zero_screen_title">Încercați să căutați…</string>
+    <string name="search_zero_screen_info_countries_title">Țări</string>
+    <string name="search_zero_screen_info_cities_title">Orașe</string>
+    <string name="search_zero_screen_info_servers_title">Servere</string>
+    <string name="search_zero_screen_info_countries_examples">Elveția, State Unite al Americii, Italia, Canada…</string>
+    <string name="search_zero_screen_info_cities_examples">New York, Londra, Tokyo, Sydney…</string>
+    <string name="search_zero_screen_info_servers_examples">JP#50, CA#3, IT#14…</string>
+    <string name="error_fetching_prices">Eroare la preluarea prețurilor.</string>
+    <string name="tv_settings_split_tunneling_description">Personalizați-vă conexiunea decizând care aplicații sunt protejate de VPN.</string>
+    <string name="tv_settings_split_tunneling_mode_description_standard">Aplicațiile selectate sunt excluse de la conexiunea prin VPN.</string>
+    <string name="tv_settings_split_tunneling_mode_description_inverse">Doar aplicațiile selectate se conectează prin VPN, orice alt trafic nefiind protejat.</string>
+    <string name="profile_action_edit">Editare</string>
+    <string name="profile_action_duplicate">Duplicare</string>
+    <string name="profile_action_delete">Ștergere</string>
+    <!-- Label when showing profile\'s NAT (Network Address Translation) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_nat_title">NAT</string>
+    <!-- Label when showing profile\'s LAN (Local Area Network) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_lan_title">LAN</string>
+    <string name="profile_needs_reconnect">Aceasta va reporni conexiunea.</string>
+    <string name="profile_overrides_setting">Aceste setări sunt conectate la <b>%1$s</b> și pot fi gestionate doar în Profiluri.</string>
+    <string name="initial_profile_name_streaming_us">Transmisii în flux SUA</string>
+    <string name="initial_profile_name_work_school">Serviciu/școală</string>
+    <string name="initial_profile_name_anti_censorship">Anticenzură</string>
+    <string name="initial_profile_name_gaming">Jocuri</string>
+    <string name="initial_profile_name_max_security">Securitate maximă</string>
+    <string name="create_profile_pick_country_title">Țara</string>
+    <string name="create_profile_pick_type_title">Tip</string>
+    <string name="create_profile_type_standard">Standard</string>
+    <string name="create_profile_type_secure_core">Secure Core</string>
+    <string name="create_profile_type_p2p">P2P</string>
+    <string name="create_profile_gateway">Poartă de acces</string>
+    <string name="create_profile_pick_state_title">Stat</string>
+    <string name="create_profile_pick_city_title">Oraș</string>
+    <string name="create_profile_pick_server_title">Server</string>
+    <string name="create_profile_pick_gateway_title">Poartă de acces</string>
+    <string name="create_profile_pick_netshield_title">NetShield</string>
+    <string name="create_profile_pick_netshield_description">Blocați reclame, module de urmărire și malware pe paginile web și din aplicații</string>
+    <string name="create_profile_pick_protocol_title">Protocol</string>
+    <string name="create_profile_pick_nat_title">Tip NAT</string>
+    <!--
+         Example:
+         if a profile named "My Profile" is duplicated, the new suggested name is "My Profile (copy)"
+     -->
+    <string name="create_profile_copy_name">%1$s (copie)</string>
+    <string name="create_profile_fastest_city">Cel mai rapid</string>
+    <string name="create_profile_fastest_state">Cel mai rapid</string>
+    <string name="create_profile_fastest_server">Cel mai rapid</string>
+    <string name="create_profile_pick_middle_country_title">Țara intermediară</string>
+    <string name="profiles_zero_state_title">Creați primul profil</string>
+    <string name="profiles_zero_state_description">Profilurile sunt conexiuni salvate cu locul, serverul și protocolul ales.</string>
+    <string name="profiles_button_create_profile">Creare profil</string>
+    <string name="profile_deleted_snackbar_message">Profil șters</string>
+    <string name="profile_connected_edit_setting">Această setare este conectată la profilul activ.\n\nEditați-vă profilul pentru a efectua modificări sau deconectați-vă pentru a edita setările generale pentru VPN.</string>
+    <string name="profile_connected_dialog_title">Gestionare %1$s în Profiluri</string>
+    <string name="undo">Refacere</string>
+    <string name="profile_unavailable_dialog_title">Profil indisponibil</string>
+    <!-- %1$s - profile name
+         Example: Your server selection for MyProfile is unavailable. Select a different server or try again later -->
+    <string name="profile_unavailable_dialog_message">Serverul selectat pentru „%1$s” nu este disponibil. Selectați un server diferit sau încercați mai târziu.</string>
+    <string name="profile_location_excluded_dialog_message"><![CDATA[Selectarea serverului pentru <b>%1$s</b> nu este disponibilă. Selectați un alt server, verificați țările excluse sau încercați mai târziu.]]></string>
+    <!-- %1$d - profile icon number
+         Example: Icon 1, Icon 2, ... -->
+    <string name="profile_icon_accessibility">Pictograma %1$d</string>
+    <!-- %1$d - profile icon number
+         Example: Color 1, Color 2, ... -->
+    <string name="profile_color_accessibility">Culoarea %1$d</string>
+    <string name="generic_info_label">Informații</string>
+    <!-- Branded name for a feature that opens url after VPN connection to given profile is established.
+         Please don't use & in translation and capitalize key words. -->
+    <string name="create_profile_connect_and_go_label">Conectare și accesare</string>
+    <!-- Displayed as a badge next to create_profile_auto_open_label ("Auto-launch website [NEW]") -->
+    <string name="create_profile_auto_open_label_badge">Nou</string>
+    <string name="create_profile_auto_open_url_input_label">URL Website</string>
+    <string name="create_profile_auto_open_url_private_mode_label">Utilizare mod privat de navigare</string>
+    <!-- Label for disabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_off">Oprită</string>
+    <string name="profile_auto_open_app_failed_to_launch">Conectare și lansare: aplicația nu a fost găsită</string>
+    <!-- Label for enabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_website">Deschidere un site web</string>
+    <string name="profile_auto_open_app">Deschidere o aplicație</string>
+    <string name="create_profile_auto_open_description">Deschidere automată a unei pagini web alese când vă conectați la acest profil.</string>
+    <string name="create_profile_auto_open_app_input_hint">Selectare aplicație</string>
+    <string name="create_profile_auto_open_app_input_label">Aplicație</string>
+    <string name="create_profile_auto_open_app_no_apps">Nu există aplicații.</string>
+    <string name="profile_auto_open_error_invalid_url">Introduceți un URL valid</string>
+    <string name="nps_how_likely_question">Cât de probabil este să recomandați Proton VPN unui prieten sau coleg?</string>
+    <string name="nps_additional_comment_title">Vă rugăm să ne spuneți de ce ați acordat această evaluare</string>
+    <string name="nps_additional_comment_optional">Opțional</string>
+    <string name="nps_rating_low_values_explain">0 este foarte improbabil</string>
+    <string name="nps_rating_high_values_explain">10 este foarte probabil</string>
+    <string name="nps_toast_submit_message">Mulțumim pentru feedback. Acesta ne va ajuta să îmbunătățim Proton VPN.</string>
+    <string name="nps_submit_error_char_limit">Răspunsul ar trebui să aibă maxim 250 de caractere.</string>
+    <string name="nps_button_submit_title">Partajare anonimă</string>
+    <string name="widget_preview_switzerland">Elveția</string>
+    <string name="widget_preview_spain">Spania</string>
+    <string name="widget_preview_germany">Germania</string>
+    <string name="widget_preview_france">Franța</string>
+    <string name="widget_status_unprotected">Conexiune neprotejată</string>
+    <string name="widget_status_error">Eroare</string>
+    <string name="widget_status_connecting">Se conectează</string>
+    <string name="widget_sign_in">Conectare</string>
+    <string name="widget_toast_added_message">Widget-ul a fost adăugat pe ecran</string>
+    <string name="settings_advanced_ipv6_title">Suport IPv6</string>
+    <string name="settings_advanced_ipv6_description">Direcționează traficul IPv6 prin VPN. Poate spori compatibilitatea cu rețelele IPv6.</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_message">Pentru a utiliza această adresă, trebuie să permiteți conexiuni IPv6 prin tunelul VPN.</string>
+    <string name="setting_ipv6_disabled_dialog_action_enable">Activare IPv6</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_title">IPv6 este dezactivat</string>
+    <string name="settings_ipv6_enabled_toast">IPv6 activat</string>
+    <string name="info_dialog_ipv6_traffic_benefits1">Asigură accesul la serviciile și site-urile web doar cu IPv6</string>
+    <string name="info_dialog_ipv6_traffic_benefits2">Previne problemele cu rețelele care depind de IPv6</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks1">S-ar putea să nu funcționeze cu rețelele sau aplicațiile vechi</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks2">Unele rețele gestionează traficul IPv6 impredictibil</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks_title">Dezavantaje</string>
+    <string name="info_dialog_ipv6_traffic_benefits_title">Avantaje</string>
+    <string name="settings_lan_allow_direct_connection_title">Permitere conexiuni directe între dispozitive</string>
+    <string name="settings_lan_allow_direct_connection_description">Conectați-vă la televizoare Smart, Android Auto și alte dispozitive care își creează propria rețea. Pentru securitate maximă, activați doar când vă conectați la aceste dispozitive.</string>
+    <string name="no_connections_title">Nu există conexiuni VPN disponibile</string>
+    <string name="no_connections_description_loading_error">Lista de servere nu a putut fi încărcată.</string>
+    <string name="no_connections_description_no_servers">Solicitați administratorului să vă activeze accesul VPN în cont.</string>
+    <string name="no_connections_action_refresh">Împrospătare</string>
+    <string name="no_connections_action_sign_out">Deconectare</string>
+    <string name="no_connections_help_contact_us"><![CDATA[Aveți nevoie de ajutor? <a href="">Contactați-ne</a>]]></string>
+    <string name="no_connections_help_follow_instructions"><![CDATA[Dacă administratorul are nevoie de ajutor cu activarea accesului VPN, trimiteți-i <a href="">aceste instrucțiuni</a>.]]></string>
+    <string name="settings_protocol_proton_protocols">Protocoale Proton</string>
+    <string name="settings_protocol_proton_protocols_description">Utilizați propria implementare WireGuard de la Proton VPN. Aceasta este o funcționalitate experimentală, deci este posibil să întâmpinați unele instabilități.</string>
+    <string name="connection_preferences_smart_discovery_dialog_title">Nu este țara pe care o doriți?</string>
+    <string name="connection_preferences_smart_discovery_dialog_message">Dacă există țări la care nu doriți să vă conectați automat, le puteți exclude din „Cea mai rapidă țară”.</string>
+    <string name="excluded_locations_adoption_title">Evitare țări nedorite</string>
+    <string name="excluded_locations_adoption_description"><![CDATA[Acum puteți exclude țări și orașe de la conexiunile <b>cele mai rapide</b>.]]></string>
+    <string name="session_fork_no_account_title">Conectare pe Android TV</string>
+    <string name="session_fork_no_account_message">Finalizați conectarea pe acest dispozitiv pentru a începe să folosiți Proton VPN pe TV</string>
+    <string name="session_fork_no_account_footnote"><![CDATA[Folosind această aplicație sunteți de acord cu <a href="">Termenii și condițiile</a>.]]></string>
+    <string name="session_fork_no_account_signup_button">Creare cont</string>
+    <string name="session_fork_no_account_signin_button">Conectare</string>
+    <string name="session_fork_confirmation_title">Vă conectați pe Android TV?</string>
+    <string name="session_fork_confirmation_message">Aceasta vă va permite să accesați contul Proton de pe TV.</string>
+    <string name="session_fork_confirmation_bottom_note">Conectați-vă doar pe dispozitive de încredere</string>
+    <string name="session_fork_confirmation_too_soon_toast">Revizuiți înainte de a continua</string>
+    <string name="session_fork_success_title">Conectare finalizată</string>
+    <string name="session_fork_success_message">V-ați conectat pe TV.</string>
+    <string name="session_fork_error_expired_title">Cod expirat</string>
+    <string name="session_fork_error_expired_message">Creați un cod nou pe TV și reîncercați.</string>
+    <string name="session_fork_error_generic_title">Nu s-a putut conecta</string>
+    <string name="session_fork_error_fatal_message">Verificați rețeaua și reîncercați. Dacă problema persistă, contactați echipa de asistență pentru clienți.</string>
+    <string name="session_fork_error_network_message">Verificați rețeaua și reîncercați.</string>
+    <string name="session_fork_error_try_fallback_message">Faceți clic pe „Probleme la conectare?” pe TV pentru a urma pașii alternativi.</string>
+    <string name="session_fork_error_report_button">Raportare problemă</string>
+    <string name="session_fork_qr_code_content_description">Cod QR</string>
+    <string name="session_fork_qr_code_message">Scanați codul QR pentru a vă conecta sau crea un cont</string>
+    <string name="session_fork_qr_code_trouble_button">Probleme la conectare?</string>
+    <string name="session_fork_qr_code_error_expired">Din motive de securitate codul de validare a expirat.</string>
+    <string name="session_fork_qr_code_error_network">Verificați rețeaua și reîncercați</string>
+    <string name="session_fork_qr_code_error_create_new_button">Creare cod</string>
+    <string name="session_fork_user_code_title">Nu puteți scana codul? Conectați-vă manual</string>
+    <string name="session_fork_user_code_step1"><![CDATA[Accesați: <b>%1$s</b>]]></string>
+    <string name="session_fork_user_code_step2">Conectați-vă sau creați un cont</string>
+    <!-- Parameter: 8 character alphanumeric code, e.g. "AB12 CD34" -->
+    <string name="session_fork_user_code_step3"><![CDATA[Introduceți codul: <b>%1$s</b>]]></string>
+    <!-- Parameter: web address for the support website, e.g. "protonvpn.com/support" -->
+    <string name="session_fork_user_code_support"><![CDATA[Încă aveți nevoie de ajutor? Vizitați <b>%1$s</b>]]></string>
+</resources>

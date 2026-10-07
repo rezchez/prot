@@ -1,0 +1,1046 @@
+/*
+ * Copyright (c) 2017 Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import com.android.build.api.dsl.ApplicationBuildType
+import com.android.build.api.dsl.VariantDimension
+import com.android.build.gradle.internal.dsl.BaseFlavor
+import configuration.EnvironmentConfigSettings
+import groovy.json.JsonOutput
+import groovy.json.StringEscapeUtils
+import io.gitlab.arturbosch.detekt.Detekt
+import org.gradle.internal.extensibility.DefaultExtraPropertiesExtension
+
+buildscript {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
+    }
+}
+
+plugins {
+    alias(libs.plugins.proton.vpn.android.application)
+    alias(libs.plugins.android.compose.screenshot)
+    alias(libs.plugins.androidx.baselineprofile)
+    alias(libs.plugins.androidx.room)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.jacoco)
+    alias(libs.plugins.jaredsburrows.gradle.license)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.proton.core.env.config)
+    alias(libs.plugins.sentry)
+    alias(libs.plugins.triplet.play)
+}
+
+dependencyCheck {
+    formats = ["SARIF", "HTML", "JUNIT"]
+}
+
+jacoco {
+    toolVersion = libs.versions.jacoco.tools.version.get()
+}
+
+// There is no dependency on unit tests because coverage is run in a separate CI job and we want to
+// avoid building and running the tests again.
+tasks.register("jacocoTestReport", JacocoReport) {
+
+    reports {
+        xml.required = true
+        html.required = true
+    }
+
+    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+    def debugTree = fileTree(dir: "$project.buildDir/tmp/kotlin-classes/blackGooglePlayStoreDebug", excludes: fileFilter)
+    def mainSrc = files(["src/main/java","src/google/java"])
+    sourceDirectories.setFrom files([mainSrc])
+    classDirectories.setFrom files([debugTree])
+    executionData.setFrom fileTree(dir: "$project.projectDir", includes: [
+            "**/*.exec",
+            "**/*.ec"
+    ])
+}
+tasks.register("coverageReport") {
+    dependsOn jacocoTestReport
+
+    def reportFile = project.file("build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml")
+    inputs.file(reportFile)
+
+    doLast {
+        def slurper = new XmlSlurper()
+        slurper.setFeature("http://apache.org/xml/features/disallow-doctype-decl", false)
+        slurper.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false)
+        def xml = slurper.parse(reportFile)
+        def counter = xml.counter.find {
+            node -> node.@type == 'INSTRUCTION'
+        }
+        def missed = counter.@missed.toDouble()
+        def covered = counter.@covered.toDouble()
+        def total = missed + covered
+        def percentage = covered / total * 100
+
+        printf "Missed %.2f branches%n", missed
+        printf "Covered %.2f branches%n", covered
+        printf "Total coverage: %.2f%%%n", percentage
+    }
+}
+
+tasks.withType(Test).configureEach {
+    jacoco.includeNoLocationClasses = true
+    jacoco.excludes = ['jdk.internal.*']
+}
+
+tasks.register("updateLicensesJson") {
+    dependsOn 'licenseProductionGooglePlayStoreReleaseReport'
+    doLast {
+        File json = new File("$project.projectDir/build/reports/licenses/licenseProductionGooglePlayStoreReleaseReport.json")
+        File out = new File("$project.projectDir/src/main/assets/oss_licenses/generated_licenses.js")
+        out.text = 'dependencies = ' + json.text
+    }
+}
+
+licenseReport {
+    generateCsvReport = false
+    generateHtmlReport = false
+    generateJsonReport = true
+    copyHtmlReportToAssets = false
+    copyJsonReportToAssets = false
+}
+
+def sentryDsn = System.getenv("PROTONVPN_SENTRY_DSN") ?: project.hasProperty('sentryDsn') ? sentryDsn : ""
+def accountSentryDsn = System.getenv("ACCOUNT_SENTRY_DSN") ?: project.hasProperty('accountSentryDsn') ? accountSentryDsn : ""
+def preferencesSalt = System.getenv("DEPRECATED_PREF_SALT") ?: "Salt"
+def preferencesKey = System.getenv("DEPRECATED_PREF_KEY") ?: "Key"
+def serviceAccountCredentialsPath = project.hasProperty('serviceAccountFilePath') ? serviceAccountFilePath : "service_account.json"
+def testAccountPassword = System.getenv("TEST_ACCOUNT_PASS") ?: project.hasProperty('testAccountPassword') ? testAccountPassword : "Pass"
+def appId = project.hasProperty('appId') ? appId : "ch.protonvpn.android"
+def supportedLocales = ['ar', 'b+es+419', 'be', 'ca', 'cs', 'da', 'de', 'el', 'en', 'es-rES', 'es-rMX', 'fa', 'fi', 'fil', 'fr', 'hu', 'in', 'it', 'ja', 'ka', 'ko', 'nb-rNO', 'nl', 'pl', 'pt-rBR', 'pt-rPT', 'ro', 'ru', 'sk', 'sl', 'sv-rSE', 'th', 'tr', 'uk', 'vi', 'zh-rCN', 'zh-rTW']
+def helpers = new Helpers(rootDir, providers)
+def debugKeystorePath = System.getenv("DEBUG_KEYSTORE_FILE")
+def mavenCacheUrl = System.getenv("MAVEN_CACHE_PKG_URL")
+def suppressKotlinWarnings = project.hasProperty('suppressWarnings') ? project['suppressWarnings'] : false
+
+android {
+    namespace "com.protonvpn.android"
+    testNamespace 'com.protonvpn'
+    useLibrary 'org.apache.http.legacy'
+    signingConfigs {
+        if (debugKeystorePath) {
+            debug {
+                storeFile file(debugKeystorePath)
+                storePassword 'android'
+                keyAlias 'androiddebugkey'
+                keyPassword 'android'
+            }
+        }
+    }
+    buildFeatures {
+        buildConfig true
+        compose true
+        viewBinding true
+    }
+    defaultConfig {
+        applicationId appId
+        multiDexEnabled true
+        versionName helpers.fullVersionName
+        versionCode helpers.getVersionCode()
+        archivesBaseName = helpers.archivesBaseName
+        testInstrumentationRunner "com.protonvpn.TestsRunner"
+        testInstrumentationRunnerArguments clearPackageData: 'true' // Clear app data between tests.
+        testInstrumentationRunnerArguments useTestStorageService: 'true'
+        vectorDrawables.useSupportLibrary = true
+        resourceConfigurations = supportedLocales
+
+        manifestPlaceholders = ["gwpAsanMode": "default"]
+
+        def availableLocalesJava = supportedLocales.collect { "\"$it\"" }.join(", ")
+        buildConfigField "String[]", "SUPPORTED_LOCALES", "{$availableLocalesJava}"
+
+        buildConfigField "String", "Sentry_DSN",  "\"${StringEscapeUtils.escapeJava(sentryDsn)}\""
+        buildConfigField "String", "ACCOUNT_SENTRY_DSN",  "\"${StringEscapeUtils.escapeJava(accountSentryDsn)}\""
+        buildConfigField "String", "PREF_SALT",  "\"${StringEscapeUtils.escapeJava(preferencesSalt)}\""
+        buildConfigField "String", "PREF_KEY",  "\"${StringEscapeUtils.escapeJava(preferencesKey)}\""
+        buildConfigField "String", "TEST_ACCOUNT_PASSWORD",  "\"Pass\""
+        def ciBranchName = System.getenv("CI_COMMIT_BRANCH")
+        def commitFirstLine = System.getenv("CI_COMMIT_MESSAGE")?.split('\n')?.first()?.trim()
+        def specialCharPass = System.getenv("SPECIAL_CHAR_PASSWORD")
+        buildConfigField "String", "SPECIAL_CHAR_PASSWORD",  "\"${StringEscapeUtils.escapeJava(specialCharPass)}\""
+        buildConfigField "String", "CI_BRANCH_NAME", "\"${StringEscapeUtils.escapeJava(ciBranchName)}\""
+        buildConfigField "String", "CI_COMMIT_MESSAGE", "\"${StringEscapeUtils.escapeJava(commitFirstLine)}\""
+        buildConfigField "String", "TEST_ASSET_OVERRIDE_SHA", "\"${helpers.readFileOrDefault("test_asset_override_sha", "db95210d57b90063bfa1cac9881c7a8df326e6e2")}\""
+        buildConfigField "String", "TEST_ASSET_OVERRIDE_KEY", "\"${helpers.readFileOrDefault("test_asset_override_key", "241b080fb0f1216e")}\""
+        buildConfigField "String", "TEST_SUITE_ASSET_OVERRIDE_KEY", "\"${helpers.readFileOrDefault("test_suite_asset_override_key", "3ea60f6a2fbfc015")}\""
+        buildConfigField "Boolean", "ALT_ROUTING_CERT_FOR_MAIN_ROUTE", "false"
+        buildConfigField "Boolean", "ALLOW_LOGCAT", "false"
+        buildConfigField "String[]", "API_TLS_PINS", "null"
+        buildConfigField "String[]", "API_ALT_TLS_PINS", "null"
+        buildConfigField "String[]", "DOH_SERVICES_URLS", "null"
+        buildConfigField "String", "VPN_SERVER_ROOT_CERT", "null"
+
+        Helpers.setAssetLinksResValue(it, "proton.me")
+    }
+    flavorDimensions = ["environment", "functionality", "distribution"]
+    productFlavors {
+        production {
+            dimension "environment"
+            getIsDefault().set(true)
+
+            helpers.protonEnvironmentConfig(it) {
+                // default host is 'proton.me'
+                apiPrefix = 'vpn-api'
+            }
+        }
+        black {
+            dimension "environment"
+            versionNameSuffix '-dev'
+
+            def blackToken = System.getenv("BLACK_TOKEN")
+            // Use either:
+            //  - TEST_ENV_DOMAIN for regular test environments,
+            //  - the BTI_* variables for the BTI environment.
+            def testEnvHost = System.getenv("TEST_ENV_DOMAIN")
+            def dohUrls, apiPinsString, altPinsString, altRoutingCertForMainRoute, customApiHost, customPrefix, customHv3Host
+
+            if (testEnvHost != null) {
+                dohUrls = null
+                // Disable cert pinning:
+                apiPinsString = "{}"
+                altPinsString = "{}"
+                altRoutingCertForMainRoute = false
+
+                customApiHost = testEnvHost
+            }
+            else {
+                def apiPins = System.getenv("BTI_API_TLS_PINNINGS")
+                def altPins = System.getenv("BTI_ALT_ROUTE_TLS_PINNINGS")
+                dohUrls = System.getenv("BTI_AR_DOH_URLS")
+                apiPinsString = "{${helpers.sanitizeStringListForBuildConfig(apiPins)}}"
+                altPinsString = altPins != null ? "{${helpers.sanitizeStringListForBuildConfig(altPins)}}" : null
+                altRoutingCertForMainRoute = true
+
+                customPrefix = System.getenv("BTI_PREFIX")
+                customApiHost = System.getenv("BTI_HOST")
+                customHv3Host = System.getenv("BTI_HV3_DOMAIN")
+            }
+
+            helpers.protonEnvironmentConfig(it) {
+                if (customApiHost != null)
+                    host = StringEscapeUtils.escapeJava(customApiHost)
+                if (customPrefix != null)
+                    apiPrefix = StringEscapeUtils.escapeJava(customPrefix)
+                if (customHv3Host != null)
+                    hv3Host = StringEscapeUtils.escapeJava(customHv3Host)
+                proxyToken = StringEscapeUtils.escapeJava(blackToken)
+            }
+
+            if (customApiHost != null) {
+                Helpers.setAssetLinksResValue(it, customApiHost)
+            }
+
+            def vpnServerRootCert = System.getenv("BTI_SERVERS_ROOT_CERT")
+            buildConfigField "Boolean", "ALT_ROUTING_CERT_FOR_MAIN_ROUTE", "$altRoutingCertForMainRoute"
+            buildConfigField "String[]", "DOH_SERVICES_URLS", "{${helpers.sanitizeStringListForBuildConfig(dohUrls)}}"
+            buildConfigField "String[]", "API_TLS_PINS", apiPinsString
+
+            // Below are not mandatory
+            if (altPinsString != null) {
+                buildConfigField "String[]", "API_ALT_TLS_PINS", altPinsString
+            }
+            if (vpnServerRootCert != null) {
+                buildConfigField "String", "VPN_SERVER_ROOT_CERT", "\"${StringEscapeUtils.escapeJava(vpnServerRootCert)}\""
+            }
+        }
+        def additionalProguard =  "proguard-rules-logcat.pro"
+        vanilla {
+            dimension "functionality"
+        }
+        google {
+            dimension "functionality"
+            getIsDefault().set(true)
+        }
+
+        playStore {
+            dimension "distribution"
+            getIsDefault().set(true)
+            buildConfigField "String", "STORE_SUFFIX", "\"+play\""
+            proguardFile additionalProguard
+        }
+
+        amazon {
+            dimension "distribution"
+            minSdkVersion rootProject.ext.minSdkVersionAmazon
+            buildConfigField "String", "STORE_SUFFIX", "\"+aws\""
+            proguardFile additionalProguard
+        }
+        direct {
+            dimension "distribution"
+            buildConfigField "String", "STORE_SUFFIX", "\"+apk\""
+            proguardFile additionalProguard
+        }
+        openSource {
+            dimension "distribution"
+            buildConfigField "String", "STORE_SUFFIX", "\"+os\""
+            proguardFile additionalProguard
+        }
+        dev {
+            dimension "distribution"
+            applicationIdSuffix '.dev'
+            buildConfigField "String", "STORE_SUFFIX", "\"\""
+            buildConfigField "Boolean", "ALLOW_LOGCAT", "true"
+
+            manifestPlaceholders = ["gwpAsanMode": "always"]
+        }
+    }
+    variantFilter { variant ->
+        def environment = variant.flavors[0].name
+        def functionality = variant.flavors[1].name
+        def dist = variant.flavors[2].name
+
+        if (dist == "dev")
+            return
+        if (environment == "black" && dist !in ["playStore", "direct"])
+            setIgnore(true) // We don't need all distributions for testing.
+        if (functionality == "google" && dist != "playStore" || functionality != "google" && dist == "playStore")
+            setIgnore(true)
+    }
+
+    buildTypes {
+        debug {
+            enableAndroidTestCoverage false
+            enableUnitTestCoverage = true
+            ext.alwaysUpdateBuildId = false
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "TEST_ACCOUNT_PASSWORD",  "\"${StringEscapeUtils.escapeJava(testAccountPassword)}\""
+            manifestPlaceholders = ["gwpAsanMode": "always"]
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        animationsDisabled true
+        unitTests {
+            includeAndroidResources = true
+        }
+        unitTests.all {
+            if (mavenCacheUrl != null) {
+                systemProperty 'robolectric.dependency.repo.url', mavenCacheUrl
+            }
+        }
+    }
+    packagingOptions {
+        resources {
+            excludes += [
+                    'DebugProbesKt.bin',
+                    'META-INF/DEPENDENCIES.txt',
+                    'META-INF/NOTICE.txt',
+                    'META-INF/NOTICE.md',
+                    'META-INF/LICENSE*',
+                    'META-INF/DEPENDENCIES',
+                    'META-INF/notice.txt',
+                    'META-INF/license.txt',
+                    'META-INF/dependencies.txt',
+                    'META-INF/LGPL2.1',
+                    'META-INF/AL2.0',
+                    'MANIFEST.MF'
+            ]
+        }
+        jniLibs {
+            useLegacyPackaging = true
+            keepDebugSymbols.add("**/libandroidvpnrust.so")
+        }
+    }
+
+    experimentalProperties["android.experimental.enableScreenshotTest"] = true
+    sourceSets {
+        main.res.srcDirs += 'src/main/res_flags'
+        main {
+           assets.srcDirs = ['src/main/assets', 'assets']
+        }
+        // Screenshot test does not automatically include app resources. Check if it's still needed when updating screenshot test module.
+        screenshotTest.res.srcDirs += 'src/main/res'
+        // Adds exported schema location as test app assets.
+        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled = true
+    }
+
+    kotlinOptions {
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
+        suppressWarnings = suppressKotlinWarnings
+    }
+
+    lint {
+        // In our process we might temporarily have extra translations that will get removed on
+        // next update.
+        disable 'ExtraTranslation', 'ImpliedQuantity', 'MissingDefaultResource', 'MissingTranslation'
+        ignoreWarnings = true
+    }
+    room {
+        schemaDirectory "$projectDir/schemas"
+        // Using Java generation, kotlin generator generates incorrect code: https://issuetracker.google.com/issues/446633192
+        generateKotlin false
+    }
+}
+
+androidComponents {
+    onVariants(selector().withBuildType("debug")) {
+        packaging.jniLibs.keepDebugSymbols.add("**/*.so")
+    }
+}
+
+play {
+    serviceAccountCredentials.set(file(serviceAccountCredentialsPath))
+    track.set('internal')
+    artifactDir.set(file("signedArtifacts/"))
+    defaultToAppBundles.set(true)
+    releaseName.set(helpers.fullVersionName)
+}
+
+// The config file is downloaded by the downloadDetektConfig task.
+def commonDetektConfigPath = "${rootProject.projectDir}/config/detekt/config.yml"
+def projectDetektConfigPath = "${rootProject.projectDir}/config/detekt/custom-config.yml"
+detekt {
+    config = files(commonDetektConfigPath, projectDetektConfigPath)
+    reports {
+        html.required.set(false)
+        xml.required.set(false)
+        txt.required.set(false)
+        sarif.required.set(false)
+        custom {
+            reportId = "outputreport.GitlabQualityOutputReport"
+            outputLocation.set(file("build/reports/detekt/detekt.json"))
+        }
+    }
+}
+
+sentry {
+    // This configuration uploads mapping files to Sentry and requires credentials either in a
+    // local file or environment variables.
+    // To disable the upload temporarily (e.g. when building locally) add "release" to
+    // ignoredBuildTypes (I wish there was a better way...).
+    includeProguardMapping = true
+    uploadNativeSymbols = true
+    ignoredBuildTypes = ["debug", "benchmarkRelease", "nonMinifiedRelease"]
+    ignoredFlavors = ["productionVanillaOpenSource"]
+
+    // We don't want the sentry plugin to add anything to our builds:
+    tracingInstrumentation { enabled = false }
+    autoInstallation { enabled = false }
+}
+
+tasks.withType(Detekt).configureEach {
+    dependsOn "downloadDetektConfig"
+    dependsOn ":detekt-custom-rules:assemble"
+    dependsOn ":detekt-gitlab-output-plugin:assemble"
+
+    basePath = rootProject.projectDir.absolutePath
+    reports {
+        html.required.set(false)
+        xml.required.set(false)
+        txt.required.set(false)
+        sarif.required.set(false)
+        custom {
+            reportId = "GitlabQualityOutputReport"
+            outputLocation.set(file("build/reports/detekt/detekt.json"))
+        }
+    }
+}
+
+tasks.register("downloadDetektConfig") {
+    doLast {
+        def srcConfigFilePath = "config/detekt/config.yml"
+        def dstConfigFile = file(commonDetektConfigPath)
+
+        def dir = dstConfigFile.parentFile
+        if (!dir.exists() && !dir.mkdirs()) {
+            throw FilePermissionException("Cannot create directory ${dir.canonicalPath}")
+        }
+
+        println("Detekt rule-set file: $dstConfigFile")
+        def fileModificationDate = new Date(dstConfigFile.lastModified())
+        if (fileModificationDate.plus(1) > new Date()) {
+            println("Detekt rule-set is less than a day old, skipping download.")
+            return
+        }
+
+        def url = "https://raw.githubusercontent.com/ProtonMail/protoncore_android/master/$srcConfigFilePath"
+        println("Fetching Detekt rule-set from $url")
+        try {
+            def content = new URL(url).getText()
+            // Checking start of the file is enough, if some part is missing we would not be able to decode it
+            assert(content.startsWith("# Integrity check *")) : "Integrity check not passed"
+
+            dstConfigFile.text = content
+
+        } catch (Throwable t) {
+            println("Cannot download Detekt configuration: ${t.message}")
+            throw t
+        }
+    }
+}
+
+tasks.register("generateReleaseNotesForPublishing") {
+    doLast {
+        File releaseNotesDir = new File("$project.projectDir/src/main/play/release-notes/en-US")
+        releaseNotesDir.mkdirs()
+        File releaseNotesFile = new File(releaseNotesDir, "default.txt")
+        releaseNotesFile.newWriter().withWriter { w ->
+            // Limit of 500 chars on Google Play console for release notes
+            w << helpers.getReleaseNotes(490)
+        }
+    }
+}
+
+tasks.withType(Test).configureEach {
+    testLogging {
+        events "skipped", "failed"
+        exceptionFormat "full"
+        showExceptions true
+    }
+}
+
+class Helpers {
+    private File workingDir
+    private ProviderFactory providers
+
+    Helpers(File workingDir, ProviderFactory providers) {
+        this.workingDir = workingDir
+        this.providers = providers
+    }
+
+    // Versioning:
+    //  Version name: M.m.D.R
+    //  M.m (major.minor) come from the last tag on development branch of this form (e.g. "2.1")
+    //  D - number of commits on development since M.m
+    //  R - number of commits on release branch (from development)
+    //  Version code: AMMmmDDRR as decimal integer
+    //  A - hardcoded number 6. Because abi splits were used before
+    int getVersionCode() {
+        def name = fullVersionName
+        def versions = name.split("\\.")
+        def major = versions[0].toInteger()
+        def minor = versions[1].toInteger()
+        def dev = versions[2].toInteger()
+        def release = versions[3].toInteger()
+
+        // Max version code allowed by android is 2_000_000_000
+        assert major < 100 && minor < 100 && dev < 100 && release < 100
+
+        // 6 needs to be hardcoded as abi version before ended up at 5
+        def code = 6 * 100_000_000 +
+                major * 1_000_000 +
+                minor*10_000 +
+                dev * 100 +
+                release
+
+        // Just some sanity check because there's no turning back once we accidentally publish
+        // some large version code
+        assert code < 700_000_000 && major < 50
+
+        return code
+    }
+
+    String getFullVersionName() {
+        // To be used e.g. when we don't want the version on hotfix branch to change when adding
+        // CI-related fixes.
+        def override = System.getenv("OVERRIDE_VERSION_NAME")
+        if (override != null)
+            return override
+
+        def gitVersionProvider = providers.of(GitFullVersionNameSource.class) {
+            parameters {
+                workingDir = this.workingDir
+            }
+        }
+        return gitVersionProvider.get()
+    }
+
+    String readFileOrDefault(String path, String defaultValue) {
+        def file = new File(workingDir, path)
+        if (!file.exists())
+            return defaultValue
+        return file.text
+    }
+
+    boolean hasReleaseNotes() {
+        def lastSha = System.getenv("CI_COMMIT_BEFORE_SHA")
+        def branchName = System.getenv("CI_COMMIT_BRANCH")
+        def output = exec(["git", "branch", branchName, "--contains", lastSha], false)
+        return output != null
+    }
+
+    String getReleaseNotes(int trimAt) {
+        def lastSha = System.getenv("CI_COMMIT_BEFORE_SHA")
+        // CI_COMMIT_BEFORE_SHA is always 0000000000000000000000000000000000000000 for merge request
+        // pipelines, the first commit in pipelines for branches or tags, or when manually running a
+        // pipeline. Let's not fail the job if we ever need to run a pipeline manually to fix
+        // publishing.
+        if (lastSha == null || lastSha == "0000000000000000000000000000000000000000")
+            return "(failed fetching release notes for manual pipeline)"
+        def notes = exec(["git", "log", "${lastSha}..HEAD", "--pretty=format:- %s"])
+        if (notes.length() > trimAt)
+            return notes.take(trimAt) + "\n..."
+        return notes
+    }
+
+    void notifyPublishOnSlack() {
+        def hook = System.getenv("SLACK_PUBLISH_HOOK")
+        if (hook == null)
+            return
+        def sha = System.getenv("CI_COMMIT_SHA")
+        def json = new JsonOutput().toJson(["text": ":android: :protonvpn: ${getFullVersionName()} released to internal (SHA ${sha.take(8)}...)\n" +
+                "Release notes:\n" +
+                "${getReleaseNotes(1000)}"])
+        exec(["curl", "-X", "POST", "-H", "'Content-type: application/json'", "--data", json, hook])
+    }
+
+    String getArchivesBaseName() {
+        return "ProtonVPN-" + fullVersionName + "(" + getVersionCode() + ")"
+    }
+
+    String exec(ArrayList<String> cmd, boolean throwOnError = true) {
+        def out = new StringBuffer()
+        def err = new StringBuffer()
+        def proc = cmd.execute(null, workingDir)
+        proc.waitForProcessOutput(out, err)
+        if (proc.exitValue() != 0) {
+            if (throwOnError)
+                throw new GradleScriptException("Error executing: ${cmd}", new RuntimeException(err.toString()))
+            else
+                return null
+        }
+        return out.toString()
+    }
+
+    // We receive comma-separated string lists either with or without '"', support both notations
+    // and protects from injecting java code.
+    static String sanitizeStringListForBuildConfig(String s) {
+        if (s == null) return ""
+        return s.split(",")
+                .collect { it.trim().replace("\"", "") }
+                .collect { "\"${StringEscapeUtils.escapeJava(it)}\""}
+                .join(", ")
+    }
+
+    static void setAssetLinksResValue(VariantDimension variantDimension, String host) {
+        variantDimension.resValue(
+                /* type */ "string",
+                /* name */ "asset_statements",
+                /* value */ """
+                [{
+                  "relation": ["delegate_permission/common.handle_all_urls", "delegate_permission/common.get_login_creds"],
+                  "target": { "namespace": "web", "site": "https://$host" }
+                }]
+                """.stripIndent()
+        )
+    }
+
+    static void protonEnvironmentConfig(BaseFlavor flavor, Closure<?> configurator) {
+        setEnvironmentConfigExt(flavor.ext, flavor.name, configurator)
+    }
+
+    static void protonEnvironmentConfig(ApplicationBuildType buildType, Closure<EnvironmentConfigSettings> configurator) {
+        setEnvironmentConfigExt(buildType.ext, buildType.name, configurator)
+    }
+
+    private static void setEnvironmentConfigExt(
+        DefaultExtraPropertiesExtension ext,
+        String name,
+        Closure<EnvironmentConfigSettings> configurator
+    ) {
+        def configSettings = new EnvironmentConfigSettings()
+
+        configurator.delegate = configSettings
+        configurator.resolveStrategy = Closure.DELEGATE_FIRST
+        configurator.call()
+
+        ext.set("""${name}ProtonEnvironmentConfig""", configSettings)
+    }
+}
+tasks.register("getVersionName"){
+    doLast {
+        println helpers.fullVersionName
+    }
+}
+tasks.register("notifyPublishOnSlack"){
+    doLast {
+        helpers.notifyPublishOnSlack()
+    }
+}
+tasks.register("getVersionCode"){
+    doLast {
+        println helpers.getVersionCode()
+    }
+}
+tasks.register("getArchivesName"){
+    doLast {
+        println archivesBaseName
+    }
+}
+tasks.register("getReleaseNotes"){
+    doLast {
+        if (helpers.hasReleaseNotes()) {
+            println helpers.getReleaseNotes(1000)
+        } else {
+            println "- Branch rebased"
+        }
+    }
+}
+
+tasks.register("getExportArchiveNameProperties") {
+    doLast {
+        println archivesBaseName
+        println helpers.fullVersionName
+        println helpers.getVersionCode()
+    }
+}
+
+repositories {
+    maven { url "https://clojars.org/repo/" }
+    google()
+    mavenCentral()
+}
+configurations {
+    detekt
+}
+
+configurations.configureEach {
+    exclude group: "me.proton.core", module: "notification-dagger"
+    exclude group: "me.proton.crypto", module: "android-golib"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    googleImplementation(libs.android.installreferrer)
+    implementation(libs.androidx.profileinstaller)
+    baselineProfile(projects.baselineprofile)
+
+    debugImplementation(libs.squareup.leakcanary.object.watcher)
+    debugImplementation(libs.squareup.leakcanary)
+
+    detektPlugins(libs.detekt.formatting)
+    detektPlugins(projects.detektGitlabOutputPlugin)
+    detektPlugins(projects.detektCustomRules)
+
+    coreLibraryDesugaring(libs.android.tools.desugar.jdk.libs)
+
+    implementation(platform(libs.kotlin.bom))
+
+    implementation(libs.dnsjava.dnsjava)
+    implementation(libs.java.jna) {
+        artifact {
+            type = "aar"
+        }
+    }
+    testImplementation(libs.java.jna) {
+        artifact {
+            type = "jar"
+        }
+    }
+
+    implementation(libs.commons.codec)
+    implementation(libs.android.material)
+    implementation(libs.androidx.browser)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.datastore)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.process)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.fragment.compose)
+    implementation(libs.androidx.window)
+    implementation(libs.sentry.android)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.vectordrawable)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.scottyab.aes.crypto)
+    implementation(libs.retrofit)
+    implementation(libs.relex.circleindicator) {
+        artifact {
+            type = "aar"
+        }
+    }
+    implementation(libs.androidx.work.runtime)
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.cbor)
+    implementation(libs.tony19.logback)
+    implementation(libs.slf4j.api)
+    implementation(libs.androidx.preference.ktx)
+    implementation(libs.airbnb.lottie)
+    implementation(libs.airbnb.lottie.compose)
+    implementation(libs.android.flexbox)
+    implementation(libs.androidx.viewpager2)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.seancfoley.ipaddress)
+    implementation(libs.caverock.androidsvg)
+
+    // Compose
+    implementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+
+    implementation(libs.androidx.compose.animation.android)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material3.windowsizeclass)
+    implementation(libs.androidx.compose.runtime.livedata)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.viewbinding)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.calvin.reorderable)
+    implementation(libs.androidx.constraintlayout.compose)
+
+    implementation(libs.vico.core)
+    implementation(libs.vico.compose)
+
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    screenshotTestImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    screenshotTestImplementation(libs.androidx.compose.screenshot.validation.api) {
+        // We don't want this library to force newer versions of the libraries, exclude them.
+        exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk8"
+    }
+    // This dependency is included transitively by libs.androidx.compose.screenshot.validation.api
+    // and can be removed once we no longer need to exclude kotlin-stdlib-jdk8.
+    screenshotTestImplementation(libs.androidx.compose.screenshot.validation.junit.engine) {
+        // We don't want this library to force newer versions of the libraries, exclude them.
+        exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk8"
+    }
+
+    testImplementation(libs.androidx.compose.ui.test.junit4)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    testImplementation(libs.androidx.navigation.testing)
+    androidTestImplementation(libs.androidx.navigation.testing)
+
+    // Play core
+    googleImplementation(libs.google.play.app.update)
+    googleImplementation(libs.google.play.app.update.ktx)
+    googleImplementation(libs.google.play.review)
+    googleImplementation(libs.google.play.review.ktx)
+
+    // Glide
+    implementation(libs.glide)
+    implementation(libs.glide.compose)
+    ksp(libs.glide.ksp)
+
+    // Widget
+    implementation(libs.androidx.glance.appwidget)
+    implementation(libs.androidx.glance.material3)
+    implementation(libs.androidx.glance.preview)
+    implementation(libs.androidx.glance.appwidget.preview)
+    testImplementation(libs.androidx.glance.testing)
+    testImplementation(libs.androidx.glance.appwidget.testing)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
+    testImplementation(libs.androidx.room.testing)
+
+    //TODO: remove when updated in core
+    implementation(libs.androidx.tv.foundation)
+    implementation(libs.androidx.tv.material)
+
+    // Proton libs
+    implementation(libs.proton.vpn.core.internal)
+    implementation(libs.proton.vpn.govpnlib)
+    implementation(libs.proton.core.domain)
+    implementation(libs.proton.core.network.data)
+    implementation(libs.proton.core.network.domain)
+    implementation(libs.proton.core.network.presentation)
+    implementation(libs.proton.core.notification.data)
+    implementation(libs.proton.core.notification.domain)
+    implementation(libs.proton.core.notification.presentation)
+    implementation(libs.proton.core.util.kotlin)
+    implementation(libs.proton.core.presentation)
+    implementation(libs.proton.core.presentation.compose)
+    implementation(libs.proton.core.presentation.compose.tv)
+    implementation(libs.proton.core.push)
+    implementation(libs.proton.core.human.verification.data)
+    implementation(libs.proton.core.human.verification.domain)
+    implementation(libs.proton.core.human.verification.presentation)
+    implementation(libs.proton.core.country)
+    implementation(libs.proton.core.user)
+    implementation(libs.proton.core.user.data)
+    implementation(libs.proton.core.user.recovery)
+    implementation(libs.proton.core.user.settings)
+    implementation(libs.proton.core.account)
+    implementation(libs.proton.core.account.manager.data)
+    implementation(libs.proton.core.account.manager.domain)
+    implementation(libs.proton.core.account.manager.presentation)
+    implementation(libs.proton.core.account.manager.presentation.compose)
+    implementation(libs.proton.core.account.recovery)
+    implementation(libs.proton.core.auth)
+    implementation(libs.proton.core.auth.fido.dagger)
+    implementation(libs.proton.core.auth.fido.domain)
+    googleImplementation(libs.proton.core.auth.fido.play)
+    implementation(libs.proton.core.challenge)
+    implementation(libs.proton.core.crypto)
+    implementation(libs.proton.core.crypto.validator)
+    implementation(libs.proton.core.event.manager)
+    implementation(libs.proton.core.feature.flag)
+    implementation(libs.proton.core.observability)
+    implementation(libs.proton.core.telemetry.data)
+    implementation(libs.proton.core.telemetry.domain)
+    implementation(libs.proton.core.payment)
+    implementation(libs.proton.core.plan)
+    implementation(libs.proton.core.key)
+    implementation(libs.proton.core.data)
+    implementation(libs.proton.core.data.room)
+    implementation(libs.proton.core.util.android.dagger)
+    implementation(libs.proton.core.util.android.datetime)
+    implementation(libs.proton.core.util.android.sentry)
+    implementation(libs.proton.core.util.android.shared.preferences)
+    implementation(libs.proton.core.configuration.data)
+    implementation(libs.proton.core.biometric)
+    implementation(libs.proton.core.device.migration)
+    implementation(libs.proton.core.pass.validator)
+
+    // Payments
+    implementation(libs.proton.payment)
+    googleImplementation(libs.proton.payment.billing.google)
+    testImplementation(testFixtures(libs.proton.payment))
+
+    // Proton configuration
+    debugImplementation(libs.proton.core.configuration.dagger.content.resolver)
+    releaseImplementation(libs.proton.core.configuration.dagger.staticdefaults)
+
+    testImplementation(libs.proton.core.auth.test)
+    androidTestImplementation(libs.proton.core.account.recovery.test)
+    androidTestImplementation(libs.proton.core.auth.test)
+    androidTestImplementation(libs.proton.core.human.verification.test)
+    androidTestImplementation(libs.proton.core.notification.test)
+    androidTestImplementation(libs.proton.core.plan.test)
+    androidTestImplementation(libs.proton.core.test.quark)
+    androidTestImplementation(libs.proton.core.user.recovery.test)
+
+    testImplementation(libs.proton.core.test.kotlin) {
+        // https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-debug#debug-agent-and-android
+        exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
+    }
+
+    androidTestImplementation(libs.proton.core.test.kotlin) {
+        // https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-debug#debug-agent-and-android
+        exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
+        // Use mockk-android from our own dependencies.
+        exclude group: "io.mockk", module: "mockk"
+    }
+
+    androidTestImplementation(libs.proton.core.test.android.instrumented) {
+        exclude group: "me.proton.core"
+    }
+
+    // Observability
+    implementation(projects.observability.domain)
+
+    // TV
+    implementation(libs.androidx.leanback)
+    implementation(libs.androidx.leanback.preference)
+
+    // Wireguard
+    implementation(libs.proton.vpn.wireguard)
+
+    // Hilt
+    ksp(libs.dagger.hilt.compiler)
+    implementation(libs.dagger.hilt.android)
+    testImplementation(libs.dagger.hilt.android.testing)
+    androidTestImplementation(libs.dagger.hilt.android.testing)
+    kspAndroidTest(libs.dagger.hilt.android.compiler)
+    // Hilt for WorkManager
+    implementation(libs.androidx.hilt.work)
+    ksp(libs.androidx.hilt.compiler)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.turbine)
+    testImplementation(libs.robolectric)
+    androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.kotlinx.coroutines.test) {
+        // https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-debug#debug-agent-and-android
+        exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
+    }
+
+    androidTestImplementation(libs.androidx.lifecycle.runtime.testing)
+
+    // Core library
+    testImplementation(libs.androidx.arch.core.testing)
+    androidTestImplementation(libs.androidx.arch.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+    // debugImplementation as a workaround for ActivityScenario problem:
+    // https://github.com/android/android-test/issues/940#issuecomment-934406022
+    debugImplementation(libs.androidx.test.core)
+
+    testImplementation(projects.sharedTestCode)
+    androidTestImplementation(projects.sharedTestCode)
+
+    androidTestImplementation(libs.okhttp3.tls)
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.rules)
+    androidTestUtil(libs.androidx.test.orchestrator)
+    androidTestUtil(libs.androidx.test.services)
+
+    // Assertions
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.androidx.test.truth)
+    androidTestImplementation(libs.google.truth)
+    testImplementation(libs.kotlin.test)
+    testImplementation(libs.kotlin.test.junit)
+    androidTestImplementation(libs.kotlin.test)
+    androidTestImplementation(libs.kotlin.test.junit)
+
+    // Espresso dependencies
+    testImplementation(libs.androidx.test.espresso.core)
+    androidTestImplementation(libs.androidx.test.espresso.core)
+    androidTestImplementation(libs.androidx.test.espresso.contrib)
+    androidTestImplementation(libs.androidx.test.espresso.intents)
+    androidTestImplementation(libs.androidx.test.espresso.accessibility)
+    androidTestImplementation(libs.androidx.test.espresso.web)
+    implementation(libs.androidx.test.espresso.idling.resource)
+    androidTestImplementation(libs.androidx.test.espresso.idling.resource) {
+        exclude module: 'support-annotations'
+    }
+
+    androidTestImplementation(libs.androidx.test.uiautomator)
+
+    // Fusion
+    testImplementation(libs.proton.test.fusion)
+    androidTestImplementation(libs.proton.test.fusion)
+}

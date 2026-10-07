@@ -1,0 +1,83 @@
+import groovy.json.StringEscapeUtils
+
+/*
+ * Copyright (c) 2023. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+plugins {
+    alias(libs.plugins.proton.vpn.android.application)
+}
+
+def debugKeystorePath = file(new File(rootDir, "app/${System.getenv("DEBUG_KEYSTORE_FILE")}"))
+
+android {
+    namespace "com.protonvpn.android.release_tests"
+
+    signingConfigs {
+        release {
+            storeFile file(debugKeystorePath)
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.protonvpn.android.release_tests"
+        versionCode 1
+        versionName "1.0"
+        def lokiEndpoint = System.getenv("LOKI_ENDPOINT")
+        def btiControllerUrl = System.getenv("BTI_CONTROLLER_URL")
+        def lokiPrivateKey = System.getenv("LOKI_PRIVATE_KEY_ANDROID")
+        def lokiCertificate = System.getenv("LOKI_CERTIFICATE_ANDROID")
+        def commitSha = System.getenv("CI_COMMIT_SHORT_SHA")
+        def testAccountPass = System.getenv("TEST_ACCOUNT_PASS")
+        buildConfigField "String", "LOKI_ENDPOINT",  "\"${StringEscapeUtils.escapeJava(lokiEndpoint)}\""
+        buildConfigField "String", "BTI_CONTROLLER_URL",  "\"${StringEscapeUtils.escapeJava(btiControllerUrl)}\""
+        buildConfigField "String", "LOKI_PRIVATE_KEY_ANDROID",  "\"${StringEscapeUtils.escapeJava(lokiPrivateKey)}\""
+        buildConfigField "String", "LOKI_CERTIFICATE_ANDROID",  "\"${StringEscapeUtils.escapeJava(lokiCertificate)}\""
+        buildConfigField "String", "TEST_ACCOUNT_PASSWORD",  "\"${StringEscapeUtils.escapeJava(testAccountPass)}\""
+        buildConfigField "String", "CI_COMMIT_SHORT_SHA",  "\"${StringEscapeUtils.escapeJava(commitSha)}\""
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    implementation(projects.uiAutomatorTestUtil)
+
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.test.junit)
+    implementation(libs.androidx.test.runner)
+    implementation(libs.androidx.test.uiautomator)
+    implementation(libs.okhttp3)
+    implementation(libs.proton.test.fusion)
+    implementation(libs.proton.core.test.performance)
+    implementation(libs.androidx.test.rules)
+}

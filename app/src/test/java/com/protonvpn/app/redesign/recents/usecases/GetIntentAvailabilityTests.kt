@@ -1,0 +1,284 @@
+/*
+ * Copyright (c) 2025. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.app.redesign.recents.usecases
+
+import com.protonvpn.android.auth.data.VpnUser
+import com.protonvpn.android.auth.usecase.CurrentUser
+import com.protonvpn.android.excludedlocations.data.ExcludedLocationsDao
+import com.protonvpn.android.excludedlocations.usecases.ObserveExcludedLocations
+import com.protonvpn.android.models.config.TransmissionProtocol
+import com.protonvpn.android.models.config.VpnProtocol
+import com.protonvpn.android.models.vpn.usecase.SmartProtocols
+import com.protonvpn.android.redesign.CountryId
+import com.protonvpn.android.redesign.recents.usecases.GetIntentAvailability
+import com.protonvpn.android.redesign.vpn.ConnectIntent
+import com.protonvpn.android.redesign.vpn.ServerFeature
+import com.protonvpn.android.redesign.vpn.ui.ConnectIntentAvailability
+import com.protonvpn.android.servers.ServerManager2
+import com.protonvpn.android.servers.api.SERVER_FEATURE_P2P
+import com.protonvpn.android.servers.api.SERVER_FEATURE_RESTRICTED
+import com.protonvpn.android.servers.api.ServerEntryInfo
+import com.protonvpn.android.utils.ServerManager
+import com.protonvpn.android.utils.Storage
+import com.protonvpn.android.vpn.ProtocolSelection
+import com.protonvpn.app.excludedlocations.TestExcludedLocationEntity
+import com.protonvpn.mocks.createInMemoryServerManager
+import com.protonvpn.test.shared.MockSharedPreference
+import com.protonvpn.test.shared.TestCurrentUserProvider
+import com.protonvpn.test.shared.TestDispatcherProvider
+import com.protonvpn.test.shared.TestUser
+import com.protonvpn.test.shared.createAccountUser
+import com.protonvpn.test.shared.createConnectIntentFastest
+import com.protonvpn.test.shared.createConnectIntentFastestInCountry
+import com.protonvpn.test.shared.createConnectIntentGateway
+import com.protonvpn.test.shared.createConnectIntentSecureCore
+import com.protonvpn.test.shared.createGetSmartProtocols
+import com.protonvpn.test.shared.createServer
+import com.protonvpn.test.shared.dummyConnectingDomain
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.impl.annotations.RelaxedMockK
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
+
+class GetIntentAvailabilityTests {
+
+    @RelaxedMockK
+    private lateinit var mockExcludedLocationsDao: ExcludedLocationsDao
+
+    private lateinit var serverManager: ServerManager
+    private lateinit var testScope: TestScope
+
+    private lateinit var testUserProvider: TestCurrentUserProvider
+
+    private lateinit var getIntentAvailability: GetIntentAvailability
+
+    private val serverFreeCh = createServer(exitCountry = "CH", tier = 0)
+    private val serverCh = createServer(exitCountry = "CH", tier = 2)
+    private val serverLtOffline = createServer(exitCountry = "LT", tier = 2, isOnline = false)
+    private val serverPlP2P = createServer(exitCountry = "PL", features = SERVER_FEATURE_P2P, tier = 2)
+    private val serverSecureCore = createServer(exitCountry = "US", entryCountry = "CH", isSecureCore = true, tier = 2)
+    private val serverGateway =
+        createServer(exitCountry = "CH", gatewayName = "Gateway", features = SERVER_FEATURE_RESTRICTED, tier = 2)
+
+    private val userFree = TestUser.freeUser.vpnUser
+    private val userPlus = TestUser.plusUser.vpnUser
+
+    @Before
+    fun setup() {
+        MockKAnnotations.init(this)
+        coEvery { mockExcludedLocationsDao.observeAll(any()) } returns flowOf(emptyList())
+        Storage.setPreferences(MockSharedPreference())
+        val testDispatcher = StandardTestDispatcher()
+        testScope = TestScope(testDispatcher)
+
+        serverManager = createInMemoryServerManager(
+            testScope,
+            TestDispatcherProvider(testDispatcher),
+            initialServers = emptyList(),
+        )
+        val serverManager2 = ServerManager2(serverManager, createGetSmartProtocols())
+
+        testUserProvider = TestCurrentUserProvider(
+            vpnUser = null,
+            user = createAccountUser(),
+        )
+        val currentUser = CurrentUser(provider = testUserProvider)
+        val observeExcludedLocations = ObserveExcludedLocations(
+            mainScope = testScope.backgroundScope,
+            currentUser = currentUser,
+            excludedLocationsDao = mockExcludedLocationsDao,
+        )
+
+        getIntentAvailability = GetIntentAvailability(
+            serverManager = serverManager2,
+            observeExcludedLocations = observeExcludedLocations,
+        )
+    }
+
+    @Test
+    fun `all servers - paid`() = testScope.runTest {
+        serverManager.setServers(
+            listOf(serverFreeCh, serverCh, serverLtOffline, serverPlP2P, serverSecureCore, serverGateway),
+            statusId = "1",
+        )
+
+        val cases = listOf(
+            ConnectIntent.FastestInCountry(CountryId.fastest, emptySet()) to ConnectIntentAvailability.ONLINE,
+            ConnectIntent.FastestInCountry(CountryId("LT"), emptySet()) to ConnectIntentAvailability.AVAILABLE_OFFLINE,
+            ConnectIntent.FastestInCountry(CountryId("DE"), emptySet()) to ConnectIntentAvailability.NO_SERVERS,
+            ConnectIntent.FastestInCountry(CountryId.fastest, setOf(ServerFeature.Tor))
+                to ConnectIntentAvailability.NO_SERVERS,
+            ConnectIntent.Server("Nonexistent", CountryId("CH"), emptySet())
+                to ConnectIntentAvailability.NO_SERVERS,
+        )
+        runAvailabilityTestCases(cases, userPlus)
+    }
+
+    @Test
+    fun `free user`() = testScope.runTest {
+        serverManager.setServers(
+            listOf(serverFreeCh, serverCh, serverLtOffline, serverPlP2P, serverSecureCore, serverGateway),
+            statusId = "1",
+        )
+
+        val cases = listOf(
+            ConnectIntent.FastestInCountry(CountryId.fastest, emptySet()) to ConnectIntentAvailability.ONLINE,
+            ConnectIntent.FastestInCountry(CountryId("CH"), emptySet()) to ConnectIntentAvailability.ONLINE,
+            ConnectIntent.FastestInCountry(CountryId("PL"), emptySet()) to ConnectIntentAvailability.UNAVAILABLE_PLAN,
+            ConnectIntent.FastestInCountry(CountryId("LT"), emptySet()) to ConnectIntentAvailability.UNAVAILABLE_PLAN,
+            ConnectIntent.SecureCore(CountryId("US"), entryCountry = CountryId.fastest)
+                to ConnectIntentAvailability.UNAVAILABLE_PLAN,
+            ConnectIntent.fromServer(serverFreeCh, emptySet()) to ConnectIntentAvailability.ONLINE,
+        )
+        runAvailabilityTestCases(cases, userFree)
+    }
+
+    @Test
+    fun `cities - paid`() = testScope.runTest {
+        val newYorkOnline = createServer(exitCountry = "US", city = "New York")
+        val newYorkOffline = createServer(exitCountry = "US", city = "New York", isOnline = false)
+        val seattleP2POffline = createServer(exitCountry = "US", city = "Seattle", features = SERVER_FEATURE_P2P, isOnline = false)
+        val seattle = createServer(exitCountry = "US", city = "Seattle")
+
+        serverManager.setServers(listOf(newYorkOnline, newYorkOffline, seattleP2POffline, seattle), "1")
+
+        val cases = listOf(
+            ConnectIntent.FastestInCountry(CountryId("US"), emptySet()) to ConnectIntentAvailability.ONLINE,
+            ConnectIntent.FastestInCity(CountryId("US"), cityEn = "New York", emptySet())
+                to ConnectIntentAvailability.ONLINE,
+            ConnectIntent.FastestInCity(CountryId("US"), cityEn = "Seattle", emptySet())
+                to ConnectIntentAvailability.ONLINE,
+            ConnectIntent.FastestInCity(CountryId("US"), cityEn = "Seattle", setOf(ServerFeature.P2P))
+                to ConnectIntentAvailability.AVAILABLE_OFFLINE,
+            ConnectIntent.FastestInCity(CountryId("US"), cityEn = "Denver", emptySet())
+                to ConnectIntentAvailability.NO_SERVERS,
+        )
+        runAvailabilityTestCases(cases, userPlus)
+    }
+
+    @Test
+    fun `gateways - paid`() = testScope.runTest {
+        val gatewayA1 = createServer("A1", exitCountry = "CH", gatewayName = "A", features = SERVER_FEATURE_RESTRICTED, isOnline = false)
+        val gatewayB1 = createServer("B1", exitCountry = "CH", gatewayName = "B", features = SERVER_FEATURE_RESTRICTED)
+        val gatewayB2 = createServer("B2", exitCountry = "CH", gatewayName = "B", features = SERVER_FEATURE_RESTRICTED, isOnline = false)
+        serverManager.setServers(listOf(gatewayA1, gatewayB1, gatewayB2), "1")
+
+        val cases = listOf(
+            ConnectIntent.FastestInCountry(CountryId.fastest, emptySet()) to ConnectIntentAvailability.NO_SERVERS,
+            ConnectIntent.Gateway("A", null) to ConnectIntentAvailability.AVAILABLE_OFFLINE,
+            ConnectIntent.Gateway("B", null) to ConnectIntentAvailability.ONLINE,
+            ConnectIntent.Gateway("B", serverId = "B2") to ConnectIntentAvailability.AVAILABLE_OFFLINE,
+        )
+        runAvailabilityTestCases(cases, userPlus)
+    }
+
+    @Test
+    fun `GIVEN paid user AND available servers are excluded WHEN getting availability THEN returns expected availability`() = testScope.runTest {
+        val vpnUser = userPlus
+        val countryCode = "US"
+        val servers = listOf(
+            createServer(exitCountry = countryCode),
+            createServer(exitCountry = countryCode, isSecureCore = true),
+        )
+        testUserProvider.vpnUser = vpnUser
+        serverManager.setServers(serverList = servers, statusId = null)
+        val excludedLocationEntities = listOf(TestExcludedLocationEntity.create(countryCode = countryCode))
+        coEvery { mockExcludedLocationsDao.observeAll(userId = vpnUser.userId.id) } returns flowOf(excludedLocationEntities)
+
+        val casesList = listOf(
+            createConnectIntentFastest() to ConnectIntentAvailability.EXCLUDED,
+            createConnectIntentSecureCore() to ConnectIntentAvailability.EXCLUDED,
+            createConnectIntentFastestInCountry(country = CountryId(countryCode = "LT")) to ConnectIntentAvailability.NO_SERVERS,
+            createConnectIntentSecureCore(exitCountryCode = "NZ") to ConnectIntentAvailability.NO_SERVERS,
+            createConnectIntentGateway() to ConnectIntentAvailability.NO_SERVERS,
+        )
+
+        runAvailabilityTestCases(casesList = casesList, vpnUser = vpnUser)
+    }
+
+    @Test
+    fun `GIVEN free user AND available servers are excluded locations WHEN getting availability THEN returns expected availability`() = testScope.runTest {
+        val vpnUser = userFree
+        val countryCode = "US"
+        val servers = listOf(
+            createServer(exitCountry = countryCode),
+            createServer(exitCountry = countryCode, isSecureCore = true),
+        )
+        testUserProvider.vpnUser = vpnUser
+        serverManager.setServers(serverList = servers, statusId = null)
+        val excludedLocationEntities = listOf(TestExcludedLocationEntity.create(countryCode = countryCode))
+        coEvery { mockExcludedLocationsDao.observeAll(userId = vpnUser.userId.id) } returns flowOf(excludedLocationEntities)
+
+        val casesList = listOf(
+            createConnectIntentFastest() to ConnectIntentAvailability.UNAVAILABLE_PLAN,
+            createConnectIntentSecureCore() to ConnectIntentAvailability.UNAVAILABLE_PLAN,
+            createConnectIntentFastestInCountry(country = CountryId(countryCode = "LT")) to ConnectIntentAvailability.NO_SERVERS,
+            createConnectIntentSecureCore(exitCountryCode = "NZ") to ConnectIntentAvailability.NO_SERVERS,
+            createConnectIntentGateway() to ConnectIntentAvailability.NO_SERVERS,
+        )
+
+        runAvailabilityTestCases(casesList = casesList, vpnUser = vpnUser)
+    }
+
+    @Test
+    fun `smart protocol filtering`() = testScope.runTest {
+        val physicalUdp = dummyConnectingDomain.copy(
+            entryIp = null, entryIpPerProtocol = mapOf("WireGuardUDP" to ServerEntryInfo("1.2.3.4"))
+        )
+        val physicalTcp = dummyConnectingDomain.copy(
+            entryIp = null, entryIpPerProtocol = mapOf("WireGuardTCP" to ServerEntryInfo("1.2.3.4"))
+        )
+        val serverUdp = createServer("UDP", exitCountry = "CH", connectingDomains = listOf(physicalUdp))
+        val serverTcp = createServer("TCP", exitCountry = "SE", connectingDomains = listOf(physicalTcp))
+        serverManager.setServers(listOf(serverTcp, serverUdp), "1")
+
+        val tcpOnly = listOf(ProtocolSelection(VpnProtocol.WireGuard, TransmissionProtocol.TCP))
+        runAvailabilityTestCases(
+            listOf(
+                ConnectIntent.FastestInCountry(CountryId.switzerland, emptySet()) to ConnectIntentAvailability.UNAVAILABLE_PROTOCOL,
+                ConnectIntent.FastestInCountry(CountryId.sweden, emptySet()) to ConnectIntentAvailability.ONLINE
+            ),
+            userPlus,
+            tcpOnly
+        )
+    }
+
+    private suspend fun runAvailabilityTestCases(
+        casesList: List<Pair<ConnectIntent, ConnectIntentAvailability>>,
+        vpnUser: VpnUser,
+        smartProtocols: SmartProtocols = ProtocolSelection.REAL_PROTOCOLS,
+    ) {
+        casesList.forEachIndexed { index, (intent, expectedAvailability) ->
+            val result = getIntentAvailability(
+                intent,
+                vpnUser,
+                ProtocolSelection.SMART,
+                smartProtocols,
+            )
+            assertEquals("Case $index", expectedAvailability, result)
+        }
+    }
+}

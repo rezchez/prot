@@ -1,0 +1,2021 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2017 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_icon_name_classic">Klasická</string>
+    <string name="app_icon_name_dark">Tmavá</string>
+    <string name="app_icon_name_retro">Retro</string>
+    <string name="app_icon_name_weather">Počasie</string>
+    <string name="app_icon_name_notes">Poznámky</string>
+    <string name="app_icon_name_calculator">Kalkulačka</string>
+    <string name="login">Prihlásiť sa</string>
+    <string name="menuActionSignOut">Odhlásiť sa</string>
+    <string name="connectionAllocationHelpTitle">Ďakujeme za inováciu</string>
+    <string name="connectionAllocationHelpDescription1">Ak chcete používať Proton VPN, priraďte VPN pripojenia k svojmu účtu alebo akémukoľvek inému podúčtu.</string>
+    <string name="connectionAllocationHelpDescription2">Tento krok zaberie iba niekoľko minút. Potom sa budete môcť prihlásiť a chrániť všetky svoje zariadenia.</string>
+    <string name="connectionAllocationHelpDescription1AskAdmin">Pre tento účet momentálne nie je povolené žiadne pripojenie VPN. Ak chcete začať používať Proton VPN, kontaktujte svojho správcu. </string>
+    <string name="connectionAllocationHelpAssignConnectionsButton">Povoliť VPN pripojenia</string>
+    <string name="connectionAllocationHelpLoginAgainButton">Prihláste sa znovu</string>
+    <!-- tag(Redesign_2023) "OK" button on dialogs -->
+    <string name="ok">OK</string>
+    <string name="dialogLearnMore">Zistiť viac</string>
+    <string name="connected">Pripojené</string>
+    <string name="buttonConnect">Pripojiť</string>
+    <string name="loaderConnectingTo">Pripája sa ku %1$s</string>
+    <string name="loaderNotConnected">Nepripojené (Nechránené)</string>
+    <string name="loaderConnectedTo">Pripojené k %1$s</string>
+    <string name="loaderDisconnecting">Odpája sa</string>
+    <string name="loaderReconnecting">Obnovuje sa pripojenie</string>
+    <string name="loaderReconnectNoNetwork">Čaká sa použiteľnú sieť</string>
+    <string name="loaderCheckingAvailability">Kontroluje sa dostupnosť servera</string>
+    <string name="quickConnect">Rýchlo pripojiť</string>
+    <!-- Displays a percentage value. Please use %% sign for %.
+         Example value: "70%" -->
+    <string name="serverLoad">%1$s%%</string>
+    <string name="cancel">Zrušiť</string>
+    <string name="close">Zavrieť</string>
+    <string name="dialogContinue">Pokračovať</string>
+    <string name="drawerReportProblem">Nahlásiť problém</string>
+    <string name="action_done">Hotovo</string>
+    <string name="action_share">Zdieľať</string>
+    <string name="accountFree">Proton Free</string>
+    <string name="restrictedMaintenanceTitle">Prebieha údržba</string>
+    <string name="restrictedMaintenanceDescription">Na serveri, ku ktorému sa práve pokúšate pripojiť, prebieha údržba. Skúste iný server, prosím.</string>
+    <string name="restricted_location_excluded_dialog_title">Pripojenie zlyhalo</string>
+    <string name="restricted_location_excluded_dialog_description">K dispozícii nie sú žiadne servery. Vyberte lokalitu ručne alebo upravte vylúčené lokality.</string>
+    <string name="errorUserDelinquent"><![CDATA[Váš účet má momentálne faktúru po splatnosti. Všetky nezaplatené faktúry zaplaťte na&#160;<a href="https://account.protonvpn.com">account.protonvpn.com</a>]]></string>
+    <string name="errorMaxSessions">Dosiahli ste maximálny počet súbežných pripojení povolených pre váš účet. Ak chcete zvýšiť počet pripojení, prejdite na vyšší Proton VPN plán.</string>
+    <string name="listItemMaintenance">Prebieha údržba</string>
+    <string name="insufficientPermissionsTitle">Je vyžadovaná akcia používateľa</string>
+    <string name="insufficientPermissionsDetails">Nepodarilo sa automaticky vytvoriť VPN pripojenie. Pripojte sa teraz manuálne a udeľte povolenia, prosím.</string>
+    <string name="log_title">Záznam</string>
+    <string name="disconnect">Odpojiť</string>
+    <string name="state_connecting">Pripájanie…</string>
+    <string name="state_connected">Pripojené</string>
+    <string name="state_disconnecting">Odpája sa…</string>
+    <string name="state_error">Chyba</string>
+    <string name="error_server_list_load_failed">Skontrolujte pripojenie a skúste to znova.</string>
+    <string name="error_server_unreachable">Nemôžem sa pripojiť na VPN. Skontrolujte vaše pripojenie a skúste to znova, prosím.</string>
+    <string name="error_auth_failed">Overovanie používateľa zlyhalo.</string>
+    <string name="error_generic">Nešpecifikovaná chyba počas pripájania.</string>
+    <string name="error_generic_with_reason">Proton VPN nedokázal vytvoriť VPN pripojenie. Skúste to znova o niekoľko sekúnd.<br/><br/> Podrobnosti: %1$s</string>
+    <string name="reconnect">Znovu pripojiť</string>
+    <string name="reconnect_now">Znovu pripojiť</string>
+    <string name="try_reconnecting">Skúsiť znovu pripojiť</string>
+    <string name="connect">Pripojiť</string>
+    <string name="upgrade">Upgradovať</string>
+    <string name="retry">Skúsiť znova</string>
+    <string name="report_message">Nahlásiť správu</string>
+    <string name="report_bug_email_label">Váš email</string>
+    <string name="report_bug_email_hint">Zadajte vašu emailovú adresu</string>
+    <string name="report_bug_message_label">Správa</string>
+    <string name="report_bug_message_hint">Popíšte, prosím, chybu a ako a kde ste ju našli</string>
+    <string name="send_report">Odoslať hlásenie</string>
+    <string name="report_sent">Hlásenie odoslané</string>
+    <string name="discardChanges">Zmazať neuložené zmeny?</string>
+    <string name="discardChangesButtonDiscard">Zahodiť zmeny</string>
+    <string name="discardChangesButtonKeepEditing">Pokračovať v úpravách</string>
+    <string name="done">HOTOVO</string>
+    <string name="add">PRIDAŤ</string>
+    <string name="copy_to_clipboard">Kopírovať</string>
+    <string name="copied_to_clipboard">Skopírované do schránky</string>
+    <string name="got_it">Rozumiem</string>
+    <string name="exclude_locations">Vylúčiť lokality</string>
+    <string name="excluded_locations">Vylúčené lokality</string>
+    <string name="cannot_connect">Nie je možné pripojiť sa</string>
+    <string name="skip">Preskočiť</string>
+    <string name="something_went_wrong">Niečo sa pokazilo</string>
+    <string name="try_again">Skús znova</string>
+    <string name="delete">Vymazať</string>
+    <string name="menu_option_move_to_top" comment="command used to move an item to the top of the list">Presunúť na začiatok</string>
+    <string name="menu_option_move_up" comment="command used to move an item one position up in the list">Presunúť hore</string>
+    <string name="menu_option_move_down" comment="command used to move an item one position down in the list">Presunúť dole</string>
+    <string name="remove">Odstrániť</string>
+    <string name="saveButton">Uložiť</string>
+    <string name="ipWithPlaceholder">IP: %1$s</string>
+    <string name="activityLicensesTitle">Licencie tretích strán</string>
+    <string name="stateFragmentUnknownIp">Neznáme</string>
+    <string name="noVpnPermissionMainTitle">Na pripojenie k sieti VPN je potrebná akcia</string>
+    <string name="noVpnPermissionMainMessage">Ak sa chcete pripojiť k Proton VPN, postupujte nasledovne:</string>
+    <string name="noVpnPermissionGrantPermissionTitle">Udeliť VPN oprávnenia</string>
+    <string name="noVpnPermissionGrantPemrissionMessage">Android potrebuje vaše povolenie na pripojenie k Proton VPN. Udeľte ho klepnutím na „OK“, keď sa zobrazí okno „Žiadosť o pripojenie“.</string>
+    <string name="noVpnPermissionDisableAlwaysOnTitle">Vypnite \"Trvalú sieť VPN\" pre ostatné VPN aplikácie</string>
+    <string name="noVpnPermissionDisableAlwaysOnMessage">Android nepodporuje viacero VPN aplikácií. Vypnite \"Trvalú sieť VPN\" pre ostatné VPN aplikácie okrem Proton VPN.</string>
+    <string name="noVpnPermissionProtonAppLabel">Proton VPN aplikácia</string>
+    <string name="noVpnPermissionOtherAppLabel">Ostatné VPN aplikácie</string>
+    <string name="noVpnPermissionOpenSettings">Otvoriť Android VPN nastavenia</string>
+    <string name="noNotificationPermissionGrantTitle">Nenechajte sa nachytať…</string>
+    <string name="noNotificationPermissionGrantDescription">Povoliť notifikácie pre upozornenia o zmenách vášho stavu pripojenia.</string>
+    <string name="noNotificationPermissionGrantNowTitle">Povoliť notifikácie</string>
+    <string name="error_prepare_vpn_description"><![CDATA[Zakážte Trvalú sieť VPN pre všetky ostatné aplikácie VPN v nastaveniach systému Android VPN, pretože to zabraňuje aplikácii Proton VPN nadviazať VPN pripojenie . Udeľte tiež povolenia VPN, ak sa zobrazí dialógové okno so žiadosťou o povolenie VPN. Možno bude potrebné odinštalovať aj iné VPN aplikácie, aby sa predišlo konfliktom. Potom to skúste znova. <a href="%1$s">Zistiť viac</a>]]></string>
+    <string name="error_prepare_vpn_settings">Prejsť na Android VPN nastavenia</string>
+    <string name="error_prepare_vpn_title">Chyba: Problém s povolením VPN</string>
+    <string name="error_server_not_set">Server už nie je dostupný</string>
+    <string name="bugReportErrorEmptyEmail">Email nemôže byť prázdny</string>
+    <string name="bugReportErrorInvalidEmail">Neplatná emailová adresa</string>
+    <string name="bugReportLabelVpnLogsTitle">Zahrnúť denníky chýb</string>
+    <string name="bugReportErrorLabelVpnLogsDescription">Odošle lokálne protokoly o chybách (aktivitu nezaznamenávame), ktoré nám pomôžu vyriešiť váš problém.</string>
+    <string name="profileFastest">Najrýchlejší</string>
+    <string name="profileRandom">Náhodný</string>
+    <string name="loaderErrorNoInternet">Žiadne internetové pripojenie</string>
+    <string name="loaderErrorGeneric">Niečo sa pokazilo</string>
+    <string name="inputIpAddressLabel">IP adresa</string>
+    <string name="inputIpAddressHelp">Zadajte IPv4 alebo IPv6 adresu servera</string>
+    <string name="inputIpAddressErrorInvalid">Neplatná IP adresa</string>
+    <!-- Displayed as a badge next to setting item ("Widget [NEW]") -->
+    <string name="settings_new_label_badge">NOVÉ</string>
+    <!-- Displayed as a badge next to setting item ("Proton protocols [BETA]") -->
+    <string name="settings_beta_label_badge">BETA</string>
+    <string name="settingsExcludedIPAddressesListHeader">Vylúčené IP adresy (%1$d)</string>
+    <string name="settingsIncludedIPAddressesListHeader">Zahrnuté IP adresy (%1$d)</string>
+    <string name="settingsExcludedApps">Vylúčené aplikácie</string>
+    <string name="settingsExcludedAppsEmpty">Pridajte aplikácie, ktoré chcete vylúčiť z prevádzky VPN.</string>
+    <string name="settingsIncludedAppsEmpty">Pridajte aplikácie, ktoré chcete zahrnúť do prevádzky VPN.</string>
+    <string name="settingsExcludedAppsSelectedHeader">Vylúčené aplikácie (%1$d)</string>
+    <string name="settingsIncludedAppsSelectedHeader">Zahrnuté aplikácie (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableRegularHeader">Všetky ostatné bežné aplikácie (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableSystemHeader">Všetky ostatné systémové aplikácie (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableHeader">Všetky ostatné aplikácie (%1$d)</string>
+    <string name="settingsExcludedAppsLoadSystemAppsButton">Zobraziť systémové aplikácie</string>
+    <string name="settingsSplitTunnelAppsShowSystemAppsCheckbox">Zobraziť systémové aplikácie</string>
+    <string name="settingsSplitTunnelingExcludedAppsList">Tieto aplikácie sú vylúčené z vášho VPN pripojenia.</string>
+    <string name="settingsSplitTunnelingIncludedAppsList">Iba tieto aplikácie sa pripájajú cez VPN.</string>
+    <!-- Description for action to add an application to "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to excluded apps"
+    -->
+    <string name="accessibility_action_add_excluded_app">Pridať do vylúčených aplikácií</string>
+    <!-- Description for action to remove an application from "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from excluded apps"
+    -->
+    <string name="accessibility_action_remove_excluded_app">Odstrániť z vylúčených aplikácií</string>
+    <!-- Description for action to add an application to "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to included apps"
+    -->
+    <string name="accessibility_action_add_included_app">Pridať do zahrnutých aplikácií</string>
+    <!-- Description for action to remove an application from "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from included apps"
+    -->
+    <string name="accessibility_action_remove_included_app">Odstrániť z aplikácií zahrnutých do výnimky</string>
+    <string name="accessibility_action_copy_to_clipboard">Skopírovať do schránky</string>
+    <string name="accessibility_action_item_delete">Vymazať</string>
+    <string name="accessibility_action_item_move_up">Presunúť hore</string>
+    <string name="accessibility_action_item_move_down">Presunúť dole</string>
+    <string name="tileConnected">Pripojené: %1$s</string>
+    <string name="openUrlError">%1$s sa nepodarilo otvoriť. Vo vašom zariadení sa nezistil webový prehliadač.</string>
+    <string name="loaderErrorTimeout">Časový limit pripojenia vypršal, skúste to prosím znovu</string>
+    <string name="troubleshootButton">Riešenie problémov</string>
+    <string name="activityTroubleshootTitle">Riešenie problémov</string>
+    <string name="troubleshootPotentialSolutionsSectionTitle">Možné riešenia</string>
+    <string name="troubleshootNoInternetDescription">Uistite sa, že vaše internetové pripojenie funguje.</string>
+    <string name="troubleshootNoInternetTitle">Žiadne internetové pripojenie</string>
+    <string name="troubleshootIspProblemTitle">Problém s poskytovateľom internetových služieb (ISP)</string>
+    <string name="troubleshootIspProblemDescription"><![CDATA[Skúste pripojenie k Protonu z inej siete (alebo použite <a href=\'%1$s\'>Tor</a>)]]></string>
+    <string name="troubleshootAntivirusProblemTitle">Zasahovanie antivírusu</string>
+    <string name="troubleshootAntivirusProblemDescription">Dočasne vypnite alebo odstráňte antivírusový softvér.</string>
+    <string name="troubleshootProxyFirewallProblemTitle">Rušenie proxy/firewall</string>
+    <string name="troubleshootProxyFirewallProblemDescription">Zakážte všetky proxy servery alebo brány firewall, alebo sa obráťte na správcu siete.</string>
+    <string name="troubleshootProtonDownTitle">Proton je nedostupný.</string>
+    <string name="troubleshootProtonDownDescription"><![CDATA[Stav nášho systému nájdete v časti <a href=\"%1$s\">Stav Protonu</a>.]]></string>
+    <string name="troubleshootContactUsSectionTitle">Stále potrebujete pomoc? Kontaktujte nás ihneď.</string>
+    <string name="troubleshootCustomerSupport">Zákaznícka podpora</string>
+    <string name="settingsAllowAlternativeRoutingTitle">Alternatívne smerovanie</string>
+    <string name="settingsAllowAlternativeRoutingDescription"><![CDATA[V prípade, že je Proton blokovaný, povoľte aplikácii vyskúšať alternatívne cesty na dosiahnutie Proton serverov. <a href="%1$s">Zistiť viac</a>.]]></string>
+    <string name="troubleshootGovernmentBlockTitle">Vládne blokovanie</string>
+    <string name="troubleshootGovernmentBlockDescription"><![CDATA[Vaša krajina môže blokovať prístup k Protonu. Skúste na prístup k Protonu použiť <a href=\'%1$s\'>Tor</a>.]]></string>
+    <string name="settingsKillSwitchEnableTitle">Ako povoliť kill switch</string>
+    <string name="settingsKillSwitchEnableStep1">1. Otvorte nastavenia vášho zariadenia</string>
+    <!-- %1$s here will be replaced by "gear" icon -->
+    <string name="settingsKillSwitchEnableStep2">2. Nájdite Proton VPN a klepnite na %1$s</string>
+    <!-- Content description for the "gear" icon in settingsKillSwitchEnableStep2. Used only by accessibility services. -->
+    <string name="settingsKillSwitchEnableStep2_gearIconContentDescription">nastavenia</string>
+    <!-- The phrases "Always-on VPN" and "Block connections without VPN" needs to be translated exactly
+         the same as in Android VPN settings. -->
+    <string name="settingsKillSwitchEnableStep3"><![CDATA[3. Povoľte \"<b>Vždy zapnutá VPN</b>\" a \"<b>Blokovať pripojenia bez VPN</b>\"]]></string>
+    <string name="settingsKillSwitchAndroidSettingsButton">Nastavenia</string>
+    <string name="settingsKillSwitchLearnMoreButton">Čo je kill switch?</string>
+    <string name="settingsKillSwitchWarningMain">Keď je kill switch zapnutý, nebudete sa môcť pripojiť k:</string>
+    <string name="settingsKillSwitchWarningPoint1">Webovým lokalitám a aplikáciám vylúčeným z vášho VPN pripojenia prostredníctvom rozdeleného tunelovania</string>
+    <string name="settingsKillSwitchWarningPoint2">Zariadeniam vo vašej lokálnej sieti (LAN)</string>
+    <string name="settingsEnableTelemetryTitle">Zdieľať anonymné štatistiky používania</string>
+    <string name="settingsEnableTelemetryDescription">Údaje o používaní nám pomáhajú obchádzať blokovanie VPN a vylepšovať výkon aplikácie.</string>
+    <string name="settingsSendCrashReportsTitle">Zdieľať anonymné hlásenia o zlyhaní</string>
+    <string name="settingsSendCrashReportsDescription">Hlásenia o pádoch nám pomáhajú opravovať chyby, detekovať firewally a vyhýbať sa blokovaniu VPN.</string>
+    <string name="settingsTelemetryScreenTitle">Štatistiky používania</string>
+    <string name="settingsTelemetryScreenInfo"><![CDATA[Tieto štatistiky neobsahujú vašu IP adresu a nemôžu byť použité na vašu identifikáciu. Nikdy ich nebudeme zdieľať s tretími stranami. <a href="%1$s">Zistiť viac</a>]]></string>
+    <string name="netshield_settings_description_not_html">Chráňte sa pred reklamami, malvérom a sledovačmi na webových stránkach a v aplikáciách. %1$s</string>
+    <string name="netshield_settings_description_tv">Chráni vás pred reklamami tretích strán, sledovacími nástrojmi a škodlivým softvérom. NetShield neblokuje reklamy, ktoré sú integrované do streamovacích služieb, ako sú YouTube a Netflix.</string>
+    <string name="netshield_settings_more_info_title_tv">Ako funguje NetShield</string>
+    <string-array name="netshield_settings_more_info_paragraphs_tv">
+        <item>NetShield blokuje DNS požiadavky na domény tretích strán, ktoré sú známe reklamami, sledovacími modulmi a škodlivým softvérom.</item>
+        <item>To znamená, že nebudete dostávať reklamy z prehliadača ani bezplatných aplikácií, ktoré používajú reklamné služby tretích strán.</item>
+        <item>Nemôže však blokovať reklamy zo streamovacích platforiem, ako sú YouTube a Netflix, pretože ich reklamy pochádzajú z ich vlastných serverov.</item>
+    </string-array>
+    <string name="settings_icon_change_description">Zamaskujte aplikáciu Proton VPN diskrétnou ikonou. V oznámeniach sa bude stále zobrazovať predvolený názov a ikona Proton VPN. %1$s</string>
+    <string name="settings_icon_change_learn_more">Zistiť viac</string>
+    <string name="learn_more">Zistiť viac</string>
+    <string name="netshield_state_on" comment="Describes state, not action">Zap.</string>
+    <string name="netshield_state_off" comment="Describes state, not action">Vyp.</string>
+    <string name="netshield_state_unavailable" comment="Describes state, not action">Nedostupné</string>
+    <string name="split_tunneling_state_on" comment="Describes state, not action">Zap.</string>
+    <string name="split_tunneling_state_off" comment="Describes state, not action">Vyp.</string>
+    <string name="vpn_accelerator_state_on" comment="Describes state, not action">Zap.</string>
+    <string name="vpn_accelerator_state_off" comment="Describes state, not action">Vyp.</string>
+    <string name="lan_state_on" comment="Describes state, not action">Zap.</string>
+    <string name="lan_state_off" comment="Describes state, not action">Vyp.</string>
+    <string name="alt_routing_state_on" comment="Describes state, not action">Zap.</string>
+    <string name="alt_routing_state_off" comment="Describes state, not action">Vyp.</string>
+    <string name="custom_dns_state_on" comment="Describes state, not action">Zap.</string>
+    <string name="custom_dns_state_off" comment="Describes state, not action">Vyp.</string>
+    <string name="custom_dns_state_unavailable" comment="Describes state, not action">Nedostupné</string>
+    <string name="custom_dns_item_removed_snackbar">Položka odstránená</string>
+    <string name="netshield_free_description">Blokovanie reklám, sledovačov a malvéru na webových stránkach a v aplikáciách</string>
+    <string name="netshield_what_data_means">Vysvetlenie štatistík funkcie NetShield</string>
+    <string name="netshield_ads_title">Reklamy</string>
+    <string name="netshield_ads_details">Reklamy a neviditeľné sledovače reklám</string>
+    <string name="netshield_trackers_title">Sledovače</string>
+    <string name="netshield_trackers_details">Súbory cookie a ďalšie sledovacie prvky, ktoré ukladajú a zdieľajú informácie o vašej aktivite na internete.</string>
+    <string name="netshield_data_title">Údaje</string>
+    <string name="netshield_data_details">Množstvo nežiaducich údajov z reklám, sledovacích zariadení a škodlivého softvéru, ktoré blokuje NetShield</string>
+    <plurals name="netshield_ads_blocked" comment="Number of ads blocked by netshield. Number displayed above the text">
+        <item quantity="one">Zablokovaná reklama</item>
+        <item quantity="few">Zablokované reklamy</item>
+        <item quantity="many">Zablokovaných reklám</item>
+        <item quantity="other">Zablokovaných reklám</item>
+    </plurals>
+    <plurals name="netshield_trackers_stopped" comment="Number of trackers stopped by netshield. Number displayed above the text">
+        <item quantity="one">zastavený sledovač</item>
+        <item quantity="few">zastavené sledovače</item>
+        <item quantity="many">zastavených sledovačov</item>
+        <item quantity="other">zastavených sledovačov</item>
+    </plurals>
+    <string name="netshield_data_saved" comment="Total data saved by netshield shown in kb/mb">ušetrených dát</string>
+    <string name="netshield_setting_warning">Niektoré webové lokality sa po zablokovaní reklám a sledovacích zariadení nemusia načítať správne.</string>
+    <string name="netshield_setting_block_adult_content">Blokovať obsah pre dospelých</string>
+    <string name="dialogDontShowAgain">Viac nezobrazovať</string>
+    <string name="guestHoleNotificationContent">Snažíme sa obísť problémy so sieťou. Pomôže vám to získať prístup k sieti Proton VPN.</string>
+    <string name="errorTunMultiUserPermission">Nepodarilo sa inicializovať VPN pripojenie z dôvodu konfliktu medzi duálnymi aplikáciami (napríklad Dual Messenger) a rozeleným tunelovaním. Zakážte jedno z nich a reštartujte zariadenie.</string>
+    <string name="errorTorrentNotAllowed">P2P nie je na tomto serveri povolené</string>
+    <string name="error_profile_fallback_unavailable">Pripojenie zlyhalo. Váš server vybraný v profile nie je k dispozícii.</string>
+    <string name="profileProtocolNotAvailable">Protokol VPN tohto profilu nie je v súčasnosti k dispozícii. Ak sa chcete pripojiť, skúste zmeniť protokol.</string>
+    <string name="stateConnectedTo">Pripojené k %1$s</string>
+    <string name="stateNotConnected">Bez pripojenia</string>
+    <string name="nameEurope">Európa</string>
+    <string name="nameAmerica">Amerika</string>
+    <string name="nameAsia">Ázia</string>
+    <string name="nameAfricaAndMiddleEast">Afrika &amp; Blízky východ</string>
+    <string name="nameOceania">Oceánia</string>
+    <string name="tv_row_settings">Nastavenia</string>
+    <string name="tv_card_lan_connections_label">LAN</string>
+    <string name="tv_card_split_tunneling_label">Rozdelené tunelovanie</string>
+    <string name="tv_card_protocol_label">Protokol</string>
+    <string name="tv_dialog_delete_server_title">Vymazať server %1$s?</string>
+    <string name="tv_detail_default_connection_checkbox_short">Obľúbené</string>
+    <string name="tv_detail_connect_streaming">Streamovať s Plus</string>
+    <string name="tv_detail_connect">Pripojiť</string>
+    <string name="tv_detail_description_streaming_country">Streamujte svoj obľúbený obsah. Získajte prístup k viacerým aplikáciám s plánom Proton VPN Plus.</string>
+    <string name="tv_detail_description_no_streaming_country">Streamujte viac svojho obľúbeného obsahu s plánom Proton VPN Plus.</string>
+    <string name="tv_detail_description_country_not_available">Táto krajina nie je k dispozícii. Získajte viac možností streamovania s plánom Proton VPN Plus.</string>
+    <string name="tv_detail_description_plus">Streamujte svoje obľúbené videá, filmy alebo športy pomocou svojich aplikácií.</string>
+    <string name="tv_login_title_welcome">Streamujte svoj obľúbený video obsah</string>
+    <string name="tv_login_welcome_description_bottom"><![CDATA[Získajte svoj účet Proton VPN na <b>%1$s</b>]]></string>
+    <string name="back">Späť</string>
+    <string name="tv_vpn_error_dialog_title">VPN pripojenie zlyhalo</string>
+    <string name="tv_signout_label">Odhlásiť sa</string>
+    <string name="tv_signout_dialog_title">Naozaj sa chcete odhlásiť?</string>
+    <string name="tv_signout_dialog_description_connected">Týmto sa vaša TV odpojí od všetkých VPN serverov.</string>
+    <string name="tv_signout_dialog_ok">Odhlásiť sa</string>
+    <string name="tv_quick_connect_recommened">Odporúčané</string>
+    <string name="tv_quick_connect_favourite">Obľúbené</string>
+    <string name="tv_country_maintenance_dialog_title">Krajina je nedostupná</string>
+    <string name="tv_country_maintenance_dialog_description">Skúste to neskôr alebo vyberte inú krajinu, prosím.</string>
+    <!-- The placeholder is replaced with a 0-100 value indicating the server load in percent.
+         Please note the double % sign after the placeholder. It is displayed as a single % sign in the app.
+
+         Example: 76% server load -->
+    <string name="tv_server_list_load">Zaťaženie servera %1$s%%</string>
+    <string name="tv_recently_used_servers">Nedávno použité servery</string>
+    <string name="tv_available_servers">Dostupné servery</string>
+    <string name="tv_locked_servers">Zamknuté servery</string>
+    <string name="tv_other_servers">Iné servery</string>
+    <string name="tv_server_list">Zoznam serverov</string>
+    <string name="tv_server_list_action_unavailable">Nedostupné</string>
+    <string name="notification_subscription_expired_title">Vaše predplatné Proton VPN vypršalo</string>
+    <string name="notification_subscription_expired_content">Váš plán sme museli znížiť, ale znovu vás pripájame k najrýchlejšiemu dostupnému serveru v rámci tohto plánu.</string>
+    <string name="notification_subscription_expired_no_reconnection_content">Vaše predplatné bolo znížené.</string>
+    <string name="notification_delinquent_title">Váš Proton VPN účet má neuhradené faktúry.</string>
+    <string name="notification_delinquent_content">Venujte prosím chvíľu aktualizácii fakturačných údajov, aby vaše predplatné zostalo aktívne.</string>
+    <string name="notification_max_sessions_title">Dosiahli ste maximálny počet zariadení</string>
+    <!-- The number of devices will always be greater than 1. -->
+    <plurals name="notification_max_sessions_upsell_content">
+        <item quantity="one">Ak chcete pripojiť toto zariadenie, odpojte iné zariadenie alebo prejdite na verziu Plus, aby ste mohli súčasne pripojiť %1$d zariadenie.</item>
+        <item quantity="few">Ak chcete pripojiť toto zariadenie, odpojte iné zariadenie alebo prejdite na verziu Plus, aby ste mohli súčasne pripojiť až %1$d zariadenia.</item>
+        <item quantity="many">Ak chcete pripojiť toto zariadenie, odpojte iné zariadenie alebo prejdite na verziu Plus, aby ste mohli súčasne pripojiť až %1$d zariadení.</item>
+        <item quantity="other">Ak chcete pripojiť toto zariadenie, odpojte iné zariadenie alebo prejdite na verziu Plus, aby ste mohli súčasne pripojiť až %1$d zariadení.</item>
+    </plurals>
+    <string name="notification_max_sessions_content">Ak chcete pripojiť toto zariadenie, odpojte iné zariadenie.</string>
+    <string name="notification_cancel_to_free">Máte bezplatný plán. K dispozícii sú bezplatné servery a funkcie.</string>
+    <string name="notification_cancel_to_basic">Máte plán Basic. K dispozícii sú servery a funkcie Basic &amp; Free.</string>
+    <string name="notification_cancel_to_delinquent">Prístup k prémiovým funkciám budete mať opäť po uhradení nezaplatených faktúr.</string>
+    <string name="reconnect_from_server">Zo servera: </string>
+    <string name="reconnect_to_server">Na server: </string>
+    <string name="no_thanks">Nie, ďakujem.</string>
+    <string name="enable">Zapnúť</string>
+    <string name="notification_smart_protocol_disabled_title">Smart Protokol je momentálne deaktivovaný</string>
+    <string name="notification_smart_protocol_disabled_content">Proton VPN rozpoznal, že vaša sieť blokuje pripojenie k VPN. Zapnutie Smart Protocol by mohlo problém vyriešiť.</string>
+    <string name="notification_streaming_blocked_title">Nefunguje streamovanie?</string>
+    <string name="notification_streaming_blocked_text">Mnohé streamovacie služby rozpoznávajú a blokujú pripojenia z bezplatných VPN serverov. Prejdite na Proton VPN Plus a obíďte tieto blokácie</string>
+    <string name="upsell_advanced_features">Pokročilé funkcie: NetShield, Secure Core, Tor, P2P</string>
+    <string name="upsell_streaming_services">Prístup k streamovacím službám (Netflix, Disney+ atď.) kdekoľvek na svete</string>
+    <!-- Number of servers available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_servers">
+        <item quantity="one">%1$d server</item>
+        <item quantity="few">%1$d servery</item>
+        <item quantity="many">%1$d serverov</item>
+        <item quantity="other">%1$d serverov</item>
+    </plurals>
+    <!-- Number of countries available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_countries">
+        <item quantity="one">%1$d krajine</item>
+        <item quantity="few">%1$d krajina</item>
+        <item quantity="many">%1$d krajina</item>
+        <item quantity="other">%1$d krajina</item>
+    </plurals>
+    <string name="upsell_upgrade_again">Znovu navýšte tarif pre využitie všetkých funkcií:</string>
+    <plurals name="upgrade_devices_title">
+        <item quantity="one">Chráňte %1$d zariadenie súčasne</item>
+        <item quantity="few">Chráňte %1$d zariadenia súčasne</item>
+        <item quantity="many">Chráňte %1$d zariadení súčasne</item>
+        <item quantity="other">Chráňte %1$d zariadení súčasne</item>
+    </plurals>
+    <string name="upgrade_devices_text">Proton VPN je k dispozícii na 8 rôznych platformách.</string>
+    <string name="upgrade_plus_title">Navýšte svoje súkromie</string>
+    <string name="upgrade_plus_message">Získajte pokročilé funkcie ochrany súkromia a vyššiu rýchlosť s VPN Plus.</string>
+    <string name="upgrade_netshield_title">Užívajte si prehliadanie bez reklám</string>
+    <string name="upgrade_netshield_message"><![CDATA[Blokujte reklamy, sledovacie programy a škodlivý softvér pomocou nástroja <b>NetShield</b>.]]></string>
+    <string name="upgrade_secure_core_title">Zdvojnásobte šifrovanie</string>
+    <string name="upgrade_secure_core_message"><![CDATA[Pridajte ďalšiu vrstvu šifrovania k vášmu VPN pripojeniu pomocou <b>Secure Core</b>.]]></string>
+    <string name="upgrade_p2p_title">Odomknúť sťahovanie peer-to-peer (P2P) a zdieľanie súborov </string>
+    <string name="upgrade_p2p_text">Zlepšite rýchlosť odosielania a sťahovania a zároveň skryte svoju IP adresu.</string>
+    <string name="upgrade_profiles_title">Získajte rýchly prístup k pripojeniam, ktoré často používate</string>
+    <string name="upgrade_profiles_text">Odomknite profily pomocou VPN Plus</string>
+    <string name="upgrade_streaming_title">Streamovanie v 4K</string>
+    <string name="upgrade_streaming_text">Vychutnajte si svoje obľúbené filmy a televízne programy odkiaľkoľvek na svete.</string>
+    <string name="upgrade_streaming_block_title">Zvýšte úroveň na obídenie blokovania VPN</string>
+    <string name="upgrade_streaming_block_text">Servery VPN Plus vám umožňujú vychutnávať si vaše obľúbené filmy a televízne programy z celého sveta.</string>
+    <string name="upgrade_tor_title">Pristupujte k sieti Tor jedným ťuknutím</string>
+    <string name="upgrade_tor_text">Pripojte sa k skrytým službám a \"onion\" webom pomocou bežného prehliadača.</string>
+    <string name="upgrade_vpn_accelerator_title">Prehliadajte ešte vyššou rýchlosťou</string>
+    <!--
+        %1$s - speed in Gbps
+        Example:
+        Unlock faster, less crowded servers with speeds of up to 10 Gbps.
+    -->
+    <string name="upgrade_vpn_accelerator_message">Odomknite rýchlejšie a menej vyťažené servery s rýchlosťou až %1$d Gbps.</string>
+    <string name="upgrade_split_tunneling_title">Získajte to najlepšie z oboch svetov</string>
+    <string name="upgrade_split_tunneling_message"><![CDATA[Rozdeľte svoju prevádzku na VPN tunely a iné ako VPN pomocou <b>rozdeleného tunelovania</b>.]]></string>
+    <string name="upgrade_customization_title">Odomknite pokročilé prispôsobenie VPN</string>
+    <string name="upgrade_customization_message"><![CDATA[Odomknite <b>LAN pripojenia</b>, <b>vlastné DNS</b> a <b>NAT typu 2</b> s VPN Plus]]></string>
+    <string name="upgrade_all_countries_title">Prístup ku všetkým krajinám</string>
+    <!-- Number of servers inserted as %1$s in the "upgrade_plus_countries_title_new".
+         The number is rounded to the hundreds, e.g. for a value of 1234 the number used in this text is 1200.
+
+         Example:
+         1200 secure servers
+         -->
+    <plurals name="upgrade_plus_servers_new">
+        <item quantity="one">%d bezpečný server</item>
+        <item quantity="few">%d bezpečné servery</item>
+        <item quantity="many">%d bezpečných serverov</item>
+        <item quantity="other">%d bezpečných serverov</item>
+    </plurals>
+    <!-- Number of countries inserted as %2$s in "upgrade_plus_countries_title_new".
+
+         Example:
+         55 countries
+         -->
+    <plurals name="upgrade_plus_countries">
+        <item quantity="one">%d krajina</item>
+        <item quantity="few">%d krajín</item>
+        <item quantity="many">%d krajín</item>
+        <item quantity="other">%d krajín</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with "upgrade_plus_servers_new"
+     %2$s - replaced with "upgrade_plus_countries"
+
+     Example:
+     Unlock 1300+ secure servers in 61 countries with VPN Plus.
+     -->
+    <string name="upgrade_plus_countries_title_new"><![CDATA[Odomknite %1$s v %2$s s <b>VPN Plus</b>.]]></string>
+    <string name="mail_app_name" translateable="false">Proton Mail</string>
+    <string name="upgrade_unlimited_all_apps_title">Získajte kompletnú ochranu súkromia s Proton Unlimited</string>
+    <string name="upgrade_unlimited_all_apps_description">Odomknite všetky prémiové funkcie služieb Proton VPN, Mail, Calendar, Drive a Pass.</string>
+    <string name="upgrade_unlimited_more">A ďalšie</string>
+    <string name="upgrade_unlimited_vpn_unlimited_countries">Prístup ku všetkým krajinám</string>
+    <string name="upgrade_unlimited_vpn_all_features">Všetky ďalšie funkcie služby VPN Plus</string>
+    <string name="upgrade_unlimited_vpn_any_location">Vyberte si ľubovoľnú lokalitu</string>
+    <string name="upgrade_unlimited_vpn_higher_speeds">Ešte vyššie rýchlosti VPN</string>
+    <plurals name="upgrade_unlimited_vpn_many_devices">
+        <item quantity="one">Chráňte %1$d zariadenie súčasne</item>
+        <item quantity="few">Chráňte %1$d zariadenia súčasne</item>
+        <item quantity="many">Chráňte %1$d zariadení súčasne</item>
+        <item quantity="other">Chráňte %1$d zariadení súčasne</item>
+    </plurals>
+    <string name="upgrade_unlimited_vpn_streaming">Bezpečné streamovanie</string>
+    <string name="upgrade_unlimited_vpn_adblocker">Blokovanie reklám a ochrana pred škodlivým softvérom</string>
+    <string name="upgrade_unlimited_vpn_double_vpn">Dvojitá VPN</string>
+    <string name="upgrade_unlimited_vpn_p2p">P2P podpora</string>
+    <plurals name="upgrade_unlimited_mail_custom_domains">
+        <item quantity="one">%1$d vlastná emailová doména</item>
+        <item quantity="few">%1$d vlastných emailových domén</item>
+        <item quantity="many">%1$d vlastných emailových domén</item>
+        <item quantity="other">%1$d vlastných emailových domén</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_attachments">
+        <item quantity="one">%1$d MB príloha</item>
+        <item quantity="few">%1$d MB príloh</item>
+        <item quantity="many">%1$d MB prílohy</item>
+        <item quantity="other">%1$d MB prílohy</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_many_addresses">
+        <item quantity="one">%1$d emailová adresa</item>
+        <item quantity="few">%1$d emailových adries</item>
+        <item quantity="many">%1$d emailové adresy</item>
+        <item quantity="other">%1$d emailové adresy</item>
+    </plurals>
+    <string name="upgrade_unlimited_mail_unlimited_folders">Neobmedzené množstvo priečinkov a filtrov</string>
+    <string name="upgrade_unlimited_mail_dark_web">Monitorovanie Dark Webu</string>
+    <string name="upgrade_unlimited_mail_aliases">Neobmedzený počet hide-my-email aliasov</string>
+    <string name="upgrade_unlimited_mail_autoreply">Automatická odpoveď</string>
+    <string name="upgrade_unlimited_mail_scheduled_send">Naplánované odoslanie</string>
+    <plurals name="upgrade_unlimited_calendar_calendars">
+        <item quantity="one">%1$d osobný kalendár</item>
+        <item quantity="few">%1$d osobných kalendárov</item>
+        <item quantity="many">%1$d osobné kalendáre</item>
+        <item quantity="other">%1$d osobné kalendáre</item>
+    </plurals>
+    <string name="upgrade_unlimited_calendar_sharing">Zdieľanie kalendára</string>
+    <string name="upgrade_unlimited_calendar_invites">Odosielanie a prijímanie pozvánok</string>
+    <string name="upgrade_unlimited_drive_encryption">Šifrované úložisko súborov</string>
+    <string name="upgrade_unlimited_drive_storage_size">%1$d GB úložného priestoru na fotky, súbory a emaily</string>
+    <string name="upgrade_unlimited_drive_link_share">Zdieľanie fotografií a súborov cez odkaz</string>
+    <string name="upgrade_unlimited_drive_sharing_security">Pokročilá bezpečnosť zdieľania</string>
+    <string name="upgrade_unlimited_drive_version_history">História verzií</string>
+    <string name="upgrade_unlimited_pass_manager">Šifrovaný správca hesiel</string>
+    <string name="upgrade_unlimited_pass_logins_aliases">Neobmedzený počet prihlásení a hide-my-email aliasov</string>
+    <plurals name="upgrade_unlimited_pass_vaults">
+        <item quantity="one">%1$d trezor</item>
+        <item quantity="few">%1$d trezorov</item>
+        <item quantity="many">%1$d trezorov</item>
+        <item quantity="other">%1$d trezorov</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_logins">Neobmedzený počet prihlásení</string>
+    <string name="upgrade_unlimited_pass_aliases">Neobmedzený počet hide-my-email aliasov</string>
+    <string name="upgrade_unlimited_pass_credit_cards">Neobmedzený počet platobných kariet</string>
+    <string name="upgrade_unlimited_pass_devices">Neobmedzený počet zariadení</string>
+    <plurals name="upgrade_unlimited_pass_users">
+        <item quantity="one">Zdieľanie s %1$d ďalšou osobou</item>
+        <item quantity="few">Zdieľanie až s %1$d ďalšími osobami</item>
+        <item quantity="many">Zdieľanie až s %1$d ďalšími osobami</item>
+        <item quantity="other">Zdieľanie až s %1$d ďalšími osobami</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_2fa_auth">Integrovaný 2FA autentifikátor</string>
+    <string name="upgrade_not_now_button">Teraz nie</string>
+    <!-- Content description for plan selection list.
+         Only used by accessibility services.
+
+         Example:
+         When the plan selection control is focused, and the first plan name is "VPN Plus"
+         TalkBack will read:
+         "VPN Plus, 1 of 2, in list Upgrade options" -->
+    <string name="upgrade_plan_selection_content_description">Nastavenia aktualizácie</string>
+    <!-- Text in a "badge" element that has a rounded border and represents the Plus VPN plan.
+         May be used as a table header or like an icon. -->
+    <string name="badge_plan_plus">Plus</string>
+    <!-- Content description prefix for value in the benefits table row for the free plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_plus">Plán Plus:</string>
+    <!-- Content description prefix for value in the benefits table row for the plus plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_free">Plán Free:</string>
+    <string name="upsell_panel_content_description_yes">Áno</string>
+    <string name="upsell_panel_content_description_no">Nie</string>
+    <string name="upsell_panel_table_header_plan_free">Free</string>
+    <string name="upsell_panel_general_benefit_block_ads">Blokovanie reklám a sledovačov</string>
+    <string name="upsell_panel_general_benefit_countries">Dostupné krajiny</string>
+    <!-- %1$s - number of countries rounded to full tens. Example: 120+, 130+, 140+ -->
+    <string name="upsell_panel_general_benefit_countries_rounded">%1$d+</string>
+    <string name="upsell_panel_general_benefit_devices">Chránené zariadenia</string>
+    <string name="upsell_panel_general_benefit_location">Vyberte vašu lokalitu</string>
+    <string name="upsell_panel_general_benefit_server">Vyberte váš server</string>
+    <string name="upsell_panel_general_benefit_shows">Sledujte svoje seriály z akejkoľvek krajiny</string>
+    <string name="upsell_panel_general_benefit_speed">Rýchlosť servera</string>
+    <string name="upsell_panel_general_benefit_speed_standard">Štandardná</string>
+    <string name="upsell_panel_general_benefit_speed_highest">Najvyššia</string>
+    <string name="upsell_panel_adv_customization_title">Vylepšite si pripojenie</string>
+    <string name="upsell_panel_adv_customization_description">Povoľte pripojenia cez LAN, nastavte vlastnú DNS a vyberte typ NAT. Pokročilé nastavenia sú k dispozícii výhradne vo verzii Plus.</string>
+    <string name="upsell_panel_adv_customization_benefit_lan">Pripojte sa k tlačiarni a domácim zariadeniam</string>
+    <string name="upsell_panel_adv_customization_benefit_dns">Použite vlastnú DNS službu</string>
+    <string name="upsell_panel_adv_customization_benefit_gaming">Lepšie pripojenie pre hranie hier</string>
+    <!--
+        %1$s - country name in nominative
+
+        Warning country names are inserted in the nominative case.
+        For inflicted languages translate the following phrase instead:
+        Get VPN Plus to access: %1$s
+        -->
+    <string name="upsell_panel_country_title">Odomknite %1$s s VPN Plus</string>
+    <string name="upsell_panel_countries_title">Odomknite všetky krajiny s VPN Plus</string>
+    <string name="upsell_panel_country_benefit_speed">Vysokorýchlostné servery</string>
+    <string name="upsell_panel_country_benefit_shows">Pozerajte seriály dostupné len v zahraničí</string>
+    <string name="upsell_panel_devices_title">Chráňte každé zariadenie, ktoré vlastníte</string>
+    <string name="upsell_panel_devices_description">Váš telefón, notebook, televízor a všetko medzi tým.</string>
+    <string name="upsell_panel_netshield_title">Surfujte bez prerušení</string>
+    <string name="upsell_panel_netshield_benefit_ads">Reklamy sú počas prehliadania blokované</string>
+    <string name="upsell_panel_netshield_benefit_trackers">Zabráňte sledovacím nástrojom, aby vás sledovali</string>
+    <string name="upsell_panel_netshield_benefit_malware">Ochrana pred malvérom a phishingom</string>
+    <string name="upsell_panel_netshield_benefit_load_speed">Stránky sa načítajú rýchlejšie </string>
+    <string name="upsell_panel_onboarding_title">Získajte viac s VPN Plus</string>
+    <string name="upsell_panel_p2p_title">Sťahovanie v plnej rýchlosti</string>
+    <string name="upsell_panel_p2p_description">Servery určené na zdieľanie súborov prostredníctvom vášho obvyklého torrentového klienta.</string>
+    <string name="upsell_panel_p2p_benefit_p2p">P2P zdieľanie súborov</string>
+    <string name="upsell_panel_profiles_title">Streamovanie, hranie hier, práca: profil pre každú z týchto činností</string>
+    <string name="upsell_panel_profiles_description">Nastavte si pripojenia podľa vlastných predstáv a potom sa ku ktorémukoľvek z nich pripojte jedným ťuknutím.</string>
+    <string name="upsell_panel_profiles_benefit_profiles">Uložené profily</string>
+    <string name="upsell_panel_profiles_benefit_profiles_unlimited">Bez obmedzenia</string>
+    <string name="upsell_panel_secure_core_title">Dve vrstvy šifrovania medzi vami a internetom</string>
+    <string name="upsell_panel_secure_core_description">Smerované cez server Proton vo Švajčiarsku, na Islande alebo vo Švédsku pred vašou zvolenou krajinou.</string>
+    <string name="upsell_panel_secure_core_benefit_secure_core">Secure Core</string>
+    <string name="upsell_panel_speed_title">Rýchlejšie streamovanie, hranie a sťahovanie</string>
+    <string name="upsell_panel_speed_benefit_servers">Vysokorýchlostné servery</string>
+    <string name="upsell_panel_speed_benefit_gaming">Doba odozvy pri hraní hier</string>
+    <string name="upsell_panel_speed_benefit_gaming_slow">Slabá</string>
+    <string name="upsell_panel_speed_benefit_gaming_fast">Rýchla</string>
+    <string name="upsell_panel_speed_benefit_video">Streamovanie videa bez bufferingu</string>
+    <string name="upsell_panel_speed_benefit_p2p">Podpora sťahovania cez P2P</string>
+    <string name="upsell_panel_split_tunneling_title">Vyberte aplikácie, ktoré budú používať VPN</string>
+    <string name="upsell_panel_split_tunneling_description">Prehliadač cez VPN, vaša banková aplikácia mimo nej. Rozhodnete sa sami, aplikáciu po aplikácii.</string>
+    <string name="upsell_panel_split_tunneling_benefit_split">Delené tunelovanie</string>
+    <string name="upsell_panel_streaming_title">Sledujte svoje obľúbené streamovacie služby</string>
+    <string name="upsell_panel_streaming_benefit_shows">Sledujte seriály z akejkoľvek krajiny</string>
+    <!-- The asterisk points to upsell_panel_streaming_footer -->
+    <string name="upsell_panel_streaming_benefit_platforms">Podporované sú všetky hlavné streamovacie platformy *</string>
+    <string name="upsell_panel_streaming_benefit_hd">Streaming v HD bez bufferingu</string>
+    <string name="upsell_panel_streaming_benefit_devices">zaradení pripojených súčasne</string>
+    <string name="upsell_panel_streaming_footer">* Je potrebné predplatné streamovacej platformy.</string>
+    <string name="upsell_panel_streaming_block_title">Zvýšte úroveň na obídenie blokovania VPN</string>
+    <string name="upsell_panel_streaming_block_description">Servery VPN Plus vám umožňujú vychutnávať si vaše obľúbené filmy a televízne programy z celého sveta.</string>
+    <string name="upsell_panel_tor_title">Onionové weby bez potreby Tor prehliadača</string>
+    <string name="upsell_panel_tor_description">Prístup k stránkam s koncovkou .onion môžete získať v prehliadači, ktorý už používate.</string>
+    <string name="upsell_panel_tor_benefit_tor">Tor cez VPN</string>
+    <string name="upsell_card_countries_title">Celosvetové pokrytie</string>
+    <!-- Parameters:
+        %1$d - number of servers rounded up to 100s (e.g. 600, 1200)
+        %2$s - replaced with "upgrade_plus_countries"
+
+        Example:
+        1700+ server locations in 63 countries -->
+    <string name="upsell_card_countries_description">%1$d+ umiestnení serverov v %2$s</string>
+    <string name="upsell_card_customization_title">A oveľa viac…</string>
+    <string name="upsell_card_customization_description">Odomknite ešte viac funkcií výkonu a ochrany súkromia</string>
+    <plurals name="upsell_card_devices_title">
+        <item quantity="one">Ochráňte %1$d zariadenie</item>
+        <item quantity="few">Ochráňte %1$d zariadení</item>
+        <item quantity="many">Ochráňte %1$d zariadení</item>
+        <item quantity="other">Ochráňte %1$d zariadení</item>
+    </plurals>
+    <string name="upsell_card_devices_description">Bezpečnosť a súkromie na všetkých vašich zariadeniach</string>
+    <string name="upsell_card_netshield_title">NetShield</string>
+    <string name="upsell_card_netshield_description">Blokujte reklamy, malvér a sledovače</string>
+    <string name="upsell_card_secure_core_title">Secure Core</string>
+    <string name="upsell_card_secure_core_description">Pridajte ďalšiu úroveň šifrovania k vášmu VPN pripojeniu</string>
+    <string name="upsell_card_p2p_title">P2P podpora</string>
+    <string name="upsell_card_p2p_description">Sťahujte súbory cez BitTorrent a iné protokoly na zdieľanie súborov</string>
+    <string name="upsell_card_profiles_title">Profily</string>
+    <string name="upsell_card_profiles_description">Vytvorte vlastné VPN pripojenia</string>
+    <string name="upsell_card_speed_title">Rýchlejšie prehliadanie</string>
+    <!-- Parameters:
+        %1$d - max server speed in Gbps (preserve the non-breaking space between the number and Gbps).
+        Example:
+        Browse at even higher speeds (up to 10&160;Gbps) -->
+    <string name="upsell_card_speed_description">Prehliadanie pri ešte vyšších rýchlostiach (až do %1$d Gb/s)</string>
+    <string name="upsell_card_split_tunneling_title">Rozdelené tunelovanie</string>
+    <string name="upsell_card_split_tunneling_description">Prehliadanie z dvoch miest naraz</string>
+    <string name="upsell_card_streaming_title">Streamovanie</string>
+    <string name="upsell_card_streaming_description">Pozerajte vaše obľúbené filmy a televízne relácie</string>
+    <string name="upsell_card_tor_title">Tor cez VPN</string>
+    <string name="upsell_card_tor_description">Použite sieť Tor nad vaším VPN pripojením pre väčšie súkromie</string>
+    <string name="upsell_tv_all_countries_title">Prístup ku všetkým krajinám s Plus</string>
+    <!-- Format for upselling countries on TV".
+        %1$s - replaced with upgrade_plus_servers_new plurals key (e.g. 1 secure server or 10 secure servers)
+        %2$s - replaced with upgrade_plus_countries plurals key (e.g. 1 country or 10 countries)
+
+        Example: Unlock 16821 secure servers in 127 countries. Go to the Proton VPN website to upgrade your plan.
+    -->
+    <string name="upsell_tv_all_countries_description">Odomknite %1$s v %2$s.</string>
+    <string name="upsell_tv_netshield_title">Vychutnajte si prehliadanie bez reklám s Plus</string>
+    <string name="upsell_tv_netshield_description"><![CDATA[Blokujte reklamy, sledovače a malvér pomocou <b>NetShield</b>.]]></string>
+    <string name="upsell_tv_split_tunneling_title">Získajte to najlepšie z oboch svetov s Plus</string>
+    <string name="upsell_tv_split_tunneling_description"><![CDATA[Rozdeľte svoju prevádzku na VPN tunely a iné ako VPN pomocou <b>rozdeleného tunelovania</b>.]]></string>
+    <string name="upsell_tv_subscription_expired_title">Predplatné vypršalo</string>
+    <string name="upsell_tv_subscription_expired_description">Navýšte úroveň svojho účtu, aby ste opäť získali prístup k serverom a funkciám verzie Plus.</string>
+    <string name="upsell_tv_customization_title">Získajte pokročilé prispôsobenia VPN s Plus</string>
+    <string name="upsell_tv_customization_description"><![CDATA[Odomknite <b>LAN pripojenia</b>, <b>vlastné DNS</b> a pokročilejšie VPN funkcie.]]></string>
+    <string name="upsell_tv_fallback_description">Prejdite na webovú stránku Proton VPN, aby ste si zvýšili úroveň svojho plánu.</string>
+    <!-- Format for price per period of time.
+        %1$s - replaced with price and currency (e.g. "$100")
+        %2$s - replaced with time period, one of payment_price_per_ (e.g. "month", "week")
+
+        Examples:
+        50 PLN /month
+        $100 /year
+    -->
+    <string name="payment_price_with_period">%1$s /%2$s</string>
+    <string name="payment_price_per_day">deň</string>
+    <string name="payment_price_per_week">týždeň</string>
+    <string name="payment_price_per_month">mesiac</string>
+    <string name="payment_price_per_year">rok</string>
+    <plurals name="payment_price_cycle_label_day">
+        <item quantity="one">%1$d deň</item>
+        <item quantity="few">%1$d dni</item>
+        <item quantity="many">%1$d dní</item>
+        <item quantity="other">%1$d dni</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_week">
+        <item quantity="one">%1$d týždeň</item>
+        <item quantity="few">%1$d týždne</item>
+        <item quantity="many">%1$d týždňov</item>
+        <item quantity="other">%1$d týždňov</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_month">
+        <item quantity="one">%1$d mesiac</item>
+        <item quantity="few">%1$d mesiace</item>
+        <item quantity="many">%1$d mesiacov</item>
+        <item quantity="other">%1$d mesiacov</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_year">
+        <item quantity="one">%1$d rok</item>
+        <item quantity="few">%1$d roky</item>
+        <item quantity="many">%1$d rokov</item>
+        <item quantity="other">%1$d rokov</item>
+    </plurals>
+    <string name="payment_select_your_plan">Vyberte svoj plán</string>
+    <!-- Label on a button for purchasing a subscription.
+         Parameter: %1$s - plan name
+         Plan names are not translated.
+
+         Example: "Get VPN Plus", "Get Proton Unlimited". -->
+    <string name="payment_button_get_plan">Získajte %1$s</string>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_discount_renewal_price_message_daily">
+        <item quantity="one">Špeciálna ponuka. Automatické obnovenie za %1$s/deň</item>
+        <item quantity="few">Špeciálna ponuka. Automatické obnovenie za %1$s každé %2$d dni</item>
+        <item quantity="many">Špeciálna ponuka. Automatické obnovenie za %1$s každých %2$d dní</item>
+        <item quantity="other">Špeciálna ponuka. Automatické obnovenie za %1$s každých %2$d dní</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_discount_renewal_price_message_weekly">
+        <item quantity="one">Špeciálna ponuka. Automatické obnovenie za %1$s/týždeň</item>
+        <item quantity="few">Špeciálna ponuka. Automatické obnovenie za %1$s každé %2$d týždne</item>
+        <item quantity="many">Špeciálna ponuka. Automatické obnovenie za %1$s každých %2$d týždňov</item>
+        <item quantity="other">Špeciálna ponuka. Automatické obnovenie za %1$s každých %2$d týždňov</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_discount_renewal_price_message_monthly">
+        <item quantity="one">Špeciálna ponuka. Automatické obnovenie za %1$s/mesiac</item>
+        <item quantity="few">Špeciálna ponuka. Automatické obnovenie za %1$s každé %2$d mesiace</item>
+        <item quantity="many">Špeciálna ponuka. Automatické obnovenie za %1$s každých %2$d mesiacov</item>
+        <item quantity="other">Špeciálna ponuka. Automatické obnovenie za %1$s každých %2$d mesiacov</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_discount_renewal_price_message_yearly">
+        <item quantity="one">Špeciálna ponuka. Automatické obnovenie za %1$s/rok</item>
+        <item quantity="few">Špeciálna ponuka. Automatické obnovenie za %1$s každé %2$d roky</item>
+        <item quantity="many">Špeciálna ponuka. Automatické obnovenie za %1$s každých %2$d rokov</item>
+        <item quantity="other">Špeciálna ponuka. Automatické obnovenie za %1$s každých %2$d rokov</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_renewal_price_message_daily">
+        <item quantity="one">Predplatné sa automaticky obnovuje za %1$s/deň</item>
+        <item quantity="few">Predplatné sa automaticky obnoví za %1$s každé %2$d dni</item>
+        <item quantity="many">Predplatné sa automaticky obnoví za %1$s každých %2$d dní</item>
+        <item quantity="other">Predplatné sa automaticky obnoví za %1$s každých %2$d dní</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_renewal_price_message_weekly">
+        <item quantity="one">Predplatné sa automaticky obnoví za %1$s/týždeň</item>
+        <item quantity="few">Predplatné sa automaticky obnoví za %1$s každé %2$d týždne</item>
+        <item quantity="many">Predplatné sa automaticky obnoví za %1$s každých %2$d týždňov</item>
+        <item quantity="other">Predplatné sa automaticky obnoví za %1$s každých %2$d týždňov</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_renewal_price_message_monthly">
+        <item quantity="one">Predplatné sa automaticky obnoví za %1$s/mesiac</item>
+        <item quantity="few">Predplatné sa automaticky obnoví za %1$s každé %2$d mesiace</item>
+        <item quantity="many">Predplatné sa automaticky obnoví za %1$s každých %2$d mesiacov</item>
+        <item quantity="other">Predplatné sa automaticky obnoví za %1$s každých %2$d mesiacov</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_renewal_price_message_yearly">
+        <item quantity="one">Predplatné sa automaticky obnoví za %1$s/rok</item>
+        <item quantity="few">Predplatné sa automaticky obnoví za %1$s každé %2$d roky</item>
+        <item quantity="many">Predplatné sa automaticky obnoví za %1$s každých %2$d rokov</item>
+        <item quantity="other">Predplatné sa automaticky obnoví za %1$s každých %2$d rokov</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_daily">
+        <item quantity="one">%1$s/deň</item>
+        <item quantity="few">%1$s každé %2$d dni</item>
+        <item quantity="many">%1$s každých %2$d dní</item>
+        <item quantity="other">%1$s každých %2$d dní</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_weekly">
+        <item quantity="one">%1$s/týždeň</item>
+        <item quantity="few">%1$s každé %2$d týždne</item>
+        <item quantity="many">%1$s každých %2$d týždňov</item>
+        <item quantity="other">%1$s každých %2$d týždňov</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_monthly">
+        <item quantity="one">%1$s/mesiac</item>
+        <item quantity="few">%1$s každé %2$d mesiace</item>
+        <item quantity="many">%1$s každých %2$d mesiacov</item>
+        <item quantity="other">%1$s každých %2$d mesiacov</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_yearly">
+        <item quantity="one">%1$s/rok</item>
+        <item quantity="few">%1$s každé %2$d roky</item>
+        <item quantity="many">%1$s každých %2$d rokov</item>
+        <item quantity="other">%1$s každých %2$d rokov</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_for_days">
+        <item quantity="one">za prvý deň</item>
+        <item quantity="few">za prvé %1$d dni</item>
+        <item quantity="many">za prvých %1$d dní</item>
+        <item quantity="other">za prvých %1$d dní</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_for_weeks">
+        <item quantity="one">za prvý týždeň</item>
+        <item quantity="few">za prvé %1$d týždne</item>
+        <item quantity="many">za prvých %1$d týždňov</item>
+        <item quantity="other">za prvých %1$d týždňov</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_for_months">
+        <item quantity="one">za prvý mesiac</item>
+        <item quantity="few">za prvé %1$d mesiace</item>
+        <item quantity="many">za prvých %1$d mesiacov</item>
+        <item quantity="other">za prvých %1$d mesiacov</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_discount_for_years">
+        <item quantity="one">za prvý rok</item>
+        <item quantity="few">za prvé %1$d roky</item>
+        <item quantity="many">za prvých %1$d rokov</item>
+        <item quantity="other">za prvých %1$d rokov</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_rest_daily">
+        <item quantity="one">potom sa automaticky obnovuje za %1$s/deň</item>
+        <item quantity="few">potom sa automaticky obnoví za %1$s každé %2$d dni</item>
+        <item quantity="many">potom sa automaticky obnoví za %1$s každých %2$d dní</item>
+        <item quantity="other">potom sa automaticky obnoví za %1$s každých %2$d dní</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_rest_weekly">
+        <item quantity="one">potom sa automaticky obnovuje za %1$s/týždeň</item>
+        <item quantity="few">potom sa automaticky obnoví za %1$s každé %2$d týždne</item>
+        <item quantity="many">potom sa automaticky obnoví za %1$s každých %2$d týždňov</item>
+        <item quantity="other">potom sa automaticky obnoví za %1$s každých %2$d týždňov</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_rest_monthly">
+        <item quantity="one">potom sa automaticky obnovuje za %1$s/mesiac</item>
+        <item quantity="few">potom sa automaticky obnoví za %1$s každé %2$d mesiace</item>
+        <item quantity="many">potom sa automaticky obnoví za %1$s každých %2$d mesiacov</item>
+        <item quantity="other">potom sa automaticky obnoví za %1$s každých %2$d mesiacov</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_rest_yearly">
+        <item quantity="one">potom sa automaticky obnovuje za %1$s/rok</item>
+        <item quantity="few">potom sa automaticky obnoví za %1$s každé %2$d roky</item>
+        <item quantity="many">potom sa automaticky obnoví za %1$s každých %2$d rokov</item>
+        <item quantity="other">potom sa automaticky obnoví za %1$s každých %2$d rokov</item>
+    </plurals>
+    <!-- Explains renewal cycle when first there's a discount price for several periods
+     (e.g. 2 months) and then the subscription renews at full price.
+     Periods (days, months etc) are never mixed between the messages, the whole message uses one
+     unit.
+
+     Parameters:
+      %1$s - one of payment_multi_renewal_discount_*
+      %2$s - one of payment_multi_renewal_discount_for_*
+      %3$s - one of payment_multi_renewal_rest_*
+
+     Examples:
+      "$2.99/month for the first 2 months, then auto renews at $3.99/month"
+      "$19.99/year for the first 3 years, then auto renews at $24.99/year"
+      "$3.99 every 2 months for the first 4 months, then auto renews at 5.99 every 2 months"
+    -->
+    <string name="payment_multi_renewal_template">%1$s %2$s, %3$s</string>
+    <string name="smart_routing_title">Smart Routing</string>
+    <string name="smart_routing_description">Táto technológia umožňuje aplikácii Proton VPN poskytovať vyššiu rýchlosť a bezpečnosť v ťažko dostupných krajinách.</string>
+    <string name="tor_title">Tor</string>
+    <string name="server_load_title">Zaťaženie servera</string>
+    <string name="activity_information_learn_more">Zistiť viac</string>
+    <string name="server_load_low">Nízke</string>
+    <string name="server_load_medium">Stredné</string>
+    <string name="server_load_high">Vysoké</string>
+    <!-- Override Human verification links from core -->
+    <string name="onboarding_welcome_title">Víta vás Proton VPN</string>
+    <string name="onboarding_welcome_description">Surfujte v súkromí, získajte prístup k blokovanému obsahu a užívajte si digitálnu slobodu.</string>
+    <string name="onboarding_welcome_action">Začíname</string>
+    <string name="upgrade_success_get_started_button">Začíname</string>
+    <string name="dynamic_report_suggestion_didnt_work">Nefunguje?</string>
+    <string name="dynamic_report_contact_us">Kontaktujte nás</string>
+    <string name="dynamic_report_tips_description">Tieto tipy by mohli pomôcť rýchlejšie vyriešiť váš problém.</string>
+    <string name="dynamic_report_tips_title">Rýchle opravy</string>
+    <string name="dynamic_report_logs_title">Odoslať záznam chýb</string>
+    <string name="dynamic_report_logs_tooltip">Chybové logy nám ukazujú, čo sa pokazilo a ktoré kroky viedli k problému. Používame ich výhradne na pomoc našim inžinierom pri riešení problémov.</string>
+    <string name="dynamic_report_error_title">Nepodarilo sa nám odoslať vaše hlásenie.</string>
+    <string name="dynamic_report_completion_error_description_generic">Vašu správu sme nemohli odoslať. Skúste to znova, prosím.</string>
+    <string name="dynamic_report_completion_error_description_no_internet">Vašu správu sme nemohli odoslať. Skontrolujte svoje pripojenie a skúste to znova, prosím.</string>
+    <string name="dynamic_report_completion_error_description_timeout">Vaše hlásenie sa nepodarilo odoslať. Časový limit pripojenia vypršal, skúste to znovu, prosím.</string>
+    <string name="dynamic_report_completion_success_title">Ďakujeme za vašu spätnú väzbu. Čo najskôr sa vám ozveme.</string>
+    <string name="dynamic_report_success_title">Ďakujeme za vašu spätnú väzbu</string>
+    <string name="dynamic_report_success_description">Ozveme sa vám hneď, ako to bude možné.</string>
+    <string name="dynamic_report_field_mandatory">Toto pole je povinné.</string>
+    <string name="dynamic_report_logs_description">Protokol je typ súboru, ktorý nám ukazuje akcie, ktoré ste vykonali a ktoré viedli k chybe. Budeme ich vždy používať iba na to, aby pomohli našim inžinierom opraviť chyby.</string>
+    <string name="dynamic_report_logs_missing">Protokoly o chybách nám pomáhajú zistiť príčinu vášho problému. Ak ich neuvediete, možno nebudeme schopní ich úplne preskúmať.</string>
+    <string name="dynamic_report_step1">Krok 1 z 3</string>
+    <string name="dynamic_report_step2">Krok 2 z 3</string>
+    <string name="dynamic_report_step3">Krok 3 z 3</string>
+    <string name="dynamic_report_your_issue_headline">V čom je problém?</string>
+    <string name="update_screen_title">Aktualizovať Proton VPN</string>
+    <string name="update_screen_description">Je pravdepodobnejšie, že budete mať problémy so staršími verziami Proton VPN.</string>
+    <string name="update_banner_description_settings">K dispozícii je nová verzia aplikácie.</string>
+    <string name="update_banner_warning_vpn_connected_title">VPN sa nakrátko odpojí</string>
+    <string name="update_banner_warning_vpn_connected_message">Aplikácia sa musí reštartovať, aby sa aktualizácia dokončila. Následne dôjde k automatickému opätovnému pripojeniu.</string>
+    <string name="dialog_create_account_title">Pre pokračovanie si vytvorte účet</string>
+    <string name="dialog_create_account_action_create">Vytvoriť účet</string>
+    <string name="dialog_create_account_action_signin">Prihlásiť sa</string>
+    <string name="server_search_menu_title">Hľadať</string>
+    <string name="search_empty_result_subtitle">Skúste iné kľúčové slovo, prosím</string>
+    <string name="search_empty_result_title">Neboli nájdené žiadne výsledky</string>
+    <!-- Content description for an icon button that clears search query in the input field. -->
+    <string name="search_clear_query_content_description">Vymazať</string>
+    <!-- Content description for an icon button that clears text in an input field. -->
+    <string name="clear_text_field_content_description">Vyčistiť</string>
+    <!-- Example: Want to connect to Italy? -->
+    <string name="upgrade_country_title">Chcete sa pripojiť ku konkrétnej krajine?</string>
+    <string name="upgrade_country_message"><![CDATA[Odomknite <b>výber krajiny</b> s VPN Plus.]]></string>
+    <string name="free_connections_info_message">Proton Free vás automaticky pripojí k najrýchlejšiemu dostupnému serveru. Zvyčajne je to server, ktorý je najbližšie k vašej polohe.</string>
+    <string name="free_connections_info_server_locations">Umiestnenia bezplatných serverov (%1$d)</string>
+    <string name="free_connections_info_banner_text">Prístup ku všetkým krajinám s VPN Plus</string>
+    <string name="free_connection_info_title">Bezplatné pripojenia</string>
+    <string name="search_upsell_banner_title">Streamujte odkiaľkoľvek</string>
+    <!-- Example: Unlock geoblocked content from 10 countries with VPN Plus. -->
+    <plurals name="search_upsell_banner_message">
+        <item quantity="one">Odomknite geograficky blokovaný obsah z %1$d krajiny pomocou VPN Plus</item>
+        <item quantity="few">Odomknite geograficky blokovaný obsah z %1$d krajín pomocou VPN Plus</item>
+        <item quantity="many">Odomknite geograficky blokovaný obsah z %1$d krajín pomocou VPN Plus</item>
+        <item quantity="other">Odomknite geograficky blokovaný obsah z %1$d krajín pomocou VPN Plus</item>
+    </plurals>
+    <string name="select_default_connection">Vyberte vaše predvolené pripojenie</string>
+    <string name="settings_default_connection_title">Predvolené pripojenie</string>
+    <string name="fastest_country_description">Najlepší server na základe vašej polohy</string>
+    <string name="settings_connection_preferences_title">Preferencie pripojenia</string>
+    <string name="settings_connection_preferences_snackbar_message_excluded_location_removed">Položka odstránená</string>
+    <string name="settings_excluded_locations_title">Vylúčené umiestnenia</string>
+    <string name="settings_excluded_locations_description">Vybrané lokality sa nikdy nebudú používať, keď sa pripojíte k Najrýchlejšiemu.</string>
+    <string name="settings_excluded_locations_unavailable">Žiadne lokality k dispozícii</string>
+    <string name="settings_excluded_locations_selection_hint">Vyberte…</string>
+    <string name="settings_excluded_locations_accessibility_label_deletion">Odstrániť z vylúčených lokalít</string>
+    <string name="settings_excluded_locations_accessibility_label_city">Mesto</string>
+    <string name="settings_excluded_locations_accessibility_label_country">Krajina</string>
+    <string name="settings_excluded_locations_accessibility_label_state">Štát</string>
+    <string name="settings_last_connection_title">Posledné pripojenie</string>
+    <string name="settings_last_connection_description">Vaše naposledy použité pripojenie</string>
+    <string name="settings_change_icon_title">Ikona aplikácie</string>
+    <string name="settings_change_icon_details">Prispôsobenie zobrazenia aplikácie Proton VPN vo vašom zariadení. Prečo?</string>
+    <string name="settings_change_icon_confirmation_title">Zmeniť ikonu aplikácie?</string>
+    <string name="settings_change_icon_confirmation_details">Aplikácia Proton VPN sa zatvorí. Ak chcete aplikáciu Proton VPN znovu spustiť, ťuknite na ikonu novej aplikácie.</string>
+    <string name="settings_change_icon_header_protonvpn">Proton VPN</string>
+    <string name="settings_change_icon_header_discreet">Nenápadná ikona aplikácie</string>
+    <string name="settings_widget_title">Widget</string>
+    <string name="settings_widget_selection_title">Vyskúšajte Proton VPN widget</string>
+    <string name="settings_widget_selection_description">Na domovskej obrazovke si môžete pozrieť stav pripojenia a získať prístup k obľúbeným VPN pripojeniam.</string>
+    <!-- Placeholder is for non-translatable app_name-->
+    <string name="setting_widget_selection_additional_description">Pre pridanie widgetu stačí stlačiť a pridržať ľubovoľné miesto na domovskej obrazovke a potom vybrať %1$s z ponuky widgetov.</string>
+    <string name="settings_widget_selection_button_title">Pridať widget</string>
+    <string name="setting_widget_try_title">Vyskúšajte Proton VPN widget</string>
+    <!-- Content description used by accessibility services for a button for dismissing (hiding)
+         a notification banner (usually used for special offers). -->
+    <string name="notification_banner_dismiss_accessibility_label">Odstrániť banner</string>
+    <!-- Time left in a countdown, it shows two units of time, e.g. days and hours, hours and minutes.
+         %1$s - larger unit of time, one of: time_left_days, time_left_hours, time_left_minutes
+         %2$s - smaller unit of time, one of: time_left_hours, time_left_minutes, time_left_seconds
+
+         Examples:
+         3 days 11 hours left
+         1 hour 32 minutes left
+         0 minutes 50 seconds left
+     -->
+    <string name="offer_time_left">Zostáva %1$s %2$s</string>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_seconds">
+        <item quantity="one">%1$d sekunda</item>
+        <item quantity="few">%1$d sekundy</item>
+        <item quantity="many">%1$d sekundy</item>
+        <item quantity="other">%1$d sekúnd</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_minutes">
+        <item quantity="one">%1$d minúta</item>
+        <item quantity="few">%1$d minúty</item>
+        <item quantity="many">%1$d minút</item>
+        <item quantity="other">%1$d minút</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 hours 5 minutes left -->
+    <plurals name="time_left_hours">
+        <item quantity="one">%1$d hodina</item>
+        <item quantity="few">%1$d hodiny</item>
+        <item quantity="many">%1$d hodín</item>
+        <item quantity="other">%1$d hodín</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 days 5 hours left -->
+    <plurals name="time_left_days">
+        <item quantity="one">%1$d deň</item>
+        <item quantity="few">%1$d dni</item>
+        <item quantity="many">%1$d dní</item>
+        <item quantity="other">%1$d dní</item>
+    </plurals>
+    <string name="server_change_max_reached">Momentálne ste dosiahli maximálny počet zmien bezplatného servera.</string>
+    <string name="server_change_upsell">Získajte neobmedzené zmeny s VPN Plus.</string>
+    <string name="server_change_button_title">Zmeniť server</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services.
+
+        %1$s - replaced with "time_left_minutes"
+        %2$s - replaced with "time_left_seconds"
+        Example:
+        Available in 1 minute 23 seconds.
+      -->
+    <string name="server_change_button_time_left_content_description">Dostupné za %1$s %2$s</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services and only if time left is less than 1 minute.
+
+        %1$s - replaced with "time_left_seconds"
+        Example:
+        Available in 23 seconds.
+      -->
+    <string name="server_change_button_time_left_seconds_content_description">Dostupné za %1$s</string>
+    <string name="server_change_progress_finished_contend_description">K dispozícii teraz</string>
+    <string name="not_wanted_country_title">Nie je to krajina, ktorú ste chceli?</string>
+    <string name="not_wanted_country_description">Aktualizujte a vyberte si ľubovoľný server</string>
+    <string name="whats_new_title">Čo je nové</string>
+    <string name="whats_new_profiles_title">Profily sú späť</string>
+    <string name="whats_new_profiles_description">Vytvárajte a ukladajte vlastné pripojenia s výberom umiestnenia, servera a protokolu.</string>
+    <string name="whats_new_widget_title">Predstavujeme widgety</string>
+    <string name="whats_new_widget_description">Svoju VPN teraz môžete zobraziť a spravovať bez toho, aby ste opustili domovskú obrazovku.</string>
+    <string name="whats_new_add_widget_button">Pridať widget</string>
+    <string name="welcome_plus_title">Vitajte vo VPN Plus</string>
+    <string name="welcome_plus_description">Vychutnajte si ďalšie funkcie ochrany súkromia, vyšší výkon a prispôsobenie VPN na novej úrovni.</string>
+    <string name="welcome_unlimited_title">Vitajte v Proton Unlimited</string>
+    <string name="welcome_unlimited_description">Odomkli ste všetky prémiové funkcie Proton VPN, Mailu, Kalendára, Drive, Pass a Wallet.</string>
+    <string name="welcome_generic_title">Gratulujeme</string>
+    <string name="welcome_generic_description">Aktualizovali ste si predplatné. Užívajte si pokročilé funkcie ochrany osobných údajov a výkon na vyššej úrovni.</string>
+    <!-- Text added to button labels that open links in a browser (as opposed to performing actions
+         within the app). Only used by accessibility services like screen readers.
+         Example:
+         a button with "Learn more" label and this suffix will be read by a screen reader as:
+         "Learn more, external link button"
+     -->
+    <string name="accessibility_external_link_suffix">externý odkaz</string>
+    <string name="no_logs_banner_title">Certifikovaná sieť VPN bez logov</string>
+    <string name="no_logs_banner_description">Vaša aktivita v sieti VPN je chránené švajčiarskymi zákonmi o ochrane osobných údajov. Nikdy vás nebudeme sledovať online ani zdieľať vaše informácie s tretími stranami.</string>
+    <!-- tag(Redesign_2023) Bottom bar label for home screen -->
+    <string name="bottom_nav_home">Domov</string>
+    <string name="bottom_nav_gateways">Brány</string>
+    <string name="bottom_nav_profiles">Profily</string>
+    <!-- tag(Redesign_2023) Bottom bar label for country list screen -->
+    <string name="bottom_nav_countries">Krajiny</string>
+    <!-- tag(Redesign_2023) Bottom bar label for settings screen -->
+    <string name="botton_nav_settings">Nastavenia</string>
+    <!-- tag(Redesign_2023)
+         Text added to button labels that open a UI element (e.g. a panel).
+         Only used by accessibility services.
+         Example:
+         a button with label "connection details" and this action label will be read by a screen
+         reader as:
+         "Connection details, button. Double tap to open"
+    -->
+    <string name="accessibility_action_open">otvoriť</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that initiate a VPN connection.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland will be read by a screen reader as:
+         "Switzerland. Double tap to connect"
+        -->
+    <string name="accessibility_action_connect">pripojiť</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that redirect the user to upgrade their subscription plan.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland that requires upgrading subscription to become
+         available will be read by a screen reader as:
+         "Unavailable, Switzerland. Double tap to upgrade"
+        -->
+    <string name="accessibility_action_upgrade">navýšiť predplatné</string>
+    <!-- tag(Redesign_2023)
+     Text added to clickable elements that initiate a search.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_search">hľadať</string>
+    <!--
+     Text added to clickable elements that provide negative feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_negative">zlé</string>
+    <!--
+     Text added to clickable elements that provide positive feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_positive">dobré</string>
+    <!--
+     Text added to clickable elements that allows to submit either positive or negative feedback.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_submit_feedback">odoslať</string>
+    <!-- Name of action for opening a screen/panel for an item.
+         The action is listed in a menu of additional actions available to accessibility services.
+
+         Example:
+         - item in a list of countries has a custom action to open list of cities in the country
+         - item in a list of cities has a custom action to open list of servers in the city
+         -->
+    <string name="accessibility_menu_action_open">Otvoriť</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable because servers
+         are in maintenance.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are in maintenance will be read by a
+         screen reader as:
+         "in maintenance, Switzerland"
+     -->
+    <string name="accessibility_item_in_maintenance">v údržbe</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are unavailable will be read by a screen
+         reader as:
+         "unavailable, Switzerland"
+     -->
+    <string name="accessibility_item_unavailable">nedostupné</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when there is active connection to it.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland when there is a VPN connection to a server in this country
+         will be read by a screen reader as:
+         "Switzerland, connected"
+     -->
+    <string name="accessibility_item_connected">pripojené</string>
+    <!-- tag(Redesign_2023): label indicating that a server supports peer-to-peer. -->
+    <string name="server_feature_label_p2p">P2P</string>
+    <!-- tag(Redesign_2023): label indicating that a server routes connection through the Tor network. -->
+    <string name="server_feature_label_tor">Tor</string>
+    <string name="server_feature_content_description_p2p">peer-to-peer</string>
+    <string name="server_feature_content_description_tor">tor</string>
+    <string name="server_feature_content_description_smart_routing">Smart Routing</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest country is connected to. -->
+    <string name="fastest_country">Najrýchlejší v krajine</string>
+    <string name="fastest_country_excluding_my_country">Najrýchlejšia krajina (okrem mojej)</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest free server is connected to. -->
+    <string name="fastest_free_server">Najrýchlejší bezplatný server</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Iceland
+     -->
+    <string name="connection_info_secure_core_full_iceland">%1$s cez Island</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Sweden
+     -->
+    <string name="connection_info_secure_core_full_sweden">%1$s cez Švédsko</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_switzerland">%1$s cez Švajčiarsko</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - exit country name in nominative case
+         %2$s - entry country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_other">%1$s cez %2$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_iceland">cez Island</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_sweden">cez Švédsko</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_switzerland">cez Švajčiarsko</string>
+    <!--
+         Label describing a Secure Core connection via the fastest Secure Core country.
+         It is displayed below country name, for example:
+         Italy
+         via Secure Core
+    -->
+    <string name="connection_info_secure_core_entry_fastest">cez Secure Core</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - entry country name in nominative case
+         Example: via Switzerland
+    -->
+    <string name="connection_info_secure_core_entry_other">cez %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         three countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+
+     -->
+    <string name="connection_info_auto_selected_free_countries">Automatický výber z [flags]</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         several countries. Used instead of connection_info_auto_selected_free_countries when there
+         are more than 3 countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+         $1%d - replaced with number of additional countries (beyond the 3 flags).
+
+         Example, if there are 5 countries to select from the text will be:
+         Auto selected from [flags]+2
+         -->
+    <string name="connection_info_auto_selected_free_countries_more">Automatický výber z [flags]+%1$d</string>
+    <!-- tag(Redesign_2023)
+         Accessibility label describing a connection to a free server that is automatically selected
+         from one in several countries. Placed directly below fastest_free_server.
+         This text replaces connection_info_auto_selected_free_servers for screen readers.
+         $1%d - replaced with number of countries.
+         -->
+    <plurals name="connection_info_accessibility_auto_selected_free_countries">
+        <item quantity="one">Automatický výber z %1$d krajiny</item>
+        <item quantity="few">Automatický výber z %1$d krajín</item>
+        <item quantity="many">Automatický výber z %1$d krajín</item>
+        <item quantity="other">Automatický výber z %1$d krajín</item>
+    </plurals>
+    <string name="connection_info_auto_selected_free_countries_plain">Automatický výber z bezplatných krajín.</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that the connection details in the card are
+         are that of the previous connection.
+
+         Example:
+         Last connected to
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         -->
+    <string name="connection_card_label_last_connected">Naposledy pripojené k</string>
+    <!--
+        Label above the connection card indicating text which acts as a button and leads to
+        customization bottom sheet of default connection
+     -->
+    <string name="connection_card_label_default_connection">Predvolené pripojenie</string>
+    <!-- Label above the connection card when not connected and the user is on the free plan.
+         The connection card always shows "Fastest free server" (fastest_free_server) for free
+         users. -->
+    <string name="connection_card_label_free_connection">Bezplatné pripojenie</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is being established.
+     -->
+    <string name="connection_card_label_connecting">Pripájanie…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection to a different server is
+         being established. It\'s shown only in response to user clicking the "Change server" button.
+     -->
+    <string name="connection_card_label_changing_server">Zmena serveru…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is established and the user
+         is safely browsing as if they were in the location indicated in the connection card.
+
+         Example:
+         Browsing safely from
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         Germany
+     -->
+    <string name="connection_card_label_connected">Bezpečné surfovanie z</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with details of the current VPN connection.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "connection details, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_connection_details">podrobnosti pripojenia</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with information about connections in free plan.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "more information about free connections, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_free_connections">viac informácií o bezplatných pripojeniach</string>
+    <string name="connection_card_label_connection_feedback">Aké je vaše pripojenie?</string>
+    <!-- tag(Redesign_2023)
+         Displayed above the list of recently made connections.
+     -->
+    <string name="recents_headline">Nedávne</string>
+    <!-- Displayed above the list of VPN Plus features in the home screen -->
+    <string name="home_upsell_carousel_headline">Objavte VPN Plus</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_pin">Pripnúť</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_unpin">Odopnúť</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_remove">Odstrániť</string>
+    <!-- tag(Redesign_2023)
+         State description of a pinned recent item.
+         Only used by accessibility service.
+    -->
+    <string name="recent_action_accessibility_state_pinned">Pripnuté</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_country_servers_in_maintenance">Na všetkých serveroch v tejto krajine prebieha údržba</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_city_servers_in_maintenance">Na všetkých serveroch v tomto meste prebieha údržba</string>
+    <!-- State means here US state, like California -->
+    <string name="message_state_servers_in_maintenance">Na všetkých serveroch v tomto štáte prebieha údržba</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_in_maintenance">Na serveri prebieha údržba</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_not_available">Server nie je dostupný</string>
+    <string name="message_server_location_excluded">Poloha servera vylúčená</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog when all servers of a gateway are in maintenance -->
+    <string name="message_gateway_in_maintenance">Na bráne prebieha údržba</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_sign_out">Odhlásiť sa</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_title">Nastavenia</string>
+    <string name="gateways_title">Brány</string>
+    <string name="countries_title">Krajiny</string>
+    <string name="profiles_title">Profily</string>
+    <string name="settings_autoconnect_title">Automatické pripojenie</string>
+    <string name="settings_autoconnect_boot_description">Po spustení zariadenia vás automaticky pripojí k VPN pomocou rýchleho pripojenia.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_features">Funkcie</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_netshield_title">NetShield</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_split_tunneling_title">Rozdelené tunelovanie</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_kill_switch_title">Kill switch</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_connection_category">Pripojenie</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_protocol_title">Protokol</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_vpn_accelerator_title">VPN Accelerator</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_advanced_settings_title">Rozšírené nastavenia</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_general">Všeobecné</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_account">Účet</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_notifications_title">Notifikácie</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_support">Podpora</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_help_center_title">Centrum podpory</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_report_issue_title">Nahlásiť problém</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_debug_logs_title">Záznamy ladenia</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_improve_proton">Vylepšite Proton</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_fight_censorship_title">Pomôžte nám bojovať s cenzúrou</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_rate_us_title">Ohodnoťte Proton VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_app_version">Verzia aplikácie: %1$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_third_party_licenses">Licencie tretích strán</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_title">Odhlásiť?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_message">Budete odpojení od VPN.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_dont_ask_again">Viac sa nepýtať</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_action">Odhlásiť sa</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_action_cancel">Zrušiť</string>
+    <string name="dialog_action_change_icon">Zmeniť ikonu</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_all">Všetky</string>
+    <string name="country_filter_cities">Mestá</string>
+    <string name="country_filter_states">Štáty</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_secure_core">Secure Core</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_p2p">P2P</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_tor">Tor</string>
+    <string name="country_filter_all_list_header">Všetky krajiny (%1$d)</string>
+    <string name="country_filter_all_list_header_free">Plus krajiny (%1$d)</string>
+    <string name="country_filter_countries_list_header">Krajiny (%1$d)</string>
+    <string name="country_filter_cities_list_header">Mestá (%1$d)</string>
+    <string name="country_filter_states_list_header">Štátov (%1$d)</string>
+    <string name="country_filter_servers_list_header">Servery</string>
+    <string name="country_filter_secure_core_list_header">Krajiny so Secure Core (%1$d)</string>
+    <string name="country_filter_p2p_list_header">P2P krajiny (%1$d)</string>
+    <string name="country_filter_p2p_list_header_cities">P2P mestá (%1$d)</string>
+    <string name="country_filter_p2p_list_header_states">P2P štátov (%1$d)</string>
+    <string name="counrty_filter_p2p_servers_list_header">P2P servery</string>
+    <string name="country_filter_tor_list_header">Tor krajiny (%1$d)</string>
+    <string name="country_filter_tor_servers_list_header">Tor servery</string>
+    <string name="country_filter_info_label">Informácie</string>
+    <!-- Content description for server load indicator. Used by accessibility services only.
+         Note: the trailing \'%\' sign needs to be doubled
+         (this doesn\'t apply to other percent sign characters, e.g. ٪). -->
+    <string name="country_filter_server_load_content_description">Vyťaženie: %1$s%%</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is connected and network is protected
+    -->
+    <string name="vpn_status_connected">Chránené</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is not connected and network is not protected
+    -->
+    <string name="vpn_status_disabled">Nie ste chránení</string>
+    <!-- tag(Redesign_2023)
+         Text is shown while connection is being established
+    -->
+    <string name="vpn_status_connecting">Vaša digitálna identita je chránená</string>
+    <!-- tag(Redesign_2023)
+         Displays Country name and IP of user if he is not connected.
+         First parameter is country, second is IP.
+         Ex: Poland · 192.1.1.1.1
+    -->
+    <string name="vpn_status_disabled_location">%1$s · %2$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_subtitle">Podrobnosti pripojenia</string>
+    <string name="connection_details_features_title">Funkcie</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_show_ip">Zobraziť IP</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_back">Späť</string>
+    <string name="accessibility_close">Zavrieť</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_my_ip">Moja IP</string>
+    <string name="connection_details_my_ipv4">Moja IPv4</string>
+    <string name="connection_details_my_ipv6">Moja IPv6</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_ip">VPN IP</string>
+    <string name="connection_details_vpn_ip4_6">VPN IPv4/IPv6</string>
+    <string name="connection_details_vpn_ipv4">VPN IPv4</string>
+    <string name="connection_details_vpn_ipv6">VPN IPv6</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates for how long user has been connected. Like \'Connected for 2hours\'
+    -->
+    <string name="connection_details_connected_for">Pripojené</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server">Server</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_gateway">Brána</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_country">Krajina</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_city">Mesto</string>
+    <!-- Label for server location "state", as a state of the USA. -->
+    <string name="connection_details_state">Štát</string>
+    <!-- Label for server smart routing, a country which is routed through. -->
+    <string name="connection_details_smart_routing">Smerované cez</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates Server load, on the left side will be Server load, and on the right actual load values.
+    -->
+    <string name="connection_details_server_load">Vyťaženie servera</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_question">Čo je vyťaženie servera?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_description">Vyťaženie servera ukazuje, ako blízko je server k svojej maximálnej kapacite. \n\nVysoké zaťaženie servera môže spomaliť vaše pripojenie.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_title">Nízke (1-75%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_description">Blesková rýchlosť</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_title">Stredné (76–90%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_description">Rýchlosť VPN by nemala byť ovplyvnená</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_title">Vysoké (91–100%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_description">VPN môže fungovať pomalšie než zvyčajne </string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol">Protokol</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol_description">Protokol je súbor pokynov, ktorými sa zariadenie riadi pri pripájaní a komunikácii so serverom.</string>
+    <!-- tag(Redesign_2023)
+         Label in front of upload speed in connection details. It is followed by upload speed number and unit.
+    -->
+    <string name="connection_details_upload">Nahrávanie</string>
+    <!-- tag(Redesign_2023)
+         Label in front of download speed in connection details. It is followed by download speed number and unit.
+    -->
+    <string name="connection_details_download">Sťahovanie</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_section_vpn_speed">Rýchlosť VPN</string>
+    <string name="connection_details_section_ip">IP adresa</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_question">Čo je rýchlosť VPN?</string>
+    <string name="info_dialog_secure_core_title">Secure Core</string>
+    <string name="info_dialog_p2p_title">P2P</string>
+    <string name="info_dialog_secure_core_description">Secure Core vás pripojí k cieľovému serveru prostredníctvom ďalšieho servera VPN s maximálnym zabezpečením.\n\nTáto vyššia úroveň ochrany môže spôsobiť vyššiu latenciu a nižšiu rýchlosť.</string>
+    <string name="info_secure_core_standard_header">Bežné VPN pripojenie</string>
+    <string name="info_secure_core_secure_header">Secure Core VPN pripojenie</string>
+    <string name="info_dialog_tor_description">Pripojte sa k serveru Tor a získajte prístup k skrytým službám a lokalitám typu onion pomocou ľubovoľného prehliadača.</string>
+    <string name="info_dialog_button_learn_more_tor">Ako pristupovať k Tor sieti</string>
+    <string name="info_dialog_button_learn_more_p2p">Ako torrentovať s P2P</string>
+    <string name="info_dialog_button_learn_more_ipaddress">Čo je IP adresa?</string>
+    <string name="info_dialog_button_learn_more_streaming">Potrebujete pomôcť so streamovaním?</string>
+    <string name="info_dialog_streaming_title">Streamovanie</string>
+    <string name="info_dialog_streaming_description">Streamovacie servery sú navrhnuté na rýchle a bezpečné pozeranie TV a filmov.</string>
+    <string name="info_dialog_how_to_stream">Ako streamovať:</string>
+    <!-- item 1 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_1">Prejdite do nastavení telefónu a vypnite služby určovania polohy.</string>
+    <!-- item 2 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_2">Reštartujte streamovaciu službu</string>
+    <!-- item 3 in the numbered list (last item) -->
+    <string name="info_dialog_how_to_stream_step_3">Pripojte sa k ľubovoľnému serveru Plus a spustite streamovanie</string>
+    <string name="info_dialog_profiles_title">Profily</string>
+    <string name="info_dialog_ipaddress_title">IP adresa</string>
+    <string name="info_dialog_ipv6_traffic_title">IPv6 prevádzka</string>
+    <string name="info_dialog_profiles_description">Profily sú vaše prispôsobené VPN pripojenia, ktoré môžete upraviť podľa svojich potrieb a uložiť pre rýchly prístup.\n\nNastavte si preferovanú polohu a optimalizujte nastavenia pre bezpečnosť, výkon, hranie hier alebo akýkoľvek iný scenár.</string>
+    <string name="info_dialog_ipaddress_description">IP adresa VPN maskuje vašu skutočnú IP adresu. Vďaka tomu to vyzerá, že prechádzate internet z miesta, kde sa nachádza server VPN, takže vaša online aktivita sa nedá spojiť s vaším zariadením.</string>
+    <string name="info_dialog_ipv6_traffic_description">Internetový protokol (IP) prideľuje adresy zariadeniam a smeruje internetovú prevádzku. IPv6 je najnovšia verzia, ktorá ponúka viac adries a lepšiu konektivitu, ale zatiaľ nie je všeobecne prijatá.</string>
+    <string name="connection_feature_p2p_title">P2P</string>
+    <string name="connection_feature_p2p_description">Na tomto serveri je povolené peer-to-peer zdieľanie súborov.</string>
+    <string name="connection_feature_tor_title">Tor</string>
+    <string name="connection_feature_tor_description">K lokalitám .onion sa môžete pripojiť pomocou bežného prehliadača.</string>
+    <string name="connection_feature_secure_core_title">Secure Core</string>
+    <string name="connection_feature_secure_core_description">Vaša aktivita je šifrovaná za 2 vysoko zabezpečenými VPN servermi.</string>
+    <string name="connection_feature_streaming_title">Streamovanie</string>
+    <string name="connection_feature_streaming_description">Tento server je optimalizovaný na pozeranie TV a filmov.</string>
+    <string name="connection_feature_smart_routing_title">Smart Routing</string>
+    <string name="connection_feature_smart_routing_description">Pripojí vás k cieľovej krajine prostredníctvom serverov, ktoré sa fyzicky nachádzajú na inom mieste.</string>
+    <!-- Placeholder will be replaced by a list of country names separated by commas, e.g, Connects you to your destination country through servers physically located elsewhere: Canada, Mexico, United States.  -->
+    <string name="connection_feature_smart_routing_description_with_countries">Pripojí vás do cieľovej krajiny prostredníctvom serverov, ktoré sa fyzicky nachádzajú inde: %1$s.</string>
+    <!--
+        %1$s - physical server location country
+        %2$s - destination country
+        Warning: country names are inserted in the nominative case.
+        For INFLECTED languages, translate the following phrase instead:
+        "Your physical server location: %1$s.\nYour browsing country: %2$s"
+    -->
+    <string name="country_smart_routing_info">Servery sa fyzicky nachádzajú v lokalite %1$s, ale bude to vyzerať, že surfujete z lokality %2$s.</string>
+    <!--
+        Displayed next to an icon which provides more information if clicked
+    -->
+    <string name="connection_details_info_label">Informácie</string>
+    <!-- tag(Redesign_2023)
+         Used for button title to learn more about different contexts
+    -->
+    <string name="connection_details_learn_more">Zistiť viac</string>
+    <!-- tag(Redesign_2023)
+        Used to describe IP which is not known
+    -->
+    <string name="connection_details_unknown_ip">Neznáme</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_description">Tento graf zobrazuje rýchlosť vášho aktuálneho odosielania a sťahovania. Je nepravdepodobné, že by vaše pripojenie VPN spomalilo bežnú online aktivitu.</string>
+    <string name="speed_bytes_per_second">%1$s B/s</string>
+    <string name="speed_kilobytes_per_second">%1$s KB/s</string>
+    <string name="speed_megabytes_per_second">%1$s MB/s</string>
+    <string name="speed_gigabytes_per_second">%1$s GB/s</string>
+    <string name="speed_terabytes_per_second">%1$s TB/s</string>
+    <!-- Used as graph label to indicate speed measurement. Example: Speed KB/s or Speed MB/s-->
+    <string name="speed_graph_title">Rýchlosť %1$s</string>
+    <string name="bytes_per_second">B/s</string>
+    <string name="kilobytes_per_second">KB/s</string>
+    <string name="megabytes_per_second">MB/s</string>
+    <string name="gigabytes_per_second">GB/s</string>
+    <string name="terabytes_per_second">TB/s</string>
+    <plurals name="full_name_speed_bytes_per_second">
+        <item quantity="one">%1$s Bajt za sekundu</item>
+        <item quantity="few">%1$s Bajty za sekundu</item>
+        <item quantity="many">%1$s Bajtov za sekundu</item>
+        <item quantity="other">%1$s Bajtov za sekundu</item>
+    </plurals>
+    <plurals name="full_name_speed_kilobytes_per_second">
+        <item quantity="one">%1$s Kilobajt za sekundu</item>
+        <item quantity="few">%1$s Kilobajty za sekundu</item>
+        <item quantity="many">%1$s Kilobajtov za sekundu</item>
+        <item quantity="other">%1$s Kilobajtov za sekundu</item>
+    </plurals>
+    <plurals name="full_name_speed_megabytes_per_second">
+        <item quantity="one">%1$s Megabajt za sekundu</item>
+        <item quantity="few">%1$s Megabajty za sekundu</item>
+        <item quantity="many">%1$s Megabajtov za sekundu</item>
+        <item quantity="other">%1$s Megabajtov za sekundu</item>
+    </plurals>
+    <plurals name="full_name_speed_gigabytes_per_second">
+        <item quantity="one">%1$s Gigabajt za sekundu</item>
+        <item quantity="few">%1$s Gigabajty za sekundu</item>
+        <item quantity="many">%1$s Gigabajtov za sekundu</item>
+        <item quantity="other">%1$s Gigabajtov za sekundu</item>
+    </plurals>
+    <plurals name="full_name_speed_terabytes_per_second">
+        <item quantity="one">%1$s Terabajt za sekundu</item>
+        <item quantity="few">%1$s Terabajty za sekundu</item>
+        <item quantity="many">%1$s Terabajtov za sekundu</item>
+        <item quantity="other">%1$s Terabajtov za sekundu</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_bytes">
+        <item quantity="one">%1$s Bajt</item>
+        <item quantity="few">%1$s Bajty</item>
+        <item quantity="many">%1$s Bajtov</item>
+        <item quantity="other">%1$s Bajtov</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_kilobytes">
+        <item quantity="one">%1$s Kilobajt</item>
+        <item quantity="few">%1$s Kilobajty</item>
+        <item quantity="many">%1$s Kilobajtov</item>
+        <item quantity="other">%1$s Kilobajtov</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_megabytes">
+        <item quantity="one">%1$s Megabajt</item>
+        <item quantity="few">%1$s Megabajty</item>
+        <item quantity="many">%1$s Megabajtov</item>
+        <item quantity="other">%1$s Megabajtov</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_gigabytes">
+        <item quantity="one">%1$s Gigabajt</item>
+        <item quantity="few">%1$s Gigabajty</item>
+        <item quantity="many">%1$s Gigabajtov</item>
+        <item quantity="other">%1$s Gigabajtov</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_terabytes">
+        <item quantity="one">%1$s Terabajt</item>
+        <item quantity="few">%1$s Terabajty</item>
+        <item quantity="many">%1$s Terabajtov</item>
+        <item quantity="other">%1$s Terabajtov</item>
+    </plurals>
+    <string name="traffic_volume_bytes">%1$s B</string>
+    <string name="traffic_volume_kilobytes">%1$s KB</string>
+    <string name="traffic_volume_megabytes">%1$s MB</string>
+    <string name="traffic_volume_gigabytes">%1$s GB</string>
+    <string name="traffic_volume_terabytes">%1$s TB</string>
+    <!-- tag(Redesign_2023)
+         Shown at the top status view if app detects that there is no usable network to connect to VPN
+    -->
+    <string name="error_vpn_waiting_for_network">Čaká sa na sieť</string>
+    <!-- tag(Redesign_2023) -->
+    <plurals name="connection_details_days">
+        <item quantity="one">%1$d deň</item>
+        <item quantity="few">%1$d dní</item>
+        <item quantity="many">%1$d dni</item>
+        <item quantity="other">%1$d dni</item>
+    </plurals>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_hours_shortened">%1$d h</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_minutes_shortened">%1$d min</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_seconds_shortened">%1$d s</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceTitle">Pripojenie zlyhalo</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceDescription">Toto zariadenie neumožňuje pripojenie k VPN sieti.</string>
+    <string name="create_profile_title">Vytvoriť profil</string>
+    <!-- Title for the screen where user can edit a profile.
+         %1$s - name of the profile being edited. -->
+    <string name="edit_profile_title">Upraviť %1$s</string>
+    <string name="edit_profile_dialog_action">Upraviť profil</string>
+    <string name="create_profile_name_hint">Názov profilu</string>
+    <string name="create_profile_name_error_empty">Zadajte názov profilu</string>
+    <string name="create_profile_name_error_too_long">Názov profilu musí mať menej ako 30 znakov</string>
+    <string name="create_profile_type_and_location_title">Vyberte typ pripojenia a umiestnenie</string>
+    <string name="create_profile_features_and_settings_title">Vlastnosti a nastavenia</string>
+    <string name="configure_profile_features_and_settings_title">Konfigurácia nastavení profilu</string>
+    <string name="configure_profile_features_and_settings_description">Nastavenia profilu budú mať po pripojení prednosť pred nastaveniami vašej VPN.</string>
+    <!--
+        First input will be for current step, second one will be for total number of steps
+        Example: Step 3 of 7
+     -->
+    <string name="create_profile_steps">Krok %1$d z %2$d</string>
+    <string name="create_profile_button_next">Ďalej</string>
+    <!-- Important: please note the double % sign after 400. It is displayed as a single % in the app.
+         (this doesn\'t apply to other percent sign characters, e.g. ٪)
+         %1$s - will have translated learn_more value -->
+    <string name="settings_vpn_accelerator_description">Zvýšte rýchlosť pripojenia až o 400%% pomocou technológií na zvýšenie výkonu. %1$s</string>
+    <string name="settings_account_settings_title">Nastavenie účtu</string>
+    <string name="settings_account_change_password">Zmeniť heslo</string>
+    <string name="settings_account_recovery_email">Email na obnovenie</string>
+    <string name="settings_account_recovery_email_not_set">Nenastavené</string>
+    <string name="settings_account_security_keys">Bezpečnostné kľúče</string>
+    <!-- Label of a button that opens user\'s account page -->
+    <string name="settings_account_button_my_account">Môj účet</string>
+    <string name="settings_account_button_delete_account">Zmazať účet</string>
+    <string name="settings_custom_dns_title">Vlastné DNS</string>
+    <string name="settings_custom_dns_description_tv">Pripojenie k VPN pomocou vlastného systému doménových názvov (DNS) alebo systému názvov domén tretích strán.</string>
+    <string name="settings_add_dns_placeholder">192.0.2.0</string>
+    <string name="settings_add_dns_title">Pridať nový DNS server</string>
+    <string name="settings_add_dns_new_entry_button">Pridať</string>
+    <string name="settings_add_dns_description">Zadajte IPv4 alebo IPv6 adresu servera</string>
+    <string name="settings_add_dns_invalid_input">Zadajte platnú IPv4 alebo IPv6 adresu</string>
+    <string name="settings_add_dns_empty_input">Zadajte IPv4 alebo IPv6 adresu</string>
+    <string name="settings_add_dns_duplicate_input">Server už bol pridaný</string>
+    <string name="settings_advanced_dns_description">Pripojenie k VPN pomocou vlastného systému doménových názvov (DNS) alebo systému názvov domén tretích strán. Zistiť viac</string>
+    <!-- %1$d - Corresponds to number of servers added -->
+    <string name="settings_dns_list_title">Servery (%1$d)</string>
+    <string name="settings_dns_list_description">Ak váš vlastný DNS server nefunguje, použije sa štandardný VPN DNS.</string>
+    <string name="settings_dns_list_description_multiple">Pokúsime sa pripojiť k týmto serverom v uvedenom poradí. Ak žiadny z nich nebude fungovať, použije sa DNS siete VPN.</string>
+    <string name="settings_changes_apply_on_reconnect_toast">Zmeny sa uplatnia po opätovnom pripojení</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_title">NetShield bude nedostupný</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message">NetShield nedokáže odfiltrovať reklamy, sledovače a malvér, ak používate vlastnú DNS. Zistite viac</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message_tv">NetShield nedokáže odfiltrovať reklamy, sledovače a malvér, ak používate vlastnú DNS.</string>
+    <string name="settings_advanced_alternative_routing_title">Alternatívne smerovanie</string>
+    <string name="settings_advanced_alternative_routing_description">Ak sú služby spoločnosti Proton zablokované z dôvodu sieťových obmedzení, pokúsime sa na pripojenie k našim stránkam použiť alternatívne sieťové smerovanie.</string>
+    <string name="settings_advanced_allow_lan_title">LAN pripojenia</string>
+    <string name="settings_advanced_allow_lan_description">Umožňuje pripojiť tlačiarne, reproduktory a ďalšie zariadenia vo vašej lokálnej sieti.</string>
+    <string name="settings_advanced_allow_lan_description_tv">Pripojte sa k reproduktorom, počítačom a iným zariadeniam vo vašej lokálnej sieti.</string>
+    <string name="settings_advanced_allow_lan_title_tv">Povoliť pripojenie k sieti LAN</string>
+    <string name="settings_advanced_nat_type_title">Typ NAT</string>
+    <!-- %1$s - will have translated learn_more value -->
+    <string name="settings_advanced_nat_type_description">Vyberte typ prekladu sieťových adries vášho pripojenia. %1$s</string>
+    <string name="settings_advanced_nat_type_description_no_learn">Vyberte typ prekladu sieťových adries vášho pripojenia.</string>
+    <string name="settings_advanced_nat_type_strict">Prísny (typ 3)</string>
+    <string name="settings_advanced_nat_type_strict_short">Typ 3</string>
+    <string name="settings_advanced_nat_type_moderate">Stredný (typ 2)</string>
+    <string name="settings_advanced_nat_type_moderate_short">Typ 2</string>
+    <string name="settings_advanced_nat_type_strict_description">Obmedzuje dáta vstupujúce do vašej siete. Táto voľba je bezpečnejšia, ale môže skomplikovať pripojenie k hrám typu peer-to-peer.</string>
+    <string name="settings_advanced_nat_type_moderate_description">Niektoré obmedzenia dát vstupujúcich do vašej siete. Táto voľba je najlepšia pre hranie online video hier.</string>
+    <string name="settings_split_tunneling_description">Prispôsobte si pripojenie tým, že sa rozhodnete, ktoré aplikácie a IP adresy budú chránené pomocou VPN. %1$s</string>
+    <string name="settings_protocol_description">VPN protokol určuje spôsob prenosu dát medzi VPN serverom a vaším zariadením. %1$s</string>
+    <string name="settings_protocol_description_no_link">VPN protokol určuje spôsob prenosu dát medzi VPN serverom a vaším zariadením.</string>
+    <string name="settings_protocol_section_speed">Rýchlosť (UDP)</string>
+    <string name="settings_protocol_section_reliability">Spoľahlivosť (TCP)</string>
+    <string name="settings_protocol_smart_title">Smart</string>
+    <string name="settings_protocol_smart_description">Automaticky vyberie najlepší protokol pre vaše pripojenie.</string>
+    <string name="settings_protocol_wireguard_title">WireGuard</string>
+    <string name="settings_protocol_smart_protun_description">Automaticky vyberie najlepší protokol pre vaše pripojenie [experimentálne].</string>
+    <string name="settings_protocol_wireguard_udp_description">Najmodernejší protokol z hľadiska bezpečnosti a výkonu.</string>
+    <string name="settings_protocol_wireguard_tcp_description">Najmodernejší protokol z hľadiska bezpečnosti a výkonu.</string>
+    <string name="settings_protocol_stealth_title">Stealth</string>
+    <string name="settings_protocol_stealth_description">Prekonáva blokovanie VPN tým, že skrýva vaše pripojenie VPN pred cenzormi. Tento protokol je odolný voči DPI (hĺbková kontrola paketov), ale nemusí byť taký rýchly ako iné protokoly. Stealth je určený výhradne pre Proton VPN.</string>
+    <!-- Text on a badge displayed next to the "smart" protocol name in settings -->
+    <string name="settings_protocol_badge_recommended">Odporúčané</string>
+    <string name="settings_protocol_badge_experimental">Experimentálne</string>
+    <string name="settings_split_tunneling_mode_title">Režim</string>
+    <string name="settings_split_tunneling_mode_standard">Vylúčiť</string>
+    <string name="settings_split_tunneling_mode_inverse">Zahrnúť</string>
+    <string name="settings_split_tunneling_mode_description_standard">Vybrané aplikácie a IP adresy sú vylúčené z pripojenia VPN.</string>
+    <string name="settings_split_tunneling_mode_description_inverse">Cez VPN sa pripájajú len vybrané aplikácie a IP adresy, všetka ostatná prevádzka je nechránená.</string>
+    <string name="settings_split_tunneling_excluded_apps">Vylúčené aplikácie</string>
+    <string name="settings_split_tunneling_excluded_ips">Vylúčené IP adresy</string>
+    <string name="settings_split_tunneling_included_apps">Zahrnuté aplikácie</string>
+    <string name="settings_split_tunneling_included_ips">Zahrnuté IP adresy</string>
+    <string name="settings_split_tunneling_empty" comment="Used to indicate that no IP or Apps are included in split tunneling">Žiadne</string>
+    <string name="settings_split_tunneling_excluded_format" comment="Used for describing excluded items. Example: Chrome, Facebook and 2 more. The same logic used for IP addresses too.">%1$s, %2$s a %3$d ďalšie</string>
+    <string name="settings_split_tunneling_already_excluded">Už je vylúčené</string>
+    <string name="settings_split_tunneling_already_included">Už je zahrnutá</string>
+    <string name="settings_split_tunneling_remove_ip_dialog_message">Odstrániť IP adresu zo zoznamu?</string>
+    <string name="settings_split_tunneling_ip_removed_message">IP adresa odstránená</string>
+    <string name="settings_theme_title">Motív</string>
+    <string name="settings_theme_value_auto">Motív zariadenia</string>
+    <string name="settings_theme_value_light">Svetlý</string>
+    <string name="settings_theme_value_dark">Tmavý</string>
+    <string name="settings_dialog_reconnect">Nové nastavenia sa aplikujú pri ďalšom pripojení.</string>
+    <string name="settings_needs_reconnect_banner">Nové nastavenia sa aplikujú pri ďalšom pripojení.</string>
+    <string name="private_dns_conflict_banner_custom_dns_title">Vlastné DNS je nodstupné</string>
+    <string name="private_dns_conflict_banner_custom_dns_description">Vaše zariadenie používa DNS tretej strany, ktoré zabraňuje fungovaniu vlastného DNS Proton VPN. Zistite viac</string>
+    <string name="private_dns_conflict_banner_custom_dns_description_tv">Vaše zariadenie používa DNS tretej strany, ktoré zabraňuje fungovaniu vlastného DNS Proton VPN.</string>
+    <string name="private_dns_conflict_banner_netshield_title">NetShield je nedostupný</string>
+    <string name="private_dns_conflict_banner_netshield_description">Vaše zariadenie používa DNS tretej strany, ktorý bráni funkcii NetShield. Zistite viac</string>
+    <string name="private_dns_conflict_banner_network_settings_button">Nastavenia siete</string>
+    <string name="custom_dns_conflict_banner_netshield_title">NetShield je nedostupný</string>
+    <string name="custom_dns_conflict_banner_netshield_description">Je povolená vlastná DNS, ktorá bráni funkčnosti služby NetShield. Zistite viac</string>
+    <string name="custom_dns_conflict_banner_netshield_title_tv">Vypnite vlastné DNS na použitie NetShield</string>
+    <string name="custom_dns_conflict_banner_netshield_description_tv">Je povolená vlastná DNS, ktorá bráni funkčnosti služby NetShield.</string>
+    <string name="custom_dns_conflict_banner_disable_custom_dns_button">Vypnúť vlastné DNS</string>
+    <string name="info_secure_core_standard_high_privacy">Väčšie súkromie</string>
+    <string name="info_secure_core_standard_lower_latency">Nižšia latencia</string>
+    <string name="info_secure_core_advanced_privacy">Pokročilé súkromie</string>
+    <string name="info_secure_core_higher_latency">Vyššia latencia</string>
+    <string name="info_p2p_what_title">Čo to je P2P?</string>
+    <string name="info_p2p_what_description">Technológia P2P (Peer-to-peer) vám umožňuje pripojiť sa a zdieľať súbory priamo s inými zariadeniami.\n\nNaše servery P2P sú špeciálne navrhnuté na podporu tohto typu zdieľania súborov.</string>
+    <string name="info_p2p_torrenting_title">Čo to sú torrenty?</string>
+    <string name="info_p2p_torrenting_description">Rýchle zdieľanie a sťahovanie veľkých súborov prostredníctvom siete P2P.</string>
+    <string name="info_p2p_why_title">Prečo pri torrentovaní používať server P2P?</string>
+    <string name="info_p2p_why_description_speed">Zvýšená rýchlosť odosielania a sťahovania</string>
+    <string name="info_p2p_why_description_logs">Žiadne protokoly aktivít</string>
+    <string name="info_p2p_why_description_hide">Skryte svoju IP adresu pred poskytovateľom služieb a partnermi</string>
+    <string name="info_dialog_smart_routing_description">Funkcia Smart Routing nám umožňuje poskytovať VPN pokrytie aj v ťažko dostupných krajinách.\n\nKeď sa pripojíte k serveru Smart Routing, bude to vyzerať, ako keby ste surfovali v cieľovej krajine, hoci sa fyzický server nachádza inde.  \n\nFunkcia Smart Routing sa zvyčajne používa na obchádzanie zákonov obmedzujúcich súkromie a iných foriem cenzúry.</string>
+    <string name="notifications_channel_connection_status_name">Stav pripojenia</string>
+    <string name="notifications_channel_connection_status_description">Zobrazuje, k akému serveru sa pripájate a vašu rýchlosť VPN.</string>
+    <string name="notifications_channel_connection_errors_name">Chyby pripojenia</string>
+    <string name="notifications_channel_connection_errors_description">Upozorňuje vás na problémy, ktoré pozastavujú alebo zastavujú vaše VPN pripojenie.</string>
+    <string name="notifications_channel_connection_tips_name">Tipy na pripojenie</string>
+    <string name="notifications_channel_connection_tips_description">Kontextové tipy, ktoré vám pomôžu lepšie využívať Proton VPN.</string>
+    <string name="countries_upsell_banner_description">Prístup ku všetkým krajinám s VPN Plus</string>
+    <string name="secure_core_upsell_banner_description">Pridajte ďalšiu úroveň šifrovania k vášmu VPN pripojeniu</string>
+    <string name="p2p_upsell_banner_description">Sťahujte súbory cez BitTorrent a iné protokoly na zdieľanie súborov</string>
+    <string name="tor_upsell_banner_description">Použite sieť Tor nad vaším VPN pripojením pre väčšie súkromie</string>
+    <string name="vpnplus_upsell_banner_description">Inovovať na VPN Plus</string>
+    <string name="search_zero_screen_title">Skúste vyhľadať...</string>
+    <string name="search_zero_screen_info_countries_title">Krajiny</string>
+    <string name="search_zero_screen_info_cities_title">Mestá</string>
+    <string name="search_zero_screen_info_servers_title">Servery</string>
+    <string name="search_zero_screen_info_countries_examples">Švajčiarsko, Spojené štáty, Taliansko, Kanada...</string>
+    <string name="search_zero_screen_info_cities_examples">New York, Londýn, Tokio, Sydney...</string>
+    <string name="search_zero_screen_info_servers_examples">JP#50, CA#3, IT#14…</string>
+    <string name="error_fetching_prices">Chyba pri načítavaní cien.</string>
+    <string name="tv_settings_split_tunneling_description">Prispôsobte si pripojenie tým, že sa rozhodnete, ktoré aplikácie budú chránené pomocou VPN.</string>
+    <string name="tv_settings_split_tunneling_mode_description_standard">Zvolené aplikácie sú vylúčené z vášho VPN pripojenia.</string>
+    <string name="tv_settings_split_tunneling_mode_description_inverse">Cez VPN sa pripájajú len vybrané aplikácie, všetka ostatná prevádzka je nechránená.</string>
+    <string name="profile_action_edit">Upraviť</string>
+    <string name="profile_action_duplicate">Duplikovať</string>
+    <string name="profile_action_delete">Vymazať</string>
+    <!-- Label when showing profile\'s NAT (Network Address Translation) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_nat_title">NAT</string>
+    <!-- Label when showing profile\'s LAN (Local Area Network) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_lan_title">LAN</string>
+    <string name="profile_needs_reconnect">Toto reštartuje vaše pripojenie.</string>
+    <string name="profile_overrides_setting">Tieto nastavenia sú spojené s <b>%1$s</b> a možno ich spravovať len v Profiloch.</string>
+    <string name="initial_profile_name_streaming_us">Streamovanie US</string>
+    <string name="initial_profile_name_work_school">Práca/Škola</string>
+    <string name="initial_profile_name_anti_censorship">Boj proti cenzúre</string>
+    <string name="initial_profile_name_gaming">Hranie</string>
+    <string name="initial_profile_name_max_security">Maximálna bezpečnosť</string>
+    <string name="create_profile_pick_country_title">Krajina</string>
+    <string name="create_profile_pick_type_title">Typ</string>
+    <string name="create_profile_type_standard">Štandardná</string>
+    <string name="create_profile_type_secure_core">Secure Core</string>
+    <string name="create_profile_type_p2p">P2P</string>
+    <string name="create_profile_gateway">Brána</string>
+    <string name="create_profile_pick_state_title">Krajina</string>
+    <string name="create_profile_pick_city_title">Mesto</string>
+    <string name="create_profile_pick_server_title">Server</string>
+    <string name="create_profile_pick_gateway_title">Brána</string>
+    <string name="create_profile_pick_netshield_title">NetShield</string>
+    <string name="create_profile_pick_netshield_description">Blokovanie reklám, sledovačov a malvéru na webových stránkach a v aplikáciách</string>
+    <string name="create_profile_pick_protocol_title">Protokol</string>
+    <string name="create_profile_pick_nat_title">Typ NAT</string>
+    <!--
+         Example:
+         if a profile named "My Profile" is duplicated, the new suggested name is "My Profile (copy)"
+     -->
+    <string name="create_profile_copy_name">%1$s (kópia)</string>
+    <string name="create_profile_fastest_city">Najrýchlejší</string>
+    <string name="create_profile_fastest_state">Najrýchlejší</string>
+    <string name="create_profile_fastest_server">Najrýchlejší</string>
+    <string name="create_profile_pick_middle_country_title">Medzikrajina</string>
+    <string name="profiles_zero_state_title">Vytvorte váš prvý profil</string>
+    <string name="profiles_zero_state_description">Profily sú uložené pripojenia s vami vybranými umiestneniami, servermi a protokolmi.</string>
+    <string name="profiles_button_create_profile">Vytvoriť profil</string>
+    <string name="profile_deleted_snackbar_message">Profil vymazaný</string>
+    <string name="profile_connected_edit_setting">Toto nastavenie je spojené s vaším aktívnym profilom. \n\nAk chcete vykonať zmeny, upravte svoj profil alebo sa odpojte a upravte všeobecné nastavenia siete VPN.</string>
+    <string name="profile_connected_dialog_title">Spravovať %1$s v Profiloch</string>
+    <string name="undo">Vrátiť späť</string>
+    <string name="profile_unavailable_dialog_title">Profil nedostupný</string>
+    <!-- %1$s - profile name
+         Example: Your server selection for MyProfile is unavailable. Select a different server or try again later -->
+    <string name="profile_unavailable_dialog_message">Server, ktorý ste vybrali pre %1$s je nedostupný. Vyberte iný server alebo to skúste neskôr.</string>
+    <string name="profile_location_excluded_dialog_message"><![CDATA[Váš výber servera pre <b>%1$s</b> nie je k dispozícii. Vyberte iný server, skontrolujte vylúčené lokality alebo to skúste neskôr.]]></string>
+    <!-- %1$d - profile icon number
+         Example: Icon 1, Icon 2, ... -->
+    <string name="profile_icon_accessibility">Ikona %1$d</string>
+    <!-- %1$d - profile icon number
+         Example: Color 1, Color 2, ... -->
+    <string name="profile_color_accessibility">Farba %1$d</string>
+    <string name="generic_info_label">Informácie</string>
+    <!-- Branded name for a feature that opens url after VPN connection to given profile is established.
+         Please don't use & in translation and capitalize key words. -->
+    <string name="create_profile_connect_and_go_label">Pripojiť a otvoriť</string>
+    <!-- Displayed as a badge next to create_profile_auto_open_label ("Auto-launch website [NEW]") -->
+    <string name="create_profile_auto_open_label_badge">Nové</string>
+    <string name="create_profile_auto_open_url_input_label">URL webovej stránky</string>
+    <string name="create_profile_auto_open_url_private_mode_label">Použiť režim súkromného prehliadania</string>
+    <!-- Label for disabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_off">Vyp.</string>
+    <string name="profile_auto_open_app_failed_to_launch">Pripojiť a spustiť: aplikácia nenájdená</string>
+    <!-- Label for enabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_website">Otvoriť webovú stránku</string>
+    <string name="profile_auto_open_app">Otvoriť aplikáciu</string>
+    <string name="create_profile_auto_open_description">Po pripojení k tomuto profilu sa automaticky otvorí webová stránka podľa vášho výberu.</string>
+    <string name="create_profile_auto_open_app_input_hint">Vyberte aplikáciu</string>
+    <string name="create_profile_auto_open_app_input_label">Aplikácia</string>
+    <string name="create_profile_auto_open_app_no_apps">Nenašli sa žiadne aplikácie.</string>
+    <string name="profile_auto_open_error_invalid_url">Zadajte platnú URL adresu</string>
+    <string name="nps_how_likely_question">Aká je pravdepodobnosť, že odporučíte Proton VPN svojmu priateľovi alebo kolegovi?</string>
+    <string name="nps_additional_comment_title">Dajte nám, prosím, vedieť, prečo ste udelili toto hodnotenie</string>
+    <string name="nps_additional_comment_optional">Voliteľné</string>
+    <string name="nps_rating_low_values_explain">0 je veľmi nepravdepodobne</string>
+    <string name="nps_rating_high_values_explain">10 je vysoko pravdepodobne</string>
+    <string name="nps_toast_submit_message">Ďakujeme za zdieľanie. Vaša spätná väzba nám pomáha zlepšovať Proton VPN.</string>
+    <string name="nps_submit_error_char_limit">Vaša odpoveď by mala mať maximálne 250 znakov</string>
+    <string name="nps_button_submit_title">Zdieľať anonymne</string>
+    <string name="widget_preview_switzerland">Švajčiarsko</string>
+    <string name="widget_preview_spain">Španielsko</string>
+    <string name="widget_preview_germany">Nemecko</string>
+    <string name="widget_preview_france">Francúzsko</string>
+    <string name="widget_status_unprotected">Nechránené</string>
+    <string name="widget_status_error">Chyba</string>
+    <string name="widget_status_connecting">Pripájanie</string>
+    <string name="widget_sign_in">Prihlásiť sa</string>
+    <string name="widget_toast_added_message">Widget bol pridaný na domovskú obrazovku</string>
+    <string name="settings_advanced_ipv6_title">Podpora IPv6</string>
+    <string name="settings_advanced_ipv6_description">Tuneluje prevádzku IPv6 cez sieť VPN. Môže zvýšiť kompatibilitu so sieťami IPv6.</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_message">Na použitie tejto adresy je potrebné povoliť pripojenie IPv6 cez tunel VPN.</string>
+    <string name="setting_ipv6_disabled_dialog_action_enable">Povoliť IPv6</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_title">IPv6 je deaktivovaná</string>
+    <string name="settings_ipv6_enabled_toast">IPv6 povolená</string>
+    <string name="info_dialog_ipv6_traffic_benefits1">Zabezpečuje prístup k webovým lokalitám a službám len s protokolom IPv6</string>
+    <string name="info_dialog_ipv6_traffic_benefits2">Zabraňuje problémom v sieťach, ktoré sa spoliehajú na protokol IPv6</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks1">Nemusí dobre fungovať so staršími sieťami alebo aplikáciami</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks2">Niektoré siete spracúvajú prevádzku IPv6 nepredvídateľne</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks_title">Nevýhody</string>
+    <string name="info_dialog_ipv6_traffic_benefits_title">Výhody</string>
+    <string name="settings_lan_allow_direct_connection_title">Povoliť priame pripojenia zariadení</string>
+    <string name="settings_lan_allow_direct_connection_description">Pripojenie k inteligentným televízorom, systému Android Auto a ďalším zariadeniam, ktoré vytvárajú vlastnú sieť. V záujme maximálneho zabezpečenia povoľte túto funkciu len pri pripájaní k týmto zariadeniam.</string>
+    <string name="no_connections_title">K dispozícii nie sú žiadne VPN pripojenia</string>
+    <string name="no_connections_description_loading_error">Nepodarilo sa nám načítať zoznam serverov.</string>
+    <string name="no_connections_description_no_servers">Požiadajte svojho správcu, aby pre váš účet povolil prístup cez VPN.</string>
+    <string name="no_connections_action_refresh">Obnoviť</string>
+    <string name="no_connections_action_sign_out">Odhlásiť sa</string>
+    <string name="no_connections_help_contact_us"><![CDATA[Potrebujete pomoc? <a href="">Kontaktujte nás</a>]]></string>
+    <string name="no_connections_help_follow_instructions"><![CDATA[Ak váš administrátor potrebuje pomoc s povolením prístupu k VPN, odošlite mu <a href="">tieto pokyny</a>.]]></string>
+    <string name="settings_protocol_proton_protocols">Proton protokoly</string>
+    <string name="settings_protocol_proton_protocols_description">Použite vlastnú implementáciu WireGuard od Proton VPN. Ide o experimentálnu funkciu, takže sa môže vyskytnúť určitá nestabilita.</string>
+    <string name="connection_preferences_smart_discovery_dialog_title">Nie je to krajina, ktorú ste chceli?</string>
+    <string name="connection_preferences_smart_discovery_dialog_message">Ak existujú lokality, ku ktorým sa nechcete automaticky pripájať, môžete ich vylúčiť z funkcie Najrýchlejší v krajine.</string>
+    <string name="excluded_locations_adoption_title">Vyhnite sa nežiaducim lokalitám</string>
+    <string name="excluded_locations_adoption_description"><![CDATA[Teraz môžete vylúčiť krajiny a mestá z <b>najrýchlejších</b> pripojení.]]></string>
+    <string name="session_fork_no_account_title">Prihlásiť sa na Android TV</string>
+    <string name="session_fork_no_account_message">Dokončite prihlásenie na tomto zariadení, aby ste mohli začať používať Proton VPN na televízore</string>
+    <string name="session_fork_no_account_footnote"><![CDATA[Používaním tejto aplikácie súhlasíte s našimi <a href="">Zmluvnými podmienkami</a>.]]></string>
+    <string name="session_fork_no_account_signup_button">Vytvoriť účet</string>
+    <string name="session_fork_no_account_signin_button">Prihlásiť sa</string>
+    <string name="session_fork_confirmation_title">Prihlásiť sa na Android TV?</string>
+    <string name="session_fork_confirmation_message">Týmto umožníte televízii prístup k vášmu Proton účtu.</string>
+    <string name="session_fork_confirmation_bottom_note">Prihlasujte sa len na zariadeniach, ktorým dôverujete</string>
+    <string name="session_fork_confirmation_too_soon_toast">Pred pokračovaním si prečítajte nasledujúce informácie, prosím</string>
+    <string name="session_fork_success_title">Prihlásenie dokončené</string>
+    <string name="session_fork_success_message">Teraz ste prihlásení na svojom televízore.</string>
+    <string name="session_fork_error_expired_title">Platnosť kódu vypršala</string>
+    <string name="session_fork_error_expired_message">Vytvorte nový kód vo vašom TV a skúste znova.</string>
+    <string name="session_fork_error_generic_title">Nie je možné prihlásiť sa</string>
+    <string name="session_fork_error_fatal_message">Skontrolujte pripojenie k sieti a skúste to znovu. Ak problém pretrváva, kontaktujte náš tím zákazníckej podpory. </string>
+    <string name="session_fork_error_network_message">Skontrolujte pripojenie k sieti a skúste to znovu.</string>
+    <string name="session_fork_error_try_fallback_message">Kliknite na položku \‘Problémy s prihlásením?\’ na televízore a postupujte podľa alternatívnych pokynov.</string>
+    <string name="session_fork_error_report_button">Nahlásiť problém</string>
+    <string name="session_fork_qr_code_content_description">QR kód</string>
+    <string name="session_fork_qr_code_message">Naskenujte QR kód, aby ste sa prihlásili alebo si vytvorili účet.</string>
+    <string name="session_fork_qr_code_trouble_button">Problémy s prihlásením?</string>
+    <string name="session_fork_qr_code_error_expired">Z bezpečnostných dôvodov platnosť overovacieho kódu vypršala</string>
+    <string name="session_fork_qr_code_error_network">Skontrolujte pripojenie k sieti a skúste to znovu</string>
+    <string name="session_fork_qr_code_error_create_new_button">Vytvoriť nový kód</string>
+    <string name="session_fork_user_code_title">Nemôžete naskenovať kód? Prihláste sa ručne</string>
+    <string name="session_fork_user_code_step1"><![CDATA[Prejdite na: <b>%1$s</b>]]></string>
+    <string name="session_fork_user_code_step2">Prihláste sa alebo si vytvorte účet</string>
+    <!-- Parameter: 8 character alphanumeric code, e.g. "AB12 CD34" -->
+    <string name="session_fork_user_code_step3"><![CDATA[Zadajte kód: <b>%1$s</b>]]></string>
+    <!-- Parameter: web address for the support website, e.g. "protonvpn.com/support" -->
+    <string name="session_fork_user_code_support"><![CDATA[Stále potrebujete pomoc? Navštívte <b>%1$s</b>]]></string>
+</resources>

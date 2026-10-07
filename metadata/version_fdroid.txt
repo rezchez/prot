@@ -1,0 +1,2 @@
+versionName=5.20.57.0
+versionCode=605205700

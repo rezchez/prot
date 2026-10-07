@@ -1,0 +1,2021 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2017 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_icon_name_classic">Класічная</string>
+    <string name="app_icon_name_dark">Цёмны</string>
+    <string name="app_icon_name_retro">Рэтра</string>
+    <string name="app_icon_name_weather">Надвор\'е</string>
+    <string name="app_icon_name_notes">Нататкі</string>
+    <string name="app_icon_name_calculator">Калькулятар</string>
+    <string name="login">Увайсці</string>
+    <string name="menuActionSignOut">Выйсці</string>
+    <string name="connectionAllocationHelpTitle">Дзякуй, што палепшылі</string>
+    <string name="connectionAllocationHelpDescription1">Пачынаючы знаёмства з Proton VPN, прызначце падключэнні па VPN свайму ўліковаму запісу або любым іншым падпарадкаваным уліковым запісам.</string>
+    <string name="connectionAllocationHelpDescription2">Гэты этап зойме ўсяго некалькі хвілін. Пасля гэтага ў вас будзе магчымасць уваходзіць і абараняць усе свае прылады.</string>
+    <string name="connectionAllocationHelpDescription1AskAdmin">У дадзены момант не выяўлена ўключаных падключэнняў па VPN для гэтага ўліковага запісу. Звяжыцеся са сваім адміністратарам, каб пачаць знаёмства з Proton VPN. </string>
+    <string name="connectionAllocationHelpAssignConnectionsButton">Уключыць падключэнні па VPN</string>
+    <string name="connectionAllocationHelpLoginAgainButton">Увайсці яшчэ раз</string>
+    <!-- tag(Redesign_2023) "OK" button on dialogs -->
+    <string name="ok">OK</string>
+    <string name="dialogLearnMore">Даведацца больш</string>
+    <string name="connected">Падключана</string>
+    <string name="buttonConnect">Падключыцца</string>
+    <string name="loaderConnectingTo">Падключэнне да %1$s</string>
+    <string name="loaderNotConnected">Не падключана (не абаронена)</string>
+    <string name="loaderConnectedTo">Падключана да %1$s</string>
+    <string name="loaderDisconnecting">Адключэнне</string>
+    <string name="loaderReconnecting">Перападключэнне</string>
+    <string name="loaderReconnectNoNetwork">Чаканне даступнай сеткі</string>
+    <string name="loaderCheckingAvailability">Праверка даступнасці сервера</string>
+    <string name="quickConnect">Хуткае падключэнне</string>
+    <!-- Displays a percentage value. Please use %% sign for %.
+         Example value: "70%" -->
+    <string name="serverLoad">%1$s%%</string>
+    <string name="cancel">Скасаваць</string>
+    <string name="close">Закрыць</string>
+    <string name="dialogContinue">Працягнуць</string>
+    <string name="drawerReportProblem">Паведаміць аб праблеме</string>
+    <string name="action_done">Гатова</string>
+    <string name="action_share">Абагуліць</string>
+    <string name="accountFree">Proton Free</string>
+    <string name="restrictedMaintenanceTitle">На тэхнічным абслугоўванні</string>
+    <string name="restrictedMaintenanceDescription">Сервер, да якога вы спрабуеце падключыцца, знаходзіцца на тэхнічным абслугоўванні. Выберыце іншы сервер.</string>
+    <string name="restricted_location_excluded_dialog_title">Збой падключэння</string>
+    <string name="restricted_location_excluded_dialog_description">Серверы недаступны. Выберыце месцазнаходжанне ўручную або адрэдагуйце выключаныя месцазнаходжанні.</string>
+    <string name="errorUserDelinquent"><![CDATA[Ваш уліковы запіс мае пратэрмінаваны рахунак. Аплаціце ўсе неаплачаныя рахункі на &#160;<a href="https://account.protonvpn.com">account.protonvpn.com</a>]]></string>
+    <string name="errorMaxSessions">Вы дасягнулі максімальнай колькасці адначасовых падключэнняў, якія дазволены на вашым уліковым запісе. Палепшыце свой тарыфны план Proton VPN для атрымання большай колькасці адначасовых падключэнняў.</string>
+    <string name="listItemMaintenance">На тэхнічным абслугоўванні</string>
+    <string name="insufficientPermissionsTitle">Неабходна дзеянне карыстальніка</string>
+    <string name="insufficientPermissionsDetails">Немагчыма аўтаматычна ўсталяваць падключэнне па VPN. Першы раз падключыцеся ўручную, каб праграма змагла атрымаць неабходныя правы.</string>
+    <string name="log_title">Журнал</string>
+    <string name="disconnect">Адключыцца</string>
+    <string name="state_connecting">Падключэнне…</string>
+    <string name="state_connected">Падключана</string>
+    <string name="state_disconnecting">Адключэнне…</string>
+    <string name="state_error">Памылка</string>
+    <string name="error_server_list_load_failed">Праверце сваё падключэнне да інтэрнэту і паўтарыце спробу.</string>
+    <string name="error_server_unreachable">Немагчыма падключыцца да VPN. Праверце сваё падключэнне да сеткі і паўтарыце спробу.</string>
+    <string name="error_auth_failed">Збой аўтэнтыфікацыі карыстальніка.</string>
+    <string name="error_generic">Пры падключэнні адбыўся невядомы збой.</string>
+    <string name="error_generic_with_reason">Proton VPN не можа ўсталяваць падключэнне па VPN. Паўтарыце спробу праз некалькі секунд.<br/><br/> Падрабязнасці: %1$s</string>
+    <string name="reconnect">Перападключыцца</string>
+    <string name="reconnect_now">Перападключыцца</string>
+    <string name="try_reconnecting">Паспрабуйце перападключыцца</string>
+    <string name="connect">Падключыцца</string>
+    <string name="upgrade">Палепшыць</string>
+    <string name="retry">Паўтарыць</string>
+    <string name="report_message">Паведамленне справаздачы</string>
+    <string name="report_bug_email_label">Ваша электронная пошта</string>
+    <string name="report_bug_email_hint">Увядзіце адрас сваёй электроннай пошты</string>
+    <string name="report_bug_message_label">Паведамленне</string>
+    <string name="report_bug_message_hint">Апішыце памылку і раскажыце нам, як вы знайшлі яе</string>
+    <string name="send_report">Адправіць справаздачу</string>
+    <string name="report_sent">Справаздача адпраўлена</string>
+    <string name="discardChanges">Скасаваць незахаваныя змены?</string>
+    <string name="discardChangesButtonDiscard">Адхіліць змены</string>
+    <string name="discardChangesButtonKeepEditing">Працягнуць рэдагаванне</string>
+    <string name="done">ГАТОВА</string>
+    <string name="add">ДАДАЦЬ</string>
+    <string name="copy_to_clipboard">Капіяваць</string>
+    <string name="copied_to_clipboard">Скапіявана ў буфер абмену</string>
+    <string name="got_it">Зразумела</string>
+    <string name="exclude_locations">Выключыць месцазнаходжанні</string>
+    <string name="excluded_locations">Выключаныя месцазнаходжанні</string>
+    <string name="cannot_connect">Немагчыма падключыцца</string>
+    <string name="skip">Прапусціць</string>
+    <string name="something_went_wrong">Нешта пайшло не так</string>
+    <string name="try_again">Паўтарыць спробу</string>
+    <string name="delete">Выдаліць</string>
+    <string name="menu_option_move_to_top" comment="command used to move an item to the top of the list">Перамясціць на самы верх</string>
+    <string name="menu_option_move_up" comment="command used to move an item one position up in the list">Перамясціць уверх</string>
+    <string name="menu_option_move_down" comment="command used to move an item one position down in the list">Перамясціць уніз</string>
+    <string name="remove">Выдаліць</string>
+    <string name="saveButton">Захаваць</string>
+    <string name="ipWithPlaceholder">IP: %1$s</string>
+    <string name="activityLicensesTitle">Ліцэнзіі старонніх бакоў</string>
+    <string name="stateFragmentUnknownIp">Невядома</string>
+    <string name="noVpnPermissionMainTitle">Дзеянне, якія неабходны для падключэння да VPN</string>
+    <string name="noVpnPermissionMainMessage">Для падключэння да Proton VPN, зрабіце наступнае:</string>
+    <string name="noVpnPermissionGrantPermissionTitle">Даць дазвол на VPN</string>
+    <string name="noVpnPermissionGrantPemrissionMessage">Android патрабуецца ваш дазвол на падключэнне да Proton VPN. Ухваліце яго націснуўшы на кнопку \"OK\" пасля таго, як убачыце акно \"Запыт на падключэнне\" ад вашай сістэмы.</string>
+    <string name="noVpnPermissionDisableAlwaysOnTitle">Адключыце пастаяннае падключэнне для іншых праграм VPN</string>
+    <string name="noVpnPermissionDisableAlwaysOnMessage">Android не падтрымлівае некалькі праграм VPN. Адключыце пастаяннае падключэнне для якой-небудзь праграмы VPN, акрамя Proton VPN.</string>
+    <string name="noVpnPermissionProtonAppLabel">Праграма Proton VPN</string>
+    <string name="noVpnPermissionOtherAppLabel">Іншыя праграмы VPN</string>
+    <string name="noVpnPermissionOpenSettings">Адкрыць налады VPN у Android</string>
+    <string name="noNotificationPermissionGrantTitle">Будзьце ў курсе…</string>
+    <string name="noNotificationPermissionGrantDescription">Уключыць апавяшчэнні для атрымання абвестак аб змяненні вашага статусу падключэння.</string>
+    <string name="noNotificationPermissionGrantNowTitle">Уключыць апавяшчэнні</string>
+    <string name="error_prepare_vpn_description"><![CDATA[Адключыце пастаяннае падключэнне па VPN для ўсіх іншых праграм VPN у наладах аперацыйнай сістэмы, бо гэта перашкаджае Proton VPN усталяваць падключэнне з серверам VPN. Таксама дайце правы VPN, калі з\'яўляецца адпаведнае патрабаванне дазволіць доступ па VPN. Магчыма, што неабходна будзе выдаліць іншыя праграмы VPN для прадухілення канфліктаў. Пасля гэтага паўтарыце спробу. <a href="%1$s">Даведацца больш</a>]]></string>
+    <string name="error_prepare_vpn_settings">Перайсці да налад VPN для Android</string>
+    <string name="error_prepare_vpn_title">Памылка: праблема дазволу VPN</string>
+    <string name="error_server_not_set">Сервер больш недаступны</string>
+    <string name="bugReportErrorEmptyEmail">Адрас электроннай пошты не можа быць пустым</string>
+    <string name="bugReportErrorInvalidEmail">Памылковы адрас электроннай пошты</string>
+    <string name="bugReportLabelVpnLogsTitle">Уключыць журнал з памылкамі</string>
+    <string name="bugReportErrorLabelVpnLogsDescription">Адпраўляе лакальны журнал з памылкамі (журнал з актыўнасцю адпраўляцца не будзе), каб дапамагчы вырашыць вашу праблему</string>
+    <string name="profileFastest">Найхутчэйшы</string>
+    <string name="profileRandom">Выпадковы</string>
+    <string name="loaderErrorNoInternet">Няма падключэння да інтэрнэту</string>
+    <string name="loaderErrorGeneric">Нешта пайшло не так</string>
+    <string name="inputIpAddressLabel">IP-адрас</string>
+    <string name="inputIpAddressHelp">Увядзіце адрас сервера IPv4 або IPv6</string>
+    <string name="inputIpAddressErrorInvalid">Памылковы IP-адрас</string>
+    <!-- Displayed as a badge next to setting item ("Widget [NEW]") -->
+    <string name="settings_new_label_badge">НОВАЕ</string>
+    <!-- Displayed as a badge next to setting item ("Proton protocols [BETA]") -->
+    <string name="settings_beta_label_badge">БЭТА</string>
+    <string name="settingsExcludedIPAddressesListHeader">Выключаныя IP-адрасы (%1$d)</string>
+    <string name="settingsIncludedIPAddressesListHeader">Уключаючы IP-адрасы (%1$d)</string>
+    <string name="settingsExcludedApps">Выключаныя праграмы</string>
+    <string name="settingsExcludedAppsEmpty">Дадайце праграмы, якія будуць падключацца без VPN.</string>
+    <string name="settingsIncludedAppsEmpty">Дадайце праграмы, якія будуць уключаны ў трафік VPN.</string>
+    <string name="settingsExcludedAppsSelectedHeader">Выключаныя праграмы: (%1$d)</string>
+    <string name="settingsIncludedAppsSelectedHeader">Уключаныя праграмы (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableRegularHeader">Усе іншыя звычайныя праграмы (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableSystemHeader">Усе іншыя сістэмныя праграмы (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableHeader">Усе іншыя праграмы (%1$d)</string>
+    <string name="settingsExcludedAppsLoadSystemAppsButton">Паказаць сістэмныя праграмы</string>
+    <string name="settingsSplitTunnelAppsShowSystemAppsCheckbox">Паказаць сістэмныя праграмы</string>
+    <string name="settingsSplitTunnelingExcludedAppsList">Гэтыя праграмы выключаны з вашага падключэння па VPN.</string>
+    <string name="settingsSplitTunnelingIncludedAppsList">Толькі гэтыя праграмы падключаюцца праз VPN.</string>
+    <!-- Description for action to add an application to "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to excluded apps"
+    -->
+    <string name="accessibility_action_add_excluded_app">Дадаць у выключаныя праграмы</string>
+    <!-- Description for action to remove an application from "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from excluded apps"
+    -->
+    <string name="accessibility_action_remove_excluded_app">Выдаліць з выключаных праграм</string>
+    <!-- Description for action to add an application to "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to included apps"
+    -->
+    <string name="accessibility_action_add_included_app">Дадаць ва ўключаныя праграмы</string>
+    <!-- Description for action to remove an application from "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from included apps"
+    -->
+    <string name="accessibility_action_remove_included_app">Выдаліць з уключаных праграм</string>
+    <string name="accessibility_action_copy_to_clipboard">Скапіяваць у буфер абмену</string>
+    <string name="accessibility_action_item_delete">Выдаліць</string>
+    <string name="accessibility_action_item_move_up">Перамясціць уверх</string>
+    <string name="accessibility_action_item_move_down">Перамясціць уніз</string>
+    <string name="tileConnected">Падключана: %1$s</string>
+    <string name="openUrlError">Не атрымалася адкрыць %1$s. На вашай прыладзе не знойдзены вэб-браўзер.</string>
+    <string name="loaderErrorTimeout">Час чакання падключэння завяршыўся. Паўтарыце спробу.</string>
+    <string name="troubleshootButton">Выпраўленне непаладак</string>
+    <string name="activityTroubleshootTitle">Выпраўленне непаладак</string>
+    <string name="troubleshootPotentialSolutionsSectionTitle">Магчымыя рашэнні</string>
+    <string name="troubleshootNoInternetDescription">Пераканайцеся, што ваша падключэнне да інтэрнэту працуе.</string>
+    <string name="troubleshootNoInternetTitle">Няма падключэння да інтэрнэту</string>
+    <string name="troubleshootIspProblemTitle">Праблема з пастаўшчыком паслуг інтэрнэту (ISP)</string>
+    <string name="troubleshootIspProblemDescription"><![CDATA[Паспрабуйце падключыцца да Proton з іншай сеткі (або скарыстайцеся <a href=\'%1$s\'>Tor</a>)]]></string>
+    <string name="troubleshootAntivirusProblemTitle">Канфлікт з антывірусам</string>
+    <string name="troubleshootAntivirusProblemDescription">Часова адключыце або выдаліце антывірус.</string>
+    <string name="troubleshootProxyFirewallProblemTitle">Канфлікт з проксі або міжсеткавым экранам</string>
+    <string name="troubleshootProxyFirewallProblemDescription">Адключыце ўсе проксі, міжсеткавыя экраны або звярніцеся да свайго сеткавага адміністратара.</string>
+    <string name="troubleshootProtonDownTitle">Proton не працуе</string>
+    <string name="troubleshootProtonDownDescription"><![CDATA[Праверце <a href=\"%1$s\">статус Proton</a>, каб даведацца пра статус нашай сістэмы.]]></string>
+    <string name="troubleshootContactUsSectionTitle">Усё яшчэ неабходна дапамога? Вы можаце звязацца непасрэдна з намі</string>
+    <string name="troubleshootCustomerSupport">Падтрымка кліентаў</string>
+    <string name="settingsAllowAlternativeRoutingTitle">Альтэрнатыўная маршрутызацыя</string>
+    <string name="settingsAllowAlternativeRoutingDescription"><![CDATA[У выпадку, калі Proton заблакіраваны, дазвольце праграме паспрабаваць альтэрнатыўныя шляхі для атрымання сувязі з серверамі Proton. <a href="%1$s">Даведацца больш</a>]]></string>
+    <string name="troubleshootGovernmentBlockTitle">Дзяржаўная блакіроўка</string>
+    <string name="troubleshootGovernmentBlockDescription"><![CDATA[Магчыма, што ваша краіна блакіруе доступ да Proton. Для атрымання доступу, паспрабуйце скарыстацца <a href=\'%1$s\'>Tor</a>.]]></string>
+    <string name="settingsKillSwitchEnableTitle">Як уключыць Kill Switch?</string>
+    <string name="settingsKillSwitchEnableStep1">1. Адкрыйце налады вашай прылады</string>
+    <!-- %1$s here will be replaced by "gear" icon -->
+    <string name="settingsKillSwitchEnableStep2">2. Знайдзіце Proton VPN і націсніце %1$s</string>
+    <!-- Content description for the "gear" icon in settingsKillSwitchEnableStep2. Used only by accessibility services. -->
+    <string name="settingsKillSwitchEnableStep2_gearIconContentDescription">налады</string>
+    <!-- The phrases "Always-on VPN" and "Block connections without VPN" needs to be translated exactly
+         the same as in Android VPN settings. -->
+    <string name="settingsKillSwitchEnableStep3"><![CDATA[3. Уключыце \"<b>Пастаянны VPN</b>\" і \"<b>Блакіраваць падключэнні без VPN</b>\"]]></string>
+    <string name="settingsKillSwitchAndroidSettingsButton">Налады</string>
+    <string name="settingsKillSwitchLearnMoreButton">Што такое Kill Switch?</string>
+    <string name="settingsKillSwitchWarningMain">Пры ўключаным Kill Switch, вы не зможаце падключыцца да:</string>
+    <string name="settingsKillSwitchWarningPoint1">Вэб-сайты і праграмы, якія выключаны з вашага падключэння па VPN праз Split Tunneling</string>
+    <string name="settingsKillSwitchWarningPoint2">Прылады ў вашай лакальнай сетцы (LAN)</string>
+    <string name="settingsEnableTelemetryTitle">Абагульваць ананімную статыстыку выкарыстання</string>
+    <string name="settingsEnableTelemetryDescription">Даныя аб выкарыстанні дапамагаюць нам пераадольваць блакіроўкі VPN і паляпшаць прадукцыйнасць праграмы.</string>
+    <string name="settingsSendCrashReportsTitle">Абагульванне ананімных справаздач аб збоях</string>
+    <string name="settingsSendCrashReportsDescription">Справаздачы аб збоях дапамагаюць нам выпраўляць памылкі, вызначаць міжсеткавыя экраны, а таксама пазбягаць блакіровак VPN.</string>
+    <string name="settingsTelemetryScreenTitle">Статыстыка выкарыстання</string>
+    <string name="settingsTelemetryScreenInfo"><![CDATA[Гэта статыстыка не змяшчае ваш IP-адрас і яна не будзе выкарыстана, каб ідэнтыфікаваць вас. Вашы даныя ніколі не будуць абагульвацца са староннімі асобамі. <a href="%1$s">Даведацца больш</a>]]></string>
+    <string name="netshield_settings_description_not_html">Абараніце сябе ад рэкламы, шкодных праграм і праграм адсочвання на вэб-сайтах і ў праграмах. %1$s</string>
+    <string name="netshield_settings_description_tv">Абараняе вас ад старонняй рэкламы, праграм сачэння і шкодных праграм. NetShield не блакіруе рэкламу, якая ўбудавана ў такія сэрвісы прагляду, як YouTube і Netflix.</string>
+    <string name="netshield_settings_more_info_title_tv">Як працуе NetShield</string>
+    <string-array name="netshield_settings_more_info_paragraphs_tv">
+        <item>NetShield блакіруе запыты DNS да старонніх даменаў рэкламнага характару, праграм сачэння і шкодных праграм.</item>
+        <item>Гэта азначае, што ў вашым браўзеры будзе адсутнічаць рэклама або бясплатныя праграмы, якія выкарыстоўваюць староннія рэкламныя сэрвісы.</item>
+        <item>Аднак дадзеная функцыя не можа блакіраваць рэкламу з такіх платформ, як YouTube і Netflix, бо гэту рэкламу трансліруюць іх уласныя серверы.</item>
+    </string-array>
+    <string name="settings_icon_change_description">Замаскіраваць праграму Proton VPN з дапамогай непрыметнага значка. Апавяшчэнні як і раней будуць адлюстроўваць прадвызначаную назву Proton VPN і значок. %1$s</string>
+    <string name="settings_icon_change_learn_more">Даведацца больш</string>
+    <string name="learn_more">Даведацца больш</string>
+    <string name="netshield_state_on" comment="Describes state, not action">Уключана</string>
+    <string name="netshield_state_off" comment="Describes state, not action">Выключана</string>
+    <string name="netshield_state_unavailable" comment="Describes state, not action">Недаступна</string>
+    <string name="split_tunneling_state_on" comment="Describes state, not action">Уключана</string>
+    <string name="split_tunneling_state_off" comment="Describes state, not action">Выключана</string>
+    <string name="vpn_accelerator_state_on" comment="Describes state, not action">Уключана</string>
+    <string name="vpn_accelerator_state_off" comment="Describes state, not action">Выключана</string>
+    <string name="lan_state_on" comment="Describes state, not action">Уключана</string>
+    <string name="lan_state_off" comment="Describes state, not action">Выключана</string>
+    <string name="alt_routing_state_on" comment="Describes state, not action">Уключана</string>
+    <string name="alt_routing_state_off" comment="Describes state, not action">Выключана</string>
+    <string name="custom_dns_state_on" comment="Describes state, not action">Уключана</string>
+    <string name="custom_dns_state_off" comment="Describes state, not action">Выключана</string>
+    <string name="custom_dns_state_unavailable" comment="Describes state, not action">Недаступна</string>
+    <string name="custom_dns_item_removed_snackbar">Элемент выдалены</string>
+    <string name="netshield_free_description">Блакіроўка рэкламы, праграм сачэння, шкодных праграм на вэб-сайтах і праграмах</string>
+    <string name="netshield_what_data_means">Тлумачэнне статыстыкі NetShield</string>
+    <string name="netshield_ads_title">Рэклама</string>
+    <string name="netshield_ads_details">Рэклама і нябачныя праграмы сачэння</string>
+    <string name="netshield_trackers_title">Праграмы сачэння</string>
+    <string name="netshield_trackers_details">Файлы cookie і іншыя праграмы сачэння, якія захоўваюць і распаўсюджваюць звесткі аб вашай сеткавай актыўнасці</string>
+    <string name="netshield_data_title">Даныя</string>
+    <string name="netshield_data_details">Колькасць непажаданых даных ад рэкламы, праграм сачэння і шкодных праграм, якія заблакіраваў NetShield</string>
+    <plurals name="netshield_ads_blocked" comment="Number of ads blocked by netshield. Number displayed above the text">
+        <item quantity="one">рэклама заблакіравана</item>
+        <item quantity="few">рэкламы заблакіравана</item>
+        <item quantity="many">рэклам заблакіравана</item>
+        <item quantity="other">рэклам заблакіравана</item>
+    </plurals>
+    <plurals name="netshield_trackers_stopped" comment="Number of trackers stopped by netshield. Number displayed above the text">
+        <item quantity="one">праграма сачэння спынена</item>
+        <item quantity="few">праграмы сачэння спынена</item>
+        <item quantity="many">праграм сачэння спынена</item>
+        <item quantity="other">праграм сачэння спынена</item>
+    </plurals>
+    <string name="netshield_data_saved" comment="Total data saved by netshield shown in kb/mb">даных захавана</string>
+    <string name="netshield_setting_warning">Некаторыя вэб-сайты могуць некарэктна загружацца, калі рэклама і праграмы сачэння заблакіраваны.</string>
+    <string name="netshield_setting_block_adult_content">Блакіраваць дарослае змесціва</string>
+    <string name="dialogDontShowAgain">Больш не паказваць</string>
+    <string name="guestHoleNotificationContent">Паспрабаваць абысці праблемы з сеткай. Гэта дапаможа вам атрымаць доступ да Proton VPN.</string>
+    <string name="errorTunMultiUserPermission">Немагчыма ініцыялізаваць падключэнне па VPN. Прычынай можа быць канфлікт паміж праграмай для падвойнага ўліковага запісу (напрыклад, Dual Messenger) і Split Tunneling. Адключыце адну з іх і перазапусціце прыладу.</string>
+    <string name="errorTorrentNotAllowed">Трафік P2P забаронены на гэтым серверы</string>
+    <string name="error_profile_fallback_unavailable">Збой падключэння. Выбар сервера для профілю недаступны.</string>
+    <string name="profileProtocolNotAvailable">Гэты профіль пратакола VPN у цяперашні момант недаступны. Паспрабуйце змяніць пратакол, каб падключыцца.</string>
+    <string name="stateConnectedTo">Падключана да %1$s</string>
+    <string name="stateNotConnected">Вы не падключаны</string>
+    <string name="nameEurope">Еўропа</string>
+    <string name="nameAmerica">Амерыка</string>
+    <string name="nameAsia">Азія</string>
+    <string name="nameAfricaAndMiddleEast">Афрыка і Сярэдні Усход</string>
+    <string name="nameOceania">Акіянія</string>
+    <string name="tv_row_settings">Налады</string>
+    <string name="tv_card_lan_connections_label">LAN</string>
+    <string name="tv_card_split_tunneling_label">Split Tunneling</string>
+    <string name="tv_card_protocol_label">Пратакол</string>
+    <string name="tv_dialog_delete_server_title">Выдаліць сервер %1$s?</string>
+    <string name="tv_detail_default_connection_checkbox_short">Абранае</string>
+    <string name="tv_detail_connect_streaming">Трансляцыя з Plus</string>
+    <string name="tv_detail_connect">Падключыцца</string>
+    <string name="tv_detail_description_streaming_country">Трансліруйце сваё абранае змесціва. Атрымайце доступ да большай колькасці праграм на тарыфным плане Proton VPN Plus.</string>
+    <string name="tv_detail_description_no_streaming_country">Трансліруйце больш абранага змесціва з дапамогай тарыфнага плана Proton VPN Plus.</string>
+    <string name="tv_detail_description_country_not_available">Гэта краіна недаступна. Атрымайце больш параметраў трансляцыі з тарыфным планам Proton VPN Plus.</string>
+    <string name="tv_detail_description_plus">Трансліруйце сваё абранае відэа, фільмы або спартыўныя перадачы ў сваіх праграмах.</string>
+    <string name="tv_login_title_welcome">Трансліруйце сваё абранае відэа</string>
+    <string name="tv_login_welcome_description_bottom"><![CDATA[Атрымайце свой уліковы запіс Proton VPN на <b>%1$s</b>]]></string>
+    <string name="back">Назад</string>
+    <string name="tv_vpn_error_dialog_title">Збой падключэння па VPN</string>
+    <string name="tv_signout_label">Выйсці</string>
+    <string name="tv_signout_dialog_title">Вы сапраўды хочаце выйсці?</string>
+    <string name="tv_signout_dialog_description_connected">Гэта адключыць ваш тэлевізар ад усіх сервераў VPN.</string>
+    <string name="tv_signout_dialog_ok">Выйсці</string>
+    <string name="tv_quick_connect_recommened">Рэкамендавана</string>
+    <string name="tv_quick_connect_favourite">Абраны</string>
+    <string name="tv_country_maintenance_dialog_title">Краіна недаступна</string>
+    <string name="tv_country_maintenance_dialog_description">Паўтарыце спробу або выберыце іншую краіну.</string>
+    <!-- The placeholder is replaced with a 0-100 value indicating the server load in percent.
+         Please note the double % sign after the placeholder. It is displayed as a single % sign in the app.
+
+         Example: 76% server load -->
+    <string name="tv_server_list_load">Загружанасць сервера %1$s%%</string>
+    <string name="tv_recently_used_servers">Серверы, якімі вы нядаўна карысталіся</string>
+    <string name="tv_available_servers">Даступныя серверы</string>
+    <string name="tv_locked_servers">Заблакіраваныя серверы</string>
+    <string name="tv_other_servers">Іншыя серверы</string>
+    <string name="tv_server_list">Спіс сервераў</string>
+    <string name="tv_server_list_action_unavailable">Недаступна</string>
+    <string name="notification_subscription_expired_title">Ваша падпіска на тарыфны план Proton VPN пратэрмінавана</string>
+    <string name="notification_subscription_expired_content">Ваш тарыфны план быў паніжаны. У цяперашні час адбываецца перападключэнне да найхутчэйшага сервера, які даступны на гэтым тарыфным плане.</string>
+    <string name="notification_subscription_expired_no_reconnection_content">Ваша падпіска была паніжана.</string>
+    <string name="notification_delinquent_title">У вашым уліковым запісе Proton VPN ёсць неаплачаныя рахункі</string>
+    <string name="notification_delinquent_content">Знайдзіце крыху часу, каб абнавіць сваю плацежную інфармацыю. Гэта дзеянне дазволіць вашай падпісцы заставацца ў актыўным стане.</string>
+    <string name="notification_max_sessions_title">Вы дасягнулі максімальнай колькасці прылад</string>
+    <!-- The number of devices will always be greater than 1. -->
+    <plurals name="notification_max_sessions_upsell_content">
+        <item quantity="one">Адключыце іншую прыладу для падключэння гэтай або палепшыце свой тарыфны план да Plus, які падтрымлівае падключэнне да %1$d прылады адначасова.</item>
+        <item quantity="few">Адключыце іншую прыладу для падключэння гэтай або палепшыце свой тарыфны план да Plus, які падтрымлівае злучэнне да %1$d прылад адначасова.</item>
+        <item quantity="many">Адключыце іншую прыладу для падключэння гэтай або палепшыце свой тарыфны план да Plus, які падтрымлівае падключэнне да %1$d прылад адначасова.</item>
+        <item quantity="other">Адключыце іншую прыладу для падключэння гэтай або палепшыце свой тарыфны план да Plus, які падтрымлівае падключэнне да %1$d прылад адначасова.</item>
+    </plurals>
+    <string name="notification_max_sessions_content">Адключыце іншую прыладу для падключэння гэтай.</string>
+    <string name="notification_cancel_to_free">Зараз у вас тарыфны план Free. Вам даступны серверы і функцыі Free.</string>
+    <string name="notification_cancel_to_basic">Зараз у вас тарыфны план Basic. Вам даступны серверы і функцыі Basic і Free.</string>
+    <string name="notification_cancel_to_delinquent">Пасля аплаты рахункаў вы зможаце зноў атрымаць доступ да прэміяльных функцый.</string>
+    <string name="reconnect_from_server">З сервера: </string>
+    <string name="reconnect_to_server">На сервер: </string>
+    <string name="no_thanks">Не, дзякуй</string>
+    <string name="enable">Уключыць</string>
+    <string name="notification_smart_protocol_disabled_title">Smart Protocol зараз адключаны</string>
+    <string name="notification_smart_protocol_disabled_content">Proton VPN вызначыў, што ваша бягучая сетка блакіруе падключэнне да VPN. Уключэнне Smart Protocol можа дапамагчы абысці гэта абмежаванне.</string>
+    <string name="notification_streaming_blocked_title">Трансляцыя не працуе?</string>
+    <string name="notification_streaming_blocked_text">Шмат сэрвісаў з трансляцыямі выяўляюць і блакіруюць злучэнні з бясплатнымі серверамі бясплатны VPN. Палепшыце свой тарыфны план да Proton VPN Plus, каб абыходзіць гэтыя блакіроўкі</string>
+    <string name="upsell_advanced_features">Дадатковыя функцыі: NetShield, Secure Core, Tor, P2P</string>
+    <string name="upsell_streaming_services">Доступ да сэрвісаў трансляцый (Netflix, Disney+ і іншых) у любой краіне свету</string>
+    <!-- Number of servers available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_servers">
+        <item quantity="one">%1$d сервер</item>
+        <item quantity="few">%1$d серверы</item>
+        <item quantity="many">%1$d сервераў</item>
+        <item quantity="other">%1$d сервераў</item>
+    </plurals>
+    <!-- Number of countries available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_countries">
+        <item quantity="one">%1$d краіне</item>
+        <item quantity="few">%1$d краінах</item>
+        <item quantity="many">%1$d краінах</item>
+        <item quantity="other">%1$d краінах</item>
+    </plurals>
+    <string name="upsell_upgrade_again">Палепшыць яшчэ раз, каб карыстацца ўсімі функцыямі:</string>
+    <plurals name="upgrade_devices_title">
+        <item quantity="one">Абараняйце да %1$d прылады адначасова</item>
+        <item quantity="few">Абараняйце да %1$d прылад адначасова</item>
+        <item quantity="many">Абараняйце да %1$d прылад адначасова</item>
+        <item quantity="other">Абараняйце да %1$d прылад адначасова</item>
+    </plurals>
+    <string name="upgrade_devices_text">Proton VPN даступны на 8 розных платформах.</string>
+    <string name="upgrade_plus_title">Палепшыце сваю прыватнасць</string>
+    <string name="upgrade_plus_message">Атрымайце дадатковыя функцыі прыватнасці і найвышэйшую хуткасць з VPN Plus.</string>
+    <string name="upgrade_netshield_title">Атрымлівайце асалоду ад прагляду старонак у інтэрнэце без рэкламы</string>
+    <string name="upgrade_netshield_message"><![CDATA[Блакіруйце рэкламу, праграмы сачэння і шкодныя праграмы з дапамогай <b>NetShield</b>.]]></string>
+    <string name="upgrade_secure_core_title">Двайное шыфраванне</string>
+    <string name="upgrade_secure_core_message"><![CDATA[Дадайце яшчэ адзін слой шыфравання ў сваё падключэнне па VPN з дапамогай <b>Secure Core</b>.]]></string>
+    <string name="upgrade_p2p_title">Разблакіруйце аднарангавыя спампоўванні (P2P) і абагульванне файлаў </string>
+    <string name="upgrade_p2p_text">Палепшыце хуткасць спампоўвання і запампоўвання не раскрываючы свой IP-адрас.</string>
+    <string name="upgrade_profiles_title">Атрымайце хуткі доступ да падключэнняў, якімі часта карыстаецеся</string>
+    <string name="upgrade_profiles_text">Разблакіруйце профілі з дапамогай VPN Plus</string>
+    <string name="upgrade_streaming_title">Прагляд у 4K</string>
+    <string name="upgrade_streaming_text">Атрымлівайце асалоду ад прагляду абраных фільмаў і тэлеперадач з любой краіны ў свеце.</string>
+    <string name="upgrade_streaming_block_title">Палепшыць, каб абыходзіць блакіроўкі VPN</string>
+    <string name="upgrade_streaming_block_text">Серверы VPN Plus дазволяць вам атрымліваць асалоду ад абраных фільмаў і тэлеперадач па ўсім свеце.</string>
+    <string name="upgrade_tor_title">Доступ да сеткі Tor у адзін націск</string>
+    <string name="upgrade_tor_text">Падключэнне да схаваных сэрвісаў і сайтаў onion з дапамогай вашага браўзера.</string>
+    <string name="upgrade_vpn_accelerator_title">Прагляд на яшчэ больш высокіх хуткасцях</string>
+    <!--
+        %1$s - speed in Gbps
+        Example:
+        Unlock faster, less crowded servers with speeds of up to 10 Gbps.
+    -->
+    <string name="upgrade_vpn_accelerator_message">Вам стануць даступны больш хуткія і менш загружаныя серверы з хуткасцю да %1$d Гбіт/с.</string>
+    <string name="upgrade_split_tunneling_title">Атрымлівайце лепшае ад абодвух светаў</string>
+    <string name="upgrade_split_tunneling_message"><![CDATA[З функцыяй <b>Split Tunneling</b> вы зможаце дзяліць свой трафік на той, які будзе праходзіць праз тунэлі VPN і на той, які будзе абыходзіцца без іх.]]></string>
+    <string name="upgrade_customization_title">Атрымайце доступ да пашыраных налад VPN</string>
+    <string name="upgrade_customization_message"><![CDATA[Разблакіруйце <b>падключэнні па LAN</b>, <b>карыстальніцкія DNS</b> і <b>NAT тып 2</b> з дапамогай VPN Plus.]]></string>
+    <string name="upgrade_all_countries_title">Доступ да ўсіх краін</string>
+    <!-- Number of servers inserted as %1$s in the "upgrade_plus_countries_title_new".
+         The number is rounded to the hundreds, e.g. for a value of 1234 the number used in this text is 1200.
+
+         Example:
+         1200 secure servers
+         -->
+    <plurals name="upgrade_plus_servers_new">
+        <item quantity="one">%d бяспечны сервер</item>
+        <item quantity="few">%d бяспечныя серверы</item>
+        <item quantity="many">%d бяспечных сервераў</item>
+        <item quantity="other">%d бяспечных сервераў</item>
+    </plurals>
+    <!-- Number of countries inserted as %2$s in "upgrade_plus_countries_title_new".
+
+         Example:
+         55 countries
+         -->
+    <plurals name="upgrade_plus_countries">
+        <item quantity="one">%d краіне</item>
+        <item quantity="few">%d краінах</item>
+        <item quantity="many">%d краінах</item>
+        <item quantity="other">%d краінах</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with "upgrade_plus_servers_new"
+     %2$s - replaced with "upgrade_plus_countries"
+
+     Example:
+     Unlock 1300+ secure servers in 61 countries with VPN Plus.
+     -->
+    <string name="upgrade_plus_countries_title_new"><![CDATA[Разблакіруйце %1$s у %2$s з дапамогай <b>VPN Plus</b>.]]></string>
+    <string name="mail_app_name" translateable="false">Proton Mail</string>
+    <string name="upgrade_unlimited_all_apps_title">Атрымайце ўсёабдымную прыватнасць з Proton Unlimited</string>
+    <string name="upgrade_unlimited_all_apps_description">Разблакіруйце ўсе прэміяльныя функцыі ад Proton VPN, Mail, Calendar, Drive і Pass.</string>
+    <string name="upgrade_unlimited_more">І іншыя функцыі</string>
+    <string name="upgrade_unlimited_vpn_unlimited_countries">Разблакіруйце ўсе краіны</string>
+    <string name="upgrade_unlimited_vpn_all_features">Усе іншыя функцыі VPN Plus</string>
+    <string name="upgrade_unlimited_vpn_any_location">Выбірайце любое месцазнаходжанне</string>
+    <string name="upgrade_unlimited_vpn_higher_speeds">Яшчэ больш высокая хуткасць VPN</string>
+    <plurals name="upgrade_unlimited_vpn_many_devices">
+        <item quantity="one">Абараняйце да %1$d прылады адначасова</item>
+        <item quantity="few">Абараняйце да %1$d прылад адначасова</item>
+        <item quantity="many">Абараняйце да %1$d прылад адначасова</item>
+        <item quantity="other">Абараняйце да %1$d прылад адначасова</item>
+    </plurals>
+    <string name="upgrade_unlimited_vpn_streaming">Бяспечная трансляцыя</string>
+    <string name="upgrade_unlimited_vpn_adblocker">Блакіроўшчык рэкламы і абарона ад шкодных праграм</string>
+    <string name="upgrade_unlimited_vpn_double_vpn">Double VPN</string>
+    <string name="upgrade_unlimited_vpn_p2p">Падтрымка P2P</string>
+    <plurals name="upgrade_unlimited_mail_custom_domains">
+        <item quantity="one">%1$d карыстальніцкі дамен электроннай пошты</item>
+        <item quantity="few">%1$d карыстальніцкія дамены электроннай пошты</item>
+        <item quantity="many">%1$d карыстальніцкіх даменаў электроннай пошты</item>
+        <item quantity="other">%1$d карыстальніцкіх даменаў электроннай пошты</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_attachments">
+        <item quantity="one">Далучэнне памерам %1$d МБ</item>
+        <item quantity="few">Далучэнні памерам %1$d МБ</item>
+        <item quantity="many">Далучэнні памерам %1$d МБ</item>
+        <item quantity="other">Далучэнні памерам %1$d МБ</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_many_addresses">
+        <item quantity="one">%1$d адрас электроннай пошты</item>
+        <item quantity="few">%1$d адрасы электроннай пошты</item>
+        <item quantity="many">%1$d адрасоў электроннай пошты</item>
+        <item quantity="other">%1$d адрасоў электроннай пошты</item>
+    </plurals>
+    <string name="upgrade_unlimited_mail_unlimited_folders">Неабмежаваная колькасць папак і фільтраў</string>
+    <string name="upgrade_unlimited_mail_dark_web">Dark Web Monitoring</string>
+    <string name="upgrade_unlimited_mail_aliases">Неабмежаваная колькасць псеўданімаў hide-my-email</string>
+    <string name="upgrade_unlimited_mail_autoreply">Аўтаматычны адказ</string>
+    <string name="upgrade_unlimited_mail_scheduled_send">Планаванне адпраўкі</string>
+    <plurals name="upgrade_unlimited_calendar_calendars">
+        <item quantity="one">%1$d асабісты каляндар</item>
+        <item quantity="few">%1$d асабістыя календары</item>
+        <item quantity="many">%1$d асабістых календароў</item>
+        <item quantity="other">%1$d асабістых календароў</item>
+    </plurals>
+    <string name="upgrade_unlimited_calendar_sharing">Абагульванне календара</string>
+    <string name="upgrade_unlimited_calendar_invites">Адпраўка і атрыманне запрашэнняў</string>
+    <string name="upgrade_unlimited_drive_encryption">Зашыфраванае файлавае сховішча</string>
+    <string name="upgrade_unlimited_drive_storage_size">Сховішча памерам %1$d ГБ для фатаграфій, файлаў і лістоў</string>
+    <string name="upgrade_unlimited_drive_link_share">Абагульванне фатаграфій і файлаў праз спасылку</string>
+    <string name="upgrade_unlimited_drive_sharing_security">Дадатковая бяспека пры абагульванні</string>
+    <string name="upgrade_unlimited_drive_version_history">Гісторыя версій</string>
+    <string name="upgrade_unlimited_pass_manager">Зашыфраваны менеджар пароляў</string>
+    <string name="upgrade_unlimited_pass_logins_aliases">Неабмежаваная колькасць запісаў уваходу і псеўданімаў hide-my-email</string>
+    <plurals name="upgrade_unlimited_pass_vaults">
+        <item quantity="one">%1$d сховішча</item>
+        <item quantity="few">%1$d сховішчы</item>
+        <item quantity="many">%1$d сховішчаў</item>
+        <item quantity="other">%1$d сховішчаў</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_logins">Неабмежаваная колькасць запісаў уваходу</string>
+    <string name="upgrade_unlimited_pass_aliases">Неабмежаваная колькасць псеўданімаў hide-my-email</string>
+    <string name="upgrade_unlimited_pass_credit_cards">Неабмежаваная колькасць крэдытных картак</string>
+    <string name="upgrade_unlimited_pass_devices">Неабмежаваная колькасць прылад</string>
+    <plurals name="upgrade_unlimited_pass_users">
+        <item quantity="one">Абагуленне з %1$d іншым карыстальнікам</item>
+        <item quantity="few">Абагуленне з %1$d іншымі карыстальнікамі</item>
+        <item quantity="many">Абагуленне з %1$d іншымі карыстальнікамі</item>
+        <item quantity="other">Абагуленне з %1$d іншымі карыстальнікамі</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_2fa_auth">Інтэграваная аўтэнтыфікацыя 2ФА</string>
+    <string name="upgrade_not_now_button">Не цяпер</string>
+    <!-- Content description for plan selection list.
+         Only used by accessibility services.
+
+         Example:
+         When the plan selection control is focused, and the first plan name is "VPN Plus"
+         TalkBack will read:
+         "VPN Plus, 1 of 2, in list Upgrade options" -->
+    <string name="upgrade_plan_selection_content_description">Параметры паляпшэння</string>
+    <!-- Text in a "badge" element that has a rounded border and represents the Plus VPN plan.
+         May be used as a table header or like an icon. -->
+    <string name="badge_plan_plus">Plus</string>
+    <!-- Content description prefix for value in the benefits table row for the free plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_plus">Тарыфны план Plus</string>
+    <!-- Content description prefix for value in the benefits table row for the plus plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_free">Тарыфны план Free</string>
+    <string name="upsell_panel_content_description_yes">Так</string>
+    <string name="upsell_panel_content_description_no">Не</string>
+    <string name="upsell_panel_table_header_plan_free">Free</string>
+    <string name="upsell_panel_general_benefit_block_ads">Блакіраваць рэкламу і праграмы сачэння</string>
+    <string name="upsell_panel_general_benefit_countries">Даступныя краіны</string>
+    <!-- %1$s - number of countries rounded to full tens. Example: 120+, 130+, 140+ -->
+    <string name="upsell_panel_general_benefit_countries_rounded">%1$d+</string>
+    <string name="upsell_panel_general_benefit_devices">Абароненыя прылады</string>
+    <string name="upsell_panel_general_benefit_location">Выбірайце сваё месцазнаходжанне</string>
+    <string name="upsell_panel_general_benefit_server">Выберыце свой сервер</string>
+    <string name="upsell_panel_general_benefit_shows">Глядзіце свае шоу з любой краіны</string>
+    <string name="upsell_panel_general_benefit_speed">Хуткасць сервера</string>
+    <string name="upsell_panel_general_benefit_speed_standard">Стандартная</string>
+    <string name="upsell_panel_general_benefit_speed_highest">Найвышэйшая</string>
+    <string name="upsell_panel_adv_customization_title">Дакладна наладзьце сваё падключэнне</string>
+    <string name="upsell_panel_adv_customization_description">Дазвольце падключэнні па LAN, задайце карыстальніцкі DNS і выберыце свой тып NAT. Пашыраныя налады даступны з тарыфным планам Plus.</string>
+    <string name="upsell_panel_adv_customization_benefit_lan">Атрымайце доступ да прынтара і іншых хатніх прылад</string>
+    <string name="upsell_panel_adv_customization_benefit_dns">Выкарыстоўвайце свой уласны сэрвіс DNS</string>
+    <string name="upsell_panel_adv_customization_benefit_gaming">Лепшыя падключэнні для гульняў</string>
+    <!--
+        %1$s - country name in nominative
+
+        Warning country names are inserted in the nominative case.
+        For inflicted languages translate the following phrase instead:
+        Get VPN Plus to access: %1$s
+        -->
+    <string name="upsell_panel_country_title">Разблакіруйце краіну %1$s з дапамогай VPN Plus</string>
+    <string name="upsell_panel_countries_title">Разблакіруйце ўсе краіны з дапамогай VPN Plus</string>
+    <string name="upsell_panel_country_benefit_speed">Высакахуткасныя серверы</string>
+    <string name="upsell_panel_country_benefit_shows">Глядзіце шоу, якія даступны толькі за мяжой</string>
+    <string name="upsell_panel_devices_title">Абараніце кожную прыладу, якой валодаеце</string>
+    <string name="upsell_panel_devices_description">Вашага смартфона, ноўтбука, тэлевізара і ўсяго таго, што знаходзіцца паміж імі.</string>
+    <string name="upsell_panel_netshield_title">Прагляд без перапыненняў</string>
+    <string name="upsell_panel_netshield_benefit_ads">Рэклама заблакіравана, калі вы праглядаеце старонкі</string>
+    <string name="upsell_panel_netshield_benefit_trackers">Забараніце праграмам сачэння назіраць за вамі</string>
+    <string name="upsell_panel_netshield_benefit_malware">Абарона ад шкодных праграм і фішынгу</string>
+    <string name="upsell_panel_netshield_benefit_load_speed">Старонкі загружаюцца хутчэй </string>
+    <string name="upsell_panel_onboarding_title">Атрымайце больш з VPN Plus</string>
+    <string name="upsell_panel_p2p_title">Спампоўванні на поўнай хуткасці</string>
+    <string name="upsell_panel_p2p_description">Серверы, якія створаны для абагульвання файлаў, з вашым паўсядзённым кліентам торэнт.</string>
+    <string name="upsell_panel_p2p_benefit_p2p">Абагульванне файлаў P2P</string>
+    <string name="upsell_panel_profiles_title">Трансляцыі, гульні, праца: свой профіль пад кожную дзейнасць</string>
+    <string name="upsell_panel_profiles_description">Наладзьце свае падключэнні пад свае патрабаванні, а потым падключайцеся да любога з іх адным дотыкам.</string>
+    <string name="upsell_panel_profiles_benefit_profiles">Захаваныя профілі</string>
+    <string name="upsell_panel_profiles_benefit_profiles_unlimited">Неабмежавана</string>
+    <string name="upsell_panel_secure_core_title">Два слаі шыфравання паміж вамі і інтэрнэтам</string>
+    <string name="upsell_panel_secure_core_description">Маршрутызуецца праз сервер Proton у Швейцарыі, Ісландыі або Швецыі да таго, як вы выберыце краіну.</string>
+    <string name="upsell_panel_secure_core_benefit_secure_core">Secure Core</string>
+    <string name="upsell_panel_speed_title">Трансляцыі, гульні і хутчэйшае спампоўванне</string>
+    <string name="upsell_panel_speed_benefit_servers">Высакахуткасныя серверы</string>
+    <string name="upsell_panel_speed_benefit_gaming">Час адказу пры гульні</string>
+    <string name="upsell_panel_speed_benefit_gaming_slow">Павольна</string>
+    <string name="upsell_panel_speed_benefit_gaming_fast">Хутка</string>
+    <string name="upsell_panel_speed_benefit_video">Відэатрансляцыі без буферызацыі</string>
+    <string name="upsell_panel_speed_benefit_p2p">Падтрымліваюцца спампоўванні P2P</string>
+    <string name="upsell_panel_split_tunneling_title">Выберыце, якія праграмы будуць выкарыстоўваць VPN</string>
+    <string name="upsell_panel_split_tunneling_description">Ваш браўзер праз VPN, а ваша банкаўская праграма ў абыход яго. Вы можаце размеркаваць усе свае праграмы.</string>
+    <string name="upsell_panel_split_tunneling_benefit_split">Split Tunneling</string>
+    <string name="upsell_panel_streaming_title">Глядзіце свае абраныя сэрвісы з трансляцыямі</string>
+    <string name="upsell_panel_streaming_benefit_shows">Глядзіце шоу з любой краіны</string>
+    <!-- The asterisk points to upsell_panel_streaming_footer -->
+    <string name="upsell_panel_streaming_benefit_platforms">Усе асноўныя платформы трансляцый падтрымліваюць *</string>
+    <string name="upsell_panel_streaming_benefit_hd">Трансляцыі ў высокай якасці без буферызацыі</string>
+    <string name="upsell_panel_streaming_benefit_devices">Прылады, падключаныя адначасова</string>
+    <string name="upsell_panel_streaming_footer">* Патрабуецца падпіска на платформу трансляцыі.</string>
+    <string name="upsell_panel_streaming_block_title">Палепшыць, каб абыходзіць блакіроўкі VPN</string>
+    <string name="upsell_panel_streaming_block_description">Серверы VPN Plus дазволяць вам атрымліваць асалоду ад абраных фільмаў і тэлеперадач па ўсім свеце.</string>
+    <string name="upsell_panel_tor_title">Сайты onion без неабходнасці выкарыстання браўзера Tor</string>
+    <string name="upsell_panel_tor_description">Атрымлівайце доступ да сайтаў .onion у браўзеры, якім вы карыстаецеся штодзень.</string>
+    <string name="upsell_panel_tor_benefit_tor">Tor праз VPN</string>
+    <string name="upsell_card_countries_title">Пакрыццё па ўсім свеце</string>
+    <!-- Parameters:
+        %1$d - number of servers rounded up to 100s (e.g. 600, 1200)
+        %2$s - replaced with "upgrade_plus_countries"
+
+        Example:
+        1700+ server locations in 63 countries -->
+    <string name="upsell_card_countries_description">%1$d+ сервераў, якія знаходзяцца ў %2$s</string>
+    <string name="upsell_card_customization_title">І многае іншае...</string>
+    <string name="upsell_card_customization_description">Разблакіруйце яшчэ больш функцый прадукцыйнасці і прыватнасці</string>
+    <plurals name="upsell_card_devices_title">
+        <item quantity="one">Абараняйце да %1$d прылады</item>
+        <item quantity="few">Абараняйце да %1$d прылад</item>
+        <item quantity="many">Абараняйце да %1$d прылад</item>
+        <item quantity="other">Абараняйце да %1$d прылад</item>
+    </plurals>
+    <string name="upsell_card_devices_description">Бяспека і прыватнасць на ўсіх вашых прыладах</string>
+    <string name="upsell_card_netshield_title">NetShield</string>
+    <string name="upsell_card_netshield_description">Блакіроўка рэкламы, шкодных праграм і праграм сачэння</string>
+    <string name="upsell_card_secure_core_title">Secure Core</string>
+    <string name="upsell_card_secure_core_description">Дадайце яшчэ адзін слой шыфравання ў сваё падключэнне па VPN</string>
+    <string name="upsell_card_p2p_title">Падтрымка P2P</string>
+    <string name="upsell_card_p2p_description">Спампоўвайце файлы праз BitTorrent і іншыя пратаколы абагульвання файлаў</string>
+    <string name="upsell_card_profiles_title">Профілі</string>
+    <string name="upsell_card_profiles_description">Стварайце карыстальніцкае падключэнне па VPN</string>
+    <string name="upsell_card_speed_title">Хуткі прагляд</string>
+    <!-- Parameters:
+        %1$d - max server speed in Gbps (preserve the non-breaking space between the number and Gbps).
+        Example:
+        Browse at even higher speeds (up to 10&160;Gbps) -->
+    <string name="upsell_card_speed_description">Карыстайцеся інтэрнэтам на самай высокай хуткасці (да %1$d Гбіт/с)</string>
+    <string name="upsell_card_split_tunneling_title">Split Tunneling</string>
+    <string name="upsell_card_split_tunneling_description">Праглядайце з двух месцазнаходжанняў адначасова</string>
+    <string name="upsell_card_streaming_title">Трансляцыя</string>
+    <string name="upsell_card_streaming_description">Глядзіце свае абраныя фільмы і тэлеперадачы</string>
+    <string name="upsell_card_tor_title">Tor праз VPN</string>
+    <string name="upsell_card_tor_description">Выкарыстоўвайце сетку Tor праз ваша падключэнне да VPN для дадатковай прыватнасці</string>
+    <string name="upsell_tv_all_countries_title">Доступ да ўсіх краін з Plus</string>
+    <!-- Format for upselling countries on TV".
+        %1$s - replaced with upgrade_plus_servers_new plurals key (e.g. 1 secure server or 10 secure servers)
+        %2$s - replaced with upgrade_plus_countries plurals key (e.g. 1 country or 10 countries)
+
+        Example: Unlock 16821 secure servers in 127 countries. Go to the Proton VPN website to upgrade your plan.
+    -->
+    <string name="upsell_tv_all_countries_description">Разблакіруйце %1$s у %2$s.</string>
+    <string name="upsell_tv_netshield_title">Атрымлівайце асалоду ад прагляду старонак у інтэрнэце без рэкламы з дапамогай Plus</string>
+    <string name="upsell_tv_netshield_description"><![CDATA[Блакіруйце рэкламу, праграмы сачэння і шкодныя праграмы з дапамогай <b>NetShield</b>.]]></string>
+    <string name="upsell_tv_split_tunneling_title">Атрымлівайце лепшае абодвух светаў з Plus</string>
+    <string name="upsell_tv_split_tunneling_description"><![CDATA[З функцыяй <b>Split Tunneling</b> вы зможаце дзяліць свой трафік на той, які будзе праходзіць праз тунэлі VPN і на той, які будзе абыходзіцца без іх.]]></string>
+    <string name="upsell_tv_subscription_expired_title">Падпіска пратэрмінавана</string>
+    <string name="upsell_tv_subscription_expired_description">Палепшыце, каб зноў атрымаць доступ да сервераў і іншых функцый падпіскі Plus.</string>
+    <string name="upsell_tv_customization_title">Атрымайце пашыраныя налады VPN з Plus</string>
+    <string name="upsell_tv_customization_description"><![CDATA[Разблакіруйце <b>падключэнні па LAN</b>, <b>карыстальніцкія DNS</b> і дадатковыя функцыі VPN.]]></string>
+    <string name="upsell_tv_fallback_description">Перайдзіце на вэб-сайт Proton VPN, каб палепшыць свой тарыфны план.</string>
+    <!-- Format for price per period of time.
+        %1$s - replaced with price and currency (e.g. "$100")
+        %2$s - replaced with time period, one of payment_price_per_ (e.g. "month", "week")
+
+        Examples:
+        50 PLN /month
+        $100 /year
+    -->
+    <string name="payment_price_with_period">%1$s /%2$s</string>
+    <string name="payment_price_per_day">дзень</string>
+    <string name="payment_price_per_week">тыдзень</string>
+    <string name="payment_price_per_month">месяц</string>
+    <string name="payment_price_per_year">год</string>
+    <plurals name="payment_price_cycle_label_day">
+        <item quantity="one">%1$d дзень</item>
+        <item quantity="few">%1$d дні</item>
+        <item quantity="many">%1$d дзён</item>
+        <item quantity="other">%1$d дзён</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_week">
+        <item quantity="one">%1$d тыдзень</item>
+        <item quantity="few">%1$d тыдні</item>
+        <item quantity="many">%1$d тыдняў</item>
+        <item quantity="other">%1$d тыдняў</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_month">
+        <item quantity="one">%1$d месяц</item>
+        <item quantity="few">%1$d месяцы</item>
+        <item quantity="many">%1$d месяцаў</item>
+        <item quantity="other">%1$d месяцаў</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_year">
+        <item quantity="one">%1$d год</item>
+        <item quantity="few">%1$d гады</item>
+        <item quantity="many">%1$d гадоў</item>
+        <item quantity="other">%1$d гадоў</item>
+    </plurals>
+    <string name="payment_select_your_plan">Выберыце тарыфны план</string>
+    <!-- Label on a button for purchasing a subscription.
+         Parameter: %1$s - plan name
+         Plan names are not translated.
+
+         Example: "Get VPN Plus", "Get Proton Unlimited". -->
+    <string name="payment_button_get_plan">Атрымаць %1$s</string>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_discount_renewal_price_message_daily">
+        <item quantity="one">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s у дзень</item>
+        <item quantity="few">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d дні</item>
+        <item quantity="many">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d дзён</item>
+        <item quantity="other">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d дзён</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_discount_renewal_price_message_weekly">
+        <item quantity="one">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s у тыдзень</item>
+        <item quantity="few">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d тыдні</item>
+        <item quantity="many">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d тыдняў</item>
+        <item quantity="other">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d тыдняў</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_discount_renewal_price_message_monthly">
+        <item quantity="one">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s у месяц</item>
+        <item quantity="few">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d месяцы</item>
+        <item quantity="many">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d месяцаў</item>
+        <item quantity="other">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d месяцаў</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_discount_renewal_price_message_yearly">
+        <item quantity="one">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s у год</item>
+        <item quantity="few">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d гады</item>
+        <item quantity="many">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d гадоў</item>
+        <item quantity="other">Спецыяльная прапанова. Аўтаматычнае падаўжэнне за %1$s кожныя %2$d гадоў</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_renewal_price_message_daily">
+        <item quantity="one">Падпіска будзе аўтаматычна падаўжацца за %1$s у дзень</item>
+        <item quantity="few">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d дні</item>
+        <item quantity="many">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d дзён</item>
+        <item quantity="other">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d дзён</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_renewal_price_message_weekly">
+        <item quantity="one">Падпіска будзе аўтаматычна падаўжацца за %1$s у тыдзень</item>
+        <item quantity="few">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d тыдні</item>
+        <item quantity="many">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d тыдняў</item>
+        <item quantity="other">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d тыдняў</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_renewal_price_message_monthly">
+        <item quantity="one">Падпіска будзе аўтаматычна падаўжацца за %1$s у месяц</item>
+        <item quantity="few">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d месяцы</item>
+        <item quantity="many">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d месяцаў</item>
+        <item quantity="other">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d месяцаў</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_renewal_price_message_yearly">
+        <item quantity="one">Падпіска будзе аўтаматычна падаўжацца за %1$s у год</item>
+        <item quantity="few">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d гады</item>
+        <item quantity="many">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d гадоў</item>
+        <item quantity="other">Падпіска будзе аўтаматычна падаўжацца за %1$s кожныя %2$d гадоў</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_daily">
+        <item quantity="one">%1$s у дзень</item>
+        <item quantity="few">%1$s кожныя %2$d дні</item>
+        <item quantity="many">%1$s кожныя %2$d дзён</item>
+        <item quantity="other">%1$s кожныя %2$d дзён</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_weekly">
+        <item quantity="one">%1$s у тыдзень</item>
+        <item quantity="few">%1$s кожныя %2$d тыдні</item>
+        <item quantity="many">%1$s кожныя %2$d тыдняў</item>
+        <item quantity="other">%1$s кожныя %2$d тыдняў</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_monthly">
+        <item quantity="one">%1$s у месяц</item>
+        <item quantity="few">%1$s кожныя %2$d месяцы</item>
+        <item quantity="many">%1$s кожныя %2$d месяцаў</item>
+        <item quantity="other">%1$s кожныя %2$d месяцаў</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_yearly">
+        <item quantity="one">%1$s у год</item>
+        <item quantity="few">%1$s кожныя %2$d гады</item>
+        <item quantity="many">%1$s кожныя %2$d гадоў</item>
+        <item quantity="other">%1$s кожныя %2$d гадоў</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_for_days">
+        <item quantity="one">за першы дзень</item>
+        <item quantity="few">за першыя %1$d дні</item>
+        <item quantity="many">за першыя %1$d дзён</item>
+        <item quantity="other">за першыя %1$d дзён</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_for_weeks">
+        <item quantity="one">за першы тыдзень</item>
+        <item quantity="few">за першыя %1$d тыдні</item>
+        <item quantity="many">за першыя %1$d тыдняў</item>
+        <item quantity="other">за першыя %1$d тыдняў</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_for_months">
+        <item quantity="one">за першы месяц</item>
+        <item quantity="few">за першыя %1$d месяцы</item>
+        <item quantity="many">за першыя %1$d месяцаў</item>
+        <item quantity="other">за першыя %1$d месяцаў</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_discount_for_years">
+        <item quantity="one">за першы год</item>
+        <item quantity="few">за першыя %1$d гады</item>
+        <item quantity="many">за першыя %1$d гадоў</item>
+        <item quantity="other">за першыя %1$d гадоў</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_rest_daily">
+        <item quantity="one">потым аўтаматычнае падаўжэнне за %1$s у дзень</item>
+        <item quantity="few">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d дні</item>
+        <item quantity="many">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d дзён</item>
+        <item quantity="other">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d дзён</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_rest_weekly">
+        <item quantity="one">потым аўтаматычнае падаўжэнне за %1$s у тыдзень</item>
+        <item quantity="few">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d тыдні</item>
+        <item quantity="many">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d тыдняў</item>
+        <item quantity="other">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d тыдняў</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_rest_monthly">
+        <item quantity="one">потым аўтаматычнае падаўжэнне за %1$s у месяц</item>
+        <item quantity="few">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d месяцы</item>
+        <item quantity="many">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d месяцаў</item>
+        <item quantity="other">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d месяцаў</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_rest_yearly">
+        <item quantity="one">потым аўтаматычнае падаўжэнне за %1$s у год</item>
+        <item quantity="few">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d гады</item>
+        <item quantity="many">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d гадоў</item>
+        <item quantity="other">потым аўтаматычнае падаўжэнне за %1$s кожныя %2$d гадоў</item>
+    </plurals>
+    <!-- Explains renewal cycle when first there's a discount price for several periods
+     (e.g. 2 months) and then the subscription renews at full price.
+     Periods (days, months etc) are never mixed between the messages, the whole message uses one
+     unit.
+
+     Parameters:
+      %1$s - one of payment_multi_renewal_discount_*
+      %2$s - one of payment_multi_renewal_discount_for_*
+      %3$s - one of payment_multi_renewal_rest_*
+
+     Examples:
+      "$2.99/month for the first 2 months, then auto renews at $3.99/month"
+      "$19.99/year for the first 3 years, then auto renews at $24.99/year"
+      "$3.99 every 2 months for the first 4 months, then auto renews at 5.99 every 2 months"
+    -->
+    <string name="payment_multi_renewal_template">%1$s %2$s %3$s</string>
+    <string name="smart_routing_title">Smart Routing</string>
+    <string name="smart_routing_description">Гэта тэхналогія дазваляе Proton VPN забяспечваць больш высокую хуткасць і бяспеку ў краінах, дзе ёсць праблемы з прыватнасцю.</string>
+    <string name="tor_title">Tor</string>
+    <string name="server_load_title">Загружанасць сервера</string>
+    <string name="activity_information_learn_more">Даведацца больш</string>
+    <string name="server_load_low">Нізкая</string>
+    <string name="server_load_medium">Сярэдняя</string>
+    <string name="server_load_high">Высокая</string>
+    <!-- Override Human verification links from core -->
+    <string name="onboarding_welcome_title">Вітаем у Proton VPN</string>
+    <string name="onboarding_welcome_description">Прыватны прагляд, доступ да заблакіраванага змесціва і задавальненне ад лічбавай свабоды.</string>
+    <string name="onboarding_welcome_action">Пачаць</string>
+    <string name="upgrade_success_get_started_button">Пачаць</string>
+    <string name="dynamic_report_suggestion_didnt_work">Не працуе?</string>
+    <string name="dynamic_report_contact_us">Звязацца з намі</string>
+    <string name="dynamic_report_tips_description">Гэтыя парады дапамогуць хутчэй вырашыць вашу праблему.</string>
+    <string name="dynamic_report_tips_title">Хуткія выпраўленні</string>
+    <string name="dynamic_report_logs_title">Адправіць журналы з памылкамі</string>
+    <string name="dynamic_report_logs_tooltip">Журналы памылак паказваюць, што пайшло не так і якія дзеянні прывялі да праблемы. Дадзеныя файлы выкарыстоўвацца выключна для таго, каб дапамагчы нашым інжынерам выправіць памылкі ў праграме.</string>
+    <string name="dynamic_report_error_title">Не ўдалося адправіць вашу справаздачу.</string>
+    <string name="dynamic_report_completion_error_description_generic">Не ўдалося адправіць вашу справаздачу. Паўтарыце спробу.</string>
+    <string name="dynamic_report_completion_error_description_no_internet">Не ўдалося адправіць вашу справаздачу. Праверце сваё падключэнне і паўтарыце спробу.</string>
+    <string name="dynamic_report_completion_error_description_timeout">Не ўдалося адправіць вашу справаздачу. Час чакання падключэння завяршыўся. Паўтарыце спробу.</string>
+    <string name="dynamic_report_completion_success_title">Дзякуй за водгук. Вы атрымаеце адказ у бліжэйшы час.</string>
+    <string name="dynamic_report_success_title">Дзякуй за ваш водгук</string>
+    <string name="dynamic_report_success_description">Вы атрымаеце зваротную сувязь у самы бліжэйшы час.</string>
+    <string name="dynamic_report_field_mandatory">Гэта абавязковае поле</string>
+    <string name="dynamic_report_logs_description">Журнал - гэта тып файла. Ён паказвае нам дзеянні, якія былі зроблены вамі і прывялі да памылкі. Мы заўсёды выкарыстоўваем яго толькі для таго, каб дапамагчы нашым інжынерам выправіць памылкі.</string>
+    <string name="dynamic_report_logs_missing">Журнал з памылкамі дазваляе нам зразумець самую сутнасць вашай праблемы. Калі вы не ўключыце яго, то ў нас не будзе магчымасці даследаваць праблему цалкам.</string>
+    <string name="dynamic_report_step1">Крок 1 з 3</string>
+    <string name="dynamic_report_step2">Крок 2 з 3</string>
+    <string name="dynamic_report_step3">Крок 3 з 3</string>
+    <string name="dynamic_report_your_issue_headline">У чым ваша праблема?</string>
+    <string name="update_screen_title">Абнавіць Proton VPN</string>
+    <string name="update_screen_description">Хутчэй за ўсё ў вас з\'явяцца праблемы са старымі версіямі Proton VPN.</string>
+    <string name="update_banner_description_settings">Даступна новая версія праграмы</string>
+    <string name="update_banner_warning_vpn_connected_title">VPN ненадоўга адключыцца</string>
+    <string name="update_banner_warning_vpn_connected_message">Праграма патрабуе перазапуск, каб завяршыць абнаўленне. Пасля гэтага вы будзеце аўтаматычна перападключаны.</string>
+    <string name="dialog_create_account_title">Стварыце ўліковы запіс, каб працягнуць</string>
+    <string name="dialog_create_account_action_create">Стварыць уліковы запіс</string>
+    <string name="dialog_create_account_action_signin">Увайсці</string>
+    <string name="server_search_menu_title">Пошук</string>
+    <string name="search_empty_result_subtitle">Паспрабуйце іншае ключавое слова</string>
+    <string name="search_empty_result_title">Нічога не знойдзена</string>
+    <!-- Content description for an icon button that clears search query in the input field. -->
+    <string name="search_clear_query_content_description">Ачысціць</string>
+    <!-- Content description for an icon button that clears text in an input field. -->
+    <string name="clear_text_field_content_description">Ачысціць</string>
+    <!-- Example: Want to connect to Italy? -->
+    <string name="upgrade_country_title">Хочаце падключыцца да пэўнай краіны?</string>
+    <string name="upgrade_country_message"><![CDATA[Атрымайце доступ <b>да выбару краін</b> з VPN Plus.]]></string>
+    <string name="free_connections_info_message">Proton Free аўтаматычна падключае вас да самага хуткага з даступных сервераў. Звычайна гэта самы блізкі сервер адносна вашага месцазнаходжання.</string>
+    <string name="free_connections_info_server_locations">Размяшчэнні бясплатных сервераў (%1$d)</string>
+    <string name="free_connections_info_banner_text">Доступ да ўсіх краін з VPN Plus</string>
+    <string name="free_connection_info_title">Бясплатныя падключэнні</string>
+    <string name="search_upsell_banner_title">Прагляд трансляцый з любой краіны ў свеце.</string>
+    <!-- Example: Unlock geoblocked content from 10 countries with VPN Plus. -->
+    <plurals name="search_upsell_banner_message">
+        <item quantity="one">Доступ да змесціва, якое заблакіравана па геаграфічнай прыкмеце ў %1$d краіне з VPN Plus.</item>
+        <item quantity="few">Доступ да змесціва, якое заблакіравана па геаграфічнай прыкмеце ў %1$d краінах з VPN Plus.</item>
+        <item quantity="many">Доступ да змесціва, якое заблакіравана па геаграфічнай прыкмеце ў %1$d краінах з VPN Plus.</item>
+        <item quantity="other">Доступ да змесціва, якое заблакіравана па геаграфічнай прыкмеце ў %1$d краінах з VPN Plus.</item>
+    </plurals>
+    <string name="select_default_connection">Выберыце ваша прадвызначанае падключэнне</string>
+    <string name="settings_default_connection_title">Прадвызначанае падключэнне</string>
+    <string name="fastest_country_description">Лепшыя серверы на падставе вашага месцазнаходжання</string>
+    <string name="settings_connection_preferences_title">Параметры падключэння</string>
+    <string name="settings_connection_preferences_snackbar_message_excluded_location_removed">Элемент выдалены</string>
+    <string name="settings_excluded_locations_title">Выключаныя месцазнаходжанні</string>
+    <string name="settings_excluded_locations_description">Выбраныя месцазнаходжанні ніколі не будуць выкарыстоўвацца пры падключэнні праз профіль \"Найхутчэйшыя\".</string>
+    <string name="settings_excluded_locations_unavailable">Няма даступных месцазнаходжанняў</string>
+    <string name="settings_excluded_locations_selection_hint">Выбраць…</string>
+    <string name="settings_excluded_locations_accessibility_label_deletion">Выдаліць з выключаных месцазнаходжанняў</string>
+    <string name="settings_excluded_locations_accessibility_label_city">Горад</string>
+    <string name="settings_excluded_locations_accessibility_label_country">Краіна</string>
+    <string name="settings_excluded_locations_accessibility_label_state">Штат</string>
+    <string name="settings_last_connection_title">Апошняе падключэнне</string>
+    <string name="settings_last_connection_description">Ваша апошняе выкарыстанае падключэнне</string>
+    <string name="settings_change_icon_title">Значок праграмы</string>
+    <string name="settings_change_icon_details">Наладзьце, як праграма Proton VPN з\'яўляецца на вашай прыладзе. Навошта?</string>
+    <string name="settings_change_icon_confirmation_title">Змяніць значок праграмы?</string>
+    <string name="settings_change_icon_confirmation_details">Гэта прывядзе да закрыцця праграмы Proton VPN. Проста націсніце на новы значок праграмы, каб перазапусціць Proton VPN.</string>
+    <string name="settings_change_icon_header_protonvpn">Proton VPN</string>
+    <string name="settings_change_icon_header_discreet">Непрыкметны значок праграмы</string>
+    <string name="settings_widget_title">Віджэт</string>
+    <string name="settings_widget_selection_title">Паспрабуйце віджэт Proton VPN</string>
+    <string name="settings_widget_selection_description">Сачыце за сваім статусам падключэння і атрымлівайце доступ да абраных падключэнняў па VPN з галоўнага экрана.</string>
+    <!-- Placeholder is for non-translatable app_name-->
+    <string name="setting_widget_selection_additional_description">Націсніце і ўтрымлівайце ў любым месцы на галоўным экране, а потым проста выберыце %1$s з меню віджэтаў і дадайце яго.</string>
+    <string name="settings_widget_selection_button_title">Дадаць віджэт</string>
+    <string name="setting_widget_try_title">Паспрабуйце віджэт Proton VPN</string>
+    <!-- Content description used by accessibility services for a button for dismissing (hiding)
+         a notification banner (usually used for special offers). -->
+    <string name="notification_banner_dismiss_accessibility_label">Адхіліць банер</string>
+    <!-- Time left in a countdown, it shows two units of time, e.g. days and hours, hours and minutes.
+         %1$s - larger unit of time, one of: time_left_days, time_left_hours, time_left_minutes
+         %2$s - smaller unit of time, one of: time_left_hours, time_left_minutes, time_left_seconds
+
+         Examples:
+         3 days 11 hours left
+         1 hour 32 minutes left
+         0 minutes 50 seconds left
+     -->
+    <string name="offer_time_left">Засталося: %1$s %2$s</string>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_seconds">
+        <item quantity="one">%1$d секунда</item>
+        <item quantity="few">%1$d секунды</item>
+        <item quantity="many">%1$d секунд</item>
+        <item quantity="other">%1$d секунд</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_minutes">
+        <item quantity="one">%1$d хвіліна</item>
+        <item quantity="few">%1$d хвіліны</item>
+        <item quantity="many">%1$d хвілін</item>
+        <item quantity="other">%1$d хвілін</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 hours 5 minutes left -->
+    <plurals name="time_left_hours">
+        <item quantity="one">%1$d гадзіна</item>
+        <item quantity="few">%1$d гадзіны</item>
+        <item quantity="many">%1$d гадзін</item>
+        <item quantity="other">%1$d гадзін</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 days 5 hours left -->
+    <plurals name="time_left_days">
+        <item quantity="one">%1$d дзень</item>
+        <item quantity="few">%1$d дні</item>
+        <item quantity="many">%1$d дзён</item>
+        <item quantity="other">%1$d дзён</item>
+    </plurals>
+    <string name="server_change_max_reached">На цяперашні момант вы дасягнулі максімальнай колькасці змяненняў для сервераў Free.</string>
+    <string name="server_change_upsell">Змяняйце серверы без абмежаванняў з VPN Plus</string>
+    <string name="server_change_button_title">Змяніць сервер</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services.
+
+        %1$s - replaced with "time_left_minutes"
+        %2$s - replaced with "time_left_seconds"
+        Example:
+        Available in 1 minute 23 seconds.
+      -->
+    <string name="server_change_button_time_left_content_description">Даступна ў %1$s %2$s</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services and only if time left is less than 1 minute.
+
+        %1$s - replaced with "time_left_seconds"
+        Example:
+        Available in 23 seconds.
+      -->
+    <string name="server_change_button_time_left_seconds_content_description">Даступна ў %1$s</string>
+    <string name="server_change_progress_finished_contend_description">Даступна зараз</string>
+    <string name="not_wanted_country_title">Не тая краіна, якую хацелі?</string>
+    <string name="not_wanted_country_description">Палепшыце свой тарыфны план, каб выбіраць любы сервер</string>
+    <string name="whats_new_title">Што новага</string>
+    <string name="whats_new_profiles_title">Профілі зноў сталі даступны</string>
+    <string name="whats_new_profiles_description">Стварайце і захоўвайце карыстальніцкія падключэнні з выбраным месцазнаходжаннем, серверам і пратаколам.</string>
+    <string name="whats_new_widget_title">Уводзіны ў раздзел \"Віджэты\"</string>
+    <string name="whats_new_widget_description">Цяпер вы можаце праглядаць і кіраваць сваім VPN не пакідаючы галоўны экран.</string>
+    <string name="whats_new_add_widget_button">Дадаць віджэт</string>
+    <string name="welcome_plus_title">Вітаем у VPN Plus</string>
+    <string name="welcome_plus_description">Атрымлівайце асалоду ад дадатковых функцый прыватнасці, палепшанай прадукцыйнасці і больш гнуткага наладжвання вашага падключэння да VPN.</string>
+    <string name="welcome_unlimited_title">Вітаем у Proton Unlimited</string>
+    <string name="welcome_unlimited_description">Вы разблакіравалі ўсе прэміяльныя функцыі праграм Proton VPN, Mail, Calendar, Drive, Pass і Wallet.</string>
+    <string name="welcome_generic_title">Віншуем</string>
+    <string name="welcome_generic_description">Вы палепшылі сваю падпіску. Атрымлівайце асалоду ад пашыраных функцый прыватнасці і новага ўзроўню прадукцыйнасці.</string>
+    <!-- Text added to button labels that open links in a browser (as opposed to performing actions
+         within the app). Only used by accessibility services like screen readers.
+         Example:
+         a button with "Learn more" label and this suffix will be read by a screen reader as:
+         "Learn more, external link button"
+     -->
+    <string name="accessibility_external_link_suffix">знешняя спасылка</string>
+    <string name="no_logs_banner_title">Сертыфікаваны VPN без журналаў</string>
+    <string name="no_logs_banner_description">Ваша актыўнасць VPN абаронена швейцарскімі законамі аб прыватнасці. Нашы праграмныя прадукты ніколі не адсочваюць вашу актыўнасць у інтэрнэце, а звесткі не абагульваюцца са староннімі асобамі.</string>
+    <!-- tag(Redesign_2023) Bottom bar label for home screen -->
+    <string name="bottom_nav_home">Галоўная</string>
+    <string name="bottom_nav_gateways">Шлюзы</string>
+    <string name="bottom_nav_profiles">Профілі</string>
+    <!-- tag(Redesign_2023) Bottom bar label for country list screen -->
+    <string name="bottom_nav_countries">Краіны</string>
+    <!-- tag(Redesign_2023) Bottom bar label for settings screen -->
+    <string name="botton_nav_settings">Налады</string>
+    <!-- tag(Redesign_2023)
+         Text added to button labels that open a UI element (e.g. a panel).
+         Only used by accessibility services.
+         Example:
+         a button with label "connection details" and this action label will be read by a screen
+         reader as:
+         "Connection details, button. Double tap to open"
+    -->
+    <string name="accessibility_action_open">адкрыць</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that initiate a VPN connection.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland will be read by a screen reader as:
+         "Switzerland. Double tap to connect"
+        -->
+    <string name="accessibility_action_connect">падключыцца</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that redirect the user to upgrade their subscription plan.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland that requires upgrading subscription to become
+         available will be read by a screen reader as:
+         "Unavailable, Switzerland. Double tap to upgrade"
+        -->
+    <string name="accessibility_action_upgrade">палепшыць</string>
+    <!-- tag(Redesign_2023)
+     Text added to clickable elements that initiate a search.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_search">пошук</string>
+    <!--
+     Text added to clickable elements that provide negative feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_negative">не добра</string>
+    <!--
+     Text added to clickable elements that provide positive feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_positive">добра</string>
+    <!--
+     Text added to clickable elements that allows to submit either positive or negative feedback.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_submit_feedback">адправіць</string>
+    <!-- Name of action for opening a screen/panel for an item.
+         The action is listed in a menu of additional actions available to accessibility services.
+
+         Example:
+         - item in a list of countries has a custom action to open list of cities in the country
+         - item in a list of cities has a custom action to open list of servers in the city
+         -->
+    <string name="accessibility_menu_action_open">Адкрыць</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable because servers
+         are in maintenance.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are in maintenance will be read by a
+         screen reader as:
+         "in maintenance, Switzerland"
+     -->
+    <string name="accessibility_item_in_maintenance">на абслугоўванні</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are unavailable will be read by a screen
+         reader as:
+         "unavailable, Switzerland"
+     -->
+    <string name="accessibility_item_unavailable">недаступна</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when there is active connection to it.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland when there is a VPN connection to a server in this country
+         will be read by a screen reader as:
+         "Switzerland, connected"
+     -->
+    <string name="accessibility_item_connected">падключана</string>
+    <!-- tag(Redesign_2023): label indicating that a server supports peer-to-peer. -->
+    <string name="server_feature_label_p2p">P2P</string>
+    <!-- tag(Redesign_2023): label indicating that a server routes connection through the Tor network. -->
+    <string name="server_feature_label_tor">Tor</string>
+    <string name="server_feature_content_description_p2p">аднарангавы</string>
+    <string name="server_feature_content_description_tor">Tor</string>
+    <string name="server_feature_content_description_smart_routing">Smart Routing</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest country is connected to. -->
+    <string name="fastest_country">Найхутчэйшыя краіны</string>
+    <string name="fastest_country_excluding_my_country">Найхутчэйшыя краіны (за выключэннем маёй краіны)</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest free server is connected to. -->
+    <string name="fastest_free_server">Найхутчэйшы бясплатны сервер</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Iceland
+     -->
+    <string name="connection_info_secure_core_full_iceland">%1$s праз Ісландыю</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Sweden
+     -->
+    <string name="connection_info_secure_core_full_sweden">%1$s праз Швецыю</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_switzerland">%1$s праз Швейцарыю</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - exit country name in nominative case
+         %2$s - entry country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_other">%1$s праз %2$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_iceland">праз Ісландыю</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_sweden">праз Швецыю</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_switzerland">праз Швейцарыю</string>
+    <!--
+         Label describing a Secure Core connection via the fastest Secure Core country.
+         It is displayed below country name, for example:
+         Italy
+         via Secure Core
+    -->
+    <string name="connection_info_secure_core_entry_fastest">праз Secure Core</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - entry country name in nominative case
+         Example: via Switzerland
+    -->
+    <string name="connection_info_secure_core_entry_other">праз %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         three countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+
+     -->
+    <string name="connection_info_auto_selected_free_countries">Аўтаматычны выбар з [flags]</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         several countries. Used instead of connection_info_auto_selected_free_countries when there
+         are more than 3 countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+         $1%d - replaced with number of additional countries (beyond the 3 flags).
+
+         Example, if there are 5 countries to select from the text will be:
+         Auto selected from [flags]+2
+         -->
+    <string name="connection_info_auto_selected_free_countries_more">Аўтаматычны выбар з [flags]+%1$d</string>
+    <!-- tag(Redesign_2023)
+         Accessibility label describing a connection to a free server that is automatically selected
+         from one in several countries. Placed directly below fastest_free_server.
+         This text replaces connection_info_auto_selected_free_servers for screen readers.
+         $1%d - replaced with number of countries.
+         -->
+    <plurals name="connection_info_accessibility_auto_selected_free_countries">
+        <item quantity="one">Аўтаматычны выбар з %1$d краіны</item>
+        <item quantity="few">Аўтаматычны выбар з %1$d краін</item>
+        <item quantity="many">Аўтаматычны выбар з %1$d краін</item>
+        <item quantity="other">Аўтаматычны выбар з %1$d краін</item>
+    </plurals>
+    <string name="connection_info_auto_selected_free_countries_plain">Аўтаматычны выбар з бясплатных краін.</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that the connection details in the card are
+         are that of the previous connection.
+
+         Example:
+         Last connected to
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         -->
+    <string name="connection_card_label_last_connected">Апошняе падключэнне да</string>
+    <!--
+        Label above the connection card indicating text which acts as a button and leads to
+        customization bottom sheet of default connection
+     -->
+    <string name="connection_card_label_default_connection">Прадвызначанае падключэнне</string>
+    <!-- Label above the connection card when not connected and the user is on the free plan.
+         The connection card always shows "Fastest free server" (fastest_free_server) for free
+         users. -->
+    <string name="connection_card_label_free_connection">Бясплатнае падключэнне</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is being established.
+     -->
+    <string name="connection_card_label_connecting">Падключэнне да…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection to a different server is
+         being established. It\'s shown only in response to user clicking the "Change server" button.
+     -->
+    <string name="connection_card_label_changing_server">Змяненне сервера...</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is established and the user
+         is safely browsing as if they were in the location indicated in the connection card.
+
+         Example:
+         Browsing safely from
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         Germany
+     -->
+    <string name="connection_card_label_connected">Бяспечны прагляд з</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with details of the current VPN connection.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "connection details, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_connection_details">падрабязнасці падключэння</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with information about connections in free plan.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "more information about free connections, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_free_connections">больш звестак аб бясплатных падключэннях</string>
+    <string name="connection_card_label_connection_feedback">Як вы ацэньваеце сваё падключэнне?</string>
+    <!-- tag(Redesign_2023)
+         Displayed above the list of recently made connections.
+     -->
+    <string name="recents_headline">Нядаўнія</string>
+    <!-- Displayed above the list of VPN Plus features in the home screen -->
+    <string name="home_upsell_carousel_headline">Пазнаёмцеся з VPN Plus</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_pin">Замацаваць</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_unpin">Адмацаваць</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_remove">Выдаліць</string>
+    <!-- tag(Redesign_2023)
+         State description of a pinned recent item.
+         Only used by accessibility service.
+    -->
+    <string name="recent_action_accessibility_state_pinned">Замацавана</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_country_servers_in_maintenance">Усе серверы ў гэтай краіне на тэхнічным абслугоўванні</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_city_servers_in_maintenance">Усе серверы ў гэтым горадзе на тэхнічным абслугоўванні</string>
+    <!-- State means here US state, like California -->
+    <string name="message_state_servers_in_maintenance">Усе серверы ў гэтым штаце на тэхнічным абслугоўванні</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_in_maintenance">Сервер на тэхнічным абслугоўванні</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_not_available">Сервер недаступны</string>
+    <string name="message_server_location_excluded">Месцазнаходжанне сервера выключана</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog when all servers of a gateway are in maintenance -->
+    <string name="message_gateway_in_maintenance">Шлюз на тэхнічным абслугоўванні</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_sign_out">Выйсці</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_title">Налады</string>
+    <string name="gateways_title">Шлюзы</string>
+    <string name="countries_title">Краіны</string>
+    <string name="profiles_title">Профілі</string>
+    <string name="settings_autoconnect_title">Аўтаматычнае падключэнне</string>
+    <string name="settings_autoconnect_boot_description">Адразу пасля запуску вашай прылады аўтаматычна падключае вас да VPN пры выкарыстанні хуткага падключэння.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_features">Функцыі</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_netshield_title">NetShield</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_split_tunneling_title">Split Tunneling</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_kill_switch_title">Kill Switch</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_connection_category">Падключэнне</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_protocol_title">Пратакол</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_vpn_accelerator_title">VPN Accelerator</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_advanced_settings_title">Дадатковыя налады</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_general">Агульныя</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_account">Уліковы запіс</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_notifications_title">Апавяшчэнні</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_support">Падтрымка</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_help_center_title">Цэнтр падтрымкі</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_report_issue_title">Паведаміць аб праблеме</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_debug_logs_title">Журналы адладак</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_improve_proton">Удасканаліць Proton</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_fight_censorship_title">Дапамажыце нам змагацца з цэнзурай</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_rate_us_title">Ацаніць Proton VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_app_version">Версія праграмы: %1$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_third_party_licenses">Ліцэнзіі старонніх бакоў</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_title">Выйсці?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_message">Вы будзеце адключаны ад VPN.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_dont_ask_again">Больш не пытаць</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_action">Выйсці</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_action_cancel">Скасаваць</string>
+    <string name="dialog_action_change_icon">Змяніць значок</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_all">Усе</string>
+    <string name="country_filter_cities">Гарады</string>
+    <string name="country_filter_states">Штаты</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_secure_core">Secure Core</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_p2p">P2P</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_tor">Tor</string>
+    <string name="country_filter_all_list_header">Усе краіны (%1$d)</string>
+    <string name="country_filter_all_list_header_free">Краіны Plus (%1$d)</string>
+    <string name="country_filter_countries_list_header">Краіны (%1$d)</string>
+    <string name="country_filter_cities_list_header">Гарады (%1$d)</string>
+    <string name="country_filter_states_list_header">Штаты (%1$d)</string>
+    <string name="country_filter_servers_list_header">Серверы</string>
+    <string name="country_filter_secure_core_list_header">Краіны Secure Core (%1$d)</string>
+    <string name="country_filter_p2p_list_header">Краіны P2P (%1$d)</string>
+    <string name="country_filter_p2p_list_header_cities">Гарады P2P (%1$d)</string>
+    <string name="country_filter_p2p_list_header_states">Штаты P2P (%1$d)</string>
+    <string name="counrty_filter_p2p_servers_list_header">Серверы P2P</string>
+    <string name="country_filter_tor_list_header">Краіны Tor (%1$d)</string>
+    <string name="country_filter_tor_servers_list_header">Серверы Tor</string>
+    <string name="country_filter_info_label">Звесткі</string>
+    <!-- Content description for server load indicator. Used by accessibility services only.
+         Note: the trailing \'%\' sign needs to be doubled
+         (this doesn\'t apply to other percent sign characters, e.g. ٪). -->
+    <string name="country_filter_server_load_content_description">Загрузка: %1$s%%</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is connected and network is protected
+    -->
+    <string name="vpn_status_connected">Абаронена</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is not connected and network is not protected
+    -->
+    <string name="vpn_status_disabled">Вы неабаронены</string>
+    <!-- tag(Redesign_2023)
+         Text is shown while connection is being established
+    -->
+    <string name="vpn_status_connecting">Абарона вашай лічбавай ідэнтычнасці</string>
+    <!-- tag(Redesign_2023)
+         Displays Country name and IP of user if he is not connected.
+         First parameter is country, second is IP.
+         Ex: Poland · 192.1.1.1.1
+    -->
+    <string name="vpn_status_disabled_location">%1$s · %2$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_subtitle">Падрабязнасці падключэння</string>
+    <string name="connection_details_features_title">Функцыі</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_show_ip">Паказаць IP</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_back">Назад</string>
+    <string name="accessibility_close">Закрыць</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_my_ip">Мой IP</string>
+    <string name="connection_details_my_ipv4">Мой IPv4</string>
+    <string name="connection_details_my_ipv6">Мой IPv6</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_ip">VPN IP</string>
+    <string name="connection_details_vpn_ip4_6">VPN IPv4/IPv6</string>
+    <string name="connection_details_vpn_ipv4">VPN IPv4</string>
+    <string name="connection_details_vpn_ipv6">VPN IPv6</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates for how long user has been connected. Like \'Connected for 2hours\'
+    -->
+    <string name="connection_details_connected_for">Падключана</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server">Сервер</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_gateway">Шлюз</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_country">Краіна</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_city">Горад</string>
+    <!-- Label for server location "state", as a state of the USA. -->
+    <string name="connection_details_state">Штат</string>
+    <!-- Label for server smart routing, a country which is routed through. -->
+    <string name="connection_details_smart_routing">Маршрутызаваць праз</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates Server load, on the left side will be Server load, and on the right actual load values.
+    -->
+    <string name="connection_details_server_load">Загружанасць сервера</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_question">Што такое загружанасць сервера?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_description">Загружанасць сервера паказвае на колькі вычарпана яго максімальная ёмістасць.\n\nВысокая загружанасць сервера можа запаволіць ваша падключэнне.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_title">Нізкая (1-75%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_description">Звышвысокія хуткасці</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_title">Сярэдняя (76-90%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_description">Малаверагодна, што акажа ўплыў на хуткасць VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_title">Высокая (91-100%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_description">VPN можа працаваць павольней за звычайнае падключэнне</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol">Пратакол</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol_description">Пратакол задае інструкцыі, паводле якіх ваша прылада падключаецца да сервера і ажыццяўляе з ім камунікацыю.</string>
+    <!-- tag(Redesign_2023)
+         Label in front of upload speed in connection details. It is followed by upload speed number and unit.
+    -->
+    <string name="connection_details_upload">Запампавана</string>
+    <!-- tag(Redesign_2023)
+         Label in front of download speed in connection details. It is followed by download speed number and unit.
+    -->
+    <string name="connection_details_download">Спампавана</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_section_vpn_speed">Хуткасць VPN</string>
+    <string name="connection_details_section_ip">IP-адрас</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_question">Што такое хуткасць VPN?</string>
+    <string name="info_dialog_secure_core_title">Secure Core</string>
+    <string name="info_dialog_p2p_title">P2P</string>
+    <string name="info_dialog_secure_core_description">Secure Core падключае вас да прызначанага сервера праз прамежкавы сервер VPN, які мае максімальныя параметры бяспекі.\n\nНайвышэйшы ўзровень абароны можа стаць прычынай высокай затрымкі і запаволення хуткасці.</string>
+    <string name="info_secure_core_standard_header">Стандартнае падключэнне па VPN</string>
+    <string name="info_secure_core_secure_header">Падключэнне VPN Secure Core</string>
+    <string name="info_dialog_tor_description">Падключайцеся да сервера Tor, каб атрымаць доступ да схаваных сэрвісаў і сайтаў onion праз любы браўзер.</string>
+    <string name="info_dialog_button_learn_more_tor">Як атрымаць доступ да сеткі Tor</string>
+    <string name="info_dialog_button_learn_more_p2p">Як карыстацца торэнтамі з дапамогай P2P</string>
+    <string name="info_dialog_button_learn_more_ipaddress">Што такое IP-адрас?</string>
+    <string name="info_dialog_button_learn_more_streaming">Неабходна дапамога з трансляцыяй?</string>
+    <string name="info_dialog_streaming_title">Трансляцыя</string>
+    <string name="info_dialog_streaming_description">Серверы трансляцый распрацаваны для хуткага і бяспечнага ўзнаўлення тэлебачання і фільмаў.</string>
+    <string name="info_dialog_how_to_stream">Як трансліраваць:</string>
+    <!-- item 1 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_1">Перайдзіце ў налады сваёй прылады і выключыце сэрвіс вызначэння месцазнаходжання</string>
+    <!-- item 2 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_2">Перазапусціце сэрвіс трансляцыі</string>
+    <!-- item 3 in the numbered list (last item) -->
+    <string name="info_dialog_how_to_stream_step_3">Падключайцеся да любога сервера Plus і пачніце трансляцыю</string>
+    <string name="info_dialog_profiles_title">Профілі</string>
+    <string name="info_dialog_ipaddress_title">IP-адрас</string>
+    <string name="info_dialog_ipv6_traffic_title">Трафік IPv6</string>
+    <string name="info_dialog_profiles_description">Профілі - гэта карыстальніцкія падключэнні па VPN, якія вы можаце адаптаваць пад свае патрабаванні для хуткага доступу.\n\nЗадайце пажаданае месцазнаходжанне і аптымізуйце свае налады бяспекі, прадукцыйнасці, сеткавых гульняў або любых іншых сцэнарыяў.</string>
+    <string name="info_dialog_ipaddress_description">Ваш IP-адрас у VPN маскіруе ваш рэальны IP-адрас. Гэта выглядае так, быццам вы праглядаеце старонкі з месцазнаходжання да якога падключыліся праз VPN. Дзякуючы гэтаму вашу актыўнасць у інтэрнэце нельга звязаць з вашай прыладай.</string>
+    <string name="info_dialog_ipv6_traffic_description">Пратакол інтэрнэту (IP) прызначае адрасы прыладам і накіроўвае трафік інтэрнэту. IPv6 - гэта апошняя версія, якая прапануе больш адрасоў і лепшую сувязь, але яна яшчэ адносна рэдка выкарыстоўваецца.</string>
+    <string name="connection_feature_p2p_title">P2P</string>
+    <string name="connection_feature_p2p_description">Аднарангавае абагульванне файлаў уключана на гэтым серверы.</string>
+    <string name="connection_feature_tor_title">Tor</string>
+    <string name="connection_feature_tor_description">Вы можаце падключацца да сайтаў onion з вашым звычайным браўзерам.</string>
+    <string name="connection_feature_secure_core_title">Secure Core</string>
+    <string name="connection_feature_secure_core_description">Ваша актыўнасць зашыфравана двума высокаабароненымі серверамі VPN</string>
+    <string name="connection_feature_streaming_title">Трансляцыя</string>
+    <string name="connection_feature_streaming_description">Гэты сервер аптымізаваны для тэлебачання і прагляду фільмаў.</string>
+    <string name="connection_feature_smart_routing_title">Smart Routing</string>
+    <string name="connection_feature_smart_routing_description">Падключае вас да вашай краіны прызначэння праз серверы, якія фізічна знаходзяцца дзе-небудзь у іншым месцы.</string>
+    <!-- Placeholder will be replaced by a list of country names separated by commas, e.g, Connects you to your destination country through servers physically located elsewhere: Canada, Mexico, United States.  -->
+    <string name="connection_feature_smart_routing_description_with_countries">Падключае вас да вашай краіны прызначэння праз серверы, якія фізічна знаходзяцца дзе-небудзь у іншым месцы: %1$s.</string>
+    <!--
+        %1$s - physical server location country
+        %2$s - destination country
+        Warning: country names are inserted in the nominative case.
+        For INFLECTED languages, translate the following phrase instead:
+        "Your physical server location: %1$s.\nYour browsing country: %2$s"
+    -->
+    <string name="country_smart_routing_info">Фізічна серверы размяшчаюцца ў краіне %1$s, але будзе выглядаць быццам вы праглядаеце сайты з краіны %2$s</string>
+    <!--
+        Displayed next to an icon which provides more information if clicked
+    -->
+    <string name="connection_details_info_label">Звесткі</string>
+    <!-- tag(Redesign_2023)
+         Used for button title to learn more about different contexts
+    -->
+    <string name="connection_details_learn_more">Даведацца больш</string>
+    <!-- tag(Redesign_2023)
+        Used to describe IP which is not known
+    -->
+    <string name="connection_details_unknown_ip">Невядома</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_description">Гэты графік паказвае хуткасць вашай бягучай актыўнасці запампоўвання і спампоўвання. Хутчэй за ўсё падключэнне па VPN не паўплывае на вашу звычайную актыўнасць у інтэрнэце.</string>
+    <string name="speed_bytes_per_second">%1$s Б/с</string>
+    <string name="speed_kilobytes_per_second">%1$s КБ/с</string>
+    <string name="speed_megabytes_per_second">%1$s МБ/с</string>
+    <string name="speed_gigabytes_per_second">%1$s ГБ/с</string>
+    <string name="speed_terabytes_per_second">%1$s ТБ/с</string>
+    <!-- Used as graph label to indicate speed measurement. Example: Speed KB/s or Speed MB/s-->
+    <string name="speed_graph_title">Хуткасць %1$s</string>
+    <string name="bytes_per_second">Б/с</string>
+    <string name="kilobytes_per_second">КБ/с</string>
+    <string name="megabytes_per_second">МБ/с</string>
+    <string name="gigabytes_per_second">ГБ/с</string>
+    <string name="terabytes_per_second">ТБ/с</string>
+    <plurals name="full_name_speed_bytes_per_second">
+        <item quantity="one">%1$s байт за секунду</item>
+        <item quantity="few">%1$s байты за секунду</item>
+        <item quantity="many">%1$s байтаў за секунду</item>
+        <item quantity="other">%1$s байтаў за секунду</item>
+    </plurals>
+    <plurals name="full_name_speed_kilobytes_per_second">
+        <item quantity="one">%1$s кілабайт за секунду</item>
+        <item quantity="few">%1$s кілабайты за секунду</item>
+        <item quantity="many">%1$s кілабайтаў за секунду</item>
+        <item quantity="other">%1$s кілабайтаў за секунду</item>
+    </plurals>
+    <plurals name="full_name_speed_megabytes_per_second">
+        <item quantity="one">%1$s мегабайт за секунду</item>
+        <item quantity="few">%1$s мегабайты за секунду</item>
+        <item quantity="many">%1$s мегабайтаў за секунду</item>
+        <item quantity="other">%1$s мегабайтаў за секунду</item>
+    </plurals>
+    <plurals name="full_name_speed_gigabytes_per_second">
+        <item quantity="one">%1$s гігабайт за секунду</item>
+        <item quantity="few">%1$s гігабайты за секунду</item>
+        <item quantity="many">%1$s гігабайтаў за секунду</item>
+        <item quantity="other">%1$s гігабайтаў за секунду</item>
+    </plurals>
+    <plurals name="full_name_speed_terabytes_per_second">
+        <item quantity="one">%1$s тэрабайт за секунду</item>
+        <item quantity="few">%1$s тэрабайты за секунду</item>
+        <item quantity="many">%1$s тэрабайтаў за секунду</item>
+        <item quantity="other">%1$s тэрабайтаў за секунду</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_bytes">
+        <item quantity="one">%1$s байт</item>
+        <item quantity="few">%1$s байты</item>
+        <item quantity="many">%1$s байтаў</item>
+        <item quantity="other">%1$s байтаў</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_kilobytes">
+        <item quantity="one">%1$s кілабайт</item>
+        <item quantity="few">%1$s кілабайты</item>
+        <item quantity="many">%1$s кілабайтаў</item>
+        <item quantity="other">%1$s кілабайтаў</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_megabytes">
+        <item quantity="one">%1$s мегабайт</item>
+        <item quantity="few">%1$s мегабайты</item>
+        <item quantity="many">%1$s мегабайтаў</item>
+        <item quantity="other">%1$s мегабайтаў</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_gigabytes">
+        <item quantity="one">%1$s гігабайт</item>
+        <item quantity="few">%1$s гігабайты</item>
+        <item quantity="many">%1$s гігабайтаў</item>
+        <item quantity="other">%1$s гігабайтаў</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_terabytes">
+        <item quantity="one">%1$s тэрабайт</item>
+        <item quantity="few">%1$s тэрабайты</item>
+        <item quantity="many">%1$s тэрабайтаў</item>
+        <item quantity="other">%1$s тэрабайтаў</item>
+    </plurals>
+    <string name="traffic_volume_bytes">%1$s Б</string>
+    <string name="traffic_volume_kilobytes">%1$s КБ</string>
+    <string name="traffic_volume_megabytes">%1$s МБ</string>
+    <string name="traffic_volume_gigabytes">%1$s ГБ</string>
+    <string name="traffic_volume_terabytes">%1$s ТБ</string>
+    <!-- tag(Redesign_2023)
+         Shown at the top status view if app detects that there is no usable network to connect to VPN
+    -->
+    <string name="error_vpn_waiting_for_network">Чаканне сеткі</string>
+    <!-- tag(Redesign_2023) -->
+    <plurals name="connection_details_days">
+        <item quantity="one">%1$d дзень</item>
+        <item quantity="few">%1$d дні</item>
+        <item quantity="many">%1$d дзён</item>
+        <item quantity="other">%1$d дзён</item>
+    </plurals>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_hours_shortened">%1$d гадз</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_minutes_shortened">%1$d хв</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_seconds_shortened">%1$d сек</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceTitle">Збой падключэння</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceDescription">Гэтая прылада забараняе падключэнні па VPN.</string>
+    <string name="create_profile_title">Стварэнне профілю</string>
+    <!-- Title for the screen where user can edit a profile.
+         %1$s - name of the profile being edited. -->
+    <string name="edit_profile_title">Рэдагаваць %1$s</string>
+    <string name="edit_profile_dialog_action">Рэдагаваць профіль</string>
+    <string name="create_profile_name_hint">Назва профілю</string>
+    <string name="create_profile_name_error_empty">Увядзіце назву профілю</string>
+    <string name="create_profile_name_error_too_long">Назва профілю павінна змяшчаць да 30 сімвалаў</string>
+    <string name="create_profile_type_and_location_title">Выберыце тып падключэння і месцазнаходжанне</string>
+    <string name="create_profile_features_and_settings_title">Функцыі і налады</string>
+    <string name="configure_profile_features_and_settings_title">Сканфігурыраваць налады профілю</string>
+    <string name="configure_profile_features_and_settings_description">Налады профілю перавызначаць вашы налады VPN пры падключэнні.</string>
+    <!--
+        First input will be for current step, second one will be for total number of steps
+        Example: Step 3 of 7
+     -->
+    <string name="create_profile_steps">Крок %1$d з %2$d</string>
+    <string name="create_profile_button_next">Далей</string>
+    <!-- Important: please note the double % sign after 400. It is displayed as a single % in the app.
+         (this doesn\'t apply to other percent sign characters, e.g. ٪)
+         %1$s - will have translated learn_more value -->
+    <string name="settings_vpn_accelerator_description">Павялічце хуткасць свайго падключэння да 400%% дзякуючы тэхналогіям павышэння прадукцыйнасці. %1$s</string>
+    <string name="settings_account_settings_title">Налады ўліковага запісу</string>
+    <string name="settings_account_change_password">Змяніць пароль</string>
+    <string name="settings_account_recovery_email">Электронная пошта для аднаўлення доступу</string>
+    <string name="settings_account_recovery_email_not_set">Не зададзена</string>
+    <string name="settings_account_security_keys">Ключы бяспекі</string>
+    <!-- Label of a button that opens user\'s account page -->
+    <string name="settings_account_button_my_account">Мой уліковы запіс</string>
+    <string name="settings_account_button_delete_account">Выдаліць уліковы запіс</string>
+    <string name="settings_custom_dns_title">Карыстальніцкія DNS</string>
+    <string name="settings_custom_dns_description_tv">Падключайцеся да VPN з уласнай або старонняй сістэмай даменных імён (DNS).</string>
+    <string name="settings_add_dns_placeholder">192.0.2.0</string>
+    <string name="settings_add_dns_title">Дадаць новы сервер DNS</string>
+    <string name="settings_add_dns_new_entry_button">Дадаць</string>
+    <string name="settings_add_dns_description">Увядзіце адрас сервера IPv4 або IPv6</string>
+    <string name="settings_add_dns_invalid_input">Увядзіце сапраўдны адрас IPv4 або IPv6</string>
+    <string name="settings_add_dns_empty_input">Увядзіце адрас IPv4 або IPv6</string>
+    <string name="settings_add_dns_duplicate_input">Сервер ужо дададзены</string>
+    <string name="settings_advanced_dns_description">Падключыцца да VPN з дапамогай уласнага вузла або старонняга сервера DNS. Даведацца больш</string>
+    <!-- %1$d - Corresponds to number of servers added -->
+    <string name="settings_dns_list_title">Серверы (%1$d)</string>
+    <string name="settings_dns_list_description">Будзе выкарыстоўвацца стандартны DNS ад VPN, калі ваш карыстальніцкі сервер DNS не працуе.</string>
+    <string name="settings_dns_list_description_multiple">Будзе зроблена спроба падключыцца да гэтых сервераў па парадку. Калі ніводны з іх працаваць не будзе, то будуць выкарыстоўвацца DNS ад VPN.</string>
+    <string name="settings_changes_apply_on_reconnect_toast">Змены будуць прыменены пасля перападключэння</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_title">NetShield будзе недаступны</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message">NetShield не зможа адфільтраваць рэкламу, праграмы сачэння і шкодныя праграмы, калі выкарыстоўваецца карыстальніцкі DNS. Даведацца больш</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message_tv">NetShield не зможа адфільтраваць рэкламу, праграмы сачэння і шкодныя праграмы, калі выкарыстоўваецца карыстальніцкі DNS.</string>
+    <string name="settings_advanced_alternative_routing_title">Альтэрнатыўная маршрутызацыя</string>
+    <string name="settings_advanced_alternative_routing_description">Будзе зроблена спроба скарыстацца альтэрнатыўным сеткавым маршрутам для падключэння да нашых сайтаў, калі сэрвісы Proton заблакіраваны з-за абмежавання сеткі.</string>
+    <string name="settings_advanced_allow_lan_title">Падключэнні па LAN</string>
+    <string name="settings_advanced_allow_lan_description">Дазваляе вам падключацца да прынтараў, дынамікаў і іншых прылад, якія знаходзяцца ў вашай лакальнай сетцы.</string>
+    <string name="settings_advanced_allow_lan_description_tv">Падключайцеся да дынамікаў, камп\'ютараў і іншых прылад у вашай лакальнай сетцы</string>
+    <string name="settings_advanced_allow_lan_title_tv">Дазволіць падключэнні па лакальнай сетцы</string>
+    <string name="settings_advanced_nat_type_title">Тып NAT</string>
+    <!-- %1$s - will have translated learn_more value -->
+    <string name="settings_advanced_nat_type_description">Выберыце тып трансляцыі сеткавых адрасоў для вашага падключэння. %1$s</string>
+    <string name="settings_advanced_nat_type_description_no_learn">Выберыце тып трансляцыі сеткавых адрасоў для вашага падключэння.</string>
+    <string name="settings_advanced_nat_type_strict">Абмежаваны (тып 3)</string>
+    <string name="settings_advanced_nat_type_strict_short">Тып 3</string>
+    <string name="settings_advanced_nat_type_moderate">Умераны (тып 2)</string>
+    <string name="settings_advanced_nat_type_moderate_short">Тып 2</string>
+    <string name="settings_advanced_nat_type_strict_description">Абмяжоўвае даныя, якія трапляюць у вашу сетку. Гэты параметр больш бяспечны, але можа прывесці да ўзнікнення праблем у гульнях, якія патрабуюць аднарангавага падключэння.</string>
+    <string name="settings_advanced_nat_type_moderate_description">Некаторыя абмежаванні на даныя, якія трапляюць у вашу сетку. Гэты параметр найлепш пасуе для сеткавых гульняў.</string>
+    <string name="settings_split_tunneling_description">Наладзьце падключэнне вырашыўшы, якія праграмы і IP-адрасы будуць абаронены VPN. %1$s</string>
+    <string name="settings_protocol_description">Пратакол VPN вызначае, як даныя перамяшчаюцца паміж серверам VPN і вашай прыладай. %1$s</string>
+    <string name="settings_protocol_description_no_link">Пратакол VPN вызначае, як даныя перамяшчаюцца паміж серверам VPN і вашай прыладай.</string>
+    <string name="settings_protocol_section_speed">Хуткасць (UDP)</string>
+    <string name="settings_protocol_section_reliability">Надзейнасць (TCP)</string>
+    <string name="settings_protocol_smart_title">Smart</string>
+    <string name="settings_protocol_smart_description">Аўтаматычна выбірае лепшы пратакол для вашага падключэння.</string>
+    <string name="settings_protocol_wireguard_title">WireGuard</string>
+    <string name="settings_protocol_smart_protun_description">Аўтаматычна выбірае лепшы пратакол для вашага падключэння [эксперыментальна].</string>
+    <string name="settings_protocol_wireguard_udp_description">Перадавы пратакол для бяспекі і прадукцыйнасці.</string>
+    <string name="settings_protocol_wireguard_tcp_description">Перадавы пратакол для бяспекі і прадукцыйнасці.</string>
+    <string name="settings_protocol_stealth_title">Stealth</string>
+    <string name="settings_protocol_stealth_description">Пераадольвае блакіроўкі VPN хаваючы ваша падключэнне па VPN ад цэнзараў. Гэты пратакол устойлівы да тэхналогіі DPI (deep packet inspection), але можа саступаць іншым пратаколам па хуткасці перадачы даных. Stealth з\'яўляецца эксклюзіўным пратаколам Proton VPN.</string>
+    <!-- Text on a badge displayed next to the "smart" protocol name in settings -->
+    <string name="settings_protocol_badge_recommended">Рэкамендавана</string>
+    <string name="settings_protocol_badge_experimental">Эксперыментальны</string>
+    <string name="settings_split_tunneling_mode_title">Рэжым</string>
+    <string name="settings_split_tunneling_mode_standard">Выключыць</string>
+    <string name="settings_split_tunneling_mode_inverse">Уключыць</string>
+    <string name="settings_split_tunneling_mode_description_standard">Выбраныя праграмы і IP-адрасы выключаны з падключэння па VPN.</string>
+    <string name="settings_split_tunneling_mode_description_inverse">Толькі выбраныя праграмы і IP-адрасы будуць падключаны праз VPN. Увесь астатні трафік застанецца неабароненым.</string>
+    <string name="settings_split_tunneling_excluded_apps">Выключаныя праграмы</string>
+    <string name="settings_split_tunneling_excluded_ips">Выключаныя IP-адрасы</string>
+    <string name="settings_split_tunneling_included_apps">Уключаныя праграмы</string>
+    <string name="settings_split_tunneling_included_ips">Уключаныя IP-адрасы</string>
+    <string name="settings_split_tunneling_empty" comment="Used to indicate that no IP or Apps are included in split tunneling">Няма</string>
+    <string name="settings_split_tunneling_excluded_format" comment="Used for describing excluded items. Example: Chrome, Facebook and 2 more. The same logic used for IP addresses too.">%1$s, %2$s і яшчэ %3$d</string>
+    <string name="settings_split_tunneling_already_excluded">Ужо выключана</string>
+    <string name="settings_split_tunneling_already_included">Ужо ўключаны</string>
+    <string name="settings_split_tunneling_remove_ip_dialog_message">Выдаліць IP-адрас са спіса?</string>
+    <string name="settings_split_tunneling_ip_removed_message">IP-адрас выдалены</string>
+    <string name="settings_theme_title">Тэма</string>
+    <string name="settings_theme_value_auto">Тэма прылады</string>
+    <string name="settings_theme_value_light">Светлая</string>
+    <string name="settings_theme_value_dark">Цёмная</string>
+    <string name="settings_dialog_reconnect">Новыя налады будуць прыменены пры наступным падключэнні.</string>
+    <string name="settings_needs_reconnect_banner">Новыя налады будуць прыменены пры наступным падключэнні.</string>
+    <string name="private_dns_conflict_banner_custom_dns_title">Карыстальніцкі DNS недаступны</string>
+    <string name="private_dns_conflict_banner_custom_dns_description">Ваша прылада выкарыстоўвае старонні DNS, які перашкаджае працы карыстальніцкаму DNS ад Proton VPN. Даведацца больш</string>
+    <string name="private_dns_conflict_banner_custom_dns_description_tv">Ваша прылада выкарыстоўвае старонні DNS, які перашкаджае працы карыстальніцкаму DNS ад Proton VPN.</string>
+    <string name="private_dns_conflict_banner_netshield_title">NetShield недаступны</string>
+    <string name="private_dns_conflict_banner_netshield_description">Ваша прылада выкарыстоўвае старонні DNS, які перашкаджае працы NetShield. Даведацца больш</string>
+    <string name="private_dns_conflict_banner_network_settings_button">Налады сеткі</string>
+    <string name="custom_dns_conflict_banner_netshield_title">NetShield недаступны</string>
+    <string name="custom_dns_conflict_banner_netshield_description">Карыстальніцкі DNS уключаны і гэта перашкаджае працы NetShield. Даведацца больш</string>
+    <string name="custom_dns_conflict_banner_netshield_title_tv">Выключыць карыстальніцкі DNS, каб выкарыстоўваць NetShield</string>
+    <string name="custom_dns_conflict_banner_netshield_description_tv">Карыстальніцкі DNS уключаны і гэта перашкаджае працы NetShield.</string>
+    <string name="custom_dns_conflict_banner_disable_custom_dns_button">Выключыце карыстальніцкі DNS</string>
+    <string name="info_secure_core_standard_high_privacy">Высокая прыватнасць</string>
+    <string name="info_secure_core_standard_lower_latency">Ніжэйшая затрымка</string>
+    <string name="info_secure_core_advanced_privacy">Пашыраная прыватнасць</string>
+    <string name="info_secure_core_higher_latency">Вышэйшая затрымка</string>
+    <string name="info_p2p_what_title">Што такое P2P?</string>
+    <string name="info_p2p_what_description">Тэхналогія аднарангавай сеткі (P2P) дазваляе вам падключацца і абагульваць файлы наўпрост з іншымі прыладамі\n\nНашы серверы P2P спецыяльна распрацаваны для падтрымкі гэтага тыпу абагульвання файламі.</string>
+    <string name="info_p2p_torrenting_title">Што такое торэнт?</string>
+    <string name="info_p2p_torrenting_description">Хуткае абагульванне і спампоўванне вялікіх файлаў праз сетку P2P.</string>
+    <string name="info_p2p_why_title">Навошта выкарыстоўваць сервер P2P пры працы з торэнтамі?</string>
+    <string name="info_p2p_why_description_speed">Павялічаныя хуткасці запампоўвання і спампоўвання</string>
+    <string name="info_p2p_why_description_logs">Адсутнасць журналаў актыўнасці</string>
+    <string name="info_p2p_why_description_hide">Хавайце свой IP-адрас ад вашага пастаўшчыка паслуг інтэрнэту і аднарангавых вузлоў</string>
+    <string name="info_dialog_smart_routing_description">Smart Routing дазваляе нам забяспечваць пакрыццё VPN у цяжкадаступных краінах.\n\nКалі вы падключаецеся да сервера Smart Routing, то ўсё будзе выглядаць так, быццам вы ажыццяўляеце прагляд з краіны прызначэння, хоць фізічна сервер размяшчаецца ў іншым месцы.\n\nSmart Routing звычайна выкарыстоўваюць для абыходу законаў, якія парушаюць прыватнасць і канфідэнцыяльнасць, а таксама іншых форм цэнзуры.</string>
+    <string name="notifications_channel_connection_status_name">Статус падключэння</string>
+    <string name="notifications_channel_connection_status_description">Паказвае, да якога сервера вы падключаны, і хуткасць вашага VPN.</string>
+    <string name="notifications_channel_connection_errors_name">Памылкі падключэння</string>
+    <string name="notifications_channel_connection_errors_description">Апавяшчае вас аб праблемах, якія прыпыняюць або спыняюць ваша падключэнне да VPN.</string>
+    <string name="notifications_channel_connection_tips_name">Парады па падключэнні</string>
+    <string name="notifications_channel_connection_tips_description">Кантэкстныя парады, якія дапамогуць вам атрымаць больш ад Proton VPN.</string>
+    <string name="countries_upsell_banner_description">Доступ да ўсіх краін з VPN Plus</string>
+    <string name="secure_core_upsell_banner_description">Дадайце яшчэ адзін слой шыфравання ў сваё падключэнне па VPN</string>
+    <string name="p2p_upsell_banner_description">Спампоўвайце файлы праз BitTorrent і іншыя пратаколы абагульвання файлаў</string>
+    <string name="tor_upsell_banner_description">Выкарыстоўвайце сетку Tor праз ваша падключэнне да VPN для дадатковай прыватнасці</string>
+    <string name="vpnplus_upsell_banner_description">Палепшыць да VPN Plus</string>
+    <string name="search_zero_screen_title">Паспрабуйце шукаць…</string>
+    <string name="search_zero_screen_info_countries_title">Краіны</string>
+    <string name="search_zero_screen_info_cities_title">Гарады</string>
+    <string name="search_zero_screen_info_servers_title">Серверы</string>
+    <string name="search_zero_screen_info_countries_examples">Швейцарыя, Злучаныя Штаты, Італія, Канада…</string>
+    <string name="search_zero_screen_info_cities_examples">Нью-Ёрк, Лондан, Токіа, Сіднэй...</string>
+    <string name="search_zero_screen_info_servers_examples">JP#50, CA#3, IT#14…</string>
+    <string name="error_fetching_prices">Памылка атрымання цэн.</string>
+    <string name="tv_settings_split_tunneling_description">Наладзьце падключэнне вырашыўшы, якія праграмы будуць абаронены VPN.</string>
+    <string name="tv_settings_split_tunneling_mode_description_standard">Выбраныя праграмы выключаны з вашага падключэння па VPN.</string>
+    <string name="tv_settings_split_tunneling_mode_description_inverse">Толькі выбраныя праграмы будуць падключаны праз VPN. Увесь астатні трафік застанецца неабароненым.</string>
+    <string name="profile_action_edit">Рэдагаваць</string>
+    <string name="profile_action_duplicate">Дубліраваць</string>
+    <string name="profile_action_delete">Выдаліць</string>
+    <!-- Label when showing profile\'s NAT (Network Address Translation) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_nat_title">NAT</string>
+    <!-- Label when showing profile\'s LAN (Local Area Network) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_lan_title">LAN</string>
+    <string name="profile_needs_reconnect">Гэта перазапусціць ваша падключэнне.</string>
+    <string name="profile_overrides_setting">Гэтыя налады падключаны да <b>%1$s</b> і імі можна кіраваць толькі ў профілях.</string>
+    <string name="initial_profile_name_streaming_us">Трансляцыі ЗША</string>
+    <string name="initial_profile_name_work_school">Праца/школа</string>
+    <string name="initial_profile_name_anti_censorship">Супрацьдзеянне цэнзуры</string>
+    <string name="initial_profile_name_gaming">Гульні</string>
+    <string name="initial_profile_name_max_security">Максімальная бяспека</string>
+    <string name="create_profile_pick_country_title">Краіна</string>
+    <string name="create_profile_pick_type_title">Тып</string>
+    <string name="create_profile_type_standard">Стандартны</string>
+    <string name="create_profile_type_secure_core">Secure Core</string>
+    <string name="create_profile_type_p2p">P2P</string>
+    <string name="create_profile_gateway">Шлюз</string>
+    <string name="create_profile_pick_state_title">Штат</string>
+    <string name="create_profile_pick_city_title">Горад</string>
+    <string name="create_profile_pick_server_title">Сервер</string>
+    <string name="create_profile_pick_gateway_title">Шлюз</string>
+    <string name="create_profile_pick_netshield_title">NetShield</string>
+    <string name="create_profile_pick_netshield_description">Блакіроўка рэкламы, праграм сачэння, шкодных праграм на вэб-сайтах і ў праграмах</string>
+    <string name="create_profile_pick_protocol_title">Пратакол</string>
+    <string name="create_profile_pick_nat_title">Тып NAT</string>
+    <!--
+         Example:
+         if a profile named "My Profile" is duplicated, the new suggested name is "My Profile (copy)"
+     -->
+    <string name="create_profile_copy_name">%1$s (копія)</string>
+    <string name="create_profile_fastest_city">Найхутчэйшы</string>
+    <string name="create_profile_fastest_state">Найхутчэйшы</string>
+    <string name="create_profile_fastest_server">Найхутчэйшы</string>
+    <string name="create_profile_pick_middle_country_title">Прамежкавая краіна</string>
+    <string name="profiles_zero_state_title">Стварыце свой першы профіль</string>
+    <string name="profiles_zero_state_description">Профілі - гэта захаваныя падключэнні з месцазнаходжаннем, серверам і пратаколам, якія вы выбіралі раней.</string>
+    <string name="profiles_button_create_profile">Стварыць профіль</string>
+    <string name="profile_deleted_snackbar_message">Профіль выдалены</string>
+    <string name="profile_connected_edit_setting">Гэтая налада падключана да вашага актыўнага профілю.\n\nАдрэдагуйце свой профіль, каб унесці змены. Вы таксама можаце адключыцца, каб адрэдагаваць вашы агульныя налады VPN.</string>
+    <string name="profile_connected_dialog_title">Кіраванне %1$s у профілях</string>
+    <string name="undo">Адрабіць</string>
+    <string name="profile_unavailable_dialog_title">Профіль недаступны</string>
+    <!-- %1$s - profile name
+         Example: Your server selection for MyProfile is unavailable. Select a different server or try again later -->
+    <string name="profile_unavailable_dialog_message">Выбраны вамі сервер для %1$s у цяперашні час недаступны. Выберыце іншы сервер або паўтарыце спробу пазней.</string>
+    <string name="profile_location_excluded_dialog_message"><![CDATA[Выбраны вамі сервер для <b>%1$s</b> недаступны. Выберыце іншы сервер, праверце свае выключаныя месцазнаходжанні або паўтарыце спробу.]]></string>
+    <!-- %1$d - profile icon number
+         Example: Icon 1, Icon 2, ... -->
+    <string name="profile_icon_accessibility">Значок %1$d</string>
+    <!-- %1$d - profile icon number
+         Example: Color 1, Color 2, ... -->
+    <string name="profile_color_accessibility">Колер %1$d</string>
+    <string name="generic_info_label">Звесткі</string>
+    <!-- Branded name for a feature that opens url after VPN connection to given profile is established.
+         Please don't use & in translation and capitalize key words. -->
+    <string name="create_profile_connect_and_go_label">Падключыцца і адкрыць</string>
+    <!-- Displayed as a badge next to create_profile_auto_open_label ("Auto-launch website [NEW]") -->
+    <string name="create_profile_auto_open_label_badge">Новае</string>
+    <string name="create_profile_auto_open_url_input_label">Вэб-сайт URL-адраса</string>
+    <string name="create_profile_auto_open_url_private_mode_label">Выкарыстоўваць рэжым прыватнага прагляду</string>
+    <!-- Label for disabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_off">Выключана</string>
+    <string name="profile_auto_open_app_failed_to_launch">Падключыць і адкрыць: праграма не знойдзена</string>
+    <!-- Label for enabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_website">Адкрыць вэб-сайт</string>
+    <string name="profile_auto_open_app">Адкрыць праграму</string>
+    <string name="create_profile_auto_open_description">Аўтаматычна адкрываць выбраны вэб-сайт пры падключэнні да гэтага профілю.</string>
+    <string name="create_profile_auto_open_app_input_hint">Выбраць праграму</string>
+    <string name="create_profile_auto_open_app_input_label">Праграма</string>
+    <string name="create_profile_auto_open_app_no_apps">Праграмы не знойдзены.</string>
+    <string name="profile_auto_open_error_invalid_url">Увядзіце сапраўдны URL-адрас</string>
+    <string name="nps_how_likely_question">З якой верагоднасцю вы парэкамендуеце Proton VPN сябрам або калегам?</string>
+    <string name="nps_additional_comment_title">Растлумачце, чаму вы так нас ацанілі</string>
+    <string name="nps_additional_comment_optional">Неабавязкова</string>
+    <string name="nps_rating_low_values_explain">0 - гэта вельмі малаверагодна</string>
+    <string name="nps_rating_high_values_explain">10 - гэта вельмі верагодна</string>
+    <string name="nps_toast_submit_message">Дзякуй, што падзяліліся водгукам! Ваш водгук дапаможа нам удасканаліць Proton VPN.</string>
+    <string name="nps_submit_error_char_limit">Ваш адказ павінен змяшчаць да 250 сімвалаў</string>
+    <string name="nps_button_submit_title">Абагуліць ананімна</string>
+    <string name="widget_preview_switzerland">Швейцарыя</string>
+    <string name="widget_preview_spain">Іспанія</string>
+    <string name="widget_preview_germany">Германія</string>
+    <string name="widget_preview_france">Францыя</string>
+    <string name="widget_status_unprotected">Неабаронена</string>
+    <string name="widget_status_error">Памылка</string>
+    <string name="widget_status_connecting">Падключэнне</string>
+    <string name="widget_sign_in">Увайсці</string>
+    <string name="widget_toast_added_message">Віджэт дададзены на галоўны экран</string>
+    <string name="settings_advanced_ipv6_title">Падтрымка IPv6</string>
+    <string name="settings_advanced_ipv6_description">Адпраўляе ў тунэль трафік IPv6 праз VPN. Можа палепшыць сумяшчальнасць з сеткамі IPv6.</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_message">Вам неабходна дазволіць падключэнні па IPv6 праз тунэль VPN, каб выкарыстоўваць гэты адрас.</string>
+    <string name="setting_ipv6_disabled_dialog_action_enable">Уключыць IPv6</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_title">IPv6 адключаны</string>
+    <string name="settings_ipv6_enabled_toast">IPv6 уключаны</string>
+    <string name="info_dialog_ipv6_traffic_benefits1">Забяспечвае доступ толькі да вэб-сайтаў і сэрвісаў IPv6</string>
+    <string name="info_dialog_ipv6_traffic_benefits2">Прадухіляе праблемы ў сетках, якія абапіраюцца на IPv6</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks1">Можа не працаваць адпаведным чынам з больш старымі сеткамі або праграмамі</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks2">Некаторыя сеткі апрацоўваюць трафік IPv6 непрадказальна</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks_title">Недахопы</string>
+    <string name="info_dialog_ipv6_traffic_benefits_title">Перавагі</string>
+    <string name="settings_lan_allow_direct_connection_title">Дазволіць прамыя падключэнні прылад</string>
+    <string name="settings_lan_allow_direct_connection_description">Падключайцеся да Smart TV, Android Auto і іншых прылад, якія ствараюць сваю ўласную сетку. Для максімальнай бяспекі ўключайце гэту функцыю толькі пры падключэнні да гэтых прылад.</string>
+    <string name="no_connections_title">Няма даступных падключэнняў па VPN</string>
+    <string name="no_connections_description_loading_error">Не ўдалося загрузіць спіс сервераў.</string>
+    <string name="no_connections_description_no_servers">Папрасіце свайго адміністратара ўключыць доступ да VPN для вашага ўліковага запісу.</string>
+    <string name="no_connections_action_refresh">Абнавіць</string>
+    <string name="no_connections_action_sign_out">Выйсці</string>
+    <string name="no_connections_help_contact_us"><![CDATA[Неабходна дапамога? <a href="">Звяжыцеся з намі</a>]]></string>
+    <string name="no_connections_help_follow_instructions"><![CDATA[Адпраўце свайму адміністратару <a href="">гэтыя інструкцыі</a>, калі яму патрэбна дапамога з уключэннем доступу па VPN.]]></string>
+    <string name="settings_protocol_proton_protocols">Пратаколы Proton</string>
+    <string name="settings_protocol_proton_protocols_description">Выкарыстоўвайце ўласную рэалізацыю WireGuard ад Proton VPN. Гэта эксперыментальная функцыя, таму вы можаце сутыкнуцца з некаторай нестабільнасцю.</string>
+    <string name="connection_preferences_smart_discovery_dialog_title">Не тая краіна, якую хацелі?</string>
+    <string name="connection_preferences_smart_discovery_dialog_message">Вы можаце выключыць месцазнаходжанні з найхутчэйшых краін, калі ёсць такія, да якіх вы не хочаце аўтаматычна падключацца.</string>
+    <string name="excluded_locations_adoption_title">Пазбягайце непажаданых месцазнаходжанняў</string>
+    <string name="excluded_locations_adoption_description"><![CDATA[Цяпер вы можаце выключыць краіны і гарады з <b>Найхутчэйшых</b> падключэнняў.]]></string>
+    <string name="session_fork_no_account_title">Увайсці на Android TV</string>
+    <string name="session_fork_no_account_message">Завяршыце ўваход на гэтай прыладзе, каб пачаць карыстацца Proton VPN на вашым тэлевізары</string>
+    <string name="session_fork_no_account_footnote"><![CDATA[Выкарыстоўваючы гэту праграму вы прымаеце нашы <a href="">Умовы выкарыстання</a>.]]></string>
+    <string name="session_fork_no_account_signup_button">Стварыць уліковы запіс</string>
+    <string name="session_fork_no_account_signin_button">Увайсці</string>
+    <string name="session_fork_confirmation_title">Увайсці на Android TV?</string>
+    <string name="session_fork_confirmation_message">Гэта дазволіць тэлевізару атрымаць доступ да вашага ўліковага запісу Proton.</string>
+    <string name="session_fork_confirmation_bottom_note">Уваходзьце толькі на прыладах якім давяраеце</string>
+    <string name="session_fork_confirmation_too_soon_toast">Паглядзіце перад працягам</string>
+    <string name="session_fork_success_title">Уваход завершаны</string>
+    <string name="session_fork_success_message">Цяпер вы ўвайшлі ў сістэму на сваім тэлевізары.</string>
+    <string name="session_fork_error_expired_title">Код пратэрмінаваны</string>
+    <string name="session_fork_error_expired_message">Стварыце новы код на сваім тэлевізары і паўтарыце спробу.</string>
+    <string name="session_fork_error_generic_title">Не ўдалося ўвайсці</string>
+    <string name="session_fork_error_fatal_message">Праверце сетку і паўтарыце спробу. Калі праблема застанецца, звярніцеся ў нашу каманду падтрымкі кліентаў. </string>
+    <string name="session_fork_error_network_message">Праверце сетку і паўтарыце спробу.</string>
+    <string name="session_fork_error_try_fallback_message">Націсніце \‘Праблемы з уваходам?\’ у тэлевізары і прытрымлівайцеся альтэрнатыўных крокаў.</string>
+    <string name="session_fork_error_report_button">Паведаміць аб праблеме</string>
+    <string name="session_fork_qr_code_content_description">QR-код</string>
+    <string name="session_fork_qr_code_message">Сканіруйце QR-код, каб увайсці або стварыць уліковы запіс</string>
+    <string name="session_fork_qr_code_trouble_button">Праблемы з уваходам?</string>
+    <string name="session_fork_qr_code_error_expired">У мэтах бяспекі тэрмін дзеяння праверачнага кода мінуў</string>
+    <string name="session_fork_qr_code_error_network">Праверце сетку і паўтарыце спробу</string>
+    <string name="session_fork_qr_code_error_create_new_button">Стварыць новы код</string>
+    <string name="session_fork_user_code_title">Не атрымліваецца адсканіраваць код? Увайдзіце звычайным спосабам</string>
+    <string name="session_fork_user_code_step1"><![CDATA[Перайдзіце: <b>%1$s</b>]]></string>
+    <string name="session_fork_user_code_step2">Увайдзіце або стварыце ўліковы запіс</string>
+    <!-- Parameter: 8 character alphanumeric code, e.g. "AB12 CD34" -->
+    <string name="session_fork_user_code_step3"><![CDATA[Увядзіце код: <b>%1$s</b>]]></string>
+    <!-- Parameter: web address for the support website, e.g. "protonvpn.com/support" -->
+    <string name="session_fork_user_code_support"><![CDATA[Усё яшчэ неабходна дапамога? Наведайце <b>%1$s</b>]]></string>
+</resources>

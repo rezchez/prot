@@ -1,0 +1,1907 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2017 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_icon_name_classic">Clássico</string>
+    <string name="app_icon_name_dark">Escuro</string>
+    <string name="app_icon_name_retro">Retro</string>
+    <string name="app_icon_name_weather">Clima</string>
+    <string name="app_icon_name_notes">Notas</string>
+    <string name="app_icon_name_calculator">Calculadora</string>
+    <string name="login">Iniciar sessão</string>
+    <string name="menuActionSignOut">Encerrar sessão</string>
+    <string name="connectionAllocationHelpTitle">Nós lhe agradecemos por fazer o upgrade.</string>
+    <string name="connectionAllocationHelpDescription1">Para iniciar sua jornada no Proton VPN, atribua conexões VPN à sua conta ou a qualquer outra subconta.</string>
+    <string name="connectionAllocationHelpDescription2">Esta etapa levará apenas alguns minutos. Depois disso, você poderá iniciar sessão e proteger todos os seus dispositivos.</string>
+    <string name="connectionAllocationHelpDescription1AskAdmin">Não há conexões VPN ativadas para esta conta. Para iniciar sua jornada no Proton VPN, entre em contato com seu administrador. </string>
+    <string name="connectionAllocationHelpAssignConnectionsButton">Ativar conexões VPN</string>
+    <string name="connectionAllocationHelpLoginAgainButton">Iniciar sessão novamente</string>
+    <!-- tag(Redesign_2023) "OK" button on dialogs -->
+    <string name="ok">OK</string>
+    <string name="dialogLearnMore">Saiba mais</string>
+    <string name="connected">Conectado</string>
+    <string name="buttonConnect">Conectar</string>
+    <string name="loaderConnectingTo">Conectando a %1$s</string>
+    <string name="loaderNotConnected">Não conectado (desprotegido)</string>
+    <string name="loaderConnectedTo">Conectado a %1$s</string>
+    <string name="loaderDisconnecting">Desconectando</string>
+    <string name="loaderReconnecting">Reconectando</string>
+    <string name="loaderReconnectNoNetwork">Aguardando uma rede usável</string>
+    <string name="loaderCheckingAvailability">Verificando a disponibilidade do servidor</string>
+    <string name="quickConnect">Conexão rápida</string>
+    <!-- Displays a percentage value. Please use %% sign for %.
+         Example value: "70%" -->
+    <string name="serverLoad">%1$s%%</string>
+    <string name="cancel">Cancelar</string>
+    <string name="close">Fechar</string>
+    <string name="dialogContinue">Continuar</string>
+    <string name="drawerReportProblem">Reportar um problema</string>
+    <string name="action_done">Concluído</string>
+    <string name="action_share">Compartilhar</string>
+    <string name="accountFree">Proton Free</string>
+    <string name="restrictedMaintenanceTitle">Em manutenção</string>
+    <string name="restrictedMaintenanceDescription">O servidor que você está tentando conectar está em manutenção. Tente outro servidor.</string>
+    <string name="restricted_location_excluded_dialog_title">Erro na conexão</string>
+    <string name="restricted_location_excluded_dialog_description">Nenhum servidor disponível. Escolha um local manualmente ou edite seus locais excluídos.</string>
+    <string name="errorUserDelinquent"><![CDATA[A sua conta tem uma fatura em atraso. Pague todas as faturas pendentes em &#160;<a href="https://account.protonvpn.com">account.protonvpn.com</a>]]></string>
+    <string name="errorMaxSessions">Você atingiu o número máximo de conexões simultâneas permitidas para sua conta. Faça o upgrade do seu plano Proton VPN para ter mais conexões.</string>
+    <string name="listItemMaintenance">Em manutenção</string>
+    <string name="insufficientPermissionsTitle">Ação do usuário necessária</string>
+    <string name="insufficientPermissionsDetails">Não foi possível estabelecer uma conexão automaticamente com a VPN. Efetue a conexão manualmente para conceder as permissões.</string>
+    <string name="log_title">Registros</string>
+    <string name="disconnect">Desconectar</string>
+    <string name="state_connecting">Conectando…</string>
+    <string name="state_connected">Conectado</string>
+    <string name="state_disconnecting">Desconectando…</string>
+    <string name="state_error">Erro</string>
+    <string name="error_server_list_load_failed">Verifique sua conexão e tente novamente.</string>
+    <string name="error_server_unreachable">Não foi possível conectar à VPN. Verifique sua conexão e tente novamente.</string>
+    <string name="error_auth_failed">Erro na autenticação do usuário.</string>
+    <string name="error_generic">Ocorreu um erro desconhecido durante a conexão.</string>
+    <string name="error_generic_with_reason">O Proton VPN não pôde estabelecer uma conexão. Tente novamente em alguns segundos.<br/><br/> Detalhes: %1$s</string>
+    <string name="reconnect">Reconectar</string>
+    <string name="reconnect_now">Reconectar agora</string>
+    <string name="try_reconnecting">Tentar reconectar</string>
+    <string name="connect">Conectar</string>
+    <string name="upgrade">Fazer upgrade</string>
+    <string name="retry">Tentar novamente</string>
+    <string name="report_message">Mensagem</string>
+    <string name="report_bug_email_label">Seu email</string>
+    <string name="report_bug_email_hint">Digite seu endereço de e-mail</string>
+    <string name="report_bug_message_label">Mensagem</string>
+    <string name="report_bug_message_hint">Descreva o erro, e como e onde você o encontrou</string>
+    <string name="send_report">Enviar relatório</string>
+    <string name="report_sent">Relatório enviado</string>
+    <string name="discardChanges">Descartar alterações não salvas?</string>
+    <string name="discardChangesButtonDiscard">Descartar as alterações</string>
+    <string name="discardChangesButtonKeepEditing">Continuar editando</string>
+    <string name="done">CONCLUÍDO</string>
+    <string name="add">ADICIONAR</string>
+    <string name="copy_to_clipboard">Copiar</string>
+    <string name="copied_to_clipboard">Copiado para a área de transferência</string>
+    <string name="got_it">Entendi</string>
+    <string name="exclude_locations">Excluir localizações</string>
+    <string name="excluded_locations">Localizações excluídas</string>
+    <string name="cannot_connect">Não foi possível conectar</string>
+    <string name="skip">Pular</string>
+    <string name="something_went_wrong">Algo deu errado</string>
+    <string name="try_again">Tentar novamente</string>
+    <string name="delete">Excluir</string>
+    <string name="menu_option_move_to_top" comment="command used to move an item to the top of the list">Mover para o topo</string>
+    <string name="menu_option_move_up" comment="command used to move an item one position up in the list">Mover para cima</string>
+    <string name="menu_option_move_down" comment="command used to move an item one position down in the list">Mover para baixo</string>
+    <string name="remove">Remover</string>
+    <string name="saveButton">Salvar</string>
+    <string name="ipWithPlaceholder">IP: %1$s</string>
+    <string name="activityLicensesTitle">Licenças de terceiros</string>
+    <string name="stateFragmentUnknownIp">Desconhecido</string>
+    <string name="noVpnPermissionMainTitle">Ação necessária para se conectar à VPN</string>
+    <string name="noVpnPermissionMainMessage">Para se conectar ao Proton VPN, faça o seguinte:</string>
+    <string name="noVpnPermissionGrantPermissionTitle">Conceder permissão de VPN</string>
+    <string name="noVpnPermissionGrantPemrissionMessage">O Android precisa da sua permissão para se conectar ao Proton VPN. Conceda-o tocando em \"OK\" quando você receber a janela \"Solicitação de conexão\" do Android.</string>
+    <string name="noVpnPermissionDisableAlwaysOnTitle">Desativar o sempre ativo para outros aplicativos de VPN</string>
+    <string name="noVpnPermissionDisableAlwaysOnMessage">O Android não suporta vários aplicativos VPN. Desative o \"sempre ativa\" para qualquer aplicativo VPN que não seja o Proton VPN.</string>
+    <string name="noVpnPermissionProtonAppLabel">Aplicativo Proton VPN</string>
+    <string name="noVpnPermissionOtherAppLabel">Outros aplicativos VPN</string>
+    <string name="noVpnPermissionOpenSettings">Abrir configurações de VPN do Android</string>
+    <string name="noNotificationPermissionGrantTitle">Não seja pego desprevenido...</string>
+    <string name="noNotificationPermissionGrantDescription">Ative as notificações para ser alertado sobre alterações no status da sua conexão.</string>
+    <string name="noNotificationPermissionGrantNowTitle">Ativar notificações</string>
+    <string name="error_prepare_vpn_description"><![CDATA[Desative a VPN sempre ativa para todos os outros aplicativos de VPN nas configurações de VPN no Android, pois isso impede que o Proton VPN estabeleça uma conexão VPN. Também conceda permissões para VPN no caso de aparecer uma janela solicitando permissões de VPN. Outros aplicativos VPN também podem ter que ser desinstalados para evitar conflitos. Após isso, tente novamente. <a href="%1$s">Saiba mais</a>]]></string>
+    <string name="error_prepare_vpn_settings">Vá para configurações da VPN no Android</string>
+    <string name="error_prepare_vpn_title">Erro: problema de permissão na VPN</string>
+    <string name="error_server_not_set">O servidor não está mais disponível</string>
+    <string name="bugReportErrorEmptyEmail">O e-mail não pode estar em branco</string>
+    <string name="bugReportErrorInvalidEmail">O endereço de e-mail não é válido.</string>
+    <string name="bugReportLabelVpnLogsTitle">Incluir registros de erros</string>
+    <string name="bugReportErrorLabelVpnLogsDescription">Envia registros de erros locais (não registramos atividades) para nos ajudar a corrigir seu problema</string>
+    <string name="profileFastest">Mais rápido</string>
+    <string name="profileRandom">Aleatório</string>
+    <string name="loaderErrorNoInternet">Sem conexão com a internet</string>
+    <string name="loaderErrorGeneric">Algo deu errado</string>
+    <string name="inputIpAddressLabel">Endereço IP</string>
+    <string name="inputIpAddressHelp">Insira o endereço IPv4 ou IPv6 do servidor</string>
+    <string name="inputIpAddressErrorInvalid">O endereço de IP não é válido.</string>
+    <!-- Displayed as a badge next to setting item ("Widget [NEW]") -->
+    <string name="settings_new_label_badge">NOVO</string>
+    <!-- Displayed as a badge next to setting item ("Proton protocols [BETA]") -->
+    <string name="settings_beta_label_badge">BETA</string>
+    <string name="settingsExcludedIPAddressesListHeader">Endereços IP excluídos (%1$d)</string>
+    <string name="settingsIncludedIPAddressesListHeader">Endereços IP incluídos (%1$d)</string>
+    <string name="settingsExcludedApps">Aplicativos excluídos</string>
+    <string name="settingsExcludedAppsEmpty">Adicione aplicativos a serem excluídos do tráfego VPN.</string>
+    <string name="settingsIncludedAppsEmpty">Adicione aplicativos a serem incluídos no tráfego VPN.</string>
+    <string name="settingsExcludedAppsSelectedHeader">Aplicativos excluídos (%1$d)</string>
+    <string name="settingsIncludedAppsSelectedHeader">Aplicativos incluído (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableRegularHeader">Todos os outros aplicativos regulares (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableSystemHeader">Todos os outros aplicativos do sistema (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableHeader">Todos os outros aplicativos (%1$d)</string>
+    <string name="settingsExcludedAppsLoadSystemAppsButton">Mostrar aplicativos do sistema</string>
+    <string name="settingsSplitTunnelAppsShowSystemAppsCheckbox">Mostrar aplicativos do sistema</string>
+    <string name="settingsSplitTunnelingExcludedAppsList">Esses aplicativos serão excluídos da sua conexão VPN.</string>
+    <string name="settingsSplitTunnelingIncludedAppsList">Somente esses aplicativos se conectam por meio de VPN.</string>
+    <!-- Description for action to add an application to "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to excluded apps"
+    -->
+    <string name="accessibility_action_add_excluded_app">Adicionar aos aplicativos excluídos</string>
+    <!-- Description for action to remove an application from "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from excluded apps"
+    -->
+    <string name="accessibility_action_remove_excluded_app">Remover de aplicativos excluídos</string>
+    <!-- Description for action to add an application to "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to included apps"
+    -->
+    <string name="accessibility_action_add_included_app">Adicionar aos aplicativos incluídos</string>
+    <!-- Description for action to remove an application from "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from included apps"
+    -->
+    <string name="accessibility_action_remove_included_app">Remover de aplicativos incluídos</string>
+    <string name="accessibility_action_copy_to_clipboard">Copiar para área de transferência</string>
+    <string name="accessibility_action_item_delete">Excluir</string>
+    <string name="accessibility_action_item_move_up">Mover para cima</string>
+    <string name="accessibility_action_item_move_down">Mover para baixo</string>
+    <string name="tileConnected">Conectado: %1$s</string>
+    <string name="openUrlError">Não foi possível abrir %1$s. O navegador de internet não foi detectado no seu dispositivo.</string>
+    <string name="loaderErrorTimeout">A conexão expirou. Tente novamente.</string>
+    <string name="troubleshootButton">Resolução de problemas</string>
+    <string name="activityTroubleshootTitle">Solução de problemas</string>
+    <string name="troubleshootPotentialSolutionsSectionTitle">Soluções potenciais</string>
+    <string name="troubleshootNoInternetDescription">Verifique se sua conexão com à internet esteja funcionando corretamente.</string>
+    <string name="troubleshootNoInternetTitle">Sem conexão com a internet</string>
+    <string name="troubleshootIspProblemTitle">Problema no provedor de serviços internet (ISP)</string>
+    <string name="troubleshootIspProblemDescription"><![CDATA[Tente conectar ao Proton a partir de uma rede diferente (ou use o<a href=\'%1$s\'>Tor</a>)]]></string>
+    <string name="troubleshootAntivirusProblemTitle">Interferência do antivírus</string>
+    <string name="troubleshootAntivirusProblemDescription">Desative ou remova temporariamente o seu software antivírus.</string>
+    <string name="troubleshootProxyFirewallProblemTitle">Interferência de Proxy/Firewall</string>
+    <string name="troubleshootProxyFirewallProblemDescription">Desative quaisquer proxies ou firewalls, ou entre em contato com o administrador da sua rede.</string>
+    <string name="troubleshootProtonDownTitle">O Proton está indisponível</string>
+    <string name="troubleshootProtonDownDescription"><![CDATA[Verifique o <a href=\"%1$s\">status do Proton</a> no nosso sistema.]]></string>
+    <string name="troubleshootContactUsSectionTitle">Ainda precisa de ajuda? Contate-nos diretamente</string>
+    <string name="troubleshootCustomerSupport">Suporte ao cliente</string>
+    <string name="settingsAllowAlternativeRoutingTitle">Roteamento alternativo</string>
+    <string name="settingsAllowAlternativeRoutingDescription"><![CDATA[Caso o Proton esteja bloqueado, permita que o aplicativo tente caminhos alternativos para acessar os servidores Proton. <a href="%1$s">Saiba mais</a>.]]></string>
+    <string name="troubleshootGovernmentBlockTitle">Bloqueio governamental</string>
+    <string name="troubleshootGovernmentBlockDescription"><![CDATA[Seu país pode estar bloqueando o acesso ao Proton. Tente usar o <a href=\'%1$s\'>Tor</a> para acessar o Proton.]]></string>
+    <string name="settingsKillSwitchEnableTitle">Como ativar o kill switch</string>
+    <string name="settingsKillSwitchEnableStep1">1. Abra as configurações do seu dispositivo</string>
+    <!-- %1$s here will be replaced by "gear" icon -->
+    <string name="settingsKillSwitchEnableStep2">2. Encontre o Proton VPN e toque em %1$s</string>
+    <!-- Content description for the "gear" icon in settingsKillSwitchEnableStep2. Used only by accessibility services. -->
+    <string name="settingsKillSwitchEnableStep2_gearIconContentDescription">configurações</string>
+    <!-- The phrases "Always-on VPN" and "Block connections without VPN" needs to be translated exactly
+         the same as in Android VPN settings. -->
+    <string name="settingsKillSwitchEnableStep3"><![CDATA[3. Ative \"<b>Sempre usar VPN</b>\" e \"<b>Bloquear conexões sem VPN</b>\"]]></string>
+    <string name="settingsKillSwitchAndroidSettingsButton">Configurações</string>
+    <string name="settingsKillSwitchLearnMoreButton">Oque é kill switch?</string>
+    <string name="settingsKillSwitchWarningMain">Quando o kill switch estiver ativado, você não conseguirá conectar-se a:</string>
+    <string name="settingsKillSwitchWarningPoint1">Sites e aplicativos excluídos da sua conexão VPN através do tunelamento dividido</string>
+    <string name="settingsKillSwitchWarningPoint2">Dispositivos em sua rede local (LAN)</string>
+    <string name="settingsEnableTelemetryTitle">Compartilhar estatísticas anônimas de uso</string>
+    <string name="settingsEnableTelemetryDescription">Dados de uso nos ajudam a superar bloqueios de VPN e a melhorar o aplicativo.</string>
+    <string name="settingsSendCrashReportsTitle">Compartilhar relatórios de erros anônimos</string>
+    <string name="settingsSendCrashReportsDescription">Os relatórios de erros nos ajudam a corrigir erros, detectar firewalls e evitar bloqueios de VPN.</string>
+    <string name="settingsTelemetryScreenTitle">Estatísticas de uso</string>
+    <string name="settingsTelemetryScreenInfo"><![CDATA[Estas estatísticas não contêm seu endereço IP, e não podem ser usadas para te identificar. Nunca as compartilharemos com terceiros. <a href="%1$s">Saiba mais</a>]]></string>
+    <string name="netshield_settings_description_not_html">Proteja-se contra anúncios, malware e rastreadores em sites e aplicativos. %1$s</string>
+    <string name="netshield_settings_description_tv">Protege você contra anúncios de terceiros, rastreadores e malware. O NetShield não bloqueia anúncios integrados a serviços de streaming como YouTube e Netflix.</string>
+    <string name="netshield_settings_more_info_title_tv">Como o NetShield funciona</string>
+    <string-array name="netshield_settings_more_info_paragraphs_tv">
+        <item>O NetShield bloqueia solicitações DNS para domínios de terceiros conhecidos por conterem anúncios, rastreadores e malware.</item>
+        <item>Isso significa que você não receberá anúncios do seu navegador ou de aplicativos gratuitos que usem serviços de anúncios de terceiros.</item>
+        <item>No entanto, ele não consegue bloquear anúncios de plataformas de streaming como YouTube e Netflix, porque esses anúncios vêm de seus próprios servidores.</item>
+    </string-array>
+    <string name="settings_icon_change_description">Disfarce o aplicativo do Proton VPN com um ícone discreto. As notificações ainda exibirão o nome e o ícone padrão do Proton VPN. %1$s</string>
+    <string name="settings_icon_change_learn_more">Saiba mais</string>
+    <string name="learn_more">Saiba mais</string>
+    <string name="netshield_state_on" comment="Describes state, not action">Ligado</string>
+    <string name="netshield_state_off" comment="Describes state, not action">Desligado</string>
+    <string name="netshield_state_unavailable" comment="Describes state, not action">Indisponível</string>
+    <string name="split_tunneling_state_on" comment="Describes state, not action">Ativado</string>
+    <string name="split_tunneling_state_off" comment="Describes state, not action">Desativado</string>
+    <string name="vpn_accelerator_state_on" comment="Describes state, not action">Ligado</string>
+    <string name="vpn_accelerator_state_off" comment="Describes state, not action">Desligado</string>
+    <string name="lan_state_on" comment="Describes state, not action">Ligado</string>
+    <string name="lan_state_off" comment="Describes state, not action">Desligado</string>
+    <string name="alt_routing_state_on" comment="Describes state, not action">Ativado</string>
+    <string name="alt_routing_state_off" comment="Describes state, not action">Desativado</string>
+    <string name="custom_dns_state_on" comment="Describes state, not action">Ligado</string>
+    <string name="custom_dns_state_off" comment="Describes state, not action">Desligado</string>
+    <string name="custom_dns_state_unavailable" comment="Describes state, not action">Indisponível</string>
+    <string name="custom_dns_item_removed_snackbar">Item removido</string>
+    <string name="netshield_free_description">Bloqueia anúncios, rastreadores e malware em sites e aplicativos</string>
+    <string name="netshield_what_data_means">Explicação das estatísticas do NetShield</string>
+    <string name="netshield_ads_title">Anúncios</string>
+    <string name="netshield_ads_details">Anúncios e rastreadores de anúncios invisíveis</string>
+    <string name="netshield_trackers_title">Rastreadores</string>
+    <string name="netshield_trackers_details">Cookies e outros rastreadores que armazenam e compartilham informações sobre sua atividade na Internet</string>
+    <string name="netshield_data_title">Dados</string>
+    <string name="netshield_data_details">A quantidade de dados indesejados de anúncios, rastreadores e malware bloqueados pelo NetShield</string>
+    <plurals name="netshield_ads_blocked" comment="Number of ads blocked by netshield. Number displayed above the text">
+        <item quantity="one">Anúncio bloqueado</item>
+        <item quantity="other">Anúncios bloqueados</item>
+    </plurals>
+    <plurals name="netshield_trackers_stopped" comment="Number of trackers stopped by netshield. Number displayed above the text">
+        <item quantity="one">Rastreador parado</item>
+        <item quantity="other">Rastreadores parados</item>
+    </plurals>
+    <string name="netshield_data_saved" comment="Total data saved by netshield shown in kb/mb">Dados economizados</string>
+    <string name="netshield_setting_warning">Alguns sites podem não carregar corretamente quando anúncios e rastreadores estiverem bloqueados.</string>
+    <string name="netshield_setting_block_adult_content">Bloquear conteúdo adulto</string>
+    <string name="dialogDontShowAgain">Não mostrar novamente</string>
+    <string name="guestHoleNotificationContent">Tentando contornar problemas de rede. Isso ajudará você a acessar o Proton VPN.</string>
+    <string name="errorTunMultiUserPermission">Não foi possível iniciar a conexão VPN devido a um conflito entre o Dual-app (por exemplo, o Dual Messenger) e o tunelamento dividido. Desative um desses e reinicie seu dispositivo.</string>
+    <string name="errorTorrentNotAllowed">P2P não é permitido neste servidor</string>
+    <string name="error_profile_fallback_unavailable">Falha na conexão. Sua seleção de servidor para o perfil está indisponível.</string>
+    <string name="profileProtocolNotAvailable">O protocolo VPN deste perfil não está disponível no momento. Para conectar, tente mudar o protocolo.</string>
+    <string name="stateConnectedTo">Conectado a %1$s</string>
+    <string name="stateNotConnected">Você não está conectado</string>
+    <string name="nameEurope">Europa</string>
+    <string name="nameAmerica">América</string>
+    <string name="nameAsia">Ásia</string>
+    <string name="nameAfricaAndMiddleEast">África &amp; Oriente Médio</string>
+    <string name="nameOceania">Oceania</string>
+    <string name="tv_row_settings">Configurações</string>
+    <string name="tv_card_lan_connections_label">LAN</string>
+    <string name="tv_card_split_tunneling_label">Tunelamento dividido</string>
+    <string name="tv_card_protocol_label">Protocolo</string>
+    <string name="tv_dialog_delete_server_title">Excluir servidor %1$s?</string>
+    <string name="tv_detail_default_connection_checkbox_short">Favorito</string>
+    <string name="tv_detail_connect_streaming">Transmissão com Plus</string>
+    <string name="tv_detail_connect">Conectar</string>
+    <string name="tv_detail_description_streaming_country">Transmita seu conteúdo favorito. Acesse mais aplicativos com um plano Proton VPN Plus.</string>
+    <string name="tv_detail_description_no_streaming_country">Transmita mais do seu conteúdo favorito com um plano Proton VPN Plus.</string>
+    <string name="tv_detail_description_country_not_available">Este país não está disponível. Obtenha mais opções de streaming com um plano Proton VPN Plus.</string>
+    <string name="tv_detail_description_plus">Transmita seus vídeos, filmes ou esportes favoritos com seus aplicativos.</string>
+    <string name="tv_login_title_welcome">Transmita seu conteúdo de vídeo favorito</string>
+    <string name="tv_login_welcome_description_bottom"><![CDATA[Obtenha sua conta Proton VPN em <b>%1$s </b>]]></string>
+    <string name="back">Voltar</string>
+    <string name="tv_vpn_error_dialog_title">Erro na conexão VPN</string>
+    <string name="tv_signout_label">Encerrar sessão</string>
+    <string name="tv_signout_dialog_title">Você tem certeza que deseja encerrar a sessão?</string>
+    <string name="tv_signout_dialog_description_connected">Isso desconectará sua TV de qualquer servidor VPN.</string>
+    <string name="tv_signout_dialog_ok">Encerrar sessão</string>
+    <string name="tv_quick_connect_recommened">Recomendado</string>
+    <string name="tv_quick_connect_favourite">Favorito</string>
+    <string name="tv_country_maintenance_dialog_title">País indisponível</string>
+    <string name="tv_country_maintenance_dialog_description">Tente novamente mais tarde ou selecione um país diferente.</string>
+    <!-- The placeholder is replaced with a 0-100 value indicating the server load in percent.
+         Please note the double % sign after the placeholder. It is displayed as a single % sign in the app.
+
+         Example: 76% server load -->
+    <string name="tv_server_list_load">%1$s%% carga do servidor</string>
+    <string name="tv_recently_used_servers">Servidores usados recentemente</string>
+    <string name="tv_available_servers">Servidores disponíveis</string>
+    <string name="tv_locked_servers">Servidores bloqueados</string>
+    <string name="tv_other_servers">Outros servidores</string>
+    <string name="tv_server_list">Lista de servidores</string>
+    <string name="tv_server_list_action_unavailable">Indisponível</string>
+    <string name="notification_subscription_expired_title">Seu plano de assinatura Proton VPN expirou</string>
+    <string name="notification_subscription_expired_content">Tivemos que fazer o downgrade do seu plano, mas estamos reconectando você ao servidor mais rápido disponível nesse plano.</string>
+    <string name="notification_subscription_expired_no_reconnection_content">Sua assinatura foi rebaixada.</string>
+    <string name="notification_delinquent_title">Sua conta Proton VPN tem faturas pendentes</string>
+    <string name="notification_delinquent_content">Reserve um momento para atualizar suas informações de pagamento para manter sua assinatura ativa.</string>
+    <string name="notification_max_sessions_title">Você atingiu o número máximo de dispositivos</string>
+    <!-- The number of devices will always be greater than 1. -->
+    <plurals name="notification_max_sessions_upsell_content">
+        <item quantity="one">Desconecte outro dispositivo para conectar esse ou atualize para o Plus para conectar %1$d dispositivo ao mesmo tempo.</item>
+        <item quantity="other">Desconecte outro dispositivo para conectar esse ou atualize para o Plus para conectar %1$d dispositivos ao mesmo tempo.</item>
+    </plurals>
+    <string name="notification_max_sessions_content">Desconecte outro dispositivo para conectar esse.</string>
+    <string name="notification_cancel_to_free">Você está no plano Gratuito. Servidores e recursos gratuitos estão disponíveis.</string>
+    <string name="notification_cancel_to_basic">Você está no plano Basic. Servidores e recursos dos planos Basic &amp; Gratuito estão disponíveis.</string>
+    <string name="notification_cancel_to_delinquent">Você será capaz de acessar recursos premium novamente após o pagamento das faturas pendentes.</string>
+    <string name="reconnect_from_server">Do servidor: </string>
+    <string name="reconnect_to_server">Para servidor: </string>
+    <string name="no_thanks">Não, obrigado</string>
+    <string name="enable">Ativar</string>
+    <string name="notification_smart_protocol_disabled_title">Smart Protocol está desativado</string>
+    <string name="notification_smart_protocol_disabled_content">O Proton VPN detectou que sua rede atual está impedindo a conexão com a VPN. Ativar o Smart Protocol pode ignorar essas limitações.</string>
+    <string name="notification_streaming_blocked_title">Streaming não funcionando?</string>
+    <string name="notification_streaming_blocked_text">Many streaming services detect and block connections from free VPN servers. Upgrade to Proton VPN Plus to bypass these blocks</string>
+    <string name="upsell_advanced_features">Recursos avançados: NetShield, Secure Core, Tor, P2P</string>
+    <string name="upsell_streaming_services">Acesse serviços de streaming (Netflix, Disney+, etc) em qualquer lugar do mundo</string>
+    <!-- Number of servers available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_servers">
+        <item quantity="one">%1$d servidor</item>
+        <item quantity="other">%1$d servidor</item>
+    </plurals>
+    <!-- Number of countries available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_countries">
+        <item quantity="one">%1$d país</item>
+        <item quantity="other">%1$d país</item>
+    </plurals>
+    <string name="upsell_upgrade_again">Faça o upgrade novamente para aproveitar todos os recursos:</string>
+    <plurals name="upgrade_devices_title">
+        <item quantity="one">Proteja %1$d dispositivo de uma só vez</item>
+        <item quantity="other">Proteja %1$d dispositivos de uma só vez</item>
+    </plurals>
+    <string name="upgrade_devices_text">Proton VPN está disponível em 8 plataformas diferentes.</string>
+    <string name="upgrade_plus_title">Aumente sua privacidade</string>
+    <string name="upgrade_plus_message">Obtenha recursos avançados de privacidade e maior velocidade com VPN Plus.</string>
+    <string name="upgrade_netshield_title">Aproveite a navegação sem anúncios</string>
+    <string name="upgrade_netshield_message"><![CDATA[Bloqueie anúncios, rastreadores e malware com o <b>NetShield</b>.]]></string>
+    <string name="upgrade_secure_core_title">Duplique a criptografia</string>
+    <string name="upgrade_secure_core_message"><![CDATA[Adicione outra camada de criptografia à sua conexão VPN com o <b>Secure Core</b>.]]></string>
+    <string name="upgrade_p2p_title">Desbloqueie downloads peer-to-peer (P2P) e compartilhamento de arquivos </string>
+    <string name="upgrade_p2p_text">Melhore suas velocidades de upload e download enquanto oculta seu endereço IP.</string>
+    <string name="upgrade_profiles_title">Obtenha acesso rápido às suas conexões frequentes</string>
+    <string name="upgrade_profiles_text">Desbloqueie perfis com VPN Plus</string>
+    <string name="upgrade_streaming_title">Faça streaming em 4K</string>
+    <string name="upgrade_streaming_text">Aproveite seus filmes e programas favoritos de qualquer lugar do mundo.</string>
+    <string name="upgrade_streaming_block_title">Fazer upgrade para contornar bloqueios de VPN</string>
+    <string name="upgrade_streaming_block_text">Os servidores VPN Plus permitem que você assista aos seus filmes e programas de TV favoritos de todo o mundo.</string>
+    <string name="upgrade_tor_title">Acesse a rede Tor em um toque</string>
+    <string name="upgrade_tor_text">Conecte-se a serviços ocultos e sites onion com seu navegador normal.</string>
+    <string name="upgrade_vpn_accelerator_title">Navegue em velocidades ainda mais altas</string>
+    <!--
+        %1$s - speed in Gbps
+        Example:
+        Unlock faster, less crowded servers with speeds of up to 10 Gbps.
+    -->
+    <string name="upgrade_vpn_accelerator_message">Desbloqueie servidores mais rápidos e menos lotados com velocidades de até %1$d Gbps.</string>
+    <string name="upgrade_split_tunneling_title">Obtenha o melhor dos dois mundos</string>
+    <string name="upgrade_split_tunneling_message"><![CDATA[Divida seu tráfego em túneis VPN e não VPN com o <b>tunelamento dividido</b>.]]></string>
+    <string name="upgrade_customization_title">Desbloqueie personalizações avançadas de VPN</string>
+    <string name="upgrade_customization_message"><![CDATA[Desbloqueie <b>conexões LAN</b>, <b>DNS personalizado</b> e <b>NAT tipo 2</b> com VPN Plus.]]></string>
+    <string name="upgrade_all_countries_title">Acesso a todos os países</string>
+    <!-- Number of servers inserted as %1$s in the "upgrade_plus_countries_title_new".
+         The number is rounded to the hundreds, e.g. for a value of 1234 the number used in this text is 1200.
+
+         Example:
+         1200 secure servers
+         -->
+    <plurals name="upgrade_plus_servers_new">
+        <item quantity="one">%d servidor seguro</item>
+        <item quantity="other">%d servidores seguros</item>
+    </plurals>
+    <!-- Number of countries inserted as %2$s in "upgrade_plus_countries_title_new".
+
+         Example:
+         55 countries
+         -->
+    <plurals name="upgrade_plus_countries">
+        <item quantity="one">%d país</item>
+        <item quantity="other">%d países</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with "upgrade_plus_servers_new"
+     %2$s - replaced with "upgrade_plus_countries"
+
+     Example:
+     Unlock 1300+ secure servers in 61 countries with VPN Plus.
+     -->
+    <string name="upgrade_plus_countries_title_new"><![CDATA[Desbloqueie %1$s em %2$s com <b>VPN Plus</b>.]]></string>
+    <string name="mail_app_name" translateable="false">Proton Mail</string>
+    <string name="upgrade_unlimited_all_apps_title">Obtenha cobertura completa de privacidade com o Proton Unlimited</string>
+    <string name="upgrade_unlimited_all_apps_description">Desbloqueie todos os recursos premium do Proton VPN, Mail, Calendar, Drive e Pass.</string>
+    <string name="upgrade_unlimited_more">E mais</string>
+    <string name="upgrade_unlimited_vpn_unlimited_countries">Desbloqueie todos os países</string>
+    <string name="upgrade_unlimited_vpn_all_features">Todos os outros recursos do Proton VPN Plus</string>
+    <string name="upgrade_unlimited_vpn_any_location">Escolha qualquer local</string>
+    <string name="upgrade_unlimited_vpn_higher_speeds">Velocidades de VPN ainda maiores</string>
+    <plurals name="upgrade_unlimited_vpn_many_devices">
+        <item quantity="one">Proteja %1$d dispositivo de uma só vez</item>
+        <item quantity="other">Proteja %1$d dispositivos de uma só vez</item>
+    </plurals>
+    <string name="upgrade_unlimited_vpn_streaming">Streaming seguro</string>
+    <string name="upgrade_unlimited_vpn_adblocker">Bloqueador de anúncios e proteção contra malware</string>
+    <string name="upgrade_unlimited_vpn_double_vpn">VPN dupla</string>
+    <string name="upgrade_unlimited_vpn_p2p">Suporte P2P</string>
+    <plurals name="upgrade_unlimited_mail_custom_domains">
+        <item quantity="one">%1$d domínio de e-mail personalizado</item>
+        <item quantity="other">%1$d domínios de e-mail personalizados</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_attachments">
+        <item quantity="one">Anexo de %1$d MB</item>
+        <item quantity="other">%1$d MB de anexos</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_many_addresses">
+        <item quantity="one">%1$d endereço de e-mail</item>
+        <item quantity="other">%1$d endereços de e-mail</item>
+    </plurals>
+    <string name="upgrade_unlimited_mail_unlimited_folders">Pastas e filtros ilimitados</string>
+    <string name="upgrade_unlimited_mail_dark_web">Monitoramento da Dark Web</string>
+    <string name="upgrade_unlimited_mail_aliases">Aliases do Hide-my-email ilimitados</string>
+    <string name="upgrade_unlimited_mail_autoreply">Resposta automática</string>
+    <string name="upgrade_unlimited_mail_scheduled_send">Envio agendado</string>
+    <plurals name="upgrade_unlimited_calendar_calendars">
+        <item quantity="one">%1$d calendário pessoal</item>
+        <item quantity="other">%1$d calendários pessoais</item>
+    </plurals>
+    <string name="upgrade_unlimited_calendar_sharing">Calendários compartilhados</string>
+    <string name="upgrade_unlimited_calendar_invites">Envie e receba convites</string>
+    <string name="upgrade_unlimited_drive_encryption">Armazenamento criptografado de arquivos</string>
+    <string name="upgrade_unlimited_drive_storage_size">%1$d GB de armazenamento total para fotos, arquivos e correio eletrônico</string>
+    <string name="upgrade_unlimited_drive_link_share">Compartilhe fotos e arquivos por link</string>
+    <string name="upgrade_unlimited_drive_sharing_security">Segurança avançada de compartilhamento</string>
+    <string name="upgrade_unlimited_drive_version_history">Histórico de versões</string>
+    <string name="upgrade_unlimited_pass_manager">Gerenciador de senhas criptografado</string>
+    <string name="upgrade_unlimited_pass_logins_aliases">Inícios de sessão ilimitados e aliases do tipo hide-my-email</string>
+    <plurals name="upgrade_unlimited_pass_vaults">
+        <item quantity="one">%1$d cofre</item>
+        <item quantity="other">%1$d cofre</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_logins">Inícios de sessão ilimitados</string>
+    <string name="upgrade_unlimited_pass_aliases">Aliases do Hide-my-email ilimitados</string>
+    <string name="upgrade_unlimited_pass_credit_cards">Cartões de crédito ilimitados</string>
+    <string name="upgrade_unlimited_pass_devices">Dispositivos ilimitados</string>
+    <plurals name="upgrade_unlimited_pass_users">
+        <item quantity="one">Compartilhe com até %1$d outro</item>
+        <item quantity="other">Compartilhe com até %1$d outros</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_2fa_auth">Autenticador A2F integrado</string>
+    <string name="upgrade_not_now_button">Agora não</string>
+    <!-- Content description for plan selection list.
+         Only used by accessibility services.
+
+         Example:
+         When the plan selection control is focused, and the first plan name is "VPN Plus"
+         TalkBack will read:
+         "VPN Plus, 1 of 2, in list Upgrade options" -->
+    <string name="upgrade_plan_selection_content_description">Opções de upgrade</string>
+    <!-- Text in a "badge" element that has a rounded border and represents the Plus VPN plan.
+         May be used as a table header or like an icon. -->
+    <string name="badge_plan_plus">Plus</string>
+    <!-- Content description prefix for value in the benefits table row for the free plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_plus">Plano Plus:</string>
+    <!-- Content description prefix for value in the benefits table row for the plus plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_free">Plano Free:</string>
+    <string name="upsell_panel_content_description_yes">Sim</string>
+    <string name="upsell_panel_content_description_no">Não</string>
+    <string name="upsell_panel_table_header_plan_free">Free</string>
+    <string name="upsell_panel_general_benefit_block_ads">Bloqueie anúncios e rastreadores</string>
+    <string name="upsell_panel_general_benefit_countries">Países disponíveis</string>
+    <!-- %1$s - number of countries rounded to full tens. Example: 120+, 130+, 140+ -->
+    <string name="upsell_panel_general_benefit_countries_rounded">%1$d+</string>
+    <string name="upsell_panel_general_benefit_devices">Dispositivos protegidos</string>
+    <string name="upsell_panel_general_benefit_location">Escolha sua local</string>
+    <string name="upsell_panel_general_benefit_server">Escolha seu servidor</string>
+    <string name="upsell_panel_general_benefit_shows">Assista suas séries de qualquer país</string>
+    <string name="upsell_panel_general_benefit_speed">Velocidade do servidor</string>
+    <string name="upsell_panel_general_benefit_speed_standard">Padrão</string>
+    <string name="upsell_panel_general_benefit_speed_highest">Máxima</string>
+    <string name="upsell_panel_adv_customization_title">Ajuste sua conexão</string>
+    <string name="upsell_panel_adv_customization_description">Permita conexões de LAN, configure um DNS personalizado e escolha o tipo de NAT. Os controles avançados estão todos disponíveis no Plus.</string>
+    <string name="upsell_panel_adv_customization_benefit_lan">Acesse sua impressora e seus dispositivos domésticos</string>
+    <string name="upsell_panel_adv_customization_benefit_dns">Use seu próprio serviço de DNS</string>
+    <string name="upsell_panel_adv_customization_benefit_gaming">Melhores conexões para jogos</string>
+    <!--
+        %1$s - country name in nominative
+
+        Warning country names are inserted in the nominative case.
+        For inflicted languages translate the following phrase instead:
+        Get VPN Plus to access: %1$s
+        -->
+    <string name="upsell_panel_country_title">Desbloqueie %1$s com VPN  Plus</string>
+    <string name="upsell_panel_countries_title">Desbloqueie todos os países com o  VPN  Plus</string>
+    <string name="upsell_panel_country_benefit_speed">Servidores de alta velocidade</string>
+    <string name="upsell_panel_country_benefit_shows">Assista a séries disponíveis apenas no exterior</string>
+    <string name="upsell_panel_devices_title">Proteja todos os seus dispositivos</string>
+    <string name="upsell_panel_devices_description">Seu celular, notebook, TV e tudo mais.</string>
+    <string name="upsell_panel_netshield_title">Navegue sem interrupções</string>
+    <string name="upsell_panel_netshield_benefit_ads">Anúncios bloqueados enquanto você navega</string>
+    <string name="upsell_panel_netshield_benefit_trackers">Impeça que os rastreadores sigam você</string>
+    <string name="upsell_panel_netshield_benefit_malware">Proteção de malware e phishing</string>
+    <string name="upsell_panel_netshield_benefit_load_speed">Carregamento de página mais rápido </string>
+    <string name="upsell_panel_onboarding_title">Obtenha mais com o VPN Plus</string>
+    <string name="upsell_panel_p2p_title">Downloads em velocidade máxima</string>
+    <string name="upsell_panel_p2p_description">Servers built for file sharing, with your usual torrent client.</string>
+    <string name="upsell_panel_p2p_benefit_p2p">Compartilhamento de arquivos P2P</string>
+    <string name="upsell_panel_profiles_title">Streaming, jogos, trabalho: um perfil para cada um</string>
+    <string name="upsell_panel_profiles_description">Configure suas conexões do jeito que você quiser e, depois, reconecte-se a qualquer uma delas com um único toque.</string>
+    <string name="upsell_panel_profiles_benefit_profiles">Perfis salvos</string>
+    <string name="upsell_panel_profiles_benefit_profiles_unlimited">Unlimited</string>
+    <string name="upsell_panel_secure_core_title">Duas camadas de criptografia entre você e a internet</string>
+    <string name="upsell_panel_secure_core_description">Encaminhado através de um servidor da Proton na Suíça, na Islândia ou na Suécia antes de chegar ao país escolhido.</string>
+    <string name="upsell_panel_secure_core_benefit_secure_core">Secure Core</string>
+    <string name="upsell_panel_speed_title">Faça streaming, jogue e baixe mais rápido</string>
+    <string name="upsell_panel_speed_benefit_servers">Servidores de alta velocidade</string>
+    <string name="upsell_panel_speed_benefit_gaming">Tempo de resposta durante os jogos</string>
+    <string name="upsell_panel_speed_benefit_gaming_slow">Lenta</string>
+    <string name="upsell_panel_speed_benefit_gaming_fast">Rápida</string>
+    <string name="upsell_panel_speed_benefit_video">Reproduza vídeos sem buffering</string>
+    <string name="upsell_panel_speed_benefit_p2p">Downloads P2P suportados</string>
+    <string name="upsell_panel_split_tunneling_title">Escolha quais aplicativos usam a VPN</string>
+    <string name="upsell_panel_split_tunneling_description">Seu navegador passa pela VPN, seu aplicativo bancário contorna-a. Você escolhe, aplicativo por aplicativo.</string>
+    <string name="upsell_panel_split_tunneling_benefit_split">Tunelamento dividido</string>
+    <string name="upsell_panel_streaming_title">Assista seus serviços favoritos de streaming</string>
+    <string name="upsell_panel_streaming_benefit_shows">Assista séries de qualquer país</string>
+    <!-- The asterisk points to upsell_panel_streaming_footer -->
+    <string name="upsell_panel_streaming_benefit_platforms">Todas as plataformas de streaming suportada  *</string>
+    <string name="upsell_panel_streaming_benefit_hd">Faça streaming em HD sem buffering</string>
+    <string name="upsell_panel_streaming_benefit_devices">Dispositivos conectados ao mesmo tempo</string>
+    <string name="upsell_panel_streaming_footer">* É necessária uma assinatura da plataforma de streaming.</string>
+    <string name="upsell_panel_streaming_block_title">Fazer upgrade para contornar bloqueios de VPN</string>
+    <string name="upsell_panel_streaming_block_description">Os servidores VPN Plus permitem que você assista aos seus filmes e programas de TV favoritos de todo o mundo.</string>
+    <string name="upsell_panel_tor_title">Sites Onion, sem necessidade do Navegador Tor</string>
+    <string name="upsell_panel_tor_description">Reach .onion sites in the browser you already use.</string>
+    <string name="upsell_panel_tor_benefit_tor">Tor sobre VPN</string>
+    <string name="upsell_card_countries_title">Cobertura global</string>
+    <!-- Parameters:
+        %1$d - number of servers rounded up to 100s (e.g. 600, 1200)
+        %2$s - replaced with "upgrade_plus_countries"
+
+        Example:
+        1700+ server locations in 63 countries -->
+    <string name="upsell_card_countries_description">%1$d+ locais de servidores em %2$s</string>
+    <string name="upsell_card_customization_title">E muito mais…</string>
+    <string name="upsell_card_customization_description">Desbloqueie ainda mais recursos de desempenho e privacidade</string>
+    <plurals name="upsell_card_devices_title">
+        <item quantity="one">Proteja até %1$d dispositivo</item>
+        <item quantity="other">Proteja até %1$d dispositivos</item>
+    </plurals>
+    <string name="upsell_card_devices_description">Segurança e privacidade em todos os seus dispositivos</string>
+    <string name="upsell_card_netshield_title">NetShield</string>
+    <string name="upsell_card_netshield_description">Bloqueie anúncios, malware e rastreadores</string>
+    <string name="upsell_card_secure_core_title">Secure Core</string>
+    <string name="upsell_card_secure_core_description">Adicione outra camada de criptografia à sua conexão VPN</string>
+    <string name="upsell_card_p2p_title">Suporte P2P</string>
+    <string name="upsell_card_p2p_description">Baixe arquivos via BitTorrent e outros protocolos de compartilhamento de arquivos</string>
+    <string name="upsell_card_profiles_title">Perfis</string>
+    <string name="upsell_card_profiles_description">Criar conexões VPN personalizadas</string>
+    <string name="upsell_card_speed_title">Navegação mais rápida</string>
+    <!-- Parameters:
+        %1$d - max server speed in Gbps (preserve the non-breaking space between the number and Gbps).
+        Example:
+        Browse at even higher speeds (up to 10&160;Gbps) -->
+    <string name="upsell_card_speed_description">Navegue em velocidades ainda mais altas (até %1$d Gbps)</string>
+    <string name="upsell_card_split_tunneling_title">Tunelamento dividido</string>
+    <string name="upsell_card_split_tunneling_description">Navegue de dois locais ao mesmo tempo</string>
+    <string name="upsell_card_streaming_title">Streaming</string>
+    <string name="upsell_card_streaming_description">Assista seus filmes e programas favoritos</string>
+    <string name="upsell_card_tor_title">Tor sobre VPN</string>
+    <string name="upsell_card_tor_description">Use a rede Tor sobre sua conexão VPN para privacidade extra</string>
+    <string name="upsell_tv_all_countries_title">Acesse todos os países com o plano Plus</string>
+    <!-- Format for upselling countries on TV".
+        %1$s - replaced with upgrade_plus_servers_new plurals key (e.g. 1 secure server or 10 secure servers)
+        %2$s - replaced with upgrade_plus_countries plurals key (e.g. 1 country or 10 countries)
+
+        Example: Unlock 16821 secure servers in 127 countries. Go to the Proton VPN website to upgrade your plan.
+    -->
+    <string name="upsell_tv_all_countries_description">Desbloqueie %1$s em %2$s.</string>
+    <string name="upsell_tv_netshield_title">Desfrute de navegação sem anúncios com o Plus</string>
+    <string name="upsell_tv_netshield_description"><![CDATA[Bloqueie anúncios, rastreadores e malware com o <b>NetShield</b>.]]></string>
+    <string name="upsell_tv_split_tunneling_title">Obtenha o melhor dos dois mundos com o Plus</string>
+    <string name="upsell_tv_split_tunneling_description"><![CDATA[Divida seu tráfego em túneis VPN e não VPN com o <b>tunelamento dividido</b>.]]></string>
+    <string name="upsell_tv_subscription_expired_title">Assinatura expirada</string>
+    <string name="upsell_tv_subscription_expired_description">Faça upgrade para obter acesso a servidores e recursos novamente.</string>
+    <string name="upsell_tv_customization_title">Obtenha personalizações avançadas de VPN com o Plus</string>
+    <string name="upsell_tv_customization_description"><![CDATA[Desbloqueie <b>conexões LAN</b>, <b>DNS personalizado</b> e mais recursos VPN avançados.]]></string>
+    <string name="upsell_tv_fallback_description">Vá para o site do Proton VPN para fazer upgrade do seu plano.</string>
+    <!-- Format for price per period of time.
+        %1$s - replaced with price and currency (e.g. "$100")
+        %2$s - replaced with time period, one of payment_price_per_ (e.g. "month", "week")
+
+        Examples:
+        50 PLN /month
+        $100 /year
+    -->
+    <string name="payment_price_with_period">%1$s / %2$s</string>
+    <string name="payment_price_per_day">dia</string>
+    <string name="payment_price_per_week">semana</string>
+    <string name="payment_price_per_month">mês</string>
+    <string name="payment_price_per_year">ano</string>
+    <plurals name="payment_price_cycle_label_day">
+        <item quantity="one">%1$d dia</item>
+        <item quantity="other">%1$d dias</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_week">
+        <item quantity="one">%1$d semana</item>
+        <item quantity="other">%1$d semanas</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_month">
+        <item quantity="one">%1$d mês</item>
+        <item quantity="other">%1$d messes</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_year">
+        <item quantity="one">%1$d ano</item>
+        <item quantity="other">%1$d anos</item>
+    </plurals>
+    <string name="payment_select_your_plan">Selecione seu plano</string>
+    <!-- Label on a button for purchasing a subscription.
+         Parameter: %1$s - plan name
+         Plan names are not translated.
+
+         Example: "Get VPN Plus", "Get Proton Unlimited". -->
+    <string name="payment_button_get_plan">Obter %1$s</string>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_discount_renewal_price_message_daily">
+        <item quantity="one">Oferta especial. Renovação automática por %1$s/dia</item>
+        <item quantity="other">Oferta especial. Renovação automática por %1$s a cada %2$d dias</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_discount_renewal_price_message_weekly">
+        <item quantity="one">Oferta especial. Renovação automática por %1$s/semana</item>
+        <item quantity="other">Oferta especial. Renovação automática por %1$s a cada %2$d semanas</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_discount_renewal_price_message_monthly">
+        <item quantity="one">Oferta especial. Renovação automática por %1$s/mês</item>
+        <item quantity="other">Oferta especial. Renovação automática por %1$s a cada %2$d meses</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_discount_renewal_price_message_yearly">
+        <item quantity="one">Oferta especial. Renovação automática por %1$s/ano</item>
+        <item quantity="other">Oferta especial. Renovação automática por %1$s a cada %2$d anos</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_renewal_price_message_daily">
+        <item quantity="one">A assinatura é renovada automaticamente por %1$s/dia</item>
+        <item quantity="other">A assinatura é renovada automaticamente no valor de %1$s a cada %2$d dias</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_renewal_price_message_weekly">
+        <item quantity="one">A assinatura é renovada automaticamente por %1$s/semana</item>
+        <item quantity="other">A assinatura é renovada automaticamente no valor de %1$s a cada %2$d semanas</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_renewal_price_message_monthly">
+        <item quantity="one">A assinatura é renovada automaticamente por %1$s/mês</item>
+        <item quantity="other">A assinatura é renovada automaticamente no valor de %1$s a cada %2$d meses</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_renewal_price_message_yearly">
+        <item quantity="one">A assinatura é renovada automaticamente por %1$s/ano</item>
+        <item quantity="other">A assinatura é renovada automaticamente no valor de %1$s a cada %2$d anos</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_daily">
+        <item quantity="one">%1$s/dia</item>
+        <item quantity="other">%1$s a cada %2$d dias</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_weekly">
+        <item quantity="one">%1$s/semana</item>
+        <item quantity="other">%1$s a cada %2$d semanas</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_monthly">
+        <item quantity="one">%1$s/mês</item>
+        <item quantity="other">%1$s a cada %2$d meses</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_yearly">
+        <item quantity="one">%1$s/ano</item>
+        <item quantity="other">%1$s a cada %2$d anos</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_for_days">
+        <item quantity="one">no primeiro dia</item>
+        <item quantity="other">nos primeiros %1$d dias</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_for_weeks">
+        <item quantity="one">na primeira semana</item>
+        <item quantity="other">nos primeiros %1$d semanas</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_for_months">
+        <item quantity="one">no primeiro mês</item>
+        <item quantity="other">nos primeiros %1$d meses</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_discount_for_years">
+        <item quantity="one">no primeiro ano</item>
+        <item quantity="other">nos primeiros %1$d anos</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_rest_daily">
+        <item quantity="one">e, em seguida, é renovado automaticamente por %1$s por dia</item>
+        <item quantity="other">e, em seguida, é renovado automaticamente em %1$s a cada %2$d dias</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_rest_weekly">
+        <item quantity="one">e, em seguida, é renovado automaticamente por %1$s por semana</item>
+        <item quantity="other">e, em seguida, é renovado automaticamente em %1$s a cada %2$d semanas</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_rest_monthly">
+        <item quantity="one">e, em seguida, é renovado automaticamente por %1$s por mês</item>
+        <item quantity="other">e, em seguida, é renovado automaticamente em %1$s a cada %2$d messes</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_rest_yearly">
+        <item quantity="one">e, em seguida, é renovado automaticamente por %1$s por ano</item>
+        <item quantity="other">e, em seguida, é renovado automaticamente em %1$s a cada %2$d anos</item>
+    </plurals>
+    <!-- Explains renewal cycle when first there's a discount price for several periods
+     (e.g. 2 months) and then the subscription renews at full price.
+     Periods (days, months etc) are never mixed between the messages, the whole message uses one
+     unit.
+
+     Parameters:
+      %1$s - one of payment_multi_renewal_discount_*
+      %2$s - one of payment_multi_renewal_discount_for_*
+      %3$s - one of payment_multi_renewal_rest_*
+
+     Examples:
+      "$2.99/month for the first 2 months, then auto renews at $3.99/month"
+      "$19.99/year for the first 3 years, then auto renews at $24.99/year"
+      "$3.99 every 2 months for the first 4 months, then auto renews at 5.99 every 2 months"
+    -->
+    <string name="payment_multi_renewal_template">%1$s %2$s, %3$s</string>
+    <string name="smart_routing_title">Smart Routing</string>
+    <string name="smart_routing_description">Essa tecnologia permite que o Proton VPN forneça maior velocidade e segurança em países de difícil atendimento.</string>
+    <string name="tor_title">Tor</string>
+    <string name="server_load_title">Carga do servidor</string>
+    <string name="activity_information_learn_more">Saiba mais</string>
+    <string name="server_load_low">Baixa</string>
+    <string name="server_load_medium">Média</string>
+    <string name="server_load_high">Alta</string>
+    <!-- Override Human verification links from core -->
+    <string name="onboarding_welcome_title">Boas-vindas ao Proton VPN</string>
+    <string name="onboarding_welcome_description">Navegue com privacidade, acesse conteúdo bloqueado e desfrute da liberdade digital.</string>
+    <string name="onboarding_welcome_action">Comece</string>
+    <string name="upgrade_success_get_started_button">Começar</string>
+    <string name="dynamic_report_suggestion_didnt_work">Não funcionou?</string>
+    <string name="dynamic_report_contact_us">Contate-nos</string>
+    <string name="dynamic_report_tips_description">Essas dicas podem ajudar a resolver seu problema mais rapidamente.</string>
+    <string name="dynamic_report_tips_title">Correções rápidas</string>
+    <string name="dynamic_report_logs_title">Enviar registros de erro</string>
+    <string name="dynamic_report_logs_tooltip">Registros de erros nos mostram o que deu errado e quais ações levaram ao problema. Usaremos eles apenas para ajudar nossos engenheiros a corrigir problemas.</string>
+    <string name="dynamic_report_error_title">Não foi possível enviar seu relatório.</string>
+    <string name="dynamic_report_completion_error_description_generic">Não foi possível enviar seu relatório. Tente novamente.</string>
+    <string name="dynamic_report_completion_error_description_no_internet">Não foi possível enviar seu relatório. Verifique sua conexão e tente novamente.</string>
+    <string name="dynamic_report_completion_error_description_timeout">Não foi possível enviar seu relatório. A conexão expirou, tente novamente.</string>
+    <string name="dynamic_report_completion_success_title">Obrigado pelo seu comentário. Entraremos em contato assim que possível.</string>
+    <string name="dynamic_report_success_title">Nós lhe agradecemos por seus comentários.</string>
+    <string name="dynamic_report_success_description">Retornaremos assim que possível.</string>
+    <string name="dynamic_report_field_mandatory">Este campo é obrigatório</string>
+    <string name="dynamic_report_logs_description">Um log é uma categoria de arquivo que nos mostra as ações que você realizou que levaram a um erro. Nós só os usaremos para ajudar nossos engenheiros a corrigir bugs.</string>
+    <string name="dynamic_report_logs_missing">Os logs de erros nos ajudam a resolver seu problema. Se você não os incluir, talvez não possamos investigar completamente.</string>
+    <string name="dynamic_report_step1">Etapa 1 de 3</string>
+    <string name="dynamic_report_step2">Etapa 2 de 3</string>
+    <string name="dynamic_report_step3">Etapa 3 de 3</string>
+    <string name="dynamic_report_your_issue_headline">Qual é o problema?</string>
+    <string name="update_screen_title">Atualizar Proton VPN</string>
+    <string name="update_screen_description">É provável você ter problemas em versões mais antigas do Proton VPN.</string>
+    <string name="update_banner_description_settings">Uma nova versão do aplicativo está disponível</string>
+    <string name="update_banner_warning_vpn_connected_title">A VPN será desconectada brevemente</string>
+    <string name="update_banner_warning_vpn_connected_message">O aplicativo precisa ser reiniciado para concluir a atualização. Você será reconectado automaticamente em seguida.</string>
+    <string name="dialog_create_account_title">Crie uma conta para continuar</string>
+    <string name="dialog_create_account_action_create">Criar conta</string>
+    <string name="dialog_create_account_action_signin">Iniciar sessão</string>
+    <string name="server_search_menu_title">Procurar</string>
+    <string name="search_empty_result_subtitle">Tente uma palavra chave diferente</string>
+    <string name="search_empty_result_title">Nenhum resultado encontrado</string>
+    <!-- Content description for an icon button that clears search query in the input field. -->
+    <string name="search_clear_query_content_description">Limpar</string>
+    <!-- Content description for an icon button that clears text in an input field. -->
+    <string name="clear_text_field_content_description">Limpar</string>
+    <!-- Example: Want to connect to Italy? -->
+    <string name="upgrade_country_title">Quer conectar a um país específico?</string>
+    <string name="upgrade_country_message"><![CDATA[Desbloqueie a <b>seleção de países</b> com VPN Plus.]]></string>
+    <string name="free_connections_info_message">O Proton Free automaticamente se conecta ao servidor grátis mais rápido. Normalmente será o servidor mais próximo da sua localização.</string>
+    <string name="free_connections_info_server_locations">Localizações dos servidores gratuitos (%1$d)</string>
+    <string name="free_connections_info_banner_text">Acesse todos os países com o VPN Plus</string>
+    <string name="free_connection_info_title">Conexões gratuitas</string>
+    <string name="search_upsell_banner_title">Transmita de qualquer lugar</string>
+    <!-- Example: Unlock geoblocked content from 10 countries with VPN Plus. -->
+    <plurals name="search_upsell_banner_message">
+        <item quantity="one">Desbloqueie conteúdo bloqueado geograficamente de %1$d país com VPN Plus</item>
+        <item quantity="other">Desbloqueie conteúdo bloqueado geograficamente de %1$d países com VPN Plus</item>
+    </plurals>
+    <string name="select_default_connection">Selecione sua conexão padrão</string>
+    <string name="settings_default_connection_title">Conexão padrão</string>
+    <string name="fastest_country_description">O melhor servidor baseado na sua localização</string>
+    <string name="settings_connection_preferences_title">Preferências de conexão</string>
+    <string name="settings_connection_preferences_snackbar_message_excluded_location_removed">Item removido</string>
+    <string name="settings_excluded_locations_title">Localizações excluídas</string>
+    <string name="settings_excluded_locations_description">As localizações selecionadas nunca serão usadas quando você se conectar à mais rápida.</string>
+    <string name="settings_excluded_locations_unavailable">Nenhuma localização disponível</string>
+    <string name="settings_excluded_locations_selection_hint">Selecionar…</string>
+    <string name="settings_excluded_locations_accessibility_label_deletion">Remover de localizações excluídas</string>
+    <string name="settings_excluded_locations_accessibility_label_city">Cidade</string>
+    <string name="settings_excluded_locations_accessibility_label_country">País</string>
+    <string name="settings_excluded_locations_accessibility_label_state">Estado</string>
+    <string name="settings_last_connection_title">Última conexão</string>
+    <string name="settings_last_connection_description">Sua conexão usada mais recentemente</string>
+    <string name="settings_change_icon_title">Ícone do aplicativo</string>
+    <string name="settings_change_icon_details">Personalize como o aplicativo Proton VPN aparece em seu dispositivo. Por quê?</string>
+    <string name="settings_change_icon_confirmation_title">Alterar ícone do aplicativo?</string>
+    <string name="settings_change_icon_confirmation_details">Isso fará com que o aplicativo Proton VPN seja fechado. Para reiniciar o Proton VPN, basta tocar no ícone do seu novo aplicativo.</string>
+    <string name="settings_change_icon_header_protonvpn">Proton VPN</string>
+    <string name="settings_change_icon_header_discreet">Ícone discreto do aplicativo</string>
+    <string name="settings_widget_title">Widget</string>
+    <string name="settings_widget_selection_title">Experimente o widget do Proton VPN</string>
+    <string name="settings_widget_selection_description">Consulta o estado da sua conexão e acesse suas conexões VPN favoritas na tela inicial.</string>
+    <!-- Placeholder is for non-translatable app_name-->
+    <string name="setting_widget_selection_additional_description">Para adicionar o widget, pressione e mantenha pressionado em qualquer lugar na sua tela inicial e selecione %1$s no menu de widgets.</string>
+    <string name="settings_widget_selection_button_title">Adicionar o widget</string>
+    <string name="setting_widget_try_title">Experimente o widget do Proton VPN</string>
+    <!-- Content description used by accessibility services for a button for dismissing (hiding)
+         a notification banner (usually used for special offers). -->
+    <string name="notification_banner_dismiss_accessibility_label">Dispensar banner</string>
+    <!-- Time left in a countdown, it shows two units of time, e.g. days and hours, hours and minutes.
+         %1$s - larger unit of time, one of: time_left_days, time_left_hours, time_left_minutes
+         %2$s - smaller unit of time, one of: time_left_hours, time_left_minutes, time_left_seconds
+
+         Examples:
+         3 days 11 hours left
+         1 hour 32 minutes left
+         0 minutes 50 seconds left
+     -->
+    <string name="offer_time_left">%1$s %2$s restante</string>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_seconds">
+        <item quantity="one">%1$d segundo</item>
+        <item quantity="other">%1$d segundos</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_minutes">
+        <item quantity="one">%1$d minutos</item>
+        <item quantity="other">%1$d minutos</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 hours 5 minutes left -->
+    <plurals name="time_left_hours">
+        <item quantity="one">%1$d hora</item>
+        <item quantity="other">%1$d horas</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 days 5 hours left -->
+    <plurals name="time_left_days">
+        <item quantity="one">%1$d dia</item>
+        <item quantity="other">%1$d dias</item>
+    </plurals>
+    <string name="server_change_max_reached">Você atingiu o número máximo de alterações gratuitas no servidor por enquanto.</string>
+    <string name="server_change_upsell">Obtenha alterações ilimitadas com VPN Plus.</string>
+    <string name="server_change_button_title">Alterar servidor</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services.
+
+        %1$s - replaced with "time_left_minutes"
+        %2$s - replaced with "time_left_seconds"
+        Example:
+        Available in 1 minute 23 seconds.
+      -->
+    <string name="server_change_button_time_left_content_description">Disponível em %1$s %2$s</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services and only if time left is less than 1 minute.
+
+        %1$s - replaced with "time_left_seconds"
+        Example:
+        Available in 23 seconds.
+      -->
+    <string name="server_change_button_time_left_seconds_content_description">Disponível em %1$s</string>
+    <string name="server_change_progress_finished_contend_description">Disponível agora</string>
+    <string name="not_wanted_country_title">Não é o país que você queria?</string>
+    <string name="not_wanted_country_description">Faça upgrade para escolher qualquer servidor</string>
+    <string name="whats_new_title">Novidades</string>
+    <string name="whats_new_profiles_title">Os perfis estão de volta</string>
+    <string name="whats_new_profiles_description">Crie e guarde conexões personalizadas com sua escolha de localização, servidor e protocolo.</string>
+    <string name="whats_new_widget_title">Apresentamos os widgets</string>
+    <string name="whats_new_widget_description">Agora você pode visualizar e gerenciar sua VPN sem sair da tela inicial.</string>
+    <string name="whats_new_add_widget_button">Adicionar o widget</string>
+    <string name="welcome_plus_title">Boas-vindas ao VPN Plus</string>
+    <string name="welcome_plus_description">Aproveite recursos extras de privacidade, desempenho aprimorado e customização de VPN de próximo nível.</string>
+    <string name="welcome_unlimited_title">Boas-vindas ao Proton Unlimited</string>
+    <string name="welcome_unlimited_description">Você desbloqueou todos os recursos premium do Proton VPN, Mail, Calendar, Drive, Pass e Wallet</string>
+    <string name="welcome_generic_title">Parabéns</string>
+    <string name="welcome_generic_description">Você fez o upgrade da sua assinatura. Desfrute dos recursos avançados de privacidade e do desempenho de próximo nível.</string>
+    <!-- Text added to button labels that open links in a browser (as opposed to performing actions
+         within the app). Only used by accessibility services like screen readers.
+         Example:
+         a button with "Learn more" label and this suffix will be read by a screen reader as:
+         "Learn more, external link button"
+     -->
+    <string name="accessibility_external_link_suffix">link externo</string>
+    <string name="no_logs_banner_title">VPN sem registros certificada</string>
+    <string name="no_logs_banner_description">Sua atividade de VPN é protegida pelas leis de privacidade suiças. Nunca rastreamos você on-line nem compartilhamos seus dados com terceiros.</string>
+    <!-- tag(Redesign_2023) Bottom bar label for home screen -->
+    <string name="bottom_nav_home">Início</string>
+    <string name="bottom_nav_gateways">Gateways</string>
+    <string name="bottom_nav_profiles">Perfis</string>
+    <!-- tag(Redesign_2023) Bottom bar label for country list screen -->
+    <string name="bottom_nav_countries">Países</string>
+    <!-- tag(Redesign_2023) Bottom bar label for settings screen -->
+    <string name="botton_nav_settings">Configurações</string>
+    <!-- tag(Redesign_2023)
+         Text added to button labels that open a UI element (e.g. a panel).
+         Only used by accessibility services.
+         Example:
+         a button with label "connection details" and this action label will be read by a screen
+         reader as:
+         "Connection details, button. Double tap to open"
+    -->
+    <string name="accessibility_action_open">abrir</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that initiate a VPN connection.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland will be read by a screen reader as:
+         "Switzerland. Double tap to connect"
+        -->
+    <string name="accessibility_action_connect">conectar</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that redirect the user to upgrade their subscription plan.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland that requires upgrading subscription to become
+         available will be read by a screen reader as:
+         "Unavailable, Switzerland. Double tap to upgrade"
+        -->
+    <string name="accessibility_action_upgrade">fazer upgrade</string>
+    <!-- tag(Redesign_2023)
+     Text added to clickable elements that initiate a search.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_search">pesquisar</string>
+    <!--
+     Text added to clickable elements that provide negative feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_negative">não bom</string>
+    <!--
+     Text added to clickable elements that provide positive feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_positive">bom</string>
+    <!--
+     Text added to clickable elements that allows to submit either positive or negative feedback.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_submit_feedback">enviar</string>
+    <!-- Name of action for opening a screen/panel for an item.
+         The action is listed in a menu of additional actions available to accessibility services.
+
+         Example:
+         - item in a list of countries has a custom action to open list of cities in the country
+         - item in a list of cities has a custom action to open list of servers in the city
+         -->
+    <string name="accessibility_menu_action_open">Abrir</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable because servers
+         are in maintenance.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are in maintenance will be read by a
+         screen reader as:
+         "in maintenance, Switzerland"
+     -->
+    <string name="accessibility_item_in_maintenance">em manutenção</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are unavailable will be read by a screen
+         reader as:
+         "unavailable, Switzerland"
+     -->
+    <string name="accessibility_item_unavailable">indisponível</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when there is active connection to it.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland when there is a VPN connection to a server in this country
+         will be read by a screen reader as:
+         "Switzerland, connected"
+     -->
+    <string name="accessibility_item_connected">conectado</string>
+    <!-- tag(Redesign_2023): label indicating that a server supports peer-to-peer. -->
+    <string name="server_feature_label_p2p">P2P</string>
+    <!-- tag(Redesign_2023): label indicating that a server routes connection through the Tor network. -->
+    <string name="server_feature_label_tor">Tor</string>
+    <string name="server_feature_content_description_p2p">peer-to-peer</string>
+    <string name="server_feature_content_description_tor">tor</string>
+    <string name="server_feature_content_description_smart_routing">Smart Routing</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest country is connected to. -->
+    <string name="fastest_country">País mais rápido</string>
+    <string name="fastest_country_excluding_my_country">País mais rápido (excluído meu país)</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest free server is connected to. -->
+    <string name="fastest_free_server">Servidor gratuito mais rápido</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Iceland
+     -->
+    <string name="connection_info_secure_core_full_iceland">%1$s via Islândia</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Sweden
+     -->
+    <string name="connection_info_secure_core_full_sweden">%1$s via Suécia</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_switzerland">%1$s via Suiça</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - exit country name in nominative case
+         %2$s - entry country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_other">%1$s via %2$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_iceland">via Islândia</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_sweden">via Suécia</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_switzerland">via Suíça</string>
+    <!--
+         Label describing a Secure Core connection via the fastest Secure Core country.
+         It is displayed below country name, for example:
+         Italy
+         via Secure Core
+    -->
+    <string name="connection_info_secure_core_entry_fastest">vía Secure Core</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - entry country name in nominative case
+         Example: via Switzerland
+    -->
+    <string name="connection_info_secure_core_entry_other">via %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         three countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+
+     -->
+    <string name="connection_info_auto_selected_free_countries">Selecionado automaticamente de [flags]</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         several countries. Used instead of connection_info_auto_selected_free_countries when there
+         are more than 3 countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+         $1%d - replaced with number of additional countries (beyond the 3 flags).
+
+         Example, if there are 5 countries to select from the text will be:
+         Auto selected from [flags]+2
+         -->
+    <string name="connection_info_auto_selected_free_countries_more">Selecionado automaticamente de [flags]+%1$d</string>
+    <!-- tag(Redesign_2023)
+         Accessibility label describing a connection to a free server that is automatically selected
+         from one in several countries. Placed directly below fastest_free_server.
+         This text replaces connection_info_auto_selected_free_servers for screen readers.
+         $1%d - replaced with number of countries.
+         -->
+    <plurals name="connection_info_accessibility_auto_selected_free_countries">
+        <item quantity="one">Selecionado automaticamente de %1$d país</item>
+        <item quantity="other">Selecionado automaticamente de %1$d países</item>
+    </plurals>
+    <string name="connection_info_auto_selected_free_countries_plain">Seleção automática entre os países gratuitos</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that the connection details in the card are
+         are that of the previous connection.
+
+         Example:
+         Last connected to
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         -->
+    <string name="connection_card_label_last_connected">Última conexão com</string>
+    <!--
+        Label above the connection card indicating text which acts as a button and leads to
+        customization bottom sheet of default connection
+     -->
+    <string name="connection_card_label_default_connection">Conexão padrão</string>
+    <!-- Label above the connection card when not connected and the user is on the free plan.
+         The connection card always shows "Fastest free server" (fastest_free_server) for free
+         users. -->
+    <string name="connection_card_label_free_connection">Conexão gratuita</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is being established.
+     -->
+    <string name="connection_card_label_connecting">Conectando à…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection to a different server is
+         being established. It\'s shown only in response to user clicking the "Change server" button.
+     -->
+    <string name="connection_card_label_changing_server">Alterando servidor…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is established and the user
+         is safely browsing as if they were in the location indicated in the connection card.
+
+         Example:
+         Browsing safely from
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         Germany
+     -->
+    <string name="connection_card_label_connected">Navegando com segurança de</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with details of the current VPN connection.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "connection details, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_connection_details">detalhes da conexão</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with information about connections in free plan.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "more information about free connections, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_free_connections">mais informação sobre as conexões gratuitas</string>
+    <string name="connection_card_label_connection_feedback">Como está sua conexão?</string>
+    <!-- tag(Redesign_2023)
+         Displayed above the list of recently made connections.
+     -->
+    <string name="recents_headline">Recentes</string>
+    <!-- Displayed above the list of VPN Plus features in the home screen -->
+    <string name="home_upsell_carousel_headline">Descubra VPN Plus</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_pin">Fixar</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_unpin">Desafixar</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_remove">Remover</string>
+    <!-- tag(Redesign_2023)
+         State description of a pinned recent item.
+         Only used by accessibility service.
+    -->
+    <string name="recent_action_accessibility_state_pinned">Fixado</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_country_servers_in_maintenance">Todos os servidores do país estão em manutenção</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_city_servers_in_maintenance">Todos os servidores dessa cidade estão em manutenção</string>
+    <!-- State means here US state, like California -->
+    <string name="message_state_servers_in_maintenance">Todos os servidores desse estado estão em manutenção</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_in_maintenance">Servidor em manutenção</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_not_available">Servidor indisponível</string>
+    <string name="message_server_location_excluded">Localização do servidor excluída</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog when all servers of a gateway are in maintenance -->
+    <string name="message_gateway_in_maintenance">Gateway em manutenção</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_sign_out">Encerrar sessão</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_title">Configurações</string>
+    <string name="gateways_title">Gateways</string>
+    <string name="countries_title">Países</string>
+    <string name="profiles_title">Perfis</string>
+    <string name="settings_autoconnect_title">Conexão automática</string>
+    <string name="settings_autoconnect_boot_description">Conecta você automaticamente à VPN usando a conexão rápida, assim que seu dispositivo é iniciado.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_features">Recursos</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_netshield_title">NetShield</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_split_tunneling_title">Tunelamento dividido</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_kill_switch_title">Kill switch</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_connection_category">Conexão</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_protocol_title">Protocolo</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_vpn_accelerator_title">VPN Accelerator</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_advanced_settings_title">Configurações avançadas</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_general">Geral</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_account">Conta</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_notifications_title">Notificações</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_support">Suporte</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_help_center_title">Central de ajuda</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_report_issue_title">Reportar um problema</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_debug_logs_title">Registros de depuração</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_improve_proton">Melhorar a Proton</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_fight_censorship_title">Ajude-nos a combater a censura</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_rate_us_title">Avaliar Proton VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_app_version">Versão do aplicativo: %1$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_third_party_licenses">Licenças de terceiros</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_title">Encerrar sessão?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_message">Você será desconectado da VPN.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_dont_ask_again">Não perguntar novamente</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_action">Encerrar sessão</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_action_cancel">Cancelar</string>
+    <string name="dialog_action_change_icon">Alterar ícone</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_all">Todos</string>
+    <string name="country_filter_cities">Cidades</string>
+    <string name="country_filter_states">Estados</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_secure_core">Secure Core</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_p2p">P2P</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_tor">Tor</string>
+    <string name="country_filter_all_list_header">Todos os países (%1$d)</string>
+    <string name="country_filter_all_list_header_free">Mais países (%1$d)</string>
+    <string name="country_filter_countries_list_header">Países (%1$d)</string>
+    <string name="country_filter_cities_list_header">Cidades (%1$d)</string>
+    <string name="country_filter_states_list_header">Estados (%1$d)</string>
+    <string name="country_filter_servers_list_header">Servidores</string>
+    <string name="country_filter_secure_core_list_header">Países do Secure Core (%1$d)</string>
+    <string name="country_filter_p2p_list_header">Países P2P (%1$d)</string>
+    <string name="country_filter_p2p_list_header_cities">Cidades P2P (%1$d)</string>
+    <string name="country_filter_p2p_list_header_states">Estados P2P (%1$d)</string>
+    <string name="counrty_filter_p2p_servers_list_header">Servidores P2P</string>
+    <string name="country_filter_tor_list_header">Países Tor (%1$d)</string>
+    <string name="country_filter_tor_servers_list_header">Servidores Tor</string>
+    <string name="country_filter_info_label">Informações</string>
+    <!-- Content description for server load indicator. Used by accessibility services only.
+         Note: the trailing \'%\' sign needs to be doubled
+         (this doesn\'t apply to other percent sign characters, e.g. ٪). -->
+    <string name="country_filter_server_load_content_description">Carga: %1$s%%</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is connected and network is protected
+    -->
+    <string name="vpn_status_connected">Protegido</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is not connected and network is not protected
+    -->
+    <string name="vpn_status_disabled">Você está sem proteção</string>
+    <!-- tag(Redesign_2023)
+         Text is shown while connection is being established
+    -->
+    <string name="vpn_status_connecting">Protegendo sua identidade digital</string>
+    <!-- tag(Redesign_2023)
+         Displays Country name and IP of user if he is not connected.
+         First parameter is country, second is IP.
+         Ex: Poland · 192.1.1.1.1
+    -->
+    <string name="vpn_status_disabled_location">%1$s · %2$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_subtitle">Detalhes da conexão</string>
+    <string name="connection_details_features_title">Recursos</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_show_ip">Mostrar IP</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_back">Voltar</string>
+    <string name="accessibility_close">Fechar</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_my_ip">Meu IP</string>
+    <string name="connection_details_my_ipv4">Meu IPv4</string>
+    <string name="connection_details_my_ipv6">Meu IPv6</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_ip">IP VPN</string>
+    <string name="connection_details_vpn_ip4_6">VPN IPv4/IPv6</string>
+    <string name="connection_details_vpn_ipv4">VPN IPv4</string>
+    <string name="connection_details_vpn_ipv6">VPN IPv6</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates for how long user has been connected. Like \'Connected for 2hours\'
+    -->
+    <string name="connection_details_connected_for">Conectado para</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server">Servidor</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_gateway">Gateway</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_country">País</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_city">Cidade</string>
+    <!-- Label for server location "state", as a state of the USA. -->
+    <string name="connection_details_state">Estado</string>
+    <!-- Label for server smart routing, a country which is routed through. -->
+    <string name="connection_details_smart_routing">Encaminhado por meio de</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates Server load, on the left side will be Server load, and on the right actual load values.
+    -->
+    <string name="connection_details_server_load">Carga do servidor</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_question">O que é carga do servidor?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_description">A carga do servidor mostra o quão próximo um servidor está da capacidade máxima.\n\nUma carga alta do servidor pode tornar sua conexão mais lenta.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_title">Baixo (1–75%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_description">Velocidade ultrarrápida</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_title">Média (76–90%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_description">É improvável que afete a velocidade da VPN</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_title">Alta (91–100%)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_description">A VPN pode funcionar mais lentamente que o normal </string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol">Protocolo</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol_description">Um protocolo é um conjunto de instruções que o seu dispositivo segue para se conectar e se comunicar com um servidor.</string>
+    <!-- tag(Redesign_2023)
+         Label in front of upload speed in connection details. It is followed by upload speed number and unit.
+    -->
+    <string name="connection_details_upload">Enviar</string>
+    <!-- tag(Redesign_2023)
+         Label in front of download speed in connection details. It is followed by download speed number and unit.
+    -->
+    <string name="connection_details_download">Baixar</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_section_vpn_speed">Velocidade da VPN</string>
+    <string name="connection_details_section_ip">Endereço IP</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_question">Qual é a velocidade da VPN?</string>
+    <string name="info_dialog_secure_core_title">Secure Core</string>
+    <string name="info_dialog_p2p_title">P2P</string>
+    <string name="info_dialog_secure_core_description">O Secure Core conecta você ao seu servidor de destino através de um segundo servidor VPN de segurança máxima.\n\nEsse nível mais alto de proteção pode causar maior latência e velocidades mais lentas.</string>
+    <string name="info_secure_core_standard_header">Conexão VPN padrão</string>
+    <string name="info_secure_core_secure_header">Conexão VPN Secure Core</string>
+    <string name="info_dialog_tor_description">Conecte-se a um servidor Tor para acessar serviços ocultos e sites da rede onion usando qualquer navegador.</string>
+    <string name="info_dialog_button_learn_more_tor">Como acessar a rede Tor</string>
+    <string name="info_dialog_button_learn_more_p2p">Como fazer torrent com P2P</string>
+    <string name="info_dialog_button_learn_more_ipaddress">O que é um endereço IP?</string>
+    <string name="info_dialog_button_learn_more_streaming">Precisa de ajuda com o streaming?</string>
+    <string name="info_dialog_streaming_title">Streaming</string>
+    <string name="info_dialog_streaming_description">Servidores de streaming são projetados para reprodução rápida e segura de TV e filmes.</string>
+    <string name="info_dialog_how_to_stream">Como fazer streaming:</string>
+    <!-- item 1 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_1">Vá para as configurações do seu celular e desative os serviços de localização</string>
+    <!-- item 2 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_2">Reinicie sua plataforma de streaming</string>
+    <!-- item 3 in the numbered list (last item) -->
+    <string name="info_dialog_how_to_stream_step_3">Conecte-se a qualquer servidor Plus e comece a usar “streaming”</string>
+    <string name="info_dialog_profiles_title">Perfis</string>
+    <string name="info_dialog_ipaddress_title">Endereço IP</string>
+    <string name="info_dialog_ipv6_traffic_title">Tráfego IPv6</string>
+    <string name="info_dialog_profiles_description">Os perfis são conexões VPN personalizadas que você pode adaptar às suas necessidades e salvar para acesso rápido.\n\nDefina seu local preferido e otimize suas configurações para segurança, desempenho, jogos ou qualquer outro cenário.</string>
+    <string name="info_dialog_ipaddress_description">Seu IP VPN mascara seu endereço IP real. Isso faz parecer que você está navegando da localização da sua VPN, então sua atividade on-line não pode ser vinculada ao seu dispositivo.</string>
+    <string name="info_dialog_ipv6_traffic_description">O protocolo de internet ou IP atribui endereços aos dispositivos e encaminha o tráfego da internet. O IPv6 é a versão mais recente, oferecendo mais endereços e melhor conectividade, mas ainda não é amplamente adotado.</string>
+    <string name="connection_feature_p2p_title">P2P</string>
+    <string name="connection_feature_p2p_description">O compartilhamento de arquivos ponto a ponto está habilitado neste servidor.</string>
+    <string name="connection_feature_tor_title">Tor</string>
+    <string name="connection_feature_tor_description">Você pode se conectar a sites .onion através do seu navegador normal.</string>
+    <string name="connection_feature_secure_core_title">Secure Core</string>
+    <string name="connection_feature_secure_core_description">Sua atividade é criptografada através de 2 servidores de VPN altamente seguros.</string>
+    <string name="connection_feature_streaming_title">Streaming</string>
+    <string name="connection_feature_streaming_description">Esse servidor está otimizado para reprodução de TV e filme.</string>
+    <string name="connection_feature_smart_routing_title">Smart Routing</string>
+    <string name="connection_feature_smart_routing_description">Conecta você ao país destinatário através de servidores localizados fisicamente em outro lugar.</string>
+    <!-- Placeholder will be replaced by a list of country names separated by commas, e.g, Connects you to your destination country through servers physically located elsewhere: Canada, Mexico, United States.  -->
+    <string name="connection_feature_smart_routing_description_with_countries">Conecta você ao país destinatário através de servidores fisicamente localizados em outro lugar: %1$s.</string>
+    <!--
+        %1$s - physical server location country
+        %2$s - destination country
+        Warning: country names are inserted in the nominative case.
+        For INFLECTED languages, translate the following phrase instead:
+        "Your physical server location: %1$s.\nYour browsing country: %2$s"
+    -->
+    <string name="country_smart_routing_info">Os servidores estão localizados fisicamente em %1$s, mas você parece estar navegando em %2$s.</string>
+    <!--
+        Displayed next to an icon which provides more information if clicked
+    -->
+    <string name="connection_details_info_label">Informações</string>
+    <!-- tag(Redesign_2023)
+         Used for button title to learn more about different contexts
+    -->
+    <string name="connection_details_learn_more">Saiba mais</string>
+    <!-- tag(Redesign_2023)
+        Used to describe IP which is not known
+    -->
+    <string name="connection_details_unknown_ip">Desconhecido</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_description">Este gráfico mostra a velocidade de sua atividade atual de upload e download. É improvável que sua conexão VPN diminua a velocidade da atividade online normal.</string>
+    <string name="speed_bytes_per_second">%1$s B/s</string>
+    <string name="speed_kilobytes_per_second">%1$s KB/s</string>
+    <string name="speed_megabytes_per_second">%1$s MB/s</string>
+    <string name="speed_gigabytes_per_second">%1$s GB/s</string>
+    <string name="speed_terabytes_per_second">%1$s TB/s</string>
+    <!-- Used as graph label to indicate speed measurement. Example: Speed KB/s or Speed MB/s-->
+    <string name="speed_graph_title">Velocidade %1$s</string>
+    <string name="bytes_per_second">B/s</string>
+    <string name="kilobytes_per_second">KB/s</string>
+    <string name="megabytes_per_second">MB/s</string>
+    <string name="gigabytes_per_second">GB/s</string>
+    <string name="terabytes_per_second">TB/s</string>
+    <plurals name="full_name_speed_bytes_per_second">
+        <item quantity="one">%1$s Byte por segundo</item>
+        <item quantity="other">%1$s Bytes por segundo</item>
+    </plurals>
+    <plurals name="full_name_speed_kilobytes_per_second">
+        <item quantity="one">%1$s Kilobyte por segundo</item>
+        <item quantity="other">%1$s Kilobytes por segundo</item>
+    </plurals>
+    <plurals name="full_name_speed_megabytes_per_second">
+        <item quantity="one">%1$s Megabyte por segundo</item>
+        <item quantity="other">%1$s Megabytes por segundo</item>
+    </plurals>
+    <plurals name="full_name_speed_gigabytes_per_second">
+        <item quantity="one">%1$s Gigabyte por segundo</item>
+        <item quantity="other">%1$s Gigabytes por segundo</item>
+    </plurals>
+    <plurals name="full_name_speed_terabytes_per_second">
+        <item quantity="one">%1$s Terabyte por segundo</item>
+        <item quantity="other">%1$s Terabytes por segundo</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_bytes">
+        <item quantity="one">%1$s Byte</item>
+        <item quantity="other">%1$s Bytes</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_kilobytes">
+        <item quantity="one">%1$s Kilobyte</item>
+        <item quantity="other">%1$s Kilobytes</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_megabytes">
+        <item quantity="one">%1$s Megabyte</item>
+        <item quantity="other">%1$s Megabytes</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_gigabytes">
+        <item quantity="one">%1$s Gigabyte</item>
+        <item quantity="other">%1$s Gigabytes</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_terabytes">
+        <item quantity="one">%1$s Terabyte</item>
+        <item quantity="other">%1$s Terabytes</item>
+    </plurals>
+    <string name="traffic_volume_bytes">%1$s B</string>
+    <string name="traffic_volume_kilobytes">%1$s KB</string>
+    <string name="traffic_volume_megabytes">%1$s MB</string>
+    <string name="traffic_volume_gigabytes">%1$s GB</string>
+    <string name="traffic_volume_terabytes">%1$s TB</string>
+    <!-- tag(Redesign_2023)
+         Shown at the top status view if app detects that there is no usable network to connect to VPN
+    -->
+    <string name="error_vpn_waiting_for_network">Aguardando rede</string>
+    <!-- tag(Redesign_2023) -->
+    <plurals name="connection_details_days">
+        <item quantity="one">%1$d dia</item>
+        <item quantity="other">%1$d dias</item>
+    </plurals>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_hours_shortened">%1$d h</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_minutes_shortened">%1$d min</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_seconds_shortened">%1$d s</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceTitle">Erro na conexão</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceDescription">Este dispositivo não permite conexões VPN.</string>
+    <string name="create_profile_title">Criar perfil</string>
+    <!-- Title for the screen where user can edit a profile.
+         %1$s - name of the profile being edited. -->
+    <string name="edit_profile_title">Editar %1$s</string>
+    <string name="edit_profile_dialog_action">Editar perfil</string>
+    <string name="create_profile_name_hint">Nome do perfil</string>
+    <string name="create_profile_name_error_empty">Digite o nome do perfil</string>
+    <string name="create_profile_name_error_too_long">O nome do perfil deve ter 30 caracteres ou menos</string>
+    <string name="create_profile_type_and_location_title">Selecione o tipo de conexão e o local</string>
+    <string name="create_profile_features_and_settings_title">Recursos e configurações</string>
+    <string name="configure_profile_features_and_settings_title">Definir as configurações de perfil</string>
+    <string name="configure_profile_features_and_settings_description">As configurações de perfil substituirão suas configurações de VPN ao conectar.</string>
+    <!--
+        First input will be for current step, second one will be for total number of steps
+        Example: Step 3 of 7
+     -->
+    <string name="create_profile_steps">Passo %1$d de %2$d</string>
+    <string name="create_profile_button_next">Próximo</string>
+    <!-- Important: please note the double % sign after 400. It is displayed as a single % in the app.
+         (this doesn\'t apply to other percent sign characters, e.g. ٪)
+         %1$s - will have translated learn_more value -->
+    <string name="settings_vpn_accelerator_description">Aumente a velocidade da sua conexão em até 400%% com tecnologias de melhoria de performance. %1$s</string>
+    <string name="settings_account_settings_title">Configurações da conta</string>
+    <string name="settings_account_change_password">Alterar senha</string>
+    <string name="settings_account_recovery_email">E-mail de recuperação</string>
+    <string name="settings_account_recovery_email_not_set">Não definido</string>
+    <string name="settings_account_security_keys">Chaves de segurança</string>
+    <!-- Label of a button that opens user\'s account page -->
+    <string name="settings_account_button_my_account">Minha conta</string>
+    <string name="settings_account_button_delete_account">Excluir conta</string>
+    <string name="settings_custom_dns_title">DNS personalizado</string>
+    <string name="settings_custom_dns_description_tv">Conecte-se à VPN com um sistema de nome de domínio (DNS) auto-hospedado ou de terceiros.</string>
+    <string name="settings_add_dns_placeholder">192.0.2.0</string>
+    <string name="settings_add_dns_title">Adicionar servidor DNS</string>
+    <string name="settings_add_dns_new_entry_button">Adicionar</string>
+    <string name="settings_add_dns_description">Insira o endereço IPv4 ou IPv6 do servidor</string>
+    <string name="settings_add_dns_invalid_input">Insira um endereço IPv4 ou IPv6 válido</string>
+    <string name="settings_add_dns_empty_input">Insira um endereço IPv4 ou IPv6</string>
+    <string name="settings_add_dns_duplicate_input">Servidor já adicionado</string>
+    <string name="settings_advanced_dns_description">Conecte-se à VPN com um sistema de nome de domínio (DNS) auto-hospedado ou de terceiros. Saiba mais</string>
+    <!-- %1$d - Corresponds to number of servers added -->
+    <string name="settings_dns_list_title">Servidores (%1$d)</string>
+    <string name="settings_dns_list_description">Se o seu servidor DNS personalizado não funcionar, o DNS VPN padrão será usado.</string>
+    <string name="settings_dns_list_description_multiple">Tentaremos conectar você a esses servidores em ordem. Se nenhum deles funcionar, o DNS da VPN será usado.</string>
+    <string name="settings_changes_apply_on_reconnect_toast">As alterações serão aplicadas quando você se reconectar</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_title">O NetShield não estará disponível.</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message">O NetShield não consegue filtrar anúncios, rastreadores e malware quando um DNS personalizado é usado. Saber mais</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message_tv">O NetShield não consegue filtrar anúncios, rastreadores e malware quando um DNS personalizado é usado.</string>
+    <string name="settings_advanced_alternative_routing_title">Roteamento alternativo</string>
+    <string name="settings_advanced_alternative_routing_description">Se os serviços da Proton forem bloqueados devido a restrições de rede, tentaremos usar roteamento de rede alternativo para conectar você aos nossos sites.</string>
+    <string name="settings_advanced_allow_lan_title">Conexões LAN</string>
+    <string name="settings_advanced_allow_lan_description">Permite conectar-se a impressoras, alto-falantes e outros dispositivos na rede local do seu dispositivo.</string>
+    <string name="settings_advanced_allow_lan_description_tv">Conecte-se a impressoras, alto-falantes e outros dispositivos na sua rede local</string>
+    <string name="settings_advanced_allow_lan_title_tv">Permitir conexões LAN</string>
+    <string name="settings_advanced_nat_type_title">Tipo NAT</string>
+    <!-- %1$s - will have translated learn_more value -->
+    <string name="settings_advanced_nat_type_description">Selecione um tipo de tradução de endereço de rede para sua conexão. %1$s</string>
+    <string name="settings_advanced_nat_type_description_no_learn">Selecione um tipo de tradução de endereço de rede para sua conexão.</string>
+    <string name="settings_advanced_nat_type_strict">Estrito (tipo 3)</string>
+    <string name="settings_advanced_nat_type_strict_short">Tipo 3</string>
+    <string name="settings_advanced_nat_type_moderate">Moderado (tipo 2)</string>
+    <string name="settings_advanced_nat_type_moderate_short">Tipo 2</string>
+    <string name="settings_advanced_nat_type_strict_description">Restringe a entrada de dados na sua rede. Esta opção é mais segura, mas pode dificultar as conexões de jogos ponto a ponto.</string>
+    <string name="settings_advanced_nat_type_moderate_description">Alguma restrição na entrada de dados na sua rede. Esta opção é melhor para jogos on-line.</string>
+    <string name="settings_split_tunneling_description">Personalize sua conexão decidindo quais aplicativos e endereços IP serão protegidos pela VPN. %1$s</string>
+    <string name="settings_protocol_description">Um protocolo VPN determina como os dados trafegam entre um servidor VPN e o seu dispositivo. %1$s</string>
+    <string name="settings_protocol_description_no_link">Um protocolo VPN determina como os dados trafegam entre um servidor VPN e o seu dispositivo.</string>
+    <string name="settings_protocol_section_speed">Velocidade (UDP)</string>
+    <string name="settings_protocol_section_reliability">Confiabilidade (TCP)</string>
+    <string name="settings_protocol_smart_title">Smart</string>
+    <string name="settings_protocol_smart_description">Seleciona automaticamente o melhor protocolo para sua conexão.</string>
+    <string name="settings_protocol_wireguard_title">WireGuard</string>
+    <string name="settings_protocol_smart_protun_description">Seleciona automaticamente o melhor protocolo para sua conexão [experimental].</string>
+    <string name="settings_protocol_wireguard_udp_description">Protocolo de última geração em segurança e desempenho.</string>
+    <string name="settings_protocol_wireguard_tcp_description">Protocolo de última geração em segurança e desempenho.</string>
+    <string name="settings_protocol_stealth_title">Stealth</string>
+    <string name="settings_protocol_stealth_description">Supera bloqueios de VPN ocultando sua conexão VPN dos censores. Esse protocolo é resistente à DPI (inspeção profunda de pacotes), mas pode não ser tão rápido quanto outros protocolos. O Stealth é exclusivo do Proton VPN.</string>
+    <!-- Text on a badge displayed next to the "smart" protocol name in settings -->
+    <string name="settings_protocol_badge_recommended">Recomendado</string>
+    <string name="settings_protocol_badge_experimental">Experimental</string>
+    <string name="settings_split_tunneling_mode_title">Modo</string>
+    <string name="settings_split_tunneling_mode_standard">Excluir</string>
+    <string name="settings_split_tunneling_mode_inverse">Incluir</string>
+    <string name="settings_split_tunneling_mode_description_standard">Aplicativos e endereços IP selecionados são excluídos da conexão VPN.</string>
+    <string name="settings_split_tunneling_mode_description_inverse">Apenas aplicativos e endereços IP selecionados se conectam por meio da VPN, o restante do tráfego fica desprotegido.</string>
+    <string name="settings_split_tunneling_excluded_apps">Aplicativos excluídos</string>
+    <string name="settings_split_tunneling_excluded_ips">Endereços de IP excluídos</string>
+    <string name="settings_split_tunneling_included_apps">Aplicativos incluídos</string>
+    <string name="settings_split_tunneling_included_ips">Endereços IP incluídos</string>
+    <string name="settings_split_tunneling_empty" comment="Used to indicate that no IP or Apps are included in split tunneling">Nenhum</string>
+    <string name="settings_split_tunneling_excluded_format" comment="Used for describing excluded items. Example: Chrome, Facebook and 2 more. The same logic used for IP addresses too.">%1$s, %2$s e mais %3$d</string>
+    <string name="settings_split_tunneling_already_excluded">Já excluído</string>
+    <string name="settings_split_tunneling_already_included">Já incluído</string>
+    <string name="settings_split_tunneling_remove_ip_dialog_message">Remover o endereço IP da lista?</string>
+    <string name="settings_split_tunneling_ip_removed_message">Endereço de IP removido</string>
+    <string name="settings_theme_title">Tema</string>
+    <string name="settings_theme_value_auto">Tema do dispositivo</string>
+    <string name="settings_theme_value_light">Claro</string>
+    <string name="settings_theme_value_dark">Escuro</string>
+    <string name="settings_dialog_reconnect">As novas configurações serão aplicadas na próxima vez que você se conectar.</string>
+    <string name="settings_needs_reconnect_banner">As novas configurações serão aplicadas na próxima vez que você se conectar.</string>
+    <string name="private_dns_conflict_banner_custom_dns_title">DNS personalizado não está disponível</string>
+    <string name="private_dns_conflict_banner_custom_dns_description">Seu dispositivo está usando um DNS de terceiros que impede o funcionamento do DNS personalizado do Proton VPN. Saber mais</string>
+    <string name="private_dns_conflict_banner_custom_dns_description_tv">Seu dispositivo está usando um DNS de terceiros que impede o funcionamento do DNS personalizado do Proton VPN.</string>
+    <string name="private_dns_conflict_banner_netshield_title">NetShield não está disponível</string>
+    <string name="private_dns_conflict_banner_netshield_description">Seu dispositivo está usando um DNS de terceiros que impede o funcionamento do NetShield. Saber mais</string>
+    <string name="private_dns_conflict_banner_network_settings_button">Configurações de rede</string>
+    <string name="custom_dns_conflict_banner_netshield_title">NetShield não está disponível</string>
+    <string name="custom_dns_conflict_banner_netshield_description">O DNS personalizado está ativado, o que impede o funcionamento do NetShield. Saber mais</string>
+    <string name="custom_dns_conflict_banner_netshield_title_tv">Desativar o DNS personalizado para usar o NetShield</string>
+    <string name="custom_dns_conflict_banner_netshield_description_tv">O DNS personalizado está ativado, o que impede o funcionamento do NetShield.</string>
+    <string name="custom_dns_conflict_banner_disable_custom_dns_button">Desativar o DNS personalizado</string>
+    <string name="info_secure_core_standard_high_privacy">Privacidade alta</string>
+    <string name="info_secure_core_standard_lower_latency">Baixa latência</string>
+    <string name="info_secure_core_advanced_privacy">Privacidade avançada</string>
+    <string name="info_secure_core_higher_latency">Latência alta</string>
+    <string name="info_p2p_what_title">O que é P2P?</string>
+    <string name="info_p2p_what_description">A tecnologia peer-to-peer (P2P) permite conectar e compartilhar arquivos diretamente com outros dispositivos.\n\nNossos servidores P2P são especialmente projetados para suportar esse tipo de compartilhamento de arquivos.</string>
+    <string name="info_p2p_torrenting_title">O que é torrent?</string>
+    <string name="info_p2p_torrenting_description">O compartilhamento e download rápido de arquivos grandes em uma rede P2P.</string>
+    <string name="info_p2p_why_title">Por que usar um servidor P2P ao fazer torrent?</string>
+    <string name="info_p2p_why_description_speed">Velocidades aumentadas de upload e download</string>
+    <string name="info_p2p_why_description_logs">Sem registros de atividades</string>
+    <string name="info_p2p_why_description_hide">Oculte seu endereço IP do seu provedor de serviços e de seus pares</string>
+    <string name="info_dialog_smart_routing_description">O Smart Routing nos permite fornecer cobertura VPN em países de difícil acesso.\n\nAo se conectar a um servidor Smart Routing, você parecerá estar navegando no seu país de destino, mesmo que o servidor físico esteja localizado em outro lugar.  \n\nO Smart Routing é normalmente utilizado para contornar leis anti-privacidade e outras formas de censura.</string>
+    <string name="notifications_channel_connection_status_name">Status da conexão</string>
+    <string name="notifications_channel_connection_status_description">Mostra a qual servidor você está conectado e a velocidade da sua VPN.</string>
+    <string name="notifications_channel_connection_errors_name">Erros de conexão</string>
+    <string name="notifications_channel_connection_errors_description">Alerta você sobre problemas que suspendem ou interrompem sua conexão VPN.</string>
+    <string name="notifications_channel_connection_tips_name">Dicas de conexão</string>
+    <string name="notifications_channel_connection_tips_description">Dicas contextuais que ajudam você a aproveitar melhor o Proton VPN.</string>
+    <string name="countries_upsell_banner_description">Acesse todos os países com o VPN Plus</string>
+    <string name="secure_core_upsell_banner_description">Adicione outra camada de criptografia à sua conexão VPN</string>
+    <string name="p2p_upsell_banner_description">Baixe arquivos via BitTorrent e outros protocolos de compartilhamento de arquivos</string>
+    <string name="tor_upsell_banner_description">Use a rede Tor sobre sua conexão VPN para privacidade extra</string>
+    <string name="vpnplus_upsell_banner_description">Faça upgrade para o VPN Plus</string>
+    <string name="search_zero_screen_title">Tente procurar por…</string>
+    <string name="search_zero_screen_info_countries_title">Países</string>
+    <string name="search_zero_screen_info_cities_title">Cidades</string>
+    <string name="search_zero_screen_info_servers_title">Servidores</string>
+    <string name="search_zero_screen_info_countries_examples">Suíça, Estados Unidos, Itália, Canadá…</string>
+    <string name="search_zero_screen_info_cities_examples">Nova York, Londres, Tóquio, Sydney…</string>
+    <string name="search_zero_screen_info_servers_examples">JP#50, CA#3, IT#14…</string>
+    <string name="error_fetching_prices">Erro ao buscar preços.</string>
+    <string name="tv_settings_split_tunneling_description">Personalize sua conexão decidindo quais aplicativos são protegidos por VPN.</string>
+    <string name="tv_settings_split_tunneling_mode_description_standard">Aplicativos selecionados são excluídos da conexão VPN.</string>
+    <string name="tv_settings_split_tunneling_mode_description_inverse">Apenas aplicativos selecionados se conectam por meio da VPN, o restante do tráfego fica desprotegido.</string>
+    <string name="profile_action_edit">Editar</string>
+    <string name="profile_action_duplicate">Duplicar</string>
+    <string name="profile_action_delete">Excluir</string>
+    <!-- Label when showing profile\'s NAT (Network Address Translation) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_nat_title">NAT</string>
+    <!-- Label when showing profile\'s LAN (Local Area Network) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_lan_title">LAN</string>
+    <string name="profile_needs_reconnect">Isso reiniciará sua conexão.</string>
+    <string name="profile_overrides_setting">Estas configurações estão conectadas a <b>%1$s</b> e só podem ser gerenciadas em Perfis.</string>
+    <string name="initial_profile_name_streaming_us">Streaming EUA</string>
+    <string name="initial_profile_name_work_school">Trabalho/Escola</string>
+    <string name="initial_profile_name_anti_censorship">Anti-censura</string>
+    <string name="initial_profile_name_gaming">Jogos</string>
+    <string name="initial_profile_name_max_security">Segurança máxima</string>
+    <string name="create_profile_pick_country_title">País</string>
+    <string name="create_profile_pick_type_title">Tipo</string>
+    <string name="create_profile_type_standard">Padrão</string>
+    <string name="create_profile_type_secure_core">Secure Core</string>
+    <string name="create_profile_type_p2p">P2P</string>
+    <string name="create_profile_gateway">Gateway</string>
+    <string name="create_profile_pick_state_title">Estado</string>
+    <string name="create_profile_pick_city_title">Cidade</string>
+    <string name="create_profile_pick_server_title">Servidor</string>
+    <string name="create_profile_pick_gateway_title">Gateway</string>
+    <string name="create_profile_pick_netshield_title">NetShield</string>
+    <string name="create_profile_pick_netshield_description">Bloqueia anúncios, rastreadores e malware em sites e aplicativos</string>
+    <string name="create_profile_pick_protocol_title">Protocolo</string>
+    <string name="create_profile_pick_nat_title">Tipo NAT</string>
+    <!--
+         Example:
+         if a profile named "My Profile" is duplicated, the new suggested name is "My Profile (copy)"
+     -->
+    <string name="create_profile_copy_name">%1$s (cópia)</string>
+    <string name="create_profile_fastest_city">Mais rápido</string>
+    <string name="create_profile_fastest_state">Mais rápido</string>
+    <string name="create_profile_fastest_server">Mais rápido</string>
+    <string name="create_profile_pick_middle_country_title">País intermediário</string>
+    <string name="profiles_zero_state_title">Crie o seu primeiro perfil</string>
+    <string name="profiles_zero_state_description">Os perfis são conexões salvas com sua escolha de local, servidor e protocolo.</string>
+    <string name="profiles_button_create_profile">Criar perfil</string>
+    <string name="profile_deleted_snackbar_message">Perfil excluído</string>
+    <string name="profile_connected_edit_setting">Esta configuração está conectada ao seu perfil ativo.\n\nEdite seu perfil para fazer alterações ou desconecte-se para editar suas configurações gerais de VPN.</string>
+    <string name="profile_connected_dialog_title">Gerenciar %1$s nos perfis</string>
+    <string name="undo">Desfazer</string>
+    <string name="profile_unavailable_dialog_title">Perfil indisponível</string>
+    <!-- %1$s - profile name
+         Example: Your server selection for MyProfile is unavailable. Select a different server or try again later -->
+    <string name="profile_unavailable_dialog_message">Sua seleção de servidor para %1$s não está disponível. Selecione um servidor diferente ou tente novamente mais tarde.</string>
+    <string name="profile_location_excluded_dialog_message"><![CDATA[Seu servidor selecionado para <b>%1$s</b> está indisponível. Selecione um servidor diferente, verifique suas localizações excluídas ou tente novamente mais tarde.]]></string>
+    <!-- %1$d - profile icon number
+         Example: Icon 1, Icon 2, ... -->
+    <string name="profile_icon_accessibility">Ícone %1$d</string>
+    <!-- %1$d - profile icon number
+         Example: Color 1, Color 2, ... -->
+    <string name="profile_color_accessibility">Cor %1$d</string>
+    <string name="generic_info_label">Informações</string>
+    <!-- Branded name for a feature that opens url after VPN connection to given profile is established.
+         Please don't use & in translation and capitalize key words. -->
+    <string name="create_profile_connect_and_go_label">Conexão e vá em frente</string>
+    <!-- Displayed as a badge next to create_profile_auto_open_label ("Auto-launch website [NEW]") -->
+    <string name="create_profile_auto_open_label_badge">Novo</string>
+    <string name="create_profile_auto_open_url_input_label">URL do site</string>
+    <string name="create_profile_auto_open_url_private_mode_label">Usar modo de navegação privada</string>
+    <!-- Label for disabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_off">Desligado</string>
+    <string name="profile_auto_open_app_failed_to_launch">Connect and Go: aplicativo não encontrado</string>
+    <!-- Label for enabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_website">Abrir um site</string>
+    <string name="profile_auto_open_app">Abra um aplicativo</string>
+    <string name="create_profile_auto_open_description">Abra Automaticamente um site de sua escolha quando você conectar nesse perfil.</string>
+    <string name="create_profile_auto_open_app_input_hint">Selecionar um aplicativo</string>
+    <string name="create_profile_auto_open_app_input_label">Aplicativo</string>
+    <string name="create_profile_auto_open_app_no_apps">Nenhum aplicativo encontrado.</string>
+    <string name="profile_auto_open_error_invalid_url">Digite um URL válido</string>
+    <string name="nps_how_likely_question">Qual a probabilidade de você recomendar o Proton VPN a um amigo ou colega?</string>
+    <string name="nps_additional_comment_title">Diga-nos por que você deu essa classificação</string>
+    <string name="nps_additional_comment_optional">Opcional</string>
+    <string name="nps_rating_low_values_explain">0 é muito improvável</string>
+    <string name="nps_rating_high_values_explain">10 é muito provável</string>
+    <string name="nps_toast_submit_message">Obrigado por compartilhar. Seu feedback nos ajuda a melhorar o Proton VPN.</string>
+    <string name="nps_submit_error_char_limit">Sua resposta deve ter 250 caracteres ou menos.</string>
+    <string name="nps_button_submit_title">Compartilhar anonimamente</string>
+    <string name="widget_preview_switzerland">Suíça</string>
+    <string name="widget_preview_spain">Espanha</string>
+    <string name="widget_preview_germany">Alemanha</string>
+    <string name="widget_preview_france">França</string>
+    <string name="widget_status_unprotected">Desprotegido</string>
+    <string name="widget_status_error">Erro</string>
+    <string name="widget_status_connecting">Conectando</string>
+    <string name="widget_sign_in">Iniciar sessão</string>
+    <string name="widget_toast_added_message">O widget foi adicionado à tela inicial</string>
+    <string name="settings_advanced_ipv6_title">Suporte a IPv6</string>
+    <string name="settings_advanced_ipv6_description">Encaminha o tráfego IPv6 através da VPN. Pode melhorar a compatibilidade com redes IPv6.</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_message">Para usar este endereço, é necessário permitir conexões IPv6 através do túnel VPN.</string>
+    <string name="setting_ipv6_disabled_dialog_action_enable">Ativar IPv6</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_title">IPv6 está desativado</string>
+    <string name="settings_ipv6_enabled_toast">IPv6 está ativado</string>
+    <string name="info_dialog_ipv6_traffic_benefits1">Garante acesso a sites e serviços somente em IPv6</string>
+    <string name="info_dialog_ipv6_traffic_benefits2">Impede problemas em redes que dependem do IPv6</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks1">Pode não funcionar corretamente com redes ou aplicativos antigos</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks2">Algumas redes gerenciam o tráfego IPv6 de forma imprevisível.</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks_title">Desvantagens</string>
+    <string name="info_dialog_ipv6_traffic_benefits_title">Benefícios</string>
+    <string name="settings_lan_allow_direct_connection_title">Permitir conexões diretas com dispositivos</string>
+    <string name="settings_lan_allow_direct_connection_description">Conecte-se a Smart TVs, Android Auto e outros dispositivos que criam a própria rede. Para máxima segurança, ative apenas ao se conectar a esses dispositivos.</string>
+    <string name="no_connections_title">Nenhuma conexão VPN disponível</string>
+    <string name="no_connections_description_loading_error">Não foi possível carregar a lista de servidores.</string>
+    <string name="no_connections_description_no_servers">Peça à administração para ativar o acesso VPN para sua conta.</string>
+    <string name="no_connections_action_refresh">Recarregar</string>
+    <string name="no_connections_action_sign_out">Sair da sessão</string>
+    <string name="no_connections_help_contact_us"><![CDATA[Precisa de ajuda? <a href="">Entre em contato</a>]]></string>
+    <string name="no_connections_help_follow_instructions"><![CDATA[Se sua administração precisar de ajuda para ativar o acesso VPN, envie <a href="">estas instruções</a>.]]></string>
+    <string name="settings_protocol_proton_protocols">Protocolos da Proton</string>
+    <string name="settings_protocol_proton_protocols_description">Use a implementação própria do WireGuard do Proton VPN. Este é um recurso experimental, portanto, você pode enfrentar alguma instabilidade.</string>
+    <string name="connection_preferences_smart_discovery_dialog_title">Não é o país que você queria?</string>
+    <string name="connection_preferences_smart_discovery_dialog_message">Se houver locais aos quais você não deseja ser conectado automaticamente, é possível excluí-los da opção País mais rápido.</string>
+    <string name="excluded_locations_adoption_title">Evite locais indesejados</string>
+    <string name="excluded_locations_adoption_description"><![CDATA[Agora você pode excluir países e cidades das conexões <b>mais rápidas</b>.]]></string>
+    <string name="session_fork_no_account_title">Iniciar sessão no Android TV</string>
+    <string name="session_fork_no_account_message">Conclua o início de sessão neste dispositivo para começar a usar o Proton VPN na sua TV</string>
+    <string name="session_fork_no_account_footnote"><![CDATA[Ao usar este aplicativo você aceita nossos <a href="">Termos e Condições</a>.]]></string>
+    <string name="session_fork_no_account_signup_button">Criar uma conta</string>
+    <string name="session_fork_no_account_signin_button">Iniciar sessão</string>
+    <string name="session_fork_confirmation_title">Iniciar sessão no Android TV?</string>
+    <string name="session_fork_confirmation_message">Isso permitirá que a TV acesse sua conta da Proton.</string>
+    <string name="session_fork_confirmation_bottom_note">Inicie sessão apenas em dispositivos de confiança</string>
+    <string name="session_fork_confirmation_too_soon_toast">Revise antes de continuar</string>
+    <string name="session_fork_success_title">Início de sessão concluído</string>
+    <string name="session_fork_success_message">Você agora você iniciou sessão na sua TV.</string>
+    <string name="session_fork_error_expired_title">Código expirado</string>
+    <string name="session_fork_error_expired_message">Crie um código na sua TV e tente novamente.</string>
+    <string name="session_fork_error_generic_title">Não foi possível iniciar sessão</string>
+    <string name="session_fork_error_fatal_message">Verifique sua rede e tente novamente. Se o problema persistir, entre em contato com a equipe de suporte ao cliente. </string>
+    <string name="session_fork_error_network_message">Verifique sua rede e tente novamente.</string>
+    <string name="session_fork_error_try_fallback_message">Clique em \‘Problemas para iniciar sessão?\’ na sua TV para seguir as etapas alternativas.</string>
+    <string name="session_fork_error_report_button">Reportar o problema</string>
+    <string name="session_fork_qr_code_content_description">Código QR</string>
+    <string name="session_fork_qr_code_message">Escaneie o código QR para iniciar sessão ou crie uma conta.</string>
+    <string name="session_fork_qr_code_trouble_button">Problemas para iniciar sessão?</string>
+    <string name="session_fork_qr_code_error_expired">Por motivos de segurança o código de validação expirou</string>
+    <string name="session_fork_qr_code_error_network">Verifique sua rede e tente novamente</string>
+    <string name="session_fork_qr_code_error_create_new_button">Criar um novo código</string>
+    <string name="session_fork_user_code_title">Não pode escanear o código? Inicie sessão manualmente</string>
+    <string name="session_fork_user_code_step1"><![CDATA[Ir para: <b>%1$s</b>]]></string>
+    <string name="session_fork_user_code_step2">Inicie sessão ou crie uma conta</string>
+    <!-- Parameter: 8 character alphanumeric code, e.g. "AB12 CD34" -->
+    <string name="session_fork_user_code_step3"><![CDATA[Insira o código: <b>%1$s</b>]]></string>
+    <!-- Parameter: web address for the support website, e.g. "protonvpn.com/support" -->
+    <string name="session_fork_user_code_support"><![CDATA[Precisa de ajuda? Visite <b>%1$s</b>]]></string>
+</resources>

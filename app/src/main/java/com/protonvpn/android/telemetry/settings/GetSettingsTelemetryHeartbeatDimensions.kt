@@ -1,0 +1,350 @@
+/*
+ * Copyright (c) 2026 Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.android.telemetry.settings
+
+import com.protonvpn.android.auth.usecase.CurrentUser
+import com.protonvpn.android.excludedlocations.usecases.ObserveExcludedLocations
+import com.protonvpn.android.models.config.VpnProtocol
+import com.protonvpn.android.redesign.recents.data.DefaultConnection
+import com.protonvpn.android.redesign.recents.usecases.ObserveDefaultConnection
+import com.protonvpn.android.redesign.settings.ui.NatType
+import com.protonvpn.android.settings.data.EffectiveCurrentUserSettings
+import com.protonvpn.android.settings.data.SplitTunnelingMode
+import com.protonvpn.android.telemetry.CommonDimensions
+import com.protonvpn.android.telemetry.toTelemetry
+import com.protonvpn.android.theme.ThemeType
+import com.protonvpn.android.tv.settings.IsTvAutoConnectFeatureFlagEnabled
+import com.protonvpn.android.ui.onboarding.ReviewTracker
+import com.protonvpn.android.ui.settings.AppIconManager
+import com.protonvpn.android.ui.settings.CustomAppIconData
+import com.protonvpn.android.utils.isIPv6
+import com.protonvpn.android.vpn.ConnectivityMonitor
+import com.protonvpn.android.vpn.alwayson.VpnAlwaysOnStorage
+import com.protonvpn.android.vpn.usecases.GetTruncationMustHaveIDs
+import com.protonvpn.android.vpn.usecases.IsProTunV1FeatureFlagEnabled
+import com.protonvpn.android.widget.WidgetType
+import com.protonvpn.android.widget.data.WidgetTracker
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.first
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class GetSettingsTelemetryHeartbeatDimensions @Inject constructor(
+    private val currentUser: CurrentUser,
+    private val appIconManager: AppIconManager,
+    private val connectivityMonitor: ConnectivityMonitor,
+    private val commonDimensions: CommonDimensions,
+    private val effectiveCurrentUserSettings: EffectiveCurrentUserSettings,
+    private val getTruncationMustHaveIDs: GetTruncationMustHaveIDs,
+    private val widgetTracker: WidgetTracker,
+    private val isTvAutoConnectFeatureFlagEnabled: IsTvAutoConnectFeatureFlagEnabled,
+    private val observeDefaultConnection: ObserveDefaultConnection,
+    private val reviewTracker: ReviewTracker,
+    private val observerExcludedLocations: ObserveExcludedLocations,
+    private val isProTunV1FeatureFlagEnabled: IsProTunV1FeatureFlagEnabled,
+    private val vpnAlwaysOnStorage: VpnAlwaysOnStorage,
+) {
+
+    suspend operator fun invoke(): Map<String, String> = buildMap {
+        put(
+            key = DIMENSION_APP_ICON,
+            value = appIconManager.getCurrentIconData().getTelemetryName()
+        )
+
+        val vpnUser = currentUser.vpnUser()
+        put(
+            key = DIMENSION_DEFAULT_CONNECTION_TYPE,
+            value = vpnUser?.let { observeDefaultConnection(vpnUser).first() }.getTelemetryName()
+        )
+
+        put(
+            key = DIMENSION_IS_SYSTEM_CUSTOM_DNS_ENABLED,
+            value = connectivityMonitor.isPrivateDnsActive
+                .first()
+                ?.toTelemetry()
+                ?: CommonDimensions.NO_VALUE
+        )
+
+        put(
+            key = DIMENSION_WIDGET_COUNT,
+            value = widgetTracker.widgetCount
+                .filterNotNull()
+                .first()
+                .toWidgetCountBucketString()
+        )
+
+        widgetTracker.firstWidgetType()?.let { widgetType ->
+            put(
+                key = DIMENSION_FIRST_WIDGET_SIZE,
+                value = widgetType.getTelemetrySizeName(),
+            )
+
+            put(
+                key = DIMENSION_FIRST_WIDGET_THEME,
+                value = widgetType.getTelemetryThemeName(),
+            )
+        }
+
+        val settings = effectiveCurrentUserSettings.effectiveSettings.first()
+
+        put(
+            key = DIMENSION_IS_CUSTOM_DNS_ENABLED,
+            value = settings.customDns.effectiveEnabled.toTelemetry()
+        )
+
+        put(
+            key = DIMENSION_IS_IPV6_ENABLED,
+            value = settings.ipV6Enabled.toTelemetry()
+        )
+
+        put(
+            key = DIMENSION_UI_THEME,
+            value = settings.theme.toTelemetry()
+        )
+
+        put(
+            key = DIMENSION_LAN_MODE,
+            value = lanModeToTelemetry(
+                lanConnections = settings.lanConnections,
+                lanConnectionsAllowDirect = settings.lanConnectionsAllowDirect,
+            )
+        )
+
+        val customDnsList = settings.customDns.rawDnsList
+
+        put(
+            key = DIMENSION_CUSTOM_DNS_COUNT,
+            value = customDnsList.size.toCustomDnsCountBucketString()
+        )
+
+        put(
+            key = DIMENSION_FIRST_CUSTOM_DNS_ADDRESS_FAMILY,
+            value = customDnsList.firstOrNull()
+                ?.toTelemetryAddressFamily()
+                ?: CommonDimensions.NO_VALUE
+        )
+
+        put(
+            key = DIMENSION_SERVER_LIST_TRUNCATION_PROTECTED_IDS_COUNT,
+            value = getTruncationMustHaveIDs(
+                maxRecents = Int.MAX_VALUE,
+                maxMustHaves = Int.MAX_VALUE
+            )
+                .size
+                .toTruncationMustHaveSizeBucketString()
+        )
+
+        if (isTvAutoConnectFeatureFlagEnabled()) {
+            put(
+                key = DIMENSION_AUTO_CONNECT_ENABLED,
+                value = settings.tvAutoConnectOnBoot.toTelemetry()
+            )
+        }
+
+        put(
+            key = DIMENSION_IS_SPLIT_TUNNELING,
+            value = settings.splitTunneling
+                .isEnabled
+                .toTelemetry(),
+        )
+
+        put(
+            key = DIMENSION_SPLIT_TUNNELING_MODE,
+            value = settings.splitTunneling
+                .mode
+                .getTelemetryName(),
+        )
+
+        put(
+            key = DIMENSION_SPLIT_TUNNELING_APPS_COUNT,
+            value = settings.splitTunneling
+                .currentModeApps()
+                .size
+                .toSplitTunnelingCountBucketString(),
+        )
+
+        put(
+            key = DIMENSION_SPLIT_TUNNELING_IPS_COUNT,
+            value = settings.splitTunneling
+                .currentModeIps()
+                .size
+                .toSplitTunnelingCountBucketString(),
+        )
+
+        put(
+            key = DIMENSION_IS_RATING_BOOSTER_ELIGIBLE,
+            value = reviewTracker.isOrWasEligibleToday()?.toTelemetry() ?: CommonDimensions.NO_VALUE,
+        )
+
+        val excludedLocations = observerExcludedLocations(skipFreeUsers = false).first()
+
+        put(
+            key = DIMENSION_EXCLUDED_COUNTRIES_COUNT,
+            value = excludedLocations.countryExclusionsCount.toExcludedLocationsCountBucketString(),
+        )
+
+        put(
+            key = DIMENSION_EXCLUDED_CITIES_AND_STATES_COUNT,
+            value = excludedLocations.cityExclusionsCount
+                .plus(excludedLocations.stateExclusionsCount)
+                .toExcludedLocationsCountBucketString(),
+        )
+
+        put(
+            key = DIMENSION_IS_PROTUN_ENABLED,
+            value = isProTunEnabledTelemetry(settings.protocol.vpn, isProTunV1FeatureFlagEnabled())
+        )
+
+        put(
+            key = DIMENSION_NAT_TYPE,
+            value = NatType.fromRandomizedNat(settings.randomizedNat).toTelemetry(),
+        )
+
+        put(
+            key = DIMENSION_NETSHIELD_LEVEL,
+            value = settings.netShield.toTelemetry(),
+        )
+
+        vpnAlwaysOnStorage.getLastKnownVpnAlwaysOn()?.let { vpnAlwaysOn ->
+            put(
+                key = DIMENSION_KILL_SWITCH_LEVEL,
+                value = vpnAlwaysOn.toTelemetry(),
+            )
+        }
+
+        commonDimensions.add(this, CommonDimensions.Key.USER_TIER_LEGACY)
+    }
+
+    private fun CustomAppIconData.getTelemetryName() = when (this) {
+        CustomAppIconData.DEFAULT -> "default"
+        CustomAppIconData.DARK -> "dark"
+        CustomAppIconData.RETRO -> "retro"
+        CustomAppIconData.WEATHER -> "weather"
+        CustomAppIconData.NOTES -> "notes"
+        CustomAppIconData.CALCULATOR -> "calculator"
+    }
+
+    private fun DefaultConnection?.getTelemetryName() = when (this) {
+        null,
+        is DefaultConnection.FastestConnection -> "fastest"
+        is DefaultConnection.LastConnection -> "last_connection"
+        is DefaultConnection.Recent -> "recent"
+    }
+
+    private fun WidgetType.getTelemetrySizeName() = if (isSmall) "small" else "large"
+
+    private fun WidgetType.getTelemetryThemeName() = if (isMaterial) "material" else "proton"
+
+    private fun lanModeToTelemetry(lanConnections: Boolean, lanConnectionsAllowDirect: Boolean) = when {
+        !lanConnections -> "off"
+        !lanConnectionsAllowDirect -> "standard"
+        else -> "direct"
+    }
+
+    private fun ThemeType.toTelemetry() = when (this) {
+        ThemeType.System -> "system"
+        ThemeType.Light -> "light"
+        ThemeType.Dark -> "dark"
+    }
+
+    private fun Int.toCustomDnsCountBucketString() = when {
+        this == 0 -> "0"
+        this == 1 -> "1"
+        this <= 4 -> "2-4"
+        else -> ">=5"
+    }
+
+    private fun String.toTelemetryAddressFamily() = if (isIPv6()) "ipv6" else "ipv4"
+
+    private fun Int.toTruncationMustHaveSizeBucketString() = when {
+        this == 0 -> "0"
+        this == 1 -> "1"
+        this <= 10 -> "2-10"
+        this <= 50 -> "11-50"
+        else -> ">=51"
+    }
+
+    private fun Int.toWidgetCountBucketString() = when {
+        this == 0 -> "0"
+        this == 1 -> "1"
+        this <= 4 -> "2-4"
+        else -> ">=5"
+    }
+
+    private fun SplitTunnelingMode.getTelemetryName() = when (this) {
+        SplitTunnelingMode.EXCLUDE_ONLY -> "exclude"
+        SplitTunnelingMode.INCLUDE_ONLY -> "include"
+    }
+
+    private fun Int.toSplitTunnelingCountBucketString() = when {
+        this == 0 -> "0"
+        this == 1 -> "1"
+        this <= 4 -> "2-4"
+        this <= 9 -> "5-9"
+        this <= 19 -> "10-19"
+        else -> ">=20"
+    }
+
+    private fun Int.toExcludedLocationsCountBucketString() = when {
+        this == 0 -> "0"
+        this == 1 -> "1"
+        this <= 5 -> "2-5"
+        this <= 10 -> "6-10"
+        this <= 20 -> "11-20"
+        else -> ">=21"
+    }
+
+    private fun isProTunEnabledTelemetry(vpnProtocol: VpnProtocol, isProTunV1FeatureFlagEnabled: Boolean) =
+        when {
+            !isProTunV1FeatureFlagEnabled -> CommonDimensions.NO_VALUE
+            vpnProtocol == VpnProtocol.ProTun -> "true"
+            else -> "false"
+        }
+
+    private companion object {
+        private const val DIMENSION_APP_ICON = "app_icon"
+        private const val DIMENSION_AUTO_CONNECT_ENABLED = "is_auto_connect_enabled"
+        private const val DIMENSION_DEFAULT_CONNECTION_TYPE = "default_connection_type"
+        private const val DIMENSION_WIDGET_COUNT = "widget_count"
+        private const val DIMENSION_FIRST_WIDGET_SIZE = "first_widget_size"
+        private const val DIMENSION_FIRST_WIDGET_THEME = "first_widget_theme"
+        private const val DIMENSION_IS_SYSTEM_CUSTOM_DNS_ENABLED = "is_system_custom_dns_enabled"
+        private const val DIMENSION_IS_IPV6_ENABLED = "is_ipv6_enabled"
+        private const val DIMENSION_IS_CUSTOM_DNS_ENABLED = "is_custom_dns_enabled"
+        private const val DIMENSION_IS_PROTUN_ENABLED = "is_protun_enabled"
+        private const val DIMENSION_CUSTOM_DNS_COUNT = "custom_dns_count"
+        private const val DIMENSION_UI_THEME = "ui_theme"
+        private const val DIMENSION_FIRST_CUSTOM_DNS_ADDRESS_FAMILY = "first_custom_dns_address_family"
+        private const val DIMENSION_LAN_MODE = "lan_mode"
+        private const val DIMENSION_SERVER_LIST_TRUNCATION_PROTECTED_IDS_COUNT = "server_list_truncation_protected_ids_count"
+        private const val DIMENSION_IS_SPLIT_TUNNELING = "is_split_tunneling_enabled"
+        private const val DIMENSION_SPLIT_TUNNELING_MODE = "split_tunneling_mode"
+        private const val DIMENSION_SPLIT_TUNNELING_APPS_COUNT = "split_tunneling_apps_count"
+        private const val DIMENSION_SPLIT_TUNNELING_IPS_COUNT = "split_tunneling_ips_count"
+        private const val DIMENSION_IS_RATING_BOOSTER_ELIGIBLE = "is_rating_booster_eligible"
+        private const val DIMENSION_EXCLUDED_COUNTRIES_COUNT = "excluded_countries_count"
+        private const val DIMENSION_EXCLUDED_CITIES_AND_STATES_COUNT = "excluded_cities_count"
+        private const val DIMENSION_NAT_TYPE = "nat_type"
+        private const val DIMENSION_NETSHIELD_LEVEL = "netshield_level"
+        private const val DIMENSION_KILL_SWITCH_LEVEL = "kill_switch_level"
+    }
+
+}

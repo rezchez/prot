@@ -1,0 +1,1907 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (c) 2017 Proton AG
+
+ This file is part of ProtonVPN.
+
+ ProtonVPN is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ ProtonVPN is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_icon_name_classic">Klasik</string>
+    <string name="app_icon_name_dark">Koyu</string>
+    <string name="app_icon_name_retro">Retro</string>
+    <string name="app_icon_name_weather">Hava durumu</string>
+    <string name="app_icon_name_notes">Notlar</string>
+    <string name="app_icon_name_calculator">Hesap makinesi</string>
+    <string name="login">Oturum aç</string>
+    <string name="menuActionSignOut">Oturumu kapat</string>
+    <string name="connectionAllocationHelpTitle">Tarifenizi yükselttiğiniz için teşekkürler</string>
+    <string name="connectionAllocationHelpDescription1">Proton VPN yolculuğunuza başlamak için lütfen hesabınıza ya da başka bir alt hesaba VPN bağlantıları atayın.</string>
+    <string name="connectionAllocationHelpDescription2">Bu adım birkaç dakika sürecek. Bundan sonra oturum açabilir ve tüm aygıtlarınızı koruyabilirsiniz.</string>
+    <string name="connectionAllocationHelpDescription1AskAdmin">Şu anda bu hesap için herhangi bir VPN bağlantısı açılmamış. Proton VPN yolcuğunuza başlamak için yöneticiniz ile görüşün. </string>
+    <string name="connectionAllocationHelpAssignConnectionsButton">VPN bağlantılarını aç</string>
+    <string name="connectionAllocationHelpLoginAgainButton">Yeniden oturum aç</string>
+    <!-- tag(Redesign_2023) "OK" button on dialogs -->
+    <string name="ok">Tamam</string>
+    <string name="dialogLearnMore">Ayrıntılı bilgi alın</string>
+    <string name="connected">Bağlandı</string>
+    <string name="buttonConnect">Bağlan</string>
+    <string name="loaderConnectingTo">%1$s sunucusuna bağlanılıyor</string>
+    <string name="loaderNotConnected">Bağlı değil (korunmuyor)</string>
+    <string name="loaderConnectedTo">%1$s ile bağlantı kuruldu</string>
+    <string name="loaderDisconnecting">Bağlantı kesiliyor</string>
+    <string name="loaderReconnecting">Yeniden bağlanılıyor</string>
+    <string name="loaderReconnectNoNetwork">Kullanılabilecek ağ bekleniyor</string>
+    <string name="loaderCheckingAvailability">Sunucunun kullanılabilirliği denetleniyor</string>
+    <string name="quickConnect">Hızlı bağlan</string>
+    <!-- Displays a percentage value. Please use %% sign for %.
+         Example value: "70%" -->
+    <string name="serverLoad">%1$s[%1$s]</string>
+    <string name="cancel">İptal</string>
+    <string name="close">Kapat</string>
+    <string name="dialogContinue">İlerle</string>
+    <string name="drawerReportProblem">Sorun bildireceğim</string>
+    <string name="action_done">Tamam</string>
+    <string name="action_share">Paylaş</string>
+    <string name="accountFree">Proton Free</string>
+    <string name="restrictedMaintenanceTitle">Bakım yapılıyor</string>
+    <string name="restrictedMaintenanceDescription">Şu anda bağlanmaya çalıştığınız sunucuda bakım yapılıyor. Lütfen başka bir sunucu deneyin.</string>
+    <string name="restricted_location_excluded_dialog_title">Bağlantı kurulamadı</string>
+    <string name="restricted_location_excluded_dialog_description">Kullanılabilecek bir sunucu yok. El ile bir konum seçin veya katılmayacak konumlarınızı düzenleyin.</string>
+    <string name="errorUserDelinquent"><![CDATA[Hesabınızda şu anda ödenmemiş bir fatura var. Lütfen&#160;<a href="https://account.protonvpn.com">account.protonvpn.com</a> adresinden tüm süresi geçmiş faturaları ödeyin]]></string>
+    <string name="errorMaxSessions">Hesabınız için izin verilen en fazla eşzamanlı bağlantı sayısına ulaştınız. Daha fazla bağlantı kullanmak için Proton VPN tarifenizi yükseltin.</string>
+    <string name="listItemMaintenance">Bakım yapılıyor</string>
+    <string name="insufficientPermissionsTitle">Kullanıcının işlem yapması gerekli</string>
+    <string name="insufficientPermissionsDetails">VPN bağlantısı otomatik olarak kurulamadı. Lütfen izinleri vermek için bir kere el ile bağlanın.</string>
+    <string name="log_title">Günlük</string>
+    <string name="disconnect">Bağlantıyı kes</string>
+    <string name="state_connecting">Bağlantı kuruluyor…</string>
+    <string name="state_connected">Bağlı</string>
+    <string name="state_disconnecting">Bağlantı kesiliyor…</string>
+    <string name="state_error">Hata</string>
+    <string name="error_server_list_load_failed">Lütfen bağlantınızı denetleyip yeniden deneyin.</string>
+    <string name="error_server_unreachable">VPN bağlantısı kurulamadı. Lütfen bağlantınızı denetleyip yeniden deneyin.</string>
+    <string name="error_auth_failed">Kullanıcı kimliği doğrulanamadı.</string>
+    <string name="error_generic">Bağlantı kurulurken belirlenemeyen bir sorun çıktı.</string>
+    <string name="error_generic_with_reason">Proton VPN bir VPN bağlantısı kuramadı. Lütfen birkaç saniye sonra yeniden deneyin.<br/><br/> Ayrıntılar: %1$s</string>
+    <string name="reconnect">Yeniden bağlan</string>
+    <string name="reconnect_now">Şimdi yeniden bağlan</string>
+    <string name="try_reconnecting">Yeniden bağlanmayı dene</string>
+    <string name="connect">Bağlan</string>
+    <string name="upgrade">Yükselt</string>
+    <string name="retry">Yeniden dene</string>
+    <string name="report_message">Hata bildirimi iletisi</string>
+    <string name="report_bug_email_label">E-posta adresiniz</string>
+    <string name="report_bug_email_hint">E-posta adresinizi yazın</string>
+    <string name="report_bug_message_label">İleti</string>
+    <string name="report_bug_message_hint">Lütfen hata ile nerede ve nasıl karşılaştığınızı açıklayın</string>
+    <string name="send_report">Bildirimi gönder</string>
+    <string name="report_sent">Bildirim gönderildi</string>
+    <string name="discardChanges">Kaydedilmemiş değişiklikler yok sayılsın mı?</string>
+    <string name="discardChangesButtonDiscard">Değişiklileri yok say</string>
+    <string name="discardChangesButtonKeepEditing">Düzenlemeyi sürdür</string>
+    <string name="done">TAMAM</string>
+    <string name="add">EKLE</string>
+    <string name="copy_to_clipboard">Kopyala</string>
+    <string name="copied_to_clipboard">Panoya kopyalandı</string>
+    <string name="got_it">Anladım</string>
+    <string name="exclude_locations">Konumlar katılmasın</string>
+    <string name="excluded_locations">Katılmayacak konumlar</string>
+    <string name="cannot_connect">Bağlantı kurulamadı</string>
+    <string name="skip">Atla</string>
+    <string name="something_went_wrong">Bir şeyler ters gitti</string>
+    <string name="try_again">Yeniden dene</string>
+    <string name="delete">Sil</string>
+    <string name="menu_option_move_to_top" comment="command used to move an item to the top of the list">En üste taşı</string>
+    <string name="menu_option_move_up" comment="command used to move an item one position up in the list">Yukarı taşı</string>
+    <string name="menu_option_move_down" comment="command used to move an item one position down in the list">Aşağı taşı</string>
+    <string name="remove">Kaldır</string>
+    <string name="saveButton">Kaydet</string>
+    <string name="ipWithPlaceholder">IP: %1$s</string>
+    <string name="activityLicensesTitle">Üçüncü taraf lisansları</string>
+    <string name="stateFragmentUnknownIp">Bilinmiyor</string>
+    <string name="noVpnPermissionMainTitle">VPN bağlantısı kurmak için işlem gerekli</string>
+    <string name="noVpnPermissionMainMessage">Proton VPN bağlantısı kurmak için şunları yapın:</string>
+    <string name="noVpnPermissionGrantPermissionTitle">VPN izni verin</string>
+    <string name="noVpnPermissionGrantPemrissionMessage">Proton VPN bağlantısı kurmak için Android izinleri vermeniz gerekir. Android \"Bağlantı isteği\" yapıldığında \"Tamam\" üzerine tıklayın.</string>
+    <string name="noVpnPermissionDisableAlwaysOnTitle">Diğer VPN uygulamalarının her zaman açık seçeneğini kapatın</string>
+    <string name="noVpnPermissionDisableAlwaysOnMessage">Android birden fazla VPN uygulamasını desteklemez. Proton VPN dışındaki diğer VPN uygulamaları için her zaman açık seçeneğini kapatın.</string>
+    <string name="noVpnPermissionProtonAppLabel">Proton VPN uygulaması</string>
+    <string name="noVpnPermissionOtherAppLabel">Diğer VPN uygulamaları</string>
+    <string name="noVpnPermissionOpenSettings">Android VPN ayarlarını açın</string>
+    <string name="noNotificationPermissionGrantTitle">Yakalanmayın…</string>
+    <string name="noNotificationPermissionGrantDescription">Bağlantı durumunuzdaki değişikliklerle ilgili uyarılar almak için bildirimleri açın.</string>
+    <string name="noNotificationPermissionGrantNowTitle">Bildirimleri aç</string>
+    <string name="error_prepare_vpn_description"><![CDATA[Proton VPN tarafından bir VPN bağlantısı kurulmasını engellediğinden, lütfen Android VPN ayarlarından, tüm diğer VPN uygulamaları için her zaman açık seçeneğini kapatın. VPN izinleri isteyen bir pencere görürseniz VPN izinlerini verin. Çakışmaları önlemek için diğer VPN uygulamalarının kaldırılması da gerekebilir. Ardından yeniden deneyin. <a href="%1$s">Ayrıntılı bilgi alın</a>]]></string>
+    <string name="error_prepare_vpn_settings">Android VPN ayarlarına git</string>
+    <string name="error_prepare_vpn_title">Hata: VPN izni sorunu</string>
+    <string name="error_server_not_set">Sunucu artık kullanılamıyor</string>
+    <string name="bugReportErrorEmptyEmail">E-posta adresi boş olamaz</string>
+    <string name="bugReportErrorInvalidEmail">E-posta adresi geçersiz</string>
+    <string name="bugReportLabelVpnLogsTitle">Hata günlüğü eklensin</string>
+    <string name="bugReportErrorLabelVpnLogsDescription">Sorunu çözmemize yardımcı olması için yerel hata günlüğünü gönderir (etkinlik kaydı tutmayız)</string>
+    <string name="profileFastest">En hızlı</string>
+    <string name="profileRandom">Rastgele</string>
+    <string name="loaderErrorNoInternet">İnternet bağlantısı yok</string>
+    <string name="loaderErrorGeneric">Bir şeyler ters gitti</string>
+    <string name="inputIpAddressLabel">IP adresi</string>
+    <string name="inputIpAddressHelp">Sunucunun IPv4 ya da IPv6 adresini yazın</string>
+    <string name="inputIpAddressErrorInvalid">IP adresi geçersiz</string>
+    <!-- Displayed as a badge next to setting item ("Widget [NEW]") -->
+    <string name="settings_new_label_badge">YENİ</string>
+    <!-- Displayed as a badge next to setting item ("Proton protocols [BETA]") -->
+    <string name="settings_beta_label_badge">BETA</string>
+    <string name="settingsExcludedIPAddressesListHeader">Katılmayacak IP adresleri (%1$d)</string>
+    <string name="settingsIncludedIPAddressesListHeader">Katılacak IP adresleri (%1$d)</string>
+    <string name="settingsExcludedApps">Katılmayacak uygulamalar</string>
+    <string name="settingsExcludedAppsEmpty">VPN trafiğine katılmayacak uygulamaları ekleyin.</string>
+    <string name="settingsIncludedAppsEmpty">VPN trafiğine katılacak uygulamaları ekleyin.</string>
+    <string name="settingsExcludedAppsSelectedHeader">Katılmayacak uygulamalar (%1$d)</string>
+    <string name="settingsIncludedAppsSelectedHeader">Katılacak uygulamalar (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableRegularHeader">Tüm diğer normal ugulamalar (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableSystemHeader">Tüm diğer sistem uygulamaları (%1$d)</string>
+    <string name="settingsSplitTunnelingAvailableHeader">Tüm diğer uygulamalar (%1$d)</string>
+    <string name="settingsExcludedAppsLoadSystemAppsButton">Sistem uygulamalarını görüntüle</string>
+    <string name="settingsSplitTunnelAppsShowSystemAppsCheckbox">Sistem uygulamalarını görüntüle</string>
+    <string name="settingsSplitTunnelingExcludedAppsList">Bu uygulamalar VPN bağlantısını kullanmayacak.</string>
+    <string name="settingsSplitTunnelingIncludedAppsList">Yalnızca bu uygulamalar VPN bağlantısını kullanacak.</string>
+    <!-- Description for action to add an application to "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to excluded apps"
+    -->
+    <string name="accessibility_action_add_excluded_app">Katılmayacak uygulamalara ekle</string>
+    <!-- Description for action to remove an application from "excluded apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from excluded apps"
+    -->
+    <string name="accessibility_action_remove_excluded_app">Katılmayacak uygulamalardan kaldır</string>
+    <!-- Description for action to add an application to "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to add to included apps"
+    -->
+    <string name="accessibility_action_add_included_app">Katılacak uygulamalara ekle</string>
+    <!-- Description for action to remove an application from "included apps" in split tunneling settings.
+         Only used by accessibility services.
+         Example:
+         an item for app "Internet Browser" will be ready by a screen reader as:
+         "Internet Browser, double tap to remove from included apps"
+    -->
+    <string name="accessibility_action_remove_included_app">Katılacak uygulamalardan kaldır</string>
+    <string name="accessibility_action_copy_to_clipboard">Panoya kopyala</string>
+    <string name="accessibility_action_item_delete">Sil</string>
+    <string name="accessibility_action_item_move_up">Yukarı taşı</string>
+    <string name="accessibility_action_item_move_down">Aşağı taşı</string>
+    <string name="tileConnected">Bağlandı: %1$s</string>
+    <string name="openUrlError">%1$s açılamadı. Aygıtınızda bir tarayıcı uygulaması bulunamadı.</string>
+    <string name="loaderErrorTimeout">Bağlantı zaman aşımına uğradı. Lütfen yeniden deneyin.</string>
+    <string name="troubleshootButton">Sorun gider</string>
+    <string name="activityTroubleshootTitle">Sorun giderme</string>
+    <string name="troubleshootPotentialSolutionsSectionTitle">Olası çözümler</string>
+    <string name="troubleshootNoInternetDescription">Lütfen internet bağlantınızın çalıştığından emin olun.</string>
+    <string name="troubleshootNoInternetTitle">İnternet bağlantısı yok</string>
+    <string name="troubleshootIspProblemTitle">İnternet hizmeti sağlayıcı (ISP) sorunu</string>
+    <string name="troubleshootIspProblemDescription"><![CDATA[Farklı bir ağ kullanarak Proton bağlantısı kurmayı deneyin (ya da <a href=\'%1$s\'>Tor</a> kullanın)]]></string>
+    <string name="troubleshootAntivirusProblemTitle">Antivirüs çakışması</string>
+    <string name="troubleshootAntivirusProblemDescription">Antivirus uygulamanızı geçici olarak kapatın ya da kaldırın.</string>
+    <string name="troubleshootProxyFirewallProblemTitle">Vekil sunucu veya güvenlik duvarı müdahalesi</string>
+    <string name="troubleshootProxyFirewallProblemDescription">Vekil sunucuları veya güvenlik duvarlarını kapatın ya da ağ yöneticinizle görüşün.</string>
+    <string name="troubleshootProtonDownTitle">Proton çalışmıyor</string>
+    <string name="troubleshootProtonDownDescription"><![CDATA[Sistemimizin durumunu görmek için <a href=\"%1$s\">Proton durumunu</a> sayfasına bakın.]]></string>
+    <string name="troubleshootContactUsSectionTitle">Hala yardım gerekiyor mu? Doğrudan bizimle görüşün</string>
+    <string name="troubleshootCustomerSupport">Müşteri desteği</string>
+    <string name="settingsAllowAlternativeRoutingTitle">Alternatif yönlendirme</string>
+    <string name="settingsAllowAlternativeRoutingDescription"><![CDATA[Proton hizmetlerine erişimin engellenmiş olması durumunda, uygulama Proton sunucularına erişmek için alternatif yolları dener. <a href="%1$s">Ayrıntılı bilgi alın</a>]]></string>
+    <string name="troubleshootGovernmentBlockTitle">Hükümet engellemesi</string>
+    <string name="troubleshootGovernmentBlockDescription"><![CDATA[Ülkeniz Proton ağına erişimi engelliyor olabilir. Proton ağına erişmek için <a href=\'%1$s\'>Tor</a> kullanmayı deneyin.]]></string>
+    <string name="settingsKillSwitchEnableTitle">Bağlantı kesici nasıl açılır</string>
+    <string name="settingsKillSwitchEnableStep1">1. Aygıt ayarlarını açın</string>
+    <!-- %1$s here will be replaced by "gear" icon -->
+    <string name="settingsKillSwitchEnableStep2">2. Proton VPN uygulamasını bulun ve %1$s üzerine dokunun</string>
+    <!-- Content description for the "gear" icon in settingsKillSwitchEnableStep2. Used only by accessibility services. -->
+    <string name="settingsKillSwitchEnableStep2_gearIconContentDescription">ayarlar</string>
+    <!-- The phrases "Always-on VPN" and "Block connections without VPN" needs to be translated exactly
+         the same as in Android VPN settings. -->
+    <string name="settingsKillSwitchEnableStep3"><![CDATA[3. \"<b>Her zaman açık VPN</b>\" ve \"<b>VPN olmadan bağlantılar engellensin</b>\" seçeneklerini açın]]></string>
+    <string name="settingsKillSwitchAndroidSettingsButton">Ayarlar</string>
+    <string name="settingsKillSwitchLearnMoreButton">Bağlantı kesici nedir?</string>
+    <string name="settingsKillSwitchWarningMain">Bağlantı kesici açıkken şunlarla bağlantı kuramazsınız:</string>
+    <string name="settingsKillSwitchWarningPoint1">Ayrılmış tünelleme ile VPN bağlantınıza katılmayan siteler ve uygulamalar</string>
+    <string name="settingsKillSwitchWarningPoint2">Yerel alan ağınızdaki (LAN) aygıtlar</string>
+    <string name="settingsEnableTelemetryTitle">Anonim kullanım istatistikleri paylaşılsın</string>
+    <string name="settingsEnableTelemetryDescription">Kullanım verileri VPN engellemelerini aşmamıza ve uygulamanın başarımını artırmamıza yardımcı olur.</string>
+    <string name="settingsSendCrashReportsTitle">Anonim çökme bildirimleri paylaşılsın</string>
+    <string name="settingsSendCrashReportsDescription">Çökme bildirimleri sorunları gidermemize, güvenlik duvarlarını algılamamıza ve VPN engellemelerini aşmamıza yardımcı olur.</string>
+    <string name="settingsTelemetryScreenTitle">Kullanım istatistikleri</string>
+    <string name="settingsTelemetryScreenInfo"><![CDATA[Bu istatistikler IP adresinizi içermez ve kim olduğunuzu belirlemek için kullanılamaz. Bu verileri asla üçüncü taraflar ile paylaşmayız. <a href="%1$s">Ayrıntılı bilgi alın</a>]]></string>
+    <string name="netshield_settings_description_not_html">Sizi siteler ve uygulamalardaki reklamlardan, kötü amaçlı yazılımlardan ve izleyicilerden korur. %1$s</string>
+    <string name="netshield_settings_description_tv">Sizi üçüncü taraf reklamlardan, izleyicilerden ve kötü amaçlı yazılımdan korur. NetShield, YouTube ve Netflix gibi yayın akışı izleme hizmetleri ile bütünleştirilmiş reklamları engellemez.</string>
+    <string name="netshield_settings_more_info_title_tv">NetShield nasıl çalışır?</string>
+    <string-array name="netshield_settings_more_info_paragraphs_tv">
+        <item>NetShield, reklamlar, izleyiciler ve kötü amaçlı yazılımlarla bilinen üçüncü taraf etki alanlarına gönderilen DNS isteklerini engeller.</item>
+        <item>Böylece, tarayıcınızdaki veya üçüncü taraf reklam hizmetlerini kullanan ücretsiz uygulamalardaki reklamları almazsınız.</item>
+        <item>Bununla birlikte, YouTube ve Netflix gibi yayın akışı izleme hizmetlerindeki reklamları engelleyemez, çünkü bu reklamlar onların sunucularından gelir.</item>
+    </string-array>
+    <string name="settings_icon_change_description">Proton VPN uygulamasını farklı bir simge ile gizleyin. Bildirimlerde hala varsayılan Proton VPN adı ve simgesi görüntülenir. %1$s</string>
+    <string name="settings_icon_change_learn_more">Ayrıntılı bilgi alın</string>
+    <string name="learn_more">Ayrıntılı bilgi alın</string>
+    <string name="netshield_state_on" comment="Describes state, not action">Açık</string>
+    <string name="netshield_state_off" comment="Describes state, not action">Kapalı</string>
+    <string name="netshield_state_unavailable" comment="Describes state, not action">Kullanılamıyor</string>
+    <string name="split_tunneling_state_on" comment="Describes state, not action">Açık</string>
+    <string name="split_tunneling_state_off" comment="Describes state, not action">Kapalı</string>
+    <string name="vpn_accelerator_state_on" comment="Describes state, not action">Açık</string>
+    <string name="vpn_accelerator_state_off" comment="Describes state, not action">Kapalı</string>
+    <string name="lan_state_on" comment="Describes state, not action">Açık</string>
+    <string name="lan_state_off" comment="Describes state, not action">Kapalı</string>
+    <string name="alt_routing_state_on" comment="Describes state, not action">Açık</string>
+    <string name="alt_routing_state_off" comment="Describes state, not action">Kapalı</string>
+    <string name="custom_dns_state_on" comment="Describes state, not action">Açık</string>
+    <string name="custom_dns_state_off" comment="Describes state, not action">Kapalı</string>
+    <string name="custom_dns_state_unavailable" comment="Describes state, not action">Kullanılamıyor</string>
+    <string name="custom_dns_item_removed_snackbar">Öge silindi</string>
+    <string name="netshield_free_description">Siteler ile uygulamalarda bulunabilecek reklamları, izleyicileri ve kötü amaçlı yazılımları engelleyin</string>
+    <string name="netshield_what_data_means">NetShield istatistiklerinin açıklaması</string>
+    <string name="netshield_ads_title">Reklamlar</string>
+    <string name="netshield_ads_details">Reklamlar ve görünmez reklam izleyiciler</string>
+    <string name="netshield_trackers_title">İzleyiciler</string>
+    <string name="netshield_trackers_details">İnternet etkinliğiniz ile ilgili bilgileri tutan ve paylaşan tanımlama bilgileri ve diğer izleyiciler</string>
+    <string name="netshield_data_title">Veriler</string>
+    <string name="netshield_data_details">NetShield tarafından engellenen reklam, izleyici ve zararlı yazılım verilerinin miktarı</string>
+    <plurals name="netshield_ads_blocked" comment="Number of ads blocked by netshield. Number displayed above the text">
+        <item quantity="one">Reklam engellendi</item>
+        <item quantity="other">Reklam engellendi</item>
+    </plurals>
+    <plurals name="netshield_trackers_stopped" comment="Number of trackers stopped by netshield. Number displayed above the text">
+        <item quantity="one">İzleyici engellendi</item>
+        <item quantity="other">İzleyici engellendi</item>
+    </plurals>
+    <string name="netshield_data_saved" comment="Total data saved by netshield shown in kb/mb">Veri kazanıldı</string>
+    <string name="netshield_setting_warning">Reklamlar ve izleyiciler engellendiğinde bazı siteler düzgün yüklenmeyebilir.</string>
+    <string name="netshield_setting_block_adult_content">Yetişkinlere yönelik içeriği engelle</string>
+    <string name="dialogDontShowAgain">Bir daha görüntülenmesin</string>
+    <string name="guestHoleNotificationContent">Ağ sorunları aşılmaya çalışılıyor. Bu işlem Proton VPN hizmetine erişmenize yardımcı olacak.</string>
+    <string name="errorTunMultiUserPermission">VPN bağlantısı, çift uygulama (Dual Messenger gibi) ve ayrılmış tünelleme arasındaki bir çakışma nedeniyle başlatılamadı. Lütfen bunlardan birini kapatıp aygıtınızı yeniden başlatın.</string>
+    <string name="errorTorrentNotAllowed">Bu sunucu üzerinde P2P kullanımına izin verilmiyor</string>
+    <string name="error_profile_fallback_unavailable">Bağlantı kurulamadı. Profil için sunucu seçiminiz kullanılamıyor.</string>
+    <string name="profileProtocolNotAvailable">Profilin VPN iletişim kuralı şu anda kullanılamıyor. Bağlantı kurmak için iletişim kuralını değiştirmeyi deneyin.</string>
+    <string name="stateConnectedTo">%1$s ile bağlantı kuruldu</string>
+    <string name="stateNotConnected">Bağlı değilsiniz</string>
+    <string name="nameEurope">Avrupa</string>
+    <string name="nameAmerica">Amerika</string>
+    <string name="nameAsia">Asya</string>
+    <string name="nameAfricaAndMiddleEast">Afrika ve Orta Doğu</string>
+    <string name="nameOceania">Okyanusya</string>
+    <string name="tv_row_settings">Ayarlar</string>
+    <string name="tv_card_lan_connections_label">Yerel ağ</string>
+    <string name="tv_card_split_tunneling_label">Ayrılmış tünelleme</string>
+    <string name="tv_card_protocol_label">İletişim kuralı</string>
+    <string name="tv_dialog_delete_server_title">%1$s sunucusu silinsin mi?</string>
+    <string name="tv_detail_default_connection_checkbox_short">Yeğlenen</string>
+    <string name="tv_detail_connect_streaming">Plus ile yayın akışı</string>
+    <string name="tv_detail_connect">Bağlan</string>
+    <string name="tv_detail_description_streaming_country">Beğendiğiniz içerikleri izleyin. Proton VPN Plus tarifesiyle daha fazla uygulamaya erişin.</string>
+    <string name="tv_detail_description_no_streaming_country">Proton VPN Plus tarifesi ile sevdiğiniz içeriklerin fazlasını canlı izleyin.</string>
+    <string name="tv_detail_description_country_not_available">Bu ülke kullanılamıyor. Proton VPN Plus tarifesi ile daha fazla yayın akışı seçeneği edinin.</string>
+    <string name="tv_detail_description_plus">Uygulamalarınız ile sevdiğiniz videoları, filmleri ya da spor yayınlarını canlı izleyin.</string>
+    <string name="tv_login_title_welcome">Sevdiğiniz videoları canlı izleyin</string>
+    <string name="tv_login_welcome_description_bottom"><![CDATA[<b>%1$s</b> adresinden Proton VPN hesabınızı açın]]></string>
+    <string name="back">Geri</string>
+    <string name="tv_vpn_error_dialog_title">VPN bağlantısı kurulamadı</string>
+    <string name="tv_signout_label">Oturumu kapat</string>
+    <string name="tv_signout_dialog_title">Oturumu kapatmak istediğinize emin misiniz?</string>
+    <string name="tv_signout_dialog_description_connected">Bu işlem, televizyonunuzun herhangi bir VPN sunucusuyla bağlantısını kesecek.</string>
+    <string name="tv_signout_dialog_ok">Oturumu kapat</string>
+    <string name="tv_quick_connect_recommened">Önerilen</string>
+    <string name="tv_quick_connect_favourite">Beğenilenlere ekle</string>
+    <string name="tv_country_maintenance_dialog_title">Ülke kullanılamıyor</string>
+    <string name="tv_country_maintenance_dialog_description">Lütfen bir süre sonra yeniden deneyin ya da başka bir ülke seçin.</string>
+    <!-- The placeholder is replaced with a 0-100 value indicating the server load in percent.
+         Please note the double % sign after the placeholder. It is displayed as a single % sign in the app.
+
+         Example: 76% server load -->
+    <string name="tv_server_list_load">Sunucu yükü %1$s[%1$s]</string>
+    <string name="tv_recently_used_servers">Son kullanılan sunucular</string>
+    <string name="tv_available_servers">Kullanılabilecek sunucular</string>
+    <string name="tv_locked_servers">Kilitli sunucular</string>
+    <string name="tv_other_servers">Diğer sunucular</string>
+    <string name="tv_server_list">Sunucu listesi</string>
+    <string name="tv_server_list_action_unavailable">Kullanılamıyor</string>
+    <string name="notification_subscription_expired_title">Proton VPN abonelik tarifenizin geçerlilik süresi dolmuş</string>
+    <string name="notification_subscription_expired_content">Tarifenizi düşürmek zorunda kaldık. Bağlantınızı bu tarifedeki en hızlı sunucuya geçiriyoruz.</string>
+    <string name="notification_subscription_expired_no_reconnection_content">Abonelik tarifeniz düşürüldü.</string>
+    <string name="notification_delinquent_title">Proton VPN hesabınızda ödenmemiş faturalar var</string>
+    <string name="notification_delinquent_content">Aboneliğinizi kullanımda tutmak için bir dakika ayırarak fatura bilgilerinizi güncelleyin.</string>
+    <string name="notification_max_sessions_title">En fazla aygıt sınırınıza ulaştınız</string>
+    <!-- The number of devices will always be greater than 1. -->
+    <plurals name="notification_max_sessions_upsell_content">
+        <item quantity="one">Bu aygıt ile bağlantı kurmak için lütfen başka bir aygıtın bağlantısını kesin ya da aynı anda %1$d aygıta kadar bağlantı kurmak için Plus tarifesine yükseltin.</item>
+        <item quantity="other">Bu aygıt ile bağlantı kurmak için lütfen başka bir aygıtın bağlantısını kesin ya da aynı anda %1$d aygıta kadar bağlantı kurmak için Plus tarifesine yükseltin.</item>
+    </plurals>
+    <string name="notification_max_sessions_content">Lütfen bu aygıtı bağlayabilmek için başka bir aygıtın bağlantısını kesin.</string>
+    <string name="notification_cancel_to_free">Free tarifesindesiniz. Free sunucuları ve özelliklerini kullanabilirsiniz.</string>
+    <string name="notification_cancel_to_basic">Basic tarifesindesiniz. Basic ve Free sunucularını ve özelliklerini kullanabilirsiniz.</string>
+    <string name="notification_cancel_to_delinquent">Ödenmemiş faturaları ödedikten sonra ücretli özelliklere yeniden erişebilirsiniz.</string>
+    <string name="reconnect_from_server">Sunucudan: </string>
+    <string name="reconnect_to_server">Sunucuya: </string>
+    <string name="no_thanks">Hayır, teşekkürler</string>
+    <string name="enable">Aç</string>
+    <string name="notification_smart_protocol_disabled_title">Smart Protocol şu anda kapalı</string>
+    <string name="notification_smart_protocol_disabled_content">ProtonVPN, kullandığınız ağın VPN bağlantılarını engellediğini algıladı. Smart Protocol özelliğini açmak bu kısıtlamaları aşabilir.</string>
+    <string name="notification_streaming_blocked_title">Yayın akışı çalışmıyor mu?</string>
+    <string name="notification_streaming_blocked_text">Birçok yayın akış hizmeti ücretsiz VPN sunucularından gelen bağlantıları farkedip engeller. Bu engellemeleri aşmak için Proton VPN Plus tarifesine yükseltin</string>
+    <string name="upsell_advanced_features">Gelişmiş özellikler: NetShield, Secure Core, Tor, P2P</string>
+    <string name="upsell_streaming_services">Dünyanın her yerindeki yayın akışı hizmetlerine erişerek izleyin (Netflix, Disney+, vb)</string>
+    <!-- Number of servers available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_servers">
+        <item quantity="one">%1$d sunucuya</item>
+        <item quantity="other">%1$d sunucuya</item>
+    </plurals>
+    <!-- Number of countries available in the service.
+         This phrase will be combined with "upsell_many_countries" to form:<upsell_many_servers>, <upsell_many_countries>.
+         Neither "upsell_many_servers" nor "upsell_many_countries" includes the comma nor space!
+
+         Example: 1364 servers, 55 countries -->
+    <plurals name="upsell_many_countries">
+        <item quantity="one">%1$d ülkede</item>
+        <item quantity="other">%1$d ülkede</item>
+    </plurals>
+    <string name="upsell_upgrade_again">Tüm özelliklerin tadını çıkarmak için yeniden yükseltin:</string>
+    <plurals name="upgrade_devices_title">
+        <item quantity="one">Aynı anda %1$d aygıtı koruyun</item>
+        <item quantity="other">Aynı anda %1$d aygıtı koruyun</item>
+    </plurals>
+    <string name="upgrade_devices_text">Proton VPN 8 farklı platformda kullanılabilir.</string>
+    <string name="upgrade_plus_title">Gizlilik düzeyinizi yükseltin</string>
+    <string name="upgrade_plus_message">VPN Plus tarifesi ile gelişmiş gizlilik özelliklerine ve daha yüksek hızlara erişin.</string>
+    <string name="upgrade_netshield_title">Reklamsız gezinmenin tadını çıkarın</string>
+    <string name="upgrade_netshield_message"><![CDATA[<b>NetShield</b> ile reklamları, izleyicileri ve kötü niyetli yazılımları engelleyin.]]></string>
+    <string name="upgrade_secure_core_title">Gizliliğinizi iki katına çıkarın</string>
+    <string name="upgrade_secure_core_message"><![CDATA[<b>Secure Core</b> ile VPN bağlantınıza ek bir güvenlik katmanı ekleyin.]]></string>
+    <string name="upgrade_p2p_title">Eşler arası (P2P) indirmeleri ve dosya paylaşımını kullanın </string>
+    <string name="upgrade_p2p_text">IP adresinizi gizlerken yükleme ve indirme hızlarınızı iyileştirin.</string>
+    <string name="upgrade_profiles_title">Sık kullandığınız bağlantılara hızla erişin</string>
+    <string name="upgrade_profiles_text">VPN Plus ile profiller özelliğine erişin</string>
+    <string name="upgrade_streaming_title">4K yayın akışlarını izleyin</string>
+    <string name="upgrade_streaming_text">Dünya üzerinde her yerdeki beğendiğiniz film ve TV dizilerini izleyin.</string>
+    <string name="upgrade_streaming_block_title">VPN engellemelerini aşmak için tarifenizi yükseltin</string>
+    <string name="upgrade_streaming_block_text">VPN Plus sunucuları dünyanın her yerindeki sevdiğiniz filmleri ve TV programlarını izlemenizi sağlar.</string>
+    <string name="upgrade_tor_title">Tek dokunmayla Tor ağına erişin</string>
+    <string name="upgrade_tor_text">Her gün kullandığınız tarayıcı ile gizli hizmetlere ve onion sitelerine bağlanın.</string>
+    <string name="upgrade_vpn_accelerator_title">Daha yüksek hızlarla gezinin</string>
+    <!--
+        %1$s - speed in Gbps
+        Example:
+        Unlock faster, less crowded servers with speeds of up to 10 Gbps.
+    -->
+    <string name="upgrade_vpn_accelerator_message">Daha az kullanıcısı bulunan sunuculara, %1$d Gb/sn değerine çıkabilen daha yüksek hızlarla erişin.</string>
+    <string name="upgrade_split_tunneling_title">İki dünyanın da en iyisini edinin</string>
+    <string name="upgrade_split_tunneling_message"><![CDATA[<b>Ayrılmış tünelleme</b> ile VPN kullanan ve VPN kullanmayan trafiğinizi ayırın.]]></string>
+    <string name="upgrade_customization_title">Gelişmiş VPN özelleştirmelerine erişin</string>
+    <string name="upgrade_customization_message"><![CDATA[VPN Plus ile <b>Yerel ağ bağlantıları</b>, <b>Özel DNS</b> ve <b>NAT Type 2</b> özelliklerine erişin.]]></string>
+    <string name="upgrade_all_countries_title">Tüm ülkelere erişim</string>
+    <!-- Number of servers inserted as %1$s in the "upgrade_plus_countries_title_new".
+         The number is rounded to the hundreds, e.g. for a value of 1234 the number used in this text is 1200.
+
+         Example:
+         1200 secure servers
+         -->
+    <plurals name="upgrade_plus_servers_new">
+        <item quantity="one">%d güvenli sunucu</item>
+        <item quantity="other">%d güvenli sunucu</item>
+    </plurals>
+    <!-- Number of countries inserted as %2$s in "upgrade_plus_countries_title_new".
+
+         Example:
+         55 countries
+         -->
+    <plurals name="upgrade_plus_countries">
+        <item quantity="one">%d ülke</item>
+        <item quantity="other">%d ülke</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with "upgrade_plus_servers_new"
+     %2$s - replaced with "upgrade_plus_countries"
+
+     Example:
+     Unlock 1300+ secure servers in 61 countries with VPN Plus.
+     -->
+    <string name="upgrade_plus_countries_title_new"><![CDATA[<b>VPN Plus tarifesi</b> ile %2$sdeki %1$sya erişin.]]></string>
+    <string name="mail_app_name" translateable="false">Proton Mail</string>
+    <string name="upgrade_unlimited_all_apps_title">Proton Unlimited ile tam bir gizlilik koruması edinin</string>
+    <string name="upgrade_unlimited_all_apps_description">Proton VPN, Mail, Calendar, Drive ve Pass ürünlerinin tüm ücretli özelliklerine erişin.</string>
+    <string name="upgrade_unlimited_more">Ve daha fazlası</string>
+    <string name="upgrade_unlimited_vpn_unlimited_countries">Tüm ülkelere erişim</string>
+    <string name="upgrade_unlimited_vpn_all_features">Tüm diğer VPN Plus özellikleri</string>
+    <string name="upgrade_unlimited_vpn_any_location">İstediğiniz konumu seçin</string>
+    <string name="upgrade_unlimited_vpn_higher_speeds">Daha yüksek VPN hızı</string>
+    <plurals name="upgrade_unlimited_vpn_many_devices">
+        <item quantity="one">Aynı anda %1$d aygıtı koruyun</item>
+        <item quantity="other">Aynı anda %1$d aygıtı koruyun</item>
+    </plurals>
+    <string name="upgrade_unlimited_vpn_streaming">Güvenli yayın akışı</string>
+    <string name="upgrade_unlimited_vpn_adblocker">Reklam engelleyici ve kötü amaçlı yazılım koruması</string>
+    <string name="upgrade_unlimited_vpn_double_vpn">Çift VPN</string>
+    <string name="upgrade_unlimited_vpn_p2p">P2P desteği</string>
+    <plurals name="upgrade_unlimited_mail_custom_domains">
+        <item quantity="one">%1$d özel e-posta etki alanı</item>
+        <item quantity="other">%1$d özel e-posta etki alanı</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_attachments">
+        <item quantity="one">%1$d MB ek dosya boyutu</item>
+        <item quantity="other">%1$d MB ek dosya boyutu</item>
+    </plurals>
+    <plurals name="upgrade_unlimited_mail_many_addresses">
+        <item quantity="one">%1$d e-posta adresi</item>
+        <item quantity="other">%1$d e-posta adresi</item>
+    </plurals>
+    <string name="upgrade_unlimited_mail_unlimited_folders">Sınırsız sayıda klasör ve süzgeç</string>
+    <string name="upgrade_unlimited_mail_dark_web">Karanlık ağ izleme</string>
+    <string name="upgrade_unlimited_mail_aliases">Sınırsız sayıda hide-my-email takma adı</string>
+    <string name="upgrade_unlimited_mail_autoreply">Otomatik yanıtlama</string>
+    <string name="upgrade_unlimited_mail_scheduled_send">Zamanlanmış gönderim</string>
+    <plurals name="upgrade_unlimited_calendar_calendars">
+        <item quantity="one">%1$d kişisel takvim</item>
+        <item quantity="other">%1$d kişisel takvim</item>
+    </plurals>
+    <string name="upgrade_unlimited_calendar_sharing">Takvim paylaşımı</string>
+    <string name="upgrade_unlimited_calendar_invites">Davet gönderme ve alma</string>
+    <string name="upgrade_unlimited_drive_encryption">Şifrelenmiş dosya depolama alanı</string>
+    <string name="upgrade_unlimited_drive_storage_size">Fotoğraflar, dosyalar ve e-postalar için toplam %1$d GB depolama alanı</string>
+    <string name="upgrade_unlimited_drive_link_share">Bağlantı ile fotoğraf ve dosya paylaşma</string>
+    <string name="upgrade_unlimited_drive_sharing_security">Gelişmiş paylaşım güvenliği</string>
+    <string name="upgrade_unlimited_drive_version_history">Sürüm geçmişi</string>
+    <string name="upgrade_unlimited_pass_manager">Şifrelenmiş parola yöneticisi</string>
+    <string name="upgrade_unlimited_pass_logins_aliases">Sınırsız sayıda oturum açma kaydı ve hide-my-email takma adı</string>
+    <plurals name="upgrade_unlimited_pass_vaults">
+        <item quantity="one">%1$d kasa</item>
+        <item quantity="other">%1$d kasa</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_logins">Sınırsız sayıda oturum açma kaydı</string>
+    <string name="upgrade_unlimited_pass_aliases">Sınırsız sayıda hide-my-email takma adı</string>
+    <string name="upgrade_unlimited_pass_credit_cards">Sınırsız sayıda kredi kartı</string>
+    <string name="upgrade_unlimited_pass_devices">Sınırsız sayıda aygıt</string>
+    <plurals name="upgrade_unlimited_pass_users">
+        <item quantity="one">%1$d başka kişiyle paylaşım</item>
+        <item quantity="other">%1$d başka kişiyle paylaşım</item>
+    </plurals>
+    <string name="upgrade_unlimited_pass_2fa_auth">Bütünleşik iki adımlı doğrulayıcı</string>
+    <string name="upgrade_not_now_button">Şimdi değil</string>
+    <!-- Content description for plan selection list.
+         Only used by accessibility services.
+
+         Example:
+         When the plan selection control is focused, and the first plan name is "VPN Plus"
+         TalkBack will read:
+         "VPN Plus, 1 of 2, in list Upgrade options" -->
+    <string name="upgrade_plan_selection_content_description">Yükseltme seçenekleri</string>
+    <!-- Text in a "badge" element that has a rounded border and represents the Plus VPN plan.
+         May be used as a table header or like an icon. -->
+    <string name="badge_plan_plus">Plus</string>
+    <!-- Content description prefix for value in the benefits table row for the free plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_plus">Plus tarifesi:</string>
+    <!-- Content description prefix for value in the benefits table row for the plus plan.
+         The benefits table row has the following structure:<benefit description>; <value in free>; <value in plus>
+         e.g.:
+         "Ads blocked while you browse;  No;  Yes"
+
+         For accessibility services a prefix is added before each value, e.g.:
+         "Ads blocked while you browse;  free plan: No;  Plus plan: Yes"
+    -->
+    <string name="upsell_panel_content_description_value_prefix_free">Free tarifesi:</string>
+    <string name="upsell_panel_content_description_yes">Evet</string>
+    <string name="upsell_panel_content_description_no">Hayır</string>
+    <string name="upsell_panel_table_header_plan_free">Free</string>
+    <string name="upsell_panel_general_benefit_block_ads">Reklamları ve etkinlik izleyicileri engelleyebilirsiniz</string>
+    <string name="upsell_panel_general_benefit_countries">Kullanılabilecek ülkeler</string>
+    <!-- %1$s - number of countries rounded to full tens. Example: 120+, 130+, 140+ -->
+    <string name="upsell_panel_general_benefit_countries_rounded">%1$d+</string>
+    <string name="upsell_panel_general_benefit_devices">Korunan aygıtlar</string>
+    <string name="upsell_panel_general_benefit_location">Konumunuzu seçin</string>
+    <string name="upsell_panel_general_benefit_server">Sunucunuzu seçin</string>
+    <string name="upsell_panel_general_benefit_shows">İstediğiniz ülkedeki dizileri izleyin</string>
+    <string name="upsell_panel_general_benefit_speed">Sunucu hızı</string>
+    <string name="upsell_panel_general_benefit_speed_standard">Standart</string>
+    <string name="upsell_panel_general_benefit_speed_highest">En hızlı</string>
+    <string name="upsell_panel_adv_customization_title">Bağlantınıza ince ayar yapın</string>
+    <string name="upsell_panel_adv_customization_description">LAN bağlantılarına izin verin, özel DNS ayarlayın ve NAT türünüzü seçin. Tüm ek özellikler Plus tarifesinde.</string>
+    <string name="upsell_panel_adv_customization_benefit_lan">Yazıcınıza ve evinizdeki aygıtlara erişin</string>
+    <string name="upsell_panel_adv_customization_benefit_dns">Kendi DNS hizmetinizi kullanın</string>
+    <string name="upsell_panel_adv_customization_benefit_gaming">Oyun için daha iyi bağlantı</string>
+    <!--
+        %1$s - country name in nominative
+
+        Warning country names are inserted in the nominative case.
+        For inflicted languages translate the following phrase instead:
+        Get VPN Plus to access: %1$s
+        -->
+    <string name="upsell_panel_country_title">VPN Plus ile %1$s erişimi sağlayın</string>
+    <string name="upsell_panel_countries_title">VPN Plus ile tüm ülkelere erişin</string>
+    <string name="upsell_panel_country_benefit_speed">Yüksek hızlı sunucular</string>
+    <string name="upsell_panel_country_benefit_shows">Yalnızca yurt dışında yayınlanan dizileri izleyin</string>
+    <string name="upsell_panel_devices_title">Kullandığınız her aygıtı koruyun</string>
+    <string name="upsell_panel_devices_description">Telefonunuz, dizüstü bilgisayarınız, televizyonunuz ve bunların arasındaki her şey.</string>
+    <string name="upsell_panel_netshield_title">Kesintisiz gezinin</string>
+    <string name="upsell_panel_netshield_benefit_ads">Gezinirken reklamlar engellenir</string>
+    <string name="upsell_panel_netshield_benefit_trackers">Etkinlik izleyicilerin sizi izlemesini engelleyin</string>
+    <string name="upsell_panel_netshield_benefit_malware">Kötü amaçlı yazılım ve kimlik avı koruması</string>
+    <string name="upsell_panel_netshield_benefit_load_speed">Sayfalar daha hızlı yüklenir </string>
+    <string name="upsell_panel_onboarding_title">VPN Plus ile daha fazlasını edinin</string>
+    <string name="upsell_panel_p2p_title">Tam hızda indirme</string>
+    <string name="upsell_panel_p2p_description">Dosya paylaşımı için tasarlanmış sunucuları her zamanki torrent istemcinizle kullanabilirsiniz.</string>
+    <string name="upsell_panel_p2p_benefit_p2p">P2P dosya paylaşımı</string>
+    <string name="upsell_panel_profiles_title">Yayın akışı, oyun, iş: Her biri için ayrı profil</string>
+    <string name="upsell_panel_profiles_description">Bağlantılarınızı istediğiniz gibi ayarlayın ardından tek dokunuşla bunlardan birine yeniden bağlanın.</string>
+    <string name="upsell_panel_profiles_benefit_profiles">Kaydedilmiş profiller</string>
+    <string name="upsell_panel_profiles_benefit_profiles_unlimited">Sınırsız</string>
+    <string name="upsell_panel_secure_core_title">Siz ve internet arasında iki katmanlı şifreleme</string>
+    <string name="upsell_panel_secure_core_description">Seçtiğiniz ülkeden önce İsviçre, İzlanda veya İsveç içindeki bir Proton sunucusundan geçirilir.</string>
+    <string name="upsell_panel_secure_core_benefit_secure_core">Secure Core</string>
+    <string name="upsell_panel_speed_title">Daha hızlı yayın akışı, oyun ve indirme</string>
+    <string name="upsell_panel_speed_benefit_servers">Yüksek hızlı sunucular</string>
+    <string name="upsell_panel_speed_benefit_gaming">Oyun oynarken tepki süresi</string>
+    <string name="upsell_panel_speed_benefit_gaming_slow">Yavaş</string>
+    <string name="upsell_panel_speed_benefit_gaming_fast">Hızlı</string>
+    <string name="upsell_panel_speed_benefit_video">Takılmasız video yayın akışları</string>
+    <string name="upsell_panel_speed_benefit_p2p">P2P indirmeleri desteklenir</string>
+    <string name="upsell_panel_split_tunneling_title">Hangi uygulamaların VPN kullanacağını seçin</string>
+    <string name="upsell_panel_split_tunneling_description">VPN üzerinden tarayıcınıza, onun üzerinden de bankacılık uygulamanıza erişebilirsiniz. Her uygulama için ayrı ayrı seçim yapabilirsiniz.</string>
+    <string name="upsell_panel_split_tunneling_benefit_split">Ayrılmış tünelleme</string>
+    <string name="upsell_panel_streaming_title">Sevdiğiniz dijital yayın akışı hizmetlerini izleyin</string>
+    <string name="upsell_panel_streaming_benefit_shows">İstediğiniz ülkedeki dizileri izleyin</string>
+    <!-- The asterisk points to upsell_panel_streaming_footer -->
+    <string name="upsell_panel_streaming_benefit_platforms">Tüm büyük yayın akışı platformları desteklenir *</string>
+    <string name="upsell_panel_streaming_benefit_hd">Takılmasız HD kalitesinde izleyin</string>
+    <string name="upsell_panel_streaming_benefit_devices">Aynı anda bağlanabilecek aygıt sayısı</string>
+    <string name="upsell_panel_streaming_footer">* Dijital yayın akışı platformu aboneliği gereklidir.</string>
+    <string name="upsell_panel_streaming_block_title">VPN engellemelerini aşmak için tarifenizi yükseltin</string>
+    <string name="upsell_panel_streaming_block_description">VPN Plus sunucuları dünyanın her yerindeki sevdiğiniz filmleri ve TV programlarını izlemenizi sağlar.</string>
+    <string name="upsell_panel_tor_title">Onion sitelerine Tor Browser olmadan erişin</string>
+    <string name="upsell_panel_tor_description">Günlük kullandığınız tarayıcıdan .onion sitelerine erişin.</string>
+    <string name="upsell_panel_tor_benefit_tor">VPN üzerinden Tor</string>
+    <string name="upsell_card_countries_title">Dünya çapında kapsama</string>
+    <!-- Parameters:
+        %1$d - number of servers rounded up to 100s (e.g. 600, 1200)
+        %2$s - replaced with "upgrade_plus_countries"
+
+        Example:
+        1700+ server locations in 63 countries -->
+    <string name="upsell_card_countries_description">%2$s ülkede bulunan %1$d+ sunucu konumu</string>
+    <string name="upsell_card_customization_title">Ve çok daha fazlası…</string>
+    <string name="upsell_card_customization_description">Diğer başarım ve gizlilik özelliklerine erişebilirsiniz.</string>
+    <plurals name="upsell_card_devices_title">
+        <item quantity="one">%1$d aygıtı koruyun</item>
+        <item quantity="other">%1$d aygıtı koruyun</item>
+    </plurals>
+    <string name="upsell_card_devices_description">Tüm aygıtlarınız için güvenlik ve gizlilik</string>
+    <string name="upsell_card_netshield_title">NetShield</string>
+    <string name="upsell_card_netshield_description">Reklamları, kötü amaçlı yazılımları ve etkinlik izleyicileri engelleyin</string>
+    <string name="upsell_card_secure_core_title">Secure Core</string>
+    <string name="upsell_card_secure_core_description">VPN bağlantınıze ek bir şifreleme düzeyi ekleyebilirsiniz</string>
+    <string name="upsell_card_p2p_title">P2P desteği</string>
+    <string name="upsell_card_p2p_description">Dosyaları BitTorrent ve diğer dosya paylaşım iletişim kuralları üzerinden indirin</string>
+    <string name="upsell_card_profiles_title">Profiller</string>
+    <string name="upsell_card_profiles_description">Özel VPN bağlantıları oluşturun</string>
+    <string name="upsell_card_speed_title">Daha hızlı gezinin</string>
+    <!-- Parameters:
+        %1$d - max server speed in Gbps (preserve the non-breaking space between the number and Gbps).
+        Example:
+        Browse at even higher speeds (up to 10&160;Gbps) -->
+    <string name="upsell_card_speed_description">Daha da yüksek hızlarda gezinin (%1$d Gb/sn değerine varan)</string>
+    <string name="upsell_card_split_tunneling_title">Ayrılmış tünelleme</string>
+    <string name="upsell_card_split_tunneling_description">Aynı anda iki farklı konumdan gezinin</string>
+    <string name="upsell_card_streaming_title">Yayın akışı</string>
+    <string name="upsell_card_streaming_description">Beğendiğiniz film ve TV dizilerini izleyin</string>
+    <string name="upsell_card_tor_title">VPN üzerinden Tor</string>
+    <string name="upsell_card_tor_description">Ek gizlilik sağlamak için VPN bağlantınızı Tor ağından geçirin</string>
+    <string name="upsell_tv_all_countries_title">Plus tarifesiyle tüm ülkelere erişin</string>
+    <!-- Format for upselling countries on TV".
+        %1$s - replaced with upgrade_plus_servers_new plurals key (e.g. 1 secure server or 10 secure servers)
+        %2$s - replaced with upgrade_plus_countries plurals key (e.g. 1 country or 10 countries)
+
+        Example: Unlock 16821 secure servers in 127 countries. Go to the Proton VPN website to upgrade your plan.
+    -->
+    <string name="upsell_tv_all_countries_description">%2$s ülkede %1$s erişimi edinin.</string>
+    <string name="upsell_tv_netshield_title">NetShield ile reklamsız gezinmenin tadını çıkarın</string>
+    <string name="upsell_tv_netshield_description"><![CDATA[<b>NetShield</b> ile reklamları, izleyicileri ve kötü amaçlı yazılımları engelleyin.]]></string>
+    <string name="upsell_tv_split_tunneling_title">Plus tarifesi ile iki dünyanın da en iyisini elde edin</string>
+    <string name="upsell_tv_split_tunneling_description"><![CDATA[<b>Ayrılmış tünelleme</b> ile VPN kullanan ve VPN kullanmayan trafiğinizi ayırın.]]></string>
+    <string name="upsell_tv_subscription_expired_title">Aboneliğin geçerlilik süresi dolmuş</string>
+    <string name="upsell_tv_subscription_expired_description">Plus sunucularına ve özelliklerine yeniden erişmek için tarifenizi yükseltin.</string>
+    <string name="upsell_tv_customization_title">Plus tarifesi ile gelişmiş VPN özelleştirmeleri edinin</string>
+    <string name="upsell_tv_customization_description"><![CDATA[<b>Yerel ağ bağlantıları</b>, <b>Özel DNS</b> ve diğer gelişmiş VPN özelliklerine erişin.]]></string>
+    <string name="upsell_tv_fallback_description">Tarifenizi yükseltmek için Proton VPN sitesine gidin.</string>
+    <!-- Format for price per period of time.
+        %1$s - replaced with price and currency (e.g. "$100")
+        %2$s - replaced with time period, one of payment_price_per_ (e.g. "month", "week")
+
+        Examples:
+        50 PLN /month
+        $100 /year
+    -->
+    <string name="payment_price_with_period">%1$s / %2$s</string>
+    <string name="payment_price_per_day">gün</string>
+    <string name="payment_price_per_week">hafta</string>
+    <string name="payment_price_per_month">ay</string>
+    <string name="payment_price_per_year">yıl</string>
+    <plurals name="payment_price_cycle_label_day">
+        <item quantity="one">%1$d gün</item>
+        <item quantity="other">%1$d gün</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_week">
+        <item quantity="one">%1$d hafta</item>
+        <item quantity="other">%1$d hafta</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_month">
+        <item quantity="one">%1$d ay</item>
+        <item quantity="other">%1$d ay</item>
+    </plurals>
+    <plurals name="payment_price_cycle_label_year">
+        <item quantity="one">%1$d yıl</item>
+        <item quantity="other">%1$d yıl</item>
+    </plurals>
+    <string name="payment_select_your_plan">Tarifenizi seçin</string>
+    <!-- Label on a button for purchasing a subscription.
+         Parameter: %1$s - plan name
+         Plan names are not translated.
+
+         Example: "Get VPN Plus", "Get Proton Unlimited". -->
+    <string name="payment_button_get_plan">%1$s edinin</string>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_discount_renewal_price_message_daily">
+        <item quantity="one">Özel teklif. Günlük %1$s karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">Özel teklif. Her %2$d günde bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_discount_renewal_price_message_weekly">
+        <item quantity="one">Özel teklif. Haftalık %1$s karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">Özel teklif. Her %2$d haftada bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_discount_renewal_price_message_monthly">
+        <item quantity="one">Özel teklif. Aylık %1$s karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">Özel teklif. Her %2$d ayda bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_discount_renewal_price_message_yearly">
+        <item quantity="one">Özel teklif. Yıllık %1$s karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">Özel teklif. Her %2$d yılda bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of days -->
+    <plurals name="payment_renewal_price_message_daily">
+        <item quantity="one">Abonelik günlük %1$s karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">Abonelik %2$d günde bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_renewal_price_message_weekly">
+        <item quantity="one">Abonelik haftalık %1$s karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">Abonelik %2$d haftada bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!-- Parameters:
+         %1$s - replaced with price (e.g. "CHF 100")
+         %2$d - replaced with number of months -->
+    <plurals name="payment_renewal_price_message_monthly">
+        <item quantity="one">Abonelik aylık %1$s karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">Abonelik %2$d ayda bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!-- Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_renewal_price_message_yearly">
+        <item quantity="one">Abonelik yıllık %1$s karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">Abonelik %2$d yılda bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_daily">
+        <item quantity="one">%1$s/gün</item>
+        <item quantity="other">her %2$d günde bir %1$s</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_weekly">
+        <item quantity="one">%1$s/hafta</item>
+        <item quantity="other">her %2$d haftada bir %1$s</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_monthly">
+        <item quantity="one">%1$s/ay</item>
+        <item quantity="other">her %2$d ayda bir %1$s</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_yearly">
+        <item quantity="one">%1$s/yıl</item>
+        <item quantity="other">her %2$d yılda bir %1$s</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_discount_for_days">
+        <item quantity="one">ilk gün için</item>
+        <item quantity="other">ilk %1$d gün için</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_discount_for_weeks">
+        <item quantity="one">ilk hafta için</item>
+        <item quantity="other">ilk %1$d hafta için</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_discount_for_months">
+        <item quantity="one">ilk ay için</item>
+        <item quantity="other">ilk %1$d ay için</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_discount_for_years">
+        <item quantity="one">ilk yıl için</item>
+        <item quantity="other">ilk %1$d yıl için</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of days -->
+    <plurals name="payment_multi_renewal_rest_daily">
+        <item quantity="one">ardından %1$s/gün karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">ardından her %2$d günde bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of weeks -->
+    <plurals name="payment_multi_renewal_rest_weekly">
+        <item quantity="one">ardından %1$s/hafta karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">ardından her %2$d haftada bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of months -->
+    <plurals name="payment_multi_renewal_rest_monthly">
+        <item quantity="one">ardından %1$s/ay karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">ardından her %2$d ayda bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!--
+     See payment_multi_renewal_template for explanation.
+     Parameters:
+     %1$s - replaced with price (e.g. "CHF 100")
+     %2$d - replaced with number of years -->
+    <plurals name="payment_multi_renewal_rest_yearly">
+        <item quantity="one">ardından %1$s/yıl karşılığında otomatik olarak yenilenir</item>
+        <item quantity="other">ardından her %2$d yılda bir %1$s karşılığında otomatik olarak yenilenir</item>
+    </plurals>
+    <!-- Explains renewal cycle when first there's a discount price for several periods
+     (e.g. 2 months) and then the subscription renews at full price.
+     Periods (days, months etc) are never mixed between the messages, the whole message uses one
+     unit.
+
+     Parameters:
+      %1$s - one of payment_multi_renewal_discount_*
+      %2$s - one of payment_multi_renewal_discount_for_*
+      %3$s - one of payment_multi_renewal_rest_*
+
+     Examples:
+      "$2.99/month for the first 2 months, then auto renews at $3.99/month"
+      "$19.99/year for the first 3 years, then auto renews at $24.99/year"
+      "$3.99 every 2 months for the first 4 months, then auto renews at 5.99 every 2 months"
+    -->
+    <string name="payment_multi_renewal_template">%1$s %2$s, %3$s</string>
+    <string name="smart_routing_title">Smart Routing</string>
+    <string name="smart_routing_description">Bu teknoloji, hizmet verilmesi zor ülkelerde Proton VPN için daha yüksek hız ve güvenlik sağlar.</string>
+    <string name="tor_title">Tor</string>
+    <string name="server_load_title">Sunucu yükü</string>
+    <string name="activity_information_learn_more">Ayrıntılı bilgi alın</string>
+    <string name="server_load_low">Düşük</string>
+    <string name="server_load_medium">Orta</string>
+    <string name="server_load_high">Yüksek</string>
+    <!-- Override Human verification links from core -->
+    <string name="onboarding_welcome_title">Proton VPN hizmetine hoş geldiniz</string>
+    <string name="onboarding_welcome_description">Gizliliğinizi koruyarak gezinin, engellenen içeriğe erişin ve dijital özgürlüğün tadını çıkarın.</string>
+    <string name="onboarding_welcome_action">Başlayalım</string>
+    <string name="upgrade_success_get_started_button">Başlayalım</string>
+    <string name="dynamic_report_suggestion_didnt_work">İşe yaramadı mı?</string>
+    <string name="dynamic_report_contact_us">Bize ulaşın</string>
+    <string name="dynamic_report_tips_description">Bu ipuçları sorununuzun daha hızlı çözülmesine yardımcı olabilir.</string>
+    <string name="dynamic_report_tips_title">Hızlı çözümler</string>
+    <string name="dynamic_report_logs_title">Hata kayıtlarını gönder</string>
+    <string name="dynamic_report_logs_tooltip">Hata günlüğü bize neyin yanlış gittiğini ve hangi işlemlerin soruna yol açtığını gösterir. Bunları yalnızca mühendislerimizin sorunları çözmesine yardımcı olmak için kullanacağız.</string>
+    <string name="dynamic_report_error_title">Bildiriminiz gönderilemedi</string>
+    <string name="dynamic_report_completion_error_description_generic">Bildiriminiz gönderilemedi. Lütfen yeniden deneyin.</string>
+    <string name="dynamic_report_completion_error_description_no_internet">Bildiriminiz gönderilemedi. Lütfen bağlantınızı denetleyip yeniden deneyin.</string>
+    <string name="dynamic_report_completion_error_description_timeout">Bildiriminiz gönderilemedi. Bağlantı zaman aşımına uğradı. Lütfen yeniden deneyin.</string>
+    <string name="dynamic_report_completion_success_title">Geri bildiriminiz için teşekkür ederiz. En kısa zamanda size geri döneceğiz.</string>
+    <string name="dynamic_report_success_title">Geri bildiriminiz için teşekkürler</string>
+    <string name="dynamic_report_success_description">Olabilecek en kısa sürede size döneceğiz.</string>
+    <string name="dynamic_report_field_mandatory">Bu alanın doldurulması zorunludur</string>
+    <string name="dynamic_report_logs_description">Bir günlük, soruna neden olan olayları görmemizi sağlayan bir dosya türüdür. Bunları yalnızca mühendislerimizin hataları gidermesine yardımcı olmaları için kullanacağız.</string>
+    <string name="dynamic_report_logs_missing">Hata günlüğü, sorununuzun temeline inmemize yardımcı olur. Bunu göndermezeniz, sorunu tam olarak araştıramayabiliriz.</string>
+    <string name="dynamic_report_step1">1/3. adım</string>
+    <string name="dynamic_report_step2">2/3. adım</string>
+    <string name="dynamic_report_step3">3/3. adım</string>
+    <string name="dynamic_report_your_issue_headline">Sorun neydi?</string>
+    <string name="update_screen_title">Proton VPN uygulamasını güncelle</string>
+    <string name="update_screen_description">Eski Proton VPN sürümlerinde sorun yaşamanız daha olasıdır.</string>
+    <string name="update_banner_description_settings">Uygulamanın yeni bir sürümü yayınlanmış.</string>
+    <string name="update_banner_warning_vpn_connected_title">VPN bağlantısı kısa süreli kesilecek</string>
+    <string name="update_banner_warning_vpn_connected_message">Güncellemeyi tamamlamak için uygulama yeniden başlatılmalı. Ardından bağlantınız otomatik olarak yeniden kurulacak.</string>
+    <string name="dialog_create_account_title">İlerlemek için bir hesap açın</string>
+    <string name="dialog_create_account_action_create">Hesap aç</string>
+    <string name="dialog_create_account_action_signin">Oturum aç</string>
+    <string name="server_search_menu_title">Arama</string>
+    <string name="search_empty_result_subtitle">Lütfen farklı bir anahtar sözcük deneyin</string>
+    <string name="search_empty_result_title">Herhangi bir sonuç bulunamadı</string>
+    <!-- Content description for an icon button that clears search query in the input field. -->
+    <string name="search_clear_query_content_description">Temizle</string>
+    <!-- Content description for an icon button that clears text in an input field. -->
+    <string name="clear_text_field_content_description">Temizle</string>
+    <!-- Example: Want to connect to Italy? -->
+    <string name="upgrade_country_title">Belirli bir ülke ile bağlantı kurmak ister misiniz?</string>
+    <string name="upgrade_country_message"><![CDATA[VPN Plus tarifesi ile <b>ülkeleri seçin.</b>]]></string>
+    <string name="free_connections_info_message">Proton Free sizi otomatik olarak kullanılabilecek en hızlı sunucuya bağlar. Bu sunucu normalde konumunuza en yakın sunucudur.</string>
+    <string name="free_connections_info_server_locations">Free sunucuları konumları (%1$d)</string>
+    <string name="free_connections_info_banner_text">VPN Plus ile tüm ülkelere erişin</string>
+    <string name="free_connection_info_title">Free bağlantıları</string>
+    <string name="search_upsell_banner_title">Yayın akışlarını her yerden izleyin</string>
+    <!-- Example: Unlock geoblocked content from 10 countries with VPN Plus. -->
+    <plurals name="search_upsell_banner_message">
+        <item quantity="one">VPN Plus tarifesiyle coğrafi olarak engellenen içeriğe %1$d ülkeden erişin</item>
+        <item quantity="other">VPN Plus tarifesiyle coğrafi olarak engellenen içeriğe %1$d ülkeden erişin</item>
+    </plurals>
+    <string name="select_default_connection">Varsayılan bağlantınızı seçin</string>
+    <string name="settings_default_connection_title">Varsayılan bağlantı</string>
+    <string name="fastest_country_description">Konumunuza uygun en iyi sunucu</string>
+    <string name="settings_connection_preferences_title">Bağlantı ayarları</string>
+    <string name="settings_connection_preferences_snackbar_message_excluded_location_removed">Öge silindi</string>
+    <string name="settings_excluded_locations_title">Katılmayacak konumlar</string>
+    <string name="settings_excluded_locations_description">En hızlı sunucu ile bağlantı kurduğunuzda seçilmiş konumlar asla kullanılmaz.</string>
+    <string name="settings_excluded_locations_unavailable">Kullanılabilecek bir konum yok</string>
+    <string name="settings_excluded_locations_selection_hint">Seçin…</string>
+    <string name="settings_excluded_locations_accessibility_label_deletion">Katılmayacak konumlardan kaldır</string>
+    <string name="settings_excluded_locations_accessibility_label_city">İl</string>
+    <string name="settings_excluded_locations_accessibility_label_country">Ülke</string>
+    <string name="settings_excluded_locations_accessibility_label_state">Eyalet</string>
+    <string name="settings_last_connection_title">Son bağlantı</string>
+    <string name="settings_last_connection_description">Son kullandığınız bağlantı</string>
+    <string name="settings_change_icon_title">Uygulama simgesi</string>
+    <string name="settings_change_icon_details">Proton VPN uygulamasının aygıtınızda nasıl görüntüleneeğini ayarlayın. Neden?</string>
+    <string name="settings_change_icon_confirmation_title">Uygulama simgesi değiştirilsin mi?</string>
+    <string name="settings_change_icon_confirmation_details">Bu işlem, Proton VPN uygulamasının kapanmasına neden olur. Proton VPN uygulamasını yeniden başlatmak için yeni uygulama simgesine dokunmanız yeterlidir.</string>
+    <string name="settings_change_icon_header_protonvpn">Proton VPN</string>
+    <string name="settings_change_icon_header_discreet">Gizli uygulama simgesi</string>
+    <string name="settings_widget_title">Araç takımı</string>
+    <string name="settings_widget_selection_title">Proton VPN araç takımını deneyin</string>
+    <string name="settings_widget_selection_description">Bağlantı durumunuzu görüntüleyin ve sık kullandığınız VPN bağlantılarınıza giriş ekranından erişin.</string>
+    <!-- Placeholder is for non-translatable app_name-->
+    <string name="setting_widget_selection_additional_description">Araç takımı eklemek için giriş ekranınızda herhangi bir yere basılı tutun ve ardından araç takımı menüsünden %1$s seçeneğini seçin.</string>
+    <string name="settings_widget_selection_button_title">Araç takımı ekle</string>
+    <string name="setting_widget_try_title">Proton VPN araç takımını deneyin</string>
+    <!-- Content description used by accessibility services for a button for dismissing (hiding)
+         a notification banner (usually used for special offers). -->
+    <string name="notification_banner_dismiss_accessibility_label">Uyarıyı yok say</string>
+    <!-- Time left in a countdown, it shows two units of time, e.g. days and hours, hours and minutes.
+         %1$s - larger unit of time, one of: time_left_days, time_left_hours, time_left_minutes
+         %2$s - smaller unit of time, one of: time_left_hours, time_left_minutes, time_left_seconds
+
+         Examples:
+         3 days 11 hours left
+         1 hour 32 minutes left
+         0 minutes 50 seconds left
+     -->
+    <string name="offer_time_left">%1$s.%2$s kaldı</string>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_seconds">
+        <item quantity="one">%1$d saniye</item>
+        <item quantity="other">%1$d saniye</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 minutes 5 seconds left -->
+    <plurals name="time_left_minutes">
+        <item quantity="one">%1$d dakika</item>
+        <item quantity="other">%1$d dakika</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 hours 5 minutes left -->
+    <plurals name="time_left_hours">
+        <item quantity="one">%1$d saat</item>
+        <item quantity="other">%1$d saat</item>
+    </plurals>
+    <!-- See offer_time_left, example: 2 days 5 hours left -->
+    <plurals name="time_left_days">
+        <item quantity="one">%1$d gün</item>
+        <item quantity="other">%1$d gün</item>
+    </plurals>
+    <string name="server_change_max_reached">Yapabileceğiniz en fazla Free sunucu değişikliği sayısına ulaştınız.</string>
+    <string name="server_change_upsell">VPN Plus tarifesi ile sınırsız değişim sayısı edinin</string>
+    <string name="server_change_button_title">Sunucu değiştir</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services.
+
+        %1$s - replaced with "time_left_minutes"
+        %2$s - replaced with "time_left_seconds"
+        Example:
+        Available in 1 minute 23 seconds.
+      -->
+    <string name="server_change_button_time_left_content_description">%1$s %2$s sonra kullanılabilir</string>
+    <!-- Added to "Change server" button when it displays countdown until the button becomes active.
+         Used only for accessibility services and only if time left is less than 1 minute.
+
+        %1$s - replaced with "time_left_seconds"
+        Example:
+        Available in 23 seconds.
+      -->
+    <string name="server_change_button_time_left_seconds_content_description">%1$s sonra kullanılabilir.</string>
+    <string name="server_change_progress_finished_contend_description">Şimdi kullanılabilir</string>
+    <string name="not_wanted_country_title">İstediğiniz ülke değil mi?</string>
+    <string name="not_wanted_country_description">İstediğiniz sunucuyu seçebilmek için tarifenizi yükseltin</string>
+    <string name="whats_new_title">Yenilikler</string>
+    <string name="whats_new_profiles_title">Profiller geri döndü</string>
+    <string name="whats_new_profiles_description">Konum, sunucu ve iletişim kuralı seçiminizle özel bağlantılar oluşturun ve kaydedin.</string>
+    <string name="whats_new_widget_title">Araç takımları</string>
+    <string name="whats_new_widget_description">Artık ana ekrandan çıkmadan VPN bağlantınızı görüntüleyebilir ve yönetebilirsiniz.</string>
+    <string name="whats_new_add_widget_button">Araç takımı ekle</string>
+    <string name="welcome_plus_title">VPN Plus tarifesine hoş geldiniz</string>
+    <string name="welcome_plus_description">Ek gizlilik özelliklerinin, güçlendirilmiş başarımın ve üst düzey VPN özelleştirmenin tadını çıkarın.</string>
+    <string name="welcome_unlimited_title">Proton Unlimited tarifesine hoş geldiniz</string>
+    <string name="welcome_unlimited_description">Proton VPN, Mail, Calendar, Drive, Pass ve Wallet uygulamalarının tüm ücretli özelliklerine erişebilirsiniz.</string>
+    <string name="welcome_generic_title">Tebrikler</string>
+    <string name="welcome_generic_description">Abonelik tarifenizi yükselttiniz. Gelişmiş gizlilik özelliklerinin ve yeni nesil başarımın tadını çıkarın.</string>
+    <!-- Text added to button labels that open links in a browser (as opposed to performing actions
+         within the app). Only used by accessibility services like screen readers.
+         Example:
+         a button with "Learn more" label and this suffix will be read by a screen reader as:
+         "Learn more, external link button"
+     -->
+    <string name="accessibility_external_link_suffix">dış bağlantı</string>
+    <string name="no_logs_banner_title">Kayıt tutmadığı belgelenmiş VPN</string>
+    <string name="no_logs_banner_description">VPN etkinliğiniz İsviçre gizlilik yasalarıyla korunur. Sizi asla çevrim içi olarak izlemeyeceğiz veya bilgilerinizi üçüncü taraflarla paylaşmayacağız.</string>
+    <!-- tag(Redesign_2023) Bottom bar label for home screen -->
+    <string name="bottom_nav_home">Giriş</string>
+    <string name="bottom_nav_gateways">Ağ geçitleri</string>
+    <string name="bottom_nav_profiles">Profiller</string>
+    <!-- tag(Redesign_2023) Bottom bar label for country list screen -->
+    <string name="bottom_nav_countries">Ülkeler</string>
+    <!-- tag(Redesign_2023) Bottom bar label for settings screen -->
+    <string name="botton_nav_settings">Ayarlar</string>
+    <!-- tag(Redesign_2023)
+         Text added to button labels that open a UI element (e.g. a panel).
+         Only used by accessibility services.
+         Example:
+         a button with label "connection details" and this action label will be read by a screen
+         reader as:
+         "Connection details, button. Double tap to open"
+    -->
+    <string name="accessibility_action_open">aç</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that initiate a VPN connection.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland will be read by a screen reader as:
+         "Switzerland. Double tap to connect"
+        -->
+    <string name="accessibility_action_connect">bağlan</string>
+    <!-- tag(Redesign_2023)
+         Text added to clickable elements that redirect the user to upgrade their subscription plan.
+         Only used by accessibility services.
+         Example:
+         a list item for country Switzerland that requires upgrading subscription to become
+         available will be read by a screen reader as:
+         "Unavailable, Switzerland. Double tap to upgrade"
+        -->
+    <string name="accessibility_action_upgrade">yükselt</string>
+    <!-- tag(Redesign_2023)
+     Text added to clickable elements that initiate a search.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_search">ara</string>
+    <!--
+     Text added to clickable elements that provide negative feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_negative">iyi değil</string>
+    <!--
+     Text added to clickable elements that provide positive feedback when clicking on it.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_feedback_positive">iyi</string>
+    <!--
+     Text added to clickable elements that allows to submit either positive or negative feedback.
+     Only used by accessibility services.
+    -->
+    <string name="accessibility_action_submit_feedback">gönder</string>
+    <!-- Name of action for opening a screen/panel for an item.
+         The action is listed in a menu of additional actions available to accessibility services.
+
+         Example:
+         - item in a list of countries has a custom action to open list of cities in the country
+         - item in a list of cities has a custom action to open list of servers in the city
+         -->
+    <string name="accessibility_menu_action_open">Aç</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable because servers
+         are in maintenance.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are in maintenance will be read by a
+         screen reader as:
+         "in maintenance, Switzerland"
+     -->
+    <string name="accessibility_item_in_maintenance">bakım yapılıyor</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when it is unavailable.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland where all servers are unavailable will be read by a screen
+         reader as:
+         "unavailable, Switzerland"
+     -->
+    <string name="accessibility_item_unavailable">kullanılamıyor</string>
+    <!-- tag(Redesign_2023)
+         Text added on an item in a list (server or country) when there is active connection to it.
+         Only used by accessibility services.
+         Example:
+         a row for country Switzerland when there is a VPN connection to a server in this country
+         will be read by a screen reader as:
+         "Switzerland, connected"
+     -->
+    <string name="accessibility_item_connected">bağlı</string>
+    <!-- tag(Redesign_2023): label indicating that a server supports peer-to-peer. -->
+    <string name="server_feature_label_p2p">P2P</string>
+    <!-- tag(Redesign_2023): label indicating that a server routes connection through the Tor network. -->
+    <string name="server_feature_label_tor">Tor</string>
+    <string name="server_feature_content_description_p2p">eşler arası</string>
+    <string name="server_feature_content_description_tor">Tor</string>
+    <string name="server_feature_content_description_smart_routing">Smart Routing</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest country is connected to. -->
+    <string name="fastest_country">En hızlı ülke</string>
+    <string name="fastest_country_excluding_my_country">En hızlı ülke (ülkemin dışında)</string>
+    <!-- tag(Redesign_2023): label used in place of country when the fastest free server is connected to. -->
+    <string name="fastest_free_server">En hızlı Free sunucusu</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Iceland
+     -->
+    <string name="connection_info_secure_core_full_iceland">İzlanda üzerinden %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Sweden
+     -->
+    <string name="connection_info_secure_core_full_sweden">İsveç üzerinden %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection via Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+         %1$s - exit country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_switzerland">İsviçre üzerinden %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - exit country name in nominative case
+         %2$s - entry country name in nominative case
+         Example: United States via Switzerland
+     -->
+    <string name="connection_info_secure_core_full_other">%2$s üzerinden %1$s</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Iceland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_iceland">İzlanda üzerinden</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Sweden.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_sweden">İsveç üzerinden</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country being Switzerland.
+         Translate entry country name in correct declension, including the preposition and article, if needed.
+     -->
+    <string name="connection_info_secure_core_entry_switzerland">İsviçre üzerinden</string>
+    <!--
+         Label describing a Secure Core connection via the fastest Secure Core country.
+         It is displayed below country name, for example:
+         Italy
+         via Secure Core
+    -->
+    <string name="connection_info_secure_core_entry_fastest">Secure Core ile</string>
+    <!-- tag(Redesign_2023)
+         Label describing a Secure Core connection entry country.
+         This text will only be used if a new entry country is added and the application is not
+         yet updated with a specific text for it. Few users will ever see it.
+         %1$s - entry country name in nominative case
+         Example: via Switzerland
+    -->
+    <string name="connection_info_secure_core_entry_other">%1$s üzerinden</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         three countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+
+     -->
+    <string name="connection_info_auto_selected_free_countries">[flags] arasından otomatik seçilir</string>
+    <!-- tag(Redesign_2023)
+         Label describing a connection to a free server automatically selected from one in
+         several countries. Used instead of connection_info_auto_selected_free_countries when there
+         are more than 3 countries. Displayed directly below fastest_free_server.
+         [flags] - replaced with an image of 3 flags.
+         $1%d - replaced with number of additional countries (beyond the 3 flags).
+
+         Example, if there are 5 countries to select from the text will be:
+         Auto selected from [flags]+2
+         -->
+    <string name="connection_info_auto_selected_free_countries_more">[flags]+%1$d arasından otomatik seçilir</string>
+    <!-- tag(Redesign_2023)
+         Accessibility label describing a connection to a free server that is automatically selected
+         from one in several countries. Placed directly below fastest_free_server.
+         This text replaces connection_info_auto_selected_free_servers for screen readers.
+         $1%d - replaced with number of countries.
+         -->
+    <plurals name="connection_info_accessibility_auto_selected_free_countries">
+        <item quantity="one">%1$d ülke arasından otomatik seçilir</item>
+        <item quantity="other">%1$d ülke arasından otomatik seçilir</item>
+    </plurals>
+    <string name="connection_info_auto_selected_free_countries_plain">Ücretsiz ülkelerden otomatik olarak seçildi.</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that the connection details in the card are
+         are that of the previous connection.
+
+         Example:
+         Last connected to
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         -->
+    <string name="connection_card_label_last_connected">Son bağlantı</string>
+    <!--
+        Label above the connection card indicating text which acts as a button and leads to
+        customization bottom sheet of default connection
+     -->
+    <string name="connection_card_label_default_connection">Varsayılan bağlantı</string>
+    <!-- Label above the connection card when not connected and the user is on the free plan.
+         The connection card always shows "Fastest free server" (fastest_free_server) for free
+         users. -->
+    <string name="connection_card_label_free_connection">Ücretsiz bağlantı</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is being established.
+     -->
+    <string name="connection_card_label_connecting">Sunucu ile bağlantı kuruluyor…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection to a different server is
+         being established. It\'s shown only in response to user clicking the "Change server" button.
+     -->
+    <string name="connection_card_label_changing_server">Sunucu değiştiriliyor…</string>
+    <!-- tag(Redesign_2023)
+         Label above the connection card indicating that a connection is established and the user
+         is safely browsing as if they were in the location indicated in the connection card.
+
+         Example:
+         Browsing safely from
+         Switzerland, Zurich
+         or
+         Last connected to
+         Fastest country
+         Germany
+     -->
+    <string name="connection_card_label_connected">Şuradan güvenle geziniliyor</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with details of the current VPN connection.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "connection details, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_connection_details">bağlantı bilgileri</string>
+    <!-- tag(Redesign_2023)
+         Description of a button for opening panel with information about connections in free plan.
+         Only used by accessibility services.
+
+         Example:
+         a button with this description will be read by a screen reader as:
+         "more information about free connections, button. Double tap to activate"
+    -->
+    <string name="connection_card_accessbility_label_free_connections">Free bağlantıları ile ilgili ayrıntılı bilgi</string>
+    <string name="connection_card_label_connection_feedback">Bağlantınız nasıl?</string>
+    <!-- tag(Redesign_2023)
+         Displayed above the list of recently made connections.
+     -->
+    <string name="recents_headline">Son kullanılanlar</string>
+    <!-- Displayed above the list of VPN Plus features in the home screen -->
+    <string name="home_upsell_carousel_headline">VPN Plus özelliklerini keşfedin</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_pin">Sabitle</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_unpin">Sabitlemeyi kaldır</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="recent_action_remove">Kaldır</string>
+    <!-- tag(Redesign_2023)
+         State description of a pinned recent item.
+         Only used by accessibility service.
+    -->
+    <string name="recent_action_accessibility_state_pinned">Sabitlenmiş</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_country_servers_in_maintenance">Bu ülkedeki tüm sunucularda bakım yapılıyor</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_city_servers_in_maintenance">Bu ildeki tüm sunucularda bakım yapılıyor</string>
+    <!-- State means here US state, like California -->
+    <string name="message_state_servers_in_maintenance">Bu ildeki tüm sunucularda bakım yapılıyor</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_in_maintenance">Sunucuda bakım yapılıyor</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog -->
+    <string name="message_server_not_available">Sunucu kullanılamıyor</string>
+    <string name="message_server_location_excluded">Sunucu konumu katılmıyor</string>
+    <!-- tag(Redesign_2023): Displayed in a dialog when all servers of a gateway are in maintenance -->
+    <string name="message_gateway_in_maintenance">Ağ geçidinde bakım yapılıyor</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_sign_out">Oturumu kapat</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="gateways_title">Ağ geçitleri</string>
+    <string name="countries_title">Ülkeler</string>
+    <string name="profiles_title">Profiller</string>
+    <string name="settings_autoconnect_title">Otomatik bağlantı</string>
+    <string name="settings_autoconnect_boot_description">Aygıtınız başlatıldığında, hızlı bağlan ile otomatik VPN bağlantısı kurar.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_features">Özellikler</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_netshield_title">NetShield</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_split_tunneling_title">Ayrılmış tünelleme</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_kill_switch_title">Bağlantı kesici</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_connection_category">Bağlantı</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_protocol_title">İletişim kuralı</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_vpn_accelerator_title">VPN Accelerator</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_advanced_settings_title">Gelişmiş ayarlar</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_general">Genel</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_account">Hesap</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_notifications_title">Bildirimler</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_support">Destek</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_help_center_title">Destek merkezi</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_report_issue_title">Sorun bildireceğim</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_debug_logs_title">Hata ayıklama günlüğü</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_category_improve_proton">Proton uygulamasını geliştirin</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_fight_censorship_title">Sansüre karşı koymamıza yardımcı olun</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_rate_us_title">Proton VPN uygulamasını değerlendir</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_app_version">Uygulama sürümü: %1$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="settings_third_party_licenses">Üçüncü taraf lisansları</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_title">Oturum kapatılsın mı?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_message">VPN bağlantınız kesilecek.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_dont_ask_again">Bir daha sorma</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_sign_out_action">Oturumu kapat</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="dialog_action_cancel">İptal</string>
+    <string name="dialog_action_change_icon">Simgeyi değiştir</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_all">Tümü</string>
+    <string name="country_filter_cities">İller</string>
+    <string name="country_filter_states">İller</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_secure_core">Secure Core</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_p2p">P2P</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="country_filter_tor">Tor</string>
+    <string name="country_filter_all_list_header">Tüm ülkeler (%1$d)</string>
+    <string name="country_filter_all_list_header_free">Plus ülkeleri (%1$d)</string>
+    <string name="country_filter_countries_list_header">Ülkeler (%1$d)</string>
+    <string name="country_filter_cities_list_header">İller (%1$d)</string>
+    <string name="country_filter_states_list_header">Eyaletler (%1$d)</string>
+    <string name="country_filter_servers_list_header">Sunucular</string>
+    <string name="country_filter_secure_core_list_header">Secure Core ülkeleri (%1$d)</string>
+    <string name="country_filter_p2p_list_header">P2P ülkeleri (%1$d)</string>
+    <string name="country_filter_p2p_list_header_cities">P2P illeri (%1$d)</string>
+    <string name="country_filter_p2p_list_header_states">P2P eyaletleri (%1$d)</string>
+    <string name="counrty_filter_p2p_servers_list_header">P2P sunucuları</string>
+    <string name="country_filter_tor_list_header">Tor ülkeleri (%1$d)</string>
+    <string name="country_filter_tor_servers_list_header">Tor sunucuları</string>
+    <string name="country_filter_info_label">Bilgiler</string>
+    <!-- Content description for server load indicator. Used by accessibility services only.
+         Note: the trailing \'%\' sign needs to be doubled
+         (this doesn\'t apply to other percent sign characters, e.g. ٪). -->
+    <string name="country_filter_server_load_content_description">Yük: %1$s[%1$s]</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is connected and network is protected
+    -->
+    <string name="vpn_status_connected">Korunuyor</string>
+    <!-- tag(Redesign_2023)
+         Indicates that VPN is not connected and network is not protected
+    -->
+    <string name="vpn_status_disabled">Korunmuyorsunuz</string>
+    <!-- tag(Redesign_2023)
+         Text is shown while connection is being established
+    -->
+    <string name="vpn_status_connecting">Dijital kimliğiniz korunuyor</string>
+    <!-- tag(Redesign_2023)
+         Displays Country name and IP of user if he is not connected.
+         First parameter is country, second is IP.
+         Ex: Poland · 192.1.1.1.1
+    -->
+    <string name="vpn_status_disabled_location">%1$s · %2$s</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_subtitle">Bağlantı bilgileri</string>
+    <string name="connection_details_features_title">Özellikler</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_show_ip">IP adresini görüntüle</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="accessibility_back">Geri</string>
+    <string name="accessibility_close">Kapat</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_my_ip">IP adresim</string>
+    <string name="connection_details_my_ipv4">IPv4 adresim</string>
+    <string name="connection_details_my_ipv6">IPv6 adresim</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_ip">VPN IP adresi</string>
+    <string name="connection_details_vpn_ip4_6">VPN IPv4/IPv6</string>
+    <string name="connection_details_vpn_ipv4">VPN IPv4</string>
+    <string name="connection_details_vpn_ipv6">VPN IPv6</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates for how long user has been connected. Like \'Connected for 2hours\'
+    -->
+    <string name="connection_details_connected_for">Bağlantı süresi</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server">Sunucu</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_gateway">Ağ geçidi</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_country">Ülke</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_city">İl</string>
+    <!-- Label for server location "state", as a state of the USA. -->
+    <string name="connection_details_state">Eyalet</string>
+    <!-- Label for server smart routing, a country which is routed through. -->
+    <string name="connection_details_smart_routing">Üzerinden yönlendirildi</string>
+    <!-- tag(Redesign_2023)
+         Will be shown in a UI row which indicates Server load, on the left side will be Server load, and on the right actual load values.
+    -->
+    <string name="connection_details_server_load">Sunucu yükü</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_question">Sunucu yükü nedir?</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_description">Sunucu yükü, bir sunucunun tam kapasitesine ne kadar yakın olduğunu gösterir. \n\nYükü yüksek olan sunucular bağlantınızı yavaşlatabilir.</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_title">Düşük (%1–75)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_low_description">Işık hızında</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_title">Orta (%76–90)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_medium_description">VPN hızı etkilenmez</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_title">Yüksek (%91–100)</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_server_load_high_description">VPN hızı normalden düşük olabilir</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol">İletişim kuralı</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_protocol_description">İletişim kuralı, aygıtınızın bir sunucuya bağlanmak ve iletişim kurmak için izlediği yönergeler dizisidir.</string>
+    <!-- tag(Redesign_2023)
+         Label in front of upload speed in connection details. It is followed by upload speed number and unit.
+    -->
+    <string name="connection_details_upload">Yükleme</string>
+    <!-- tag(Redesign_2023)
+         Label in front of download speed in connection details. It is followed by download speed number and unit.
+    -->
+    <string name="connection_details_download">İndirme</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_section_vpn_speed">VPN hızı</string>
+    <string name="connection_details_section_ip">IP adresi</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_question">VPN hızı nedir?</string>
+    <string name="info_dialog_secure_core_title">Secure Core</string>
+    <string name="info_dialog_p2p_title">P2P</string>
+    <string name="info_dialog_secure_core_description">Secure Core, sizi ikinci, yüksek güvenlikli bir VPN sunucusu üzerinden hedef sunucunuza bağlar.\n\nBu yöntem daha yüksek düzeyde koruma sağlarken, gecikme süresinin artmasına ve hızın düşmesine neden olabilir.</string>
+    <string name="info_secure_core_standard_header">Standart VPN bağlantısı</string>
+    <string name="info_secure_core_secure_header">Secure Core VPN bağlantısı</string>
+    <string name="info_dialog_tor_description">Herhangi bir tarayıcı ile gizli hizmetlere ve onion sitelerine erişmek için bir Tor sunucusuna bağlanın.</string>
+    <string name="info_dialog_button_learn_more_tor">Tor ağına nasıl erişilir</string>
+    <string name="info_dialog_button_learn_more_p2p">P2P ile torrent nasıl kullanılır</string>
+    <string name="info_dialog_button_learn_more_ipaddress">IP adresi nedir?</string>
+    <string name="info_dialog_button_learn_more_streaming">Yayın akışı izlemek için yardım mı gerekli?</string>
+    <string name="info_dialog_streaming_title">Yayın akışı izlemek</string>
+    <string name="info_dialog_streaming_description">Yayın akışı sunucuları TV ve film oynatımlarını hızlı ve güvenli olarak sağlamak için tasarlanmıştır.</string>
+    <string name="info_dialog_how_to_stream">Yayın akışı nasıl izlenir:</string>
+    <!-- item 1 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_1">Telefonunuzun ayarlarına gidin ve konum servislerini kapatın</string>
+    <!-- item 2 in the numbered list -->
+    <string name="info_dialog_how_to_stream_step_2">Yayın akışı hizmetinizi yeniden başlatın</string>
+    <!-- item 3 in the numbered list (last item) -->
+    <string name="info_dialog_how_to_stream_step_3">Herhangi bir Plus sunucusuna bağlanın ve yayın akışını izlemeye başlayın</string>
+    <string name="info_dialog_profiles_title">Profiller</string>
+    <string name="info_dialog_ipaddress_title">IP adresi</string>
+    <string name="info_dialog_ipv6_traffic_title">IPv6 trafiği</string>
+    <string name="info_dialog_profiles_description">Profiller, gereksinimlerinize göre uyarlayabileceğiniz ve hızlı erişmek üzere kaydedebileceğiniz özel VPN bağlantılarıdır.\n\nBağlanmak istediğiniz konumu seçin ve ayarlarınızı güvenlik, başarım, oyun veya başka herhangi bir senaryoya göre yapılandırın.</string>
+    <string name="info_dialog_ipaddress_description">VPN IP adresiniz gerçek IP adresinizi gizler. Böylece VPN bağlantınızın konumundan geziniyormuşsunuz gibi görünürsünüz ve çevrim içi etkinliğiniz aygıtınız ile ilişkilendirilemez.</string>
+    <string name="info_dialog_ipv6_traffic_description">İnternet Protokolü (IP), aygıtlara adresler verir ve internet trafiğini yönlendirir. IPv6, daha fazla adres ve daha iyi bağlantı sunan son sürümdür. Ancak henüz her yerde kullanılmıyor.</string>
+    <string name="connection_feature_p2p_title">P2P</string>
+    <string name="connection_feature_p2p_description">Bu sunucuda eşler arası dosya paylaşımı kullanılıyor.</string>
+    <string name="connection_feature_tor_title">Tor</string>
+    <string name="connection_feature_tor_description">.onion sitelerine normal tarayıcınızla bağlanabilirsiniz.</string>
+    <string name="connection_feature_secure_core_title">Secure Core</string>
+    <string name="connection_feature_secure_core_description">Etkinliğiniz 2 yüksek güvenlikli VPN sunucusunun arkasında şifrelenir.</string>
+    <string name="connection_feature_streaming_title">Yayın akışı izlemek</string>
+    <string name="connection_feature_streaming_description">Bu sunucu TV ve filmleri oynatmak için ayarlanmıştır.</string>
+    <string name="connection_feature_smart_routing_title">Smart Routing</string>
+    <string name="connection_feature_smart_routing_description">Sizi fiziksel olarak başka bir yerde bulunan sunucular üzerinden hedef ülkenize bağlar.</string>
+    <!-- Placeholder will be replaced by a list of country names separated by commas, e.g, Connects you to your destination country through servers physically located elsewhere: Canada, Mexico, United States.  -->
+    <string name="connection_feature_smart_routing_description_with_countries">Sizi fiziksel olarak başka bir yerde bulunan sunucular üzerinden hedef ülkenize bağlar: %1$s.</string>
+    <!--
+        %1$s - physical server location country
+        %2$s - destination country
+        Warning: country names are inserted in the nominative case.
+        For INFLECTED languages, translate the following phrase instead:
+        "Your physical server location: %1$s.\nYour browsing country: %2$s"
+    -->
+    <string name="country_smart_routing_info">Sunucular fiziksel olarak %1$s konumunda bulunuyor ancak siz %2$s konumundan geziniyor gibi görüneceksiniz.</string>
+    <!--
+        Displayed next to an icon which provides more information if clicked
+    -->
+    <string name="connection_details_info_label">Bilgiler</string>
+    <!-- tag(Redesign_2023)
+         Used for button title to learn more about different contexts
+    -->
+    <string name="connection_details_learn_more">Ayrıntılı bilgi alın</string>
+    <!-- tag(Redesign_2023)
+        Used to describe IP which is not known
+    -->
+    <string name="connection_details_unknown_ip">Bilinmiyor</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_vpn_speed_description">Bu çizelge güncel yükleme ve indirme hızlarınızı görüntüler. VPN bağlantınızın normal çevrim içi etkinliği yavaşlatması beklenmez.</string>
+    <string name="speed_bytes_per_second">%1$s B/s</string>
+    <string name="speed_kilobytes_per_second">%1$s KB/s</string>
+    <string name="speed_megabytes_per_second">%1$s MB/s</string>
+    <string name="speed_gigabytes_per_second">%1$s GB/s</string>
+    <string name="speed_terabytes_per_second">%1$s TB/s</string>
+    <!-- Used as graph label to indicate speed measurement. Example: Speed KB/s or Speed MB/s-->
+    <string name="speed_graph_title">Hız %1$s</string>
+    <string name="bytes_per_second">B/s</string>
+    <string name="kilobytes_per_second">KB/s</string>
+    <string name="megabytes_per_second">MB/s</string>
+    <string name="gigabytes_per_second">GB/s</string>
+    <string name="terabytes_per_second">TB/s</string>
+    <plurals name="full_name_speed_bytes_per_second">
+        <item quantity="one">%1$s Bayt/sn</item>
+        <item quantity="other">%1$s Bayt/sn</item>
+    </plurals>
+    <plurals name="full_name_speed_kilobytes_per_second">
+        <item quantity="one">%1$s Kilobayt/sn</item>
+        <item quantity="other">%1$s Kilobayt/sn</item>
+    </plurals>
+    <plurals name="full_name_speed_megabytes_per_second">
+        <item quantity="one">%1$s Megabayt/sn</item>
+        <item quantity="other">%1$s Megabayt/sn</item>
+    </plurals>
+    <plurals name="full_name_speed_gigabytes_per_second">
+        <item quantity="one">%1$s Gigabayt/sn</item>
+        <item quantity="other">%1$s Gigabayt/sn</item>
+    </plurals>
+    <plurals name="full_name_speed_terabytes_per_second">
+        <item quantity="one">%1$s Terabayt/sn</item>
+        <item quantity="other">%1$s Terabayt/sn</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_bytes">
+        <item quantity="one">%1$s Bayt</item>
+        <item quantity="other">%1$s Bayt</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_kilobytes">
+        <item quantity="one">%1$s Kilobayt</item>
+        <item quantity="other">%1$s Kilobayt</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_megabytes">
+        <item quantity="one">%1$s Megabayt</item>
+        <item quantity="other">%1$s Megabayt</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_gigabytes">
+        <item quantity="one">%1$s Gigabayt</item>
+        <item quantity="other">%1$s Gigabayt</item>
+    </plurals>
+    <plurals name="full_name_traffic_volume_terabytes">
+        <item quantity="one">%1$s Terabayt</item>
+        <item quantity="other">%1$s Terabayt</item>
+    </plurals>
+    <string name="traffic_volume_bytes">%1$s B</string>
+    <string name="traffic_volume_kilobytes">%1$s KB</string>
+    <string name="traffic_volume_megabytes">%1$s MB</string>
+    <string name="traffic_volume_gigabytes">%1$s GB</string>
+    <string name="traffic_volume_terabytes">%1$s TB</string>
+    <!-- tag(Redesign_2023)
+         Shown at the top status view if app detects that there is no usable network to connect to VPN
+    -->
+    <string name="error_vpn_waiting_for_network">Ağ bekleniyor</string>
+    <!-- tag(Redesign_2023) -->
+    <plurals name="connection_details_days">
+        <item quantity="one">%1$d gün</item>
+        <item quantity="other">%1$d gün</item>
+    </plurals>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_hours_shortened">%1$d sa</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_minutes_shortened">%1$d dk</string>
+    <!-- tag(Redesign_2023) -->
+    <string name="connection_details_seconds_shortened">%1$d sn</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceTitle">Bağlantı kurulamadı</string>
+    <string name="dialogVpnNotSupportedOnThisDeviceDescription">Bu aygıt VPN bağlantılarına izin vermiyor.</string>
+    <string name="create_profile_title">Profil oluştur</string>
+    <!-- Title for the screen where user can edit a profile.
+         %1$s - name of the profile being edited. -->
+    <string name="edit_profile_title">%1$s profilini düzenle</string>
+    <string name="edit_profile_dialog_action">Profili düzenle</string>
+    <string name="create_profile_name_hint">Profil adı</string>
+    <string name="create_profile_name_error_empty">Bir profil adı yazın</string>
+    <string name="create_profile_name_error_too_long">Profil adı 30 karakterden kısa olmalıdır</string>
+    <string name="create_profile_type_and_location_title">Bağlantı türünü ve konumu seçin</string>
+    <string name="create_profile_features_and_settings_title">Özellikler ve ayarlar</string>
+    <string name="configure_profile_features_and_settings_title">Profil ayarlarını yapılandır</string>
+    <string name="configure_profile_features_and_settings_description">Profil ayarları, bağlandığınızda VPN ayarlarınızı değiştirecek.</string>
+    <!--
+        First input will be for current step, second one will be for total number of steps
+        Example: Step 3 of 7
+     -->
+    <string name="create_profile_steps">%1$d / %2$d. adım</string>
+    <string name="create_profile_button_next">Sonraki</string>
+    <!-- Important: please note the double % sign after 400. It is displayed as a single % in the app.
+         (this doesn\'t apply to other percent sign characters, e.g. ٪)
+         %1$s - will have translated learn_more value -->
+    <string name="settings_vpn_accelerator_description">Başarımı artırıcı teknolojilerle bağlantı hızınızı %%400 oranına kadar artırın. %1$s</string>
+    <string name="settings_account_settings_title">Hesap ayarları</string>
+    <string name="settings_account_change_password">Parolayı değiştir</string>
+    <string name="settings_account_recovery_email">Kurtarma e-postası adresi</string>
+    <string name="settings_account_recovery_email_not_set">Ayarlanmamış</string>
+    <string name="settings_account_security_keys">Güvenlik anahtarları</string>
+    <!-- Label of a button that opens user\'s account page -->
+    <string name="settings_account_button_my_account">Hesabım</string>
+    <string name="settings_account_button_delete_account">Hesabı sil</string>
+    <string name="settings_custom_dns_title">Özel DNS</string>
+    <string name="settings_custom_dns_description_tv">Kendi barındırdığınız veya üçüncü taraf bir etki alanı adı sistemi (DNS) ile VPN bağlantısı kurun.</string>
+    <string name="settings_add_dns_placeholder">192.0.2.0</string>
+    <string name="settings_add_dns_title">Yeni DNS sunucusu ekle</string>
+    <string name="settings_add_dns_new_entry_button">Ekle</string>
+    <string name="settings_add_dns_description">Sunucunun IPv4 ya da IPv6 adresini yazın</string>
+    <string name="settings_add_dns_invalid_input">Geçerli bir IPv4 veya IPv6 adresi yazın</string>
+    <string name="settings_add_dns_empty_input">Bir IPv4 veya IPv6 adresi yazın</string>
+    <string name="settings_add_dns_duplicate_input">Sunucu zaten eklenmiş</string>
+    <string name="settings_advanced_dns_description">Kendinizin barındırdığı veya üçüncü taraf bir etki alanı adı sistemi (DNS) ile VPN hizmetine bağlanın. Ayrıntılı bilgi alın</string>
+    <!-- %1$d - Corresponds to number of servers added -->
+    <string name="settings_dns_list_title">Sunucular (%1$d)</string>
+    <string name="settings_dns_list_description">Özel DNS sunucunuz çalışmazsa, standart VPN DNS kullanılır.</string>
+    <string name="settings_dns_list_description_multiple">Sırayla bu sunuculara bağlanmaya çalışacağız. Hiçbiri çalışmazsa, VPN DNS kullanılır.</string>
+    <string name="settings_changes_apply_on_reconnect_toast">Değişiklikler yeniden bağlandığınızda uygulanır</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_title">NetShield kullanılamayacak</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message">Özel DNS kullanıldığında NetShield reklamları, izleyicileri ve kötü amaçlı yazılımları süzemez. Ayrıntılı bilgi alın</string>
+    <string name="settings_custom_dns_netshield_conflict_dialog_message_tv">Özel DNS kullanıldığında NetShield reklamları, izleyicileri ve kötü amaçlı yazılımları süzemez.</string>
+    <string name="settings_advanced_alternative_routing_title">Alternatif yönlendirme</string>
+    <string name="settings_advanced_alternative_routing_description">Proton hizmetlerine erişim ağ üzerinden engelleniyorsa, sitelerimizle bağlantınızı kurmak için alternatif ağ yönlendirmesi kullanmayı deneyeceğiz.</string>
+    <string name="settings_advanced_allow_lan_title">Yerel ağ bağlantıları</string>
+    <string name="settings_advanced_allow_lan_description">Aygıtınızın aynı yerel ağda bulunan yazıcı, hoparlör gibi diğer aygıtlara bağlanmasını sağlar.</string>
+    <string name="settings_advanced_allow_lan_description_tv">Yerel ağınızdaki hoparlörlere, bilgisayarlara ve diğer aygıtlara bağlanın</string>
+    <string name="settings_advanced_allow_lan_title_tv">Yerel ağ bağlantılarına izin verilsin</string>
+    <string name="settings_advanced_nat_type_title">NAT Type</string>
+    <!-- %1$s - will have translated learn_more value -->
+    <string name="settings_advanced_nat_type_description">Bağlantınız için bir ağ adresi dönüştürme (NAT) türü seçin. %1$s</string>
+    <string name="settings_advanced_nat_type_description_no_learn">Bağlantınız için bir ağ adresi dönüştürme (NAT) türü seçin.</string>
+    <string name="settings_advanced_nat_type_strict">Kısıtlı (Type 3)</string>
+    <string name="settings_advanced_nat_type_strict_short">Type 3</string>
+    <string name="settings_advanced_nat_type_moderate">Ilımlı (Type 2)</string>
+    <string name="settings_advanced_nat_type_moderate_short">Type 2</string>
+    <string name="settings_advanced_nat_type_strict_description">Ağınıza giren verileri kısıtlar. Bu seçenek daha güvenlidir ancak eşler arası oyun bağlantılarında sorun çıkarabilir.</string>
+    <string name="settings_advanced_nat_type_moderate_description">Ağınıza giren bazı verileri kısıtlar. Bu seçenek çevrim içi video oyunları için en iyisidir.</string>
+    <string name="settings_split_tunneling_description">Hangi uygulamaların ve IP adreslerinin VPN tarafından korunacağına karar vererek bağlantınızı özelleştirin. %1$s</string>
+    <string name="settings_protocol_description">Bir VPN iletişim kuralı, VPN sunucu ile aygıtınız arasında verilerin nasıl aktarılacağını belirler. %1$s</string>
+    <string name="settings_protocol_description_no_link">Bir VPN iletişim kuralı, VPN sunucusu ile aygıtınız arasında verilerin nasıl aktarılacağını belirler.</string>
+    <string name="settings_protocol_section_speed">Hız (UDP)</string>
+    <string name="settings_protocol_section_reliability">Güvenilirlik (TCP)</string>
+    <string name="settings_protocol_smart_title">Smart</string>
+    <string name="settings_protocol_smart_description">Bağlantınız için en iyi iletişim kuralını otomatik olarak seçer.</string>
+    <string name="settings_protocol_wireguard_title">WireGuard</string>
+    <string name="settings_protocol_smart_protun_description">Bağlantınız için en iyi iletişim kuralını otomatik seçer. [deneysel]</string>
+    <string name="settings_protocol_wireguard_udp_description">Güvenlik ve başarım için son teknoloji iletişim kuralı.</string>
+    <string name="settings_protocol_wireguard_tcp_description">Güvenlik ve başarım için son teknoloji iletişim kuralı.</string>
+    <string name="settings_protocol_stealth_title">Stealth</string>
+    <string name="settings_protocol_stealth_description">VPN bağlantınızı sansür uygulamalarından gizleyerek VPN engellemelerini aşar. Bu iletişim kuralı DPİ (derin paket inceleme) uygulamalarına karşı dirençlidir ancak diğer iletişim kuralları kadar hızlı olmayabilir. Stealth, Proton VPN uygulamasına özel bir iletişim kuralıdır.</string>
+    <!-- Text on a badge displayed next to the "smart" protocol name in settings -->
+    <string name="settings_protocol_badge_recommended">Önerilir</string>
+    <string name="settings_protocol_badge_experimental">Deneysel</string>
+    <string name="settings_split_tunneling_mode_title">Kip</string>
+    <string name="settings_split_tunneling_mode_standard">Katma</string>
+    <string name="settings_split_tunneling_mode_inverse">Kat</string>
+    <string name="settings_split_tunneling_mode_description_standard">Seçilmiş uygulamalar ve IP adresleri VPN bağlantısına katılmaz.</string>
+    <string name="settings_split_tunneling_mode_description_inverse">Yalnızca seçilmiş uygulamalar ve IP adresleri VPN üzerinden bağlanır, diğer tüm trafik korumasızdır.</string>
+    <string name="settings_split_tunneling_excluded_apps">Katılmayacak uygulamalar</string>
+    <string name="settings_split_tunneling_excluded_ips">Katılmayacak IP adresleri</string>
+    <string name="settings_split_tunneling_included_apps">Katılacak uygulamalar</string>
+    <string name="settings_split_tunneling_included_ips">Katılacak IP adresleri</string>
+    <string name="settings_split_tunneling_empty" comment="Used to indicate that no IP or Apps are included in split tunneling">Yok</string>
+    <string name="settings_split_tunneling_excluded_format" comment="Used for describing excluded items. Example: Chrome, Facebook and 2 more. The same logic used for IP addresses too.">%1$s, %2$s ve %3$d diğer</string>
+    <string name="settings_split_tunneling_already_excluded">Zaten katılmamış</string>
+    <string name="settings_split_tunneling_already_included">Zaten katılmış</string>
+    <string name="settings_split_tunneling_remove_ip_dialog_message">IP adresi listeden kaldırılsın mı?</string>
+    <string name="settings_split_tunneling_ip_removed_message">IP adresi kaldırıldı</string>
+    <string name="settings_theme_title">Tema</string>
+    <string name="settings_theme_value_auto">Aygıt teması</string>
+    <string name="settings_theme_value_light">Açık</string>
+    <string name="settings_theme_value_dark">Koyu</string>
+    <string name="settings_dialog_reconnect">Yeni ayarlar kurulacak bir sonraki bağlantıya uygulanacak.</string>
+    <string name="settings_needs_reconnect_banner">Yeni ayarlar kurulacak bir sonraki bağlantıya uygulanacak.</string>
+    <string name="private_dns_conflict_banner_custom_dns_title">Özel DNS kullanılamıyor</string>
+    <string name="private_dns_conflict_banner_custom_dns_description">Aygıtınız Proton VPN hizmetinin Özel DNS ayarının çalışmasını engelleyen bir üçüncü taraf DNS hizmeti kullanıyor. Ayrıntılı bilgi alın</string>
+    <string name="private_dns_conflict_banner_custom_dns_description_tv">Aygıtınız Proton VPN hizmetinin özel DNS ayarının çalışmasını engelleyen bir üçüncü taraf DNS hizmeti kullanıyor.</string>
+    <string name="private_dns_conflict_banner_netshield_title">NetShield kullanılamıyor</string>
+    <string name="private_dns_conflict_banner_netshield_description">Aygıtınız NetShield hizmetinin çalışmasını engelleyen bir üçüncü taraf DNS hizmeti kullanıyor. Ayrıntılı bilgi alın</string>
+    <string name="private_dns_conflict_banner_network_settings_button">Ağ ayarları</string>
+    <string name="custom_dns_conflict_banner_netshield_title">NetShield kullanılamıyor</string>
+    <string name="custom_dns_conflict_banner_netshield_description">NetShield hizmetinin çalışmasını engelleyen özel DNS özelliği kullanılıyor. Ayrıntılı bilgi alın</string>
+    <string name="custom_dns_conflict_banner_netshield_title_tv">NetShield kullanmak için özel DNS özelliğini kapatın.</string>
+    <string name="custom_dns_conflict_banner_netshield_description_tv">NetShield hizmetinin çalışmasını engelleyen özel DNS özelliği açık.</string>
+    <string name="custom_dns_conflict_banner_disable_custom_dns_button">Özel DNS özelliğini kapat</string>
+    <string name="info_secure_core_standard_high_privacy">Yüksek gizlilik</string>
+    <string name="info_secure_core_standard_lower_latency">Düşük gecikme</string>
+    <string name="info_secure_core_advanced_privacy">Gelişmiş gizlilik</string>
+    <string name="info_secure_core_higher_latency">Yüksek gecikme</string>
+    <string name="info_p2p_what_title">P2P nedir?</string>
+    <string name="info_p2p_what_description">Eşler arası (P2P) teknolojisi, doğrudan diğer aygıtlara bağlanmanızı ve dosyaları paylaşmanızı sağlar.\n\nP2P sunucularımız bu tür dosya paylaşımlarını desteklemek için özel olarak tasarlanmıştır.</string>
+    <string name="info_p2p_torrenting_title">Torrent nedir?</string>
+    <string name="info_p2p_torrenting_description">Büyük dosyaların bir P2P ağı üzerinden hızlı bir şekilde paylaşılması ve indirilmesidir.</string>
+    <string name="info_p2p_why_title">Torrent için neden bir P2P sunucusu kullanmalısınız?</string>
+    <string name="info_p2p_why_description_speed">Artırılmış yükleme ve indirme hızları</string>
+    <string name="info_p2p_why_description_logs">Etkinlik kaydı tutulmaz</string>
+    <string name="info_p2p_why_description_hide">IP adresinizi hizmet sağlayıcınızdan ve eşlerinizden gizleyin</string>
+    <string name="info_dialog_smart_routing_description">Smart Routing, ulaşılması zor ülkelerde VPN erişimi sunmamızı sağlar.\n\nBir Smart Routing sunucusuna bağlandığınızda, fiziksel sunucu başka bir yerde bulunsa bile, hedef ülkenizde geziniyormuş gibi görünürsünüz.  \n\nSmart Routing genellikle gizlilik karşıtı yasaları ve diğer engelleme biçimlerini aşmak için kullanılır.</string>
+    <string name="notifications_channel_connection_status_name">Bağlantı durumu</string>
+    <string name="notifications_channel_connection_status_description">Bağlı olduğunuz sunucuyu ve VPN hızınızı gösterir.</string>
+    <string name="notifications_channel_connection_errors_name">Bağlantı sorunları</string>
+    <string name="notifications_channel_connection_errors_description">VPN bağlantınızı duraklatan veya durduran sorunları size bildirir.</string>
+    <string name="notifications_channel_connection_tips_name">Bağlantı ipuçları</string>
+    <string name="notifications_channel_connection_tips_description">Daha iyi Proton VPN deneyimi sağlayacak bağlamsal ipuçları.</string>
+    <string name="countries_upsell_banner_description">VPN Plus ile tüm ülkelere erişin</string>
+    <string name="secure_core_upsell_banner_description">VPN bağlantınıze ek bir şifreleme düzeyi ekleyebilirsiniz</string>
+    <string name="p2p_upsell_banner_description">Dosyaları BitTorrent ve diğer dosya paylaşım iletişim kuralları üzerinden indirin</string>
+    <string name="tor_upsell_banner_description">Ek gizlilik sağlamak için VPN bağlantınızı Tor ağından geçirin</string>
+    <string name="vpnplus_upsell_banner_description">VPN Plus tarifesine yükselt</string>
+    <string name="search_zero_screen_title">Şunun için aramayı dene…</string>
+    <string name="search_zero_screen_info_countries_title">Ülkeler</string>
+    <string name="search_zero_screen_info_cities_title">İller</string>
+    <string name="search_zero_screen_info_servers_title">Sunucular</string>
+    <string name="search_zero_screen_info_countries_examples">İsviçre, Birleşik Devletler, İtalya, Kanada…</string>
+    <string name="search_zero_screen_info_cities_examples">New York, Londra, Tokyo, Sidney…</string>
+    <string name="search_zero_screen_info_servers_examples">JP#50, CA#3, IT#14…</string>
+    <string name="error_fetching_prices">Fiyatlar alınırken sorun çıktı.</string>
+    <string name="tv_settings_split_tunneling_description">Hangi uygulamaların VPN tarafından korunacağını seçerek bağlantınızı özelleştirin.</string>
+    <string name="tv_settings_split_tunneling_mode_description_standard">Seçilmiş uygulamalar VPN bağlantısına katılmaz.</string>
+    <string name="tv_settings_split_tunneling_mode_description_inverse">Yalnızca seçilmiş uygulamalar VPN üzerinden bağlantı kurar, diğer tüm trafik korumasızdır.</string>
+    <string name="profile_action_edit">Düzenle</string>
+    <string name="profile_action_duplicate">Çoğalt</string>
+    <string name="profile_action_delete">Sil</string>
+    <!-- Label when showing profile\'s NAT (Network Address Translation) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_nat_title">NAT</string>
+    <!-- Label when showing profile\'s LAN (Local Area Network) setting. Preferably short. -->
+    <string name="profile_bottom_sheet_lan_title">LAN</string>
+    <string name="profile_needs_reconnect">Bu işlem bağlantınızı yeniden başlatacak.</string>
+    <string name="profile_overrides_setting">Bu ayarlar <b>%1$s</b> ile bağlantılıdır ve yalnızca Profiller bölümünden yönetilebilir.</string>
+    <string name="initial_profile_name_streaming_us">Birleşik Devletler yayın akışı</string>
+    <string name="initial_profile_name_work_school">İş/Okul</string>
+    <string name="initial_profile_name_anti_censorship">Sansürü aşma</string>
+    <string name="initial_profile_name_gaming">Oyun</string>
+    <string name="initial_profile_name_max_security">En yüksek güvenlik</string>
+    <string name="create_profile_pick_country_title">Ülke</string>
+    <string name="create_profile_pick_type_title">Tür</string>
+    <string name="create_profile_type_standard">Standart</string>
+    <string name="create_profile_type_secure_core">Secure Core</string>
+    <string name="create_profile_type_p2p">P2P</string>
+    <string name="create_profile_gateway">Ağ geçidi</string>
+    <string name="create_profile_pick_state_title">Eyalet</string>
+    <string name="create_profile_pick_city_title">İl</string>
+    <string name="create_profile_pick_server_title">Sunucu</string>
+    <string name="create_profile_pick_gateway_title">Ağ geçidi</string>
+    <string name="create_profile_pick_netshield_title">NetShield</string>
+    <string name="create_profile_pick_netshield_description">Siteler ile uygulamalarda bulunabilecek reklamları, izleyicileri ve kötü amaçlı yazılımları engelleyin</string>
+    <string name="create_profile_pick_protocol_title">İletişim kuralı</string>
+    <string name="create_profile_pick_nat_title">NAT Type</string>
+    <!--
+         Example:
+         if a profile named "My Profile" is duplicated, the new suggested name is "My Profile (copy)"
+     -->
+    <string name="create_profile_copy_name">%1$s (kopyası)</string>
+    <string name="create_profile_fastest_city">En hızlı</string>
+    <string name="create_profile_fastest_state">En hızlı</string>
+    <string name="create_profile_fastest_server">En hızlı</string>
+    <string name="create_profile_pick_middle_country_title">Orta ülke</string>
+    <string name="profiles_zero_state_title">İlk profilinizi oluşturun</string>
+    <string name="profiles_zero_state_description">Profiller, seçtiğiniz konum, sunucu ve iletişim kuralı bilgileri ile kaydedilen bağlantılardır.</string>
+    <string name="profiles_button_create_profile">Profil oluştur</string>
+    <string name="profile_deleted_snackbar_message">Profil silindi</string>
+    <string name="profile_connected_edit_setting">Bu ayar kullanımdaki profilinize bağlıdır.\n\nDeğişiklik yapmak için profilinizi düzenleyin veya genel VPN ayarlarınızı düzenlemek için bağlantıyı kesin.</string>
+    <string name="profile_connected_dialog_title">%1$s profilini yönetin</string>
+    <string name="undo">Geri al</string>
+    <string name="profile_unavailable_dialog_title">Profil kullanılamıyor</string>
+    <!-- %1$s - profile name
+         Example: Your server selection for MyProfile is unavailable. Select a different server or try again later -->
+    <string name="profile_unavailable_dialog_message">%1$s sunucu seçiminiz kullanılamıyor. Başka bir sunucu seçin ya da bir süre sonra yeniden deneyin.</string>
+    <string name="profile_location_excluded_dialog_message"><![CDATA[<b>%1$s</b> için seçtiğiniz sunucu kullanılamıyor. Farklı bir sunucu seçin katılmayacak konumlarınızı denetleyin veya bir süre sonra yeniden deneyin.]]></string>
+    <!-- %1$d - profile icon number
+         Example: Icon 1, Icon 2, ... -->
+    <string name="profile_icon_accessibility">%1$d. simge</string>
+    <!-- %1$d - profile icon number
+         Example: Color 1, Color 2, ... -->
+    <string name="profile_color_accessibility">%1$d. renk</string>
+    <string name="generic_info_label">Bilgiler</string>
+    <!-- Branded name for a feature that opens url after VPN connection to given profile is established.
+         Please don't use & in translation and capitalize key words. -->
+    <string name="create_profile_connect_and_go_label">Bağlan ve git</string>
+    <!-- Displayed as a badge next to create_profile_auto_open_label ("Auto-launch website [NEW]") -->
+    <string name="create_profile_auto_open_label_badge">Yeni</string>
+    <string name="create_profile_auto_open_url_input_label">Site adresi</string>
+    <string name="create_profile_auto_open_url_private_mode_label">Gizli gezinme kipini kullanın</string>
+    <!-- Label for disabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_off">Kapalı</string>
+    <string name="profile_auto_open_app_failed_to_launch">Bağlan ve Git: Uygulama bulunamadı</string>
+    <!-- Label for enabled "Auto-launch website" setting in profile creation -->
+    <string name="profile_auto_open_website">Bir site açın</string>
+    <string name="profile_auto_open_app">Bir uygulama açın</string>
+    <string name="create_profile_auto_open_description">Bu profil ile bağlantı kurduğunuzda istediğiniz bir siteyi otomatik olarak açın.</string>
+    <string name="create_profile_auto_open_app_input_hint">Bir uygulama seçin</string>
+    <string name="create_profile_auto_open_app_input_label">Uygulama</string>
+    <string name="create_profile_auto_open_app_no_apps">Herhangi bir uygulama bulunamadı.</string>
+    <string name="profile_auto_open_error_invalid_url">Geçerli bir adres yazın</string>
+    <string name="nps_how_likely_question">Proton VPN hizmetini bir arkadaşınıza veya meslektaşınıza önerme olasılığınız nedir?</string>
+    <string name="nps_additional_comment_title">Lütfen neden bu puanı verdiğinizi bize anlatın</string>
+    <string name="nps_additional_comment_optional">İsteğe bağlı</string>
+    <string name="nps_rating_low_values_explain">0 hiç önermem</string>
+    <string name="nps_rating_high_values_explain">10 çok öneririm</string>
+    <string name="nps_toast_submit_message">Paylaşımınız için teşekkürler. Geri bildiriminiz Proton VPN hizmetini geliştirmemize yardımcı olacak.</string>
+    <string name="nps_submit_error_char_limit">Yanıtınız en fazla 250 karakter uzunluğunda olmalıdır</string>
+    <string name="nps_button_submit_title">Anonim olarak paylaş</string>
+    <string name="widget_preview_switzerland">İsviçre</string>
+    <string name="widget_preview_spain">İspanya</string>
+    <string name="widget_preview_germany">Almanya</string>
+    <string name="widget_preview_france">Fransa</string>
+    <string name="widget_status_unprotected">Korunmuyor</string>
+    <string name="widget_status_error">Hata</string>
+    <string name="widget_status_connecting">Bağlantı kuruluyor</string>
+    <string name="widget_sign_in">Oturum aç</string>
+    <string name="widget_toast_added_message">Araç takımı ana ekrana eklendi</string>
+    <string name="settings_advanced_ipv6_title">IPv6 desteği</string>
+    <string name="settings_advanced_ipv6_description">IPv6 trafiğini VPN üzerinden iletir. IPv6 ağları ile uyumluluğu artırabilir.</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_message">Bu adresi kullanmak için VPN tüneli üzerinde IPv6 bağlantılarının kurulmasına izin vermeniz gerekir.</string>
+    <string name="setting_ipv6_disabled_dialog_action_enable">IPv6 kullanılsın</string>
+    <string name="settings_split_tunneling_ipv6_disabled_dialog_title">IPv6 kullanılmıyor</string>
+    <string name="settings_ipv6_enabled_toast">IPv6 kullanılıyor</string>
+    <string name="info_dialog_ipv6_traffic_benefits1">Yalnızca IPv6 kullanan sitelere ve hizmetlere erişilmesini sağlar</string>
+    <string name="info_dialog_ipv6_traffic_benefits2">IPv6 kullanan ağlar ile sorun yaşanmasını önler</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks1">Daha eski ağlar veya uygulamalarla iyi çalışmayabilir</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks2">Bazı ağlar IPv6 trafiğini öngörülemeyen şekilde işler</string>
+    <string name="info_dialog_ipv6_traffic_drawbacks_title">Kötü yanları</string>
+    <string name="info_dialog_ipv6_traffic_benefits_title">İyi yanları</string>
+    <string name="settings_lan_allow_direct_connection_title">Doğrudan aygıt bağlantılarına izin verilsin</string>
+    <string name="settings_lan_allow_direct_connection_description">Akıllı TV, Android Auto ve kendi ağınızdaki diğer aygıtlara bağlanın. En yüksek güvenlik için, yalnızca bu aygıtlara bağlanırken etkinleştirin.</string>
+    <string name="no_connections_title">Kullanılabilecek bir VPN bağlantısı yok</string>
+    <string name="no_connections_description_loading_error">Sunucu listesi yüklenemedi.</string>
+    <string name="no_connections_description_no_servers">Yöneticiniz ile görüşerek hesabınız için VPN özelliğini açmasını isteyin.</string>
+    <string name="no_connections_action_refresh">Yenile</string>
+    <string name="no_connections_action_sign_out">Oturumu kapat</string>
+    <string name="no_connections_help_contact_us"><![CDATA[Yardım mı gerekiyor? <a href="">Bize ulaşın</a>]]></string>
+    <string name="no_connections_help_follow_instructions"><![CDATA[Yöneticiniz VPN özelliğini açmak için yardıma gerek duyarsa, ona <a href="">bu yönergeyi</a> gönderin.]]></string>
+    <string name="settings_protocol_proton_protocols">Proton iletişim kuralları</string>
+    <string name="settings_protocol_proton_protocols_description">Proton VPN uygulamasının kendi WireGuard uyarlamasını kullanın. Bu özellik henüz deneyseldir ve bazı kararsızlıklar yaşayabilirsiniz.</string>
+    <string name="connection_preferences_smart_discovery_dialog_title">İstediğiniz ülke değil mi?</string>
+    <string name="connection_preferences_smart_discovery_dialog_message">Otomatik olarak bağlanmak istemediğiniz konumlar varsa, bunların En hızlı ülke seçeneğine katılmamasını sağlayabilirsiniz.</string>
+    <string name="excluded_locations_adoption_title">İstemediğiniz konumlara bağlanmayın</string>
+    <string name="excluded_locations_adoption_description"><![CDATA[Artık <b>En hızlı</b> bağlantı seçeneğine ülkelerin ve illerin katılmamasını sağlayabilirsiniz.]]></string>
+    <string name="session_fork_no_account_title">Android TV ile oturum aç</string>
+    <string name="session_fork_no_account_message">Televizyonunuzda Proton VPN oturumu açma işlemini bu aygıtta tamamlayın</string>
+    <string name="session_fork_no_account_footnote"><![CDATA[Bu uygulamayı kullanarak <a href="">Hüküm ve Koşullar</a> içeriğimizi kabul etmiş olursunuz.]]></string>
+    <string name="session_fork_no_account_signup_button">Hesap açın</string>
+    <string name="session_fork_no_account_signin_button">Oturum aç</string>
+    <string name="session_fork_confirmation_title">Android TV oturumu açmak ister misiniz?</string>
+    <string name="session_fork_confirmation_message">Bu işlem televizyonun Proton hesabınıza erişmesini sağlayacak.</string>
+    <string name="session_fork_confirmation_bottom_note">Yalnızca güvendiğiniz aygıtlarda oturum açın</string>
+    <string name="session_fork_confirmation_too_soon_toast">İlerlemeden önce gözden geçirin</string>
+    <string name="session_fork_success_title">Oturum açıldı</string>
+    <string name="session_fork_success_message">Televizyonunuzda oturum açtınız.</string>
+    <string name="session_fork_error_expired_title">Kodun süresi geçmiş</string>
+    <string name="session_fork_error_expired_message">Televizyonunuzda yeni bir kod oluşturup yeniden deneyin.</string>
+    <string name="session_fork_error_generic_title">Oturum açılamadı</string>
+    <string name="session_fork_error_fatal_message">Ağ bağlantınızı denetleyip yeniden deneyin. Sorun sürerse müşteri destek ekibimizle görüşün. </string>
+    <string name="session_fork_error_network_message">Ağ bağlantınızı denetleyip yeniden deneyin.</string>
+    <string name="session_fork_error_try_fallback_message">Televizyonunuzda \‘Oturum açamıyor musunuz?\’ üzerine tıklayarak alternatif adımları izleyin.</string>
+    <string name="session_fork_error_report_button">Sorunu bildireceğim</string>
+    <string name="session_fork_qr_code_content_description">Kare kod</string>
+    <string name="session_fork_qr_code_message">Oturum ya da hesap açmak için kare kodu tarayın.</string>
+    <string name="session_fork_qr_code_trouble_button">Oturum açmakta sorun mu yaşıyorsunuz?</string>
+    <string name="session_fork_qr_code_error_expired">Güvenlik nedeniyle doğrulama kodunun süresi doldu</string>
+    <string name="session_fork_qr_code_error_network">Ağ bağlantınızı denetleyip yeniden deneyin</string>
+    <string name="session_fork_qr_code_error_create_new_button">Yeni kod oluştur</string>
+    <string name="session_fork_user_code_title">Kodu tarayamıyor musunuz? El ile oturum açın</string>
+    <string name="session_fork_user_code_step1"><![CDATA[Şuraya gidin: <b>%1$s</b>]]></string>
+    <string name="session_fork_user_code_step2">Oturum ya da hesap açın</string>
+    <!-- Parameter: 8 character alphanumeric code, e.g. "AB12 CD34" -->
+    <string name="session_fork_user_code_step3"><![CDATA[Kodu yazın: <b>%1$s</b>]]></string>
+    <!-- Parameter: web address for the support website, e.g. "protonvpn.com/support" -->
+    <string name="session_fork_user_code_support"><![CDATA[Hâlâ yardım gerekiyor mu? <b>%1$s</b> adresine bakın]]></string>
+</resources>

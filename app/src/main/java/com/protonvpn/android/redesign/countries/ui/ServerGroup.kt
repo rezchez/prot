@@ -1,0 +1,484 @@
+/*
+ * Copyright (c) 2023 Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.android.redesign.countries.ui
+
+import android.content.Context
+import androidx.annotation.StringRes
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.animateScrollBy
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import com.protonvpn.android.R
+import com.protonvpn.android.base.ui.VpnDivider
+import com.protonvpn.android.base.ui.cards.InfoCard
+import com.protonvpn.android.base.ui.largeScreenContentPadding
+import com.protonvpn.android.base.ui.protonElevation
+import com.protonvpn.android.redesign.base.ui.CollapsibleToolbarScaffold
+import com.protonvpn.android.redesign.base.ui.InfoSheet
+import com.protonvpn.android.redesign.base.ui.InfoSheetState
+import com.protonvpn.android.redesign.base.ui.InfoType
+import com.protonvpn.android.redesign.base.ui.UpsellBanner
+import com.protonvpn.android.redesign.base.ui.rememberInfoSheetState
+import com.protonvpn.android.redesign.vpn.ui.countryName
+import com.protonvpn.android.telemetry.UpgradeSource
+import com.protonvpn.android.telemetry.UpgradeTrigger
+import com.protonvpn.android.ui.planupgrade.UpgradeDialogLauncherVM
+import com.protonvpn.android.ui.planupgrade.UpgradeP2PHighlightsFragment
+import com.protonvpn.android.ui.planupgrade.UpgradePlusCountriesHighlightsFragment
+import com.protonvpn.android.ui.planupgrade.UpgradeSecureCoreHighlightsFragment
+import com.protonvpn.android.ui.planupgrade.UpgradeTorHighlightsFragment
+import com.protonvpn.android.utils.openUrl
+import me.proton.core.compose.theme.ProtonTheme
+import me.proton.core.compose.theme.defaultSmallUnspecified
+import me.proton.core.presentation.utils.currentLocale
+import java.util.Locale
+import me.proton.core.presentation.R as CoreR
+
+typealias OnItemConnect = (
+    item: ServerGroupUiItem.ServerGroup,
+    filterType: ServerFilterType,
+) -> Unit
+
+@Immutable
+data class ServerGroupsActions(
+    val setLocale: (Locale) -> Unit,
+    val onNavigateBack:  suspend (onHide: suspend () -> Unit) -> Unit,
+    val onClose: () -> Unit,
+    val onItemOpen: (group: ServerGroupUiItem.ServerGroup, serverFilterType: ServerFilterType) -> Unit,
+    val onItemConnect: OnItemConnect,
+)
+
+@Composable
+fun ServerGroupsWithToolbar(
+    mainState: ServerGroupsMainScreenState?,
+    subScreenState: ServerGroupsSubScreenState?,
+    onNavigateToSearch: (() -> Unit)?,
+    onNavigateToUpsell: (ServerGroupUiItem.BannerType) -> Unit,
+    actions: ServerGroupsActions,
+    @StringRes titleRes: Int,
+) {
+    ServerGroups(
+        mainState,
+        subScreenState,
+        actions = actions,
+        onNavigateToUpsell = onNavigateToUpsell,
+    ) { mainState, infoSheetState ->
+        ServerGroupToolbarScaffold(
+            onNavigateToSearch = onNavigateToSearch,
+            toolbarFilters = mainState.filterButtons,
+            titleRes = titleRes,
+            content = { paddingValues ->
+                ServerGroupItemsList(actions, mainState, infoSheetState, onNavigateToUpsell, paddingValues)
+            }
+        )
+    }
+}
+
+// Generic composable shared by Gateways, Countries and Search screens.
+@Composable
+fun <T> ServerGroups(
+    mainState: T?,
+    subScreenState: ServerGroupsSubScreenState?,
+    actions: ServerGroupsActions,
+    onNavigateToUpsell: (ServerGroupUiItem.BannerType) -> Unit,
+    content: @Composable (mainState: T, info: InfoSheetState) -> Unit,
+) {
+    val context = LocalContext.current
+
+    val locale = LocalConfiguration.current.currentLocale()
+    LaunchedEffect(Unit) {
+        actions.setLocale(locale)
+    }
+    val infoSheetState = rememberInfoSheetState()
+
+    if (mainState != null)
+        content(mainState, infoSheetState)
+
+    if (subScreenState != null) {
+        ServerGroupsBottomSheet(
+            modifier = Modifier,
+            screen = subScreenState,
+            onNavigateBack = actions.onNavigateBack,
+            onNavigateToItem = { actions.onItemOpen(it, subScreenState.selectedFilter) },
+            onItemClicked = createOnConnectAction(actions, subScreenState.selectedFilter),
+            onClose = actions.onClose,
+            infoSheetState = infoSheetState,
+            navigateToUpsell = onNavigateToUpsell,
+        )
+    }
+
+    InfoSheet(
+        infoSheetState = infoSheetState,
+        onOpenUrl = { context.openUrl(it) },
+    )
+}
+
+@Composable
+fun createOnConnectAction(
+    actions: ServerGroupsActions,
+    filterType: ServerFilterType,
+): (ServerGroupUiItem.ServerGroup) -> Unit {
+    return { item ->
+        actions.onItemConnect(
+            item,
+            filterType,
+        )
+    }
+}
+
+@Composable
+fun ServerGroupToolbarScaffold(
+    onNavigateToSearch: (() -> Unit)?,
+    toolbarFilters: List<FilterButton>,
+    @StringRes titleRes: Int,
+    content: @Composable (PaddingValues) -> Unit,
+) {
+    CollapsibleToolbarScaffold(
+        titleResId = titleRes,
+        contentWindowInsets = WindowInsets.statusBars,
+        toolbarActions = {
+            if (onNavigateToSearch != null) Icon(
+                painter = painterResource(id = CoreR.drawable.ic_proton_magnifier),
+                contentDescription = stringResource(R.string.accessibility_action_search),
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .clickable(onClick = onNavigateToSearch)
+                    .padding(12.dp),
+            )
+        },
+        toolbarAdditionalContent = {
+            if (toolbarFilters.isNotEmpty()) FiltersRow(
+                buttonActions = toolbarFilters,
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
+        },
+    ) { padding ->
+        content(padding)
+    }
+}
+
+@Composable
+fun FiltersRow(buttonActions: List<FilterButton>, modifier: Modifier = Modifier) {
+    val listState = rememberLazyListState()
+
+    val selectedIndex = buttonActions.indexOfFirst { it.isSelected }
+    // Add padding to scroll so that next potential item is partially visible too
+    val contentPadding = 16.dp
+    val animationPadding = with(LocalDensity.current) {
+        // Use smaller padding for first/last items as they don't have next potential item
+        // and overshooting padding causes less smooth transition
+        if (selectedIndex > 0 && selectedIndex < buttonActions.size - 1) 32.dp.toPx() else contentPadding.toPx()
+    }
+    LaunchedEffect(selectedIndex) {
+        if (selectedIndex != -1) {
+            val layoutInfo = listState.layoutInfo
+            val visibleItemsInfo = layoutInfo.visibleItemsInfo
+            val selectedItemInfo = visibleItemsInfo.firstOrNull { it.index == selectedIndex }
+            selectedItemInfo?.let {
+                val itemStartOffset = it.offset - layoutInfo.viewportStartOffset
+                val itemEndOffset = itemStartOffset + it.size
+
+                val scrollOffset = when {
+                    // Item behind
+                    (itemStartOffset < 0)
+                        -> itemStartOffset - animationPadding
+
+                    // Item in front
+                    (itemEndOffset > layoutInfo.viewportSize.width.toFloat())
+                        -> itemEndOffset - layoutInfo.viewportSize.width.toFloat() + animationPadding
+
+                    // Item is already visible
+                    else -> 0
+                }
+
+                if (scrollOffset != 0) {
+                    listState.animateScrollBy(scrollOffset.toFloat())
+                }
+            }
+        }
+    }
+
+    LazyRow(
+        state = listState,
+        contentPadding = PaddingValues(horizontal = contentPadding),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = modifier,
+    ) {
+        items(
+            items = buttonActions,
+        ) { filterButton ->
+            Button(
+                onClick = filterButton.onClick,
+                modifier = Modifier
+                    .heightIn(min = ButtonDefaults.MinHeight)
+                    .alpha(if (filterButton.isEmpty && !filterButton.isSelected) 0.5f else 1f),
+                elevation = ButtonDefaults.protonElevation(),
+                shape = ProtonTheme.shapes.medium,
+                colors = with(ProtonTheme.colors) {
+                    ButtonDefaults.buttonColors(
+                        contentColor = if (filterButton.isSelected) Color.White else textNorm,
+                        containerColor = if (filterButton.isSelected) brandNorm else interactionWeakNorm,
+                    )
+                },
+                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+            ) {
+                val iconRes = when (filterButton.filter) {
+                    ServerFilterType.All -> null
+                    ServerFilterType.SecureCore -> R.drawable.ic_lock_layers
+                    ServerFilterType.P2P -> CoreR.drawable.ic_proton_arrow_right_arrow_left
+                    ServerFilterType.Tor -> CoreR.drawable.ic_proton_brand_tor
+                }
+                iconRes?.let {
+                    Icon(
+                        painter = painterResource(id = it),
+                        contentDescription = null,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                }
+                Text(
+                    text = stringResource(id = filterButton.label),
+                    style = ProtonTheme.typography.defaultSmallUnspecified
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun ServerGroupItemsList(
+    actions: ServerGroupsActions,
+    state: ServerGroupsMainScreenState,
+    infoSheetState: InfoSheetState,
+    onNavigateToUpsell: (ServerGroupUiItem.BannerType) -> Unit,
+    paddingValues: PaddingValues = PaddingValues(0.dp),
+) {
+    ServerGroupItemsList(
+        items = state.items,
+        onItemClick = createOnConnectAction(actions, state.selectedFilter),
+        onItemOpen = { actions.onItemOpen(it, state.selectedFilter) },
+        onOpenInfo = { infoType -> infoSheetState.show(infoType) },
+        navigateToUpsell = onNavigateToUpsell,
+        horizontalContentPadding = largeScreenContentPadding(),
+        modifier = Modifier.padding(paddingValues)
+    )
+}
+
+@Composable
+fun ServerGroupItemsList(
+    modifier: Modifier = Modifier,
+    items: List<ServerGroupUiItem>,
+    listState: LazyListState = rememberLazyListState(),
+    onItemOpen: (ServerGroupUiItem.ServerGroup) -> Unit,
+    onItemClick: (ServerGroupUiItem.ServerGroup) -> Unit,
+    onOpenInfo: (InfoType) -> Unit,
+    navigateToUpsell: (ServerGroupUiItem.BannerType) -> Unit,
+    horizontalContentPadding: Dp = 0.dp,
+) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(horizontal = horizontalContentPadding),
+        state = listState,
+    ) {
+        items.forEachIndexed { index, item ->
+            item {
+                when (item) {
+                    is ServerGroupUiItem.Header ->
+                        ServerGroupHeader(item, onOpenInfo = onOpenInfo)
+
+                    is ServerGroupUiItem.Banner ->
+                        ServerGroupBanner(item, navigateToUpsell)
+
+                    is ServerGroupUiItem.ServerGroup -> {
+                        ServerGroupItem(item, onItemOpen = onItemOpen, onItemClick = onItemClick)
+                        if (index < items.lastIndex && items[index + 1] is ServerGroupUiItem.ServerGroup)
+                            VpnDivider()
+                    }
+
+                    is ServerGroupUiItem.InfoCard -> {
+                        ServerGroupInfoCard(item = item, onOpenInfo = onOpenInfo)
+                    }
+                }
+            }
+        }
+        item {
+            Spacer(Modifier
+                .windowInsetsBottomHeight(WindowInsets.systemBars)
+                .consumeWindowInsets(WindowInsets.systemBars.only(WindowInsetsSides.Bottom))
+            )
+        }
+    }
+}
+
+fun UpgradeDialogLauncherVM.launchBannerUpgradeDialog(context: Context, bannerType: ServerGroupUiItem.BannerType) {
+    val countriesBanner = UpgradeTrigger.COUNTRIES_BANNER
+    when (bannerType) {
+        ServerGroupUiItem.BannerType.Countries ->
+            launchCarousel<UpgradePlusCountriesHighlightsFragment>(
+                context,
+                UpgradeSource.COUNTRIES,
+                countriesBanner
+            )
+
+        ServerGroupUiItem.BannerType.SecureCore ->
+            launchCarousel<UpgradeSecureCoreHighlightsFragment>(
+                context,
+                UpgradeSource.SECURE_CORE,
+                countriesBanner
+            )
+
+        ServerGroupUiItem.BannerType.P2P ->
+            launchCarousel<UpgradeP2PHighlightsFragment>(
+                context,
+                UpgradeSource.P2P,
+                countriesBanner
+            )
+
+        ServerGroupUiItem.BannerType.Tor ->
+            launchCarousel<UpgradeTorHighlightsFragment>(
+                context,
+                UpgradeSource.TOR,
+                countriesBanner
+            )
+
+        is ServerGroupUiItem.BannerType.Search ->
+            launchCarousel<UpgradePlusCountriesHighlightsFragment>(
+                context,
+                UpgradeSource.COUNTRIES,
+                UpgradeTrigger.SEARCH
+            )
+    }
+}
+
+@Composable
+private fun ServerGroupBanner(
+    item: ServerGroupUiItem.Banner,
+    navigateToUpsell: (ServerGroupUiItem.BannerType) -> Unit
+) {
+    val modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+    val onClick = { navigateToUpsell(item.type) }
+
+    when (item.type) {
+        ServerGroupUiItem.BannerType.Countries ->
+            UpsellBanner(
+                titleRes = null,
+                descriptionRes = R.string.countries_upsell_banner_description,
+                iconRes = R.drawable.banner_icon_worldwide_coverage,
+                onClick = onClick,
+                modifier = modifier,
+            )
+        ServerGroupUiItem.BannerType.SecureCore ->
+            UpsellBanner(
+                titleRes = null,
+                descriptionRes = R.string.secure_core_upsell_banner_description,
+                iconRes = R.drawable.banner_icon_secure_core,
+                onClick = onClick,
+                modifier = modifier,
+            )
+        ServerGroupUiItem.BannerType.P2P ->
+            UpsellBanner(
+                titleRes = null,
+                descriptionRes = R.string.p2p_upsell_banner_description,
+                iconRes = R.drawable.banner_icon_p2p,
+                onClick = onClick,
+                modifier = modifier,
+            )
+        ServerGroupUiItem.BannerType.Tor ->
+            UpsellBanner(
+                titleRes = null,
+                descriptionRes = R.string.tor_upsell_banner_description,
+                iconRes = R.drawable.banner_icon_tor,
+                onClick = onClick,
+                modifier = modifier,
+            )
+        is ServerGroupUiItem.BannerType.Search ->
+            UpsellBanner(
+                titleRes = R.string.search_upsell_banner_title,
+                descriptionRes = 0,
+                description = pluralStringResource(R.plurals.search_upsell_banner_message, item.type.countriesCount, item.type.countriesCount),
+                iconRes = R.drawable.upsell_card_worldwide,
+                onClick = onClick,
+                modifier = modifier,
+            )
+    }
+}
+
+@Composable
+private fun ServerGroupInfoCard(
+    item: ServerGroupUiItem.InfoCard,
+    onOpenInfo: (InfoType) -> Unit,
+) {
+    when (item) {
+        is ServerGroupUiItem.InfoCard.SmartRouting -> {
+            InfoCard(
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 12.dp),
+                backgroundColor = ProtonTheme.colors.backgroundSecondary,
+                title = stringResource(id = R.string.connection_feature_smart_routing_title),
+                details = stringResource(
+                    id = R.string.connection_feature_smart_routing_description_with_countries,
+                    item.hostCountryIds
+                        .map { hostCountryId -> hostCountryId.countryName() }
+                        .joinToString(separator = ", "),
+                ),
+                iconId = CoreR.drawable.ic_proton_globe,
+                onClick = { onOpenInfo(InfoType.SmartRouting) },
+            )
+        }
+    }
+}

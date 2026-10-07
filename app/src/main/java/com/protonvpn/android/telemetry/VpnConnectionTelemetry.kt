@@ -1,0 +1,352 @@
+/*
+ * Copyright (c) 2022. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.android.telemetry
+
+import com.protonvpn.android.auth.usecase.CurrentUser
+import com.protonvpn.android.di.ElapsedRealtimeClock
+import com.protonvpn.android.di.WallClock
+import com.protonvpn.android.excludedlocations.usecases.ObserveExcludedLocations
+import com.protonvpn.android.models.vpn.ConnectionParams
+import com.protonvpn.android.netshield.NetShieldProtocol
+import com.protonvpn.android.redesign.recents.usecases.ConnectionFeedback
+import com.protonvpn.android.servers.Server
+import com.protonvpn.android.settings.data.EffectiveCurrentUserSettings
+import com.protonvpn.android.telemetry.CommonDimensions.Companion.NO_VALUE
+import com.protonvpn.android.telemetry.CommonDimensions.Companion.UNKNOWN
+import com.protonvpn.android.ui.storage.UiStateStorage
+import com.protonvpn.android.utils.getValue
+import com.protonvpn.android.vpn.ConnectTrigger
+import com.protonvpn.android.vpn.ConnectivityMonitor
+import com.protonvpn.android.vpn.DisconnectTrigger
+import com.protonvpn.android.vpn.VpnState
+import com.protonvpn.android.vpn.VpnStateMonitor
+import com.protonvpn.android.vpn.alwayson.VpnAlwaysOnStorage
+import dagger.Reusable
+import io.sentry.Sentry
+import io.sentry.SentryEvent
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import me.proton.core.featureflag.domain.ExperimentalProtonFeatureFlag
+import me.proton.core.featureflag.domain.FeatureFlagManager
+import me.proton.core.featureflag.domain.entity.FeatureId
+import me.proton.core.user.domain.entity.User
+import javax.inject.Inject
+import javax.inject.Singleton
+import kotlin.time.Duration.Companion.milliseconds
+
+private class ConnectionTelemetryDebug(message: String) : Throwable(message)
+
+@OptIn(ExperimentalProtonFeatureFlag::class)
+@Reusable
+class ConnectionTelemetrySentryDebugEnabled @Inject constructor(
+    private val currentUser: CurrentUser,
+    private val featureFlagManager: FeatureFlagManager
+)  {
+    suspend operator fun invoke(): Boolean =
+        featureFlagManager.getValue(currentUser.user()?.userId, FeatureId("ConnectionTelemetrySentryDebug"))
+}
+
+@Singleton
+class VpnConnectionTelemetry @Inject constructor(
+    private val mainScope: CoroutineScope,
+    @param:ElapsedRealtimeClock private val clock: () -> Long,
+    private val commonDimensions: CommonDimensions,
+    private val vpnStateMonitor: VpnStateMonitor,
+    private val connectivityMonitor: ConnectivityMonitor,
+    private val telemetryHelperLazy: dagger.Lazy<TelemetryFlowHelper>,
+    private val isSentryDebugEnabled: ConnectionTelemetrySentryDebugEnabled,
+    private val effectiveCurrentUserSettings: EffectiveCurrentUserSettings,
+    private val observeExcludedLocations: ObserveExcludedLocations,
+    private val currentUser: CurrentUser,
+    @param:WallClock private val now: () -> Long,
+    private val vpnAlwaysOnStorage: VpnAlwaysOnStorage,
+    private val uiStateStorage: UiStateStorage,
+) {
+    private val helper by telemetryHelperLazy
+
+    private enum class Outcome(val statsKeyword: String) {
+        SUCCESS("success"), FAILURE("failure"), ABORTED("aborted")
+    }
+
+    private data class ConnectionInitInfo(
+        val trigger: ConnectTrigger,
+        val timestampMs: Long,
+        val vpnOn: Boolean,
+        val hasExcludedLocations: Boolean,
+    )
+
+    private var connectionInProgress: ConnectionInitInfo? = null
+    private var lastConnectTimestampMs: Long? = null
+
+    fun start() {
+        vpnStateMonitor.status.onEach { status ->
+            val state = status.state
+            when {
+                state is VpnState.Connected -> onConnectingFinished(
+                    Outcome.SUCCESS,
+                    localAgentErrorCode = null,
+                    status.connectionParams
+                )
+                state is VpnState.Error && state.isFinal ->
+                    onConnectingFinished(Outcome.FAILURE, state.localAgentErrorCode, status.connectionParams)
+            }
+        }.launchIn(mainScope)
+    }
+
+    fun onConnectionStart(trigger: ConnectTrigger, hasExcludedLocations: Boolean) {
+        if (trigger !is ConnectTrigger.Fallback || connectionInProgress == null) {
+            connectionInProgress?.let {
+                reportImmediateAbortToSentry("new connection start")
+                sendConnectionEvent(Outcome.ABORTED, null, it, null)
+            }
+
+            connectionInProgress = ConnectionInitInfo(
+                trigger = trigger,
+                timestampMs = clock(),
+                vpnOn = vpnStateMonitor.isConnected,
+                hasExcludedLocations = hasExcludedLocations,
+            )
+        }
+    }
+
+    fun onConnectionAbort(isFailure: Boolean = false, report: Boolean = true, sentryInfo: String? = null) {
+        if (report) {
+            if (!isFailure && sentryInfo != null) reportImmediateAbortToSentry(sentryInfo)
+            onConnectingFinished(
+                if (isFailure) Outcome.FAILURE else Outcome.ABORTED,
+                localAgentErrorCode = null,
+                connectionParams = null,
+            )
+        } else {
+            connectionInProgress = null
+        }
+    }
+
+    private fun onConnectingFinished(
+        outcome: Outcome,
+        localAgentErrorCode: Long?,
+        connectionParams: ConnectionParams?
+    ) {
+        connectionInProgress?.let {
+            sendConnectionEvent(outcome, localAgentErrorCode, it, connectionParams)
+        }
+        connectionInProgress = null
+    }
+
+    fun onDisconnectionTrigger(trigger: DisconnectTrigger, connectionParams: ConnectionParams?) {
+        if (connectionInProgress != null &&
+            trigger !is DisconnectTrigger.NewConnection &&
+            trigger !is DisconnectTrigger.Reconnect &&
+            trigger !is DisconnectTrigger.Fallback
+        ) {
+            val outcome = if (trigger.isSuccess) Outcome.ABORTED else Outcome.FAILURE
+            if (outcome == Outcome.ABORTED) reportImmediateAbortToSentry("disconnect")
+            onConnectingFinished(outcome, localAgentErrorCode = null, connectionParams)
+        } else if (lastConnectTimestampMs != null) { // Only log events when previously connected.
+            sendDisconnectEvent(trigger, connectionParams)
+            lastConnectTimestampMs = null
+        }
+    }
+
+    private fun sendConnectionEvent(
+        outcome: Outcome,
+        localAgentErrorCode: Long?,
+        connectionInfo: ConnectionInitInfo,
+        connectionParams: ConnectionParams?
+    ) {
+        lastConnectTimestampMs = clock()
+        with(connectionInfo) {
+            val values = buildMap {
+                this["time_to_connection"] = clock() - timestampMs
+            }
+            helper.event {
+                val dimensions = buildMap {
+                    this["vpn_status"] = if (vpnOn) "on" else "off"
+                    this["vpn_trigger"] = trigger.statsName
+                    this["is_ipv6_enabled"] = connectionParams?.enableIPv6?.toTelemetry() ?: NO_VALUE
+                    this["has_active_exclusions"] = hasExcludedLocations.toTelemetry()
+                    val protocol = connectionParams?.protocolSelection
+                    if (protocol != null) {
+                        this["is_smart_protocol"] = protocol.isSmartProtocol().toTelemetry()
+                    }
+                    localAgentErrorCode?.let { this["failure_reason"] = it.toString() }
+                    addCommonDimensions(outcome, connectionParams)
+                    addServerFeatures(connectionParams?.server)
+                }
+                TelemetryEventData(MEASUREMENT_GROUP, EVENT_CONNECT, values, dimensions)
+            }
+        }
+    }
+
+    private fun sendDisconnectEvent(trigger: DisconnectTrigger, connectionParams: ConnectionParams?) {
+        val values = buildMap {
+            this["session_length"] = lastConnectTimestampMs?.let { clock() - it } ?: 0
+        }
+        helper.event {
+            val dimensions = buildMap {
+                this["vpn_trigger"] = trigger.statsName
+                this["is_ipv6_enabled"] = connectionParams?.enableIPv6?.toTelemetry() ?: NO_VALUE
+                this["client_features"] = getClientFeaturesDimensionValue()
+                this["tenure"] = currentUser.user().toTenureBucketString()
+                this["user_feedback"] = getUserFeedbackDimensionValue()
+                addCommonDimensions(trigger.isSuccess.toOutcome(), connectionParams)
+                resetUserFeedback()
+            }
+            TelemetryEventData(MEASUREMENT_GROUP, EVENT_DISCONNECT, values, dimensions)
+        }
+    }
+
+    private suspend fun getUserFeedbackDimensionValue(): String {
+        val uiStateStorage = uiStateStorage.state.first()
+
+        return when (val connectionFeedback = uiStateStorage.connectionFeedback) {
+            ConnectionFeedback.Negative,
+            ConnectionFeedback.Positive -> connectionFeedback
+
+            ConnectionFeedback.None -> connectionFeedback.takeIf {
+                uiStateStorage.hasShownConnectionFeedback
+            }
+        }?.toTelemetry() ?: UNKNOWN
+    }
+
+    private suspend fun resetUserFeedback() {
+        uiStateStorage.update {
+            it.copy(
+                connectionFeedback = ConnectionFeedback.None,
+                hasShownConnectionFeedback = false,
+            )
+        }
+    }
+
+    private suspend fun getClientFeaturesDimensionValue(): String = buildList {
+        if(observeExcludedLocations().first().hasExclusions) {
+            add("connection_preferences")
+        }
+
+        val settings = effectiveCurrentUserSettings.effectiveSettings.first()
+
+        if(settings.customDns.effectiveEnabled) {
+            add("custom_dns")
+        }
+
+        if(vpnAlwaysOnStorage.getLastKnownVpnAlwaysOn()?.isLockdownEnabled == true) {
+            add("kill_switch")
+        }
+
+        if(settings.lanConnections) {
+            add("lan_connections")
+        }
+
+        if(!settings.randomizedNat) {
+            add("moderate_nat")
+        }
+
+        if(settings.netShield != NetShieldProtocol.DISABLED) {
+            add("netshield")
+        }
+
+        if(settings.splitTunneling.isEnabled) {
+            add("split_tunneling")
+        }
+    }
+        .sorted()
+        .joinToString(separator = ",")
+
+    private fun User?.toTenureBucketString(): String = this?.createdAtUtc?.let { userCreatedAt ->
+        val daysElapsed = (now() - userCreatedAt).milliseconds.inWholeDays
+
+        when {
+            daysElapsed == 0L -> "0"
+            daysElapsed == 1L -> "1"
+            daysElapsed == 2L -> "2"
+            daysElapsed <= 7L -> "3-7"
+            daysElapsed <= 30L -> "8-30"
+            daysElapsed <= 90L -> "31-90"
+            daysElapsed <= 365L -> "91-365"
+            else -> ">366"
+        }
+    } ?: UNKNOWN
+
+    private suspend fun MutableMap<String, String>.addCommonDimensions(
+        outcome: Outcome,
+        connectionParams: ConnectionParams?
+    ) {
+        commonDimensions.add(this, CommonDimensions.Key.USER_COUNTRY_LEGACY,
+            CommonDimensions.Key.ISP, CommonDimensions.Key.USER_TIER_LEGACY)
+        this["outcome"] = outcome.statsKeyword
+        this["vpn_country"] = connectionParams?.server?.exitCountry?.uppercase() ?: NO_VALUE
+        this["server"] = connectionParams?.server?.serverName ?: NO_VALUE
+        this["entry_ip"] = connectionParams?.connectingDomain?.getEntryIp(connectionParams.protocolSelection) ?: NO_VALUE
+        this["port"] = connectionParams?.port?.toString() ?: NO_VALUE
+        this["protocol"] = connectionParams?.protocolSelection?.toTelemetry() ?: NO_VALUE
+        this["network_type"] = getNetworkType()
+    }
+
+    private fun MutableMap<String, String>.addServerFeatures(server: Server?) {
+        this["server_features"] = if (server != null) {
+            val featureNames: List<String> = buildList {
+                if (server.isFreeServer) add("free")
+                if (server.isTor) add("tor")
+                if (server.isP2pServer) add("p2p")
+                if (server.isGatewayServer) add("restricted")
+                if (server.isStreamingServer) add("streaming")
+            }
+            featureNames.sorted().joinToString(",")
+        } else {
+            NO_VALUE
+        }
+    }
+
+    private fun getNetworkType(): String {
+        // VPN is not a "real" transport, remove.
+        val transports = connectivityMonitor.defaultNetworkTransports - ConnectivityMonitor.Transport.VPN
+        return when {
+            transports.contains(ConnectivityMonitor.Transport.CELLULAR) -> "mobile"
+            transports.contains(ConnectivityMonitor.Transport.WIFI) -> "wifi"
+            transports.isEmpty() -> NO_VALUE
+            else -> "other"
+        }
+    }
+
+    private fun Boolean.toOutcome() = if (this) Outcome.SUCCESS else Outcome.FAILURE
+
+    private fun reportImmediateAbortToSentry(sentryInfo: String) {
+        val inProgress = connectionInProgress
+        if (inProgress != null && clock() - inProgress.timestampMs < 150) {
+            mainScope.launch {
+                if (isSentryDebugEnabled()) {
+                    val trigger = inProgress.trigger.statsName
+                    val event = SentryEvent(ConnectionTelemetryDebug("'$trigger' connection aborted: $sentryInfo"))
+                    event.fingerprints = listOf(trigger, sentryInfo)
+                    Sentry.captureEvent(event)
+                }
+            }
+        }
+    }
+
+    companion object {
+        const val MEASUREMENT_GROUP = "vpn.any.connection"
+        private const val EVENT_CONNECT = "vpn_connection"
+        private const val EVENT_DISCONNECT = "vpn_disconnection"
+    }
+}

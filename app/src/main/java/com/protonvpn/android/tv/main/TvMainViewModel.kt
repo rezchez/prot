@@ -1,0 +1,389 @@
+/*
+ * Copyright (c) 2020 Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+package com.protonvpn.android.tv.main
+
+import android.content.Context
+import androidx.annotation.DrawableRes
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import com.protonvpn.android.R
+import com.protonvpn.android.auth.data.VpnUser
+import com.protonvpn.android.auth.usecase.CurrentUser
+import com.protonvpn.android.auth.usecase.Logout
+import com.protonvpn.android.components.BaseTvActivity
+import com.protonvpn.android.excludedlocations.ExcludedLocations
+import com.protonvpn.android.models.profiles.Profile
+import com.protonvpn.android.models.vpn.usecase.GetSmartProtocols
+import com.protonvpn.android.models.vpn.usecase.SmartProtocols
+import com.protonvpn.android.redesign.CountryId
+import com.protonvpn.android.redesign.recents.usecases.ConnectionFeedbackViewState
+import com.protonvpn.android.redesign.recents.usecases.ObserveConnectionFeedbackViewState
+import com.protonvpn.android.redesign.vpn.ConnectIntent
+import com.protonvpn.android.settings.data.EffectiveCurrentUserSettingsCached
+import com.protonvpn.android.tv.models.Card
+import com.protonvpn.android.tv.models.ConnectIntentCard
+import com.protonvpn.android.tv.models.CountryCard
+import com.protonvpn.android.tv.models.DrawableImage
+import com.protonvpn.android.tv.models.QuickConnectCard
+import com.protonvpn.android.tv.models.Title
+import com.protonvpn.android.tv.settings.IsTvAutoConnectFeatureFlagEnabled
+import com.protonvpn.android.tv.usecases.GetCountryCard
+import com.protonvpn.android.tv.usecases.IsTvFavoriteCountryForFreeUserDisabled
+import com.protonvpn.android.tv.usecases.IsTvFreeUserAlphabeticalSortingForCountriesEnabled
+import com.protonvpn.android.tv.usecases.IsTvRecentsForFreeUserDisabled
+import com.protonvpn.android.tv.usecases.TvUiConnectDisconnectHelper
+import com.protonvpn.android.tv.vpn.createIntentForDefaultProfile
+import com.protonvpn.android.tv.vpn.getConnectCountry
+import com.protonvpn.android.ui.home.ServerListUpdater
+import com.protonvpn.android.userstorage.ProfileManager
+import com.protonvpn.android.utils.AndroidUtils.toInt
+import com.protonvpn.android.utils.CountryTools
+import com.protonvpn.android.utils.DebugUtils
+import com.protonvpn.android.utils.ServerManager
+import com.protonvpn.android.utils.SyncStateFlow
+import com.protonvpn.android.vpn.ConnectTrigger
+import com.protonvpn.android.vpn.DisconnectTrigger
+import com.protonvpn.android.vpn.RecentsManager
+import com.protonvpn.android.vpn.VpnState
+import com.protonvpn.android.vpn.VpnStateMonitor
+import com.protonvpn.android.vpn.VpnStatusProviderUI
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+import me.proton.core.presentation.R as CoreR
+
+@HiltViewModel
+class TvMainViewModel @Inject constructor(
+    private val serverManager: ServerManager,
+    private val profileManager: ProfileManager,
+    private val mainScope: CoroutineScope,
+    serverListUpdater: ServerListUpdater,
+    private val vpnStatusProviderUI: VpnStatusProviderUI,
+    vpnStateMonitor: VpnStateMonitor,
+    private val connectHelper: TvUiConnectDisconnectHelper,
+    private val recentsManager: RecentsManager,
+    private val getCountryCard: GetCountryCard,
+    private val currentUser: CurrentUser,
+    private val logoutUseCase: Logout,
+    private val effectiveCurrentUserSettingsCached: EffectiveCurrentUserSettingsCached,
+    getSmartProtocols: GetSmartProtocols,
+    isTvAutoConnectFeatureFlagEnabled: IsTvAutoConnectFeatureFlagEnabled,
+    private val isTvFavoriteCountryForFreeUserDisabled: IsTvFavoriteCountryForFreeUserDisabled,
+    private val isTvRecentsForFreeUserDisabled: IsTvRecentsForFreeUserDisabled,
+    private val isTvFreeUserAlphabeticalSortingForCountriesEnabled: IsTvFreeUserAlphabeticalSortingForCountriesEnabled,
+    observeConnectionFeedbackViewState: ObserveConnectionFeedbackViewState,
+) : ViewModel() {
+
+    data class VpnViewState(val vpnStatus: VpnStateMonitor.Status, val ipToDisplay: String?)
+
+    val selectedCountryFlag = MutableLiveData<String?>()
+    val connectedCountryFlag = MutableLiveData<String>()
+    val mapRegion = MutableLiveData<MapRegion>()
+
+    private val smartProtocolsCached = SyncStateFlow(viewModelScope, getSmartProtocols.observe())
+    private val smartProtocols: SmartProtocols get() = smartProtocolsCached.value
+
+    val vpnViewState: Flow<VpnViewState> = combine(
+        vpnStatusProviderUI.status,
+        serverListUpdater.ipAddress,
+        vpnStateMonitor.exitIp
+    ) { vpnStatus, myIp, exitIp ->
+        val ipToDisplay = when(vpnStatus.state) {
+            VpnState.Connected -> exitIp?.ipV4 //NOTE: IPv6 is not supported for TV for now
+            else -> myIp
+        }
+        VpnViewState(vpnStatus, ipToDisplay)
+    }
+
+    val vpnConnectionFeedbackViewState: Flow<ConnectionFeedbackViewState> = observeConnectionFeedbackViewState()
+
+    val vpnStatus = vpnStatusProviderUI.status
+    val showVersion = MutableStateFlow(false)
+
+    // Simplified vpn connection state change stream for UI elements interested in distinct changes between 3 states
+    enum class ConnectionState { None, Connecting, Connected }
+    val vpnConnectionState = vpnStatusProviderUI.status.map {
+        it.state
+    }.map {
+        when {
+            it == VpnState.Disabled -> ConnectionState.None
+            it.isEstablishingConnection -> ConnectionState.Connecting
+            else -> ConnectionState.Connected
+        }
+    }.distinctUntilChanged().asLiveData()
+
+    val settingsProtocol get() = effectiveCurrentUserSettingsCached.value.protocol
+
+    init {
+        viewModelScope.launch {
+            vpnStatusProviderUI.status.collect {
+                connectedCountryFlag.value = if (isConnected()) it.server!!.exitCountry else ""
+            }
+        }
+    }
+
+    // serverListVersion and userTier are only included to trigger UI refresh when they change.
+    // The UI pulls all data by calling various functions on the viewmodel, it doesn't use any kind of view state.
+    data class MainViewState(
+        val isFreeUser: Boolean,
+        val serverListVersion: Int,
+        val recentsVersion: Int,
+        val userTier: Int,
+        val showAutoConnectSetting: Boolean,
+    )
+
+    val mainViewState = combine(
+        serverManager.serverListVersion,
+        recentsManager.version,
+        currentUser.vpnUserFlow,
+        isTvAutoConnectFeatureFlagEnabled.observe(),
+    ) { serverListVersion, recentsVersion, vpnUser, isTvAutoConnectFeatureFlagEnabled ->
+        MainViewState(
+            isFreeUser = vpnUser?.isFreeUser != false,
+            serverListVersion = serverListVersion,
+            recentsVersion = recentsVersion,
+            userTier = vpnUser?.userTier ?: VpnUser.FREE_TIER,
+            showAutoConnectSetting = isTvAutoConnectFeatureFlagEnabled,
+        )
+    }
+        .onStart {
+            // The main TV UI is synchronous and assumes all servers are loaded - changing this is tricky.
+            // Therefore let's delay the main state until servers are loaded.
+            serverManager.ensureLoaded()
+        }
+        // Quick updates cause the Leanback UI to show cut-off recent connection flag, use small
+        // debounce to avoid the situation.
+        .debounce(50)
+        .stateIn(
+            viewModelScope,
+            SharingStarted.Lazily,
+            null
+        ).filterNotNull()
+
+    fun setSelectedCountry(flag: String?) {
+        selectedCountryFlag.value = flag
+    }
+
+    suspend fun getCountryCardMap(): Map<CountryTools.Continent?, List<CountryCard>> {
+        val vpnUser = currentUser.vpnUser()
+        val countrySortComparator = if (vpnUser?.isFreeUser == true && isTvFreeUserAlphabeticalSortingForCountriesEnabled()) {
+            compareBy<CountryCard> { !it.vpnCountry.hasOnlineServer() }
+        } else {
+            compareBy { !it.vpnCountry.hasAccessibleOnlineServer(vpnUser) }
+        }
+        return serverManager.getVpnCountries()
+            .groupBy({
+                val continent = CountryTools.oldMapLocations[it.flag]?.continent
+                DebugUtils.debugAssert("Unknown location for ${it.flag}") { continent != null || it.flag == "XX" }
+                continent
+            }, { country ->
+                getCountryCard(country)
+            })
+            .mapValues { continent -> continent.value.sortedWith(countrySortComparator) }
+    }
+
+    suspend fun getRecentCardList(context: Context): List<Card> {
+        val recentsList = mutableListOf<Card>()
+        val isFree = currentUser.vpnUser()?.isFreeUser == true
+        val disableFavoriteCountry = isTvFavoriteCountryForFreeUserDisabled() && isFree
+        recentsList.add(constructQuickConnect(context, disableFavoriteCountry))
+
+        val defaultConnection = createIntentForDefaultProfile(profileManager.getDefaultOrFastestSync())
+        val defaultConnectCountry = getConnectCountry(profileManager.getDefaultOrFastestSync())
+        val shouldAddFavorite =
+            !disableFavoriteCountry &&
+            (isConnected() || isEstablishingConnection()) &&
+            !vpnStatusProviderUI.isConnectingToCountry(defaultConnectCountry)
+
+        if (shouldAddFavorite) {
+            recentsList.add(
+                ConnectIntentCard(
+                    title = context.getString(
+                        if (profileManager.getDefaultOrFastestSync().isPreBakedProfile)
+                            R.string.tv_quick_connect_recommened
+                        else
+                            R.string.tv_quick_connect_favourite
+                    ),
+                    titleDrawable = profileCardTitleIcon(defaultConnection),
+                    backgroundImage = CountryTools.getLargeFlagResource(context, defaultConnectCountry),
+                    connectIntent = defaultConnection,
+                    connectCountry = defaultConnectCountry
+                )
+            )
+        }
+        if (!isFree || !isTvRecentsForFreeUserDisabled()) {
+            recentsManager.getRecentCountries()
+                .filterNot { country ->
+                    vpnStatusProviderUI.isConnectingToCountry(country) ||
+                            getConnectCountry(profileManager.getDefaultOrFastestSync()) == country
+                }
+                .take(RecentsManager.RECENT_MAX_SIZE - shouldAddFavorite.toInt())
+                .forEach { country ->
+                    val connectIntent = createIntentForCountry(country)
+                    recentsList.add(
+                        ConnectIntentCard(
+                            title = CountryTools.getFullName(country),
+                            titleDrawable = profileCardTitleIcon(connectIntent),
+                            backgroundImage = CountryTools.getLargeFlagResource(context, country),
+                            connectIntent = connectIntent,
+                            connectCountry = country
+                        )
+                    )
+                }
+        }
+        return recentsList
+    }
+
+    @DrawableRes
+    private fun profileCardTitleIcon(connectIntent: ConnectIntent): Int {
+        val defaultConnection = profileManager.getDefaultOrFastestSync()
+        val server = serverManager.getBestServerForConnectIntent(
+            connectIntent = connectIntent,
+            vpnUser = currentUser.vpnUserCached(),
+            protocol = settingsProtocol,
+            smartProtocols = smartProtocols,
+            excludedLocations = ExcludedLocations.Empty,
+        )
+        return when {
+            server == null -> CoreR.drawable.ic_proton_lock_filled
+            server.online && connectIntent == ConnectIntent.Default -> CoreR.drawable.ic_proton_bolt
+            server.online && connectIntent == createIntentForDefaultProfile(defaultConnection) -> CoreR.drawable.ic_proton_star
+            server.online -> CoreR.drawable.ic_proton_clock_rotate_left
+            else -> CoreR.drawable.ic_proton_wrench
+        }
+    }
+
+    @DrawableRes
+    private fun quickConnectTitleIcon(freeUser: Boolean, tvDisableFavoriteCountryForFreeUser: Boolean): Int {
+        val defaultConnection = profileManager.getDefaultOrFastestSync()
+        val server = serverManager.getServerForProfile(defaultConnection, currentUser.vpnUserCached(), settingsProtocol, smartProtocols)
+        return when {
+            isConnected() || isEstablishingConnection() -> 0
+            server?.online == true ->
+                when {
+                    defaultConnection.isPreBakedProfile && freeUser && tvDisableFavoriteCountryForFreeUser -> 0
+                    defaultConnection.isPreBakedProfile -> CoreR.drawable.ic_proton_bolt
+                    else -> CoreR.drawable.ic_proton_star
+                }
+            else -> CoreR.drawable.ic_proton_wrench
+        }
+    }
+
+    private suspend fun constructQuickConnect(
+        context: Context,
+        tvDisableFavoriteCountryForFreeUser: Boolean
+    ): Card {
+        val freeUser = currentUser.vpnUser()?.isFreeUser == true
+        val labelRes = when {
+            isConnected() -> R.string.disconnect
+            isEstablishingConnection() -> R.string.cancel
+            profileManager.getDefaultOrFastestSync().isPreBakedProfile ->
+                if (freeUser && tvDisableFavoriteCountryForFreeUser) R.string.fastest_country
+                else R.string.tv_quick_connect_recommened
+            else -> R.string.tv_quick_connect_favourite
+        }
+        return QuickConnectCard(
+            title = Title(
+                text = context.getString(labelRes),
+                resId = quickConnectTitleIcon(freeUser, tvDisableFavoriteCountryForFreeUser),
+                backgroundColorRes = when {
+                    isConnected() || isEstablishingConnection() -> R.color.tvAlert
+                    freeUser && tvDisableFavoriteCountryForFreeUser -> R.color.tvGridItemOverlayFastest
+                    else -> R.color.tvGridItemOverlay
+                }
+            ),
+            backgroundImage = DrawableImage(
+                resId = quickConnectBackground(context),
+                tintRes = if (isConnected() || isEstablishingConnection())
+                    R.color.tvDisconnectButtonTint else CoreR.color.transparent
+            )
+        )
+    }
+
+    fun isConnected() = vpnStatusProviderUI.isConnected
+
+    fun isEstablishingConnection() = vpnStatusProviderUI.isEstablishingConnection
+
+    suspend fun quickConnectFlag() = when {
+        isConnected() || isEstablishingConnection() -> vpnStatusProviderUI.connectingToServer?.exitCountry
+        currentUser.vpnUser()?.isFreeUser == true && isTvFavoriteCountryForFreeUserDisabled() -> null
+        else -> getConnectCountry(profileManager.getDefaultOrFastestSync())
+    }
+
+    private suspend fun quickConnectBackground(context: Context) =
+        quickConnectFlag()?.let { CountryTools.getLargeFlagResource(context, it) } ?: R.drawable.tv_fastest_flag
+
+    fun onQuickConnectAction(activity: BaseTvActivity) {
+        if (vpnStatusProviderUI.isConnected || vpnStatusProviderUI.isEstablishingConnection) {
+            disconnect(DisconnectTrigger.QuickConnect("quick connect (TV)"))
+        } else {
+            connectHelper.connect(
+                activity,
+                createIntentForDefaultProfile(profileManager.getDefaultOrFastestSync()),
+                ConnectTrigger.QuickConnect("quick connect (TV)")
+            )
+        }
+    }
+
+    fun connect(activity: BaseTvActivity, countryCode: String, trigger: ConnectTrigger) {
+        connectHelper.connect(activity, createIntentForCountry(countryCode), trigger)
+    }
+
+    fun connect(activity: BaseTvActivity, card: ConnectIntentCard) {
+        connect(activity, card.connectCountry, ConnectTrigger.QuickConnect("recents (TV)"))
+    }
+
+    fun disconnect(trigger: DisconnectTrigger) = connectHelper.disconnect(trigger)
+
+    fun showMaintenanceDialog(context: Context) = connectHelper.showMaintenanceDialog(context)
+
+    fun resetMap() {
+        mapRegion.value = TvMapRenderer.FULL_REGION
+    }
+
+    fun logout() = mainScope.launch {
+        logoutUseCase()
+    }
+
+    fun onLastRowSelection(selected: Boolean) {
+        showVersion.value = selected
+    }
+
+    private fun getConnectCountry(profile: Profile): String =
+        getConnectCountry(serverManager, currentUser, settingsProtocol, smartProtocols, profile)
+
+    private fun createIntentForDefaultProfile(profile: Profile): ConnectIntent =
+        createIntentForDefaultProfile(serverManager, currentUser, settingsProtocol, smartProtocols, profile)
+
+    private fun createIntentForCountry(countryCode: String): ConnectIntent =
+        ConnectIntent.FastestInCountry(CountryId(countryCode), emptySet())
+}

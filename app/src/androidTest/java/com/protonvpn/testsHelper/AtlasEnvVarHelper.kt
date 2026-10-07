@@ -1,0 +1,114 @@
+/*
+ *
+ *  * Copyright (c) 2023. Proton AG
+ *  *
+ *  * This file is part of ProtonVPN.
+ *  *
+ *  * ProtonVPN is free software: you can redistribute it and/or modify
+ *  * it under the terms of the GNU General Public License as published by
+ *  * the Free Software Foundation, either version 3 of the License, or
+ *  * (at your option) any later version.
+ *  *
+ *  * ProtonVPN is distributed in the hope that it will be useful,
+ *  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  * GNU General Public License for more details.
+ *  *
+ *  * You should have received a copy of the GNU General Public License
+ *  * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ */
+
+package com.protonvpn.testsHelper
+
+import android.util.Log
+import dagger.Reusable
+import me.proton.core.configuration.EnvironmentConfiguration
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import javax.inject.Inject
+
+@Reusable
+class AtlasEnvVarHelper @Inject constructor(
+    private val environmentConfiguration: EnvironmentConfiguration,
+) {
+
+    private val forceCaptchaResponse = """\"{\\\"code\\\": 2000, \\\"result\\\": \\\"captcha\\\"}\""""
+
+    fun forceCaptchaOnLogin(){
+        postAtlasEnvVariable(generateFingerprintRequestBody(forceCaptchaResponse))
+    }
+
+    fun clearEnvVars(){
+        postAtlasEnvVariable("")
+    }
+
+    /**
+     * Runs code with the provided environment variables.
+     * BE CAREFUL: env variables will affect all tests running at the same time (other devices and
+     * shards). If you must use this, restore the env vars as quickly as possible to avoid affecting
+     * other tests.
+     * In the long run we need a better approach.
+     */
+    inline fun withDangerousAtlasEnvVar(
+        variableOverride: AtlasEnvVarHelper.() -> Unit,
+        block: () -> Unit
+    ) {
+        try{
+            variableOverride()
+            val env = "FINGERPRINT_RESPONSE"
+            Log.i("AtlasEnvVarHelper", "Atlas envs after override: " + getAtlasEnv(env))
+            block()
+            Log.i("AtlasEnvVarHelper", "Atlas envs after operation: " + getAtlasEnv(env))
+        }
+        finally{
+            clearEnvVars()
+        }
+    }
+
+    private fun generateFingerprintRequestBody(response: String): String {
+        return """{"env":"FINGERPRINT_RESPONSE=$response"}"""
+    }
+
+    private fun postAtlasEnvVariable(jsonBody: String) {
+        val url = "${environmentConfiguration.baseUrl}/internal/system/env"
+
+        val mediaType = "application/json".toMediaType()
+
+        val client = OkHttpClient()
+
+        val request = Request.Builder()
+            .url(url)
+            .post(jsonBody.toRequestBody(mediaType))
+            .addHeader("Content-Type", "application/json")
+            .addHeader("x-atlas-secret", environmentConfiguration.proxyToken)
+            .build()
+
+        client.newCall(request).execute().use { response ->
+            if (!response.isSuccessful) {
+                throw Exception("Error: ${response.body?.string()}")
+            }
+        }
+    }
+
+    fun getAtlasEnv(name: String): String {
+        val url = "${environmentConfiguration.baseUrl}/internal/system/env?$name"
+
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .get()
+            .url(url)
+            .addHeader("x-atlas-secret", environmentConfiguration.proxyToken)
+            .build()
+
+        client.newCall(request).execute().use { response ->
+            if (!response.isSuccessful) {
+                throw Exception("Error: ${response.body?.string()}")
+            } else {
+                return response.body?.string() ?: ""
+            }
+        }
+    }
+}

@@ -1,0 +1,225 @@
+/*
+ * Copyright (c) 2023 Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+package com.protonvpn.app.vpn
+
+import com.protonvpn.android.auth.usecase.CurrentUser
+import com.protonvpn.android.models.vpn.ConnectionParams
+import com.protonvpn.android.servers.Server
+import com.protonvpn.android.netshield.NetShieldStats
+import com.protonvpn.android.netshield.NetShieldViewState
+import com.protonvpn.android.redesign.vpn.ConnectIntent
+import com.protonvpn.android.redesign.vpn.ui.ChangeServerViewState
+import com.protonvpn.android.redesign.vpn.ui.StatusBanner
+import com.protonvpn.android.redesign.vpn.ui.VpnStatusViewState
+import com.protonvpn.android.redesign.vpn.ui.VpnStatusViewStateFlow
+import com.protonvpn.android.redesign.vpn.usecases.SettingsForConnection
+import com.protonvpn.android.settings.data.ApplyEffectiveUserSettings
+import com.protonvpn.android.settings.data.LocalUserSettings
+import com.protonvpn.android.ui.home.ServerListUpdaterPrefs
+import com.protonvpn.android.vpn.DnsOverride
+import com.protonvpn.android.vpn.VpnConnectionManager
+import com.protonvpn.android.vpn.VpnState
+import com.protonvpn.android.vpn.VpnStatusProviderUI
+import com.protonvpn.mocks.FakeGetProfileById
+import com.protonvpn.mocks.FakeSettingsFeatureFlagsFlow
+import com.protonvpn.test.shared.MockSharedPreferencesProvider
+import com.protonvpn.test.shared.TestCurrentUserProvider
+import com.protonvpn.test.shared.TestUser
+import com.protonvpn.test.shared.createServer
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.TestCoroutineScheduler
+import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
+import kotlin.test.assertIs
+
+@OptIn(ExperimentalCoroutinesApi::class)
+class VpnStatusViewStateFlowTest {
+
+    @MockK
+    private lateinit var vpnStatusProviderUi: VpnStatusProviderUI
+
+    @MockK
+    private lateinit var vpnConnectionManager: VpnConnectionManager
+
+    private lateinit var testUserProvider: TestCurrentUserProvider
+    private lateinit var testScope: TestScope
+    private lateinit var settingsFlow: MutableStateFlow<LocalUserSettings>
+    private lateinit var serverListUpdaterPrefs: ServerListUpdaterPrefs
+    private lateinit var vpnStatusViewStateFlow: VpnStatusViewStateFlow
+    private val server: Server = createServer()
+    private val connectionParams = ConnectionParams(ConnectIntent.Default, server, null, null)
+    private lateinit var statusFlow: MutableStateFlow<VpnStatusProviderUI.Status>
+    private lateinit var netShieldStatsFlow: MutableStateFlow<NetShieldStats>
+    private lateinit var changeServerFlow: MutableStateFlow<ChangeServerViewState?>
+    private lateinit var hasPromoBannerFlow: MutableStateFlow<Boolean>
+    private lateinit var dnsOverrideFlow: MutableStateFlow<DnsOverride>
+
+    private val freeUser = TestUser.freeUser.vpnUser
+    private val plusUser = TestUser.plusUser.vpnUser
+
+    @Before
+    fun setup() {
+        MockKAnnotations.init(this)
+        val testCoroutineScheduler = TestCoroutineScheduler()
+        val testDispatcher = UnconfinedTestDispatcher(testCoroutineScheduler)
+        testScope = TestScope(testDispatcher)
+        Dispatchers.setMain(testDispatcher)
+
+        serverListUpdaterPrefs = ServerListUpdaterPrefs(MockSharedPreferencesProvider())
+        serverListUpdaterPrefs.ipAddress = "1.1.1.1"
+        serverListUpdaterPrefs.lastKnownCountry = "US"
+
+        statusFlow =
+            MutableStateFlow(VpnStatusProviderUI.Status(VpnState.Connected, connectionParams))
+        every { vpnStatusProviderUi.uiStatus } returns statusFlow
+        netShieldStatsFlow = MutableStateFlow(NetShieldStats())
+        every { vpnConnectionManager.netShieldStats } returns netShieldStatsFlow
+
+        testUserProvider = TestCurrentUserProvider(plusUser)
+        val currentUser = CurrentUser(testUserProvider)
+        settingsFlow = MutableStateFlow(LocalUserSettings.Default)
+        changeServerFlow = MutableStateFlow(null)
+        hasPromoBannerFlow = MutableStateFlow(false)
+        dnsOverrideFlow = MutableStateFlow(DnsOverride.None)
+        val settingsForConnection = SettingsForConnection(
+            rawSettingsFlow = settingsFlow,
+            getProfileById = FakeGetProfileById(),
+            applyEffectiveUserSettings = ApplyEffectiveUserSettings(
+                mainScope = testScope.backgroundScope,
+                currentUser = currentUser,
+                isTv = mockk(relaxed = true),
+                flags = FakeSettingsFeatureFlagsFlow()
+            ),
+            vpnStatusProviderUI = vpnStatusProviderUi
+        )
+        vpnStatusViewStateFlow = VpnStatusViewStateFlow(
+            vpnStatusProviderUi,
+            serverListUpdaterPrefs,
+            vpnConnectionManager,
+            settingsForConnection,
+            currentUser,
+            changeServerFlow,
+            hasPromoBannerFlow,
+            dnsOverrideFlow,
+        )
+    }
+
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
+    }
+
+    @Test
+    fun `change in vpnStatus changes StatusViewState flow`() = runTest {
+        statusFlow.emit(VpnStatusProviderUI.Status(VpnState.Disabled, null))
+        assert(vpnStatusViewStateFlow.first() is VpnStatusViewState.Disabled)
+        statusFlow.emit(VpnStatusProviderUI.Status(VpnState.Connecting, connectionParams))
+        assert(vpnStatusViewStateFlow.first() is VpnStatusViewState.Connecting)
+        statusFlow.emit(VpnStatusProviderUI.Status(VpnState.Connected, connectionParams))
+        assert(vpnStatusViewStateFlow.first() is VpnStatusViewState.Connected)
+    }
+
+    @Test
+    fun `upon upgrade user will see netshield instead of upsell banner`() = runTest {
+        statusFlow.emit(VpnStatusProviderUI.Status(VpnState.Connected, connectionParams))
+        testUserProvider.vpnUser = freeUser
+        assert((vpnStatusViewStateFlow.first() as VpnStatusViewState.Connected).banner is StatusBanner.UpgradePlus)
+        testUserProvider.vpnUser = plusUser
+        assert((vpnStatusViewStateFlow.first() as VpnStatusViewState.Connected).banner is StatusBanner.NetShieldBanner)
+    }
+
+    @Test
+    fun `change server locked state changes upsell to not country wanted banner`() = runTest {
+        statusFlow.emit(VpnStatusProviderUI.Status(VpnState.Connected, connectionParams))
+        testUserProvider.vpnUser = freeUser
+        assert((vpnStatusViewStateFlow.first() as VpnStatusViewState.Connected).banner is StatusBanner.UpgradePlus)
+        changeServerFlow.emit(ChangeServerViewState.Locked(1, 1, true))
+        assert((vpnStatusViewStateFlow.first() as VpnStatusViewState.Connected).banner is StatusBanner.UnwantedCountry)
+    }
+
+    @Test
+    fun `user downgrade shows upsell banner`() = runTest {
+        statusFlow.emit(VpnStatusProviderUI.Status(VpnState.Connected, connectionParams))
+        assert(vpnStatusViewStateFlow.first() is VpnStatusViewState.Connected)
+        testUserProvider.vpnUser = freeUser
+        assert((vpnStatusViewStateFlow.first() as VpnStatusViewState.Connected).banner is StatusBanner.UpgradePlus)
+    }
+
+    @Test
+    fun `change in netShield stats are reflected in StatusViewState flow`() = runTest {
+        statusFlow.emit(VpnStatusProviderUI.Status(VpnState.Connected, connectionParams))
+        assert(vpnStatusViewStateFlow.first() is VpnStatusViewState.Connected)
+        netShieldStatsFlow.emit(NetShieldStats(3, 3, 3000))
+        val banner = ((vpnStatusViewStateFlow.first() as VpnStatusViewState.Connected).banner as StatusBanner.NetShieldBanner)
+        val netShieldState = banner.netShieldState
+        assertIs<NetShieldViewState.Available>(netShieldState)
+        assertEquals(NetShieldStats(3L, 3L, 3000L), netShieldState.netShieldStats)
+    }
+
+    @Test
+    fun `when promo banner is present then no netshield upsell banner is shown for free users`() = runTest{
+        statusFlow.value = VpnStatusProviderUI.Status(VpnState.Connected, connectionParams)
+        testUserProvider.vpnUser = freeUser
+        assertEquals(VpnStatusViewState.Connected(false, StatusBanner.UpgradePlus), vpnStatusViewStateFlow.first())
+        hasPromoBannerFlow.value = true
+        assertEquals(VpnStatusViewState.Connected(false, null), vpnStatusViewStateFlow.first())
+    }
+
+    @Test
+    fun `when promo banner is present then no change country banner is shown for free users`() = runTest{
+        statusFlow.value = VpnStatusProviderUI.Status(VpnState.Connected, connectionParams)
+        testUserProvider.vpnUser = freeUser
+        changeServerFlow.value = ChangeServerViewState.Locked(10, 10, false)
+        assertEquals(VpnStatusViewState.Connected(false, StatusBanner.UnwantedCountry), vpnStatusViewStateFlow.first())
+        hasPromoBannerFlow.value = true
+        assertEquals(VpnStatusViewState.Connected(false, null), vpnStatusViewStateFlow.first())
+    }
+
+    @Test
+    fun `when promo banner is present then NetShield state is shown for paid users`() = runTest{
+        statusFlow.value = VpnStatusProviderUI.Status(VpnState.Connected, connectionParams)
+        hasPromoBannerFlow.value = true
+        val vpnStatusViewState = vpnStatusViewStateFlow.first()
+        assertIs<VpnStatusViewState.Connected>(vpnStatusViewState)
+        assertIs<StatusBanner.NetShieldBanner>(vpnStatusViewState.banner)
+    }
+
+    @Test
+    fun `when private DNS is enabled then NetShield is unavailable`() = runTest {
+        statusFlow.value = VpnStatusProviderUI.Status(VpnState.Connected, connectionParams)
+        dnsOverrideFlow.value = DnsOverride.CustomDns
+        val banner = (vpnStatusViewStateFlow.first() as VpnStatusViewState.Connected).banner
+        assertIs<StatusBanner.NetShieldBanner>(banner)
+        assertIs<NetShieldViewState.Unavailable>(banner.netShieldState)
+    }
+}

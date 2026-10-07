@@ -1,0 +1,211 @@
+/*
+ * Copyright (c) 2025. Proton AG
+ *
+ * This file is part of ProtonVPN.
+ *
+ * ProtonVPN is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ProtonVPN is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+package com.protonvpn.android.servers
+
+import com.protonvpn.android.BuildConfig
+import com.protonvpn.android.api.ProtonApiRetroFit
+import com.protonvpn.android.appconfig.periodicupdates.PeriodicActionResult
+import com.protonvpn.android.appconfig.periodicupdates.toPeriodicActionResultWithCustomValue
+import com.protonvpn.android.logging.ApiLogResponse
+import com.protonvpn.android.logging.ProtonLogger
+import com.protonvpn.android.servers.api.LogicalsResponse
+import com.protonvpn.android.servers.api.LogicalsStatusId
+import com.protonvpn.android.ui.home.ServerListUpdaterPrefs
+import com.protonvpn.android.utils.CountryTools
+import com.protonvpn.android.utils.DebugUtils
+import com.protonvpn.android.vpn.ProtocolSelection
+import com.protonvpn.android.vpn.apiNames
+import com.protonvpn.android.vpn.usecases.GetTruncationMustHaveIDs
+import dagger.Reusable
+import kotlinx.coroutines.withContext
+import me.proton.core.network.domain.ApiResult
+import me.proton.core.util.kotlin.DispatcherProvider
+import retrofit2.Response
+import java.util.Date
+import javax.inject.Inject
+
+@Reusable
+class UpdateServerListFromApi @Inject constructor(
+    private val api: ProtonApiRetroFit,
+    private val dispatcherProvider: DispatcherProvider,
+    private val serversDataManager: ServersDataManager,
+    private val prefs: ServerListUpdaterPrefs,
+    private val updateWithBinaryStatus: UpdateServersWithBinaryStatus,
+    private val getTruncationMustHaveIDs: GetTruncationMustHaveIDs,
+) {
+    sealed interface Result {
+        object Success : Result
+        data class Error(val apiError: ApiResult.Error?) : Result
+    }
+
+    private sealed interface FetchResult {
+        data class NewServers(
+            val newServers: List<Server>,
+            val statusId: LogicalsStatusId? = null,
+            val isListTruncated: Boolean? = null,
+            val lastModified: Date? = null,
+        ): FetchResult
+
+        object NotModified : FetchResult
+
+        // This should not happen.
+        object EmptyBody : FetchResult
+
+        object BinaryStatusError : FetchResult
+
+        data class ApiError(val apiError: ApiResult.Error) : FetchResult
+    }
+
+    suspend operator fun invoke(
+        netzone: String?,
+        serverListLastModified: Long
+    ): PeriodicActionResult<Result> {
+        val realProtocolsNames = ProtocolSelection.REAL_PROTOCOLS.apiNames()
+        val requestedMustHaveIDs = getTruncationMustHaveIDs()
+        val listResult = api.getServerList(
+            netzone = netzone,
+            protocols = realProtocolsNames,
+            lastModified = serverListLastModified,
+            mustHaveIDs = requestedMustHaveIDs,
+        )
+
+        val fetchResult = processServerListResult(listResult, ::processServerList)
+
+        if (fetchResult is FetchResult.NewServers) {
+            val retainIDs = if (fetchResult.isListTruncated == true) {
+                // retain only those ID that were not in must-haves for this call
+                getTruncationMustHaveIDs() - requestedMustHaveIDs
+            } else {
+                emptySet()
+            }
+
+            if (fetchResult.lastModified != null)
+                prefs.serverListLastModified = fetchResult.lastModified.time
+
+            debugCountryCheck(fetchResult.newServers)
+
+            serversDataManager.replaceServers(
+                fetchResult.newServers,
+                newStatusId = fetchResult.statusId,
+                retainIDs = retainIDs
+            )
+        }
+
+        return when(fetchResult) {
+            is FetchResult.ApiError ->
+                fetchResult.apiError.toPeriodicActionResultWithCustomValue(
+                    Result.Error(fetchResult.apiError),
+                    isSuccess = false,
+                )
+
+            is FetchResult.EmptyBody,
+            is FetchResult.BinaryStatusError ->
+                PeriodicActionResult(Result.Error(null), isSuccess = false)
+
+            is FetchResult.NewServers,
+            is FetchResult.NotModified -> {
+                serversDataManager.updateLastUpdateTimestamp()
+                PeriodicActionResult(Result.Success, isSuccess = true)
+            }
+        }
+    }
+
+    private suspend fun <T> processServerListResult(
+        result: ApiResult<Response<T>>,
+        processNewServers: suspend (body: T, lastModifier: Date?) -> FetchResult
+    ): FetchResult = when(result) {
+        is ApiResult.Error.Http ->
+            if (result.httpCode == HTTP_NOT_MODIFIED_304) {
+                FetchResult.NotModified
+            } else {
+                FetchResult.ApiError(result)
+            }
+        is ApiResult.Error ->
+            FetchResult.ApiError(result)
+        is ApiResult.Success -> with(result.value) {
+            val body = body()
+            when {
+                result.value.isSuccessful && body != null ->
+                    processNewServers(body, headers().getDate("Last-Modified"))
+                result.value.isSuccessful ->
+                    FetchResult.EmptyBody
+                else -> {
+                    val request = raw().request
+                    ProtonLogger.log(
+                        ApiLogResponse,
+                        "HTTP ${code()} ${message()} ${request.method} ${request.url} (took ${durationMs()}ms)"
+                    )
+                    if (code() == HTTP_NOT_MODIFIED_304) {
+                        FetchResult.NotModified
+                    } else {
+                        FetchResult.ApiError(ApiResult.Error.Http(code(), message()))
+                    }
+                }
+            }
+        }
+    }
+
+    private suspend fun processServerList(
+        body: LogicalsResponse,
+        lastModified: Date?,
+    ): FetchResult {
+        val statusId = body.statusId
+        return when(val statusDataResult = api.getBinaryStatus(statusId)) {
+            is ApiResult.Success -> {
+                val partialServers = body.serverList.toPartialServers()
+
+                val servers = withContext(dispatcherProvider.Comp) {
+                    updateWithBinaryStatus(partialServers, statusDataResult.value)
+                }
+                if (servers != null) {
+                    FetchResult.NewServers(
+                        newServers = servers,
+                        statusId = statusId,
+                        isListTruncated = body.metadata?.listIsTruncated,
+                        lastModified = lastModified,
+                    )
+                } else {
+                    FetchResult.BinaryStatusError
+                }
+            }
+
+            is ApiResult.Error -> FetchResult.ApiError(statusDataResult)
+        }
+    }
+
+    private fun debugCountryCheck(serverList: List<Server>) {
+        if (!BuildConfig.DEBUG) return
+
+        serverList
+            .flatMapTo(HashSet()) { listOf(it.entryCountry, it.exitCountry) }
+            .filter { CountryTools.oldMapLocations[it]?.continent == null }
+            .also { countriesWithNoContinent ->
+                DebugUtils.debugAssert("Countries with no continent: $countriesWithNoContinent") {
+                    countriesWithNoContinent.isEmpty()
+                }
+            }
+    }
+
+    private fun Response<*>.durationMs() = with(raw()) { receivedResponseAtMillis - sentRequestAtMillis }
+
+    companion object {
+        private const val HTTP_NOT_MODIFIED_304 = 304
+    }
+}
