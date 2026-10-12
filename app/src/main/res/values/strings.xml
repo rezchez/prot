@@ -18,7 +18,7 @@
  along with ProtonVPN.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <resources>
-    <string name="app_name" translatable="false">Proton VPN</string>
+    <string name="app_name" translatable="false">prot vpn</string>
     <string name="app_icon_name_classic">Classic</string>
     <string name="app_icon_name_dark">Dark</string>
     <string name="app_icon_name_retro">Retro</string>
@@ -1946,4 +1946,45 @@
     <string name="session_fork_user_code_step3"><![CDATA[Enter the code: <b>%1$s</b>]]></string>
     <!-- Parameter: web address for the support website, e.g. "protonvpn.com/support" -->
     <string name="session_fork_user_code_support"><![CDATA[Still need help? Visit <b>%1$s</b>]]></string>
+
+    <!-- VPN & Proxy Sharing -->
+    <string name="settings_proxy_sharing_title">VPN &amp; Proxy Sharing</string>
+    <string name="settings_proxy_sharing_description">Share VPN tunnel over local LAN via SOCKS5, HTTP, and PAC</string>
+    <string name="settings_proxy_sharing_master_toggle">Enable Proxy Sharing</string>
+    <string name="settings_proxy_sharing_master_description">Allow other devices on your local Wi-Fi / LAN to route their traffic through this device\'s active VPN connection.</string>
+    <string name="settings_proxy_sharing_socks_title">SOCKS5 Server</string>
+    <string name="settings_proxy_sharing_socks_description">RFC 1928 SOCKS5 proxy listening on 0.0.0.0:%1$d</string>
+    <string name="settings_proxy_sharing_http_title">HTTP / HTTPS CONNECT Server</string>
+    <string name="settings_proxy_sharing_http_description">HTTP proxy and CONNECT tunnel listening on 0.0.0.0:%1$d</string>
+    <string name="settings_proxy_sharing_pac_title">PAC Auto-Config Server</string>
+    <string name="settings_proxy_sharing_pac_description">Serves proxy.pac script on port %1$d</string>
+    <string name="settings_proxy_sharing_info_card_title">Local Network Configuration</string>
+    <string name="settings_proxy_sharing_local_ip_label">Local Wi-Fi IP</string>
+    <string name="settings_proxy_sharing_pac_url_label">PAC Auto-Config URL</string>
+    <string name="settings_proxy_sharing_status_active">Active &amp; Sharing</string>
+    <string name="settings_proxy_sharing_status_inactive">Inactive</string>
+    <string name="settings_proxy_sharing_vpn_status_label">Outbound VPN Tunnel</string>
+    <string name="settings_proxy_sharing_copied">Copied to clipboard</string>
+
+    <!-- Split Tunneling & Bypass -->
+    <string name="settings_split_tunneling_bypass_ir_title">Bypass Iranian websites (.ir)</string>
+    <string name="settings_split_tunneling_bypass_ir_description">Directly route .ir domains and Iranian websites outside the VPN tunnel</string>
+    <string name="settings_split_tunneling_custom_bypass_title">Bypass custom website</string>
+    <string name="settings_split_tunneling_custom_bypass_description">Exclude a specific website or domain from VPN</string>
+    <string name="settings_split_tunneling_custom_bypass_dialog_title">Enter website address</string>
+    <string name="settings_split_tunneling_custom_bypass_dialog_hint">e.g. example.com</string>
+    <string name="settings_split_tunneling_custom_bypass_clear">Clear</string>
+    <string name="server_ping_title">Ping test</string>
+    <string name="server_ping_button">Ping</string>
+    <string name="server_ping_testing">Testing…</string>
+    <string name="server_ping_offline">Offline</string>
+
+    <!-- Ping Test Screen & Navigation -->
+    <string name="bottom_nav_ping_test">Ping Test</string>
+    <string name="ping_test_title">Ping Test</string>
+    <string name="ping_test_button_start">Test Connection</string>
+    <string name="ping_test_button_stop">Cancel Test</string>
+    <string name="ping_test_status_testing">Testing servers…</string>
+    <string name="ping_test_status_idle">Press Test Connection to check reachable VPN servers</string>
+    <string name="ping_test_no_available_servers">No reachable servers found with current network.</string>
 </resources>

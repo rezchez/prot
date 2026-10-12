@@ -11,3 +11,6 @@
 .externalNativeBuild
 pmcrypto/build/
 app/src/androidTest/assets/sensitive/
+prot-vpn.apk
+.kotlin
+

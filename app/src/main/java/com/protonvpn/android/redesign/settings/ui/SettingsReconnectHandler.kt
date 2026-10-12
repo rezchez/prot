@@ -63,10 +63,16 @@ class SettingsReconnectHandler @Inject constructor(
     }
 
     // Returns if dialog is shown or not.
-    suspend fun reconnectionCheck(uiDelegate: VpnUiDelegate, type: DontShowAgainStore.Type) {
-        if (vpnStatusProviderUI.isEstablishingOrConnected) {
+    suspend fun reconnectionCheck(
+        uiDelegate: VpnUiDelegate,
+        type: DontShowAgainStore.Type,
+        forceShowIfDisconnected: Boolean = false
+    ) {
+        if (vpnStatusProviderUI.isEstablishingOrConnected || forceShowIfDisconnected) {
             when (dontShowAgainStore.getChoice(type)) {
-                DontShowAgainStore.Choice.Positive -> reconnect(uiDelegate)
+                DontShowAgainStore.Choice.Positive -> {
+                    if (vpnStatusProviderUI.isEstablishingOrConnected) reconnect(uiDelegate)
+                }
                 DontShowAgainStore.Choice.Negative -> {} // No action
                 DontShowAgainStore.Choice.ShowDialog -> showReconnectDialog = type
             }

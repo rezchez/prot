@@ -119,6 +119,7 @@ private fun MainTarget.labelRes(): Int = when (this) {
     MainTarget.Gateways -> R.string.bottom_nav_gateways
     MainTarget.Profiles -> R.string.bottom_nav_profiles
     MainTarget.Countries -> R.string.bottom_nav_countries
+    MainTarget.PingTest -> R.string.bottom_nav_ping_test
     MainTarget.Settings -> R.string.botton_nav_settings
 }
 
@@ -133,6 +134,8 @@ private fun MainTarget.getIcon(selected: Boolean): Int = when (this) {
         if (selected) CoreR.drawable.ic_proton_servers_filled else CoreR.drawable.ic_proton_servers
     MainTarget.Countries ->
         if (selected) CoreR.drawable.ic_proton_earth_filled else CoreR.drawable.ic_proton_earth
+    MainTarget.PingTest ->
+        if (selected) R.drawable.ic_proton_bolt_filled else CoreR.drawable.ic_proton_bolt
     MainTarget.Settings ->
         if (selected) CoreR.drawable.ic_proton_cog_wheel_filled else CoreR.drawable.ic_proton_cog_wheel
 }

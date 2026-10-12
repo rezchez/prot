@@ -41,7 +41,8 @@ sealed class ServerGroupItemData {
         override val inMaintenance: Boolean,
         override val tier: Int,
         val entryCountryId: CountryId?,
-        override val textMatch: TextMatch? = null
+        override val textMatch: TextMatch? = null,
+        val entryHost: String? = null,
     ) : ServerGroupItemData()
 
     data class City(
@@ -64,7 +65,8 @@ sealed class ServerGroupItemData {
         val loadPercent: Int,
         val serverFeatures: Set<ServerFeature>,
         val isVirtualLocation: Boolean,
-        override val textMatch: TextMatch? = null
+        override val textMatch: TextMatch? = null,
+        val entryHost: String? = null,
     ) : ServerGroupItemData()
 
     data class Gateway(

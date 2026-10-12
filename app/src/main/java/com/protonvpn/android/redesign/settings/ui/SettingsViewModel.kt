@@ -176,6 +176,8 @@ class SettingsViewModel @Inject constructor(
             val mode: SplitTunnelingMode,
             val currentModeAppNames: List<CharSequence>,
             val currentModeIps: List<String>,
+            val bypassIr: Boolean = false,
+            val customBypassUrl: String? = null,
             isFreeUser: Boolean,
             override val iconRes: Int = if (isEnabled) R.drawable.feature_splittunneling_on else R.drawable.feature_splittunneling_off
         ) : SettingViewState<Boolean>(
@@ -508,6 +510,8 @@ class SettingsViewModel @Inject constructor(
                     mode = settings.splitTunneling.mode,
                     currentModeAppNames = currentModeAppNames,
                     currentModeIps = settings.splitTunneling.currentModeIps(),
+                    bypassIr = settings.splitTunneling.bypassIr,
+                    customBypassUrl = settings.splitTunneling.customBypassUrl,
                     isFreeUser = isFree,
                 ),
                 protocol = SettingViewState.Protocol(

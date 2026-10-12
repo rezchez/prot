@@ -179,6 +179,7 @@ fun List<Server>.toCountryItem(countryCode: String, entryCountryId: CountryId?, 
     inMaintenance = all { !it.online },
     tier = minOf { it.tier },
     textMatch = match,
+    entryHost = firstOrNull()?.connectingDomains?.firstOrNull()?.let { it.getEntryIp(null) ?: it.entryDomain },
 )
 
 fun Server.toServerItem(match: TextMatch? = null) = ServerGroupItemData.Server(
@@ -193,6 +194,7 @@ fun Server.toServerItem(match: TextMatch? = null) = ServerGroupItemData.Server(
     entryCountryId = if (isSecureCoreServer) CountryId(entryCountry) else null,
     gatewayName = gatewayName,
     textMatch = match,
+    entryHost = connectingDomains.firstOrNull()?.let { it.getEntryIp(null) ?: it.entryDomain },
 )
 
 fun toCityItem(

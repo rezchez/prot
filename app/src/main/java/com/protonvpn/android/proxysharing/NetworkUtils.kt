@@ -110,13 +110,29 @@ object NetworkUtils {
     }
 
     /**
+     * Creates an outbound TCP socket that bypasses the VPN tunnel (direct connection).
+     */
+    fun createOutboundDirectSocket(
+        host: String,
+        port: Int,
+        timeoutMs: Int = 15000
+    ): Socket {
+        val socket = Socket()
+        socket.tcpNoDelay = true
+        socket.connect(InetSocketAddress(host, port), timeoutMs)
+        return socket
+    }
+
+    /**
      * Transfers data bidirectionally between two sockets in separate threads.
      * Closes both sockets when either stream ends or encounters an exception.
      */
     fun pipeSockets(
         clientSocket: Socket,
         serverSocket: Socket,
-        onBytesTransferred: ((Long) -> Unit)? = null
+        onBytesTransferred: ((Long) -> Unit)? = null,
+        onBytesUploaded: ((Long) -> Unit)? = null,
+        onBytesDownloaded: ((Long) -> Unit)? = null
     ) {
         val isClosed = AtomicBoolean(false)
 
@@ -127,14 +143,17 @@ object NetworkUtils {
             }
         }
 
-        val forward = { input: InputStream, output: OutputStream ->
+        val forward = { input: InputStream, output: OutputStream, onSpecificBytes: ((Long) -> Unit)? ->
             val buffer = ByteArray(8192)
             try {
-                var bytesRead: Int
-                while (!isClosed.get() && input.read(buffer).also { bytesRead = it } != -1) {
+                while (!isClosed.get()) {
+                    val bytesRead = input.read(buffer)
+                    if (bytesRead == -1) break
                     output.write(buffer, 0, bytesRead)
                     output.flush()
-                    onBytesTransferred?.invoke(bytesRead.toLong())
+                    val count = bytesRead.toLong()
+                    onBytesTransferred?.invoke(count)
+                    onSpecificBytes?.invoke(count)
                 }
             } catch (_: Exception) {
             } finally {
@@ -142,8 +161,8 @@ object NetworkUtils {
             }
         }
 
-        val thread1 = Thread({ forward(clientSocket.getInputStream(), serverSocket.getOutputStream()) }, "ProxyPipe-C2S")
-        val thread2 = Thread({ forward(serverSocket.getInputStream(), clientSocket.getOutputStream()) }, "ProxyPipe-S2C")
+        val thread1 = Thread({ forward(clientSocket.getInputStream(), serverSocket.getOutputStream(), onBytesUploaded) }, "ProxyPipe-C2S")
+        val thread2 = Thread({ forward(serverSocket.getInputStream(), clientSocket.getOutputStream(), onBytesDownloaded) }, "ProxyPipe-S2C")
 
         thread1.start()
         thread2.start()

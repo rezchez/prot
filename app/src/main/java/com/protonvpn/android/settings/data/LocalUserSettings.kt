@@ -46,12 +46,15 @@ data class SplitTunnelingSettings(
     val excludedApps: List<String> = emptyList(),
     val includedIps: List<String> = emptyList(),
     val includedApps: List<String> = emptyList(),
+    val bypassIr: Boolean = false,
+    val customBypassUrl: String? = null,
 ): Parcelable {
     fun isEffectivelySameAs(other: SplitTunnelingSettings): Boolean {
-        return !isEnabled && !other.isEnabled
-            || mode == other.mode && effectiveApps() == other.effectiveApps() && effectiveIps() == other.effectiveIps()
+        return (!isEnabled && !other.isEnabled)
+            || (mode == other.mode && effectiveApps() == other.effectiveApps() && effectiveIps() == other.effectiveIps()
+                && bypassIr == other.bypassIr && customBypassUrl == other.customBypassUrl)
             // Both INCLUDE_ONLY and EXCLUDE_ONLY with empty values behave the same as split tunneling disabled:
-            || isEmpty() && other.isEmpty()
+            || (isEmpty() && other.isEmpty() && bypassIr == other.bypassIr && customBypassUrl == other.customBypassUrl)
     }
 
     fun currentModeApps() = when (mode) {
@@ -122,8 +125,9 @@ fun LocalUserSettings.toLogList(): List<String> {
         "Restricted NAT: ${randomizedNat.toLog()}",
         with(splitTunneling) {
             "Split tunneling: ${isEnabled.toLog()}, mode: ${mode.toLog()}," +
-                " excluded apps: ${excludedApps.itemCountToLog()}, excluded IPs: ${excludedIps.itemCountToLog()}" +
-                " included apps: ${includedApps.itemCountToLog()}, included IPs: ${includedIps.itemCountToLog()}"
+                " excluded apps: ${excludedApps.itemCountToLog()}, excluded IPs: ${excludedIps.itemCountToLog()}," +
+                " included apps: ${includedApps.itemCountToLog()}, included IPs: ${includedIps.itemCountToLog()}," +
+                " bypass IR: ${bypassIr.toLog()}, custom URL: $customBypassUrl"
         },
         "Telemetry: ${telemetry.toLog()}",
         "Use DoH for API: ${apiUseDoh.toLog()}",

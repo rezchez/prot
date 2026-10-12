@@ -35,12 +35,21 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
+import com.protonvpn.android.utils.PingResult
+import com.protonvpn.android.utils.ServerPingManager
+import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -208,6 +217,11 @@ fun ServerGroupItem(
                     item.data,
                     invisibleLoad = item.data.inMaintenance // Lay out invisible load for alignment.
                 )
+            } else if (item.data is ServerGroupItemData.Country && item.data.entryHost != null) {
+                ServerPingChip(
+                    host = item.data.entryHost,
+                    modifier = Modifier.padding(end = 8.dp)
+                )
             }
             if (item.data.inMaintenance) {
                 Icon(
@@ -218,6 +232,72 @@ fun ServerGroupItem(
                 )
             }
         }
+    }
+}
+
+@Composable
+fun ServerPingChip(
+    host: String,
+    modifier: Modifier = Modifier,
+) {
+    val coroutineScope = rememberCoroutineScope()
+    val pingStateFlow = remember(host) { ServerPingManager.getPingState(host) }
+    val pingResult by pingStateFlow.collectAsState()
+
+    val (chipText, chipColor, textColor) = when (val res = pingResult) {
+        is PingResult.Idle -> Triple(
+            "⚡ ${stringResource(R.string.server_ping_button)}",
+            ProtonTheme.colors.backgroundSecondary,
+            ProtonTheme.colors.textNorm
+        )
+        is PingResult.Loading -> Triple(
+            "⏳ …",
+            ProtonTheme.colors.backgroundSecondary,
+            ProtonTheme.colors.textWeak
+        )
+        is PingResult.Success -> {
+            val color = when {
+                res.latencyMs < 120 -> ProtonTheme.colors.notificationSuccess
+                res.latencyMs < 250 -> ProtonTheme.colors.notificationWarning
+                else -> ProtonTheme.colors.notificationError
+            }
+            Triple(
+                "${res.latencyMs} ms",
+                color.copy(alpha = 0.15f),
+                color
+            )
+        }
+        is PingResult.Error -> Triple(
+            stringResource(R.string.server_ping_offline),
+            ProtonTheme.colors.notificationError.copy(alpha = 0.15f),
+            ProtonTheme.colors.notificationError
+        )
+    }
+
+    Box(
+        modifier = modifier
+            .clip(RoundedCornerShape(6.dp))
+            .background(chipColor)
+            .clickable(
+                enabled = pingResult !is PingResult.Loading,
+                onClick = {
+                    coroutineScope.launch {
+                        ServerPingManager.ping(host)
+                    }
+                }
+            )
+            .padding(horizontal = 6.dp, vertical = 3.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = chipText,
+            style = ProtonTheme.typography.captionNorm.copy(
+                fontWeight = FontWeight.Bold,
+                color = textColor,
+                fontSize = 11.sp
+            ),
+            maxLines = 1
+        )
     }
 }
 
@@ -298,7 +378,16 @@ private fun FeaturesAndLoad(
     modifier: Modifier = Modifier,
     invisibleLoad: Boolean,
 ) {
-    Row(modifier) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        server.entryHost?.let { host ->
+            ServerPingChip(
+                host = host,
+                modifier = Modifier.padding(end = 8.dp)
+            )
+        }
         ServerFeaturesRow(server.serverFeatures, server.isVirtualLocation)
         LoadInfo(
             server.loadPercent,

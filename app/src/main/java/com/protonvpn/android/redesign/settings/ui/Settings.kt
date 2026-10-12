@@ -204,6 +204,9 @@ fun SettingsRoute(
                 onAdvancedSettingsClick = {
                     onNavigateToSubSetting(SubSettingsScreen.Type.Advanced)
                 },
+                onProxySharingClick = {
+                    onNavigateToSubSetting(SubSettingsScreen.Type.ProxySharing)
+                },
                 onNotificationsClick = {
                     val intent = Intent(ACTION_APP_NOTIFICATION_SETTINGS).apply {
                         putExtra(EXTRA_APP_PACKAGE, context.packageName)
@@ -267,6 +270,7 @@ fun SettingsView(
     onVpnAcceleratorClick: () -> Unit,
     onVpnAcceleratorUpgrade: () -> Unit,
     onAdvancedSettingsClick: () -> Unit,
+    onProxySharingClick: () -> Unit = {},
     onNotificationsClick: () -> Unit,
     onIconChangeClick: () -> Unit,
     onThemeClick: () -> Unit,
@@ -354,6 +358,11 @@ fun SettingsView(
                     icon = CoreR.drawable.ic_proton_sliders,
                     title = stringResource(id = R.string.settings_advanced_settings_title),
                     onClick = onAdvancedSettingsClick,
+                )
+                SettingRowWithIcon(
+                    icon = CoreR.drawable.ic_proton_arrow_right_arrow_left,
+                    title = stringResource(id = R.string.settings_proxy_sharing_title),
+                    onClick = onProxySharingClick,
                 )
             }
 
@@ -454,6 +463,11 @@ fun SettingsView(
                 Text(
                     text = stringResource(id = R.string.settings_app_version, viewState.versionName),
                     style = ProtonTheme.typography.captionWeak,
+                )
+                Text(
+                    text = "moded by reza chegini",
+                    style = ProtonTheme.typography.captionWeak,
+                    modifier = Modifier.padding(top = 4.dp)
                 )
                 Text(
                     text = stringResource(id = R.string.settings_third_party_licenses),

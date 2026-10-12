@@ -23,9 +23,16 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.annotation.VisibleForTesting
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material3.Icon
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.res.painterResource
+import com.protonvpn.android.redesign.base.ui.ProtonOutlinedTextField
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -162,17 +169,52 @@ fun SplitTunnelingApps(
                 }
             }
             is SplitTunnelingAppsViewModelHelper.ViewState.Content -> {
-                SplitTunnelAppsLazyList(
-                    mode = mode,
-                    content = viewState,
-                    listState = listState,
-                    onAdd = onAdd,
-                    onRemove = onRemove,
-                    onToggleSystemApps = onToggleSystemApps,
+                var searchQuery by rememberSaveable { mutableStateOf("") }
+
+                Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(paddingValues),
-                )
+                        .padding(paddingValues)
+                ) {
+                    ProtonOutlinedTextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .largeScreenContentPadding()
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
+                        value = searchQuery,
+                        onValueChange = { searchQuery = it },
+                        placeholderText = stringResource(id = R.string.server_search_menu_title),
+                        singleLine = true,
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = CoreR.drawable.ic_proton_magnifier),
+                                contentDescription = null,
+                                tint = ProtonTheme.colors.iconWeak,
+                            )
+                        },
+                        trailingIcon = if (searchQuery.isNotEmpty()) {
+                            {
+                                Icon(
+                                    painter = painterResource(id = CoreR.drawable.ic_proton_cross),
+                                    contentDescription = null,
+                                    tint = ProtonTheme.colors.iconWeak,
+                                    modifier = Modifier.clickable { searchQuery = "" }
+                                )
+                            }
+                        } else null
+                    )
+
+                    SplitTunnelAppsLazyList(
+                        mode = mode,
+                        content = viewState,
+                        searchQuery = searchQuery,
+                        listState = listState,
+                        onAdd = onAdd,
+                        onRemove = onRemove,
+                        onToggleSystemApps = onToggleSystemApps,
+                        modifier = Modifier.fillMaxSize(),
+                    )
+                }
             }
         }
     }
@@ -182,78 +224,128 @@ fun SplitTunnelingApps(
 private fun SplitTunnelAppsLazyList(
     mode: SplitTunnelingMode,
     content: SplitTunnelingAppsViewModelHelper.ViewState.Content,
+    searchQuery: String,
     listState: LazyListState,
     onAdd: (LabeledItem) -> Unit,
     onRemove: (LabeledItem) -> Unit,
     onToggleSystemApps: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val query = searchQuery.trim()
+    val filteredSelectedApps = remember(content.selectedApps, query) {
+        if (query.isBlank()) content.selectedApps
+        else content.selectedApps.filter {
+            it.label.contains(query, ignoreCase = true) || it.id.contains(query, ignoreCase = true)
+        }
+    }
+    val filteredRegularApps = remember(content.availableRegularApps, query) {
+        if (query.isBlank()) content.availableRegularApps
+        else content.availableRegularApps.filter {
+            it.label.contains(query, ignoreCase = true) || it.id.contains(query, ignoreCase = true)
+        }
+    }
+    val systemAppsState = content.availableSystemApps
+    val filteredSystemApps = remember(systemAppsState, query) {
+        if (systemAppsState is SplitTunnelingAppsViewModelHelper.SystemAppsState.Content) {
+            if (query.isBlank()) systemAppsState.apps
+            else systemAppsState.apps.filter {
+                it.label.contains(query, ignoreCase = true) || it.id.contains(query, ignoreCase = true)
+            }
+        } else {
+            emptyList()
+        }
+    }
+
     val labeledItemModifier = Modifier
         .fillMaxWidth()
         .largeScreenContentPadding()
         .padding(start = 16.dp, end = 8.dp)
+
     LazyColumn(
         state = listState,
         modifier = modifier,
     ) {
-        item(key = "header_selected") {
-            val headerRes =
-                if (mode == SplitTunnelingMode.INCLUDE_ONLY) R.string.settingsIncludedAppsSelectedHeader
-                else R.string.settingsExcludedAppsSelectedHeader
-            val itemModifier = Modifier
-                .padding(horizontal = 16.dp)
-                .largeScreenContentPadding()
-                .animateItem()
-            TextSectionHeader(
-                text = stringResource(headerRes, content.selectedApps.size),
-                bottomPadding = 4.dp,
-                modifier = itemModifier,
-            )
-            val explanationText = when(mode) {
-                SplitTunnelingMode.INCLUDE_ONLY -> R.string.settingsSplitTunnelingIncludedAppsList
-                SplitTunnelingMode.EXCLUDE_ONLY -> R.string.settingsSplitTunnelingExcludedAppsList
+        if (query.isNotBlank() && filteredSelectedApps.isEmpty() && filteredRegularApps.isEmpty() && filteredSystemApps.isEmpty()) {
+            item(key = "no_results") {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(32.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "No apps found matching \"$query\"",
+                        style = ProtonTheme.typography.body2Medium,
+                        color = ProtonTheme.colors.textWeak,
+                    )
+                }
             }
-            Text(
-                text = stringResource(explanationText),
-                style = ProtonTheme.typography.body2Medium,
-                color = ProtonTheme.colors.textWeak,
-                modifier = itemModifier,
-            )
         }
 
-        items(
-            items = content.selectedApps,
-            key = { it.id }
-        ) { item ->
-            LabeledItemRowWithRemove(
-                item = item,
-                onRemove = { onRemove(item) },
-                modifier = labeledItemModifier.animateItem()
-            )
-        }
-
-        item(key = "header_regular_apps") {
-            TextSectionHeader(
-                text = stringResource(
-                    R.string.settingsSplitTunnelingAvailableRegularHeader,
-                    content.availableRegularApps.size
-                ),
-                modifier = Modifier
+        if (filteredSelectedApps.isNotEmpty() || (query.isBlank() && content.selectedApps.isNotEmpty())) {
+            item(key = "header_selected") {
+                val headerRes =
+                    if (mode == SplitTunnelingMode.INCLUDE_ONLY) R.string.settingsIncludedAppsSelectedHeader
+                    else R.string.settingsExcludedAppsSelectedHeader
+                val itemModifier = Modifier
                     .padding(horizontal = 16.dp)
                     .largeScreenContentPadding()
                     .animateItem()
-            )
+                TextSectionHeader(
+                    text = stringResource(headerRes, filteredSelectedApps.size),
+                    bottomPadding = 4.dp,
+                    modifier = itemModifier,
+                )
+                if (query.isBlank()) {
+                    val explanationText = when(mode) {
+                        SplitTunnelingMode.INCLUDE_ONLY -> R.string.settingsSplitTunnelingIncludedAppsList
+                        SplitTunnelingMode.EXCLUDE_ONLY -> R.string.settingsSplitTunnelingExcludedAppsList
+                    }
+                    Text(
+                        text = stringResource(explanationText),
+                        style = ProtonTheme.typography.body2Medium,
+                        color = ProtonTheme.colors.textWeak,
+                        modifier = itemModifier,
+                    )
+                }
+            }
+
+            items(
+                items = filteredSelectedApps,
+                key = { it.id }
+            ) { item ->
+                LabeledItemRowWithRemove(
+                    item = item,
+                    onRemove = { onRemove(item) },
+                    modifier = labeledItemModifier.animateItem()
+                )
+            }
         }
 
-        items(
-            items = content.availableRegularApps,
-            key = { it.id }
-        ) { item ->
-            LabeledItemRowWithAdd(
-                item = item,
-                onAdd = { onAdd(item) },
-                modifier = labeledItemModifier.animateItem()
-            )
+        if (filteredRegularApps.isNotEmpty() || (query.isBlank() && content.availableRegularApps.isNotEmpty())) {
+            item(key = "header_regular_apps") {
+                TextSectionHeader(
+                    text = stringResource(
+                        R.string.settingsSplitTunnelingAvailableRegularHeader,
+                        filteredRegularApps.size
+                    ),
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .largeScreenContentPadding()
+                        .animateItem()
+                )
+            }
+
+            items(
+                items = filteredRegularApps,
+                key = { it.id }
+            ) { item ->
+                LabeledItemRowWithAdd(
+                    item = item,
+                    onAdd = { onAdd(item) },
+                    modifier = labeledItemModifier.animateItem()
+                )
+            }
         }
 
         item(key = "system_apps_checkbox") {
@@ -291,7 +383,7 @@ private fun SplitTunnelAppsLazyList(
             }
             is SplitTunnelingAppsViewModelHelper.SystemAppsState.Content -> {
                 items(
-                    items = content.availableSystemApps.apps,
+                    items = filteredSystemApps,
                     key = { it.id }
                 ) { item ->
                     LabeledItemRowWithAdd(

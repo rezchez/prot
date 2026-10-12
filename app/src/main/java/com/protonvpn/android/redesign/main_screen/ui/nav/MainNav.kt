@@ -63,13 +63,15 @@ import com.protonvpn.android.redesign.home_screen.ui.nav.HomeScreen
 import com.protonvpn.android.redesign.home_screen.ui.nav.HomeScreen.home
 import com.protonvpn.android.redesign.main_screen.ui.BottomBarView
 import com.protonvpn.android.redesign.main_screen.ui.MainScreenViewModel
+import com.protonvpn.android.redesign.pingtest.PingTestScreen
+import com.protonvpn.android.redesign.pingtest.PingTestScreen.pingTest
 import com.protonvpn.android.redesign.settings.ui.nav.SettingsScreen
 import com.protonvpn.android.redesign.settings.ui.nav.SettingsScreen.settings
 import com.protonvpn.android.redesign.settings.ui.nav.SubSettingsScreen
 import java.util.EnumSet
 
 enum class MainTarget {
-    Home, Countries, Gateways, Profiles, Settings;
+    Home, Countries, Gateways, Profiles, PingTest, Settings;
 
     companion object {
         fun fromRoute(baseRoute: String?) = when (baseRoute) {
@@ -77,6 +79,7 @@ enum class MainTarget {
             ProfilesScreen.route -> Profiles
             GatewaysScreen.route -> Gateways
             CountryListScreen.route -> Countries
+            PingTestScreen.route -> PingTest
             SettingsScreen.route -> Settings
             else -> null
         }
@@ -117,6 +120,9 @@ class MainNav(
 
             MainTarget.Countries ->
                 navigateInternal(CountryListScreen, navOptions)
+
+            MainTarget.PingTest ->
+                navigateInternal(PingTestScreen, navOptions)
 
             MainTarget.Settings ->
                 navigateInternal(SettingsScreen, navOptions)
@@ -175,6 +181,8 @@ class MainNav(
                         onNavigateToHomeOnConnect = onNavigateToHomeOnConnect,
                         onNavigateToSearch = { rootNav.navigate(SearchRouteScreen) }
                     )
+
+                    MainTarget.PingTest -> pingTest()
 
                     MainTarget.Settings -> settings(
                         coreNavigation = coreNavigation,

@@ -1904,4 +1904,26 @@
     <string name="session_fork_user_code_step3"><![CDATA[Enter the code: <b>%1$s</b>]]></string>
     <!-- Parameter: web address for the support website, e.g. "protonvpn.com/support" -->
     <string name="session_fork_user_code_support"><![CDATA[Still need help? Visit <b>%1$s</b>]]></string>
+
+    <!-- Split Tunneling & Bypass -->
+    <string name="settings_split_tunneling_bypass_ir_title">بای‌پس وب‌سایت‌های ایرانی (.ir)</string>
+    <string name="settings_split_tunneling_bypass_ir_description">اتصال مستقیم به سایت‌های ir و سرورهای داخلی بدون عبور از فیلترشکن</string>
+    <string name="settings_split_tunneling_custom_bypass_title">بای‌پس آدرس وب‌سایت</string>
+    <string name="settings_split_tunneling_custom_bypass_description">خارج کردن یک وب‌سایت یا دامنه خاص از فیلترشکن</string>
+    <string name="settings_split_tunneling_custom_bypass_dialog_title">آدرس وب‌سایت را وارد کنید</string>
+    <string name="settings_split_tunneling_custom_bypass_dialog_hint">مثلاً example.com</string>
+    <string name="settings_split_tunneling_custom_bypass_clear">پاک کردن</string>
+    <string name="server_ping_title">تست پینگ</string>
+    <string name="server_ping_button">پینگ</string>
+    <string name="server_ping_testing">در حال پینگ…</string>
+    <string name="server_ping_offline">قطع</string>
+
+    <!-- Ping Test Screen & Navigation -->
+    <string name="bottom_nav_ping_test">تست پینگ</string>
+    <string name="ping_test_title">تست پینگ</string>
+    <string name="ping_test_button_start">تست اتصال</string>
+    <string name="ping_test_button_stop">لغو تست</string>
+    <string name="ping_test_status_testing">در حال تست سرورها…</string>
+    <string name="ping_test_status_idle">برای بررسی سرورهای در دسترس دکمه تست اتصال را بزنید</string>
+    <string name="ping_test_no_available_servers">هیچ سرور قابل اتصالی با اینترنت فعلی پیدا نشد.</string>
 </resources>

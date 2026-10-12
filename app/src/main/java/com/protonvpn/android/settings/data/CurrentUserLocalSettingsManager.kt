@@ -153,6 +153,16 @@ class CurrentUserLocalSettingsManager @Inject constructor(
             current.copy(splitTunneling = newSplitTunneling)
         }
 
+    suspend fun toggleSplitTunnelBypassIr() =
+        update { current ->
+            current.copy(splitTunneling = current.splitTunneling.copy(bypassIr = !current.splitTunneling.bypassIr))
+        }
+
+    suspend fun updateSplitTunnelCustomBypassUrl(url: String?) =
+        update { current ->
+            current.copy(splitTunneling = current.splitTunneling.copy(customBypassUrl = url))
+        }
+
     suspend fun updateTelemetry(isEnabled: Boolean) =
         update { current -> current.copy(telemetry = isEnabled) }
 

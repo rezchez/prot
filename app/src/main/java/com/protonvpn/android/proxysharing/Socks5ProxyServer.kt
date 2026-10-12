@@ -23,11 +23,14 @@ import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicBoolean
 
 class Socks5ProxyServer(
-    private val context: Context,
+    context: Context,
     private val port: Int = 10808,
     private val onConnectionChanged: ((activeCount: Int) -> Unit)? = null,
-    private val onBytesTransferred: ((bytes: Long) -> Unit)? = null
+    private val onBytesTransferred: ((bytes: Long) -> Unit)? = null,
+    private val onBytesUploaded: ((bytes: Long) -> Unit)? = null,
+    private val onBytesDownloaded: ((bytes: Long) -> Unit)? = null
 ) {
+    private val appContext = context.applicationContext
     private var serverSocket: ServerSocket? = null
     private val isRunning = AtomicBoolean(false)
     private var executor: ExecutorService? = null
@@ -149,10 +152,21 @@ class Socks5ProxyServer(
             // Reset timeout for streaming
             clientSocket.soTimeout = 0
 
-            // 3. Connect to target through active VPN tunnel
+            val prefs = ProxySharingPreferences(appContext)
+            val shouldBypass = com.protonvpn.android.utils.IranBypassUtils.shouldBypass(
+                targetHost,
+                prefs.bypassIrEnabled,
+                prefs.customBypassUrl
+            )
+
+            // 3. Connect to target through active VPN tunnel or bypass
             var outboundSocket: Socket? = null
             try {
-                outboundSocket = NetworkUtils.createOutboundTunnelSocket(context, targetHost, targetPort)
+                outboundSocket = if (shouldBypass) {
+                    NetworkUtils.createOutboundDirectSocket(targetHost, targetPort)
+                } else {
+                    NetworkUtils.createOutboundTunnelSocket(appContext, targetHost, targetPort)
+                }
             } catch (e: Exception) {
                 ProtonLogger.logCustom(LogCategory.CONN, "SOCKS5 connect to $targetHost:$targetPort failed: ${e.message}")
                 sendReply(output, 0x05) // Connection refused
@@ -164,7 +178,13 @@ class Socks5ProxyServer(
             sendReply(output, 0x00)
 
             // 5. Pipe sockets bidirectionally
-            NetworkUtils.pipeSockets(clientSocket, outboundSocket, onBytesTransferred)
+            NetworkUtils.pipeSockets(
+                clientSocket = clientSocket,
+                serverSocket = outboundSocket,
+                onBytesTransferred = onBytesTransferred,
+                onBytesUploaded = onBytesUploaded,
+                onBytesDownloaded = onBytesDownloaded
+            )
         } catch (e: Exception) {
             ProtonLogger.logCustom(LogCategory.CONN, "SOCKS5 client error: ${e.message}")
             try { clientSocket.close() } catch (_: Exception) {}

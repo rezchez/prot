@@ -155,6 +155,20 @@ class SettingsChangeViewModel @Inject constructor(
         }
     }
 
+    fun toggleSplitTunnelBypassIr(uiDelegate: VpnUiDelegate) {
+        viewModelScope.launch {
+            userSettingsManager.toggleSplitTunnelBypassIr()
+            reconnectionCheck(uiDelegate, DontShowAgainStore.Type.SplitTunnelingChangeWhenConnected)
+        }
+    }
+
+    fun updateSplitTunnelCustomBypassUrl(uiDelegate: VpnUiDelegate, url: String?) {
+        viewModelScope.launch {
+            userSettingsManager.updateSplitTunnelCustomBypassUrl(url)
+            reconnectionCheck(uiDelegate, DontShowAgainStore.Type.SplitTunnelingChangeWhenConnected)
+        }
+    }
+
     fun onThemeUpdated(newTheme: ThemeType) {
         viewModelScope.launch { userSettingsManager.update { current -> current.copy(theme = newTheme) } }
     }
@@ -188,6 +202,23 @@ class SettingsChangeViewModel @Inject constructor(
     fun toggleNetShieldAdultContentBlock() {
         viewModelScope.launch {
             userSettingsManager.toggleNetShieldAdultContentBlock()
+        }
+    }
+
+    fun onProxySharingEnabled(uiDelegate: VpnUiDelegate) {
+        viewModelScope.launch {
+            userSettingsManager.update { current ->
+                if (!current.lanConnections) {
+                    current.copy(lanConnections = true, lanConnectionsAllowDirect = true)
+                } else {
+                    current
+                }
+            }
+            reconnectHandler.reconnectionCheck(
+                uiDelegate,
+                DontShowAgainStore.Type.ProxySharingChangeWhenConnected,
+                forceShowIfDisconnected = true
+            )
         }
     }
 

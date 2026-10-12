@@ -198,6 +198,9 @@ fun SubSettingsRoute(
                                     onNavigateToSubSetting(SubSettingsScreen.Type.Lan)
                                 }
                             },
+                            onNavigateToProxySharing = {
+                                onNavigateToSubSetting(SubSettingsScreen.Type.ProxySharing)
+                            },
                             onNatTypeLearnMore = { context.openUrl(Constants.MODERATE_NAT_INFO_URL) },
                             onNavigateToNatType = {
                                 onOverrideSettingClick(OverrideType.NatType) {
@@ -346,6 +349,15 @@ fun SubSettingsRoute(
                 }
             }
 
+            SubSettingsScreen.Type.ProxySharing -> {
+                ProxySharingSetting(
+                    onClose = onClose,
+                    onEnableProxySharing = {
+                        settingsChangeViewModel.onProxySharingEnabled(vpnUiDelegate)
+                    }
+                )
+            }
+
             SubSettingsScreen.Type.SplitTunneling -> {
                 val splitTunnelingSettings = viewModel.splitTunneling.collectAsStateWithLifecycle(initialValue = null).value
                 if (splitTunnelingSettings != null) {
@@ -359,7 +371,9 @@ fun SubSettingsRoute(
                         onSplitTunnelToggle = { settingsChangeViewModel.toggleSplitTunneling(vpnUiDelegate) },
                         onSplitTunnelModeSelected = onModeSet,
                         onAppsClick = { mode -> splitTunnelAppsLauncher.launch(mode) },
-                        onIpsClick = { mode -> splitTunnelIpLauncher.launch(mode) }
+                        onIpsClick = { mode -> splitTunnelIpLauncher.launch(mode) },
+                        onBypassIrToggle = { settingsChangeViewModel.toggleSplitTunnelBypassIr(vpnUiDelegate) },
+                        onCustomBypassUrlChange = { url -> settingsChangeViewModel.updateSplitTunnelCustomBypassUrl(vpnUiDelegate, url) }
                     )
                 }
             }

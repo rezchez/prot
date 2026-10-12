@@ -92,6 +92,14 @@ class ComputeAllowedIPs @Inject constructor(
             if (splitTunneling.isEnabled && splitTunneling.mode == SplitTunnelingMode.EXCLUDE_ONLY)
                 excludedIps += splitTunneling.excludedIps.map { it.toIPAddress() }
 
+            if (splitTunneling.isEnabled && splitTunneling.bypassIr) {
+                excludedIps += com.protonvpn.android.utils.IranBypassUtils.IRAN_IPV4_RANGES
+            }
+
+            if (splitTunneling.isEnabled && !splitTunneling.customBypassUrl.isNullOrBlank()) {
+                excludedIps += com.protonvpn.android.utils.IranBypassUtils.resolveHostToIps(splitTunneling.customBypassUrl)
+            }
+
             if (userSettings.lanConnections) {
                 excludedIps += getLocalRanges(
                     ipV6Enabled = ipV6Enabled,

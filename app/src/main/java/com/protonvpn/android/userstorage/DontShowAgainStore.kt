@@ -49,6 +49,7 @@ class DontShowAgainStore @Inject constructor(
         SplitTunnelingChangeWhenConnected,
         LanConnectionsChangeWhenConnected,
         IPv6ChangeWhenConnected,
+        ProxySharingChangeWhenConnected,
     }
 
     private val storeProvider =

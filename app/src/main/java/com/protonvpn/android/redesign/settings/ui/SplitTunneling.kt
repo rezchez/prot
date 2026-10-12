@@ -46,6 +46,15 @@ import me.proton.core.compose.theme.ProtonTheme
 import me.proton.core.compose.theme.defaultWeak
 import me.proton.core.presentation.R as CoreR
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Icon
+import androidx.compose.ui.res.painterResource
+import com.protonvpn.android.base.ui.ProtonSwitch
+import com.protonvpn.android.redesign.base.ui.ProtonDialogButton
+import com.protonvpn.android.redesign.base.ui.ProtonOutlinedTextField
+
 @Composable
 fun SplitTunnelingSubSetting(
     onClose: () -> Unit,
@@ -55,8 +64,11 @@ fun SplitTunnelingSubSetting(
     onSplitTunnelModeSelected: (SplitTunnelingMode) -> Unit,
     onAppsClick: (SplitTunnelingMode) -> Unit,
     onIpsClick: (SplitTunnelingMode) -> Unit,
+    onBypassIrToggle: () -> Unit = {},
+    onCustomBypassUrlChange: (String?) -> Unit = {},
 ) {
     var changeModeDialogShown by rememberSaveable { mutableStateOf(false) }
+    var customUrlDialogShown by rememberSaveable { mutableStateOf(false) }
     val listState = rememberLazyListState()
     FeatureSubSettingScaffold(
         title = stringResource(id = splitTunneling.titleRes),
@@ -121,6 +133,47 @@ fun SplitTunnelingSubSetting(
                         modifier = Modifier.largeScreenContentPadding().animateItem()
                     )
                 }
+                item {
+                    SettingRow(
+                        title = stringResource(id = R.string.settings_split_tunneling_bypass_ir_title),
+                        subtitleComposable = {
+                            Spacer(modifier = Modifier.size(4.dp))
+                            Text(
+                                text = stringResource(id = R.string.settings_split_tunneling_bypass_ir_description),
+                                style = ProtonTheme.typography.defaultWeak
+                            )
+                        },
+                        leadingComposable = {
+                            Icon(
+                                painter = painterResource(id = CoreR.drawable.ic_proton_earth),
+                                contentDescription = null,
+                                tint = ProtonTheme.colors.iconNorm
+                            )
+                        },
+                        trailingComposable = {
+                            ProtonSwitch(
+                                checked = splitTunneling.bypassIr,
+                                onCheckedChange = { onBypassIrToggle() }
+                            )
+                        },
+                        onClick = onBypassIrToggle,
+                        modifier = Modifier.largeScreenContentPadding().animateItem()
+                    )
+                }
+                item {
+                    val customUrlText = splitTunneling.customBypassUrl?.ifBlank { null }
+                    SettingRowWithIcon(
+                        icon = CoreR.drawable.ic_proton_earth,
+                        title = stringResource(id = R.string.settings_split_tunneling_custom_bypass_title),
+                        settingValue = if (customUrlText != null) {
+                            SettingValue.SettingText(customUrlText)
+                        } else {
+                            SettingValue.SettingStringRes(R.string.settings_split_tunneling_custom_bypass_description)
+                        },
+                        onClick = { customUrlDialogShown = true },
+                        modifier = Modifier.largeScreenContentPadding().animateItem()
+                    )
+                }
             }
         }
     }
@@ -132,6 +185,70 @@ fun SplitTunnelingSubSetting(
             onInverseSelected = { onSplitTunnelModeSelected(SplitTunnelingMode.INCLUDE_ONLY) },
             onDismissRequest = { changeModeDialogShown = false }
         )
+    }
+
+    if (customUrlDialogShown) {
+        CustomBypassUrlDialog(
+            initialUrl = splitTunneling.customBypassUrl,
+            onSave = onCustomBypassUrlChange,
+            onDismissRequest = { customUrlDialogShown = false }
+        )
+    }
+}
+
+@Composable
+private fun CustomBypassUrlDialog(
+    initialUrl: String?,
+    onSave: (String?) -> Unit,
+    onDismissRequest: () -> Unit,
+) {
+    var urlText by rememberSaveable { mutableStateOf(initialUrl ?: "") }
+    ProtonBasicAlert(
+        onDismissRequest = onDismissRequest,
+    ) {
+        Column(modifier = Modifier.padding(horizontal = DIALOG_CONTENT_PADDING)) {
+            Text(
+                stringResource(R.string.settings_split_tunneling_custom_bypass_dialog_title),
+                style = ProtonTheme.typography.body1Bold
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            ProtonOutlinedTextField(
+                value = urlText,
+                placeholderText = stringResource(R.string.settings_split_tunneling_custom_bypass_dialog_hint),
+                onValueChange = { urlText = it },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
+            ) {
+                if (!initialUrl.isNullOrBlank()) {
+                    ProtonDialogButton(
+                        text = stringResource(R.string.settings_split_tunneling_custom_bypass_clear),
+                        onClick = {
+                            onSave(null)
+                            onDismissRequest()
+                        }
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                }
+                ProtonDialogButton(
+                    text = stringResource(android.R.string.cancel),
+                    onClick = onDismissRequest
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                ProtonDialogButton(
+                    text = stringResource(android.R.string.ok),
+                    onClick = {
+                        val cleaned = urlText.trim()
+                        onSave(if (cleaned.isEmpty()) null else cleaned)
+                        onDismissRequest()
+                    }
+                )
+            }
+        }
     }
 }
 

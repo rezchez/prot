@@ -133,12 +133,12 @@ class ProxySharingService : Service() {
         val content = "LAN IP: $ip | SOCKS5: $socksPort | HTTP: $httpPort"
 
         return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_notification)
+            .setSmallIcon(R.drawable.ic_vpn_status_information)
             .setContentTitle(title)
             .setContentText(content)
             .setOngoing(true)
             .setContentIntent(pMainIntent)
-            .addAction(R.drawable.ic_close, "Stop Sharing", pStopIntent)
+            .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Stop Sharing", pStopIntent)
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .setCategory(NotificationCompat.CATEGORY_SERVICE)
             .build()
