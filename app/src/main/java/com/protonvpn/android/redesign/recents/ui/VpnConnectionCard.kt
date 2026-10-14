@@ -100,6 +100,7 @@ data class VpnConnectionCardViewState(
     val cardLabel: CardLabel,
     @StringRes val mainButtonLabelRes: Int,
     val isConnectedOrConnecting: Boolean,
+    val canPause: Boolean = false,
     val connectIntentViewState: ConnectIntentViewState,
     val canOpenConnectionPanel: Boolean,
     val canOpenFreeCountriesPanel: Boolean,
@@ -126,6 +127,7 @@ fun VpnConnectionCard(
     viewState: VpnConnectionCardViewState,
     onConnect: () -> Unit,
     onDisconnect: () -> Unit,
+    onPause: () -> Unit = {},
     onOpenConnectionPanel: () -> Unit,
     onOpenDefaultConnection: () -> Unit,
     modifier: Modifier = Modifier,
@@ -208,6 +210,14 @@ fun VpnConnectionCard(
                 if (viewState.isConnectedOrConnecting) {
                     val text = stringResource(viewState.mainButtonLabelRes)
                     VpnWeakSolidButton(text = text, onClick = onDisconnect, modifier = connectButtonModifier)
+                    if (viewState.canPause) {
+                        Spacer(Modifier.height(8.dp))
+                        VpnWeakSolidButton(
+                            text = stringResource(R.string.pause_vpn),
+                            onClick = onPause,
+                            modifier = Modifier.fillMaxWidth().testTag("pauseButton")
+                        )
+                    }
                 } else {
                     val text = stringResource(viewState.mainButtonLabelRes)
                     VpnSolidButton(text = text, onClick = onConnect, modifier = connectButtonModifier)

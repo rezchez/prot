@@ -142,7 +142,23 @@ class HomeViewModel @Inject constructor(
     private val trafficMonitor: TrafficMonitor,
     private val promptTelemetry: VpnProductPromptTelemetry,
     private val currentUser: CurrentUser,
+    private val vpnPauseManager: com.protonvpn.android.vpn.pause.VpnPauseManager,
 ) : ViewModel(), DefaultLifecycleObserver {
+
+    val pauseState = vpnPauseManager.pauseState
+
+    fun pauseVpn(durationMs: Long) {
+        val currentIntent = vpnStatusProviderUI.connectionIntent
+        vpnPauseManager.pauseVpn(durationMs, currentIntent)
+    }
+
+    fun resumeVpn() {
+        vpnPauseManager.resumeVpn()
+    }
+
+    fun cancelPause() {
+        vpnPauseManager.cancelPause()
+    }
 
     private val connectionMapHighlightsFlow = vpnStatusProviderUI.uiStatus.map {
         val highlight = it.state.toMapHighlightState()

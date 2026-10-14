@@ -104,6 +104,8 @@ class MainActivityViewModel @Inject constructor(
 
     val eventShowOnboarding = showOnboarding.event
 
+    val showPauseDialogFromNotificationFlow = kotlinx.coroutines.flow.MutableStateFlow(false)
+
     private val _navEventsFlow = MutableSharedFlow<MainNavEvent>(extraBufferCapacity = 1)
 
     val navEventsFlow: SharedFlow<MainNavEvent> = _navEventsFlow.asSharedFlow()

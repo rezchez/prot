@@ -1987,4 +1987,20 @@
     <string name="ping_test_status_testing">Testing servers…</string>
     <string name="ping_test_status_idle">Press Test Connection to check reachable VPN servers</string>
     <string name="ping_test_no_available_servers">No reachable servers found with current network.</string>
+
+    <!-- Scheduled VPN Pause -->
+    <string name="pause_vpn">Pause VPN</string>
+    <string name="pause_vpn_duration_title">Pause VPN</string>
+    <string name="pause_duration_15m">15 minutes</string>
+    <string name="pause_duration_30m">30 minutes</string>
+    <string name="pause_duration_45m">45 minutes</string>
+    <string name="pause_duration_1h">1 hour</string>
+    <string name="pause_duration_custom">Custom duration</string>
+    <string name="pause_custom_title">Custom Pause Duration</string>
+    <string name="pause_custom_hint">Enter duration in minutes</string>
+    <string name="pause_custom_invalid">Enter a valid duration (1 to 1440 minutes)</string>
+    <string name="vpn_paused">VPN Paused</string>
+    <string name="vpn_paused_remaining">Reconnecting in %s</string>
+    <string name="resume_vpn">Resume VPN</string>
+    <string name="cancel_pause">Cancel Pause</string>
 </resources>

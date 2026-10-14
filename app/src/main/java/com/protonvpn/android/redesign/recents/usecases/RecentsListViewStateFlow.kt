@@ -252,6 +252,7 @@ class RecentsListViewStateFlow @Inject constructor(
             canOpenConnectionPanel = vpnState is VpnState.Connected,
             canOpenFreeCountriesPanel = showFreeCountriesInformationPanel,
             isConnectedOrConnecting = vpnState.isConnectedOrConnecting(),
+            canPause = vpnState is VpnState.Connected,
         )
     }
 }
