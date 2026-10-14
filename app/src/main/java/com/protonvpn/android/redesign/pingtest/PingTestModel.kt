@@ -11,7 +11,6 @@ import com.protonvpn.android.servers.Server
 enum class ServerTestStatus {
     NOT_TESTED,
     TESTING_CONNECTING,
-    TESTING_CLOUDFLARE,
     AVAILABLE,
     UNAVAILABLE,
     TIMEOUT,
@@ -27,15 +26,22 @@ data class ServerPingItem(
 
 data class PingTestUiState(
     val isTesting: Boolean = false,
+    val attemptsText: String = "1",
+    val attemptsPerServer: Int = 1,
+    val attemptsError: String? = null,
+    val showStartConfirmationDialog: Boolean = false,
+    val estimatedDurationText: String = "",
     val currentTestingServer: Server? = null,
+    val currentAttempt: Int = 1,
+    val totalAttempts: Int = 1,
     val currentStepDescription: String? = null,
     val totalCount: Int = 0,
     val testedCount: Int = 0,
-    val availableCount: Int = 0,
-    val unavailableCount: Int = 0,
+    val workingCount: Int = 0,
+    val failedCount: Int = 0,
     val lastTestTime: String? = null,
+    val workingServers: List<ServerPingItem> = emptyList(),
     val allTestedItems: List<ServerPingItem> = emptyList(),
-    val availableSortedItems: List<ServerPingItem> = emptyList(),
     val activeConnectedServerId: String? = null
 ) {
     val progressPercent: Int

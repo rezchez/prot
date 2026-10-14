@@ -64,6 +64,8 @@ import com.protonvpn.android.redesign.base.ui.ConnectIntentIcon
 import com.protonvpn.android.base.ui.VpnDivider
 import com.protonvpn.android.base.ui.optional
 import com.protonvpn.android.redesign.recents.usecases.RecentsListViewState
+import com.protonvpn.android.vpn.pause.VpnPauseState
+import com.protonvpn.android.vpn.pause.VpnPausedCard
 import com.protonvpn.android.redesign.vpn.ui.ConnectIntentBlankRow
 import com.protonvpn.android.redesign.vpn.ui.label
 import me.proton.core.compose.theme.ProtonTheme
@@ -89,6 +91,10 @@ fun RecentsList(
     viewState: RecentsListViewState,
     onConnectClicked: () -> Unit,
     onDisconnectClicked: () -> Unit,
+    onPauseClicked: () -> Unit = {},
+    pauseState: VpnPauseState = VpnPauseState.NotPaused,
+    onResumePause: () -> Unit = {},
+    onCancelPause: () -> Unit = {},
     onOpenConnectionPanelClicked: () -> Unit,
     onRecentClicked: (item: RecentItemViewState) -> Unit,
     onRecentOpen: (item: RecentItemViewState) -> Unit,
@@ -143,16 +149,26 @@ fun RecentsList(
             Column(
                 modifier = connectionCardModifier
             ) {
-                VpnConnectionCard(
-                    viewState = viewState.connectionCard,
-                    changeServerButton = changeServerButton,
-                    onConnect = onConnectClicked,
-                    onDisconnect = onDisconnectClicked,
-                    onOpenConnectionPanel = onOpenConnectionPanelClicked,
-                    onOpenDefaultConnection = onOpenDefaultConnection,
-                    modifier = Modifier.padding(16.dp),
-                    itemIdsTransition = itemIdsTransition
-                )
+                if (pauseState is VpnPauseState.Paused) {
+                    VpnPausedCard(
+                        pauseState = pauseState,
+                        onResume = onResumePause,
+                        onCancel = onCancelPause,
+                        modifier = Modifier.padding(16.dp)
+                    )
+                } else {
+                    VpnConnectionCard(
+                        viewState = viewState.connectionCard,
+                        changeServerButton = changeServerButton,
+                        onConnect = onConnectClicked,
+                        onDisconnect = onDisconnectClicked,
+                        onPause = onPauseClicked,
+                        onOpenConnectionPanel = onOpenConnectionPanelClicked,
+                        onOpenDefaultConnection = onOpenDefaultConnection,
+                        modifier = Modifier.padding(16.dp),
+                        itemIdsTransition = itemIdsTransition
+                    )
+                }
                 errorSnackBar?.let {
                     androidx.compose.material.SnackbarHost(hostState = it) { data ->
                         androidx.compose.material.Snackbar(

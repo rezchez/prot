@@ -320,6 +320,9 @@ class MainActivity : VpnUiDelegateProvider, AppCompatActivity() {
     }
 
     fun processIntent(intent: Intent) {
+        if (intent.action == com.protonvpn.android.notifications.NotificationHelper.ACTION_SHOW_PAUSE_DIALOG) {
+            activityViewModel.showPauseDialogFromNotificationFlow.value = true
+        }
         processDeepLink(intent)
         handleCoreDeepLink(intent)
         processInternalIntent(intent)

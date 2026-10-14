@@ -115,6 +115,8 @@ import com.protonvpn.android.utils.openUrl
 import com.protonvpn.android.vpn.ConnectTrigger
 import com.protonvpn.android.vpn.DisconnectTrigger
 import com.protonvpn.android.vpn.VpnErrorUIManager
+import com.protonvpn.android.vpn.pause.VpnPauseDialog
+import com.protonvpn.android.vpn.pause.VpnPauseState
 import com.protonvpn.android.vpn.ui.LocalVpnUiDelegate
 import com.protonvpn.android.widget.ui.OnboardingWidgetBottomSheetContent
 import kotlinx.coroutines.flow.SharedFlow
@@ -158,6 +160,24 @@ fun HomeRoute(
         homeViewModel.prominentPromoBannerStateFlow.collectAsStateWithLifecycle().value
     val snackError = homeViewModel.snackbarErrorFlow.collectAsStateWithLifecycle().value
     val adoptionComponent = homeViewModel.adoptionComponentFlow.collectAsStateWithLifecycle().value
+    val pauseState = homeViewModel.pauseState.collectAsStateWithLifecycle().value
+    val showPauseFromNotification = activityViewModel.showPauseDialogFromNotificationFlow.collectAsStateWithLifecycle().value
+
+    var showPauseDialog by remember { mutableStateOf(false) }
+
+    if (showPauseFromNotification) {
+        showPauseDialog = true
+        activityViewModel.showPauseDialogFromNotificationFlow.value = false
+    }
+
+    if (showPauseDialog) {
+        VpnPauseDialog(
+            onDismiss = { showPauseDialog = false },
+            onSelectDuration = { durationMs ->
+                homeViewModel.pauseVpn(durationMs)
+            }
+        )
+    }
 
     // Not using material3 snackbar because of inability to show multiline correctly
     val snackbarHostState = remember { androidx.compose.material.SnackbarHostState() }
@@ -190,6 +210,7 @@ fun HomeRoute(
         onDisconnect = remember(homeViewModel) {
             { homeViewModel.disconnect(DisconnectTrigger.ConnectionCard) }
         },
+        onPause = { showPauseDialog = true },
         onChangeServerClick = { homeViewModel.changeServer(vpnUiDelegate) },
         onChangeServerUpgradeButtonShown = homeViewModel::onChangeServerUpgradeButtonShown,
         onChangeServerUpgradeClick = {
@@ -252,6 +273,9 @@ fun HomeRoute(
         connectionCardComponent = connectionCardComponent,
         recentsComponent = recentsComponent,
         adoptionComponent = adoptionComponent,
+        pauseState = pauseState,
+        onResumePause = homeViewModel::resumeVpn,
+        onCancelPause = homeViewModel::cancelPause,
         onOpenConnectionPreferences = homeViewModel::openConnectionPreferences,
         onOpenSmartDiscoveryConnectionPreferences = homeViewModel::openSmartDiscoveryConnectionPreferences,
         onDismissSmartDiscoveryConnectionPreferencesDialog = homeViewModel::dismissSmartDiscoveryConnectionPreferencesDialog,
@@ -318,6 +342,9 @@ fun HomeView(
     snackbarHostState: SnackbarHostState,
     recentsComponent: RecentsComponent,
     adoptionComponent: AdoptionComponent?,
+    pauseState: VpnPauseState = VpnPauseState.NotPaused,
+    onResumePause: () -> Unit = {},
+    onCancelPause: () -> Unit = {},
     onOpenConnectionPreferences: () -> Unit,
     onOpenSmartDiscoveryConnectionPreferences: () -> Unit,
     onDismissSmartDiscoveryConnectionPreferencesDialog: () -> Unit,
@@ -496,6 +523,10 @@ fun HomeView(
                     upsellContent = upsellCarouselContent,
                     onConnectClicked = connectionCardComponent.onConnect,
                     onDisconnectClicked = connectionCardComponent.onDisconnect,
+                    onPauseClicked = connectionCardComponent.onPause,
+                    pauseState = pauseState,
+                    onResumePause = onResumePause,
+                    onCancelPause = onCancelPause,
                     onOpenConnectionPanelClicked = connectionCardComponent.onConnectionCardClick,
                     onOpenDefaultConnection = onDefaultConnectionOpen,
                     onRecentClicked = recentsComponent.onRecentClickedAction,
@@ -615,6 +646,7 @@ data class ConnectionCardComponent(
     val changeServerState: ChangeServerViewState?,
     val onConnect: () -> Unit,
     val onDisconnect: () -> Unit,
+    val onPause: () -> Unit = {},
     val onChangeServerClick: () -> Unit,
     val onChangeServerUpgradeButtonShown: () -> Unit,
     val onChangeServerUpgradeClick: () -> Unit,

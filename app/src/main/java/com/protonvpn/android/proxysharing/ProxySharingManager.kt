@@ -64,6 +64,7 @@ object ProxySharingManager {
     private val totalBytesUploaded = AtomicLong(0L)
 
     private val speedHistoryList = mutableListOf<SpeedDataPoint>()
+    private val managerScope = CoroutineScope(kotlinx.coroutines.SupervisorJob() + Dispatchers.Default)
     private var statsJob: Job? = null
 
     private val _state = MutableStateFlow(ProxySharingState())
@@ -323,7 +324,7 @@ object ProxySharingManager {
 
     private fun startStatsMonitoring() {
         statsJob?.cancel()
-        statsJob = CoroutineScope(Dispatchers.Default).launch {
+        statsJob = managerScope.launch {
             var lastDown = totalBytesDownloaded.get()
             var lastUp = totalBytesUploaded.get()
             var lastTime = System.currentTimeMillis()
