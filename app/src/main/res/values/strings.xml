@@ -1987,4 +1987,78 @@
     <string name="ping_test_status_testing">Testing servers…</string>
     <string name="ping_test_status_idle">Press Test Connection to check reachable VPN servers</string>
     <string name="ping_test_no_available_servers">No reachable servers found with current network.</string>
+
+    <!-- VPN Pause Feature -->
+    <string name="vpn_pause_button">Pause</string>
+    <string name="vpn_pause_title">Pause VPN</string>
+    <string name="vpn_pause_subtitle">Temporarily disconnect and automatically reconnect after:</string>
+    <string name="vpn_pause_1m">1 minute</string>
+    <string name="vpn_pause_5m">5 minutes</string>
+    <string name="vpn_pause_15m">15 minutes</string>
+    <string name="vpn_pause_30m">30 minutes</string>
+    <string name="vpn_pause_45m">45 minutes</string>
+    <string name="vpn_pause_1h">1 hour</string>
+    <string name="vpn_pause_custom">Custom duration</string>
+    <string name="vpn_pause_custom_hint">Duration in minutes (1–1440)</string>
+    <string name="vpn_pause_custom_error">Please enter a valid duration between 1 and 1440 minutes.</string>
+    <string name="vpn_pause_confirm">Pause VPN</string>
+    <string name="vpn_pause_status">VPN Paused</string>
+    <string name="vpn_pause_resumes_in">Resumes in %s</string>
+    <string name="vpn_pause_resume_button">Resume</string>
+    <string name="vpn_pause_cancel_button">Cancel Pause</string>
+    <string name="vpn_pause_notification_action">Pause</string>
+    <string name="vpn_pause_notification_title">VPN Paused</string>
+    <string name="vpn_pause_notification_text">Automatic reconnection in %s</string>
+
+    <!-- Ping Test Redesign -->
+    <string name="ping_test_attempts_label">Connection Attempts per Server</string>
+    <string name="ping_test_attempts_error">Please enter a valid attempt count (1–10)</string>
+    <string name="ping_test_confirm_title">Start Server Connectivity Test</string>
+    <string name="ping_test_confirm_message">This test will establish a real VPN connection to each server sequentially. Higher attempt counts will increase testing time and battery consumption. Keeping the application open is recommended for the most reliable experience.\n\n%1$s</string>
+    <string name="ping_test_confirm_active_vpn_warning">Note: Your active VPN connection will be safely disconnected for the duration of the test.</string>
+    <string name="ping_test_estimated_time">Estimated duration: ~%s</string>
+    <string name="ping_test_summary_format">Test completed: %1$d working, %2$d failed (%3$d total servers)</string>
+    <string name="ping_test_section_working">Working Servers</string>
+    <string name="ping_test_section_all">All Servers</string>
+    <string name="ping_test_status_working">Working</string>
+    <string name="ping_test_status_failed">Failed</string>
+    <string name="ping_test_status_testing_server">Testing: %1$s (Attempt %2$d/%3$d)…</string>
+    <string name="ping_test_status_teardown">Disconnecting test session…</string>
+    <string name="ping_test_historical_tag">Historical</string>
+
+    <!-- VPN Sharing Bottom Navigation -->
+    <string name="bottom_nav_vpn_sharing">VPN Sharing</string>
+
+    <!-- Backup and Restore -->
+    <string name="settings_backup_restore_title">Backup &amp; Restore</string>
+    <string name="settings_backup_restore_subtitle">Backup or restore app settings and profile servers</string>
+    <string name="backup_create_title">Create Backup</string>
+    <string name="backup_create_desc">Export your current application settings, proxy sharing configuration, and all servers in your profile list.</string>
+    <string name="backup_export_button">Export / Share Backup</string>
+    <string name="backup_copy_button">Copy Backup JSON</string>
+    <string name="backup_copied_toast">Backup JSON copied to clipboard</string>
+    <string name="backup_restore_title">Restore Backup</string>
+    <string name="backup_restore_desc">Restore settings and profile servers from a backup file or JSON text.</string>
+    <string name="backup_restore_from_file">Select Backup File</string>
+    <string name="backup_paste_and_restore">Paste JSON &amp; Restore</string>
+    <string name="backup_restore_success">Backup successfully restored! %1$d profile servers updated.</string>
+    <string name="backup_restore_error">Failed to restore backup: %1$s</string>
+
+    <!-- Connected Devices in VPN Sharing -->
+    <string name="settings_proxy_sharing_connected_devices_title">Connected Devices</string>
+    <string name="settings_proxy_sharing_connected_devices_empty">No devices connected yet</string>
+    <string name="settings_proxy_sharing_connected_devices_empty_desc">Devices that connect to this proxy will appear here with live statistics and controls.</string>
+    <string name="settings_proxy_sharing_device_active">Active</string>
+    <string name="settings_proxy_sharing_device_inactive">Inactive</string>
+    <string name="settings_proxy_sharing_device_blocked">Blocked</string>
+    <string name="settings_proxy_sharing_device_block_action">Block</string>
+    <string name="settings_proxy_sharing_device_unblock_action">Unblock</string>
+    <string name="settings_proxy_sharing_device_rename">Rename</string>
+    <string name="settings_proxy_sharing_device_daily_limit">Daily Limit</string>
+    <string name="settings_proxy_sharing_device_no_limit">No limit</string>
+    <string name="settings_proxy_sharing_device_limit_exceeded">Daily quota exceeded</string>
+    <string name="settings_proxy_sharing_device_duration">Duration</string>
+    <string name="settings_proxy_sharing_device_rename_dialog_title">Rename Device</string>
+    <string name="settings_proxy_sharing_device_limit_dialog_title">Set Daily Data Limit</string>
+    <string name="settings_proxy_sharing_device_limit_dialog_desc">Set maximum daily traffic allowed for this device. Once exceeded, proxy access is blocked until midnight.</string>
 </resources>

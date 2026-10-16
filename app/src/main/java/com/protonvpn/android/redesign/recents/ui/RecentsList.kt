@@ -95,6 +95,9 @@ fun RecentsList(
     onOpenDefaultConnection: () -> Unit,
     errorSnackBar: androidx.compose.material.SnackbarHostState?,
     modifier: Modifier = Modifier,
+    onPauseClicked: (() -> Unit)? = null,
+    onResumePauseClicked: (() -> Unit)? = null,
+    onCancelPauseClicked: (() -> Unit)? = null,
     changeServerButton: (@Composable ColumnScope.() -> Unit)? = null,
     promoBanner: (@Composable (Modifier) -> Unit)? = null,
     promoBannerPeekOffset: Dp = 0.dp,
@@ -150,6 +153,9 @@ fun RecentsList(
                     onDisconnect = onDisconnectClicked,
                     onOpenConnectionPanel = onOpenConnectionPanelClicked,
                     onOpenDefaultConnection = onOpenDefaultConnection,
+                    onPause = onPauseClicked,
+                    onResumePause = onResumePauseClicked,
+                    onCancelPause = onCancelPauseClicked,
                     modifier = Modifier.padding(16.dp),
                     itemIdsTransition = itemIdsTransition
                 )

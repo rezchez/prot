@@ -77,6 +77,7 @@ class NotificationHelper @Inject constructor(
     private val isTv: IsTvCheck,
     private val createLaunchIntent: CreateLaunchIntent,
     private val notificationChannels: dagger.Lazy<NotificationChannels>,
+    private val vpnPauseManager: dagger.Lazy<com.protonvpn.android.vpn.pause.VpnPauseManager>,
 ) {
 
     init {
@@ -85,6 +86,10 @@ class NotificationHelper @Inject constructor(
         }.launchIn(scope)
 
         trafficMonitor.trafficStatus.onEach {
+            updateNotification()
+        }.launchIn(scope)
+
+        vpnPauseManager.get().pauseState.onEach {
             updateNotification()
         }.launchIn(scope)
     }
@@ -213,6 +218,60 @@ class NotificationHelper @Inject constructor(
         trafficUpdate: TrafficUpdate?
     ): Notification {
         val context = ProtonApplication.getAppContext()
+        val pauseState = vpnPauseManager.get().pauseState.value
+        val isPaused = pauseState.isPaused
+
+        if (isPaused) {
+            val remainingMin = pauseState.remainingSeconds / 60
+            val remainingSec = pauseState.remainingSeconds % 60
+            val remainingStr = if (remainingMin > 0) "${remainingMin}m ${remainingSec}s" else "${remainingSec}s"
+            val notificationContentString = appContext.getString(R.string.vpn_pause_notification_text, remainingStr)
+
+            val builder =
+                NotificationCompat.Builder(context, notificationChannels.get().idConnectionStatus)
+                    .setSmallIcon(R.drawable.ic_vpn_status_disconnected)
+                    .setContentTitle(context.getString(R.string.vpn_pause_notification_title))
+                    .setContentText(notificationContentString)
+                    .setOngoing(true)
+                    .setOnlyAlertOnce(true)
+                    .setCategory(NotificationCompat.CATEGORY_SERVICE)
+                    .setShowWhen(false)
+
+            val resumeIntent = NotificationActionReceiver.createIntent(context, NotificationActionReceiver.RESUME_PAUSE_ACTION)
+            val resumePendingIntent = PendingIntent.getBroadcast(
+                context, PENDING_REQUEST_PAUSE_RESUME, resumeIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            val resumeAction = NotificationCompat.Action(
+                CoreR.drawable.ic_proton_play,
+                context.getString(R.string.vpn_pause_resume_button),
+                resumePendingIntent
+            )
+            builder.addAction(resumeAction)
+
+            val cancelPauseIntent = NotificationActionReceiver.createIntent(context, NotificationActionReceiver.CANCEL_PAUSE_ACTION)
+            val cancelPendingIntent = PendingIntent.getBroadcast(
+                context, PENDING_REQUEST_PAUSE_CANCEL, cancelPauseIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            val cancelAction = NotificationCompat.Action(
+                CoreR.drawable.ic_proton_cross,
+                context.getString(R.string.vpn_pause_cancel_button),
+                cancelPendingIntent
+            )
+            builder.addAction(cancelAction)
+
+            val intent = createLaunchIntent.forNotification()
+            intent.putExtra("OpenStatus", true)
+            val pending =
+                PendingIntent.getActivity(
+                    context,
+                    PENDING_REQUEST_STATUS,
+                    intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
+            builder.setContentIntent(pending)
+            return builder.build()
+        }
+
         val disconnectIntent =
             NotificationActionReceiver.createIntent(context, NotificationActionReceiver.DISCONNECT_ACTION)
         val disconnectPendingIntent = PendingIntent.getBroadcast(
@@ -240,13 +299,37 @@ class NotificationHelper @Inject constructor(
         }
 
         when (vpnStatus.state) {
-            Connecting, Connected -> {
+            Connecting -> {
                 val disconnectAction = NotificationCompat.Action(
                     CoreR.drawable.ic_proton_cross,
                     context.getString(R.string.disconnect),
                     disconnectPendingIntent
                 )
                 builder.addAction(disconnectAction)
+            }
+            Connected -> {
+                val disconnectAction = NotificationCompat.Action(
+                    CoreR.drawable.ic_proton_cross,
+                    context.getString(R.string.disconnect),
+                    disconnectPendingIntent
+                )
+                builder.addAction(disconnectAction)
+
+                val pauseIntent = createLaunchIntent.forNotification().apply {
+                    putExtra(EXTRA_OPEN_PAUSE_DIALOG, true)
+                }
+                val pausePendingIntent = PendingIntent.getActivity(
+                    context,
+                    PENDING_REQUEST_PAUSE,
+                    pauseIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                )
+                val pauseAction = NotificationCompat.Action(
+                    R.drawable.ic_pause,
+                    context.getString(R.string.vpn_pause_notification_action),
+                    pausePendingIntent
+                )
+                builder.addAction(pauseAction)
             }
             else -> { /* Nothing */ }
         }
@@ -268,15 +351,16 @@ class NotificationHelper @Inject constructor(
         vpnStatus: VpnStateMonitor.Status,
         trafficUpdate: TrafficUpdate?
     ) {
+        val isPaused = vpnPauseManager.get().isPaused()
         with(notificationManager) {
             // On android < 10 first update the notification even when disabled. If foreground
             // service is still running, notification will stay after cancel() - let's at least show
             // correct "not connected" notification. However on Android 10+ this somehow can cause
             // notification cancel to have no effect.
-            if (areAppNotificationsAllowed() && (Build.VERSION.SDK_INT < 29 || vpnStatus.state != Disabled)) {
+            if (areAppNotificationsAllowed() && (Build.VERSION.SDK_INT < 29 || vpnStatus.state != Disabled || isPaused)) {
                 notifyIfAllowed(Constants.NOTIFICATION_ID, buildStatusNotification(vpnStatus, trafficUpdate))
             }
-            if (vpnStatus.state == Disabled) {
+            if (vpnStatus.state == Disabled && !isPaused) {
                 cancel(Constants.NOTIFICATION_ID)
             }
         }
@@ -387,5 +471,9 @@ class NotificationHelper @Inject constructor(
     companion object {
         const val PENDING_REQUEST_STATUS = 0
         const val PENDING_REQUEST_OTHER = 1
+        const val PENDING_REQUEST_PAUSE = 2
+        const val PENDING_REQUEST_PAUSE_RESUME = 3
+        const val PENDING_REQUEST_PAUSE_CANCEL = 4
+        const val EXTRA_OPEN_PAUSE_DIALOG = "EXTRA_OPEN_PAUSE_DIALOG"
     }
 }

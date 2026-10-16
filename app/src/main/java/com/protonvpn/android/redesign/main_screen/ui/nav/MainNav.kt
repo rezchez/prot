@@ -68,10 +68,12 @@ import com.protonvpn.android.redesign.pingtest.PingTestScreen.pingTest
 import com.protonvpn.android.redesign.settings.ui.nav.SettingsScreen
 import com.protonvpn.android.redesign.settings.ui.nav.SettingsScreen.settings
 import com.protonvpn.android.redesign.settings.ui.nav.SubSettingsScreen
+import com.protonvpn.android.redesign.settings.ui.nav.VpnSharingScreen
+import com.protonvpn.android.redesign.settings.ui.nav.VpnSharingScreen.vpnSharing
 import java.util.EnumSet
 
 enum class MainTarget {
-    Home, Countries, Gateways, Profiles, PingTest, Settings;
+    Home, Countries, Gateways, Profiles, PingTest, VpnSharing, Settings;
 
     companion object {
         fun fromRoute(baseRoute: String?) = when (baseRoute) {
@@ -80,6 +82,7 @@ enum class MainTarget {
             GatewaysScreen.route -> Gateways
             CountryListScreen.route -> Countries
             PingTestScreen.route -> PingTest
+            VpnSharingScreen.route -> VpnSharing
             SettingsScreen.route -> Settings
             else -> null
         }
@@ -123,6 +126,9 @@ class MainNav(
 
             MainTarget.PingTest ->
                 navigateInternal(PingTestScreen, navOptions)
+
+            MainTarget.VpnSharing ->
+                navigateInternal(VpnSharingScreen, navOptions)
 
             MainTarget.Settings ->
                 navigateInternal(SettingsScreen, navOptions)
@@ -183,6 +189,8 @@ class MainNav(
                     )
 
                     MainTarget.PingTest -> pingTest()
+
+                    MainTarget.VpnSharing -> vpnSharing()
 
                     MainTarget.Settings -> settings(
                         coreNavigation = coreNavigation,

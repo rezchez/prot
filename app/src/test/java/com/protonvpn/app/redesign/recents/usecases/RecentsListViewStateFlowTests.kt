@@ -135,6 +135,9 @@ class RecentsListViewStateFlowTests {
     @RelaxedMockK
     private lateinit var mockExcludedLocationsDao: ExcludedLocationsDao
 
+    @RelaxedMockK
+    private lateinit var mockVpnPauseManager: com.protonvpn.android.vpn.pause.VpnPauseManager
+
     private lateinit var vpnStateMonitor: VpnStateMonitor
 
     private lateinit var currentUserProvider: TestCurrentUserProvider
@@ -174,6 +177,7 @@ class RecentsListViewStateFlowTests {
         coEvery { mockObserveDefaultConnection(any()) } returns flowOf(DefaultConnection.LastConnection)
         every { mockChangeServerManager.isChangingServer } returns MutableStateFlow(false)
         coEvery { mockExcludedLocationsDao.observeAll(any()) } returns flowOf(emptyList())
+        every { mockVpnPauseManager.pauseState } returns MutableStateFlow(com.protonvpn.android.vpn.pause.VpnPauseState())
 
         profiles = FakeGetProfileById()
         settingsFlow = MutableStateFlow(LocalUserSettings.Default)
@@ -253,6 +257,7 @@ class RecentsListViewStateFlowTests {
             changeServerManager = mockChangeServerManager,
             getSmartProtocols = getSmartProtocols,
             observeConnectionFeedbackViewState = observeConnectionFeedbackViewState,
+            vpnPauseManager = mockVpnPauseManager,
         )
     }
 

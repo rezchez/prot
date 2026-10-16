@@ -204,9 +204,6 @@ fun SettingsRoute(
                 onAdvancedSettingsClick = {
                     onNavigateToSubSetting(SubSettingsScreen.Type.Advanced)
                 },
-                onProxySharingClick = {
-                    onNavigateToSubSetting(SubSettingsScreen.Type.ProxySharing)
-                },
                 onNotificationsClick = {
                     val intent = Intent(ACTION_APP_NOTIFICATION_SETTINGS).apply {
                         putExtra(EXTRA_APP_PACKAGE, context.packageName)
@@ -242,6 +239,9 @@ fun SettingsRoute(
                 onWidgetClick = {
                     viewModel.onWidgetSettingClick()
                 },
+                onBackupRestoreClick = {
+                    onNavigateToSubSetting(SubSettingsScreen.Type.BackupRestore)
+                },
                 onDebugToolsClick = {
                     onNavigateToSubSetting(SubSettingsScreen.Type.DebugTools)
                 }
@@ -270,11 +270,11 @@ fun SettingsView(
     onVpnAcceleratorClick: () -> Unit,
     onVpnAcceleratorUpgrade: () -> Unit,
     onAdvancedSettingsClick: () -> Unit,
-    onProxySharingClick: () -> Unit = {},
     onNotificationsClick: () -> Unit,
     onIconChangeClick: () -> Unit,
     onThemeClick: () -> Unit,
     onWidgetClick: () -> Unit,
+    onBackupRestoreClick: () -> Unit = {},
     onOnHelpCenterClick: () -> Unit,
     onReportBugClick: () -> Unit,
     onDebugLogsClick: () -> Unit,
@@ -359,11 +359,6 @@ fun SettingsView(
                     title = stringResource(id = R.string.settings_advanced_settings_title),
                     onClick = onAdvancedSettingsClick,
                 )
-                SettingRowWithIcon(
-                    icon = CoreR.drawable.ic_proton_arrow_right_arrow_left,
-                    title = stringResource(id = R.string.settings_proxy_sharing_title),
-                    onClick = onProxySharingClick,
-                )
             }
 
             Category(
@@ -396,6 +391,11 @@ fun SettingsView(
                     icon = CoreR.drawable.ic_proton_mobile,
                     title = stringResource(id = R.string.settings_widget_title),
                     onClick = onWidgetClick
+                )
+                SettingRowWithIcon(
+                    icon = CoreR.drawable.ic_proton_arrow_rotate_right,
+                    title = stringResource(id = R.string.settings_backup_restore_title),
+                    onClick = onBackupRestoreClick
                 )
             }
             Category(

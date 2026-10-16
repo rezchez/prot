@@ -24,5 +24,6 @@ import com.protonvpn.android.redesign.settings.ui.nav.SubSettingsScreen
 sealed interface MainNavEvent {
 
     data class OnNavigateToSubSettings(val type: SubSettingsScreen.Type) : MainNavEvent
+    data object OpenPauseDialog : MainNavEvent
 
 }

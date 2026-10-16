@@ -58,6 +58,7 @@ import com.protonvpn.android.components.VpnUiDelegateProvider
 import com.protonvpn.android.logging.ProtonLogger
 import com.protonvpn.android.logging.UiConnect
 import com.protonvpn.android.managed.ui.AutoLoginErrorView
+import com.protonvpn.android.notifications.NotificationHelper
 import com.protonvpn.android.managed.ui.AutoLoginView
 import com.protonvpn.android.redesign.app.ui.MainActivityViewModel.Companion.AppUpdateCheckDelay
 import com.protonvpn.android.redesign.app.ui.nav.MainNavEvent
@@ -329,6 +330,9 @@ class MainActivity : VpnUiDelegateProvider, AppCompatActivity() {
             lifecycleScope.launch {
                 streamingUpsellRestrictionsDialogTrigger.showNow(this@MainActivity)
             }
+        }
+        if (intent.getBooleanExtra(NotificationHelper.EXTRA_OPEN_PAUSE_DIALOG, false)) {
+            activityViewModel.onNavigate(MainNavEvent.OpenPauseDialog)
         }
     }
 

@@ -14,6 +14,7 @@ import com.protonvpn.android.logging.ProtonLogger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -64,12 +65,14 @@ object ProxySharingManager {
     private val totalBytesUploaded = AtomicLong(0L)
 
     private val speedHistoryList = mutableListOf<SpeedDataPoint>()
+    private val managerScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private var statsJob: Job? = null
 
     private val _state = MutableStateFlow(ProxySharingState())
     val state: StateFlow<ProxySharingState> = _state.asStateFlow()
 
     fun init(context: Context) {
+        ConnectedDeviceManager.init(context)
         val prefs = ProxySharingPreferences(context)
         refreshState(context)
         if (prefs.isSharingEnabled) {
@@ -323,7 +326,7 @@ object ProxySharingManager {
 
     private fun startStatsMonitoring() {
         statsJob?.cancel()
-        statsJob = CoroutineScope(Dispatchers.Default).launch {
+        statsJob = managerScope.launch {
             var lastDown = totalBytesDownloaded.get()
             var lastUp = totalBytesUploaded.get()
             var lastTime = System.currentTimeMillis()

@@ -103,6 +103,9 @@ data class VpnConnectionCardViewState(
     val connectIntentViewState: ConnectIntentViewState,
     val canOpenConnectionPanel: Boolean,
     val canOpenFreeCountriesPanel: Boolean,
+    val canPause: Boolean = false,
+    val isPaused: Boolean = false,
+    val remainingPauseSeconds: Long = 0L,
 ) {
     val canOpenPanel: Boolean = canOpenConnectionPanel || canOpenFreeCountriesPanel
 }
@@ -111,6 +114,7 @@ sealed interface CardLabel {
 
     data class ConnectionStatus(
         @StringRes val labelResId: Int,
+        val customText: String? = null,
         val showConnectionFeedback: Boolean = false,
         val onConnectionFeedbackShown: () -> Unit = {},
         val onConnectionFeedbackProvided: (ConnectionFeedback) -> Unit = {},
@@ -129,6 +133,9 @@ fun VpnConnectionCard(
     onOpenConnectionPanel: () -> Unit,
     onOpenDefaultConnection: () -> Unit,
     modifier: Modifier = Modifier,
+    onPause: (() -> Unit)? = null,
+    onResumePause: (() -> Unit)? = null,
+    onCancelPause: (() -> Unit)? = null,
     changeServerButton: (@Composable ColumnScope.() -> Unit)? = null,
     itemIdsTransition: Transition<ItemIds>? = null
 ) {
@@ -205,14 +212,37 @@ fun VpnConnectionCard(
                     }
                 }
                 val connectButtonModifier = Modifier.testTag("connectCardButton")
-                if (viewState.isConnectedOrConnecting) {
+                if (viewState.isPaused) {
+                    val text = stringResource(viewState.mainButtonLabelRes)
+                    VpnSolidButton(
+                        text = text,
+                        onClick = onResumePause ?: {},
+                        modifier = connectButtonModifier.testTag("resumePauseButton")
+                    )
+                    if (onCancelPause != null) {
+                        Spacer(Modifier.height(8.dp))
+                        VpnWeakSolidButton(
+                            text = stringResource(R.string.vpn_pause_cancel_button),
+                            onClick = onCancelPause,
+                            modifier = Modifier.testTag("cancelPauseButton")
+                        )
+                    }
+                } else if (viewState.isConnectedOrConnecting) {
                     val text = stringResource(viewState.mainButtonLabelRes)
                     VpnWeakSolidButton(text = text, onClick = onDisconnect, modifier = connectButtonModifier)
+                    if (viewState.canPause && onPause != null) {
+                        Spacer(Modifier.height(8.dp))
+                        VpnWeakSolidButton(
+                            text = stringResource(R.string.vpn_pause_button),
+                            onClick = onPause,
+                            modifier = Modifier.testTag("pauseButton")
+                        )
+                    }
                 } else {
                     val text = stringResource(viewState.mainButtonLabelRes)
                     VpnSolidButton(text = text, onClick = onConnect, modifier = connectButtonModifier)
                 }
-                if (changeServerButton != null) {
+                if (changeServerButton != null && !viewState.isPaused) {
                     Spacer(Modifier.height(8.dp))
                     changeServerButton()
                 }
@@ -349,9 +379,11 @@ private fun VpnConnectionStatusLabel(
                 )
             ),
         ) {
+            val labelString = stringResource(id = cardLabel.labelResId)
+            val fullText = if (cardLabel.customText != null) "$labelString · ${cardLabel.customText}" else labelString
             Text(
                 modifier = Modifier.padding(vertical = 16.dp),
-                text = stringResource(id = cardLabel.labelResId),
+                text = fullText,
                 style = ProtonTheme.typography.body2Regular,
             )
         }

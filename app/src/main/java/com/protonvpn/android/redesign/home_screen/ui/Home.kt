@@ -100,6 +100,7 @@ import com.protonvpn.android.redesign.vpn.ui.ChangeServerViewState
 import com.protonvpn.android.redesign.vpn.ui.VpnStatusBottom
 import com.protonvpn.android.redesign.vpn.ui.VpnStatusTop
 import com.protonvpn.android.redesign.vpn.ui.VpnStatusViewState
+import com.protonvpn.android.vpn.pause.VpnPauseState
 import com.protonvpn.android.redesign.vpn.ui.rememberVpnStateAnimationProgress
 import com.protonvpn.android.redesign.vpn.ui.vpnStatusOverlayBackground
 import com.protonvpn.android.telemetry.UpgradeSource
@@ -115,6 +116,7 @@ import com.protonvpn.android.utils.openUrl
 import com.protonvpn.android.vpn.ConnectTrigger
 import com.protonvpn.android.vpn.DisconnectTrigger
 import com.protonvpn.android.vpn.VpnErrorUIManager
+import com.protonvpn.android.vpn.pause.ui.VpnPauseBottomSheet
 import com.protonvpn.android.vpn.ui.LocalVpnUiDelegate
 import com.protonvpn.android.widget.ui.OnboardingWidgetBottomSheetContent
 import kotlinx.coroutines.flow.SharedFlow
@@ -190,6 +192,9 @@ fun HomeRoute(
         onDisconnect = remember(homeViewModel) {
             { homeViewModel.disconnect(DisconnectTrigger.ConnectionCard) }
         },
+        onPauseClicked = homeViewModel::openPauseDialog,
+        onResumePauseClicked = homeViewModel::resumeVpn,
+        onCancelPauseClicked = homeViewModel::cancelPause,
         onChangeServerClick = { homeViewModel.changeServer(vpnUiDelegate) },
         onChangeServerUpgradeButtonShown = homeViewModel::onChangeServerUpgradeButtonShown,
         onChangeServerUpgradeClick = {
@@ -226,16 +231,29 @@ fun HomeRoute(
         )
     }
 
+    val showPauseDialog = homeViewModel.showPauseDialog.collectAsStateWithLifecycle().value
+    if (showPauseDialog) {
+        VpnPauseBottomSheet(
+            onDismissRequest = homeViewModel::dismissPauseDialog,
+            onPauseConfirmed = homeViewModel::pauseVpn,
+        )
+    }
+    val vpnPauseState = homeViewModel.vpnPauseState.collectAsStateWithLifecycle().value
+
     activityViewModel.navEventsFlow.collectAsEffect { navEvent ->
         when (navEvent) {
             is MainNavEvent.OnNavigateToSubSettings -> {
                 onNavigateToSubSetting(navEvent.type)
+            }
+            is MainNavEvent.OpenPauseDialog -> {
+                homeViewModel.openPauseDialog()
             }
         }
     }
 
     HomeView(
         vpnState = vpnStatusViewState,
+        vpnPauseState = vpnPauseState,
         mapState = mapState,
         dialogState = dialogState,
         upsellCarouselState = upsellCarouselState,
@@ -305,6 +323,7 @@ private val PromoOfferBannerState?.peekOffset get() = if (this?.isDismissible ==
 @Composable
 fun HomeView(
     vpnState: VpnStatusViewState,
+    vpnPauseState: VpnPauseState? = null,
     mapState: Pair<String, CountryHighlight>?,
     dialogState: DialogState?,
     upsellCarouselState: UpsellCarouselState?,
@@ -448,6 +467,9 @@ fun HomeView(
             state = vpnState,
             transitionValue = { vpnStateTransitionProgress.value },
             netShieldActions = netShieldActions,
+            vpnPauseState = vpnPauseState,
+            onResumePause = connectionCardComponent.onResumePauseClicked,
+            onCancelPause = connectionCardComponent.onCancelPauseClicked,
             modifier = Modifier
                 .widthIn(max = 480.dp)
                 .fillMaxWidth()
@@ -496,6 +518,9 @@ fun HomeView(
                     upsellContent = upsellCarouselContent,
                     onConnectClicked = connectionCardComponent.onConnect,
                     onDisconnectClicked = connectionCardComponent.onDisconnect,
+                    onPauseClicked = connectionCardComponent.onPauseClicked,
+                    onResumePauseClicked = connectionCardComponent.onResumePauseClicked,
+                    onCancelPauseClicked = connectionCardComponent.onCancelPauseClicked,
                     onOpenConnectionPanelClicked = connectionCardComponent.onConnectionCardClick,
                     onOpenDefaultConnection = onDefaultConnectionOpen,
                     onRecentClicked = recentsComponent.onRecentClickedAction,
@@ -615,6 +640,9 @@ data class ConnectionCardComponent(
     val changeServerState: ChangeServerViewState?,
     val onConnect: () -> Unit,
     val onDisconnect: () -> Unit,
+    val onPauseClicked: () -> Unit = {},
+    val onResumePauseClicked: () -> Unit = {},
+    val onCancelPauseClicked: () -> Unit = {},
     val onChangeServerClick: () -> Unit,
     val onChangeServerUpgradeButtonShown: () -> Unit,
     val onChangeServerUpgradeClick: () -> Unit,

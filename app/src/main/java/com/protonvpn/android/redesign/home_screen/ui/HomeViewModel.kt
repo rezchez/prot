@@ -73,6 +73,8 @@ import com.protonvpn.android.vpn.VpnErrorUIManager
 import com.protonvpn.android.vpn.VpnState
 import com.protonvpn.android.vpn.VpnStatusProviderUI
 import com.protonvpn.android.vpn.VpnUiDelegate
+import com.protonvpn.android.vpn.pause.VpnPauseManager
+import com.protonvpn.android.vpn.pause.VpnPauseState
 import com.protonvpn.android.widget.WidgetAdoptionUiType
 import com.protonvpn.android.widget.WidgetManager
 import dagger.Reusable
@@ -117,7 +119,7 @@ class SetNetShield @Inject constructor(
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    savedStateHandle: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle,
     recentsListViewStateFlow: RecentsListViewStateFlow,
     private val recentsManager: RecentsManager,
     private val uiStateStorage: UiStateStorage,
@@ -142,6 +144,7 @@ class HomeViewModel @Inject constructor(
     private val trafficMonitor: TrafficMonitor,
     private val promptTelemetry: VpnProductPromptTelemetry,
     private val currentUser: CurrentUser,
+    private val vpnPauseManager: VpnPauseManager,
 ) : ViewModel(), DefaultLifecycleObserver {
 
     private val connectionMapHighlightsFlow = vpnStatusProviderUI.uiStatus.map {
@@ -320,6 +323,30 @@ class HomeViewModel @Inject constructor(
 
     private var dialogState by savedStateHandle.state<DialogState?>(null, DialogStateKey)
     val dialogStateFlow = savedStateHandle.getStateFlow<DialogState?>(DialogStateKey, null)
+
+    val showPauseDialog = savedStateHandle.getStateFlow("show_pause_dialog", false)
+    val vpnPauseState: StateFlow<VpnPauseState> = vpnPauseManager.pauseState
+
+    fun openPauseDialog() {
+        savedStateHandle["show_pause_dialog"] = true
+    }
+
+    fun dismissPauseDialog() {
+        savedStateHandle["show_pause_dialog"] = false
+    }
+
+    fun pauseVpn(durationMs: Long) {
+        dismissPauseDialog()
+        vpnPauseManager.pauseVpn(durationMs)
+    }
+
+    fun resumeVpn() {
+        vpnPauseManager.resumeVpn()
+    }
+
+    fun cancelPause() {
+        vpnPauseManager.cancelPause()
+    }
 
     private val _eventFlow = MutableSharedFlow<Event>(extraBufferCapacity = 1)
 

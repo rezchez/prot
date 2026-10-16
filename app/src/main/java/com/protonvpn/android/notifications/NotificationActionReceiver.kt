@@ -46,12 +46,26 @@ class NotificationActionReceiver : BroadcastReceiver() {
     @Inject lateinit var vpnConnectionManager: VpnConnectionManager
     @Inject lateinit var notificationHelper: NotificationHelper
     @Inject lateinit var userSettingsManager: CurrentUserLocalSettingsManager
+    @Inject lateinit var vpnPauseManager: com.protonvpn.android.vpn.pause.VpnPauseManager
+    @Inject lateinit var createLaunchIntent: com.protonvpn.android.redesign.app.ui.CreateLaunchIntent
 
     override fun onReceive(context: Context?, intent: Intent?) {
         when (intent?.action) {
             DISCONNECT_ACTION -> {
                 ProtonLogger.log(UiDisconnect, "notification")
                 vpnConnectionManager.disconnect(DisconnectTrigger.Notification("user via notification"))
+            }
+            PAUSE_ACTION -> {
+                val launchIntent = createLaunchIntent.forNotification().apply {
+                    putExtra(NotificationHelper.EXTRA_OPEN_PAUSE_DIALOG, true)
+                }
+                context?.startActivity(launchIntent)
+            }
+            RESUME_PAUSE_ACTION -> {
+                vpnPauseManager.resumeVpn()
+            }
+            CANCEL_PAUSE_ACTION -> {
+                vpnPauseManager.cancelPause()
             }
             SMART_PROTOCOL_ACTION -> {
                 val connectIntentData = intent.getSerializableExtra(EXTRA_SWITCH_INTENT) as ConnectIntentData
@@ -75,6 +89,9 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
     companion object {
         const val DISCONNECT_ACTION = "DISCONNECT_ACTION"
+        const val PAUSE_ACTION = "PAUSE_ACTION"
+        const val RESUME_PAUSE_ACTION = "RESUME_PAUSE_ACTION"
+        const val CANCEL_PAUSE_ACTION = "CANCEL_PAUSE_ACTION"
         const val SMART_PROTOCOL_ACTION = "SMART_PROTOCOL_ACTION"
         const val EXTRA_SWITCH_INTENT = "SWITCH_INFORMATION"
 

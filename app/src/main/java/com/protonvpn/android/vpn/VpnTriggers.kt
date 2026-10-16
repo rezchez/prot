@@ -73,6 +73,8 @@ sealed class ConnectTrigger(statsKeyword: ConnectStatsKeyword, val description: 
     class Widget(description: String) : ConnectTrigger(ConnectStatsKeyword.WIDGET, description)
     // Fallback doesn't send an abort event for connection being established, instead it preserves the original trigger.
     class Fallback(description: String) : ConnectTrigger(ConnectStatsKeyword.AUTO, description)
+    class Pause(description: String = "pause expired") : ConnectTrigger(ConnectStatsKeyword.AUTO, description)
+    class Test(description: String = "test") : ConnectTrigger(ConnectStatsKeyword.AUTO, description)
 
     val statsName = statsKeyword.name.lowercase()
 }
@@ -99,6 +101,7 @@ sealed class DisconnectTrigger(
     object ServiceDestroyed : DisconnectTrigger(DisconnectStatsKeyword.AUTO, "VPN service destroyed")
     class Test(description: String = "test") : DisconnectTrigger(DisconnectStatsKeyword.AUTO, description)
     object Widget : DisconnectTrigger(DisconnectStatsKeyword.WIDGET, "widget")
+    object Pause : DisconnectTrigger(DisconnectStatsKeyword.AUTO, "vpn paused by user")
 
     val statsName = statsKeyword.name.lowercase()
 }

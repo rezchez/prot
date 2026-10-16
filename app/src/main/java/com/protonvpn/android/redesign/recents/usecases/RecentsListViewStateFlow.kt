@@ -75,6 +75,7 @@ class RecentsListViewStateFlow @Inject constructor(
     changeServerManager: ChangeServerManager,
     currentUser: CurrentUser,
     observeConnectionFeedbackViewState: ObserveConnectionFeedbackViewState,
+    private val vpnPauseManager: com.protonvpn.android.vpn.pause.VpnPauseManager,
 ): Flow<RecentsListViewState> {
     // Used on clean installations.
     private val defaultConnectIntent = ConnectIntent.Default
@@ -105,15 +106,16 @@ class RecentsListViewStateFlow @Inject constructor(
     private val viewState: Flow<RecentsListViewState> =
         dataFlow.flatMapLatestNotNull { data ->
             val (vpnUser, recents, mostRecent) = data
+            val statusAndPauseFlow = combine(vpnStatusProvider.uiStatus, vpnPauseManager.pauseState) { status, pause -> status to pause }
             combine(
-                vpnStatusProvider.uiStatus,
+                statusAndPauseFlow,
                 changeServerManager.isChangingServer,
                 serverManager.serverListVersion, // Update whenever servers change.
                 userSettings.effectiveSettings,
                 observeDefaultConnection(vpnUser),
                 getSmartProtocols.observe(),
                 observeConnectionFeedbackViewState(),
-            ) { status, isChangingServer, _, settings, defaultConnection, smartProtocols, connectionFeedbackViewState ->
+            ) { (status, pauseState), isChangingServer, _, settings, defaultConnection, smartProtocols, connectionFeedbackViewState ->
                 val connectedIntent = status.connectIntent?.takeIf { status.state.isConnectedOrConnecting() }
                 val connectedServer = status.server?.takeIf { status.state.isConnectedOrConnecting() }
 
@@ -143,6 +145,7 @@ class RecentsListViewStateFlow @Inject constructor(
                         showFreeCountriesInformationPanel = vpnUser.isFreeUser && status.state == VpnState.Disabled,
                         isFreeUser = vpnUser.isFreeUser,
                         connectionFeedbackViewState = connectionFeedbackViewState,
+                        pauseState = pauseState,
                     ),
                     createRecentsViewState(
                         recents,
@@ -209,9 +212,12 @@ class RecentsListViewStateFlow @Inject constructor(
         showFreeCountriesInformationPanel: Boolean,
         isFreeUser: Boolean,
         connectionFeedbackViewState: ConnectionFeedbackViewState,
+        pauseState: com.protonvpn.android.vpn.pause.VpnPauseState,
     ): VpnConnectionCardViewState {
+        val isPaused = pauseState.isPaused
         @StringRes
         val buttonLabelRes: Int = when {
+            isPaused -> R.string.vpn_pause_resume_button
             vpnState.isEstablishingConnection && isChangingServer -> R.string.disconnect
             vpnState.isEstablishingConnection -> R.string.cancel
             vpnState is VpnState.Connected -> R.string.disconnect
@@ -219,6 +225,16 @@ class RecentsListViewStateFlow @Inject constructor(
         }
 
         val cardLabel: CardLabel = when {
+            isPaused -> {
+                val min = pauseState.remainingSeconds / 60
+                val sec = pauseState.remainingSeconds % 60
+                val timeStr = if (min > 0) "${min}m ${sec}s" else "${sec}s"
+                CardLabel.ConnectionStatus(
+                    labelResId = R.string.vpn_pause_status,
+                    customText = timeStr,
+                )
+            }
+
             vpnState is VpnState.Connected -> {
                 CardLabel.ConnectionStatus(
                     labelResId = R.string.connection_card_label_connected,
@@ -249,9 +265,12 @@ class RecentsListViewStateFlow @Inject constructor(
             connectIntentViewState = connectionCardIntentViewState,
             cardLabel = cardLabel,
             mainButtonLabelRes = buttonLabelRes,
-            canOpenConnectionPanel = vpnState is VpnState.Connected,
-            canOpenFreeCountriesPanel = showFreeCountriesInformationPanel,
-            isConnectedOrConnecting = vpnState.isConnectedOrConnecting(),
+            canOpenConnectionPanel = vpnState is VpnState.Connected && !isPaused,
+            canOpenFreeCountriesPanel = showFreeCountriesInformationPanel && !isPaused,
+            isConnectedOrConnecting = vpnState.isConnectedOrConnecting() && !isPaused,
+            canPause = vpnState is VpnState.Connected && !isChangingServer && !isPaused,
+            isPaused = isPaused,
+            remainingPauseSeconds = pauseState.remainingSeconds,
         )
     }
 }

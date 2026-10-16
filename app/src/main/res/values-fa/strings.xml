@@ -1924,6 +1924,77 @@
     <string name="ping_test_button_start">تست اتصال</string>
     <string name="ping_test_button_stop">لغو تست</string>
     <string name="ping_test_status_testing">در حال تست سرورها…</string>
-    <string name="ping_test_status_idle">برای بررسی سرورهای در دسترس دکمه تست اتصال را بزنید</string>
     <string name="ping_test_no_available_servers">هیچ سرور قابل اتصالی با اینترنت فعلی پیدا نشد.</string>
+
+    <!-- VPN Pause Feature -->
+    <string name="vpn_pause_button">توقف موقت</string>
+    <string name="vpn_pause_title">توقف موقت VPN</string>
+    <string name="vpn_pause_subtitle">قطع موقت اتصال و وصل خودکار پس از:</string>
+    <string name="vpn_pause_15m">۱۵ دقیقه</string>
+    <string name="vpn_pause_30m">۳۰ دقیقه</string>
+    <string name="vpn_pause_45m">۴۵ دقیقه</string>
+    <string name="vpn_pause_1h">۱ ساعت</string>
+    <string name="vpn_pause_custom">مدت زمان دلخواه</string>
+    <string name="vpn_pause_custom_hint">مدت به دقیقه (۱ تا ۱۴۴۰)</string>
+    <string name="vpn_pause_custom_error">لطفاً عددی معتبر بین ۱ تا ۱۴۴۰ دقیقه وارد کنید.</string>
+    <string name="vpn_pause_confirm">توقف موقت</string>
+    <string name="vpn_pause_status">VPN موقتاً متوقف شده</string>
+    <string name="vpn_pause_resumes_in">اتصال مجدد در %s</string>
+    <string name="vpn_pause_resume_button">اتصال مجدد</string>
+    <string name="vpn_pause_cancel_button">لغو توقف موقت</string>
+    <string name="vpn_pause_notification_action">توقف موقت</string>
+    <string name="vpn_pause_notification_title">VPN موقتاً متوقف شد</string>
+    <string name="vpn_pause_notification_text">اتصال مجدد خودکار در %s</string>
+
+    <!-- Ping Test Redesign -->
+    <string name="ping_test_attempts_label">تعداد تلاش اتصال برای هر سرور</string>
+    <string name="ping_test_attempts_error">لطفاً عددی بین ۱ تا ۱۰ وارد کنید</string>
+    <string name="ping_test_confirm_title">شروع تست اتصال سرورها</string>
+    <string name="ping_test_confirm_message">در این تست، اتصال واقعی VPN به صورت ترتیبی به همه سرورها بررسی خواهد شد. افزایش دفعات تلاش زمان تست و مصرف باتری را افزایش می‌دهد. توصیه می‌شود برنامه را در حین تست باز نگه دارید.\n\n%1$s</string>
+    <string name="ping_test_confirm_active_vpn_warning">توجه: اتصال فعال فعلی شما موقتاً در حین تست قطع خواهد شد.</string>
+    <string name="ping_test_estimated_time">زمان تقریبی تست: حدود %s</string>
+    <string name="ping_test_summary_format">تست پایان یافت: %1$d سرور متصل، %2$d ناموفق (از مجموع %3$d سرور)</string>
+    <string name="ping_test_section_working">سرورهای متصل و سالم</string>
+    <string name="ping_test_section_all">همه سرورها</string>
+    <string name="ping_test_status_working">سالم</string>
+    <string name="ping_test_status_failed">ناموفق</string>
+    <string name="ping_test_status_testing_server">در حال تست: %1$s (تلاش %2$d/%3$d)…</string>
+    <string name="ping_test_status_teardown">در حال قطع اتصال آزمایشی…</string>
+    <string name="ping_test_historical_tag">قبلی</string>
+
+    <!-- VPN Sharing Bottom Navigation -->
+    <string name="bottom_nav_vpn_sharing">اشتراک‌گذاری VPN</string>
+
+    <!-- Backup and Restore -->
+    <string name="settings_backup_restore_title">پشتیبان‌گیری و بازیابی</string>
+    <string name="settings_backup_restore_subtitle">پشتیبان‌گیری و بازگردانی تنظیمات برنامه و سرورهای پروفایل</string>
+    <string name="backup_create_title">ایجاد فایل پشتیبان</string>
+    <string name="backup_create_desc">خروجی گرفتن از تنظیمات برنامه، تنظیمات اشتراک‌گذاری پروکسی و تمام سرورهای موجود در پروفایل‌ها.</string>
+    <string name="backup_export_button">اشتراک‌گذاری / خروجی فایل پشتیبان</string>
+    <string name="backup_copy_button">کپی کردن کد JSON پشتیبان</string>
+    <string name="backup_copied_toast">کد پشتیبان در کلیپ‌بورد کپی شد</string>
+    <string name="backup_restore_title">بازیابی فایل پشتیبان</string>
+    <string name="backup_restore_desc">بازگردانی تنظیمات و سرورهای پروفایل از طریق فایل یا متن JSON.</string>
+    <string name="backup_restore_from_file">انتخاب فایل پشتیبان</string>
+    <string name="backup_paste_and_restore">جای‌گذاری متن JSON و بازیابی</string>
+    <string name="backup_restore_success">پشتیبان با موفقیت بازیابی شد! %1$d سرور پروفایل به‌روزرسانی شدند.</string>
+    <string name="backup_restore_error">خطا در بازیابی فایل پشتیبان: %1$s</string>
+
+    <!-- Connected Devices in VPN Sharing -->
+    <string name="settings_proxy_sharing_connected_devices_title">دستگاه‌های متصل</string>
+    <string name="settings_proxy_sharing_connected_devices_empty">هنوز هیچ دستگاهی متصل نشده است</string>
+    <string name="settings_proxy_sharing_connected_devices_empty_desc">دستگاه‌هایی که به این پروکسی متصل شوند همراه با آمار لحظه‌ای و امکانات مدیریتی در اینجا نمایش داده خواهند شد.</string>
+    <string name="settings_proxy_sharing_device_active">متصل</string>
+    <string name="settings_proxy_sharing_device_inactive">قطع</string>
+    <string name="settings_proxy_sharing_device_blocked">مسدود شده</string>
+    <string name="settings_proxy_sharing_device_block_action">مسدودسازی</string>
+    <string name="settings_proxy_sharing_device_unblock_action">رفع مسدودی</string>
+    <string name="settings_proxy_sharing_device_rename">تغییر نام</string>
+    <string name="settings_proxy_sharing_device_daily_limit">محدودیت حجم روزانه</string>
+    <string name="settings_proxy_sharing_device_no_limit">بدون محدودیت</string>
+    <string name="settings_proxy_sharing_device_limit_exceeded">حجم روزانه به پایان رسیده</string>
+    <string name="settings_proxy_sharing_device_duration">مدت اتصال</string>
+    <string name="settings_proxy_sharing_device_rename_dialog_title">تغییر نام دستگاه</string>
+    <string name="settings_proxy_sharing_device_limit_dialog_title">تعیین سقف حجم روزانه</string>
+    <string name="settings_proxy_sharing_device_limit_dialog_desc">حداکثر ترافیک مجاز روزانه برای این دستگاه را مشخص کنید. پس از اتمام، اینترنت پروکسی تا بامداد قطع خواهد شد.</string>
 </resources>

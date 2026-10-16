@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -24,14 +25,28 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
+import androidx.compose.material3.TabRowDefaults
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,6 +54,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -49,167 +65,308 @@ import com.protonvpn.android.base.ui.ProtonOutlinedButton
 import com.protonvpn.android.base.ui.ProtonSolidButton
 import com.protonvpn.android.redesign.CountryId
 import com.protonvpn.android.redesign.base.ui.Flag
-import com.protonvpn.android.utils.CountryTools
+import com.protonvpn.android.redesign.base.ui.ProtonAlert
 import com.protonvpn.android.vpn.ui.LocalVpnUiDelegate
 import me.proton.core.compose.theme.ProtonTheme
-import me.proton.core.compose.theme.captionNorm
-import me.proton.core.compose.theme.defaultNorm
-import me.proton.core.compose.theme.defaultSmallWeak
-import me.proton.core.compose.theme.headlineSmall
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PingTestScreen(
+    modifier: Modifier = Modifier,
+    onClose: (() -> Unit)? = null,
     viewModel: PingTestViewModel = hiltViewModel()
 ) {
     val state by viewModel.uiState.collectAsState()
     val vpnUiDelegate = LocalVpnUiDelegate.current
 
+    // Confirmation Dialog before starting test (Requirement 2.6)
+    if (state.showConfirmDialog) {
+        val message = buildString {
+            append("This will perform sequential real VPN connection tests on each server.\n\n")
+            append("• Approximate estimated duration: ${state.estimatedDurationText}\n")
+            append("• Testing servers sequentially (${state.totalCount} servers total)\n")
+            append("• Attempts per server: ${state.attemptsPerServer}\n")
+            if (state.hasActiveVpn) {
+                append("• Warning: Your current VPN connection will be temporarily disconnected during testing.\n")
+            }
+            append("• Battery consumption may increase during extended testing.\n")
+            append("• Keeping the application open is recommended for the most reliable testing.")
+        }
+
+        ProtonAlert(
+            title = stringResource(R.string.ping_test_confirm_title),
+            text = message,
+            confirmLabel = "Start",
+            onConfirm = { viewModel.onConfirmStart() },
+            dismissLabel = "Cancel",
+            onDismissRequest = { viewModel.onConfirmDialogDismiss() }
+        )
+    }
+
+    // Country selection bottom sheet
+    if (state.showCountryFilterSheet) {
+        CountryFilterBottomSheet(
+            state = state,
+            onDismiss = { viewModel.onShowCountryFilter(false) },
+            onToggleCountry = viewModel::onToggleCountry,
+            onSelectAll = viewModel::onSelectAllCountries
+        )
+    }
+
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(ProtonTheme.colors.backgroundNorm)
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 16.dp, vertical = 12.dp)
     ) {
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Screen Header with Title & Feature Badges
+        // Top Header
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column {
-                Text(
-                    text = "Secure Core Ping Test",
-                    style = ProtonTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "Stealth Protocol • Cloudflare (1.1.1.1) Trace",
-                    style = ProtonTheme.typography.captionNorm,
-                    color = ProtonTheme.colors.textWeak,
-                    modifier = Modifier.padding(top = 2.dp)
-                )
-            }
+            Text(
+                text = stringResource(R.string.ping_test_title),
+                style = ProtonTheme.typography.headline,
+                fontWeight = FontWeight.Bold,
+                color = ProtonTheme.colors.textNorm
+            )
 
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(6.dp))
-                    .background(ProtonTheme.colors.brandNorm.copy(alpha = 0.15f))
-                    .padding(horizontal = 8.dp, vertical = 4.dp)
-            ) {
-                Text(
-                    text = "STEALTH",
-                    style = ProtonTheme.typography.captionNorm,
-                    color = ProtonTheme.colors.brandNorm,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 11.sp
-                )
+            if (onClose != null) {
+                ProtonOutlinedButton(
+                    onClick = onClose,
+                    modifier = Modifier.height(36.dp)
+                ) {
+                    Text(
+                        text = "Close",
+                        style = ProtonTheme.typography.body2Medium,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
             }
         }
 
-        Spacer(modifier = Modifier.height(14.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
-        // Summary Statistics Card
-        PingSummaryCard(state = state)
+        // Summary Card
+        ServerTestSummaryCard(state)
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
-        // Test Action Controls (Start / Cancel / Live Step Progress)
-        if (state.isTesting) {
+        // Configuration & Action Card
+        Card(
+            shape = RoundedCornerShape(12.dp),
+            colors = CardDefaults.cardColors(containerColor = ProtonTheme.colors.backgroundSecondary),
+            modifier = Modifier.fillMaxWidth()
+        ) {
             Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(14.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = state.currentTestingServer?.displayName ?: "Testing Secure Core...",
-                            style = ProtonTheme.typography.defaultNorm,
-                            fontWeight = FontWeight.SemiBold,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                        Text(
-                            text = state.currentStepDescription ?: "Connecting via Stealth...",
-                            style = ProtonTheme.typography.captionNorm,
-                            color = ProtonTheme.colors.brandNorm
+                if (!state.isTesting) {
+                    // Country Selection Row
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(ProtonTheme.colors.backgroundNorm)
+                            .clickable { viewModel.onShowCountryFilter(true) }
+                            .padding(horizontal = 12.dp, vertical = 10.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = "Test Countries",
+                                style = ProtonTheme.typography.body1Medium,
+                                fontWeight = FontWeight.Medium
+                            )
+                            Text(
+                                text = state.selectedCountriesSummary,
+                                style = ProtonTheme.typography.captionRegular,
+                                color = ProtonTheme.colors.brandNorm
+                            )
+                        }
+
+                        ProtonOutlinedButton(
+                            onClick = { viewModel.onShowCountryFilter(true) },
+                            modifier = Modifier.height(32.dp)
+                        ) {
+                            Text(
+                                text = "Select",
+                                style = ProtonTheme.typography.body2Medium,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                    }
+
+                    // Connection Attempts Input
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = "Connection Attempts per Server",
+                                style = ProtonTheme.typography.body1Medium,
+                                fontWeight = FontWeight.Medium
+                            )
+                            if (state.attemptsError != null) {
+                                Text(
+                                    text = state.attemptsError!!,
+                                    style = ProtonTheme.typography.captionRegular,
+                                    color = ProtonTheme.colors.notificationError,
+                                    modifier = Modifier.padding(top = 2.dp)
+                                )
+                            }
+                        }
+
+                        OutlinedTextField(
+                            value = state.attemptsInputText,
+                            onValueChange = viewModel::onAttemptsChanged,
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            singleLine = true,
+                            isError = state.attemptsError != null,
+                            modifier = Modifier
+                                .width(70.dp)
+                                .height(52.dp)
                         )
                     }
 
-                    Text(
-                        text = "${state.testedCount} / ${state.totalCount} (${state.progressPercent}%)",
-                        style = ProtonTheme.typography.captionNorm,
-                        fontFamily = FontFamily.Monospace,
-                        color = ProtonTheme.colors.textWeak
-                    )
-                }
+                    ProtonSolidButton(
+                        onClick = { viewModel.onStartClicked() },
+                        enabled = state.attemptsError == null && state.totalCount > 0,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(
+                            text = "Start Test (${state.totalCount} Servers)",
+                            style = ProtonTheme.typography.body1Medium,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                } else {
+                    // Ongoing test progress
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = state.currentTestingServer?.displayName ?: "Testing...",
+                                style = ProtonTheme.typography.body1Medium,
+                                fontWeight = FontWeight.SemiBold,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                            Text(
+                                text = state.currentStepDescription ?: "Connecting...",
+                                style = ProtonTheme.typography.captionRegular,
+                                color = if (state.isPaused) ProtonTheme.colors.notificationWarning else ProtonTheme.colors.brandNorm
+                            )
+                        }
 
-                LinearProgressIndicator(
-                    progress = { if (state.totalCount > 0) state.testedCount.toFloat() / state.totalCount.toFloat() else 0f },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(6.dp)
-                        .clip(RoundedCornerShape(3.dp)),
-                    color = ProtonTheme.colors.brandNorm,
-                    trackColor = ProtonTheme.colors.backgroundSecondary
-                )
+                        Text(
+                            text = "${state.testedCount} / ${state.totalCount} (${state.progressPercent}%)",
+                            style = ProtonTheme.typography.captionRegular,
+                            fontFamily = FontFamily.Monospace,
+                            color = ProtonTheme.colors.textWeak
+                        )
+                    }
 
-                ProtonOutlinedButton(
-                    onClick = { viewModel.cancelTest() },
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = "Stop Test",
-                        style = ProtonTheme.typography.defaultNorm,
-                        fontWeight = FontWeight.Bold
+                    LinearProgressIndicator(
+                        progress = { if (state.totalCount > 0) state.testedCount.toFloat() / state.totalCount.toFloat() else 0f },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(6.dp)
+                            .clip(RoundedCornerShape(3.dp)),
+                        color = if (state.isPaused) ProtonTheme.colors.notificationWarning else ProtonTheme.colors.brandNorm,
+                        trackColor = ProtonTheme.colors.backgroundNorm
                     )
+
+                    // Control actions: Pause / Resume & Stop
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        ProtonSolidButton(
+                            onClick = {
+                                if (state.isPaused) viewModel.onResumeClicked()
+                                else viewModel.onPauseClicked()
+                            },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Text(
+                                text = if (state.isPaused) "Resume Test" else "Pause Test",
+                                style = ProtonTheme.typography.body1Medium,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+
+                        ProtonOutlinedButton(
+                            onClick = { viewModel.onCancelClicked() },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Text(
+                                text = "Stop Test",
+                                style = ProtonTheme.typography.body1Medium,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                    }
                 }
             }
-        } else {
-            ProtonSolidButton(
-                onClick = { viewModel.startTest(vpnUiDelegate) },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(
-                    text = "Test Connection (Stealth)",
-                    style = ProtonTheme.typography.defaultNorm,
-                    fontWeight = FontWeight.Bold
+        }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // Tabs: Working Servers vs All Servers
+        TabRow(
+            selectedTabIndex = state.selectedTab.ordinal,
+            containerColor = ProtonTheme.colors.backgroundNorm,
+            contentColor = ProtonTheme.colors.brandNorm,
+            indicator = { tabPositions ->
+                TabRowDefaults.SecondaryIndicator(
+                    Modifier.tabIndicatorOffset(tabPositions[state.selectedTab.ordinal]),
+                    color = ProtonTheme.colors.brandNorm
                 )
             }
+        ) {
+            Tab(
+                selected = state.selectedTab == PingTestTab.WORKING,
+                onClick = { viewModel.onTabSelected(PingTestTab.WORKING) },
+                text = {
+                    Text(
+                        text = "Working (${state.workingServers.size})",
+                        fontWeight = if (state.selectedTab == PingTestTab.WORKING) FontWeight.Bold else FontWeight.Normal
+                    )
+                }
+            )
+            Tab(
+                selected = state.selectedTab == PingTestTab.ALL,
+                onClick = { viewModel.onTabSelected(PingTestTab.ALL) },
+                text = {
+                    Text(
+                        text = "All Servers (${state.allServers.size})",
+                        fontWeight = if (state.selectedTab == PingTestTab.ALL) FontWeight.Bold else FontWeight.Normal
+                    )
+                }
+            )
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
-        // Server List Section Header
-        val listTitle = if (state.isTesting) {
-            "Testing Secure Core Servers..."
-        } else if (state.availableSortedItems.isNotEmpty()) {
-            "Available Servers (${state.availableSortedItems.size}) - Lowest Ping First"
+        // Server List Content
+        val currentList = if (state.selectedTab == PingTestTab.WORKING) {
+            state.workingServers
         } else {
-            "Secure Core Servers"
+            state.allServers
         }
 
-        Text(
-            text = listTitle.uppercase(),
-            style = ProtonTheme.typography.captionNorm,
-            color = ProtonTheme.colors.textWeak,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-
-        // Server List
-        val displayItems = if (state.isTesting) {
-            state.allTestedItems
-        } else {
-            state.availableSortedItems
-        }
-
-        if (displayItems.isEmpty()) {
+        if (currentList.isEmpty()) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -220,12 +377,15 @@ fun PingTestScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = if (state.lastTestTime != null) {
-                        "No reachable Secure Core servers found via Stealth on the current network."
+                    text = if (state.selectedTab == PingTestTab.WORKING) {
+                        if (state.isTesting) "Testing servers sequentially..."
+                        else if (state.lastTestTime != null) "No servers successfully connected during the test."
+                        else "Press 'Start Test' to sequentially verify server connections."
                     } else {
-                        "Click 'Test Connection' to test all Secure Core servers via Stealth and measure latency to Cloudflare."
+                        "No servers available to display."
                     },
-                    style = ProtonTheme.typography.defaultSmallWeak,
+                    style = ProtonTheme.typography.body2Regular,
+                    color = ProtonTheme.colors.textWeak,
                     textAlign = TextAlign.Center
                 )
             }
@@ -238,13 +398,15 @@ fun PingTestScreen(
                 contentPadding = PaddingValues(bottom = 16.dp)
             ) {
                 items(
-                    items = displayItems,
+                    items = currentList,
                     key = { it.server.serverId }
                 ) { item ->
-                    SecureCoreServerItemRow(
+                    ServerTestItemRow(
                         item = item,
                         isConnected = state.activeConnectedServerId == item.server.serverId,
-                        onConnectClick = { viewModel.connectToSecureCore(vpnUiDelegate, item.server) }
+                        isProfileSaved = state.savedProfileServerIds.contains(item.server.serverId),
+                        onConnectClick = { viewModel.onConnectToServer(vpnUiDelegate, item.server) },
+                        onAddToProfileClick = { viewModel.onAddServerToProfile(item.server) }
                     )
                 }
             }
@@ -252,20 +414,135 @@ fun PingTestScreen(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PingSummaryCard(state: PingTestUiState) {
+private fun CountryFilterBottomSheet(
+    state: PingTestUiState,
+    onDismiss: () -> Unit,
+    onToggleCountry: (String) -> Unit,
+    onSelectAll: () -> Unit,
+) {
+    var searchQuery by remember { mutableStateOf("") }
+    val filteredCountries = remember(state.availableCountries, searchQuery) {
+        if (searchQuery.isBlank()) state.availableCountries
+        else state.availableCountries.filter {
+            it.countryName.contains(searchQuery, ignoreCase = true) ||
+                it.countryCode.contains(searchQuery, ignoreCase = true)
+        }
+    }
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        containerColor = ProtonTheme.colors.backgroundNorm,
+        dragHandle = { BottomSheetDefaults.DragHandle() }
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .padding(bottom = 24.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Select Countries for Ping Test",
+                    style = ProtonTheme.typography.body1Medium,
+                    fontWeight = FontWeight.Bold
+                )
+
+                TextButton(onClick = onSelectAll) {
+                    Text(
+                        text = if (state.selectedCountryCodes.isEmpty()) "Selected: All" else "Select All",
+                        style = ProtonTheme.typography.body2Medium,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+            }
+
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
+                placeholder = { Text("Search country...", style = ProtonTheme.typography.captionRegular) },
+                singleLine = true,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp)
+            )
+
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(max = 380.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                items(filteredCountries, key = { it.countryCode }) { country ->
+                    val isSelected = state.selectedCountryCodes.isEmpty() || state.selectedCountryCodes.contains(country.countryCode)
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(8.dp))
+                            .clickable { onToggleCountry(country.countryCode) }
+                            .padding(horizontal = 8.dp, vertical = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            Flag(
+                                exitCountry = CountryId(country.countryCode),
+                                modifier = Modifier
+                                    .size(24.dp)
+                                    .clip(CircleShape)
+                            )
+                            Text(
+                                text = country.countryName,
+                                style = ProtonTheme.typography.body1Regular,
+                                fontWeight = FontWeight.Medium
+                            )
+                            Text(
+                                text = "(${country.serverCount})",
+                                style = ProtonTheme.typography.captionRegular,
+                                color = ProtonTheme.colors.textWeak
+                            )
+                        }
+
+                        Checkbox(
+                            checked = isSelected,
+                            onCheckedChange = { onToggleCountry(country.countryCode) }
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            ProtonSolidButton(
+                onClick = onDismiss,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = "Apply (${state.totalCount} Servers)")
+            }
+        }
+    }
+}
+
+@Composable
+private fun ServerTestSummaryCard(state: PingTestUiState) {
     Card(
-        shape = RoundedCornerShape(14.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = ProtonTheme.colors.backgroundSecondary
-        ),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = ProtonTheme.colors.backgroundSecondary),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(14.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -274,14 +551,14 @@ private fun PingSummaryCard(state: PingTestUiState) {
             ) {
                 Text(
                     text = "Test Statistics",
-                    style = ProtonTheme.typography.defaultNorm,
+                    style = ProtonTheme.typography.body1Medium,
                     fontWeight = FontWeight.SemiBold
                 )
 
                 if (state.lastTestTime != null) {
                     Text(
                         text = "Last: ${state.lastTestTime}",
-                        style = ProtonTheme.typography.captionNorm,
+                        style = ProtonTheme.typography.captionRegular,
                         color = ProtonTheme.colors.textWeak,
                         fontSize = 11.sp
                     )
@@ -293,24 +570,24 @@ private fun PingSummaryCard(state: PingTestUiState) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 StatMetric(
-                    label = "Secure Core",
+                    label = "Total Servers",
                     value = "${state.totalCount}",
                     color = ProtonTheme.colors.textNorm
                 )
                 StatMetric(
+                    label = "Working",
+                    value = "${state.workingCount}",
+                    color = ProtonTheme.colors.notificationSuccess
+                )
+                StatMetric(
+                    label = "Failed",
+                    value = "${state.failedCount}",
+                    color = ProtonTheme.colors.notificationError
+                )
+                StatMetric(
                     label = "Tested",
                     value = "${state.testedCount}",
-                    color = ProtonTheme.colors.textNorm
-                )
-                StatMetric(
-                    label = "Available",
-                    value = "${state.availableCount}",
-                    color = Color(0xFF4CAF50)
-                )
-                StatMetric(
-                    label = "Unavailable",
-                    value = "${state.unavailableCount}",
-                    color = if (state.unavailableCount > 0) Color(0xFFE53935) else ProtonTheme.colors.textWeak
+                    color = ProtonTheme.colors.brandNorm
                 )
             }
         }
@@ -326,15 +603,13 @@ private fun StatMetric(
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = value,
-            style = ProtonTheme.typography.defaultNorm,
-            fontFamily = FontFamily.Monospace,
+            style = ProtonTheme.typography.body1Medium,
             fontWeight = FontWeight.Bold,
-            color = color,
-            fontSize = 16.sp
+            color = color
         )
         Text(
             text = label,
-            style = ProtonTheme.typography.captionNorm,
+            style = ProtonTheme.typography.captionRegular,
             color = ProtonTheme.colors.textWeak,
             fontSize = 11.sp
         )
@@ -342,237 +617,172 @@ private fun StatMetric(
 }
 
 @Composable
-private fun SecureCoreServerItemRow(
-    item: ServerPingItem,
+private fun ServerTestItemRow(
+    item: ServerTestItem,
     isConnected: Boolean,
-    onConnectClick: () -> Unit
+    isProfileSaved: Boolean,
+    onConnectClick: () -> Unit,
+    onAddToProfileClick: () -> Unit
 ) {
-    val server = item.server
-    val entryFullName = CountryTools.getFullName(server.entryCountry)
-    val exitFullName = CountryTools.getFullName(server.exitCountry)
+    val serverNumber = remember(item.server.serverName) {
+        val num = item.server.serverName.substringAfterLast('#', "")
+        if (num.isNotEmpty()) "#$num" else ""
+    }
 
     Card(
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = if (isConnected) ProtonTheme.colors.backgroundSecondary.copy(alpha = 0.8f)
-            else ProtonTheme.colors.backgroundSecondary
-        ),
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(enabled = item.status == ServerTestStatus.AVAILABLE) {
-                onConnectClick()
-            }
+        shape = RoundedCornerShape(10.dp),
+        colors = CardDefaults.cardColors(containerColor = ProtonTheme.colors.backgroundSecondary),
+        modifier = Modifier.fillMaxWidth()
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 14.dp, vertical = 10.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+                .padding(horizontal = 12.dp, vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            // Flags & Route Details
             Row(
+                modifier = Modifier.weight(1f),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
-                modifier = Modifier.weight(1f)
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                // Double Flag (Entry -> Exit)
                 Flag(
-                    exitCountry = CountryId(server.exitCountry),
-                    entryCountry = CountryId(server.entryCountry),
-                    modifier = Modifier.size(28.dp)
+                    exitCountry = CountryId(item.server.exitCountry),
+                    modifier = Modifier
+                        .size(28.dp)
+                        .clip(CircleShape)
                 )
 
-                Column(modifier = Modifier.padding(start = 2.dp)) {
-                    Text(
-                        text = "$entryFullName >> $exitFullName",
-                        style = ProtonTheme.typography.defaultNorm,
-                        fontWeight = FontWeight.SemiBold,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
+                Column {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
                         Text(
-                            text = server.serverName,
-                            style = ProtonTheme.typography.captionNorm,
-                            fontFamily = FontFamily.Monospace,
-                            color = ProtonTheme.colors.textWeak,
-                            fontSize = 11.sp
+                            text = item.server.displayName,
+                            style = ProtonTheme.typography.body1Medium,
+                            fontWeight = FontWeight.SemiBold,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
                         )
-                        Box(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(4.dp))
-                                .background(ProtonTheme.colors.backgroundNorm)
-                                .padding(horizontal = 4.dp, vertical = 1.dp)
-                        ) {
-                            Text(
-                                text = "Stealth",
-                                style = ProtonTheme.typography.captionNorm,
-                                color = ProtonTheme.colors.brandNorm,
-                                fontSize = 10.sp,
-                                fontWeight = FontWeight.Bold
-                            )
+
+                        // Distinctive server number badge
+                        if (serverNumber.isNotEmpty()) {
+                            Box(
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(4.dp))
+                                    .background(
+                                        if (item.status == ServerTestStatus.WORKING)
+                                            ProtonTheme.colors.brandNorm.copy(alpha = 0.2f)
+                                        else
+                                            ProtonTheme.colors.backgroundNorm
+                                    )
+                                    .padding(horizontal = 6.dp, vertical = 2.dp)
+                            ) {
+                                Text(
+                                    text = serverNumber,
+                                    style = ProtonTheme.typography.captionRegular,
+                                    fontWeight = FontWeight.Bold,
+                                    color = if (item.status == ServerTestStatus.WORKING)
+                                        ProtonTheme.colors.brandNorm
+                                    else
+                                        ProtonTheme.colors.textWeak,
+                                    fontSize = 11.sp
+                                )
+                            }
                         }
                     }
+
+                    val statusText = when (item.status) {
+                        ServerTestStatus.NOT_TESTED -> "Not tested"
+                        ServerTestStatus.TESTING -> "Testing (Attempt ${item.currentAttempt}/${item.maxAttempts})..."
+                        ServerTestStatus.WORKING -> {
+                            val timeStr = item.connectTimeMs?.let { "${it / 1000f}s" } ?: ""
+                            "Working • Connected in $timeStr"
+                        }
+                        ServerTestStatus.FAILED -> "Failed after ${item.maxAttempts} attempt(s)"
+                    }
+                    val statusColor = when (item.status) {
+                        ServerTestStatus.NOT_TESTED -> ProtonTheme.colors.textWeak
+                        ServerTestStatus.TESTING -> ProtonTheme.colors.brandNorm
+                        ServerTestStatus.WORKING -> ProtonTheme.colors.notificationSuccess
+                        ServerTestStatus.FAILED -> ProtonTheme.colors.notificationError
+                    }
+                    Text(
+                        text = statusText,
+                        style = ProtonTheme.typography.captionRegular,
+                        color = statusColor
+                    )
                 }
             }
 
-            // Status Badge & Connect Action
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                when (item.status) {
-                    ServerTestStatus.NOT_TESTED -> {
-                        Text(
-                            text = "Not tested",
-                            style = ProtonTheme.typography.captionNorm,
-                            color = ProtonTheme.colors.textWeak
-                        )
-                    }
-
-                    ServerTestStatus.TESTING_CONNECTING -> {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(4.dp)
+            // Right side: Status badge or actions (Connect + Add to Profile)
+            if (item.status == ServerTestStatus.TESTING) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(20.dp),
+                    strokeWidth = 2.dp,
+                    color = ProtonTheme.colors.brandNorm
+                )
+            } else if (item.status == ServerTestStatus.WORKING) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    // Add to profile action
+                    if (isProfileSaved) {
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(6.dp))
+                                .background(ProtonTheme.colors.notificationSuccess.copy(alpha = 0.15f))
+                                .padding(horizontal = 8.dp, vertical = 6.dp)
                         ) {
-                            CircularProgressIndicator(
-                                modifier = Modifier.size(12.dp),
-                                strokeWidth = 2.dp,
-                                color = ProtonTheme.colors.brandNorm
-                            )
                             Text(
-                                text = "Connecting...",
-                                style = ProtonTheme.typography.captionNorm,
-                                color = ProtonTheme.colors.brandNorm,
+                                text = "✓ Profile",
+                                style = ProtonTheme.typography.captionRegular,
+                                fontWeight = FontWeight.Bold,
+                                color = ProtonTheme.colors.notificationSuccess,
+                                fontSize = 11.sp
+                            )
+                        }
+                    } else {
+                        ProtonOutlinedButton(
+                            onClick = onAddToProfileClick,
+                            modifier = Modifier.height(34.dp)
+                        ) {
+                            Text(
+                                text = "+ Profile",
+                                style = ProtonTheme.typography.captionRegular,
+                                fontWeight = FontWeight.Medium,
                                 fontSize = 11.sp
                             )
                         }
                     }
 
-                    ServerTestStatus.TESTING_CLOUDFLARE -> {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    // Connect action
+                    if (isConnected) {
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(6.dp))
+                                .background(ProtonTheme.colors.notificationSuccess.copy(alpha = 0.2f))
+                                .padding(horizontal = 10.dp, vertical = 6.dp)
                         ) {
-                            CircularProgressIndicator(
-                                modifier = Modifier.size(12.dp),
-                                strokeWidth = 2.dp,
-                                color = Color(0xFFFFA000)
-                            )
                             Text(
-                                text = "Pinging 1.1.1.1...",
-                                style = ProtonTheme.typography.captionNorm,
-                                color = Color(0xFFFFA000),
+                                text = "CONNECTED",
+                                style = ProtonTheme.typography.captionRegular,
+                                fontWeight = FontWeight.Bold,
+                                color = ProtonTheme.colors.notificationSuccess,
                                 fontSize = 11.sp
                             )
                         }
-                    }
-
-                    ServerTestStatus.AVAILABLE -> {
-                        val ping = item.pingMs ?: 0L
-                        val pingColor = when {
-                            ping < 100 -> Color(0xFF4CAF50)
-                            ping < 200 -> Color(0xFFFFA000)
-                            else -> Color(0xFFE53935)
-                        }
-
-                        Box(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(6.dp))
-                                .background(pingColor.copy(alpha = 0.15f))
-                                .padding(horizontal = 8.dp, vertical = 4.dp)
+                    } else {
+                        ProtonSolidButton(
+                            onClick = onConnectClick,
+                            modifier = Modifier.height(34.dp)
                         ) {
                             Text(
-                                text = "$ping ms",
-                                style = ProtonTheme.typography.captionNorm,
-                                fontFamily = FontFamily.Monospace,
-                                color = pingColor,
-                                fontWeight = FontWeight.Bold
-                            )
-                        }
-
-                        if (isConnected) {
-                            Box(
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(6.dp))
-                                    .background(Color(0xFF4CAF50))
-                                    .padding(horizontal = 8.dp, vertical = 4.dp)
-                            ) {
-                                Text(
-                                    text = "Connected",
-                                    style = ProtonTheme.typography.captionNorm,
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 11.sp
-                                )
-                            }
-                        } else {
-                            Box(
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(6.dp))
-                                    .background(ProtonTheme.colors.brandNorm)
-                                    .clickable { onConnectClick() }
-                                    .padding(horizontal = 10.dp, vertical = 4.dp)
-                            ) {
-                                Text(
-                                    text = "Connect",
-                                    style = ProtonTheme.typography.captionNorm,
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 11.sp
-                                )
-                            }
-                        }
-                    }
-
-                    ServerTestStatus.TIMEOUT -> {
-                        Box(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(6.dp))
-                                .background(Color(0xFFE53935).copy(alpha = 0.12f))
-                                .padding(horizontal = 8.dp, vertical = 4.dp)
-                        ) {
-                            Text(
-                                text = "Timeout",
-                                style = ProtonTheme.typography.captionNorm,
-                                color = Color(0xFFE53935),
-                                fontWeight = FontWeight.SemiBold,
-                                fontSize = 11.sp
-                            )
-                        }
-                    }
-
-                    ServerTestStatus.UNAVAILABLE -> {
-                        Box(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(6.dp))
-                                .background(ProtonTheme.colors.backgroundNorm)
-                                .padding(horizontal = 8.dp, vertical = 4.dp)
-                        ) {
-                            Text(
-                                text = "Blocked",
-                                style = ProtonTheme.typography.captionNorm,
-                                color = ProtonTheme.colors.textWeak,
-                                fontSize = 11.sp
-                            )
-                        }
-                    }
-
-                    ServerTestStatus.ERROR -> {
-                        Box(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(6.dp))
-                                .background(Color(0xFFE53935).copy(alpha = 0.12f))
-                                .padding(horizontal = 8.dp, vertical = 4.dp)
-                        ) {
-                            Text(
-                                text = "Error",
-                                style = ProtonTheme.typography.captionNorm,
-                                color = Color(0xFFE53935),
+                                text = "Connect",
+                                style = ProtonTheme.typography.captionRegular,
+                                fontWeight = FontWeight.Bold,
                                 fontSize = 11.sp
                             )
                         }

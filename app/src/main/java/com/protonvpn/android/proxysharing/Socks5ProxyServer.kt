@@ -81,6 +81,16 @@ class Socks5ProxyServer(
     }
 
     private fun handleClient(clientSocket: Socket) {
+        val clientIp = (clientSocket.remoteSocketAddress as? InetSocketAddress)?.address?.hostAddress
+            ?: clientSocket.inetAddress?.hostAddress ?: "Unknown"
+
+        if (ConnectedDeviceManager.isBlocked(clientIp) || ConnectedDeviceManager.isDailyLimitExceeded(clientIp)) {
+            ProtonLogger.logCustom(LogCategory.CONN, "SOCKS5 connection rejected for blocked/limited client: $clientIp")
+            try { clientSocket.close() } catch (_: Exception) {}
+            return
+        }
+
+        ConnectedDeviceManager.recordClientConnected(clientIp)
         val currentCount = activeConnections.incrementAndGet()
         onConnectionChanged?.invoke(currentCount)
 
@@ -182,13 +192,23 @@ class Socks5ProxyServer(
                 clientSocket = clientSocket,
                 serverSocket = outboundSocket,
                 onBytesTransferred = onBytesTransferred,
-                onBytesUploaded = onBytesUploaded,
-                onBytesDownloaded = onBytesDownloaded
+                onBytesUploaded = { bytes ->
+                    onBytesUploaded?.invoke(bytes)
+                    ConnectedDeviceManager.recordTraffic(clientIp, downloaded = 0L, uploaded = bytes)
+                },
+                onBytesDownloaded = { bytes ->
+                    onBytesDownloaded?.invoke(bytes)
+                    ConnectedDeviceManager.recordTraffic(clientIp, downloaded = bytes, uploaded = 0L)
+                },
+                shouldAbort = {
+                    ConnectedDeviceManager.isBlocked(clientIp) || ConnectedDeviceManager.isDailyLimitExceeded(clientIp)
+                }
             )
         } catch (e: Exception) {
             ProtonLogger.logCustom(LogCategory.CONN, "SOCKS5 client error: ${e.message}")
             try { clientSocket.close() } catch (_: Exception) {}
         } finally {
+            ConnectedDeviceManager.recordClientDisconnected(clientIp)
             val count = activeConnections.decrementAndGet()
             onConnectionChanged?.invoke(count)
         }

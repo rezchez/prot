@@ -14,11 +14,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.withContext
-import java.io.BufferedReader
-import java.io.InputStreamReader
 import java.net.InetSocketAddress
 import java.net.Socket
-import java.util.concurrent.ConcurrentHashMap
+import java.util.Collections
+import java.util.LinkedHashMap
 
 sealed interface PingResult {
     data object Idle : PingResult
@@ -29,18 +28,31 @@ sealed interface PingResult {
 
 object ServerPingManager {
 
-    private val resultMap = ConcurrentHashMap<String, MutableStateFlow<PingResult>>()
+    private const val MAX_CACHE_ENTRIES = 256
+
+    // Bounded LRU cache to prevent memory leaks from unbounded ConcurrentHashMap growth
+    private val resultMap = Collections.synchronizedMap(
+        object : LinkedHashMap<String, MutableStateFlow<PingResult>>(64, 0.75f, true) {
+            override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, MutableStateFlow<PingResult>>?): Boolean {
+                return size > MAX_CACHE_ENTRIES
+            }
+        }
+    )
 
     fun getPingState(host: String): StateFlow<PingResult> {
         val clean = IranBypassUtils.cleanHost(host)
-        return resultMap.getOrPut(clean) { MutableStateFlow(PingResult.Idle) }.asStateFlow()
+        return synchronized(resultMap) {
+            resultMap.getOrPut(clean) { MutableStateFlow(PingResult.Idle) }.asStateFlow()
+        }
     }
 
     suspend fun ping(host: String): PingResult = withContext(Dispatchers.IO) {
         val clean = IranBypassUtils.cleanHost(host)
         if (clean.isBlank()) return@withContext PingResult.Error("Invalid host")
 
-        val flow = resultMap.getOrPut(clean) { MutableStateFlow(PingResult.Idle) }
+        val flow = synchronized(resultMap) {
+            resultMap.getOrPut(clean) { MutableStateFlow(PingResult.Idle) }
+        }
         flow.value = PingResult.Loading
 
         ProtonLogger.logCustom(LogCategory.CONN, "Pinging server host: $clean")
@@ -66,25 +78,31 @@ object ServerPingManager {
     }
 
     private fun pingIcmp(host: String, timeoutSec: Int = 2): Long? {
+        var process: Process? = null
         return try {
-            val process = Runtime.getRuntime().exec("/system/bin/ping -c 1 -W $timeoutSec $host")
-            val reader = BufferedReader(InputStreamReader(process.inputStream))
+            process = Runtime.getRuntime().exec("/system/bin/ping -c 1 -W $timeoutSec $host")
             var rtt: Long? = null
-            var line: String?
-            while (reader.readLine().also { line = it } != null) {
-                val currentLine = line ?: continue
-                if (currentLine.contains("time=")) {
-                    val timePart = currentLine.substringAfter("time=").substringBefore(" ms").trim()
-                    rtt = timePart.toDoubleOrNull()?.toLong()
-                } else if (currentLine.contains("min/avg/max")) {
-                    val avgPart = currentLine.substringAfter("=").split("/").getOrNull(1)?.trim()
-                    rtt = avgPart?.toDoubleOrNull()?.toLong()
+            process.inputStream.bufferedReader().use { reader ->
+                var line: String?
+                while (reader.readLine().also { line = it } != null) {
+                    val currentLine = line ?: continue
+                    if (currentLine.contains("time=")) {
+                        val timePart = currentLine.substringAfter("time=").substringBefore(" ms").trim()
+                        rtt = timePart.toDoubleOrNull()?.toLong()
+                    } else if (currentLine.contains("min/avg/max")) {
+                        val avgPart = currentLine.substringAfter("=").split("/").getOrNull(1)?.trim()
+                        rtt = avgPart?.toDoubleOrNull()?.toLong()
+                    }
                 }
             }
             val exitCode = process.waitFor()
             if (exitCode == 0 && rtt != null) rtt else null
         } catch (_: Exception) {
             null
+        } finally {
+            try {
+                process?.destroy()
+            } catch (_: Exception) {}
         }
     }
 
@@ -97,6 +115,12 @@ object ServerPingManager {
             SystemClock.elapsedRealtime() - start
         } catch (_: Exception) {
             null
+        }
+    }
+
+    fun clearCache() {
+        synchronized(resultMap) {
+            resultMap.clear()
         }
     }
 }

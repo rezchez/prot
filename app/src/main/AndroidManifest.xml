@@ -407,6 +407,17 @@
             android:exported="false"/>
 
         <receiver
+            android:name=".vpn.pause.VpnPauseReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.protonvpn.android.vpn.ACTION_PAUSE_EXPIRED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
             android:name=".quicktile.QuickTileActionReceiver"
             android:enabled="true"
             android:exported="false"/>

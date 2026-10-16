@@ -39,7 +39,6 @@ fun AdvancedSettings(
     customDns: SettingsViewModel.SettingViewState.CustomDns?,
     onAltRoutingChange: () -> Unit,
     onNavigateToLan: () -> Unit,
-    onNavigateToProxySharing: () -> Unit = {},
     onIPv6Toggle: () -> Unit,
     onNatTypeLearnMore: () -> Unit,
     onNavigateToNatType: () -> Unit,
@@ -95,13 +94,6 @@ fun AdvancedSettings(
                 onInfoClick = onIPv6InfoClick,
             )
         }
-
-        SettingsValueItem(
-            name = stringResource(id = R.string.settings_proxy_sharing_title),
-            settingValue = null,
-            description = stringResource(id = R.string.settings_proxy_sharing_description),
-            onClick = onNavigateToProxySharing
-        )
     }
 }
 

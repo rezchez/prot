@@ -132,7 +132,8 @@ object NetworkUtils {
         serverSocket: Socket,
         onBytesTransferred: ((Long) -> Unit)? = null,
         onBytesUploaded: ((Long) -> Unit)? = null,
-        onBytesDownloaded: ((Long) -> Unit)? = null
+        onBytesDownloaded: ((Long) -> Unit)? = null,
+        shouldAbort: (() -> Boolean)? = null
     ) {
         val isClosed = AtomicBoolean(false)
 
@@ -147,6 +148,9 @@ object NetworkUtils {
             val buffer = ByteArray(8192)
             try {
                 while (!isClosed.get()) {
+                    if (shouldAbort?.invoke() == true) {
+                        break
+                    }
                     val bytesRead = input.read(buffer)
                     if (bytesRead == -1) break
                     output.write(buffer, 0, bytesRead)

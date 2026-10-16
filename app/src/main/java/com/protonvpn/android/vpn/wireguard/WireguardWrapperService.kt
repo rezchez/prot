@@ -99,7 +99,37 @@ class WireguardWrapperService : GoBackend.VpnService() {
         }
     }
 
+    private var safeCallback: SafeVpnCallback? = null
+
+    private class SafeVpnCallback(service: WireguardWrapperService) : android.os.Binder() {
+        private var serviceRef: java.lang.ref.WeakReference<WireguardWrapperService>? = java.lang.ref.WeakReference(service)
+
+        override fun onTransact(code: Int, data: android.os.Parcel, reply: android.os.Parcel?, flags: Int): Boolean {
+            if (code == android.os.IBinder.LAST_CALL_TRANSACTION) {
+                serviceRef?.get()?.onRevoke()
+                return true
+            }
+            return false
+        }
+
+        fun clear() {
+            serviceRef?.clear()
+            serviceRef = null
+        }
+    }
+
+    override fun onBind(intent: Intent?): android.os.IBinder? {
+        if (intent?.action == SERVICE_INTERFACE) {
+            val callback = SafeVpnCallback(this)
+            safeCallback = callback
+            return callback
+        }
+        return super.onBind(intent)
+    }
+
     override fun onDestroy() {
+        safeCallback?.clear()
+        safeCallback = null
         wireguardBackend.serviceDestroyed()
         connectionManager.onVpnServiceDestroyed(connectionParamsUuid = null)
         currentVpnServiceProvider.onVpnServiceDestroyed(WireguardBackend::class)

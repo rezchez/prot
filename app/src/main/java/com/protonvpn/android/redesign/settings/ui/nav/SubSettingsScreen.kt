@@ -33,6 +33,7 @@ object SubSettingsScreen : Screen<SubSettingsScreen.Type, RootNav>("subSettingsS
     enum class Type {
         Account,
         Advanced,
+        BackupRestore,
         ConnectionPreferences,
         CustomDns,
         DebugTools,

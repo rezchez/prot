@@ -172,7 +172,7 @@ private fun IconsView(
     selectedIcon: ProfileIcon,
     onIconSelected: (ProfileIcon) -> Unit
 ) {
-    val rows = 2
+    val rows = 3
     val numberOfColumns = (ProfileIcon.entries.size + rows - 1) / rows
 
     val shape = RoundedCornerShape(10.dp)

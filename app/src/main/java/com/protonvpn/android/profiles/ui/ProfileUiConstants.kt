@@ -37,6 +37,9 @@ fun ProfileIcon.toDrawableRes() = when (this) {
     ProfileIcon.Icon10 -> R.drawable.profile_shopping_icon
     ProfileIcon.Icon11 -> R.drawable.profile_security_icon
     ProfileIcon.Icon12 -> R.drawable.profile_browsing_icon
+    ProfileIcon.Mokhaberat -> R.drawable.profile_tci_icon
+    ProfileIcon.HamrahAval -> R.drawable.profile_mci_icon
+    ProfileIcon.Irancell -> R.drawable.profile_irancell_icon
 }
 
 fun ProfileColor.toColor() = when (this) {

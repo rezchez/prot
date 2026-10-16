@@ -681,7 +681,9 @@ class VpnConnectionManager @Inject constructor(
         clearOngoingConnection(clearFallback = true)
         scope.launch {
             disconnectBlocking(trigger)
-            vpnStateMonitor.onDisconnectedByUser.emit(Unit)
+            if (trigger !is DisconnectTrigger.Pause) {
+                vpnStateMonitor.onDisconnectedByUser.emit(Unit)
+            }
         }
     }
 

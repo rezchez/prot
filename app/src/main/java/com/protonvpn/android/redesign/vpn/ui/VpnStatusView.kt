@@ -90,9 +90,11 @@ import com.protonvpn.android.base.ui.vpnGreen
 import com.protonvpn.android.utils.Constants
 import com.protonvpn.android.utils.openUrl
 import com.protonvpn.android.vpn.DnsOverride
+import com.protonvpn.android.vpn.pause.VpnPauseState
 import kotlinx.coroutines.delay
 import me.proton.core.compose.theme.ProtonColors
 import me.proton.core.compose.theme.ProtonTheme
+import me.proton.core.compose.theme.defaultNorm
 import me.proton.core.compose.theme.defaultStrongNorm
 import me.proton.core.compose.theme.defaultWeak
 import me.proton.core.compose.theme.headlineNorm
@@ -223,7 +225,10 @@ fun VpnStatusBottom(
     state: VpnStatusViewState,
     transitionValue: () -> Float,
     netShieldActions: NetShieldActions,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    vpnPauseState: VpnPauseState? = null,
+    onResumePause: (() -> Unit)? = null,
+    onCancelPause: (() -> Unit)? = null,
 ) {
     Box(modifier, contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -239,7 +244,12 @@ fun VpnStatusBottom(
                 }
 
                 is VpnStatusViewState.Disabled -> {
-                    VpnDisabledView(state)
+                    VpnDisabledView(
+                        state = state,
+                        vpnPauseState = vpnPauseState,
+                        onResumePause = onResumePause,
+                        onCancelPause = onCancelPause,
+                    )
                 }
 
                 is VpnStatusViewState.WaitingForNetwork -> {
@@ -425,7 +435,64 @@ private fun LocationTextAnimated(locationText: LocationText) {
 }
 
 @Composable
-private fun VpnDisabledView(state: VpnStatusViewState.Disabled) {
+private fun VpnDisabledView(
+    state: VpnStatusViewState.Disabled,
+    vpnPauseState: VpnPauseState? = null,
+    onResumePause: (() -> Unit)? = null,
+    onCancelPause: (() -> Unit)? = null,
+) {
+    if (vpnPauseState?.isPaused == true && vpnPauseState.remainingSeconds > 0) {
+        val minutes = vpnPauseState.remainingSeconds / 60
+        val seconds = vpnPauseState.remainingSeconds % 60
+        val timeFormatted = String.format("%02d:%02d", minutes, seconds)
+
+        Surface(
+            color = ProtonTheme.colors.backgroundSecondary.copy(alpha = 0.95f),
+            border = BorderStroke(1.dp, ProtonTheme.colors.notificationWarning.copy(alpha = 0.6f)),
+            shape = ProtonTheme.shapes.medium,
+            modifier = Modifier.padding(bottom = 8.dp)
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_pause),
+                    contentDescription = null,
+                    tint = ProtonTheme.colors.notificationWarning,
+                    modifier = Modifier.size(16.dp)
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = stringResource(R.string.vpn_pause_status),
+                    style = ProtonTheme.typography.defaultStrongNorm,
+                    color = ProtonTheme.colors.notificationWarning
+                )
+                Text(
+                    text = " · ",
+                    style = ProtonTheme.typography.defaultNorm,
+                    color = ProtonTheme.colors.textWeak
+                )
+                Text(
+                    text = timeFormatted,
+                    style = ProtonTheme.typography.defaultStrongNorm,
+                    color = ProtonTheme.colors.textNorm
+                )
+                if (onResumePause != null) {
+                    Spacer(Modifier.width(12.dp))
+                    Text(
+                        text = stringResource(R.string.vpn_pause_resume_button),
+                        style = ProtonTheme.typography.defaultStrongNorm,
+                        color = ProtonTheme.colors.textAccent,
+                        modifier = Modifier
+                            .clickable(onClick = onResumePause)
+                            .padding(horizontal = 4.dp, vertical = 2.dp)
+                    )
+                }
+            }
+        }
+    }
+
     Text(
         text = stringResource(R.string.vpn_status_disabled),
         style = ProtonTheme.typography.defaultStrongNorm,

@@ -81,6 +81,21 @@ class HttpProxyServer(
     }
 
     private fun handleClient(clientSocket: Socket) {
+        val clientIp = (clientSocket.remoteSocketAddress as? InetSocketAddress)?.address?.hostAddress
+            ?: clientSocket.inetAddress?.hostAddress ?: "Unknown"
+
+        if (ConnectedDeviceManager.isBlocked(clientIp) || ConnectedDeviceManager.isDailyLimitExceeded(clientIp)) {
+            ProtonLogger.logCustom(LogCategory.CONN, "HTTP proxy connection rejected for blocked/limited client: $clientIp")
+            try {
+                val blockResponse = "HTTP/1.1 403 Forbidden\r\nContent-Type: text/plain\r\nConnection: close\r\n\r\nAccess blocked by administrator or daily quota exceeded.\r\n"
+                clientSocket.getOutputStream().write(blockResponse.toByteArray(Charsets.ISO_8859_1))
+                clientSocket.getOutputStream().flush()
+                clientSocket.close()
+            } catch (_: Exception) {}
+            return
+        }
+
+        ConnectedDeviceManager.recordClientConnected(clientIp)
         val currentCount = activeConnections.incrementAndGet()
         onConnectionChanged?.invoke(currentCount)
 
@@ -150,8 +165,17 @@ class HttpProxyServer(
                     clientSocket = clientSocket,
                     serverSocket = outboundSocket,
                     onBytesTransferred = onBytesTransferred,
-                    onBytesUploaded = onBytesUploaded,
-                    onBytesDownloaded = onBytesDownloaded
+                    onBytesUploaded = { bytes ->
+                        onBytesUploaded?.invoke(bytes)
+                        ConnectedDeviceManager.recordTraffic(clientIp, downloaded = 0L, uploaded = bytes)
+                    },
+                    onBytesDownloaded = { bytes ->
+                        onBytesDownloaded?.invoke(bytes)
+                        ConnectedDeviceManager.recordTraffic(clientIp, downloaded = bytes, uploaded = 0L)
+                    },
+                    shouldAbort = {
+                        ConnectedDeviceManager.isBlocked(clientIp) || ConnectedDeviceManager.isDailyLimitExceeded(clientIp)
+                    }
                 )
             } else {
                 // Regular HTTP proxy (GET, POST, ...
@@ -214,14 +238,24 @@ class HttpProxyServer(
                     clientSocket = clientSocket,
                     serverSocket = outboundSocket,
                     onBytesTransferred = onBytesTransferred,
-                    onBytesUploaded = onBytesUploaded,
-                    onBytesDownloaded = onBytesDownloaded
+                    onBytesUploaded = { bytes ->
+                        onBytesUploaded?.invoke(bytes)
+                        ConnectedDeviceManager.recordTraffic(clientIp, downloaded = 0L, uploaded = bytes)
+                    },
+                    onBytesDownloaded = { bytes ->
+                        onBytesDownloaded?.invoke(bytes)
+                        ConnectedDeviceManager.recordTraffic(clientIp, downloaded = bytes, uploaded = 0L)
+                    },
+                    shouldAbort = {
+                        ConnectedDeviceManager.isBlocked(clientIp) || ConnectedDeviceManager.isDailyLimitExceeded(clientIp)
+                    }
                 )
             }
         } catch (e: Exception) {
             ProtonLogger.logCustom(LogCategory.CONN, "HTTP proxy client error: ${e.message}")
             try { clientSocket.close() } catch (_: Exception) {}
         } finally {
+            ConnectedDeviceManager.recordClientDisconnected(clientIp)
             val count = activeConnections.decrementAndGet()
             onConnectionChanged?.invoke(count)
         }

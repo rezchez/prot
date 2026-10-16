@@ -155,6 +155,14 @@ fun SubSettingsRoute(
                 }
             }
 
+            SubSettingsScreen.Type.BackupRestore -> {
+                val backupViewModel: BackupRestoreViewModel = hiltViewModel()
+                BackupRestoreScreen(
+                    backupManager = backupViewModel.backupManager,
+                    onClose = onClose
+                )
+            }
+
             SubSettingsScreen.Type.Account -> {
                 val accountViewState = viewModel.accountSettings.collectAsStateWithLifecycle(initialValue = null).value
                 val changePasswordContract = rememberLauncherForActivityResult(StartPasswordManagement()) {}
@@ -197,9 +205,6 @@ fun SubSettingsRoute(
                                 onOverrideSettingClick(OverrideType.LAN) {
                                     onNavigateToSubSetting(SubSettingsScreen.Type.Lan)
                                 }
-                            },
-                            onNavigateToProxySharing = {
-                                onNavigateToSubSetting(SubSettingsScreen.Type.ProxySharing)
                             },
                             onNatTypeLearnMore = { context.openUrl(Constants.MODERATE_NAT_INFO_URL) },
                             onNavigateToNatType = {
