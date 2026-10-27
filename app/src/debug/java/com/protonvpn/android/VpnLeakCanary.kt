@@ -19,14 +19,6 @@
 
 package com.protonvpn.android
 
-import android.provider.Settings
-import leakcanary.AppWatcher
-
 object VpnLeakCanary {
-    fun init(application: ProtonApplication) {
-        val isTestLab = Settings.System.getString(application.contentResolver, "firebase.test.lab")
-        if (isTestLab != "true") {
-            AppWatcher.manualInstall(application)
-        }
-    }
+    fun init(application: ProtonApplication) = Unit
 }

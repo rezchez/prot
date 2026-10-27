@@ -742,8 +742,8 @@ dependencies {
     implementation(libs.androidx.profileinstaller)
     baselineProfile(projects.baselineprofile)
 
-    debugImplementation(libs.squareup.leakcanary.object.watcher)
-    debugImplementation(libs.squareup.leakcanary)
+    // debugImplementation(libs.squareup.leakcanary.object.watcher)
+    // debugImplementation(libs.squareup.leakcanary)
 
     detektPlugins(libs.detekt.formatting)
     detektPlugins(projects.detektGitlabOutputPlugin)
