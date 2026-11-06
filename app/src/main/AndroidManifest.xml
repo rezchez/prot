@@ -328,22 +328,6 @@
 
         </activity-alias>
 
-        <service
-            android:name=".vpn.wireguard.WireguardWrapperService"
-            android:exported="false"
-            android:foregroundServiceType="systemExempted"
-            android:permission="android.permission.BIND_VPN_SERVICE"
-            tools:ignore="ForegroundServicePermission">
-            <intent-filter>
-                <action android:name="android.net.VpnService" />
-            </intent-filter>
-        </service>
-        <service
-            android:name="com.wireguard.android.backend.GoBackend$VpnService"
-            android:exported="false"
-            android:foregroundServiceType="systemExempted"
-            tools:ignore="ForegroundServicePermission"
-            tools:node="merge" />
         <!-- nosemgrep: java.android.security.exported_activity -->
         <service
             android:name=".components.QuickTileService"

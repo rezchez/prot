@@ -71,7 +71,6 @@ proton-payment-version = "1.4.0"
 proton-test-fusion-version = "0.9.97"
 proton-vpn-govpnlib-version = "0.1.87"
 proton-vpn-core-internal-version = "2.4.2-1.0.45"
-proton-vpn-wireguard-version = "1.0.20230512.29"
 relex-circleindicator-version = "2.1.6"
 retrofit-version = "2.12.0"
 robolectric-version = "4.16.1"
@@ -287,7 +286,6 @@ proton-payment-billing-google = { group = "me.proton.android.payment", name = "p
 proton-test-fusion = { group = "me.proton.test", name = "fusion", version.ref = "proton-test-fusion-version" }
 proton-vpn-govpnlib = { group = "me.proton.vpn", name = "go-vpn-lib", version.ref = "proton-vpn-govpnlib-version" }
 proton-vpn-core-internal = { group = "me.proton.vpn", name = "vpn-core-internal", version.ref = "proton-vpn-core-internal-version" }
-proton-vpn-wireguard = { group = "me.proton.vpn", name = "wireguard-android", version.ref = "proton-vpn-wireguard-version" }
 relex-circleindicator = { group = "me.relex", name = "circleindicator", version.ref = "relex-circleindicator-version" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit-version" }
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric-version" }

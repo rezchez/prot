@@ -30,15 +30,21 @@ import com.protonvpn.android.servers.Server
 import com.protonvpn.android.servers.api.ConnectingDomain
 import com.protonvpn.android.settings.data.LocalUserSettings
 import com.protonvpn.android.settings.data.SplitTunnelingSettings
-import com.protonvpn.android.utils.Constants.VPN_CLIENT_IP
-import com.protonvpn.android.utils.Constants.VPN_CLIENT_IP_V6
 import com.protonvpn.android.utils.Constants.VPN_SERVER_IP
 import com.protonvpn.android.utils.Constants.VPN_SERVER_IP_V6
 import com.protonvpn.android.vpn.CertificateRepository
-import com.wireguard.config.Config
-import com.wireguard.config.Interface
-import com.wireguard.config.Peer
+import com.protonvpn.android.models.vpn.usecase.toIPAddress
+import inet.ipaddr.IPAddress
 import me.proton.core.network.domain.session.SessionId
+import me.proton.vpn.core.api.ConnectionMode
+import me.proton.vpn.core.api.InitialConfig
+import me.proton.vpn.core.api.InterfaceConfig
+import me.proton.vpn.core.api.IpNetworkPrefix
+import me.proton.vpn.core.api.Peer
+import me.proton.vpn.core.api.SniStrategy
+import me.proton.vpn.core.api.SplitTunnelAppsConfig
+import me.proton.vpn.core.api.SplitTunnelMode
+import java.net.InetAddress
 
 class ConnectionParamsWireguard(
     connectIntent: AnyConnectIntent,
@@ -68,13 +74,15 @@ class ConnectionParamsWireguard(
         sessionId: SessionId?,
         certificateRepository: CertificateRepository,
         computeAllowedIPs: ComputeAllowedIPs,
-    ): Config =
+        sniStrategy: SniStrategy = SniStrategy.Random,
+    ): InitialConfig =
         getTunnelConfig(
             context.packageName,
             userSettings,
             sessionId,
             certificateRepository,
-            computeAllowedIPs
+            computeAllowedIPs,
+            sniStrategy,
         )
 
     @Throws(IllegalStateException::class)
@@ -85,66 +93,89 @@ class ConnectionParamsWireguard(
         sessionId: SessionId?,
         certificateRepository: CertificateRepository,
         computeAllowedIPs: ComputeAllowedIPs,
-    ): Config {
+        sniStrategy: SniStrategy,
+    ): InitialConfig {
         val entryIp = entryIp ?: requireNotNull(connectingDomain?.getEntryIp(protocolSelection))
-
-        val allowedIpsString =
+        val allowedIps =
             if (connectIntent is AnyConnectIntent.GuestHole) {
-                "0.0.0.0/0, ::/0"
+                listOf("0.0.0.0/0".toIPAddress(), "::/0".toIPAddress())
             } else {
-                computeAllowedIPs(userSettings).joinToString(", ") { it.toCanonicalString() }
+                computeAllowedIPs(userSettings)
             }
+        val supportsIpv6 = enableIPv6 == true && server.isIPv6Supported
+        val dnsServers = buildList {
+            addAll(userSettings.customDns.effectiveDnsList)
+            add(VPN_SERVER_IP)
+            if (supportsIpv6) add(VPN_SERVER_IP_V6)
+        }
+        val splitTunnelAppsConfig = splitTunnelAppsConfig(
+            myPackageName, userSettings.splitTunneling, userSettings.lanConnectionsAllowDirect
+        )
+        val protocol = when (protocolSelection?.transmission ?: TransmissionProtocol.UDP) {
+            TransmissionProtocol.UDP -> me.proton.vpn.core.api.VpnProtocol.WireGuardUdp
+            TransmissionProtocol.TCP -> me.proton.vpn.core.api.VpnProtocol.WireGuardTcp
+            TransmissionProtocol.TLS -> me.proton.vpn.core.api.VpnProtocol.Stealth
+        }
+        val peer = Peer(
+            InetAddress.getByName(entryIp),
+            mapOf(protocol to listOf(requireNotNull(port))),
+            requireNotNull(connectingDomain?.publicKeyX25519),
+            priority = 0,
+            id = server.serverId,
+            exitLabel = null,
+        )
 
-        val peer = Peer.Builder()
-            .parsePublicKey(requireNotNull(connectingDomain?.publicKeyX25519))
-            .parseEndpoint("$entryIp:$port")
-            .parseAllowedIPs(allowedIpsString)
-            // Having persistent keepalive ensures that WG handshake will be triggered even if no data goes through
-            // the tunnel - which fixes the issue on some devices where handshake is not triggered and we're stuck in
-            // connecting state.
-            .setPersistentKeepalive(60)
-            .build()
-
-        val (addresses, dns) = if (enableIPv6 == true && server.isIPv6Supported) {
+        if (supportsIpv6) {
             ProtonLogger.logCustom(LogCategory.CONN, "WireGuard IPv4+6 tunnel")
-            "$VPN_CLIENT_IP/32, $VPN_CLIENT_IP_V6/128" to "$VPN_SERVER_IP, $VPN_SERVER_IP_V6"
         } else {
             ProtonLogger.logCustom(LogCategory.CONN, "WireGuard IPv4 tunnel")
-            "$VPN_CLIENT_IP/32" to VPN_SERVER_IP
         }
-        val splitTunneling = userSettings.splitTunneling
-        val dnsServers: String = buildList {
-            addAll(userSettings.customDns.effectiveDnsList)
-            add(dns)
-        }.joinToString(",")
-        val iface = Interface.Builder()
-            .parseAddresses(addresses)
-            .parseDnsServers(dnsServers.trim())
-            .parsePrivateKey(certificateRepository.getX25519Key(sessionId))
-            .splitTunnelingApps(connectIntent, myPackageName, splitTunneling, userSettings.lanConnectionsAllowDirect)
-            .build()
-
-        return Config.Builder().addPeer(peer).setInterface(iface).build()
+        val iface = InterfaceConfig(
+            supportInTunnelIPv6 = supportsIpv6,
+            customDns = dnsServers,
+            routes = allowedIps.map { it.toIpNetworkPrefix() },
+            splitTunnelAppsConfig = splitTunnelAppsConfig,
+            mtu = 1420,
+        )
+        return InitialConfig(
+            iface,
+            listOf(peer),
+            null,
+            sniStrategy = sniStrategy,
+            mode = ConnectionMode.NoLocalAgent(certificateRepository.getX25519Key(sessionId)),
+        )
     }
 
-    private class SplitTunnelAppsWgConfigurator(private val builder: Interface.Builder) : SplitTunnelAppsConfigurator {
+    private fun splitTunnelAppsConfig(
+        myPackageName: String,
+        splitTunneling: SplitTunnelingSettings,
+        allowDirectLanConnections: Boolean,
+    ): SplitTunnelAppsConfig? {
+        val configurator = SplitTunnelAppsRustConfigurator()
+        applyAppsSplitTunneling(
+            configurator, connectIntent, myPackageName, splitTunneling, allowDirectLanConnections
+        )
+        return configurator.buildConfig()
+    }
+
+    private class SplitTunnelAppsRustConfigurator : SplitTunnelAppsConfigurator {
+        private var included = emptyList<String>()
+        private var excluded = emptyList<String>()
+
         override fun includeApplications(packageNames: List<String>) {
-            builder.includeApplications(packageNames)
+            included += packageNames
         }
 
         override fun excludeApplications(packageNames: List<String>) {
-            builder.excludeApplications(packageNames)
+            excluded += packageNames
+        }
+
+        fun buildConfig(): SplitTunnelAppsConfig? = when {
+            included.isNotEmpty() -> SplitTunnelAppsConfig(SplitTunnelMode.Include, included)
+            excluded.isNotEmpty() -> SplitTunnelAppsConfig(SplitTunnelMode.Exclude, excluded)
+            else -> null
         }
     }
 
-    private fun Interface.Builder.splitTunnelingApps(
-        connectIntent: AnyConnectIntent,
-        myPackageName: String,
-        splitTunneling: SplitTunnelingSettings,
-        allowDirectLanConnections: Boolean
-    ): Interface.Builder {
-        val configurator = SplitTunnelAppsWgConfigurator(this)
-        applyAppsSplitTunneling(configurator, connectIntent, myPackageName, splitTunneling, allowDirectLanConnections)
-        return this
-    }
+    private fun IPAddress.toIpNetworkPrefix() = IpNetworkPrefix(toInetAddress(), prefixLength)
 }

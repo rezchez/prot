@@ -78,6 +78,7 @@ class ProTunBackend @Inject constructor(
     settingsForConnection, certificateRepository, networkManager, networkCapabilitiesFlow, VpnProtocol.ProTun, mainScope,
     dispatcherProvider, localAgentUnreachableTracker, currentUser, getNetZone, foregroundActivityTracker, okHttp, shouldWaitForTunnelVerified = false
 ) {
+    @Volatile private var ownsRustConnection = false
     private var observePcapJob: Job? = null
 
     init {
@@ -86,7 +87,8 @@ class ProTunBackend @Inject constructor(
                 LogCategory.PROTOCOL,
                 "ProTun state changed: $state"
             )
-            vpnProtocolState = state.connectionState.toLegacyState(inV1mode = true)
+            if (ownsRustConnection)
+                vpnProtocolState = state.connectionState.toLegacyState(inV1mode = true)
         }.launchIn(mainScope)
     }
 
@@ -117,23 +119,29 @@ class ProTunBackend @Inject constructor(
 
     override suspend fun connect(connectionParams: ConnectionParams) {
         super.connect(connectionParams)
-        val protunParams = connectionParams as ConnectionParamsProTun
-        val settings = settingsForConnection.getFor(protunParams.connectIntent)
-        val sessionId = currentUser.sessionId()
-        val config = protunParams.getTunnelConfig(
-            context,
-            settings,
-            sessionId,
-            certificateRepository,
-            computeAllowedIPs,
-            packetCapture.activeFileFlow.first()
-        )
-        vpnCore.connectionManager.connect(config)
+        ownsRustConnection = true
+        try {
+            val protunParams = connectionParams as ConnectionParamsProTun
+            val settings = settingsForConnection.getFor(protunParams.connectIntent)
+            val sessionId = currentUser.sessionId()
+            val config = protunParams.getTunnelConfig(
+                context,
+                settings,
+                sessionId,
+                certificateRepository,
+                computeAllowedIPs,
+                packetCapture.activeFileFlow.first()
+            )
+            vpnCore.connectionManager.connect(config)
 
-        observePcapJob = mainScope.launch {
-            packetCapture.activeFileFlow
-                .drop(1)
-                .collect { pcapFile -> vpnCore.connectionManager.setPacketCaptureEnabled(pcapFile) }
+            observePcapJob = mainScope.launch {
+                packetCapture.activeFileFlow
+                    .drop(1)
+                    .collect { pcapFile -> vpnCore.connectionManager.setPacketCaptureEnabled(pcapFile) }
+            }
+        } catch (e: Exception) {
+            ownsRustConnection = false
+            throw e
         }
     }
 
@@ -141,6 +149,7 @@ class ProTunBackend @Inject constructor(
         observePcapJob?.cancel()
         observePcapJob = null
 
+        ownsRustConnection = false
         vpnCore.connectionManager.disconnect()
         if (withStateChange) {
             // Set state to disabled right away to give app some time to close notification

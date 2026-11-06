@@ -53,17 +53,16 @@ class LogcatLogCapture @Inject constructor(
 
     init {
         mainScope.launch(dispatcherProvider.infiniteIo) {
-            captureCharonWireguardAndGoLogs()
+            captureCharonAndGoLogs()
         }
     }
 
-    private suspend fun captureCharonWireguardAndGoLogs() {
+    private suspend fun captureCharonAndGoLogs() {
         do {
             val start = monoClock()
             try {
-                val wireguardTag = "WireGuard/GoBackend/${Constants.WIREGUARD_TUNNEL_NAME}"
                 val process = Runtime.getRuntime().exec(
-                    "logcat -v brief -s $wireguardTag:* charon:* Go:E ${Constants.SECONDARY_PROCESS_TAG}:* -T 1"
+                    "logcat -v brief -s charon:* Go:E ${Constants.SECONDARY_PROCESS_TAG}:* -T 1"
                 )
                 val goLangLoggerEnabled = goLangSendCrashesToSentryEnabled()
                 BufferedReader(InputStreamReader(process.inputStream)).useLines { lines ->

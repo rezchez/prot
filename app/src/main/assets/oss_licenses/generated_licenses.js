@@ -4960,7 +4960,7 @@ dependencies = [
   {
     "project": "me.proton.vpn:android-vpn-rust",
     "description": "Rust library with code for Android Proton VPN client",
-    "version": "1.0.37",
+    "version": "1.0.45",
     "developers": [
       "Open Source Proton"
     ],
@@ -4972,7 +4972,7 @@ dependencies = [
         "license_url": "https://www.gnu.org/licenses/gpl-3.0.en.html"
       }
     ],
-    "dependency": "me.proton.vpn:android-vpn-rust:1.0.37"
+    "dependency": "me.proton.vpn:android-vpn-rust:1.0.45"
   },
   {
     "project": "me.proton.vpn:go-vpn-lib",
@@ -4994,7 +4994,7 @@ dependencies = [
   {
     "project": "me.proton.vpn:vpn-core-internal",
     "description": "Proton VPN core libraries for Android",
-    "version": "0.1.55-1.0.37",
+    "version": "2.4.2-1.0.45",
     "developers": [
       "Open Source Proton"
     ],
@@ -5006,7 +5006,7 @@ dependencies = [
         "license_url": "https://www.gnu.org/licenses/gpl-3.0.en.html"
       }
     ],
-    "dependency": "me.proton.vpn:vpn-core-internal:0.1.55-1.0.37"
+    "dependency": "me.proton.vpn:vpn-core-internal:2.4.2-1.0.45"
   },
   {
     "project": "minidns",
@@ -7430,24 +7430,6 @@ dependencies = [
       }
     ],
     "dependency": "androidx.window:window-core-android:1.5.1"
-  },
-  {
-    "project": "WireGuard Tunnel Library",
-    "description": "Embeddable tunnel library for WireGuard for Android",
-    "version": "1.0.20230512.29",
-    "developers": [
-      "WireGuard",
-      "Open Source Proton"
-    ],
-    "url": "https://www.wireguard.com/",
-    "year": null,
-    "licenses": [
-      {
-        "license": "The Apache Software License, Version 2.0",
-        "license_url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
-      }
-    ],
-    "dependency": "me.proton.vpn:wireguard-android:1.0.20230512.29"
   },
   {
     "project": "WorkManager Hilt Extension",

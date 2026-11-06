@@ -973,7 +973,6 @@ dependencies {
     implementation(libs.androidx.leanback.preference)
 
     // Wireguard
-    implementation(libs.proton.vpn.wireguard)
 
     // Hilt
     ksp(libs.dagger.hilt.compiler)

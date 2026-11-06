@@ -33,8 +33,10 @@ import com.protonvpn.android.settings.data.SplitTunnelingSettings
 import com.protonvpn.android.vpn.CertificateRepository
 import com.protonvpn.test.shared.createServer
 import com.protonvpn.test.shared.dummyConnectingDomain
-import com.wireguard.config.Config
 import inet.ipaddr.IPAddress
+import inet.ipaddr.IPAddressString
+import me.proton.vpn.core.api.InitialConfig
+import me.proton.vpn.core.api.SplitTunnelMode
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
@@ -119,7 +121,7 @@ class WireguardParamsTests {
     fun `split tunneling include - apps only configuration allows all IPs`() = runTest {
         val settings = LocalUserSettings(splitTunneling = splitTunnelingIncludeOnly1App)
         val config = getTunnelConfigInTest(settings)
-        val allowedIps = config.peers.first().allowedIps.map { it.toString() }
+        val allowedIps = config.routes()
         assertEquals(listOf("0.0.0.0/0", ipv6IncludeAll), allowedIps)
     }
 
@@ -131,7 +133,7 @@ class WireguardParamsTests {
         )
         localNetworks = listOf("10.0.0.0/8".toIPAddress())
         val config = getTunnelConfigInTest(settings)
-        val allowedIps = config.peers.first().allowedIps.map { it.toString() }
+        val allowedIps = config.routes()
 
         assertEquals(
             setOf("0.0.0.0/5", "8.0.0.0/7", "10.2.0.1/32", "11.0.0.0/8", "12.0.0.0/6",
@@ -144,8 +146,7 @@ class WireguardParamsTests {
     fun `split tunneling include - Proton VPN added to included apps`() = runTest {
         val settings = LocalUserSettings(splitTunneling = splitTunnelingIncludeOnly1App)
         val config = getTunnelConfigInTest(settings)
-        val includedApps = config.`interface`.includedApplications
-        val excludedApps = config.`interface`.excludedApplications
+        val (includedApps, excludedApps) = config.apps()
         assertEquals(setOf(exampleAppPackage, vpnAppPackage), includedApps.toSet())
         assertTrue(excludedApps.isEmpty())
     }
@@ -154,9 +155,9 @@ class WireguardParamsTests {
     fun `split tunneling include - IPs only configuration allows all apps`() = runTest {
         val settings = LocalUserSettings(splitTunneling = splitTunnelingIncludeOnly1Ip)
         val config = getTunnelConfigInTest(settings)
-        with(config.`interface`) {
-            assertTrue(includedApplications.isEmpty())
-            assertTrue(excludedApplications.isEmpty())
+        with(config.apps()) {
+            assertTrue(first.isEmpty())
+            assertTrue(second.isEmpty())
         }
     }
 
@@ -164,7 +165,7 @@ class WireguardParamsTests {
     fun `split tunneling include - local agent IP added to included IPs`() = runTest {
         val settings = LocalUserSettings(splitTunneling = splitTunnelingIncludeOnly1Ip)
         val config = getTunnelConfigInTest(settings)
-        val allowedIps = config.peers.first().allowedIps.map { it.toString() }
+        val allowedIps = config.routes()
         assertEquals(setOf("1.2.3.4/32", "10.2.0.1/32", "2a07:b944:0:0:0:0:2:1/128"), allowedIps.toSet())
     }
 
@@ -172,11 +173,11 @@ class WireguardParamsTests {
     fun `split tunneling disabled`() = runTest {
         val settings = LocalUserSettings(splitTunneling = splitTunnelingDisabled)
         val config = getTunnelConfigInTest(settings)
-        with(config.`interface`) {
-            assertTrue(includedApplications.isEmpty())
-            assertTrue(excludedApplications.isEmpty())
+        with(config.apps()) {
+            assertTrue(first.isEmpty())
+            assertTrue(second.isEmpty())
         }
-        val allowedIps = config.peers.first().allowedIps.map { it.toString() }
+        val allowedIps = config.routes()
         assertEquals(setOf("0.0.0.0/0", ipv6IncludeAll), allowedIps.toSet())
     }
 
@@ -184,11 +185,11 @@ class WireguardParamsTests {
     fun `split tunneling exclude - exclude only apps`() = runTest {
         val settings = LocalUserSettings(splitTunneling = splitTunnelingExcludeOnly1App)
         val config = getTunnelConfigInTest(settings)
-        with (config.`interface`) {
-            assertTrue(includedApplications.isEmpty())
-            assertEquals(setOf(exampleAppPackage), excludedApplications)
+        with (config.apps()) {
+            assertTrue(first.isEmpty())
+            assertEquals(setOf(exampleAppPackage), second)
         }
-        val allowedIps = config.peers.first().allowedIps.map { it.toString() }
+        val allowedIps = config.routes()
         assertEquals(setOf("0.0.0.0/0", ipv6IncludeAll), allowedIps.toSet())
     }
 
@@ -196,11 +197,11 @@ class WireguardParamsTests {
     fun `direct connection apps excluded from split tunneling`() = runTest {
         val settings = LocalUserSettings(splitTunneling = splitTunnelingExcludeOnly1App, lanConnectionsAllowDirect = true)
         val config = getTunnelConfigInTest(settings)
-        with (config.`interface`) {
-            assertTrue(includedApplications.isEmpty())
+        with (config.apps()) {
+            assertTrue(first.isEmpty())
             assertEquals(
                 DIRECT_CONNECTIONS_EXCLUDED_APPS.toSet() + splitTunnelingExcludeOnly1App.excludedApps.toSet(),
-                excludedApplications.toSet()
+                second.toSet()
             )
         }
     }
@@ -209,9 +210,9 @@ class WireguardParamsTests {
     fun `direct connection apps excluded from split tunneling when split tunneling disabled`() = runTest {
         val settings = LocalUserSettings(splitTunneling = splitTunnelingDisabled, lanConnectionsAllowDirect = true)
         val config = getTunnelConfigInTest(settings)
-        with (config.`interface`) {
-            assertTrue(includedApplications.isEmpty())
-            assertEquals(DIRECT_CONNECTIONS_EXCLUDED_APPS.toSet(), excludedApplications)
+        with (config.apps()) {
+            assertTrue(first.isEmpty())
+            assertEquals(DIRECT_CONNECTIONS_EXCLUDED_APPS.toSet(), second.toSet())
         }
     }
 
@@ -219,9 +220,9 @@ class WireguardParamsTests {
     fun `direct connection apps excluded in included mode without apps`() = runTest {
         val settings = LocalUserSettings(splitTunneling = splitTunnelingIncludeOnly1Ip, lanConnectionsAllowDirect = true)
         val config = getTunnelConfigInTest(settings)
-        with (config.`interface`) {
-            assertTrue(includedApplications.isEmpty())
-            assertEquals(DIRECT_CONNECTIONS_EXCLUDED_APPS.toSet(), excludedApplications)
+        with (config.apps()) {
+            assertTrue(first.isEmpty())
+            assertEquals(DIRECT_CONNECTIONS_EXCLUDED_APPS.toSet(), second.toSet())
         }
     }
 
@@ -229,9 +230,9 @@ class WireguardParamsTests {
     fun `direct connection apps excluded in exclude mode without apps`() = runTest {
         val settings = LocalUserSettings(splitTunneling = splitTunnelingIncludeOnly1Ip, lanConnectionsAllowDirect = true)
         val config = getTunnelConfigInTest(settings)
-        with (config.`interface`) {
-            assertTrue(includedApplications.isEmpty())
-            assertEquals(DIRECT_CONNECTIONS_EXCLUDED_APPS.toSet(), excludedApplications)
+        with (config.apps()) {
+            assertTrue(first.isEmpty())
+            assertEquals(DIRECT_CONNECTIONS_EXCLUDED_APPS.toSet(), second.toSet())
         }
     }
 
@@ -239,11 +240,11 @@ class WireguardParamsTests {
     fun `Guest Hole - only VPN app goes via the tunnel (split tunneling settings ignored)`() = runTest {
         suspend fun test(splitTunneling: SplitTunnelingSettings) {
             val config = getTunnelConfigInTest(LocalUserSettings(splitTunneling = splitTunneling))
-            with(config.`interface`) {
-                assertEquals(setOf(vpnAppPackage), includedApplications)
-                assertTrue(excludedApplications.isEmpty())
+            with(config.apps()) {
+                assertEquals(setOf(vpnAppPackage), first.toSet())
+                assertTrue(second.isEmpty())
             }
-            val allowedIps = config.peers.first().allowedIps.map { it.toString() }
+            val allowedIps = config.routes()
             assertEquals(setOf("0.0.0.0/0", ipv6IncludeAll), allowedIps.toSet())
         }
 
@@ -256,13 +257,23 @@ class WireguardParamsTests {
 
     private suspend fun getTunnelConfigInTest(
         settings: LocalUserSettings,
-    ): Config = connectionParams.getTunnelConfig(
+    ): InitialConfig = connectionParams.getTunnelConfig(
         myPackageName = vpnAppPackage,
         userSettings = settings,
         sessionId = null,
         certificateRepository = mockCertRepository,
         computeAllowedIPs = ComputeAllowedIPs(ProvideLocalNetworks { localNetworks }),
     )
+
+    private fun InitialConfig.routes(): List<String> = interfaceConfig.routes.map {
+        IPAddressString("${it.address.hostAddress}/${it.prefixLength}").address.toCanonicalString()
+    }
+
+    private fun InitialConfig.apps(): Pair<List<String>, List<String>> {
+        val config = interfaceConfig.splitTunnelAppsConfig ?: return emptyList<String>() to emptyList()
+        return if (config.mode == SplitTunnelMode.Include) config.apps to emptyList()
+        else emptyList<String>() to config.apps
+    }
 
     private fun createConnectionParams(connectIntent: AnyConnectIntent, ipV6Server: Boolean = true) =
         ConnectionParamsWireguard(
